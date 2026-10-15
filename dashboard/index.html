@@ -201,6 +201,18 @@
   .w26 .tab[aria-selected="true"] { background: var(--w26-surface-2); border-color: transparent; }
   .w26 .site-title { font-size: 16px; }
 }
+.w26 .odds { display: grid; gap: 10px; }
+.w26 .odds-row { display: grid; grid-template-columns: 24px 96px minmax(0, 1fr) 56px; align-items: center; gap: 12px; }
+.w26 .odds-bar { height: 10px; border-radius: 999px; background: var(--w26-surface-2); overflow: hidden; }
+.w26 .odds-bar > span { display: block; height: 100%; border-radius: 999px; background: #5B6B80; }
+.w26 .odds-bar > span.lead { background: var(--w26-acc); }
+.w26 .nextlist { display: grid; gap: 10px; }
+.w26 a.next { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 12px; border: 1px solid var(--color-border-line); border-radius: 12px; text-decoration: none; color: inherit; }
+.w26 a.next:hover { border-color: var(--w26-acc); color: inherit; }
+.w26 a.next img { width: 44px; height: 44px; object-fit: contain; }
+.w26 .next-main { display: grid; gap: 3px; min-width: 0; }
+.w26 .next-p { font-family: var(--font-anthropic-serif); font-size: 22px; font-weight: 700; color: var(--w26-acc); }
+@media (max-width: 640px) { .w26 .odds-row { grid-template-columns: 20px 80px minmax(0, 1fr) 48px; gap: 8px; } }
 </style>
 
 <div class="w26">
@@ -227,6 +239,18 @@
       <div class="card tile"><span class="label">Finals MVP</span><div class="tile-main"><span class="big" data-source="overview" data-field="value" data-where="key=finals_mvp" id="ov-mvp">—</span></div><span class="cap muted">Frozen baseline pick</span></div>
       <div class="card tile"><span class="label">Play-In winner</span><div class="tile-main"><span id="ov-piw-logo"></span><span class="big" data-source="ratings" data-field="name" id="ov-piw">—</span></div><span class="cap muted"><span data-source="ratings" data-field="p_playin" id="ov-piw-p">—</span> to come through</span></div>
       <div class="card tile"><span class="label">Next lock</span><div class="tile-main"><span class="big small" data-source="overview" data-field="value" data-where="key=next_lock" id="ov-lock">—</span></div><span class="cap muted">NZ time</span></div>
+    </div>
+
+    <div class="grid home-row">
+      <div class="card" id="live-card">
+        <div class="card-head"><h3 class="card-title">Title odds</h3><span class="pill strong">Live</span></div>
+        <p class="card-note" id="live-note">Refitted after every Worlds result; finished series are taken as fact.</p>
+        <div class="odds" id="live-odds"></div>
+      </div>
+      <div class="card" id="next-card">
+        <div class="card-head"><h3 class="card-title">Next up</h3><span class="pill" id="record-pill">Model record: no results yet</span></div>
+        <div class="nextlist" id="next-list"></div>
+      </div>
     </div>
 
     <div class="card" id="rankings-card">
@@ -944,5 +968,40 @@ dash.calc('scorecard_rows', {
       el('td', { text: x.staged_pick }), el('td', {}, x.staged_hit ? [pill(x.staged_hit)] : []),
     ])) : [emptyRow(6, 'Results appear here as each series ends.')]));
   });
+})();
+</script>
+
+<script>
+// ---------- home: live title odds, next up, model record ----------
+(() => {
+  const { el, pct, rows } = window.W26;
+  const pairKey = (x) => x.id + '|' + [x.team_a, x.team_b].sort().join('|');
+  const sortKey = (s) => { const m = /(\d\d)\/(\d\d)\/(\d{4}) (\d\d):(\d\d)/.exec(s.time_nz || ''); return m ? m[3] + m[2] + m[1] + m[4] + m[5] : '9'; };
+  dash.onData(() => {
+    const live = (rows('live') || []).slice().sort((a, b) => b.p_champion - a.p_champion);
+    const top = live.slice(0, 10); const max = top.length ? (top[0].p_champion || 1) : 1;
+    document.getElementById('live-odds').replaceChildren(...(top.length ? top.map((x, i) => {
+      const fill = el('span', { cls: i === 0 ? 'lead' : null }); fill.style.width = (100 * x.p_champion / max).toFixed(1) + '%';
+      return el('div', { cls: 'odds-row' }, [el('span', { cls: 'cap muted num', text: String(i + 1) }), window.W26.badge(x.team),
+        el('span', { cls: 'odds-bar' }, [fill]), el('span', { cls: 'num strong r', text: pct(x.p_champion, 1) })]);
+    }) : [el('p', { cls: 'muted cap', text: 'Live odds not available yet.' })]));
+    if (live[0]) document.getElementById('live-note').textContent = `Refitted ${live[0].generated_nz} on every result so far; finished series are taken as fact. The frozen picks never change.`;
+
+    const series = rows('series') || []; const res = rows('results') || [];
+    const played = new Set(res.filter((r) => r.winner).map(pairKey));
+    const open = (s) => !s.actual && s.p_winner != null && !played.has(pairKey(s));
+    const set = ['knockouts', 'swiss', 'playin', 'baseline'].find((st) => series.some((s) => s.set === st && open(s)));
+    const next = series.filter((s) => s.set === set && open(s)).sort((a, b) => sortKey(a).localeCompare(sortKey(b))).slice(0, 4);
+    document.getElementById('next-list').replaceChildren(...(next.length ? next.map((s) => el('a', { cls: 'next', href: '#predictions' }, [
+      window.W26.teamLogo(s.winner) || window.W26.badge(s.winner),
+      el('span', { cls: 'next-main' }, [el('span', { cls: 'strong', text: `${s.team_a} v ${s.team_b}` }),
+        el('span', { cls: 'cap muted', text: `${s.time_nz || 'Time TBC'}. ${s.winner} to win` + (s.bo === 5 ? `. 3-0 ${pct(s.pw30)}, 3-1 ${pct(s.pw31)}, 3-2 ${pct(s.pw32)}` : '') })]),
+      el('span', { cls: 'next-p num', text: pct(s.p_winner) }),
+    ])) : [el('p', { cls: 'muted cap', text: 'No upcoming predicted series.' })]));
+
+    const g = (dash.data('grading').data || []).find((x) => x.set === 'baseline');
+    document.getElementById('record-pill').textContent = g && g.n ? `Model record: ${g.correct}/${g.n} winners` : 'Model record: no results yet';
+  });
+  document.getElementById('next-list').addEventListener('click', (e) => { if (e.target.closest('a.next')) { e.preventDefault(); window.W26.show('predictions'); } });
 })();
 </script>
