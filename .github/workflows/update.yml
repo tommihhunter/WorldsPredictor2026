@@ -1,0 +1,89 @@
+name: Update results
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.data.outputs.publish }}
+    steps:
+      - name: Event window (16/10 to 16/11/2026 NZDT)
+        id: window
+        run: |
+          d=$(TZ=Pacific/Auckland date +%Y%m%d)
+          if [ "${{ github.event_name }}" != "schedule" ] || { [ "$d" -ge 20261016 ] && [ "$d" -le 20261116 ]; }; then
+            echo "run=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "outside the event window ($d)"; echo "run=no" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.window.outputs.run == 'yes'
+      - uses: actions/setup-python@v5
+        if: steps.window.outputs.run == 'yes'
+        with:
+          python-version: "3.12"
+      - name: Install model
+        if: steps.window.outputs.run == 'yes'
+        run: pip install numpy scipy Pillow
+      - name: Pull results and refresh data
+        id: data
+        if: steps.window.outputs.run == 'yes'
+        run: |
+          python -X utf8 model/update_results.py
+          if git diff --quiet -- data/results_live.json; then
+            echo "no new results"
+            if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "publish=yes" >> "$GITHUB_OUTPUT"; else echo "publish=no" >> "$GITHUB_OUTPUT"; fi
+            exit 0
+          fi
+          python -X utf8 model/scrape_golgg.py
+          python -X utf8 model/build_games.py
+          python -X utf8 model/live.py
+          python -X utf8 model/export_dashboard.py
+          python -X utf8 model/grade.py
+          echo "publish=yes" >> "$GITHUB_OUTPUT"
+      - name: Model tests
+        if: steps.data.outputs.publish == 'yes'
+        run: python -X utf8 tests/test_v5.py
+      - name: Commit data (data/ only)
+        if: steps.data.outputs.publish == 'yes'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then echo "no data changes to commit"; exit 0; fi
+          git commit -m "data: results update $(TZ=Pacific/Auckland date '+%d/%m/%Y %H:%M') NZDT"
+          for i in 1 2 3; do git push && exit 0; git pull --rebase; done
+          exit 1
+      - name: Install browser
+        if: steps.data.outputs.publish == 'yes'
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Build and check site
+        if: steps.data.outputs.publish == 'yes'
+        run: |
+          python -X utf8 model/build_site.py
+          python -X utf8 tests/check_site.py
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.data.outputs.publish == 'yes'
+        with:
+          path: dist/site
+  deploy:
+    needs: update
+    if: needs.update.outputs.publish == 'yes'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

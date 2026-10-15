@@ -5,6 +5,12 @@ Written 16/10/2026 08:40 NZDT. This replaces HANDOVER_v4.md (kept for history). 
 ## What this is
 A personal League of Legends Worlds 2026 prediction tool: cited research on the 19 teams, a hierarchical Bradley-Terry rating fitted at series level on every 2026 series (gol.gg), a Monte Carlo of the Play-In / Swiss / knockouts, Pick'Ems and Crystal Ball picks, and a dashboard that grades itself as results come in. Two front ends exist: an online dashboard (claude.ai Dashboard artifact, colour team badges, datasets uploaded as JSON) and a local standalone file (`python3 model/build_local.py` -> `worlds2026_predictor.html`, 1.06 MB, embeds real team logos and Riot Data Dragon art). A Claude Design canvas (`design/`) holds four artboards for a public-site look that has NOT been ported to either front end yet.
 
+## Website
+- Live site: https://tommihhunter.github.io/WorldsPredictor2026/ (GitHub Pages, built by `model/build_site.py` from the same page as the local file; `tests/check_site.py` opens every tab headless before each deploy).
+- `.github/workflows/publish.yml`: every push to main (and on demand) runs the model tests, builds, checks and deploys.
+- `.github/workflows/update.yml`: every 30 minutes from 16/10 to 16/11/2026 NZDT (and on demand) pulls Worlds results from gol.gg; when there is something new it rescrapes, refreshes live odds, exports, regrades, runs the tests, commits `data/` only (bot commit, agreed 16/10/2026) and deploys. Pull before working locally: the bot pushes to main.
+- Rows the bot adds have no `start_nz` (gol.gg has no start times); grading treats them as valid because every frozen pick was made before its stage began.
+
 ## State right now (16/10/2026 08:40 NZDT)
 - Baseline v4 is frozen: `data/predictions_baseline.json`, created 15/10/2026 17:08:07 NZDT, SHA in `data/predictions_baseline.sha256`. v1 to v3 kept as `predictions_baseline_v*_superseded.json`. Champion GEN 33.6%, then T1 17.2%, HLE 17.0%, BLG 11.7%, DK 9.9%. Play-In: KC 49%, C9 24%, FURIA 24%, MVK 3%. Finals MVP Ruler.
 - Play-In Pick'Ems and Crystal Ball LOCKED at 16/10/2026 07:00 NZDT. Entered picks: `data/pickems_playin.json` (KC, FURIA, KC, C9, KC, KC; expected 17.55 of 35). Crystal Ball answers: `data/narratives_baseline.json` `_extra.crystal_ball` (18 answers).
