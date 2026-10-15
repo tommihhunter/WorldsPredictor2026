@@ -60,6 +60,7 @@ PRIOR_SHRINK = float(os.environ.get("PRIOR_SHRINK", 0.7))   # 2025 region streng
 W_INTL = float(os.environ.get("W_INTL", 1.0))          # v5 candidate 2: weight of international series (v4 = 1.0)
 PATCH_N = int(os.environ.get("PATCH_N", 0))            # v5 candidate 3: boost series on the last N patches before the cut (0 = off)
 PATCH_MULT = float(os.environ.get("PATCH_MULT", 1.0))  # ... by this multiplier
+POOL_BETA = float(os.environ.get("POOL_BETA", 0.0))    # v5 candidate 5: logit per unit of pool-depth gap in Bo3/Bo5 (0 = off)
 _rp = json.load(open("data/region_prior_2025.json")) if os.path.exists("data/region_prior_2025.json") else {}
 _rp_mean = (sum(_rp.values()) / len(_rp)) if _rp else 0.0
 R_PRIOR = {g: PRIOR_SHRINK * (v - _rp_mean) for g, v in _rp.items()}   # centred
@@ -217,22 +218,26 @@ def series_summary(a, b, d, bo, sigma=None):
 
 
 class Model:
-    def __init__(self, fitres, adjustments):
+    def __init__(self, fitres, adjustments, depths=None, pool_beta=0.0):
         self.f = fitres; self.adj = {a["code"]: a for a in adjustments}
+        self.depths = depths or {}; self.pool_beta = pool_beta
 
     def strength(self, t):
         return TAU * float(self.f["s"][self.f["ti"][t]]) + self.adj.get(t, {}).get("delta_logit", 0.0)
 
-    def d_game(self, a, b):
+    def d_game(self, a, b, bo=1):
         ia, ib = self.f["ti"][a], self.f["ti"][b]; c = self.f["cov"]
         v = (c[ia, ia] + c[ib, ib] - 2 * c[ia, ib]) * TAU ** 2
-        return (self.strength(a) - self.strength(b)) / math.sqrt(1 + math.pi * v / 8)
+        d = (self.strength(a) - self.strength(b)) / math.sqrt(1 + math.pi * v / 8)
+        if bo >= 3 and self.pool_beta and a in self.depths and b in self.depths:
+            d += self.pool_beta * (self.depths[a] - self.depths[b])
+        return d
 
     def p_game(self, a, b):
         return p_game_marginal(self.d_game(a, b), self.f["sigma"])
 
     def series(self, a, b, bo):
-        return series_summary(a, b, self.d_game(a, b), bo, self.f["sigma"])
+        return series_summary(a, b, self.d_game(a, b, bo), bo, self.f["sigma"])
 
 
 def load_adjustments():
@@ -249,7 +254,11 @@ def load_adjustments():
 def build(write=True):
     rows = load_series()
     f = fit(rows)
-    m = Model(f, load_adjustments())
+    depths = None
+    if POOL_BETA:
+        import golgg_games, pools
+        depths = pools.depths(golgg_games.load_games())
+    m = Model(f, load_adjustments(), depths, POOL_BETA)
     to_elo = lambda s: 1500 + 400 / math.log(10) * s
     mean_s = float(np.mean([m.strength(t) for t in WORLDS]))
     out = []
@@ -270,7 +279,7 @@ def build(write=True):
         return dict(gap=round(f["R"][g1] - f["R"][g2], 3), sd=round(math.sqrt(v), 3))
     res = dict(as_of=AS_OF.strftime("%d/%m/%Y"), generated_utc=dt.datetime.now(dt.timezone.utc).strftime("%d/%m/%Y %H:%M UTC"),
                model="v4: series-level Bradley-Terry with per-series form shock on the full 2026 season (gol.gg); see model/ratings_v4.py",
-               params=dict(half_life_days=HALF_LIFE, region_prior_2025_shrink=PRIOR_SHRINK, region_prior_mean=R_PRIOR, w_regular=W_REG, w_qualifier=W_QUAL, sigma_series=f["sigma"], tau=TAU, w_international=W_INTL, patch_boost=dict(last_n=PATCH_N, mult=PATCH_MULT),
+               params=dict(half_life_days=HALF_LIFE, region_prior_2025_shrink=PRIOR_SHRINK, region_prior_mean=R_PRIOR, w_regular=W_REG, w_qualifier=W_QUAL, sigma_series=f["sigma"], tau=TAU, w_international=W_INTL, patch_boost=dict(last_n=PATCH_N, mult=PATCH_MULT), pool_beta=POOL_BETA,
                            sigma_region=SIGMA_R, sigma_team=SIGMA_U, n_series=len(rows),
                            n_games=int(sum(r["sa"] + r["sb"] for r in rows)), converged=f["converged"]),
                regions={g: dict(rating=round(f["R"][g], 4), sd=round(f["R_sd"][g], 4), elo=round(to_elo(f["R"][g]))) for g in f["regions"]},

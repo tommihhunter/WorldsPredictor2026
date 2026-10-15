@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.join(ROOT, "model"))
 import ratings_v4 as R  # noqa: E402
 import golgg_games as GG  # noqa: E402
 import side as SD  # noqa: E402
+import pools as PL  # noqa: E402
 
 _FIT = {}
 
@@ -80,6 +81,27 @@ def test_side_delta_is_antisymmetric_and_safe():
     assert abs(SD.delta("B", "G2", "KC", blue, g) + SD.delta("R", "KC", "G2", blue, g)) < 1e-12
     assert SD.delta("B", "NEW", "OTHER", blue, g) == blue     # unknown teams: global blue edge only
     assert SD.estimate([], k=50) == (0.0, {})
+
+
+def test_pool_depths_counts_repeat_picks_only():
+    a = dict(team="KC", opp="X", picks=["Aatrox", "Vi", "Ahri", "Jinx", "Rell"], opp_picks=[])
+    b = dict(team="KC", opp="X", picks=["Gnar", "Vi", "Ahri", "Jinx", "Rell"], opp_picks=[])
+    short = dict(team="KC", opp="X", picks=["Gnar", "Vi", "Ahri"], opp_picks=[])
+    # top: Aatrox x2 counts, Gnar x1 does not (the 3-pick game is skipped); other positions: one champion each
+    assert PL.depths([a, a, b, short])["KC"] == 1.0
+
+
+def test_pool_depths_on_real_logs():
+    d = PL.depths(GG.load_games())
+    assert len(d) == 19 and all(1 <= v <= 40 for v in d.values()), d
+
+
+def test_model_pool_term_only_in_bo3_plus():
+    m = R.Model(full_fit(), [], depths={"GEN": 10.0, "T1": 8.0}, pool_beta=0.1)
+    assert abs((m.d_game("GEN", "T1", 5) - m.d_game("GEN", "T1", 1)) - 0.2) < 1e-9
+    assert m.d_game("GEN", "KC", 5) == m.d_game("GEN", "KC", 1)      # KC has no depth: no term
+    m0 = R.Model(full_fit(), [])
+    assert m0.d_game("GEN", "T1", 5) == m0.d_game("GEN", "T1", 1)    # default: v4 behaviour
 
 
 if __name__ == "__main__":

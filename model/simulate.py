@@ -40,7 +40,7 @@ class SeriesTable:
     def p_series(self, a, b, bo):
         k = (a, b, bo)
         if k not in self.cache:
-            sc = R.series_probs_mixed(self.m.d_game(a, b), bo)
+            sc = R.series_probs_mixed(self.m.d_game(a, b, bo), bo)
             need = bo // 2 + 1
             self.cache[k] = sum(v for s, v in sc.items() if int(s.split("-")[0]) == need)
         return self.cache[k]

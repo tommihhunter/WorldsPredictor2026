@@ -275,7 +275,7 @@ class Model:
         i = self.f["ti"][t]
         return TAU * float(self.f["s"][i]) + self.adj.get(t, {}).get("delta_logit", 0.0)
 
-    def d_game(self, a, b):
+    def d_game(self, a, b, bo=1):  # bo unused in v3
         """Effective per-game logit for A over B (uncertainty-shrunk, before the series shock)."""
         ia, ib = self.f["ti"][a], self.f["ti"][b]
         c = self.f["cov"]
