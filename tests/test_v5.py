@@ -24,7 +24,12 @@ def full_fit():
 def test_v4_defaults_reproduce_frozen_ratings():
     path = os.path.join(ROOT, "tests", "fixtures", "ratings_v4_2026-10-15.json")
     saved = {t["code"]: t["base_logit"] for t in json.load(open(path, encoding="utf-8"))["teams"]}
-    res, _ = R.build(write=False)
+    full = R.load_series
+    R.load_series = lambda: [r for r in full() if r["date"] < dt.date(2026, 10, 15)]   # the fixture predates Worlds games
+    try:
+        res, _ = R.build(write=False)
+    finally:
+        R.load_series = full
     worst = max(abs(t["base_logit"] - saved[t["code"]]) for t in res["teams"])
     assert worst < 1e-3, f"v4 defaults drifted: max base_logit diff {worst:.5f}"
 
