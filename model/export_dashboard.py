@@ -9,7 +9,7 @@ teams = {t["code"]: t for t in J("data/teams.json")}
 rat = J("data/ratings.json")
 sim = J("data/sim_baseline.json")
 base = J("data/predictions_baseline.json")
-staged = {os.path.basename(p)[12:-5]: J(p) for p in glob.glob("data/predictions_*.json") if "baseline" not in p}
+staged = {os.path.basename(p)[12:-5]: J(p) for p in sorted(glob.glob("data/predictions_*.json")) if "baseline" not in p}
 adj = {a["code"]: a for a in J("data/adjustments.json")}
 
 
