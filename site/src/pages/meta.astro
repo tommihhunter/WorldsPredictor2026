@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import ChampIcon from '../components/ChampIcon.astro';
+import { metaChamps, metaFit, patchChanges } from '../lib/data';
+import { num } from '../lib/format';
+
+const changes = patchChanges();
+const champs = metaChamps();
+const fit = metaFit();
+const CHANGE: Record<string, [string, string]> = { buff: ['good', 'up'], nerf: ['bad', 'down'] };
+---
+<Base title="Meta" active="meta" description="The Worlds 2026 patch: what changed from 26.18 to 26.20, the most contested champions and how the meta fits each team.">
+  <header>
+    <h1>Meta</h1>
+    <p class="muted">Worlds 2026 is played on patch 26.20. What changed on the way there, who the teams fight over, and who it suits.</p>
+  </header>
+
+  <Card title="Patch changes 26.18 to 26.20" note={`${changes.length} changes, from the official patch notes`}>
+    {changes.length ? (
+      <div class="scroll"><table>
+        <thead><tr><th>Kind</th><th>Name</th><th>Change</th><th>Detail</th><th>Patch</th><th>Source</th></tr></thead>
+        <tbody>{changes.map((c) => {
+          const [cls, dir] = CHANGE[c.change] ?? ['', 'neutral'];
+          return <tr><td class="muted">{c.kind}</td><td><b>{c.kind === 'champion' ? <ChampIcon name={c.name} /> : c.name}</b></td><td><span class:list={['pill', cls]} title={dir}>{c.change}</span></td><td>{c.detail}</td><td>{c.patch}</td><td>{c.source ? <a class="gold" href={c.source} rel="noopener">notes</a> : 'UNKNOWN'}</td></tr>;
+        })}</tbody>
+      </table></div>
+    ) : <p class="muted cap">Patch changes not available yet.</p>}
+  </Card>
+
+  <Card title="Most contested champions" note="Presence is picks plus bans over games, Worlds teams in 2026">
+    {champs.length ? (
+      <div class="scroll"><table>
+        <thead><tr><th class="r">#</th><th>Champion</th><th>Roles</th><th class="r">Presence</th><th class="r">Pick win rate</th></tr></thead>
+        <tbody>{champs.map((c) => <tr><td class="r">{c.rank}</td><td><b><ChampIcon name={c.champion} /></b></td><td class="muted">{c.roles}</td><td class="r">{c.presence == null ? 'UNKNOWN' : `${num(c.presence, 1)}%`}</td><td class="r">{c.pick_wr == null ? 'UNKNOWN' : `${num(c.pick_wr, 1)}%`}</td></tr>)}</tbody>
+      </table></div>
+    ) : <p class="muted cap">Champion presence not available yet.</p>}
+  </Card>
+
+  <Card title="Meta fit by team" note="What the patch does for particular teams and players, from analysts">
+    {fit.length ? (
+      <div class="scroll"><table>
+        <thead><tr><th>Subject</th><th>Note</th><th>Source</th></tr></thead>
+        <tbody>{fit.map((f) => <tr><td><b>{f.subject}</b></td><td>{f.note}</td><td class="muted cap src">{f.source || 'UNKNOWN'}</td></tr>)}</tbody>
+      </table></div>
+    ) : <p class="muted cap">Meta fit notes not available yet.</p>}
+  </Card>
+</Base>
+<style>
+  header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
+  .src { overflow-wrap:anywhere; max-width:260px; }
+</style>

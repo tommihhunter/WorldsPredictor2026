@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import Card from '../components/Card.astro';
+import ChampIcon from '../components/ChampIcon.astro';
+import { crystal, results } from '../lib/data';
+import { pct, num } from '../lib/format';
+import { grade, pickemPoints, pickemSlots, resultRows } from '../lib/grading';
+
+const played = results().filter((r) => r.winner).length;
+const graded = grade().filter((g) => g.n > 0);
+const tiers = graded.flatMap((g) => Object.entries(g.byTier).map(([tier, t]) => ({ set: g.set, tier, ...t })));
+const points = pickemPoints();
+const slots = pickemSlots();
+const rows = resultRows();
+const cb = crystal();
+const tierCls = (t: string | null) => (t === 'LOCK' ? 'strong' : t === 'LEAN' ? 'gold' : '');
+const pickText = (p: { pick: string | null; pick_score: string | null; p: number | null }) => (p.pick ? `${p.pick} ${p.pick_score} (${pct(p.p)})` : 'not predicted');
+---
+<Base title="Scorecard" active="scorecard" description="How the Worlds 2026 picks are doing: accuracy, calibration, Pick'Ems points and the Crystal Ball.">
+  <header>
+    <h1>Scorecard</h1>
+    <p class="muted">{played ? `${played} series graded so far. Only predictions made before each series started count.` : 'No results entered yet. The first Play-In series starts 16/10/2026 07:00 NZDT.'}</p>
+  </header>
+
+  <Card title="Accuracy by prediction set" note="Brier and log loss on the stated win chance of the actual winner">
+    {graded.length ? (
+      <div class="scroll"><table>
+        <thead><tr><th>Set</th><th class="r">Graded</th><th class="r">Winners</th><th class="r">Accuracy</th><th class="r">Exact score</th><th class="r">Brier</th><th class="r">Log loss</th></tr></thead>
+        <tbody>{graded.map((g) => <tr><td><b>{g.set}</b></td><td class="r">{g.n}</td><td class="r">{g.correct}</td><td class="r">{pct(g.correct / g.n)}</td><td class="r">{pct(g.exact / g.n)}</td><td class="r">{num(g.brier, 3)}</td><td class="r">{num(g.logloss, 3)}</td></tr>)}</tbody>
+      </table></div>
+    ) : <p class="muted cap">No results entered yet.</p>}
+  </Card>
+
+  <Card title="Calibration by tier" note="Average stated chance of the pick against how often it won">
+    {tiers.length ? (
+      <div class="scroll"><table>
+        <thead><tr><th>Set</th><th>Tier</th><th class="r">Graded</th><th class="r">Stated</th><th class="r">Won</th></tr></thead>
+        <tbody>{tiers.map((t) => <tr><td><b>{t.set}</b></td><td><span class:list={['pill', tierCls(t.tier)]}>{t.tier}</span></td><td class="r">{t.n}</td><td class="r">{pct(t.stated)}</td><td class="r">{pct(t.hit / t.n)}</td></tr>)}</tbody>
+      </table></div>
+    ) : <p class="muted cap">No results entered yet.</p>}
+  </Card>
+
+  <Card title="Pick'Ems" note="Scored against the result in the same slot">
+    {points.length ? (
+      <>
+        <div class="stages">{points.map((p) => <div class="stage"><span class="label">{p.stage}</span><b>{p.earned} / {p.max ?? 'UNKNOWN'}</b><span class="cap muted">{p.possible} points decided so far</span></div>)}</div>
+        <div class="scroll"><table>
+          <thead><tr><th>Stage</th><th>Slot</th><th>Pick</th><th>Actual</th><th class="r">Earned</th><th class="r">Points</th></tr></thead>
+          <tbody>{slots.map((s) => <tr><td class="muted">{s.stage}</td><td>{s.slot}</td><td><Badge code={s.pick} /></td><td>{s.actual ? <Badge code={s.actual} /> : <span class="pill">pending</span>}</td><td class="r">{s.actual ? (s.earned ?? 'UNKNOWN') : 'pending'}</td><td class="r">{s.points ?? 'UNKNOWN'}</td></tr>)}</tbody>
+        </table></div>
+      </>
+    ) : <p class="muted cap">Pick'Ems not available yet.</p>}
+  </Card>
+
+  <Card title="Results" note="Each finished series beside the frozen baseline pick and the latest staged pick">
+    {rows.length ? (
+      <div class="scroll"><table>
+        <thead><tr><th>Series</th><th>Result</th><th>Baseline pick</th><th></th><th>Latest staged pick</th><th></th></tr></thead>
+        <tbody>{rows.map((r) => (
+          <tr>
+            <td class="muted">{r.id}</td><td><b>{r.team_a} {r.score} {r.team_b}</b></td>
+            <td>{pickText(r)}</td><td>{r.hit != null && <span class:list={['pill', r.hit ? 'good' : 'bad']}>{r.hit ? 'hit' : 'miss'}</span>}</td>
+            <td>{r.staged ? pickText(r.staged) : 'not predicted'}</td><td>{r.staged && <span class:list={['pill', r.staged.hit ? 'good' : 'bad']}>{r.staged.hit ? 'hit' : 'miss'}</span>}</td>
+          </tr>
+        ))}</tbody>
+      </table></div>
+    ) : <p class="muted cap">No results entered yet. Results appear here as each series ends.</p>}
+  </Card>
+
+  <Card title="Crystal Ball" note="Our answers, entered before the 16/10/2026 07:00 NZDT lock">
+    {cb.length ? (
+      <div class="scroll"><table>
+        <thead><tr><th class="r">#</th><th>Question</th><th>Answer</th><th>Confidence</th><th>Why</th></tr></thead>
+        <tbody>{cb.map((c) => <tr><td class="r">{c.q}</td><td>{c.question}</td><td><b>{[1, 2, 3].includes(c.q) ? <ChampIcon name={c.answer} /> : c.answer}</b></td><td><span class="pill">{c.confidence}</span></td><td class="muted cap">{c.reason}</td></tr>)}</tbody>
+      </table></div>
+    ) : <p class="muted cap">Crystal Ball answers not available yet.</p>}
+  </Card>
+</Base>
+<style>
+  header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
+  .stages { display:flex; flex-wrap:wrap; gap:12px; }
+  .stage { background:var(--raised); border-radius:12px; padding:12px 16px; display:flex; flex-direction:column; min-width:160px; }
+  .stage b { font-family:var(--head); font-size:22px; }
+</style>

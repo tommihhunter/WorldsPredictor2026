@@ -1,0 +1,38 @@
+---
+import Badge from './Badge.astro';
+import { pct, nz } from '../lib/format';
+import { url } from '../lib/url';
+import { HUB, nextUp, resultFor, started } from '../lib/grading';
+import type { Series } from '../lib/data';
+const { rows = nextUp(4) } = Astro.props as { rows?: Series[] };
+const split = (s: Series) => (s.bo === 5 ? `3-0 ${pct(s.pw30)}, 3-1 ${pct(s.pw31)}, 3-2 ${pct(s.pw32)}` : '');
+---
+{rows.length ? (
+  <div class="next">
+    {rows.map((s) => {
+      const r = resultFor(s);
+      const flags = [!r && started(s) && 'In play or awaiting the result', /predicted pairing/.test(s.stage || '') && 'Pairing depends on earlier results'].filter(Boolean);
+      return (
+        <a class="row" href={url(HUB[s.phase] ?? '')}>
+          <span class="teams"><Badge code={s.team_a} /><span class="muted">v</span><Badge code={s.team_b} /></span>
+          <span class="info">
+            <span><b>{s.winner} to win</b> <span class="muted">{s.stage}</span>{r && <> <span class:list={['pill', s.winner === r.winner ? 'good' : 'bad']}>{r.winner} {r.score_a}-{r.score_b}, {s.winner === r.winner ? 'hit' : 'miss'}</span></>}</span>
+            <span class="cap muted">{nz(s.time_nz, true)} ({s.time_venue || 'venue time TBC'}){split(s) && `. ${split(s)}`}{flags.map((f) => `. ${f}`)}</span>
+          </span>
+          <span class="end">
+            <b class="gold">{pct(s.p_winner)}</b>
+          </span>
+        </a>
+      );
+    })}
+  </div>
+) : <p class="muted cap">No upcoming predicted series.</p>}
+<style>
+  .next { display:flex; flex-direction:column; }
+  .row { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:16px; align-items:center; padding:12px 0; border-top:1px solid var(--line); }
+  .row:first-child { border-top:0; padding-top:0; }
+  .teams { display:flex; align-items:center; gap:6px; }
+  .info { display:flex; flex-direction:column; min-width:0; }
+  .end b { font-family:var(--head); font-size:22px; }
+  @media (max-width: 640px) { .row { grid-template-columns:minmax(0,1fr) auto; gap:6px 12px; } .teams { grid-column:1; } .info { grid-column:1 / -1; grid-row:2; } .end { grid-column:2; grid-row:1; } }
+</style>
