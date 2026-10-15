@@ -7,9 +7,18 @@
 "start_nz": "16/10/2026 07:00",
 "team_a": "KC",
 "team_b": "C9",
-"score_a": null,
-"score_b": null,
-"winner": null
+"score_a": 3,
+"score_b": 2,
+"winner": "KC",
+"bo": 5,
+"date": "15/10/2026",
+"patch": "16.20",
+"golgg_stage": "ROUND1",
+"source": {
+"url": "https://gol.gg/tournament/tournament-matchlist/Worlds%202026%20Play-In/",
+"series_url": "https://gol.gg/game/stats/83598/page-summary/",
+"accessed": "16/10/2026 12:45 NZDT"
+}
 },
 {
 "id": "PI-R1-B",

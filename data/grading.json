@@ -1,28 +1,40 @@
 {
  "baseline": {
-  "graded": 0,
-  "winner_acc": null,
-  "exact_acc": null,
-  "brier": null,
-  "logloss": null,
+  "graded": 1,
+  "winner_acc": 1.0,
+  "exact_acc": 0.0,
+  "brier": 0.14791716000000005,
+  "logloss": 0.4854828160941957,
   "invalid_post_start": [],
-  "calibration": {},
+  "calibration": {
+   "LEAN": {
+    "n": 1,
+    "hit": 1.0,
+    "stated": 0.6154
+   }
+  },
   "worst_misses": []
  },
  "playin": {
-  "graded": 0,
-  "winner_acc": null,
-  "exact_acc": null,
-  "brier": null,
-  "logloss": null,
+  "graded": 1,
+  "winner_acc": 1.0,
+  "exact_acc": 0.0,
+  "brier": 0.14791716000000005,
+  "logloss": 0.4854828160941957,
   "invalid_post_start": [],
-  "calibration": {},
+  "calibration": {
+   "LEAN": {
+    "n": 1,
+    "hit": 1.0,
+    "stated": 0.6154
+   }
+  },
   "worst_misses": []
  },
  "pickems_playin": {
-  "earned": 0,
-  "possible_so_far": 0,
+  "earned": 5,
+  "possible_so_far": 5,
   "stage_max": 35
  },
- "graded_at_nz": "15/10/2026 14:26 NZDT"
+ "graded_at_nz": "16/10/2026 12:47 NZDT"
 }
