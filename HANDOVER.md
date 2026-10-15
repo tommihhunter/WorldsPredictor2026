@@ -34,6 +34,8 @@ python3 model/export_dashboard.py                # -> data/dash/*.json
 python3 model/build_local.py                     # -> dist/worlds2026_predictor.html (W26_OUT=/path to override)
 python3 model/update_results.py --dry-run        # gol.gg Worlds results -> data/results_live.json
 python3 model/grade.py                           # -> data/grading.json
+python3 model/live.py [--sims 20000]             # live odds -> data/dash/live.json (refit to today, finished Worlds series as fact)
+python3 model/backtest_v5.py                     # v5 candidate test -> data/backtest_v5.json (adopted settings drive MODEL=v5)
 python3 model/scrape_golgg_players.py [--split Summer --out ...]
 python3 model/scrape_golgg_teams.py
 python3 model/backtest_v4.py ; python3 model/sweep_check.py

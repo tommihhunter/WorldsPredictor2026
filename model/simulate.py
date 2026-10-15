@@ -77,14 +77,18 @@ def playin_exact(st):
     return dict(win)
 
 
-def playin_sample(st, rng):
+def playin_sample(st, rng, known=None):
+    """One Play-In bracket. known = {slot id: winner} from results_live.json, taken as fact (by slot, so a
+    final that repeats a round-1 pairing keeps its own result)."""
+    k = known or {}
+    play = lambda sid, x, y: k[sid] if k.get(sid) in (x, y) else st.play(x, y, 5, rng)
     a, b = ("KC", "C9"), ("FURIA", "MVK")
-    w1 = st.play(*a, 5, rng); l1 = a[1] if w1 == a[0] else a[0]
-    w2 = st.play(*b, 5, rng); l2 = b[1] if w2 == b[0] else b[0]
-    wm = st.play(w1, w2, 5, rng); lm = w2 if wm == w1 else w1
-    em = st.play(l1, l2, 5, rng)
-    lf = st.play(lm, em, 5, rng)
-    return st.play(wm, lf, 5, rng)
+    w1 = play("PI-R1-A", *a); l1 = a[1] if w1 == a[0] else a[0]
+    w2 = play("PI-R1-B", *b); l2 = b[1] if w2 == b[0] else b[0]
+    wm = play("PI-WM", w1, w2); lm = w2 if wm == w1 else w1
+    em = play("PI-EM", l1, l2)
+    lf = play("PI-LF", lm, em)
+    return play("PI-GF", wm, lf)
 
 
 # ---------------- Swiss ----------------
@@ -123,13 +127,16 @@ def load_known(path):
     Returns dict(piw, swiss_pairs {round: [(a,b)]}, swiss_win {frozenset: winner}, qf [(a,b)] or None,
     ko_win {frozenset: winner}). Swiss round comes from the row's 'round' field, else from the id SW-R<n>-."""
     rows = json.load(open(path)) if path and os.path.exists(path) else []
-    piw = None; swiss_pairs = defaultdict(list); swiss_win = {}; qf = []; ko_win = {}
+    piw = None; playin = {}; swiss_pairs = defaultdict(list); swiss_win = {}; qf = []; ko_win = {}
     for r in rows:
         if r.get("kind", "series") != "series":
             continue
         a, b, w = r.get("team_a"), r.get("team_b"), r.get("winner")
-        if r.get("phase") == "Play-In" and r.get("id") == "PI-GF" and w:
-            piw = w
+        if r.get("phase") == "Play-In":
+            if w and r.get("id"):
+                playin[r["id"]] = w
+            if r.get("id") == "PI-GF" and w:
+                piw = w
         elif r.get("phase") == "Swiss" and a and b:
             rnd = r.get("round")
             if rnd is None and str(r.get("id", "")).startswith("SW-R"):
@@ -143,7 +150,7 @@ def load_known(path):
                 qf.append((a, b))
             if w:
                 ko_win[frozenset((a, b))] = w
-    return dict(piw=piw, swiss_pairs=dict(swiss_pairs), swiss_win=swiss_win, qf=qf if len(qf) == 4 else None, ko_win=ko_win)
+    return dict(piw=piw, playin=playin, swiss_pairs=dict(swiss_pairs), swiss_win=swiss_win, qf=qf if len(qf) == 4 else None, ko_win=ko_win)
 
 
 def swiss_sample(st, piw, rng, r1=None, known=None):
@@ -224,7 +231,7 @@ def run(n_sims=100000, seed=2026, piw_fixed=None, r1_fixed=None, known=None):
     n_regions_ko = Counter(); lcs_ko = 0; hle_t1 = Counter()
     PLACE = {"0-3": 0, "1-3": 1, "2-3": 2, "QF": 3, "SF": 4, "F": 5, "W": 6}
     for _ in range(n_sims):
-        piw = piw_fixed or playin_sample(st, rng)
+        piw = piw_fixed or playin_sample(st, rng, known.get("playin"))
         piw_ct[piw] += 1
         recs = swiss_sample(st, piw, rng, r1_fixed, known)
         for t, r in recs.items():

@@ -10,6 +10,7 @@ import golgg_games as GG  # noqa: E402
 import side as SD  # noqa: E402
 import pools as PL  # noqa: E402
 import backtest_v5 as BT  # noqa: E402
+import simulate as S  # noqa: E402
 
 _FIT = {}
 
@@ -130,6 +131,35 @@ def test_model_switch_follows_backtest():
                          cwd=os.path.join(ROOT, "model"), capture_output=True, text=True, env=env)
     adopted = json.load(open(os.path.join(ROOT, "data", "backtest_v5.json"), encoding="utf-8"))["adopted"]["env"]
     assert out.stdout.strip() == ("v5" if adopted else "v4"), out.stdout + out.stderr
+
+
+def test_as_of_env_and_default():
+    assert R.AS_OF == dt.date(2026, 10, 15)          # pinned by this file's header
+    import subprocess
+    env = {k: v for k, v in os.environ.items() if k != "AS_OF"}
+    out = subprocess.run([sys.executable, "-X", "utf8", "-c", "import ratings_v4 as R; print(R.AS_OF)"],
+                         cwd=os.path.join(ROOT, "model"), capture_output=True, text=True, env=env)
+    assert out.stdout.strip() == str(dt.datetime.now(dt.timezone(dt.timedelta(hours=13))).date()), out.stdout + out.stderr
+
+
+def test_load_known_playin_by_slot_and_empty():
+    import tempfile
+    assert S.load_known(None)["playin"] == {}
+    rows = [dict(id="PI-R1-A", phase="Play-In", kind="series", team_a="KC", team_b="C9", winner="KC"),
+            dict(id="PI-GF", phase="Play-In", kind="series", team_a="C9", team_b="KC", winner="C9")]
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as fh:
+        json.dump(rows, fh)
+    k = S.load_known(fh.name)
+    os.unlink(fh.name)
+    assert k["playin"] == {"PI-R1-A": "KC", "PI-GF": "C9"} and k["piw"] == "C9"
+
+
+def test_playin_rematch_final_uses_slot_result():
+    st = S.SeriesTable(R.Model(full_fit(), []))
+    rng = random.Random(3)
+    # KC beat C9 in round 1, C9 wins the rematch in the final: the Play-In winner must be C9 every time
+    k = {"PI-R1-A": "KC", "PI-R1-B": "FURIA", "PI-WM": "KC", "PI-EM": "C9", "PI-LF": "C9", "PI-GF": "C9"}
+    assert all(S.playin_sample(st, rng, k) == "C9" for _ in range(50))
 
 
 if __name__ == "__main__":

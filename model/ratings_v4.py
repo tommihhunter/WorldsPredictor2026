@@ -48,7 +48,9 @@ from scipy.optimize import minimize
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
-AS_OF = dt.date(2026, 10, 15)
+NZ = dt.timezone(dt.timedelta(hours=13))
+AS_OF = (dt.datetime.strptime(os.environ["AS_OF"], "%d/%m/%Y").date() if os.environ.get("AS_OF")
+         else dt.datetime.now(NZ).date())   # fit date: today (NZDT) unless pinned; AS_OF=15/10/2026 reproduces the baseline fit
 HALF_LIFE = float(os.environ.get("HALF_LIFE", 120))
 W_REG = float(os.environ.get("W_REG", 0.5))
 W_QUAL = float(os.environ.get("W_QUAL", 0.6))

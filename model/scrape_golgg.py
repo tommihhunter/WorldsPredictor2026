@@ -29,6 +29,7 @@ TOURNAMENTS = {
  "CBLOL Cup 2026": ("CBLOL", "regular"), "CBLOL 2026 Split 1": ("CBLOL", "regular"), "CBLOL 2026 Split 1 Playoffs": ("CBLOL", "playoffs"),
  "CBLOL 2026 Split 2": ("CBLOL", "regular"), "CBLOL 2026 Split 2 Playoffs": ("CBLOL", "playoffs"),
  "2026 First Stand": ("INTL", "international"), "MSI 2026": ("INTL", "international"), "Esports World Cup 2026": ("INTL", "international"),
+ "Worlds 2026 Play-In": ("INTL", "international"), "Worlds 2026 Main Event": ("INTL", "international"),
  "EWC 2026 Online Qualifier - Korea": ("LCK", "qualifier"), "EWC 2026 Online Qualifier - EMEA": ("LEC", "qualifier"),
  "EWC 2026 Online Qualifier - APAC": ("LCP", "qualifier"), "EWC 2026 Qualifier NA": ("LCS", "qualifier"),
  "EWC 2026 Online Qualifier - South America": ("CBLOL", "qualifier"),
