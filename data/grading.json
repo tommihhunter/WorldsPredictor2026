@@ -1,0 +1,28 @@
+{
+ "baseline": {
+  "graded": 0,
+  "winner_acc": null,
+  "exact_acc": null,
+  "brier": null,
+  "logloss": null,
+  "invalid_post_start": [],
+  "calibration": {},
+  "worst_misses": []
+ },
+ "playin": {
+  "graded": 0,
+  "winner_acc": null,
+  "exact_acc": null,
+  "brier": null,
+  "logloss": null,
+  "invalid_post_start": [],
+  "calibration": {},
+  "worst_misses": []
+ },
+ "pickems_playin": {
+  "earned": 0,
+  "possible_so_far": 0,
+  "stage_max": 35
+ },
+ "graded_at_nz": "15/10/2026 14:26 NZDT"
+}

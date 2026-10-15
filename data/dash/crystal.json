@@ -1,0 +1,128 @@
+[
+{
+"q": 1,
+"question": "Which champion will have the highest presence?",
+"answer": "Orianna",
+"confidence": "LOW",
+"reason": "Orianna leads presence across 2026 for Worlds teams (71.8%, wards.lol) and led MSI 2026 (64.8%, gol.gg). Cassiopeia's 85.6% came only from domestic playoffs before her 26.20 nerf, and she was 52.1% at MSI. Close call; Cassiopeia is the alternative."
+},
+{
+"q": 2,
+"question": "Which champion will have the highest win rate (min 5 games)?",
+"answer": "Camille",
+"confidence": "LOW",
+"reason": "60.0% WR (27-18) domestically as a top/support flex, so it reaches 5 games; Qiyana (59.6%) is the alternative Hotspawn tips. High-variance question."
+},
+{
+"q": 3,
+"question": "Which champion will have the highest average deaths (min 5 games)?",
+"answer": "Nautilus",
+"confidence": "LOW",
+"reason": "Engage supports die most; Nautilus is the most-picked pure engage support (35.9% presence) and leads LEC supports. Alternative: Alistar."
+},
+{
+"q": 4,
+"question": "Which pro will have the highest average KDA?",
+"answer": "Knight",
+"confidence": "LOW",
+"reason": "Highest 2026 KDA among Worlds players (6.97, wards.lol) over a full-year sample; Chovy's 7.3 came from 11 playoff games. BLG's expected deep run also helps."
+},
+{
+"q": 5,
+"question": "Which pro will have the highest average damage per game?",
+"answer": "Peyz",
+"confidence": "MEDIUM",
+"reason": "Leads 2026 damage per game for Worlds players (28,605, wards.lol) with a 30.3% damage share in LCK playoffs (gol.gg), on a team the model sends deep (P semis 55%)."
+},
+{
+"q": 6,
+"question": "Which pro will have the highest average kill participation?",
+"answer": "Keria",
+"confidence": "LOW",
+"reason": "83.3% KP in LCK playoffs, highest of the LCK playoff samples. Alternatives: Vulcan (81.7%), Career (80.6%)."
+},
+{
+"q": 7,
+"question": "Peyz vs Gumayusi: more total kills?",
+"answer": "Peyz",
+"confidence": "MEDIUM",
+"reason": "Total kills depend on games played: model gives T1 a slightly deeper run (P semis 55% each in v4; Peyz still takes more of his team's gold), and Peyz takes more of his team's gold/damage (26.2% gold, 30.3% DMG vs 24.6%/27.5%)."
+},
+{
+"q": 8,
+"question": "Will Faker reach 700 career Worlds kills this year?",
+"answer": "No",
+"confidence": "HIGH",
+"reason": "Needs 84 kills from 616. At his 2026 rate of 3.61 kills per game that is about 24 games (wards.lol), close to the maximum a team can play at Worlds (roughly 26 for a champion going the distance in long series)."
+},
+{
+"q": 9,
+"question": "Will Teemo be picked at least once?",
+"answer": "No",
+"confidence": "HIGH",
+"reason": "No Teemo in the 298-game domestic playoff sample or the 71-game MSI sample."
+},
+{
+"q": 10,
+"question": "How many unique champions will be picked?",
+"answer": "110-114",
+"confidence": "LOW",
+"reason": "Bands are 0-99, 100-104, 105-109, 110-114, 115-119, 120+ (wards.lol). Worlds will have about 100 games (6 Play-In Bo5s, 33 Swiss matches, 7 knockout Bo5s); Fearless Draft in every Bo3/Bo5 forces breadth, and Worlds teams used 142 champions across 2026."
+},
+{
+"q": 11,
+"question": "Will more games end before or after 32:00?",
+"answer": "Before",
+"confidence": "MEDIUM",
+"reason": "52.1% of 2026 games by Worlds teams ended before 32:00 even though the average is 32:21 (wards.lol): game length is right-skewed, so the median sits below the mean."
+},
+{
+"q": 12,
+"question": "Will any pro get 15+ kills in one game?",
+"answer": "Yes",
+"confidence": "LOW",
+"reason": "A 15+ kill game happened in 23 of 1,590 games by Worlds teams in 2026 (1.45%, wards.lol). Over about 100 Worlds games that is 77% at the full rate and about 50% at half the rate (Worlds games are closer, and nobody passed 14 at Worlds 2025, per Hotspawn). Lean Yes."
+},
+{
+"q": 13,
+"question": "Will any pro reach 450+ CS in one game?",
+"answer": "Yes",
+"confidence": "HIGH",
+"reason": "450+ CS happened in 69 of 1,590 games by Worlds teams in 2026 (4.3%, wards.lol); over about 100 Worlds games at least one is near-certain."
+},
+{
+"q": 14,
+"question": "What role will the Finals MVP play?",
+"answer": "Bot (ADC)",
+"confidence": "LOW",
+"reason": "Follows the Finals MVP pick (Ruler)."
+},
+{
+"q": 15,
+"question": "How many different regions will be in Knockouts?",
+"answer": "4",
+"confidence": "LOW",
+"reason": "Model: 4 regions 54%, 3 regions 25%, 5 regions 18%. History pulls the other way: knockouts averaged 3.3 regions from 2019 to 2025 (wards.lol), so 3 is a strong alternative."
+},
+{
+"q": 16,
+"question": "Will a team from the LCS reach Knockouts?",
+"answer": "Yes",
+"confidence": "LOW",
+"reason": "Model: 69% that TLAW, LYON or C9 reaches the quarterfinals. History is weaker: the LCS reached knockouts in 3 of the last 7 Worlds (wards.lol). Blended, slightly above 50%."
+},
+{
+"q": 17,
+"question": "Which team places higher: HLE or T1?",
+"answer": "HLE",
+"confidence": "LOW",
+"reason": "Model v4: dead even (T1 higher 45%, HLE higher 45%, same placement 10%) after halving T1's pedigree adjustment, and the predicted bracket has HLE reaching the final and T1 losing a semifinal. HLE lead the head-to-head 5-3 in series (wards.lol) and 2-1 in 2026. Switched from T1 to HLE; still a coin flip."
+},
+{
+"q": 18,
+"question": "Which team will win the shortest game?",
+"answer": "HLE",
+"confidence": "MEDIUM",
+"reason": "Most aggressive early-game top team (76.5% first blood, gol.gg), fastest win among Worlds teams in 2026 (19:20, wards.lol) and fastest game at MSI 2026 (22:16, Hotspawn)."
+}
+]

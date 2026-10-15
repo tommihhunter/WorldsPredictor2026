@@ -1,0 +1,1607 @@
+{
+ "n": 178,
+ "rows": [
+  {
+   "d": -0.3874,
+   "a": "G2",
+   "b": "BLG",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-03-22",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": -0.3905,
+   "a": "JDG",
+   "b": "BLG",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-03-21",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": -0.978,
+   "a": "G2",
+   "b": "GEN",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-21",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": 0.5928,
+   "a": "JDG",
+   "b": "LYON",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-03-20",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": 0.4164,
+   "a": "BNK",
+   "b": "G2",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-03-20",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": 0.3211,
+   "a": "JDG",
+   "b": "LOUD",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-19",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": -1.5294,
+   "a": "LYON",
+   "b": "GEN",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-03-19",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": -0.3535,
+   "a": "TSW",
+   "b": "BNK",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-03-18",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": 0.3874,
+   "a": "BLG",
+   "b": "G2",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-18",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": -0.2777,
+   "a": "LYON",
+   "b": "LOUD",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-03-17",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": -0.934,
+   "a": "JDG",
+   "b": "GEN",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-03-17",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": 0.0622,
+   "a": "TSW",
+   "b": "G2",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-03-16",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": 0.0295,
+   "a": "BNK",
+   "b": "BLG",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-03-16",
+   "event": "2026 First Stand"
+  },
+  {
+   "d": -0.0064,
+   "a": "BLG",
+   "b": "HLE",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-07-12",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -1.3107,
+   "a": "LYON",
+   "b": "HLE",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-07-11",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 1.0484,
+   "a": "G2",
+   "b": "LYON",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-07-10",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.0064,
+   "a": "BLG",
+   "b": "HLE",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-07-09",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.2249,
+   "a": "G2",
+   "b": "T1",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-07-08",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.2264,
+   "a": "LYON",
+   "b": "TSW",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-07-08",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 1.3314,
+   "a": "BLG",
+   "b": "LYON",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-07-06",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 0.9443,
+   "a": "T1",
+   "b": "FURIA",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-07-06",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 0.2755,
+   "a": "HLE",
+   "b": "G2",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-07-05",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.5344,
+   "a": "TSW",
+   "b": "TES",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-07-05",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.0454,
+   "a": "T1",
+   "b": "BLG",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-07-04",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 0.3142,
+   "a": "FURIA",
+   "b": "LYON",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-07-04",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.274,
+   "a": "TES",
+   "b": "G2",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-07-03",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 1.0694,
+   "a": "HLE",
+   "b": "TSW",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-07-03",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 1.4463,
+   "a": "T1",
+   "b": "TLAW",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-07-01",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.9367,
+   "a": "TLAW",
+   "b": "KC",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-30",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 0.017,
+   "a": "TLAW",
+   "b": "DCG",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-29",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 0.5119,
+   "a": "T1",
+   "b": "KC",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-29",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.9485,
+   "a": "DCG",
+   "b": "KC",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-06-28",
+   "event": "MSI 2026"
+  },
+  {
+   "d": 1.4463,
+   "a": "T1",
+   "b": "TLAW",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-28",
+   "event": "MSI 2026"
+  },
+  {
+   "d": -0.7013,
+   "a": "KC",
+   "b": "DK",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-07-19",
+   "event": "Esports World Cup 2026"
+  },
+  {
+   "d": 0.703,
+   "a": "C9",
+   "b": "RED",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-03-05",
+   "event": "Americas Cup 2026"
+  },
+  {
+   "d": 0.1321,
+   "a": "FURIA",
+   "b": "SEN",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-06",
+   "event": "Americas Cup 2026"
+  },
+  {
+   "d": -0.76,
+   "a": "SEN",
+   "b": "C9",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-03-07",
+   "event": "Americas Cup 2026"
+  },
+  {
+   "d": 0.5332,
+   "a": "C9",
+   "b": "FURIA",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-03-08",
+   "event": "Americas Cup 2026"
+  },
+  {
+   "d": 0.3807,
+   "a": "GEN",
+   "b": "BNK",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-01",
+   "event": "LCK Cup 2026"
+  },
+  {
+   "d": 0.4232,
+   "a": "BLG",
+   "b": "JDG",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-03-08",
+   "event": "LPL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.1255,
+   "a": "JDG",
+   "b": "WBG",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-07",
+   "event": "LPL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.3791,
+   "a": "AL",
+   "b": "WBG",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-03-05",
+   "event": "LPL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.4232,
+   "a": "JDG",
+   "b": "BLG",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-03-04",
+   "event": "LPL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.852,
+   "a": "IG",
+   "b": "AL",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-03-03",
+   "event": "LPL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.0435,
+   "a": "WBG",
+   "b": "TES",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-03-02",
+   "event": "LPL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.3964,
+   "a": "IG",
+   "b": "NIP",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-03-01",
+   "event": "LPL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.1528,
+   "a": "G2",
+   "b": "KC",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-03-01",
+   "event": "LEC 2026 Versus Playoffs"
+  },
+  {
+   "d": -0.493,
+   "a": "LYON",
+   "b": "C9",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-03-01",
+   "event": "LCS 2026 Lock-In"
+  },
+  {
+   "d": 0.2288,
+   "a": "TSW",
+   "b": "DCG",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-01",
+   "event": "LCP 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.1139,
+   "a": "LOUD",
+   "b": "RED",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-03-01",
+   "event": "CBLOL Cup 2026"
+  },
+  {
+   "d": -0.1374,
+   "a": "FLY",
+   "b": "SEN",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-04-29",
+   "event": "EWC 2026 Qualifier NA"
+  },
+  {
+   "d": -0.0246,
+   "a": "TES",
+   "b": "JDG",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-05-31",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 1.5149,
+   "a": "BLG",
+   "b": "WE",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-05-30",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.5302,
+   "a": "AL",
+   "b": "EDG",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-30",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.3502,
+   "a": "TES",
+   "b": "LGD",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-29",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.8044,
+   "a": "JDG",
+   "b": "TTG",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-05-29",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.1612,
+   "a": "LGD",
+   "b": "WBG",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-05-24",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.118,
+   "a": "EDG",
+   "b": "NIP",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-05-24",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.2787,
+   "a": "TTG",
+   "b": "IG",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-23",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.8158,
+   "a": "LNG",
+   "b": "WE",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-05-23",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.3326,
+   "a": "VIT",
+   "b": "GX",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-05-31",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.4381,
+   "a": "NAVI",
+   "b": "KC",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-05-30",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.5182,
+   "a": "MKOI",
+   "b": "G2",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-05-25",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": 0.0787,
+   "a": "MKOI",
+   "b": "VIT",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-24",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": 0.2137,
+   "a": "G2",
+   "b": "KC",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-05-23",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": -1.1069,
+   "a": "SR",
+   "b": "TLAW",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-05-31",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.0789,
+   "a": "FLY",
+   "b": "SEN",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-30",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.0418,
+   "a": "TLAW",
+   "b": "LYON",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-05-24",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.406,
+   "a": "FLY",
+   "b": "C9",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-05-23",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.5314,
+   "a": "DCG",
+   "b": "TSW",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-05-31",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.0459,
+   "a": "DCG",
+   "b": "GAM",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-05-30",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.5022,
+   "a": "MVK",
+   "b": "TSW",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-05-29",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.1722,
+   "a": "SHG",
+   "b": "DCG",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-05-24",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.3844,
+   "a": "CFO",
+   "b": "MVK",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-05-23",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.1856,
+   "a": "LOS",
+   "b": "RED",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-31",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.1481,
+   "a": "LOS",
+   "b": "FLX",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-05-30",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.0617,
+   "a": "LOS",
+   "b": "LOUD",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-05-25",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.3519,
+   "a": "FURIA",
+   "b": "RED",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-24",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.031,
+   "a": "LOS",
+   "b": "VKS",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-05-23",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.477,
+   "a": "LOUD",
+   "b": "FURIA",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-05-17",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.3344,
+   "a": "FLX",
+   "b": "RED",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-05-16",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.1481,
+   "a": "FLX",
+   "b": "LOS",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-05-10",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.0928,
+   "a": "LOUD",
+   "b": "VKS",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-05-09",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": -0.183,
+   "a": "DK",
+   "b": "HLE",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-05-26",
+   "event": "EWC 2026 Online Qualifier - Korea"
+  },
+  {
+   "d": -0.1324,
+   "a": "DK",
+   "b": "T1",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-05-25",
+   "event": "EWC 2026 Online Qualifier - Korea"
+  },
+  {
+   "d": -0.3074,
+   "a": "MKOI",
+   "b": "KC",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-05-17",
+   "event": "EWC 2026 Online Qualifier - EMEA"
+  },
+  {
+   "d": -0.2137,
+   "a": "KC",
+   "b": "G2",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-05-16",
+   "event": "EWC 2026 Online Qualifier - EMEA"
+  },
+  {
+   "d": 0.5663,
+   "a": "TSW",
+   "b": "GAM",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-05-20",
+   "event": "EWC 2026 Online Qualifier - APAC"
+  },
+  {
+   "d": -0.1441,
+   "a": "T1",
+   "b": "GEN",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-06-14",
+   "event": "LCK 2026 Road to MSI"
+  },
+  {
+   "d": 0.898,
+   "a": "GEN",
+   "b": "KT",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-13",
+   "event": "LCK 2026 Road to MSI"
+  },
+  {
+   "d": -0.052,
+   "a": "HLE",
+   "b": "T1",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-06-12",
+   "event": "LCK 2026 Road to MSI"
+  },
+  {
+   "d": -0.2009,
+   "a": "KT",
+   "b": "DK",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-06-07",
+   "event": "LCK 2026 Road to MSI"
+  },
+  {
+   "d": 0.4839,
+   "a": "DK",
+   "b": "BRO",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-06",
+   "event": "LCK 2026 Road to MSI"
+  },
+  {
+   "d": -0.3944,
+   "a": "TES",
+   "b": "BLG",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-06-14",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -1.062,
+   "a": "WE",
+   "b": "BLG",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-06-13",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.3804,
+   "a": "AL",
+   "b": "BLG",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-06-08",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.6671,
+   "a": "TES",
+   "b": "WE",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-07",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.5545,
+   "a": "JDG",
+   "b": "BLG",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-06-06",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.6396,
+   "a": "LGD",
+   "b": "AL",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-06-05",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 1.0299,
+   "a": "BLG",
+   "b": "EDG",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-03",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.0136,
+   "a": "TTG",
+   "b": "LGD",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-06-02",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.6783,
+   "a": "AL",
+   "b": "WE",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-06-01",
+   "event": "LPL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.4717,
+   "a": "G2",
+   "b": "KC",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-06-07",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": 0.0753,
+   "a": "KC",
+   "b": "MKOI",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-06",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": 0.5388,
+   "a": "KC",
+   "b": "GX",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-01",
+   "event": "LEC 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.0739,
+   "a": "TLAW",
+   "b": "LYON",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-06-14",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.1355,
+   "a": "TLAW",
+   "b": "C9",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-13",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.0624,
+   "a": "LYON",
+   "b": "C9",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-07",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": -0.1452,
+   "a": "FLY",
+   "b": "TLAW",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-06-06",
+   "event": "LCS 2026 Spring Playoffs"
+  },
+  {
+   "d": 0.466,
+   "a": "TSW",
+   "b": "DCG",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-06-07",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.1487,
+   "a": "GAM",
+   "b": "DCG",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-06-06",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.2894,
+   "a": "GAM",
+   "b": "MVK",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-05",
+   "event": "LCP 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.4757,
+   "a": "LOS",
+   "b": "FURIA",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-06-06",
+   "event": "CBLOL 2026 Split 1 Playoffs"
+  },
+  {
+   "d": 0.3324,
+   "a": "LOS",
+   "b": "RED",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-06-14",
+   "event": "EWC 2026 Online Qualifier - South America"
+  },
+  {
+   "d": 0.2827,
+   "a": "BNK",
+   "b": "BRO",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-08-28",
+   "event": "LCK 2026 Season Play-In"
+  },
+  {
+   "d": 0.2828,
+   "a": "BNK",
+   "b": "NS",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-08-27",
+   "event": "LCK 2026 Season Play-In"
+  },
+  {
+   "d": -0.4318,
+   "a": "BRO",
+   "b": "KT",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-08-26",
+   "event": "LCK 2026 Season Play-In"
+  },
+  {
+   "d": -0.3885,
+   "a": "KT",
+   "b": "DK",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-08-30",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": -0.7044,
+   "a": "BNK",
+   "b": "T1",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-08-29",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": -0.314,
+   "a": "WE",
+   "b": "JDG",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-08-30",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.5394,
+   "a": "LGD",
+   "b": "TES",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-08-29",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.0344,
+   "a": "IG",
+   "b": "TTG",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-08-28",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.5696,
+   "a": "EDG",
+   "b": "NIP",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-08-28",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": 0.863,
+   "a": "TSW",
+   "b": "CFO",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-08-30",
+   "event": "LCP 2026 Split 3"
+  },
+  {
+   "d": -0.0363,
+   "a": "MVK",
+   "b": "CFO",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-08-29",
+   "event": "LCP 2026 Split 3"
+  },
+  {
+   "d": 0.863,
+   "a": "TSW",
+   "b": "CFO",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-08-23",
+   "event": "LCP 2026 Split 3"
+  },
+  {
+   "d": 0.4263,
+   "a": "GAM",
+   "b": "MVK",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-08-22",
+   "event": "LCP 2026 Split 3"
+  },
+  {
+   "d": -0.4808,
+   "a": "GAM",
+   "b": "TSW",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-08-21",
+   "event": "LCP 2026 Split 3"
+  },
+  {
+   "d": -0.0363,
+   "a": "MVK",
+   "b": "CFO",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-08-20",
+   "event": "LCP 2026 Split 3"
+  },
+  {
+   "d": 0.2293,
+   "a": "GEN",
+   "b": "HLE",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-13",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": 0.1,
+   "a": "HLE",
+   "b": "T1",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-12",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": -0.1624,
+   "a": "DK",
+   "b": "T1",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-06",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": -0.2293,
+   "a": "HLE",
+   "b": "GEN",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-05",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": -0.1919,
+   "a": "KT",
+   "b": "DK",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-04",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": -0.4342,
+   "a": "BNK",
+   "b": "DK",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-09-03",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": -0.1,
+   "a": "T1",
+   "b": "HLE",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-09-02",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": 0.6793,
+   "a": "GEN",
+   "b": "KT",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-09-01",
+   "event": "LCK 2026 Season Playoffs"
+  },
+  {
+   "d": 0.6708,
+   "a": "BLG",
+   "b": "AL",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-13",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": 0.3562,
+   "a": "AL",
+   "b": "IG",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-09-12",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.0937,
+   "a": "LGD",
+   "b": "IG",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-09-08",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.6708,
+   "a": "AL",
+   "b": "BLG",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-09-07",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.3873,
+   "a": "LGD",
+   "b": "NIP",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-09-06",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": 0.0305,
+   "a": "IG",
+   "b": "WE",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-06",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.1066,
+   "a": "JDG",
+   "b": "NIP",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-09-05",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": 0.209,
+   "a": "TES",
+   "b": "IG",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-09-05",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": -0.4521,
+   "a": "LGD",
+   "b": "AL",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-04",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": 1.0626,
+   "a": "BLG",
+   "b": "WE",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-03",
+   "event": "LPL 2026 Grand Finals"
+  },
+  {
+   "d": 0.1902,
+   "a": "JDG",
+   "b": "IG",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-19",
+   "event": "LPL 2026 Regional Finals"
+  },
+  {
+   "d": -0.2233,
+   "a": "WE",
+   "b": "JDG",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-18",
+   "event": "LPL 2026 Regional Finals"
+  },
+  {
+   "d": -0.209,
+   "a": "IG",
+   "b": "TES",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-17",
+   "event": "LPL 2026 Regional Finals"
+  },
+  {
+   "d": 0.7264,
+   "a": "G2",
+   "b": "MKOI",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-09-20",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.6946,
+   "a": "KC",
+   "b": "MKOI",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-09-19",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.0987,
+   "a": "MKOI",
+   "b": "NAVI",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-18",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.047,
+   "a": "VIT",
+   "b": "MKOI",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-09-12",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.0115,
+   "a": "GX",
+   "b": "NAVI",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-09-11",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.0338,
+   "a": "KC",
+   "b": "G2",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-06",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.8018,
+   "a": "KC",
+   "b": "GX",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-05",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.7666,
+   "a": "G2",
+   "b": "VIT",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-09-05",
+   "event": "LEC 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.4693,
+   "a": "TLAW",
+   "b": "C9",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-27",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": -1.2223,
+   "a": "SR",
+   "b": "LYON",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-26",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.4115,
+   "a": "SR",
+   "b": "FLY",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-09-25",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.5883,
+   "a": "TLAW",
+   "b": "FLY",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-09-20",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.7026,
+   "a": "LYON",
+   "b": "C9",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-19",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.427,
+   "a": "SR",
+   "b": "SEN",
+   "sa": 3,
+   "sb": 2,
+   "date": "2026-09-18",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.0146,
+   "a": "FLY",
+   "b": "SEN",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-09-13",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.5306,
+   "a": "SR",
+   "b": "C9",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-09-12",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.1607,
+   "a": "LOUD",
+   "b": "LOS",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-09-27",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.5555,
+   "a": "RED",
+   "b": "FURIA",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-09-26",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.3894,
+   "a": "RED",
+   "b": "PAIN",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-20",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.0374,
+   "a": "RED",
+   "b": "VKS",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-09-19",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.7493,
+   "a": "PAIN",
+   "b": "LOUD",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-13",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.0313,
+   "a": "FURIA",
+   "b": "LOS",
+   "sa": 1,
+   "sb": 3,
+   "date": "2026-09-12",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.5555,
+   "a": "RED",
+   "b": "FURIA",
+   "sa": 0,
+   "sb": 3,
+   "date": "2026-09-06",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.3525,
+   "a": "PAIN",
+   "b": "VKS",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-09-05",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": -0.003,
+   "a": "TLAW",
+   "b": "LYON",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-10-04",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": 0.402,
+   "a": "LYON",
+   "b": "C9",
+   "sa": 3,
+   "sb": 1,
+   "date": "2026-10-03",
+   "event": "LCS 2026 Summer Playoffs"
+  },
+  {
+   "d": -0.0161,
+   "a": "FURIA",
+   "b": "LOS",
+   "sa": 2,
+   "sb": 3,
+   "date": "2026-10-10",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  },
+  {
+   "d": 0.2143,
+   "a": "FURIA",
+   "b": "LOUD",
+   "sa": 3,
+   "sb": 0,
+   "date": "2026-10-03",
+   "event": "CBLOL 2026 Split 2 Playoffs"
+  }
+ ]
+}

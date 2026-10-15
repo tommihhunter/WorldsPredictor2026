@@ -1,0 +1,44 @@
+[
+ {
+  "code": "TES",
+  "delta_logit": -0.2,
+  "factor": "roster change",
+  "reason": "Split 3 All-Pro top laner ZUIAN refused a US visa twice (announced 06/10/2026); 369 starts after not playing competitively since Split 1 (~March). The model's TES games were mostly played with ZUIAN.",
+  "source": "https://www.sheepesports.com/en/articles/zuian-unable-to-start-for-top-esports-at-worlds-due-to-visa-issues-369-returns/en ; https://dotesports.com/league-of-legends/news/tes-zuian-visa-issues-worlds-2026 (accessed 15/10/2026)"
+ },
+ {
+  "code": "T1",
+  "delta_logit": 0.1,
+  "factor": "pedigree + meta fit",
+  "reason": "Three straight world titles (2023-2025), each won from a non-first domestic seed, so T1's domestic playoff results have under-predicted their Worlds results three years running; 2026 international game record 22-11 versus 9-9 in LCK playoffs. Patch 26.20 buffs Lucian (Peyz's 3rd-most-played champion). Halved to +0.10 in v4 (15/10/2026): pedigree is not a measurement and at +0.20 this single adjustment flipped the T1/HLE order and added 7 points to T1's title odds.",
+  "source": "https://en.wikipedia.org/wiki/2025_League_of_Legends_World_Championship ; https://www.sheepesports.com/de/articles/is-the-worlds-2026-patch-a-t1-patch/en (accessed 15/10/2026)"
+ },
+ {
+  "code": "BLG",
+  "delta_logit": -0.05,
+  "factor": "roster instability",
+  "reason": "Top lane churn all summer: Bin stepped away, Wenbo filled in, Flandre signed 08/08, Bin returned 20/08. Starter for Worlds listed as Bin by most outlets but not officially confirmed.",
+  "source": "https://www.sheepesports.com/us/articles/blg-s-top-lane-saga-concludes-with-the-signing-of-flandre/en (accessed 15/10/2026)"
+ },
+ {
+  "code": "TLAW",
+  "delta_logit": 0.05,
+  "factor": "venue (LOW-WEIGHT)",
+  "reason": "Swiss and QF/SF in Allen, Texas: home crowd and no long-haul travel for LCS teams.",
+  "source": "https://lolesports.com/en-US/news/worlds-2026-primer (accessed 15/10/2026)"
+ },
+ {
+  "code": "LYON",
+  "delta_logit": 0.05,
+  "factor": "venue (LOW-WEIGHT)",
+  "reason": "Swiss and QF/SF in Allen, Texas: home crowd and no long-haul travel for LCS teams.",
+  "source": "https://lolesports.com/en-US/news/worlds-2026-primer (accessed 15/10/2026)"
+ },
+ {
+  "code": "C9",
+  "delta_logit": 0.05,
+  "factor": "venue (LOW-WEIGHT)",
+  "reason": "Play-In in Los Angeles and Swiss in Allen, Texas: home crowd and no long-haul travel for LCS teams.",
+  "source": "https://lolesports.com/en-US/news/worlds-2026-primer (accessed 15/10/2026)"
+ }
+]

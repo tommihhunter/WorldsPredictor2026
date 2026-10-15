@@ -1,0 +1,106 @@
+[
+{
+"key": "champion",
+"value": "GEN"
+},
+{
+"key": "champion_p",
+"value": 0.3358
+},
+{
+"key": "finals_mvp",
+"value": "Ruler (GEN, ADC)"
+},
+{
+"key": "finals_mvp_reason",
+"value": "Gen.G's win condition is Ruler as the carry (31.7% damage, 25.4% gold share in LCK playoffs) and he was LCK Finals MVP on 13/09/2026. Chovy is the close alternative."
+},
+{
+"key": "playin_winner",
+"value": "KC"
+},
+{
+"key": "risk_assumption",
+"value": "That the LCK is clearly the strongest region: +0.65 logit over the LPL (worth about 65-35 per game between otherwise equal teams), with a standard error of 0.60, so the gap is only about one standard error from zero. It rests on 2025's results (used as a prior) plus LCK's 14-2 and 9-0 game records against the LCS and LCP in 2026, while the direct LCK-LPL record is 5-5 in series. The predicted champion and three of the four semifinalists depend on it."
+},
+{
+"key": "risk_detection",
+"value": "Swiss rounds 1-3 (Bo1s from 23/10) give the first same-patch cross-region evidence. If LPL teams win the majority of LCK-LPL meetings, or Gen.G drops a Bo1 to a Tier 4 team, the staged Swiss re-run should shrink the gap. The region-gap standard error is on the Overview tab."
+},
+{
+"key": "baseline_created",
+"value": "15/10/2026 17:08:07 NZDT"
+},
+{
+"key": "baseline_sha256",
+"value": "98ba5bff8a90579cec575680e7c1e4e8172ef38a88f9cc30be1c70bbbb817239"
+},
+{
+"key": "baseline_version",
+"value": "v4"
+},
+{
+"key": "latest_staged",
+"value": "playin"
+},
+{
+"key": "ratings_as_of",
+"value": "15/10/2026"
+},
+{
+"key": "n_series",
+"value": 1075
+},
+{
+"key": "n_games",
+"value": 2758
+},
+{
+"key": "half_life",
+"value": 120.0
+},
+{
+"key": "tau",
+"value": 0.9
+},
+{
+"key": "model_version",
+"value": "v4: series-level fit, full 2026 season (gol.gg), 2025 region prior"
+},
+{
+"key": "backtest_note",
+"value": "67 international series, walk-forward: log loss 0.616 (v4) vs 0.622 for 'stronger region wins 70%' and 0.693 for a coin flip"
+},
+{
+"key": "region_gap_lck_lpl",
+"value": "+0.65 logit, sd 0.60"
+},
+{
+"key": "w_regular",
+"value": 0.5
+},
+{
+"key": "sigma_series",
+"value": 1.0
+},
+{
+"key": "next_lock",
+"value": "Swiss Pick'Ems lock 24/10/2026 06:00 NZDT (draw 18/10)"
+},
+{
+"key": "draft_modes",
+"value": "Fearless Draft (champions picked earlier in a series unavailable to both teams) in every Bo3 and Bo5: Play-In, Swiss Bo3s, knockouts. Swiss Bo1s use standard draft. Right of First Selection: holder picks side or pick order (research/rules_2026.md)"
+},
+{
+"key": "pickems_points",
+"value": "Play-In 5/5/5/5/5 + 10 for the final = 35. Swiss 10 per correct advancer (80) + 45 in record bonuses (split UNKNOWN) = 125. Knockouts 10 per QF, 20 per SF, 80 for the final = 160. Crystal Ball points per question UNKNOWN"
+},
+{
+"key": "locks_nz",
+"value": "Play-In + Crystal Ball 16/10/2026 07:00; Swiss 24/10/2026 06:00; Knockouts 04/11/2026 11:00 (all NZDT)"
+},
+{
+"key": "exported_nz",
+"value": "15/10/2026 19:12 NZDT"
+}
+]

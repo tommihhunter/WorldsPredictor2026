@@ -1,0 +1,434 @@
+{
+ "meta": {
+  "updated": "15/10/2026",
+  "timezone_notes": "Venue Los Angeles = PDT (UTC-7) until 01/11/2026 02:00, then PST (UTC-8). NZ = NZDT (UTC+13) all event long. PDT->NZDT = +20h; PST->NZDT = +21h. Allen TX = CDT (UTC-5) until 01/11 then CST (UTC-6). Brooklyn = EDT/EST (final 14/11 = EST, UTC-5, NZDT +18h).",
+  "sources": {
+   "primer": "https://lolesports.com/en-US/news/worlds-2026-primer",
+   "msi_worlds_updates": "https://lolesports.com/en-US/news/msi-and-worlds-updates",
+   "pickems_page": "https://lolesports.com/en-US/pickems/115660540725177488",
+   "strafe_draw": "https://www.strafe.com/news/read/worlds-2026-play-in-draw-sets-opening-matchups/",
+   "insider_pools": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+   "insider_times": "https://insider-gaming.com/lol-worlds-2026-start-times-and-full-schedule-revealed/",
+   "inven_cheat": "https://www.invenglobal.com/articles/26821/worlds-2026-cheat-sheet-schedule-teams-format-and-pickems",
+   "accountshark_sched": "https://accountshark.net/blog/lol-worlds-2026-schedule-format-teams-guide",
+   "accountshark_playin": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+   "esportsgg_hub": "https://esports.gg/guides/league-of-legends/worlds-2026-hub/",
+   "sheep_seeding": "https://www.sheepesports.com/es/articles/worlds-2026-swiss-stage-seeding-who-will-have-to-go-through-the-play-in/en",
+   "dot_teams": "https://dotesports.com/league-of-legends/guides/all-teams-qualified-for-league-of-legends-worlds-2026",
+   "strafe_crystal": "https://www.strafe.com/news/read/league-of-legends-worlds-2026-crystal-ball-guide/",
+   "esportsgg_pickems": "https://esports.gg/guides/league-of-legends/worlds-2026-pickems/",
+   "lolpickem": "https://lolpickem.com/worlds-pickems/",
+   "winggg_prize": "https://win.gg/lol-worlds-prize-pool/",
+   "strafe_prize": "https://www.strafe.com/esports-betting/news/lol-worlds-2026-prize-pool/",
+   "dot_zuian": "https://dotesports.com/league-of-legends/news/tes-zuian-visa-issues-worlds-2026",
+   "sheep_zuian": "https://www.sheepesports.com/en/articles/zuian-unable-to-start-for-top-esports-at-worlds-due-to-visa-issues-369-returns/en"
+  }
+ },
+ "overview": {
+  "dates": "15/10/2026 - 14/11/2026 (US dates)",
+  "teams": 19,
+  "claim_check": "Claimed context CONFIRMED: Play-In LA 15-18/10 double-elim all Bo5 with KC, C9, MVK and Brazil 2nd seed (FURIA); Swiss Allen TX 23-31/10; QF/SF Allen; Final Brooklyn 14/11. Round 1 tiers CONFIRMED identical (Riot primer). Minor additions: Swiss has a rest day 27/10; QF 03-06/11, SF 07-08/11; Play-In second Day-1 match time is from secondary sources only.",
+  "qualification_slots": {
+   "LCK": 3,
+   "LPL": 3,
+   "LEC": 3,
+   "LCS": 3,
+   "LCP": 3,
+   "CBLOL": 2,
+   "MSI_champion": 1,
+   "MSI_second_best_region": 1,
+   "note": "Resulted in LCK 4 (HLE won MSI 2026 per Dot Esports) and LPL 4 (BLG finished 2nd at MSI per Dot Esports)"
+  },
+  "source": [
+   "https://lolesports.com/en-US/news/worlds-2026-primer",
+   "https://dotesports.com/league-of-legends/guides/all-teams-qualified-for-league-of-legends-worlds-2026"
+  ]
+ },
+ "play_in": {
+  "dates": "15/10/2026 - 18/10/2026 (US dates)",
+  "venue": "Riot Games Arena, Los Angeles, California (~300 capacity)",
+  "format": "4 teams, double elimination, every series Bo5 (Fearless Draft), 6 series over 4 days, 1 team advances to Swiss (is placed in Tier/Pool 4); other three finish 17th-19th",
+  "teams": [
+   {
+    "code": "KC",
+    "name": "Karmine Corp",
+    "region": "LEC",
+    "seed": 3
+   },
+   {
+    "code": "C9",
+    "name": "Cloud9 Kia",
+    "region": "LCS",
+    "seed": 3
+   },
+   {
+    "code": "MVK",
+    "name": "MVK Esports",
+    "region": "LCP",
+    "seed": 3
+   },
+   {
+    "code": "FURIA",
+    "name": "FURIA",
+    "region": "CBLOL",
+    "seed": 2,
+    "note": "LOS won CBLOL Final 3-2 over FURIA on 10/10/2026 (Strafe)"
+   }
+  ],
+  "draw": "Fully random, held 10/10/2026 after the CBLOL final, no pots or region limits (Strafe).",
+  "bracket": [
+   {
+    "id": "R1A",
+    "round": "Upper bracket semifinal",
+    "match": "Karmine Corp vs Cloud9",
+    "bo": 5,
+    "date_pt": "15/10/2026",
+    "start_pt": "11:00 PDT",
+    "start_nzdt": "16/10/2026 07:00",
+    "time_confidence": "3 sources (Insider Gaming, Strafe draw article, AccountShark); esports.gg hub lists this match at 16:00 PDT instead, and a Strafe Pick'Ems article lists FURIA v MVK first. Official lolesports schedule not retrieved.",
+    "winner_to": "R2 winners' match",
+    "loser_to": "R2 elimination match"
+   },
+   {
+    "id": "R1B",
+    "round": "Upper bracket semifinal",
+    "match": "FURIA vs MVK Esports",
+    "bo": 5,
+    "date_pt": "15/10/2026",
+    "start_pt": "16:00 PDT",
+    "start_nzdt": "16/10/2026 12:00",
+    "time_confidence": "as above; AccountShark, Insider Gaming, Strafe say 16:00 PDT",
+    "winner_to": "R2 winners' match",
+    "loser_to": "R2 elimination match"
+   },
+   {
+    "id": "R2W",
+    "round": "Upper bracket final (winners' match)",
+    "match": "Winner R1A vs Winner R1B",
+    "bo": 5,
+    "date_pt": "16/10/2026",
+    "start_pt": "11:00 or 16:00 PDT (order not set, depends on 15/10 results)",
+    "start_nzdt": "17/10/2026 07:00 or 12:00",
+    "time_confidence": "AccountShark only (secondary)",
+    "winner_to": "R4 (grand final)",
+    "loser_to": "R3 (lower bracket final)"
+   },
+   {
+    "id": "R2E",
+    "round": "Lower bracket semifinal (elimination match)",
+    "match": "Loser R1A vs Loser R1B",
+    "bo": 5,
+    "date_pt": "16/10/2026",
+    "start_pt": "11:00 or 16:00 PDT (order not set)",
+    "start_nzdt": "17/10/2026 07:00 or 12:00",
+    "time_confidence": "AccountShark only (secondary)",
+    "winner_to": "R3",
+    "loser_to": "eliminated, 19th"
+   },
+   {
+    "id": "R3",
+    "round": "Lower bracket final",
+    "match": "Loser R2W vs Winner R2E",
+    "bo": 5,
+    "date_pt": "17/10/2026",
+    "start_pt": "11:00 PDT",
+    "start_nzdt": "18/10/2026 07:00",
+    "time_confidence": "11:00 PDT day start confirmed by Riot primer (official); single match per AccountShark",
+    "winner_to": "R4",
+    "loser_to": "eliminated, 18th"
+   },
+   {
+    "id": "R4",
+    "round": "Grand final",
+    "match": "Winner R2W vs Winner R3",
+    "bo": 5,
+    "date_pt": "18/10/2026",
+    "start_pt": "11:00 PDT",
+    "start_nzdt": "19/10/2026 07:00",
+    "time_confidence": "day start 11:00 PDT official; winner advances to Swiss, loser 17th. No bracket reset mentioned in any source (UNKNOWN whether one exists); winners' side gets Right of Dual Selection for G1 per AccountShark.",
+    "winner_to": "Swiss Stage Tier 4",
+    "loser_to": "17th"
+   }
+  ],
+  "day_start_confirmed_official": "11:00 PDT each day 15-18/10 (Riot primer). Later matches on a day may start after listed time.",
+  "source": [
+   "https://lolesports.com/en-US/news/worlds-2026-primer",
+   "https://www.strafe.com/news/read/worlds-2026-play-in-draw-sets-opening-matchups/",
+   "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+   "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+   "https://esports.gg/guides/league-of-legends/worlds-2026-hub/"
+  ]
+ },
+ "swiss": {
+  "dates": "23/10/2026 - 31/10/2026 (US), match days 23,24,25,26,28,29,30,31/10; no matches 27/10",
+  "venue": "Credit Union of Texas (CUTX) Event Center, Allen, Texas (~8,100-8,600)",
+  "teams": 16,
+  "direct_qualifiers": 15,
+  "play_in_winner_slots": 1,
+  "rules": "Up to 5 rounds. Teams with identical records are paired each round. 3 wins = advance, 3 losses = eliminated. Bo1 normally; Bo3 when a team can qualify or be eliminated. No rematches. Same-region matchups barred in Round 1 only, allowed from Round 2. 8 teams advance.",
+  "r1_tiers": {
+   "Tier1": [
+    {
+     "code": "GEN",
+     "seed_origin": "LCK #1"
+    },
+    {
+     "code": "AL",
+     "seed_origin": "LPL #1"
+    },
+    {
+     "code": "TLAW",
+     "seed_origin": "LCS #1"
+    },
+    {
+     "code": "G2",
+     "seed_origin": "LEC #1"
+    }
+   ],
+   "Tier2": [
+    {
+     "code": "LOS",
+     "seed_origin": "CBLOL #1 (labelled BR1/CBLOL1)"
+    },
+    {
+     "code": "TSW",
+     "seed_origin": "LCP #1"
+    },
+    {
+     "code": "HLE",
+     "seed_origin": "LCK #2"
+    },
+    {
+     "code": "BLG",
+     "seed_origin": "LPL #2"
+    }
+   ],
+   "Tier3": [
+    {
+     "code": "LYON",
+     "seed_origin": "LCS #2"
+    },
+    {
+     "code": "MKOI",
+     "seed_origin": "LEC #2"
+    },
+    {
+     "code": "T1",
+     "seed_origin": "LCK #3"
+    },
+    {
+     "code": "TES",
+     "seed_origin": "LPL #3 (TOP Esports)"
+    }
+   ],
+   "Tier4": [
+    {
+     "code": "CFO",
+     "seed_origin": "LCP #2"
+    },
+    {
+     "code": "IG",
+     "seed_origin": "LPL #4"
+    },
+    {
+     "code": "DK",
+     "seed_origin": "LCK #4"
+    },
+    {
+     "code": "PLAY_IN_WINNER",
+     "seed_origin": "KC / C9 / MVK / FURIA"
+    }
+   ],
+   "verification": "CONFIRMED identical to claim. First-party: Riot primer lists Tier 1-4 exactly as claimed. Seed-origin mapping from Sheep Esports rulebook summary. Insider Gaming, Inven, AccountShark agree.",
+   "round1_pairing": "Tier 1 vs Tier 4; Tier 2 vs Tier 3; random draw; no same-region pairing.",
+   "derived_region_constraints_for_r1": "(Derived by reading the tiers, not quoted) GEN cannot draw DK; AL cannot draw IG; HLE cannot draw T1; BLG cannot draw TES. Play-In winner: if KC then not G2; if C9 then not TLAW; if MVK or FURIA, no Tier-1 conflict.",
+   "source": [
+    "https://lolesports.com/en-US/news/worlds-2026-primer",
+    "https://www.sheepesports.com/es/articles/worlds-2026-swiss-stage-seeding-who-will-have-to-go-through-the-play-in/en",
+    "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "https://www.invenglobal.com/articles/26821/worlds-2026-cheat-sheet-schedule-teams-format-and-pickems"
+   ]
+  },
+  "r1_draw_published": false,
+  "r1_draw_note": "NOT published. Round 1 draw is scheduled for 18/10/2026 (US date, after the Play-In winner is known); pots are published, pairings are not.",
+  "later_draws": "Per Inven: draws occur 23/10, 24/10, 26/10, 30/10 (rounds 2-5). Exact round-to-day mapping UNKNOWN.",
+  "match_day_start_times": [
+   {
+    "us_dates": "23/10 and 24/10",
+    "pt": "10:00 PDT",
+    "ct": "12:00 CDT",
+    "nzdt": "24/10 06:00 and 25/10 06:00"
+   },
+   {
+    "us_dates": "25/10 and 26/10",
+    "pt": "10:00 PDT",
+    "ct": "12:00 CDT",
+    "nzdt": "26/10 06:00 and 27/10 06:00"
+   },
+   {
+    "us_dates": "28/10, 29/10, 30/10",
+    "pt": "13:00 PDT",
+    "ct": "15:00 CDT",
+    "nzdt": "29/10 09:00, 30/10 09:00, 31/10 09:00"
+   },
+   {
+    "us_dates": "31/10",
+    "pt": "10:00 PDT",
+    "ct": "12:00 CDT",
+    "nzdt": "01/11 06:00"
+   }
+  ],
+  "times_source": [
+   "https://lolesports.com/en-US/news/worlds-2026-primer",
+   "https://insider-gaming.com/lol-worlds-2026-start-times-and-full-schedule-revealed/"
+  ],
+  "region_counts_in_swiss": "LCK 4 (GEN,HLE,T1,DK), LPL 4 (AL,BLG,TES,IG), LEC 2 (G2,MKOI), LCS 2 (TLAW,LYON), LCP 2 (TSW,CFO), CBLOL 1 (LOS) + Play-In winner"
+ },
+ "knockouts": {
+  "teams": 8,
+  "format": "Single elimination, all Bo5, no third-place match (losing semifinalists tie 3rd-4th per LolTheory; secondary)",
+  "qf_draw": "31/10/2026: the two 3-0 teams each face a random 3-2 team (placed on opposite sides of bracket); remaining four teams drawn randomly into two matches (Riot primer, Inven).",
+  "quarterfinals": {
+   "dates": "03/11/2026 - 06/11/2026 (US)",
+   "venue": "CUTX Event Center, Allen TX",
+   "start": "14:00 PST (16:00 CST)",
+   "nzdt": "04/11 11:00 through 07/11 11:00"
+  },
+  "semifinals": {
+   "dates": "07/11/2026 - 08/11/2026 (US)",
+   "venue": "CUTX Event Center, Allen TX",
+   "start": "14:00 PST (16:00 CST)",
+   "nzdt": "08/11 11:00 and 09/11 11:00"
+  },
+  "final": {
+   "date": "14/11/2026 (US) = 15/11/2026 NZ",
+   "venue": "Barclays Center, Brooklyn, New York (~19,000)",
+   "start": "11:00 PST / 14:00 EST",
+   "nzdt": "15/11/2026 08:00"
+  },
+  "fan_fest": "Worlds Fan Fest, Pier 36, Lower Manhattan, 12-14/11/2026 (Riot primer)",
+  "source": [
+   "https://lolesports.com/en-US/news/worlds-2026-primer",
+   "https://lolesports.com/en-US/news/msi-and-worlds-updates",
+   "https://insider-gaming.com/lol-worlds-2026-start-times-and-full-schedule-revealed/"
+  ]
+ },
+ "prize_pool": {
+  "total_usd": 5000000,
+  "status": "REPORTED by Win.gg (09/10/2026), Strafe and AccountShark; NOT confirmed on the Riot primer or lolesports page I could read. Treat as unverified-official.",
+  "distribution_usd": {
+   "1st": 1000000,
+   "2nd": 800000,
+   "3rd-4th_each": 400000,
+   "5th-8th_each": 300000,
+   "9th-11th_each": 175000,
+   "12th-14th_each": 125000,
+   "15th-16th_each": 90000,
+   "17th": 50000,
+   "18th": 40000,
+   "19th": 30000
+  },
+  "source": [
+   "https://win.gg/lol-worlds-prize-pool/",
+   "https://www.strafe.com/esports-betting/news/lol-worlds-2026-prize-pool/",
+   "https://accountshark.net/blog/lol-worlds-2026-schedule-format-teams-guide"
+  ]
+ },
+ "pickems": {
+  "url": "https://lolesports.com/pickems (also in the League client); Riot account + summoner name required; not available in China and other locally published regions, Cuba, N. Korea, Crimea/Donetsk/Luhansk, Myanmar (esportnow)",
+  "stages_points_official": {
+   "Play-Ins": 35,
+   "Swiss": 125,
+   "Knockouts": 160,
+   "bracket_total": 320,
+   "source": "https://lolesports.com/en-US/pickems/115660540725177488",
+   "note": "Stage totals read from the official lolesports page 15/10/2026; 320 total is my sum."
+  },
+  "lock_open": [
+   {
+    "stage": "Play-In (and Crystal Ball)",
+    "opened": "10/10/2026 16:00 PDT (11/10 12:00 NZDT)",
+    "locks": "before first Play-In match, 15/10/2026 11:00 PDT = 16/10/2026 07:00 NZDT"
+   },
+   {
+    "stage": "Swiss",
+    "opens": "18/10/2026 per Riot primer (live page and others say 19/10)",
+    "locks": "before first Swiss match 23/10/2026 10:00 PDT = 24/10/2026 06:00 NZDT"
+   },
+   {
+    "stage": "Knockouts",
+    "opens": "31/10/2026 per Riot primer (live page shows 01/11)",
+    "locks": "before first QF 03/11/2026 14:00 PST = 04/11/2026 11:00 NZDT"
+   }
+  ],
+  "lock_conflicts": "esports.gg states Play-In/Crystal Ball lock '16 Oct 11:20 AM PDT', Swiss open 19-24 Oct, KO open 1 Nov to 25 Nov; these contradict Riot's primer (lock before the first match) and are treated as errors. One live panel shows KO lock 24 Nov (TheClick), likely a placeholder.",
+  "per_stage_picks_verified": "UNKNOWN officially. Third-party (lolpickem.com, unverified): Play-In = predict the 6-series double-elim bracket, 5 pts per series and 10 pts for the deciding final (=35); Swiss = pick the 8 advancers sorted into 3-0/3-1/3-2 slots, 10 pts per correct advancer plus exact-record bonus (BoostingMarket, claims it read the official page in September; unverified); Knockouts = QF, SF, final winners, later rounds worth more, champion pick largest (=160).",
+  "restrictions": "No-duplicate-teams-in-3-0/0-3 rule: UNKNOWN (no 2026 source mentions 0-3 picks). Editing allowed until each stage locks; missed stage only forfeits that stage; Play-In picks do not carry over.",
+  "scoring_finalised": "After the final 14/11/2026; rewards targeted within 48h; contact Player Support if missing by 21/11/2026.",
+  "rewards_official_page": {
+   "Perfect": "Ezreal and Udyr icons plus 12 more rewards (official page; other outlets say 7 Ultimate skins - conflicting)",
+   "Top5000": "True Damage Yasuo + Yasuo",
+   "Top25pct": "Spicy Dog emote",
+   "Top50pct": "Groovy Pup icon",
+   "Participation": "Laying It Down emote"
+  },
+  "source": [
+   "https://lolesports.com/en-US/pickems/115660540725177488",
+   "https://lolesports.com/en-US/news/worlds-2026-primer",
+   "https://lolpickem.com/worlds-pickems/",
+   "https://esportnow.gg/lol/news/worlds-2026-pickems-crystal-ball-rewards-deadline",
+   "https://www.theclick.gg/lol-worlds-2026-pickems/",
+   "https://boostingmarket.com/blogs/lol-worlds-2026-pickems-guide/"
+  ]
+ },
+ "crystal_ball": {
+  "status": "FOUND (2026 list, two independent outlets agree on all 18 questions; official in-client list not rendered)",
+  "opens": "10/10/2026 16:00 PDT",
+  "locks": "before first Play-In match, 15/10/2026 11:00 PDT = 16/10/2026 07:00 NZDT; never reopens",
+  "scoring": "Per Strafe: harder-to-predict answers worth more; no penalty for wrong answers; blank = 0. Point values officially UNKNOWN. Third-party lolpickem claims 1,050 total (15 questions x 50, 3 x 100), unverified. Separate leaderboard from bracket.",
+  "questions": [
+   "Which champion will have the highest Presence (pct of games picked or banned) across all drafts?",
+   "Which champion will have the highest Win Rate (min 5 games played)?",
+   "Which champion will have the highest average Deaths per Game (min 5 games played)?",
+   "Which pro will finish with the highest average KDA?",
+   "Which pro will finish with the highest average Damage per Game?",
+   "Which pro will finish with the highest average Kill Participation?",
+   "Peyz vs Gumayusi: who will finish with more total kills?",
+   "Will Faker reach 700 career Worlds kills this year? (616 entering, 10 appearances)",
+   "Will Teemo be picked at least once?",
+   "How many unique champions will be picked?",
+   "Will more games finish before or after the 32-minute mark?",
+   "Will any pro get at least 15 kills in a single game?",
+   "Will any pro reach at least 450 CS in a single game?",
+   "What will be the role of the Finals MVP winner?",
+   "How many different regions will be represented in Knockouts? (8 teams qualify)",
+   "Will a team from LCS reach Knockouts?",
+   "Which team will place higher: HLE or T1?",
+   "Which team will win the shortest game (duration)?"
+  ],
+  "answer_options": "Only implied options are public (binary / A-or-B / role / count). Full option lists for champion, pro and team questions UNKNOWN (shown in client).",
+  "rewards": {
+   "Participation": "Best Buds icon",
+   "Top50pct": "ALL ABOARD icon",
+   "Top25pct": "Spa Day emote",
+   "Top5000": "True Damage Yasuo + Yasuo shard"
+  },
+  "source": [
+   "https://www.strafe.com/news/read/league-of-legends-worlds-2026-crystal-ball-guide/",
+   "https://esports.gg/guides/league-of-legends/worlds-2026-pickems/",
+   "https://www.hotspawn.com/league-of-legends/news/lol-worlds-2026-pickems"
+  ]
+ },
+ "roster_news_last_14d": [
+  {
+   "team": "TES",
+   "date": "07/10/2026",
+   "item": "Top laner ZUIAN failed two US visa interviews and cannot travel; TES names veteran 369 (benched since March, no competitive games since) as the starting top laner for now; TES is trying a third interview, outcome/date UNKNOWN as of 15/10/2026; Swiss starts 23/10 so the window is narrow.",
+   "source": [
+    "https://dotesports.com/league-of-legends/news/tes-zuian-visa-issues-worlds-2026",
+    "https://www.sheepesports.com/en/articles/zuian-unable-to-start-for-top-esports-at-worlds-due-to-visa-issues-369-returns/en"
+   ]
+  }
+ ],
+ "roster_news_other_teams": "No other roster, substitute or visa announcement found for the other 18 teams within 01-15/10/2026 in the sources searched (absence of evidence, searches were not exhaustive). Older context only: LYON's Zamudo visa saga (replaced by Dhokla, earlier in 2026); BLG's Bin returned to the top lane 20/08/2026."
+}

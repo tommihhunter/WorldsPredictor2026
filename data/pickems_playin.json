@@ -1,0 +1,251 @@
+{
+ "stage": "playin",
+ "as_of": "15/10/2026",
+ "rules_verified": {
+  "stage_points": {
+   "Play-In": 35,
+   "Swiss": 125,
+   "Knockouts": 160
+  },
+  "source": "https://lolesports.com/en-US/pickems/115660540725177488 (accessed 15/10/2026)",
+  "per_pick_scoring": "UNKNOWN officially; third-party: Play-In 5 per series, 10 for the final (https://lolpickem.com/worlds-pickems/)",
+  "duplicates_rule": "UNKNOWN for 2026 (no source mentions 0-3 picks or a no-duplicate rule)"
+ },
+ "playin": {
+  "picks": [
+   {
+    "slot": "R1: KC vs C9",
+    "pick": "KC",
+    "p_correct": 0.6154,
+    "alternatives": {
+     "KC": 0.6154,
+     "C9": 0.3846
+    },
+    "ev_points": 3.08
+   },
+   {
+    "slot": "R1: FURIA vs MVK",
+    "pick": "FURIA",
+    "p_correct": 0.7292,
+    "alternatives": {
+     "FURIA": 0.7292,
+     "MVK": 0.2708
+    },
+    "ev_points": 3.65
+   },
+   {
+    "slot": "Winners' match",
+    "pick": "KC",
+    "p_correct": 0.4267,
+    "alternatives": {
+     "KC": 0.4267,
+     "FURIA": 0.294,
+     "C9": 0.2263,
+     "MVK": 0.053
+    },
+    "ev_points": 2.13
+   },
+   {
+    "slot": "Elimination match",
+    "pick": "C9",
+    "p_correct": 0.4272,
+    "alternatives": {
+     "C9": 0.4272,
+     "KC": 0.3017,
+     "MVK": 0.1548,
+     "FURIA": 0.1163
+    },
+    "ev_points": 2.14
+   },
+   {
+    "slot": "Lower final",
+    "pick": "KC",
+    "p_correct": 0.3255,
+    "alternatives": {
+     "KC": 0.3255,
+     "FURIA": 0.2931,
+     "C9": 0.2922,
+     "MVK": 0.0892
+    },
+    "ev_points": 1.63
+   },
+   {
+    "slot": "Final (Play-In winner)",
+    "pick": "KC",
+    "p_correct": 0.4916,
+    "alternatives": {
+     "KC": 0.4916,
+     "C9": 0.2409,
+     "FURIA": 0.2393,
+     "MVK": 0.0281
+    },
+    "ev_points": 4.92
+   }
+  ],
+  "expected_points": 17.55,
+  "max_points": 35,
+  "note": "Max-EV pick in each slot = team with highest probability of winning that slot. These are mutually consistent here (no slot's best pick contradicts another)."
+ },
+ "swiss_preliminary": {
+  "warning": "PRELIMINARY: Swiss picks open 18/10 and the Round 1 draw is published that day. Re-run before the 24/10 06:00 NZDT lock. KC used as the Play-In winner placeholder (model favourite).",
+  "rank_3_0": [
+   [
+    "GEN",
+    0.4092
+   ],
+   [
+    "HLE",
+    0.2852
+   ],
+   [
+    "T1",
+    0.2698
+   ],
+   [
+    "BLG",
+    0.2113
+   ],
+   [
+    "DK",
+    0.1993
+   ],
+   [
+    "AL",
+    0.1268
+   ]
+  ],
+  "rank_0_3": [
+   [
+    "CFO",
+    0.4582
+   ],
+   [
+    "LOS",
+    0.2363
+   ],
+   [
+    "MKOI",
+    0.2128
+   ],
+   [
+    "TSW",
+    0.2029
+   ],
+   [
+    "LYON",
+    0.1343
+   ],
+   [
+    "TES",
+    0.1103
+   ]
+  ],
+  "rank_advance": [
+   [
+    "GEN",
+    0.9195
+   ],
+   [
+    "HLE",
+    0.8405
+   ],
+   [
+    "T1",
+    0.8372
+   ],
+   [
+    "BLG",
+    0.7791
+   ],
+   [
+    "DK",
+    0.7552
+   ],
+   [
+    "AL",
+    0.6009
+   ],
+   [
+    "G2",
+    0.5303
+   ],
+   [
+    "IG",
+    0.4904
+   ],
+   [
+    "TLAW",
+    0.4329
+   ],
+   [
+    "TES",
+    0.4301
+   ]
+  ],
+  "rank_3_1_or_3_2": [
+   [
+    "BLG",
+    0.5678
+   ],
+   [
+    "T1",
+    0.5673
+   ],
+   [
+    "DK",
+    0.5559
+   ],
+   [
+    "HLE",
+    0.5553
+   ],
+   [
+    "GEN",
+    0.5103
+   ],
+   [
+    "AL",
+    0.4741
+   ],
+   [
+    "G2",
+    0.4303
+   ],
+   [
+    "IG",
+    0.4131
+   ],
+   [
+    "TLAW",
+    0.362
+   ],
+   [
+    "TES",
+    0.3592
+   ]
+  ],
+  "picks": {
+   "3-0": [
+    "GEN",
+    "HLE"
+   ],
+   "0-3": [
+    "CFO",
+    "LOS"
+   ],
+   "advance (3-1/3-2), best 6": [
+    "BLG",
+    "T1",
+    "DK",
+    "AL",
+    "G2",
+    "IG"
+   ]
+  },
+  "ev_reasoning": [
+   "3-0 picks go to the highest P(3-0), not simply the strongest teams: T1 (Tier 3) has P(3-0) 0.2698 vs HLE 0.2852 and BLG 0.2113.",
+   "0-3 picks go to the highest P(0-3): CFO and TSW face Tier 1/Tier 2 opponents in round 1 and are the lowest-rated direct entrants.",
+   "Advance picks use P(3-1)+P(3-2) for teams not already used in 3-0, in case the client scores those slots separately; if any advance counts, use P(advance)."
+  ]
+ }
+}

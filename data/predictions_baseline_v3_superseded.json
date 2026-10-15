@@ -1,0 +1,2267 @@
+{
+ "stage": "baseline",
+ "supersedes": "predictions_baseline_v2_superseded.json (15/10/2026 14:38:43 NZDT; v3 adds the per-series form shock, so most-likely scores and series odds changed)",
+ "created_utc": "15/10/2026 02:47:43 UTC",
+ "created_nz": "15/10/2026 15:47:43 NZDT",
+ "valid_before": {
+  "playin": {
+   "venue": "15/10/2026 11:00 PDT",
+   "nz": "16/10/2026 07:00 NZDT",
+   "start_utc": "2026-10-15T18:00:00+00:00"
+  }
+ },
+ "model": {
+  "ratings_as_of": "15/10/2026",
+  "params": {
+   "half_life_days": 120.0,
+   "tau": 0.75,
+   "sigma_series": 0.8,
+   "sigma_region": 1.0,
+   "sigma_team": 0.8,
+   "n_series": 245,
+   "n_games": 804,
+   "newton_iters": 5
+  },
+  "sims": 100000
+ },
+ "ratings": [
+  {
+   "rank": 1,
+   "code": "GEN",
+   "region": "LCK",
+   "tier": "S",
+   "elo": 1745,
+   "elo_base": 1745,
+   "adj_logit": 1.4075,
+   "sd": 0.6307,
+   "p_vs_avg": 0.7339
+  },
+  {
+   "rank": 2,
+   "code": "T1",
+   "region": "LCK",
+   "tier": "S",
+   "elo": 1707,
+   "elo_base": 1672,
+   "adj_logit": 1.1924,
+   "sd": 0.5671,
+   "p_vs_avg": 0.6898
+  },
+  {
+   "rank": 3,
+   "code": "BLG",
+   "region": "LPL",
+   "tier": "S",
+   "elo": 1696,
+   "elo_base": 1705,
+   "adj_logit": 1.1278,
+   "sd": 0.5783,
+   "p_vs_avg": 0.6758
+  },
+  {
+   "rank": 4,
+   "code": "HLE",
+   "region": "LCK",
+   "tier": "S",
+   "elo": 1689,
+   "elo_base": 1689,
+   "adj_logit": 1.0891,
+   "sd": 0.5923,
+   "p_vs_avg": 0.6673
+  },
+  {
+   "rank": 5,
+   "code": "DK",
+   "region": "LCK",
+   "tier": "A",
+   "elo": 1674,
+   "elo_base": 1674,
+   "adj_logit": 1.0017,
+   "sd": 0.6096,
+   "p_vs_avg": 0.6476
+  },
+  {
+   "rank": 6,
+   "code": "IG",
+   "region": "LPL",
+   "tier": "A",
+   "elo": 1630,
+   "elo_base": 1630,
+   "adj_logit": 0.7475,
+   "sd": 0.6442,
+   "p_vs_avg": 0.5877
+  },
+  {
+   "rank": 7,
+   "code": "AL",
+   "region": "LPL",
+   "tier": "A",
+   "elo": 1627,
+   "elo_base": 1627,
+   "adj_logit": 0.7301,
+   "sd": 0.6374,
+   "p_vs_avg": 0.5835
+  },
+  {
+   "rank": 8,
+   "code": "G2",
+   "region": "LEC",
+   "tier": "A",
+   "elo": 1627,
+   "elo_base": 1627,
+   "adj_logit": 0.7293,
+   "sd": 0.5733,
+   "p_vs_avg": 0.5833
+  },
+  {
+   "rank": 9,
+   "code": "TLAW",
+   "region": "LCS",
+   "tier": "B",
+   "elo": 1565,
+   "elo_base": 1557,
+   "adj_logit": 0.376,
+   "sd": 0.6265,
+   "p_vs_avg": 0.4957
+  },
+  {
+   "rank": 10,
+   "code": "TES",
+   "region": "LPL",
+   "tier": "B",
+   "elo": 1562,
+   "elo_base": 1597,
+   "adj_logit": 0.3567,
+   "sd": 0.626,
+   "p_vs_avg": 0.4909
+  },
+  {
+   "rank": 11,
+   "code": "LYON",
+   "region": "LCS",
+   "tier": "B",
+   "elo": 1555,
+   "elo_base": 1546,
+   "adj_logit": 0.3147,
+   "sd": 0.5789,
+   "p_vs_avg": 0.4804
+  },
+  {
+   "rank": 12,
+   "code": "KC",
+   "region": "LEC",
+   "tier": "B",
+   "elo": 1538,
+   "elo_base": 1538,
+   "adj_logit": 0.2176,
+   "sd": 0.5788,
+   "p_vs_avg": 0.4563
+  },
+  {
+   "rank": 13,
+   "code": "LOS",
+   "region": "CBLOL",
+   "tier": "B",
+   "elo": 1515,
+   "elo_base": 1515,
+   "adj_logit": 0.0845,
+   "sd": 0.674,
+   "p_vs_avg": 0.4235
+  },
+  {
+   "rank": 14,
+   "code": "MKOI",
+   "region": "LEC",
+   "tier": "B",
+   "elo": 1508,
+   "elo_base": 1508,
+   "adj_logit": 0.0465,
+   "sd": 0.6312,
+   "p_vs_avg": 0.4142
+  },
+  {
+   "rank": 15,
+   "code": "FURIA",
+   "region": "CBLOL",
+   "tier": "B",
+   "elo": 1507,
+   "elo_base": 1507,
+   "adj_logit": 0.0402,
+   "sd": 0.6518,
+   "p_vs_avg": 0.4127
+  },
+  {
+   "rank": 16,
+   "code": "C9",
+   "region": "LCS",
+   "tier": "C",
+   "elo": 1477,
+   "elo_base": 1469,
+   "adj_logit": -0.1313,
+   "sd": 0.6392,
+   "p_vs_avg": 0.3718
+  },
+  {
+   "rank": 17,
+   "code": "TSW",
+   "region": "LCP",
+   "tier": "C",
+   "elo": 1473,
+   "elo_base": 1473,
+   "adj_logit": -0.1537,
+   "sd": 0.6409,
+   "p_vs_avg": 0.3666
+  },
+  {
+   "rank": 18,
+   "code": "CFO",
+   "region": "LCP",
+   "tier": "C",
+   "elo": 1379,
+   "elo_base": 1379,
+   "adj_logit": -0.6945,
+   "sd": 0.7104,
+   "p_vs_avg": 0.2521
+  },
+  {
+   "rank": 19,
+   "code": "MVK",
+   "region": "LCP",
+   "tier": "C",
+   "elo": 1324,
+   "elo_base": 1324,
+   "adj_logit": -1.0138,
+   "sd": 0.7154,
+   "p_vs_avg": 0.1967
+  }
+ ],
+ "regions": {
+  "CBLOL": {
+   "rating": -0.2699,
+   "sd": 0.6406,
+   "elo": 1453
+  },
+  "LCK": {
+   "rating": 1.1466,
+   "sd": 0.5529,
+   "elo": 1699
+  },
+  "LCP": {
+   "rating": -1.0616,
+   "sd": 0.6346,
+   "elo": 1316
+  },
+  "LCS": {
+   "rating": -0.3485,
+   "sd": 0.5853,
+   "elo": 1439
+  },
+  "LEC": {
+   "rating": -0.0972,
+   "sd": 0.5756,
+   "elo": 1483
+  },
+  "LPL": {
+   "rating": 0.6305,
+   "sd": 0.5667,
+   "elo": 1610
+  }
+ },
+ "playin": {
+  "series": [
+   {
+    "team_a": "KC",
+    "team_b": "C9",
+    "bo": 5,
+    "p_game_a": 0.5827,
+    "p_series_a": 0.6241,
+    "winner": "KC",
+    "p_winner": 0.6241,
+    "score": "3-0",
+    "p_score": 0.2466,
+    "tier": "LEAN",
+    "exact": {
+     "3-0": 0.2466,
+     "0-3": 0.1121,
+     "3-1": 0.2203,
+     "1-3": 0.1372,
+     "3-2": 0.1571,
+     "2-3": 0.1267
+    },
+    "id": "PI-R1-A",
+    "stage": "Play-In R1",
+    "time": {
+     "venue": "15/10/2026 11:00 PDT",
+     "nz": "16/10/2026 07:00 NZDT",
+     "start_utc": "2026-10-15T18:00:00+00:00"
+    },
+    "note": "Day 1 order disputed between outlets (KC-C9 or FURIA-MVK first); both start after the 11:00 PDT Pick'Ems lock.",
+    "key_matchup": "Top lane: Canna (KC; domestic playoffs GD@15 +253, 16 solo kills, Rumble 8-2) vs Thanatos (C9; GD@15 -191, XPD@15 -223, Worlds debut). KC's early game runs through Canna and Yike (Vi 8-3); C9's jungler Blaber is the weakest early-game stat line of the four Play-In junglers on record (XPD@15 -496, CSD@15 -6.4).",
+    "draft_angle": "KC's comforts Rumble, Vi and Seraphine/Rakan (Busio 12-3 combined) are the bans to watch; opponents banned Rumble 22% domestically. C9 lean on Blaber Nocturne (2-0) but Nocturne is a top-2 ban everywhere. Fearless Bo5 tests C9's thinner sampled pools (>=8 champions per player in an 11-game sample) more than KC's 13-19.",
+    "form_context": "KC: 9-0 Summer regular season, then 1-3 G2 and 0-3 MSI in playoffs (1-6 in games), but EWC runner-up in July and 5-4 in 2026 international series. C9: 8-7 in Summer playoffs, ended with back-to-back 1-3 losses (TLAW, LYON). No 2026 head-to-head.",
+    "what_flips": "KC's baron control collapses internationally (26%). If C9 survive lane and drag games past 30 minutes, Vulcan's playmaking (KDA 7.3, 81.7% KP) and C9's 56% dragon / 60% herald control can win the long game, plus a home crowd in LA.",
+    "sources": {
+     "dossiers": [
+      "research/teams/KC.md",
+      "research/teams/C9.md"
+     ],
+     "links": [
+      {
+       "url": "https://gol.gg/teams/team-stats/2899/split-ALL/tournament-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/players/player-stats/4900/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/MSI%202026/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://rdy.gg/en/lol/tournaments/117322",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.liquipedia.net/leagueoflegends/LCS/2026/Lock-In",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "FURIA",
+    "team_b": "MVK",
+    "bo": 5,
+    "p_game_a": 0.7275,
+    "p_series_a": 0.8231,
+    "winner": "FURIA",
+    "p_winner": 0.8231,
+    "score": "3-0",
+    "p_score": 0.4248,
+    "tier": "LOCK",
+    "exact": {
+     "3-0": 0.4248,
+     "0-3": 0.0408,
+     "3-1": 0.2612,
+     "1-3": 0.0638,
+     "3-2": 0.1372,
+     "2-3": 0.0722
+    },
+    "id": "PI-R1-B",
+    "stage": "Play-In R1",
+    "time": {
+     "venue": "15/10/2026 16:00 PDT",
+     "nz": "16/10/2026 12:00 NZDT",
+     "start_utc": "2026-10-15T23:00:00+00:00"
+    },
+    "note": "Day 1 order disputed between outlets (KC-C9 or FURIA-MVK first); both start after the 11:00 PDT Pick'Ems lock.",
+    "key_matchup": "Jungle tempo: Tatu (FURIA; Split 1 Finals MVP, GD@15 +191, KDA 5.0) vs Gury (MVK; KDA 2.95 across 78 games). MVK's weakest link is top (Kratos KDA 1.88), which is where FURIA's Guigo (10 solo kills in Split 2 playoffs) plays.",
+    "draft_angle": "No MVK champion data was found (UNKNOWN), so this is the series with the least draft information. FURIA's pools: Guigo wide (Ambessa/Olaf/Gwen), Tatu Xin Zhao/Trundle/Sejuani, Ayu Ezreal/Kalista/Yunara.",
+    "form_context": "FURIA: CBLOL runner-up after a 3-series lower-bracket run, 12-8 in games, but 0-4 in series at MSI/EWC. MVK: no official match since 29/08 (47 days), lost 0-3 and 1-3 to CFO in Split 3 playoffs. No head-to-head.",
+    "what_flips": "MVK win if FURIA's lane-phase problems (MSI CSD@15 -41) show up and MVK's first-baron conversion (82% WR when first baron) gets games to the mid game even.",
+    "sources": {
+     "dossiers": [
+      "research/teams/FURIA.md",
+      "research/teams/MVK.md"
+     ],
+     "links": [
+      {
+       "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2889/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://rdy.gg/en/lol/tournaments/117170",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LCP_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-3",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://mid.gg/esports/worlds-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "KC",
+    "team_b": "FURIA",
+    "bo": 5,
+    "p_game_a": 0.5421,
+    "p_series_a": 0.5635,
+    "winner": "KC",
+    "p_winner": 0.5635,
+    "score": "3-0",
+    "p_score": 0.2076,
+    "tier": "COIN FLIP",
+    "exact": {
+     "3-0": 0.2076,
+     "0-3": 0.1394,
+     "3-1": 0.2018,
+     "1-3": 0.1588,
+     "3-2": 0.1542,
+     "2-3": 0.1382
+    },
+    "id": "PI-WM",
+    "stage": "Play-In winners' match (predicted pairing)",
+    "time": {
+     "venue": "16/10/2026 11:00 PDT",
+     "nz": "17/10/2026 07:00 NZDT",
+     "start_utc": "2026-10-16T18:00:00+00:00"
+    },
+    "note": "Pairing depends on R1 results; time slot order on 16/10 not confirmed.",
+    "key_matchup": "Bot lane: Caliste/Busio (KC; Caliste KDA 5.13, 28.7% DMG domestically) vs Ayu/JoJo (FURIA; JoJo GD@15 +190, KP 73.4%). FURIA's international bot lane numbers collapsed at MSI (Ayu KDA 3.2), which is where KC should push.",
+    "draft_angle": "Both teams want skirmish junglers (Yike Vi, Tatu Xin Zhao). KC's international pool shifts (Yike Naafiri/Wukong/Qiyana) give them more Fearless depth.",
+    "form_context": "No 2026 head-to-head. LEC vs CBLOL in 2026: 1-0 (G2 1-0 FURIA at EWC). FURIA 0-12 in games vs LCK/LPL/LEC teams this year; KC 11-12 in international games.",
+    "what_flips": "FURIA's early aggression (60% first blood, 70% herald) against KC's late-game baron problems: if FURIA get ahead at 15, KC have shown they can throw leads internationally.",
+    "sources": {
+     "dossiers": [
+      "research/teams/KC.md",
+      "research/teams/FURIA.md"
+     ],
+     "links": [
+      {
+       "url": "https://gol.gg/teams/team-stats/2899/split-ALL/tournament-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/players/player-stats/4900/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/MSI%202026/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2889/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://rdy.gg/en/lol/tournaments/117170",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "C9",
+    "team_b": "MVK",
+    "bo": 5,
+    "p_game_a": 0.6954,
+    "p_series_a": 0.7825,
+    "winner": "C9",
+    "p_winner": 0.7825,
+    "score": "3-0",
+    "p_score": 0.3794,
+    "tier": "LOCK",
+    "exact": {
+     "3-0": 0.3794,
+     "0-3": 0.0532,
+     "3-1": 0.257,
+     "1-3": 0.0789,
+     "3-2": 0.1461,
+     "2-3": 0.0854
+    },
+    "id": "PI-EM",
+    "stage": "Play-In elimination match (predicted pairing)",
+    "time": {
+     "venue": "16/10/2026 16:00 PDT",
+     "nz": "17/10/2026 12:00 NZDT",
+     "start_utc": "2026-10-16T23:00:00+00:00"
+    },
+    "note": "Pairing depends on R1 results; time slot order on 16/10 not confirmed.",
+    "key_matchup": "Support: Vulcan (C9, KDA 7.3, Spring MVP) vs SiuLoong (MVK, KDA 3.20). C9's macro and dragon control should beat MVK's 'volatile map movement'.",
+    "draft_angle": "C9 can ban out Blaber's Nocturne problems by first-picking it; MVK draft data UNKNOWN.",
+    "form_context": "Loser goes home. C9 have played FURIA six times this year; MVK have not played since 29/08.",
+    "what_flips": "If MVK's scrappy Bo5 profile (3-2 wins over CFO, DCG, GAM) meets a tilted C9 after an R1 loss, the series goes long.",
+    "sources": {
+     "dossiers": [
+      "research/teams/C9.md",
+      "research/teams/MVK.md"
+     ],
+     "links": [
+      {
+       "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://rdy.gg/en/lol/tournaments/117322",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.liquipedia.net/leagueoflegends/LCS/2026/Lock-In",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LCP_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-3",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://mid.gg/esports/worlds-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "FURIA",
+    "team_b": "C9",
+    "bo": 5,
+    "p_game_a": 0.5409,
+    "p_series_a": 0.5617,
+    "winner": "FURIA",
+    "p_winner": 0.5617,
+    "score": "3-0",
+    "p_score": 0.2065,
+    "tier": "COIN FLIP",
+    "exact": {
+     "3-0": 0.2065,
+     "0-3": 0.1402,
+     "3-1": 0.2012,
+     "1-3": 0.1595,
+     "3-2": 0.154,
+     "2-3": 0.1386
+    },
+    "id": "PI-LF",
+    "stage": "Play-In lower final (predicted pairing)",
+    "time": {
+     "venue": "17/10/2026 11:00 PDT",
+     "nz": "18/10/2026 07:00 NZDT",
+     "start_utc": "2026-10-17T18:00:00+00:00"
+    },
+    "note": null,
+    "key_matchup": "C9's Blaber vs FURIA's Tatu again: FURIA won all 2026 meetings (Americas Cup 2-0 and 3-0).",
+    "draft_angle": "FURIA have seen C9's drafts in three formats this year; C9's Nocturne/Naafiri jungle plan was solved at the Americas Cup.",
+    "form_context": "FURIA lead the 2026 head-to-head 2-0 in series (5-0 in games). CBLOL vs LCS overall in 2026: 4-4 in series.",
+    "what_flips": "C9 have improved since March (Spring MVP Vulcan, 7-0 Spring regular season); a Bo5 in LA with a home crowd is not the Americas Cup.",
+    "sources": {
+     "dossiers": [
+      "research/teams/FURIA.md",
+      "research/teams/C9.md"
+     ],
+     "links": [
+      {
+       "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2889/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://rdy.gg/en/lol/tournaments/117170",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://rdy.gg/en/lol/tournaments/117322",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.liquipedia.net/leagueoflegends/LCS/2026/Lock-In",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "KC",
+    "team_b": "FURIA",
+    "bo": 5,
+    "p_game_a": 0.5421,
+    "p_series_a": 0.5635,
+    "winner": "KC",
+    "p_winner": 0.5635,
+    "score": "3-0",
+    "p_score": 0.2076,
+    "tier": "COIN FLIP",
+    "exact": {
+     "3-0": 0.2076,
+     "0-3": 0.1394,
+     "3-1": 0.2018,
+     "1-3": 0.1588,
+     "3-2": 0.1542,
+     "2-3": 0.1382
+    },
+    "id": "PI-GF",
+    "stage": "Play-In final (predicted pairing)",
+    "time": {
+     "venue": "18/10/2026 11:00 PDT",
+     "nz": "19/10/2026 07:00 NZDT",
+     "start_utc": "2026-10-18T18:00:00+00:00"
+    },
+    "note": "Bracket reset not mentioned in any source (UNKNOWN); assumed none.",
+    "key_matchup": "Same as the winners' match: KC's top-jungle early game (Canna +253, Yike Vi) vs FURIA's early skirmishing. Whoever wins the 15-minute gold race likely wins the game; KC's WR when ahead @15 is ~77% domestically.",
+    "draft_angle": "Fifth meeting of Fearless pools for each team by now; KC's deeper sampled pools (13-19 champions per player) matter more in a rematch Bo5.",
+    "form_context": "Model has KC as the Play-In favourite at 44% (FURIA 35%, C9 20%, MVK 1%).",
+    "what_flips": "A reverse sweep run from FURIA through the lower bracket would mean their domestic peak form has carried over; that is the main way the 35% hits.",
+    "sources": {
+     "dossiers": [
+      "research/teams/KC.md",
+      "research/teams/FURIA.md"
+     ],
+     "links": [
+      {
+       "url": "https://gol.gg/teams/team-stats/2899/split-ALL/tournament-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/players/player-stats/4900/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/MSI%202026/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2889/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://rdy.gg/en/lol/tournaments/117170",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   }
+  ],
+  "predicted_winner": "KC",
+  "p_winner_exact": {
+   "KC": 0.4412,
+   "FURIA": 0.347,
+   "C9": 0.1983,
+   "MVK": 0.0135
+  },
+  "all_pairings": {
+   "KC-C9": {
+    "team_a": "KC",
+    "team_b": "C9",
+    "bo": 5,
+    "p_game_a": 0.5827,
+    "p_series_a": 0.6241,
+    "winner": "KC",
+    "p_winner": 0.6241,
+    "score": "3-0",
+    "p_score": 0.2466,
+    "tier": "LEAN",
+    "exact": {
+     "3-0": 0.2466,
+     "0-3": 0.1121,
+     "3-1": 0.2203,
+     "1-3": 0.1372,
+     "3-2": 0.1571,
+     "2-3": 0.1267
+    }
+   },
+   "KC-FURIA": {
+    "team_a": "KC",
+    "team_b": "FURIA",
+    "bo": 5,
+    "p_game_a": 0.5421,
+    "p_series_a": 0.5635,
+    "winner": "KC",
+    "p_winner": 0.5635,
+    "score": "3-0",
+    "p_score": 0.2076,
+    "tier": "COIN FLIP",
+    "exact": {
+     "3-0": 0.2076,
+     "0-3": 0.1394,
+     "3-1": 0.2018,
+     "1-3": 0.1588,
+     "3-2": 0.1542,
+     "2-3": 0.1382
+    }
+   },
+   "KC-MVK": {
+    "team_a": "KC",
+    "team_b": "MVK",
+    "bo": 5,
+    "p_game_a": 0.7625,
+    "p_series_a": 0.8644,
+    "winner": "KC",
+    "p_winner": 0.8644,
+    "score": "3-0",
+    "p_score": 0.4788,
+    "tier": "LOCK",
+    "exact": {
+     "3-0": 0.4788,
+     "0-3": 0.0292,
+     "3-1": 0.2612,
+     "1-3": 0.0486,
+     "3-2": 0.1243,
+     "2-3": 0.0578
+    }
+   },
+   "C9-FURIA": {
+    "team_a": "C9",
+    "team_b": "FURIA",
+    "bo": 5,
+    "p_game_a": 0.4591,
+    "p_series_a": 0.4383,
+    "winner": "FURIA",
+    "p_winner": 0.5617,
+    "score": "3-0",
+    "p_score": 0.2065,
+    "tier": "COIN FLIP",
+    "exact": {
+     "3-0": 0.1402,
+     "0-3": 0.2065,
+     "3-1": 0.1595,
+     "1-3": 0.2012,
+     "3-2": 0.1386,
+     "2-3": 0.154
+    }
+   },
+   "C9-MVK": {
+    "team_a": "C9",
+    "team_b": "MVK",
+    "bo": 5,
+    "p_game_a": 0.6954,
+    "p_series_a": 0.7825,
+    "winner": "C9",
+    "p_winner": 0.7825,
+    "score": "3-0",
+    "p_score": 0.3794,
+    "tier": "LOCK",
+    "exact": {
+     "3-0": 0.3794,
+     "0-3": 0.0532,
+     "3-1": 0.257,
+     "1-3": 0.0789,
+     "3-2": 0.1461,
+     "2-3": 0.0854
+    }
+   },
+   "FURIA-MVK": {
+    "team_a": "FURIA",
+    "team_b": "MVK",
+    "bo": 5,
+    "p_game_a": 0.7275,
+    "p_series_a": 0.8231,
+    "winner": "FURIA",
+    "p_winner": 0.8231,
+    "score": "3-0",
+    "p_score": 0.4248,
+    "tier": "LOCK",
+    "exact": {
+     "3-0": 0.4248,
+     "0-3": 0.0408,
+     "3-1": 0.2612,
+     "1-3": 0.0638,
+     "3-2": 0.1372,
+     "2-3": 0.0722
+    }
+   }
+  }
+ },
+ "swiss": {
+  "draw_published": false,
+  "assumption": "Round 1 draw (due 18/10) not published: records are averaged over all legal draws (Tier1 v Tier4, Tier2 v Tier3, no same-region), conditional on the predicted Play-In winner KC.",
+  "predicted": [
+   {
+    "team": "GEN",
+    "predicted_record": "3-0",
+    "p_record": 0.3513,
+    "p_advance": 0.8766,
+    "dist": {
+     "3-0": 0.3513,
+     "3-1": 0.3232,
+     "3-2": 0.2021,
+     "2-3": 0.0683,
+     "1-3": 0.0415,
+     "0-3": 0.0136
+    }
+   },
+   {
+    "team": "T1",
+    "predicted_record": "3-0",
+    "p_record": 0.2554,
+    "p_advance": 0.8035,
+    "dist": {
+     "3-0": 0.2554,
+     "3-1": 0.3109,
+     "3-2": 0.2372,
+     "2-3": 0.1026,
+     "1-3": 0.0681,
+     "0-3": 0.0257
+    }
+   },
+   {
+    "team": "BLG",
+    "predicted_record": "3-1",
+    "p_record": 0.3052,
+    "p_advance": 0.7752,
+    "dist": {
+     "3-0": 0.2204,
+     "3-1": 0.3052,
+     "3-2": 0.2496,
+     "2-3": 0.1128,
+     "1-3": 0.0816,
+     "0-3": 0.0303
+    }
+   },
+   {
+    "team": "HLE",
+    "predicted_record": "3-1",
+    "p_record": 0.2926,
+    "p_advance": 0.7688,
+    "dist": {
+     "3-0": 0.2365,
+     "3-1": 0.2926,
+     "3-2": 0.2397,
+     "2-3": 0.1221,
+     "1-3": 0.081,
+     "0-3": 0.0281
+    }
+   },
+   {
+    "team": "DK",
+    "predicted_record": "3-1",
+    "p_record": 0.2763,
+    "p_advance": 0.7197,
+    "dist": {
+     "3-0": 0.1865,
+     "3-1": 0.2763,
+     "3-2": 0.2569,
+     "2-3": 0.1424,
+     "1-3": 0.097,
+     "0-3": 0.0408
+    }
+   },
+   {
+    "team": "AL",
+    "predicted_record": "3-2",
+    "p_record": 0.2346,
+    "p_advance": 0.6073,
+    "dist": {
+     "3-0": 0.1421,
+     "3-1": 0.2306,
+     "3-2": 0.2346,
+     "2-3": 0.1906,
+     "1-3": 0.1427,
+     "0-3": 0.0595
+    }
+   },
+   {
+    "team": "G2",
+    "predicted_record": "3-2",
+    "p_record": 0.2373,
+    "p_advance": 0.5932,
+    "dist": {
+     "3-0": 0.1337,
+     "3-1": 0.2222,
+     "3-2": 0.2373,
+     "2-3": 0.1932,
+     "1-3": 0.1473,
+     "0-3": 0.0663
+    }
+   },
+   {
+    "team": "IG",
+    "predicted_record": "3-2",
+    "p_record": 0.2458,
+    "p_advance": 0.5871,
+    "dist": {
+     "3-0": 0.1176,
+     "3-1": 0.2237,
+     "3-2": 0.2458,
+     "2-3": 0.1866,
+     "1-3": 0.1535,
+     "0-3": 0.0728
+    }
+   },
+   {
+    "team": "TLAW",
+    "predicted_record": "2-3",
+    "p_record": 0.2426,
+    "p_advance": 0.4196,
+    "dist": {
+     "3-0": 0.0754,
+     "3-1": 0.1555,
+     "3-2": 0.1887,
+     "2-3": 0.2426,
+     "1-3": 0.2222,
+     "0-3": 0.1156
+    }
+   },
+   {
+    "team": "TES",
+    "predicted_record": "2-3",
+    "p_record": 0.2451,
+    "p_advance": 0.4047,
+    "dist": {
+     "3-0": 0.0715,
+     "3-1": 0.1471,
+     "3-2": 0.1861,
+     "2-3": 0.2451,
+     "1-3": 0.2268,
+     "0-3": 0.1234
+    }
+   },
+   {
+    "team": "LYON",
+    "predicted_record": "2-3",
+    "p_record": 0.2468,
+    "p_advance": 0.372,
+    "dist": {
+     "3-0": 0.0593,
+     "3-1": 0.1358,
+     "3-2": 0.1769,
+     "2-3": 0.2468,
+     "1-3": 0.2427,
+     "0-3": 0.1386
+    }
+   },
+   {
+    "team": "KC",
+    "predicted_record": "1-3",
+    "p_record": 0.2669,
+    "p_advance": 0.3129,
+    "dist": {
+     "3-0": 0.045,
+     "3-1": 0.111,
+     "3-2": 0.1569,
+     "2-3": 0.2475,
+     "1-3": 0.2669,
+     "0-3": 0.1726
+    }
+   },
+   {
+    "team": "LOS",
+    "predicted_record": "1-3",
+    "p_record": 0.2894,
+    "p_advance": 0.2724,
+    "dist": {
+     "3-0": 0.0399,
+     "3-1": 0.0969,
+     "3-2": 0.1356,
+     "2-3": 0.256,
+     "1-3": 0.2894,
+     "0-3": 0.1821
+    }
+   },
+   {
+    "team": "MKOI",
+    "predicted_record": "1-3",
+    "p_record": 0.2945,
+    "p_advance": 0.2505,
+    "dist": {
+     "3-0": 0.0351,
+     "3-1": 0.0874,
+     "3-2": 0.128,
+     "2-3": 0.2526,
+     "1-3": 0.2945,
+     "0-3": 0.2024
+    }
+   },
+   {
+    "team": "TSW",
+    "predicted_record": "0-3",
+    "p_record": 0.2549,
+    "p_advance": 0.1823,
+    "dist": {
+     "3-0": 0.0242,
+     "3-1": 0.0624,
+     "3-2": 0.0957,
+     "2-3": 0.2414,
+     "1-3": 0.3215,
+     "0-3": 0.2549
+    }
+   },
+   {
+    "team": "CFO",
+    "predicted_record": "0-3",
+    "p_record": 0.4732,
+    "p_advance": 0.0543,
+    "dist": {
+     "3-0": 0.0061,
+     "3-1": 0.0193,
+     "3-2": 0.0289,
+     "2-3": 0.1493,
+     "1-3": 0.3232,
+     "0-3": 0.4732
+    }
+   }
+  ],
+  "qualifiers": [
+   "GEN",
+   "T1",
+   "BLG",
+   "HLE",
+   "DK",
+   "AL",
+   "G2",
+   "IG"
+  ]
+ },
+ "knockouts": {
+  "assumption": "QF draw (31/10) is random. Assumed draw: no same-region QFs and favourites spread out; the two 3-0 teams each face a 3-2 team as per the rules.",
+  "qf": [
+   {
+    "team_a": "GEN",
+    "team_b": "IG",
+    "bo": 5,
+    "p_game_a": 0.6526,
+    "p_series_a": 0.7246,
+    "winner": "GEN",
+    "p_winner": 0.7246,
+    "score": "3-0",
+    "p_score": 0.3243,
+    "tier": "LEAN",
+    "exact": {
+     "3-0": 0.3243,
+     "0-3": 0.0728,
+     "3-1": 0.2464,
+     "1-3": 0.1004,
+     "3-2": 0.1539,
+     "2-3": 0.1023
+    },
+    "id": "KO-QF1",
+    "stage": "Quarterfinal (assumed draw)",
+    "time": {
+     "venue": "03/11/2026 14:00 CST",
+     "nz": "04/11/2026 09:00 NZDT",
+     "start_utc": "2026-11-03T20:00:00+00:00"
+    },
+    "note": null,
+    "key_matchup": "Mid: Chovy (KDA 7.3, 62.6% KP in LCK playoffs) vs Rookie (858 DPM, 8.5 CSM in LPL Split 3). GEN also have the edge top: Kiin +354 GD@15, +7.5 CSD@15.",
+    "draft_angle": "Opponents ban Olaf (73%), Cassiopeia (64%) and Ezreal (55%) against GEN; IG's Wei lives on Qiyana/Jarvan IV/Wukong, and GEN ban Jarvan IV 36%.",
+    "form_context": "GEN: LCK champions, 74.2% Nashor control, 85.7% WR when ahead @15. IG: peaking (Split 3 3rd, Regional Finals win) after weak Splits 1-2 (34.9%, 39.5%). No 2026 head-to-head.",
+    "what_flips": "IG's hyper-aggressive baron-pit engages. GEN's playoff losses came in baron fights (both games lost to HLE), so a coin-flip baron fight is IG's route.",
+    "sources": {
+     "dossiers": [
+      "research/teams/GEN.md",
+      "research/teams/IG.md"
+     ],
+     "links": [
+      {
+       "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://dotesports.com/league-of-legends/news/geng-beat-hle-lck-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/entertainment/news/79110-gen-g-are-the-first-lck-2026-grand-finals-spot-and-worlds-2026-seeding",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/articles/top-esports-secure-lpl-third-worlds-seed-over-invictus-gaming/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://mid.gg/esports/teams/invictus-gaming",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "BLG",
+    "team_b": "DK",
+    "bo": 5,
+    "p_game_a": 0.5305,
+    "p_series_a": 0.5461,
+    "winner": "BLG",
+    "p_winner": 0.5461,
+    "score": "3-0",
+    "p_score": 0.1972,
+    "tier": "COIN FLIP",
+    "exact": {
+     "3-0": 0.1972,
+     "0-3": 0.1478,
+     "3-1": 0.1962,
+     "1-3": 0.165,
+     "3-2": 0.1527,
+     "2-3": 0.1411
+    },
+    "id": "KO-QF2",
+    "stage": "Quarterfinal (assumed draw)",
+    "time": {
+     "venue": "04/11/2026 14:00 CST",
+     "nz": "05/11/2026 09:00 NZDT",
+     "start_utc": "2026-11-04T20:00:00+00:00"
+    },
+    "note": null,
+    "key_matchup": "Bot lane: Viper (BLG, 741 DPM at MSI but GD@15 -514) vs Smash (DK, +443 GD@15, 28.5% DMG). Top: Bin's lane dominance (+341 GD@15 at MSI) vs Siwoo (KP 38.2%, Jayce 0-3).",
+    "draft_angle": "DK ban Nocturne 100% and Kalista 44%; opponents ban Vi 56% and Orianna 44% vs DK. BLG's top-lane comforts (Renekton/Gnar/K'Sante) face K'Sante's 26.20 nerf.",
+    "form_context": "DK beat BLG 2-1 in the EWC QF (17/07) on the way to the title. BLG 8-2 in 2026 international series, best of any team.",
+    "what_flips": "DK's poor conversion (46.2% WR when ahead @15). If BLG stay close at 15, BLG's late teamfighting ('most lethal teamfight roster') is the better closing tool.",
+    "sources": {
+     "dossiers": [
+      "research/teams/BLG.md",
+      "research/teams/DK.md"
+     ],
+     "links": [
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://mid.gg/esports/teams/bilibili-gaming",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79107-dplus-join-hanwha-life-esports-gen-g-and-t1-to-represent-the-lck-at-worlds-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2802/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79111-t1-dk",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "T1",
+    "team_b": "AL",
+    "bo": 5,
+    "p_game_a": 0.6097,
+    "p_series_a": 0.6636,
+    "winner": "T1",
+    "p_winner": 0.6636,
+    "score": "3-0",
+    "p_score": 0.2749,
+    "tier": "LEAN",
+    "exact": {
+     "3-0": 0.2749,
+     "0-3": 0.0958,
+     "3-1": 0.2315,
+     "1-3": 0.1228,
+     "3-2": 0.1572,
+     "2-3": 0.1178
+    },
+    "id": "KO-QF3",
+    "stage": "Quarterfinal (assumed draw)",
+    "time": {
+     "venue": "05/11/2026 14:00 CST",
+     "nz": "06/11/2026 09:00 NZDT",
+     "start_utc": "2026-11-05T20:00:00+00:00"
+    },
+    "note": null,
+    "key_matchup": "Jungle: Oner (GD@15 -325 in LCK playoffs, Naafiri 1-3) vs Tarzan (AL, KDA 5.6, 77% KP). AL's Tarzan-Kael engage is how they snowball; T1's early game was the worst of the LCK four (GD@15 -468).",
+    "draft_angle": "Opponents ban Bard 78% (Keria) and Nocturne 61% (Oner) vs T1. Patch 26.20 buffs Lucian (Peyz) and Tahm Kench/Neeko (Keria). AL's Shanks plays Cassiopeia, nerfed again in 26.20.",
+    "form_context": "Rematch of the 2025 Worlds QF (T1 3-2 AL). T1 22-11 in 2026 international games; AL beat BLG 3-1 for the LPL title after six straight series losses to them, then lost 0-2 to KC at EWC.",
+    "what_flips": "If AL's early snowball lands (Grand Final wins at 30-31 minutes with 18-8, 20-1, 22-5 kill leads), T1's slow-start profile is exactly what loses Bo5s.",
+    "sources": {
+     "dossiers": [
+      "research/teams/T1.md",
+      "research/teams/AL.md"
+     ],
+     "links": [
+      {
+       "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2809/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79111-t1-dk",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://mid.gg/esports/teams/anyones-legend",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "HLE",
+    "team_b": "G2",
+    "bo": 5,
+    "p_game_a": 0.5864,
+    "p_series_a": 0.6295,
+    "winner": "HLE",
+    "p_winner": 0.6295,
+    "score": "3-0",
+    "p_score": 0.2503,
+    "tier": "LEAN",
+    "exact": {
+     "3-0": 0.2503,
+     "0-3": 0.1098,
+     "3-1": 0.2219,
+     "1-3": 0.1352,
+     "3-2": 0.1572,
+     "2-3": 0.1255
+    },
+    "id": "KO-QF4",
+    "stage": "Quarterfinal (assumed draw)",
+    "time": {
+     "venue": "06/11/2026 14:00 CST",
+     "nz": "07/11/2026 09:00 NZDT",
+     "start_utc": "2026-11-06T20:00:00+00:00"
+    },
+    "note": null,
+    "key_matchup": "Mid: Zeka (25.1% DMG, 5 solo kills) vs Caps (domestic GD@15 +501 but international +21). Top: BrokenBlade's international GD@15 -284 vs Zeus.",
+    "draft_angle": "G2 are tipped as the best Fearless team for unconventional picks; opponents ban Bard 32% and Poppy 29% vs G2 internationally. HLE ban Cassiopeia 59%, Olaf 47%, Bard 47%.",
+    "form_context": "HLE beat G2 3-0 at MSI (05/07) on the way to the title. G2 6-6 in 2026 international series; G2 red side 4-14 internationally.",
+    "what_flips": "HLE convert only 62.5% of games when ahead @15. G2's draft surprises plus side selection (G2 13-4 on blue internationally) can steal games.",
+    "sources": {
+     "dossiers": [
+      "research/teams/HLE.md",
+      "research/teams/G2.md"
+     ],
+     "links": [
+      {
+       "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2805/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2897/split-ALL/tournament-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/players/player-stats/802/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/2026%20First%20Stand/",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   }
+  ],
+  "sf": [
+   {
+    "team_a": "GEN",
+    "team_b": "BLG",
+    "bo": 5,
+    "p_game_a": 0.5672,
+    "p_series_a": 0.6011,
+    "winner": "GEN",
+    "p_winner": 0.6011,
+    "score": "3-0",
+    "p_score": 0.2312,
+    "tier": "LEAN",
+    "exact": {
+     "3-0": 0.2312,
+     "0-3": 0.1221,
+     "3-1": 0.2135,
+     "1-3": 0.1455,
+     "3-2": 0.1564,
+     "2-3": 0.1313
+    },
+    "id": "KO-SF1",
+    "stage": "Semifinal",
+    "time": {
+     "venue": "07/11/2026 14:00 CST",
+     "nz": "08/11/2026 09:00 NZDT",
+     "start_utc": "2026-11-07T20:00:00+00:00"
+    },
+    "note": null,
+    "key_matchup": "ADC: Ruler (31.7% DMG, 25.4% gold) vs Viper. Top: Kiin (+354 GD@15) vs Bin (+341 at MSI): the two best lane-phase top laners in the field by these samples.",
+    "draft_angle": "BLG's Knight (KDA 7.2 at MSI, Ryze/Aurora/Viktor) vs Chovy's Ryze/Akali/Syndra overlap: Ryze is a likely early ban or first pick.",
+    "form_context": "No 2026 head-to-head. LCK vs LPL in 2026: 5-5 in series, 16-14 in games.",
+    "what_flips": "BLG's international pedigree this year (First Stand title, MSI final) vs GEN's (0-3 G2, 1-2 DK). If GEN's international underperformance is real, this is where it bites.",
+    "sources": {
+     "dossiers": [
+      "research/teams/GEN.md",
+      "research/teams/BLG.md"
+     ],
+     "links": [
+      {
+       "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://dotesports.com/league-of-legends/news/geng-beat-hle-lck-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/entertainment/news/79110-gen-g-are-the-first-lck-2026-grand-finals-spot-and-worlds-2026-seeding",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://mid.gg/esports/teams/bilibili-gaming",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   },
+   {
+    "team_a": "T1",
+    "team_b": "HLE",
+    "bo": 5,
+    "p_game_a": 0.5253,
+    "p_series_a": 0.5383,
+    "winner": "T1",
+    "p_winner": 0.5383,
+    "score": "3-1",
+    "p_score": 0.1936,
+    "tier": "COIN FLIP",
+    "exact": {
+     "3-0": 0.1927,
+     "0-3": 0.1517,
+     "3-1": 0.1936,
+     "1-3": 0.1677,
+     "3-2": 0.152,
+     "2-3": 0.1424
+    },
+    "id": "KO-SF2",
+    "stage": "Semifinal",
+    "time": {
+     "venue": "08/11/2026 14:00 CST",
+     "nz": "09/11/2026 09:00 NZDT",
+     "start_utc": "2026-11-08T20:00:00+00:00"
+    },
+    "note": null,
+    "key_matchup": "Bot: Peyz (+401 GD@15, 30.3% DMG) vs Gumayusi (his former T1 teammate; 27.5% DMG). Crystal Ball also asks who gets more kills.",
+    "draft_angle": "T1 ban Orianna 44% and Syndra 39%; HLE ban Bard 47% (Keria). Both teams know each other's pools from three 2026 Bo5/Bo3 series.",
+    "form_context": "2026 series: HLE 3-2 and 3-1 over T1 in LCK playoffs, T1 2-0 HLE at EWC (17/07). HLE lead 2-1.",
+    "what_flips": "The model favours T1 only because of the +0.20 pedigree/meta adjustment; without it HLE are slight favourites. HLE winning means the adjustment was wrong.",
+    "sources": {
+     "dossiers": [
+      "research/teams/T1.md",
+      "research/teams/HLE.md"
+     ],
+     "links": [
+      {
+       "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2809/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79111-t1-dk",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      },
+      {
+       "url": "https://gol.gg/teams/team-stats/2805/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+       "accessed": "15/10/2026"
+      }
+     ],
+     "results": "data/results_2026.json, data/fragments/*_results.json"
+    }
+   }
+  ],
+  "final": {
+   "team_a": "GEN",
+   "team_b": "T1",
+   "bo": 5,
+   "p_game_a": 0.5523,
+   "p_series_a": 0.5788,
+   "winner": "GEN",
+   "p_winner": 0.5788,
+   "score": "3-0",
+   "p_score": 0.217,
+   "tier": "COIN FLIP",
+   "exact": {
+    "3-0": 0.217,
+    "0-3": 0.1322,
+    "3-1": 0.2066,
+    "1-3": 0.1534,
+    "3-2": 0.1552,
+    "2-3": 0.1356
+   },
+   "id": "KO-F",
+   "stage": "Final",
+   "time": {
+    "venue": "14/11/2026 11:00 EST (Brooklyn)",
+    "nz": "15/11/2026 05:00 NZDT",
+    "start_utc": "2026-11-14T16:00:00+00:00"
+   },
+   "note": null,
+   "key_matchup": "Mid: Chovy vs Faker. GEN's macro control (61.7% dragon, 74.2% Nashor) against T1's late-game teamfighting (Peyz pentakill G1 vs DK).",
+   "draft_angle": "GEN's opponents target Olaf/Cassiopeia/Ezreal; T1's target Bard/Nocturne. Five games of Fearless deep into a 14-series tournament: whichever team has more untouched comfort picks left by games 4-5.",
+   "form_context": "2026 head-to-head 1-1: T1 3-2 GEN in Road to MSI, GEN 2-1 T1 for 3rd at EWC (19/07). T1 won the last three world titles.",
+   "what_flips": "T1's Worlds pedigree is the one thing the model only half-counts. A T1 title would be the fourth straight from a non-first seed.",
+   "sources": {
+    "dossiers": [
+     "research/teams/GEN.md",
+     "research/teams/T1.md"
+    ],
+    "links": [
+     {
+      "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://dotesports.com/league-of-legends/news/geng-beat-hle-lck-2026",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://www.gosugamers.net/entertainment/news/79110-gen-g-are-the-first-lck-2026-grand-finals-spot-and-worlds-2026-seeding",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://gol.gg/teams/team-stats/2809/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://www.gosugamers.net/lol/news/79111-t1-dk",
+      "accessed": "15/10/2026"
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+      "accessed": "15/10/2026"
+     }
+    ],
+    "results": "data/results_2026.json, data/fragments/*_results.json"
+   }
+  }
+ },
+ "champion": "GEN",
+ "champion_probabilities": {
+  "GEN": 0.2848,
+  "T1": 0.1709,
+  "BLG": 0.142,
+  "HLE": 0.1317,
+  "DK": 0.1007,
+  "IG": 0.0444,
+  "AL": 0.0437,
+  "G2": 0.0427,
+  "TLAW": 0.0115,
+  "TES": 0.0102,
+  "LYON": 0.0082,
+  "LOS": 0.0027,
+  "KC": 0.0023,
+  "MKOI": 0.0021,
+  "TSW": 0.0009,
+  "FURIA": 0.0008,
+  "C9": 0.0002,
+  "CFO": 0.0,
+  "MVK": 0.0
+ },
+ "sim_summary": {
+  "GEN": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.3517,
+    "3-1": 0.3255,
+    "3-2": 0.2017,
+    "2-3": 0.0668,
+    "1-3": 0.0415,
+    "0-3": 0.0129
+   },
+   "p_advance": 0.8789,
+   "p_semis": 0.6344,
+   "p_final": 0.4326,
+   "p_champion": 0.2848
+  },
+  "T1": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.2544,
+    "3-1": 0.3124,
+    "3-2": 0.2385,
+    "2-3": 0.1022,
+    "1-3": 0.0677,
+    "0-3": 0.0248
+   },
+   "p_advance": 0.8053,
+   "p_semis": 0.5218,
+   "p_final": 0.3121,
+   "p_champion": 0.1709
+  },
+  "BLG": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.2234,
+    "3-1": 0.3035,
+    "3-2": 0.2497,
+    "2-3": 0.1142,
+    "1-3": 0.0794,
+    "0-3": 0.0298
+   },
+   "p_advance": 0.7766,
+   "p_semis": 0.4795,
+   "p_final": 0.2695,
+   "p_champion": 0.142
+  },
+  "HLE": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.2365,
+    "3-1": 0.2964,
+    "3-2": 0.2404,
+    "2-3": 0.1211,
+    "1-3": 0.0784,
+    "0-3": 0.0271
+   },
+   "p_advance": 0.7733,
+   "p_semis": 0.4699,
+   "p_final": 0.2606,
+   "p_champion": 0.1317
+  },
+  "DK": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.1882,
+    "3-1": 0.278,
+    "3-2": 0.2556,
+    "2-3": 0.1424,
+    "1-3": 0.0966,
+    "0-3": 0.0392
+   },
+   "p_advance": 0.7217,
+   "p_semis": 0.4094,
+   "p_final": 0.2111,
+   "p_champion": 0.1007
+  },
+  "IG": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.1167,
+    "3-1": 0.2247,
+    "3-2": 0.2497,
+    "2-3": 0.1863,
+    "1-3": 0.1512,
+    "0-3": 0.0715
+   },
+   "p_advance": 0.5911,
+   "p_semis": 0.2781,
+   "p_final": 0.1164,
+   "p_champion": 0.0444
+  },
+  "AL": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.1426,
+    "3-1": 0.2323,
+    "3-2": 0.2375,
+    "2-3": 0.1902,
+    "1-3": 0.1403,
+    "0-3": 0.0571
+   },
+   "p_advance": 0.6123,
+   "p_semis": 0.2848,
+   "p_final": 0.1172,
+   "p_champion": 0.0437
+  },
+  "G2": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.1368,
+    "3-1": 0.2276,
+    "3-2": 0.2392,
+    "2-3": 0.1925,
+    "1-3": 0.1413,
+    "0-3": 0.0627
+   },
+   "p_advance": 0.6036,
+   "p_semis": 0.2807,
+   "p_final": 0.1147,
+   "p_champion": 0.0427
+  },
+  "TLAW": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.0757,
+    "3-1": 0.1557,
+    "3-2": 0.1918,
+    "2-3": 0.2419,
+    "1-3": 0.221,
+    "0-3": 0.1139
+   },
+   "p_advance": 0.4231,
+   "p_semis": 0.1441,
+   "p_final": 0.0423,
+   "p_champion": 0.0115
+  },
+  "TES": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.0718,
+    "3-1": 0.1472,
+    "3-2": 0.1875,
+    "2-3": 0.2471,
+    "1-3": 0.2261,
+    "0-3": 0.1202
+   },
+   "p_advance": 0.4066,
+   "p_semis": 0.135,
+   "p_final": 0.0398,
+   "p_champion": 0.0102
+  },
+  "LYON": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.0598,
+    "3-1": 0.1356,
+    "3-2": 0.1798,
+    "2-3": 0.2496,
+    "1-3": 0.2402,
+    "0-3": 0.135
+   },
+   "p_advance": 0.3753,
+   "p_semis": 0.1205,
+   "p_final": 0.033,
+   "p_champion": 0.0082
+  },
+  "LOS": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.0406,
+    "3-1": 0.0972,
+    "3-2": 0.1382,
+    "2-3": 0.2572,
+    "1-3": 0.2865,
+    "0-3": 0.1803
+   },
+   "p_advance": 0.276,
+   "p_semis": 0.0705,
+   "p_final": 0.0152,
+   "p_champion": 0.0027
+  },
+  "KC": {
+   "p_playin_win": 0.4413,
+   "swiss": {
+    "3-0": 0.0199,
+    "3-1": 0.049,
+    "3-2": 0.0693,
+    "2-3": 0.1092,
+    "1-3": 0.1178,
+    "0-3": 0.0762
+   },
+   "p_advance": 0.1381,
+   "p_semis": 0.0399,
+   "p_final": 0.0104,
+   "p_champion": 0.0023
+  },
+  "MKOI": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.0358,
+    "3-1": 0.0904,
+    "3-2": 0.1303,
+    "2-3": 0.2515,
+    "1-3": 0.2931,
+    "0-3": 0.1989
+   },
+   "p_advance": 0.2565,
+   "p_semis": 0.0625,
+   "p_final": 0.0129,
+   "p_champion": 0.0021
+  },
+  "TSW": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.025,
+    "3-1": 0.0628,
+    "3-2": 0.096,
+    "2-3": 0.2431,
+    "1-3": 0.3251,
+    "0-3": 0.2481
+   },
+   "p_advance": 0.1837,
+   "p_semis": 0.0352,
+   "p_final": 0.0061,
+   "p_champion": 0.0009
+  },
+  "FURIA": {
+   "p_playin_win": 0.3483,
+   "swiss": {
+    "3-0": 0.0111,
+    "3-1": 0.0301,
+    "3-2": 0.0443,
+    "2-3": 0.0853,
+    "1-3": 0.1021,
+    "0-3": 0.0755
+   },
+   "p_advance": 0.0855,
+   "p_semis": 0.0209,
+   "p_final": 0.0041,
+   "p_champion": 0.0008
+  },
+  "C9": {
+   "p_playin_win": 0.1972,
+   "swiss": {
+    "3-0": 0.0044,
+    "3-1": 0.0124,
+    "3-2": 0.0191,
+    "2-3": 0.045,
+    "1-3": 0.0639,
+    "0-3": 0.0524
+   },
+   "p_advance": 0.036,
+   "p_semis": 0.0074,
+   "p_final": 0.0013,
+   "p_champion": 0.0002
+  },
+  "CFO": {
+   "p_playin_win": null,
+   "swiss": {
+    "3-0": 0.0057,
+    "3-1": 0.0191,
+    "3-2": 0.0312,
+    "2-3": 0.1528,
+    "1-3": 0.324,
+    "0-3": 0.4672
+   },
+   "p_advance": 0.0561,
+   "p_semis": 0.0055,
+   "p_final": 0.0006,
+   "p_champion": 0.0
+  },
+  "MVK": {
+   "p_playin_win": 0.0132,
+   "swiss": {
+    "3-0": 0.0,
+    "3-1": 0.0001,
+    "3-2": 0.0002,
+    "2-3": 0.0016,
+    "1-3": 0.004,
+    "0-3": 0.0072
+   },
+   "p_advance": 0.0003,
+   "p_semis": 0.0,
+   "p_final": 0.0,
+   "p_champion": 0.0
+  }
+ },
+ "crystal_ball_model": {
+  "n_regions_in_ko": {
+   "2": 0.0068,
+   "3": 0.2225,
+   "4": 0.537,
+   "5": 0.2194,
+   "6": 0.0143
+  },
+  "p_lcs_team_in_ko": 0.6754,
+  "t1_vs_hle_place": {
+   "T1": 0.485,
+   "HLE": 0.4126,
+   "tie": 0.1024
+  }
+ },
+ "finals_mvp": {
+  "pick": "Ruler (GEN, ADC)",
+  "reason": "Gen.G's win condition is Ruler as the carry (31.7% damage, 25.4% gold share in LCK playoffs) and he was LCK Finals MVP on 13/09/2026. Chovy is the close alternative."
+ },
+ "single_biggest_risk": {
+  "assumption": "That the LCK is clearly the strongest region (+0.39 logit over the LPL after temperature scaling, worth about 60-40 per game between equal teams) and Gen.G its best team. Four of the model's top five and the predicted champion depend on it, yet LCK vs LPL was only 5-5 in 2026 series and Gen.G's own international record (0-3 G2, 1-2 DK) was weak.",
+  "early_detection": "Watch LCK vs LPL results in Swiss rounds 1-3 (Bo1s from 23/10). If LPL teams win the majority of those cross-region matches, and/or Gen.G drops a Bo1 to a Tier 4 team, the region gap is overstated and the staged Swiss/Knockout re-run should shrink it."
+ },
+ "crystal_ball": [
+  {
+   "q": 1,
+   "question": "Which champion will have the highest presence?",
+   "answer": "Orianna",
+   "confidence": "LOW",
+   "reason": "Orianna leads presence across 2026 for Worlds teams (71.8%, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) and led MSI 2026 (64.8%, gol.gg). Cassiopeia's 85.6% came only from domestic playoffs before her 26.20 nerf, and she was 52.1% at MSI. Close call; Cassiopeia is the alternative."
+  },
+  {
+   "q": 2,
+   "question": "Which champion will have the highest win rate (min 5 games)?",
+   "answer": "Camille",
+   "confidence": "LOW",
+   "reason": "60.0% WR (27-18) domestically as a top/support flex, so it reaches 5 games; Qiyana (59.6%) is the alternative Hotspawn tips. High-variance question."
+  },
+  {
+   "q": 3,
+   "question": "Which champion will have the highest average deaths (min 5 games)?",
+   "answer": "Nautilus",
+   "confidence": "LOW",
+   "reason": "Engage supports die most; Nautilus is the most-picked pure engage support (35.9% presence) and leads LEC supports. Alternative: Alistar."
+  },
+  {
+   "q": 4,
+   "question": "Which pro will have the highest average KDA?",
+   "answer": "Knight",
+   "confidence": "LOW",
+   "reason": "Highest 2026 KDA among Worlds players (6.97, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) over a full-year sample; Chovy's 7.3 came from 11 playoff games. BLG's expected deep run also helps."
+  },
+  {
+   "q": 5,
+   "question": "Which pro will have the highest average damage per game?",
+   "answer": "Peyz",
+   "confidence": "MEDIUM",
+   "reason": "Leads 2026 damage per game for Worlds players (28,605, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) with a 30.3% damage share in LCK playoffs (gol.gg), on a team the model sends deep (P semis 52%)."
+  },
+  {
+   "q": 6,
+   "question": "Which pro will have the highest average kill participation?",
+   "answer": "Keria",
+   "confidence": "LOW",
+   "reason": "83.3% KP in LCK playoffs, highest of the LCK playoff samples. Alternatives: Vulcan (81.7%), Career (80.6%)."
+  },
+  {
+   "q": 7,
+   "question": "Peyz vs Gumayusi: more total kills?",
+   "answer": "Peyz",
+   "confidence": "MEDIUM",
+   "reason": "Total kills depend on games played: model gives T1 a slightly deeper run (P semis 52% vs 47%), and Peyz takes more of his team's gold/damage (26.2% gold, 30.3% DMG vs 24.6%/27.5%)."
+  },
+  {
+   "q": 8,
+   "question": "Will Faker reach 700 career Worlds kills this year?",
+   "answer": "No",
+   "confidence": "HIGH",
+   "reason": "Needs 84 kills from 616. At his 2026 rate of 3.61 kills per game that is about 24 games (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)), close to the maximum a team can play at Worlds (roughly 26 for a champion going the distance in long series)."
+  },
+  {
+   "q": 9,
+   "question": "Will Teemo be picked at least once?",
+   "answer": "No",
+   "confidence": "HIGH",
+   "reason": "No Teemo in the 298-game domestic playoff sample or the 71-game MSI sample."
+  },
+  {
+   "q": 10,
+   "question": "How many unique champions will be picked?",
+   "answer": "110-114",
+   "confidence": "LOW",
+   "reason": "Bands are 0-99, 100-104, 105-109, 110-114, 115-119, 120+ (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)). Worlds will have about 100 games (6 Play-In Bo5s, 33 Swiss matches, 7 knockout Bo5s); Fearless Draft in every Bo3/Bo5 forces breadth, and Worlds teams used 142 champions across 2026."
+  },
+  {
+   "q": 11,
+   "question": "Will more games end before or after 32:00?",
+   "answer": "Before",
+   "confidence": "MEDIUM",
+   "reason": "52.1% of 2026 games by Worlds teams ended before 32:00 even though the average is 32:21 (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)): game length is right-skewed, so the median sits below the mean."
+  },
+  {
+   "q": 12,
+   "question": "Will any pro get 15+ kills in one game?",
+   "answer": "Yes",
+   "confidence": "LOW",
+   "reason": "A 15+ kill game happened in 23 of 1,590 games by Worlds teams in 2026 (1.45%, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)). Over about 100 Worlds games that is 77% at the full rate and about 50% at half the rate (Worlds games are closer, and nobody passed 14 at Worlds 2025, per Hotspawn). Lean Yes."
+  },
+  {
+   "q": 13,
+   "question": "Will any pro reach 450+ CS in one game?",
+   "answer": "Yes",
+   "confidence": "HIGH",
+   "reason": "450+ CS happened in 69 of 1,590 games by Worlds teams in 2026 (4.3%, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)); over about 100 Worlds games at least one is near-certain."
+  },
+  {
+   "q": 14,
+   "question": "What role will the Finals MVP play?",
+   "answer": "Bot (ADC)",
+   "confidence": "LOW",
+   "reason": "Follows the Finals MVP pick (Ruler)."
+  },
+  {
+   "q": 15,
+   "question": "How many different regions will be in Knockouts?",
+   "answer": "4",
+   "confidence": "LOW",
+   "reason": "Model: 4 regions 54%, 3 regions 22%, 5 regions 22%. History pulls the other way: knockouts averaged 3.3 regions from 2019 to 2025 (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)), so 3 is a strong alternative."
+  },
+  {
+   "q": 16,
+   "question": "Will a team from the LCS reach Knockouts?",
+   "answer": "Yes",
+   "confidence": "LOW",
+   "reason": "Model: 68% that TLAW, LYON or C9 reaches the quarterfinals. History is weaker: the LCS reached knockouts in 3 of the last 7 Worlds (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)). Blended, slightly above 50%."
+  },
+  {
+   "q": 17,
+   "question": "Which team places higher: HLE or T1?",
+   "answer": "T1",
+   "confidence": "LOW",
+   "reason": "Model: T1 higher 49%, HLE higher 41%, same placement 10%, but this rests on the +0.20 T1 adjustment. HLE lead the head-to-head 5-3 in series (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) and 2-1 in 2026. HLE is a reasonable switch."
+  },
+  {
+   "q": 18,
+   "question": "Which team will win the shortest game?",
+   "answer": "HLE",
+   "confidence": "MEDIUM",
+   "reason": "Most aggressive early-game top team (76.5% first blood, gol.gg), fastest win among Worlds teams in 2026 (19:20, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) and fastest game at MSI 2026 (22:16, Hotspawn)."
+  }
+ ]
+}

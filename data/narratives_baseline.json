@@ -1,0 +1,236 @@
+{
+ "C9|KC": {
+  "key_matchup": "Top lane: Canna (KC; domestic playoffs GD@15 +253, 16 solo kills, Rumble 8-2) vs Thanatos (C9; GD@15 -191, XPD@15 -223, Worlds debut). KC's early game runs through Canna and Yike (Vi 8-3); C9's jungler Blaber is the weakest early-game stat line of the four Play-In junglers on record (XPD@15 -496, CSD@15 -6.4).",
+  "draft_angle": "KC's comforts Rumble, Vi and Seraphine/Rakan (Busio 12-3 combined) are the bans to watch; opponents banned Rumble 22% domestically. C9 lean on Blaber Nocturne (2-0) but Nocturne is a top-2 ban everywhere. Fearless Bo5 tests C9's thinner sampled pools (>=8 champions per player in an 11-game sample) more than KC's 13-19.",
+  "form_context": "KC: 9-0 Summer regular season, then 1-3 G2 and 0-3 MSI in playoffs (1-6 in games), but EWC runner-up in July and 5-4 in 2026 international series. C9: 8-7 in Summer playoffs, ended with back-to-back 1-3 losses (TLAW, LYON). No 2026 head-to-head. If they meet again in the final it is a rematch of round 1 with KC coming from the winners' side.",
+  "what_flips": "KC's baron control collapses internationally (26%). If C9 survive lane and drag games past 30 minutes, Vulcan's playmaking (KDA 7.3, 81.7% KP) and C9's 56% dragon / 60% herald control can win the long game, plus a home crowd in LA."
+ },
+ "FURIA|MVK": {
+  "key_matchup": "Jungle tempo: Tatu (FURIA; Split 1 Finals MVP, GD@15 +191, KDA 5.0) vs Gury (MVK; KDA 2.95 across 78 games). MVK's weakest link is top (Kratos KDA 1.88), which is where FURIA's Guigo (10 solo kills in Split 2 playoffs) plays.",
+  "draft_angle": "No MVK champion data was found (UNKNOWN), so this is the series with the least draft information. FURIA's pools: Guigo wide (Ambessa/Olaf/Gwen), Tatu Xin Zhao/Trundle/Sejuani, Ayu Ezreal/Kalista/Yunara.",
+  "form_context": "FURIA: CBLOL runner-up after a 3-series lower-bracket run, 12-8 in games, but 0-4 in series at MSI/EWC. MVK: no official match since 29/08 (47 days), lost 0-3 and 1-3 to CFO in Split 3 playoffs. No head-to-head.",
+  "what_flips": "MVK win if FURIA's lane-phase problems (MSI CSD@15 -41) show up and MVK's first-baron conversion (82% WR when first baron) gets games to the mid game even."
+ },
+ "FURIA|KC": {
+  "key_matchup": "Same as the winners' match: KC's top-jungle early game (Canna +253, Yike Vi) vs FURIA's early skirmishing. Whoever wins the 15-minute gold race likely wins the game; KC's WR when ahead @15 is ~77% domestically.",
+  "draft_angle": "Fifth meeting of Fearless pools for each team by now; KC's deeper sampled pools (13-19 champions per player) matter more in a rematch Bo5.",
+  "form_context": "Model (v4) has KC as the Play-In favourite at 49% (C9 24%, FURIA 24%, MVK 3%). No 2026 head-to-head. LEC vs CBLOL in 2026: 1-0 (G2 1-0 FURIA at EWC). FURIA 0-12 in games vs LCK/LPL/LEC teams this year; KC 11-12 in international games.",
+  "what_flips": "A reverse sweep run from FURIA through the lower bracket would mean their domestic peak form has carried over; that is the main way the 35% hits."
+ },
+ "C9|MVK": {
+  "key_matchup": "Support: Vulcan (C9, KDA 7.3, Spring MVP) vs SiuLoong (MVK, KDA 3.20). C9's macro and dragon control should beat MVK's 'volatile map movement'.",
+  "draft_angle": "C9 can ban out Blaber's Nocturne problems by first-picking it; MVK draft data UNKNOWN.",
+  "form_context": "Loser goes home. C9 have played FURIA six times this year; MVK have not played since 29/08.",
+  "what_flips": "If MVK's scrappy Bo5 profile (3-2 wins over CFO, DCG, GAM) meets a tilted C9 after an R1 loss, the series goes long."
+ },
+ "C9|FURIA": {
+  "key_matchup": "C9's Blaber vs FURIA's Tatu again: FURIA won all 2026 meetings (Americas Cup 2-0 and 3-0).",
+  "draft_angle": "FURIA have seen C9's drafts in three formats this year; C9's Nocturne/Naafiri jungle plan was solved at the Americas Cup.",
+  "form_context": "FURIA lead the 2026 head-to-head 2-0 in series (5-0 in games, Americas Cup in March). The model now narrowly favours C9: C9's full LCS season (7-0 Spring regular season, 3rd in every playoff) rates above FURIA's CBLOL season once regular-season games count, and the CBLOL rates below the LCS as a region (0-12 in games vs LCK/LPL/LEC teams this year).",
+  "what_flips": "The head-to-head. FURIA have solved C9 twice this year with early aggression (60% first blood, 70% herald control); if that pattern holds a third time the model's regular-season edge for C9 means nothing."
+ },
+ "GEN|IG": {
+  "key_matchup": "Mid: Chovy (KDA 7.3, 62.6% KP in LCK playoffs) vs Rookie (858 DPM, 8.5 CSM in LPL Split 3). GEN also have the edge top: Kiin +354 GD@15, +7.5 CSD@15.",
+  "draft_angle": "Opponents ban Olaf (73%), Cassiopeia (64%) and Ezreal (55%) against GEN; IG's Wei lives on Qiyana/Jarvan IV/Wukong, and GEN ban Jarvan IV 36%.",
+  "form_context": "GEN: LCK champions, 74.2% Nashor control, 85.7% WR when ahead @15. IG: peaking (Split 3 3rd, Regional Finals win) after weak Splits 1-2 (34.9%, 39.5%). No 2026 head-to-head.",
+  "what_flips": "IG's hyper-aggressive baron-pit engages. GEN's playoff losses came in baron fights (both games lost to HLE), so a coin-flip baron fight is IG's route."
+ },
+ "BLG|DK": {
+  "key_matchup": "Bot lane: Viper (BLG, 741 DPM at MSI but GD@15 -514) vs Smash (DK, +443 GD@15, 28.5% DMG). Top: Bin's lane dominance (+341 GD@15 at MSI) vs Siwoo (KP 38.2%, Jayce 0-3).",
+  "draft_angle": "DK ban Nocturne 100% and Kalista 44%; opponents ban Vi 56% and Orianna 44% vs DK. BLG's top-lane comforts (Renekton/Gnar/K'Sante) face K'Sante's 26.20 nerf.",
+  "form_context": "DK beat BLG 2-1 in the EWC QF (17/07) on the way to the title. BLG 8-2 in 2026 international series, best of any team.",
+  "what_flips": "DK's poor conversion (46.2% WR when ahead @15). If BLG stay close at 15, BLG's late teamfighting ('most lethal teamfight roster') is the better closing tool."
+ },
+ "AL|T1": {
+  "key_matchup": "Jungle: Oner (GD@15 -325 in LCK playoffs, Naafiri 1-3) vs Tarzan (AL, KDA 5.6, 77% KP). AL's Tarzan-Kael engage is how they snowball; T1's early game was the worst of the LCK four (GD@15 -468).",
+  "draft_angle": "Opponents ban Bard 78% (Keria) and Nocturne 61% (Oner) vs T1. Patch 26.20 buffs Lucian (Peyz) and Tahm Kench/Neeko (Keria). AL's Shanks plays Cassiopeia, nerfed again in 26.20.",
+  "form_context": "Rematch of the 2025 Worlds QF (T1 3-2 AL). T1 22-11 in 2026 international games; AL beat BLG 3-1 for the LPL title after six straight series losses to them, then lost 0-2 to KC at EWC.",
+  "what_flips": "If AL's early snowball lands (Grand Final wins at 30-31 minutes with 18-8, 20-1, 22-5 kill leads), T1's slow-start profile is exactly what loses Bo5s."
+ },
+ "G2|HLE": {
+  "key_matchup": "Mid: Zeka (25.1% DMG, 5 solo kills) vs Caps (domestic GD@15 +501 but international +21). Top: BrokenBlade's international GD@15 -284 vs Zeus.",
+  "draft_angle": "G2 are tipped as the best Fearless team for unconventional picks; opponents ban Bard 32% and Poppy 29% vs G2 internationally. HLE ban Cassiopeia 59%, Olaf 47%, Bard 47%.",
+  "form_context": "HLE beat G2 3-0 at MSI (05/07) on the way to the title. G2 6-6 in 2026 international series; G2 red side 4-14 internationally.",
+  "what_flips": "HLE convert only 62.5% of games when ahead @15. G2's draft surprises plus side selection (G2 13-4 on blue internationally) can steal games."
+ },
+ "BLG|GEN": {
+  "key_matchup": "ADC: Ruler (31.7% DMG, 25.4% gold) vs Viper. Top: Kiin (+354 GD@15) vs Bin (+341 at MSI): the two best lane-phase top laners in the field by these samples.",
+  "draft_angle": "BLG's Knight (KDA 7.2 at MSI, Ryze/Aurora/Viktor) vs Chovy's Ryze/Akali/Syndra overlap: Ryze is a likely early ban or first pick.",
+  "form_context": "No 2026 head-to-head. LCK vs LPL in 2026: 5-5 in series, 16-14 in games.",
+  "what_flips": "BLG's international pedigree this year (First Stand title, MSI final) vs GEN's (0-3 G2, 1-2 DK). If GEN's international underperformance is real, this is where it bites."
+ },
+ "HLE|T1": {
+  "key_matchup": "Bot: Peyz (+401 GD@15, 30.3% DMG) vs Gumayusi (his former T1 teammate; 27.5% DMG). Crystal Ball also asks who gets more kills.",
+  "draft_angle": "T1 ban Orianna 44% and Syndra 39%; HLE ban Bard 47% (Keria). Both teams know each other's pools from three 2026 Bo5/Bo3 series.",
+  "form_context": "2026 series: HLE 3-2 and 3-1 over T1 in LCK playoffs, T1 2-0 HLE at EWC (17/07). HLE lead 2-1.",
+  "what_flips": "The model favours T1 only because of the +0.20 pedigree/meta adjustment; without it HLE are slight favourites. HLE winning means the adjustment was wrong."
+ },
+ "GEN|T1": {
+  "key_matchup": "Mid: Chovy vs Faker. GEN's macro control (61.7% dragon, 74.2% Nashor) against T1's late-game teamfighting (Peyz pentakill G1 vs DK).",
+  "draft_angle": "GEN's opponents target Olaf/Cassiopeia/Ezreal; T1's target Bard/Nocturne. Five games of Fearless deep into a 14-series tournament: whichever team has more untouched comfort picks left by games 4-5.",
+  "form_context": "2026 head-to-head 1-1: T1 3-2 GEN in Road to MSI, GEN 2-1 T1 for 3rd at EWC (19/07). T1 won the last three world titles.",
+  "what_flips": "T1's Worlds pedigree is the one thing the model only half-counts. A T1 title would be the fourth straight from a non-first seed."
+ },
+ "AL|GEN": {
+  "key_matchup": "Jungle: Canyon (GEN; KDA 5.6, 72.3% KP in LCK playoffs) vs Tarzan (AL; KDA 5.6, 77% KP in LPL Split 3). AL's whole game is the Tarzan-Kael engage; GEN's is early map control (61.7% dragon, 74.2% Nashor). Whoever owns the first two dragons dictates the series.",
+  "draft_angle": "Opponents ban Olaf (73%), Cassiopeia (64%) and Ezreal (55%) against GEN; Shanks (AL) plays Cassiopeia himself, nerfed again in 26.20. Kiin's Varus/Gwen vs Breathe's Gnar/Ambessa/K'Sante, two of which were nerfed in 26.20.",
+  "form_context": "No 2026 head-to-head. GEN: LCK champions, 85.7% win rate when ahead at 15. AL: LPL Split 3 champions (3-1 over BLG) after six straight series losses to BLG; only international series of 2026 was a 0-2 loss to KC at EWC. LCK vs LPL in 2026: 5-5 in series.",
+  "what_flips": "AL's early snowball landing (Grand Final wins in 30-31 minutes with 18-8, 20-1, 22-5 kill leads). GEN's only playoff losses came in lost Baron fights; a chaotic early game is AL's route."
+ },
+ "IG|T1": {
+  "key_matchup": "Mid: Faker (KDA 3.0, GD@15 -372 in LCK playoffs) vs Rookie (858 DPM, 8.5 CSM in LPL Split 3). Jungle: Oner (GD@15 -325, Naafiri 1-3) vs Wei (Qiyana/Jarvan IV/Wukong tempo). T1 start slowly; IG punish slow starts with Baron-pit engages.",
+  "draft_angle": "Opponents ban Bard (78%) and Nocturne (61%) against T1. Patch 26.20 buffs Lucian (Peyz) and Tahm Kench/Neeko (Keria). IG's JiaQi lives on Jhin/Yunara/Ezreal; Yunara was nerfed.",
+  "form_context": "T1 beat IG 3-1 in the Worlds 2025 Play-In. T1: 22-11 in 2026 international games but 9-9 in LCK playoffs. IG: 4th LPL seed, strong Split 3 after weak Splits 1-2 (35%, 40% regular-season win rates, now in the model), no international games in 2026.",
+  "what_flips": "IG's hyper-aggressive Baron engages work against patient macro teams about as often as they backfire; T1's late-game teamfighting (Peyz pentakill vs DK) is the better closing tool, so IG need the series decided before 30 minutes."
+ },
+ "BLG|HLE": {
+  "key_matchup": "Mid: Knight (BLG; KDA 7.2 at MSI, Ryze/Aurora/Viktor) vs Zeka (HLE; 25.1% damage share, 5 solo kills in the playoff sample). Jungle tempo: Xun vs Kanavi, whose Baron steal decided game 5 of the MSI final between these two teams.",
+  "draft_angle": "HLE ban Cassiopeia 59%, Olaf 47%, Bard 47% (Bard is ON's comfort pick for BLG). Bin's Renekton/Gnar/K'Sante vs Zeus's Camille/Ambessa: K'Sante and Ambessa both nerfed in 26.20.",
+  "form_context": "MSI 2026 final rematch: HLE 3-2 BLG (12/07) after BLG led 2-1; BLG had beaten HLE 3-1 in the upper final three days earlier. BLG 8-2 in 2026 international series, HLE 6-1.",
+  "what_flips": "BLG's top lane. If Bin plays like he did at MSI (+341 GD@15) BLG win lane and the series; if the summer churn (Bin/Wenbo/Flandre) shows, HLE's early game (76.5% first blood) runs away with it."
+ },
+ "GEN|HLE": {
+  "key_matchup": "Bot lane: Ruler (31.7% damage, 25.4% gold share) vs Gumayusi (27.5% damage), and the two best supports in the LCK by kill participation (Duro 79.7%, Delight 76%). Top: Kiin (+354 GD@15) vs Zeus (-170 GD@15 in the playoff sample) is GEN's clearest edge.",
+  "draft_angle": "Fourth Bo5 between them this year; both drafts are fully scouted. HLE's Camille/Vi get banned against them 53% of the time; GEN's opponents target Olaf/Cassiopeia/Ezreal. Fearless depth favours GEN's wider pools (Ruler 10 champions in 11 games).",
+  "form_context": "2026 head-to-head: GEN 3-1 HLE in the LCK upper final (05/09) and 3-1 in the Grand Final (13/09); HLE's two game wins both came from Baron fights. HLE are MSI champions; GEN missed MSI.",
+  "what_flips": "Baron. Both of HLE's wins over GEN this year were late Baron fights, and HLE also won the MSI final on a Kanavi steal. A Brooklyn final decided around the pit is HLE's path."
+ },
+ "_extra": {
+  "finals_mvp": {
+   "pick": "Ruler (GEN, ADC)",
+   "reason": "Gen.G's win condition is Ruler as the carry (31.7% damage, 25.4% gold share in LCK playoffs) and he was LCK Finals MVP on 13/09/2026. Chovy is the close alternative."
+  },
+  "single_biggest_risk": {
+   "assumption": "That the LCK is clearly the strongest region: +0.65 logit over the LPL (worth about 65-35 per game between otherwise equal teams), with a standard error of 0.60, so the gap is only about one standard error from zero. It rests on 2025's results (used as a prior) plus LCK's 14-2 and 9-0 game records against the LCS and LCP in 2026, while the direct LCK-LPL record is 5-5 in series. The predicted champion and three of the four semifinalists depend on it.",
+   "early_detection": "Swiss rounds 1-3 (Bo1s from 23/10) give the first same-patch cross-region evidence. If LPL teams win the majority of LCK-LPL meetings, or Gen.G drops a Bo1 to a Tier 4 team, the staged Swiss re-run should shrink the gap. The region-gap standard error is on the Overview tab."
+  },
+  "crystal_ball": [
+   {
+    "q": 1,
+    "question": "Which champion will have the highest presence?",
+    "answer": "Orianna",
+    "confidence": "LOW",
+    "reason": "Orianna leads presence across 2026 for Worlds teams (71.8%, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) and led MSI 2026 (64.8%, gol.gg). Cassiopeia's 85.6% came only from domestic playoffs before her 26.20 nerf, and she was 52.1% at MSI. Close call; Cassiopeia is the alternative."
+   },
+   {
+    "q": 2,
+    "question": "Which champion will have the highest win rate (min 5 games)?",
+    "answer": "Camille",
+    "confidence": "LOW",
+    "reason": "60.0% WR (27-18) domestically as a top/support flex, so it reaches 5 games; Qiyana (59.6%) is the alternative Hotspawn tips. High-variance question."
+   },
+   {
+    "q": 3,
+    "question": "Which champion will have the highest average deaths (min 5 games)?",
+    "answer": "Nautilus",
+    "confidence": "LOW",
+    "reason": "Engage supports die most; Nautilus is the most-picked pure engage support (35.9% presence) and leads LEC supports. Alternative: Alistar."
+   },
+   {
+    "q": 4,
+    "question": "Which pro will have the highest average KDA?",
+    "answer": "Knight",
+    "confidence": "LOW",
+    "reason": "Highest 2026 KDA among Worlds players (6.97, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) over a full-year sample; Chovy's 7.3 came from 11 playoff games. BLG's expected deep run also helps."
+   },
+   {
+    "q": 5,
+    "question": "Which pro will have the highest average damage per game?",
+    "answer": "Peyz",
+    "confidence": "MEDIUM",
+    "reason": "Leads 2026 damage per game for Worlds players (28,605, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) with a 30.3% damage share in LCK playoffs (gol.gg), on a team the model sends deep (P semis 55%)."
+   },
+   {
+    "q": 6,
+    "question": "Which pro will have the highest average kill participation?",
+    "answer": "Keria",
+    "confidence": "LOW",
+    "reason": "83.3% KP in LCK playoffs, highest of the LCK playoff samples. Alternatives: Vulcan (81.7%), Career (80.6%)."
+   },
+   {
+    "q": 7,
+    "question": "Peyz vs Gumayusi: more total kills?",
+    "answer": "Peyz",
+    "confidence": "MEDIUM",
+    "reason": "Total kills depend on games played: model gives T1 a slightly deeper run (P semis 55% each in v4; Peyz still takes more of his team's gold), and Peyz takes more of his team's gold/damage (26.2% gold, 30.3% DMG vs 24.6%/27.5%)."
+   },
+   {
+    "q": 8,
+    "question": "Will Faker reach 700 career Worlds kills this year?",
+    "answer": "No",
+    "confidence": "HIGH",
+    "reason": "Needs 84 kills from 616. At his 2026 rate of 3.61 kills per game that is about 24 games (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)), close to the maximum a team can play at Worlds (roughly 26 for a champion going the distance in long series)."
+   },
+   {
+    "q": 9,
+    "question": "Will Teemo be picked at least once?",
+    "answer": "No",
+    "confidence": "HIGH",
+    "reason": "No Teemo in the 298-game domestic playoff sample or the 71-game MSI sample."
+   },
+   {
+    "q": 10,
+    "question": "How many unique champions will be picked?",
+    "answer": "110-114",
+    "confidence": "LOW",
+    "reason": "Bands are 0-99, 100-104, 105-109, 110-114, 115-119, 120+ (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)). Worlds will have about 100 games (6 Play-In Bo5s, 33 Swiss matches, 7 knockout Bo5s); Fearless Draft in every Bo3/Bo5 forces breadth, and Worlds teams used 142 champions across 2026."
+   },
+   {
+    "q": 11,
+    "question": "Will more games end before or after 32:00?",
+    "answer": "Before",
+    "confidence": "MEDIUM",
+    "reason": "52.1% of 2026 games by Worlds teams ended before 32:00 even though the average is 32:21 (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)): game length is right-skewed, so the median sits below the mean."
+   },
+   {
+    "q": 12,
+    "question": "Will any pro get 15+ kills in one game?",
+    "answer": "Yes",
+    "confidence": "LOW",
+    "reason": "A 15+ kill game happened in 23 of 1,590 games by Worlds teams in 2026 (1.45%, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)). Over about 100 Worlds games that is 77% at the full rate and about 50% at half the rate (Worlds games are closer, and nobody passed 14 at Worlds 2025, per Hotspawn). Lean Yes."
+   },
+   {
+    "q": 13,
+    "question": "Will any pro reach 450+ CS in one game?",
+    "answer": "Yes",
+    "confidence": "HIGH",
+    "reason": "450+ CS happened in 69 of 1,590 games by Worlds teams in 2026 (4.3%, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)); over about 100 Worlds games at least one is near-certain."
+   },
+   {
+    "q": 14,
+    "question": "What role will the Finals MVP play?",
+    "answer": "Bot (ADC)",
+    "confidence": "LOW",
+    "reason": "Follows the Finals MVP pick (Ruler)."
+   },
+   {
+    "q": 15,
+    "question": "How many different regions will be in Knockouts?",
+    "answer": "4",
+    "confidence": "LOW",
+    "reason": "Model: 4 regions 54%, 3 regions 25%, 5 regions 18%. History pulls the other way: knockouts averaged 3.3 regions from 2019 to 2025 (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)), so 3 is a strong alternative."
+   },
+   {
+    "q": 16,
+    "question": "Will a team from the LCS reach Knockouts?",
+    "answer": "Yes",
+    "confidence": "LOW",
+    "reason": "Model: 69% that TLAW, LYON or C9 reaches the quarterfinals. History is weaker: the LCS reached knockouts in 3 of the last 7 Worlds (wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)). Blended, slightly above 50%."
+   },
+   {
+    "q": 17,
+    "question": "Which team places higher: HLE or T1?",
+    "answer": "HLE",
+    "confidence": "LOW",
+    "reason": "Model v4: dead even (T1 higher 45%, HLE higher 45%, same placement 10%) after halving T1's pedigree adjustment, and the predicted bracket has HLE reaching the final and T1 losing a semifinal. HLE lead the head-to-head 5-3 in series (wards.lol) and 2-1 in 2026. Switched from T1 to HLE; still a coin flip."
+   },
+   {
+    "q": 18,
+    "question": "Which team will win the shortest game?",
+    "answer": "HLE",
+    "confidence": "MEDIUM",
+    "reason": "Most aggressive early-game top team (76.5% first blood, gol.gg), fastest win among Worlds teams in 2026 (19:20, wards.lol 2026 stats for the 19 Worlds teams, 1,590 games (https://wards.lol/lol-esports/pick-ems/2026/worlds/, accessed 15/10/2026)) and fastest game at MSI 2026 (22:16, Hotspawn)."
+   }
+  ]
+ }
+}

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Worlds 2026 Predictor, Gen.G dossier</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#0B0F14;color:#EAF0F6;font-family:'IBM Plex Sans',system-ui,sans-serif;font-variant-numeric:tabular-nums}
+a{color:#EAF0F6;text-decoration:none}a:hover{color:#E8B84A}
+table{border-collapse:collapse}
+th{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#93A1B3;text-align:left;padding:10px 12px;border-bottom:1px solid #243040}
+td{padding:12px;border-bottom:1px solid #1C2633;font-size:14px;vertical-align:middle}
+</style>
+</helmet>
+<div style="background: #0B0F14; color: #EAF0F6; min-height: 100vh; display: flex; flex-direction: column">
+
+  <header style="border-bottom: 1px solid #243040">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; min-height: 64px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px">
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px">
+        <span style="width: 28px; height: 28px; border-radius: 8px; background: {{accent}}; display: inline-flex; align-items: center; justify-content: center; color: #0B0F14; font-size: 13px; font-weight: 700">26</span>
+        Worlds 2026 Predictor
+      </a>
+      <nav aria-label="Sections" style="display: flex; flex-wrap: wrap; gap: 4px; margin-left: auto">
+        <a href="Main.dc.html" style="padding: 10px 14px; border-radius: 8px; color: #B6C2D1; font-size: 14px">Overview</a>
+        <a href="Team.dc.html" aria-current="page" style="padding: 10px 14px; border-radius: 8px; background: #161D27; font-weight: 600; font-size: 14px">Teams</a>
+        <a href="Main.dc.html#meta" style="padding: 10px 14px; border-radius: 8px; color: #B6C2D1; font-size: 14px">Meta</a>
+        <a href="Bracket.dc.html" style="padding: 10px 14px; border-radius: 8px; color: #B6C2D1; font-size: 14px">Predictions</a>
+        <a href="Bracket.dc.html#pickems" style="padding: 10px 14px; border-radius: 8px; color: #B6C2D1; font-size: 14px">Pick'Ems</a>
+        <a href="Bracket.dc.html#scorecard" style="padding: 10px 14px; border-radius: 8px; color: #B6C2D1; font-size: 14px">Scorecard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="max-width: 1280px; width: 100%; margin: 0 auto; padding: 36px 32px 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+      <div style="display: flex; gap: 6px; flex-wrap: wrap">
+        <a href="Team.dc.html" aria-current="page" style="padding: 8px 14px; border-radius: 999px; background: #1C2633; font-size: 13px; font-weight: 600">All regions</a>
+        <a href="Team.dc.html" style="padding: 8px 14px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">LCK</a>
+        <a href="Team.dc.html" style="padding: 8px 14px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">LPL</a>
+        <a href="Team.dc.html" style="padding: 8px 14px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">LEC</a>
+        <a href="Team.dc.html" style="padding: 8px 14px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">LCS</a>
+        <a href="Team.dc.html" style="padding: 8px 14px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">LCP</a>
+        <a href="Team.dc.html" style="padding: 8px 14px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">CBLOL</a>
+      </div>
+      <div role="group" aria-label="Stats window" style="margin-left: auto; display: inline-flex; border: 1px solid #243040; border-radius: 10px; overflow: hidden">
+        <button type="button" onClick="{{pickSeason}}" aria-pressed="{{seasonOn}}" style="{{seasonBtn}}">2026 season</button>
+        <button type="button" onClick="{{pickSummer}}" aria-pressed="{{summerOn}}" style="{{summerBtn}}">Summer split</button>
+      </div>
+    </div>
+
+    <article style="background: #131A22; border: 1px solid #243040; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 28px">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
+        <img src="/_blob/43e71142b2d67160d5ebf6f25e0f9183" alt="Gen.G logo" style="width: 64px; height: 78px; object-fit: contain">
+        <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 320px">
+          <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; letter-spacing: -0.01em">Gen.G</h1>
+          <p style="margin: 0; font-size: 15px; color: #B6C2D1; line-height: 1.5">LCK 2026 champions (3-1 over HLE, Ruler Finals MVP) and Korea's first seed. Swept 0-3 by G2 at First Stand and missed MSI after losing 2-3 to T1, so the international record is the open question.</p>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <span style="padding: 8px 12px; border-radius: 999px; background: {{accent}}; color: #0B0F14; font-size: 13px; font-weight: 700">#1 in model</span>
+          <span style="padding: 8px 12px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">LCK seed 1</span>
+          <span style="padding: 8px 12px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1">Swiss, Tier 1</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+        <sc-for list="{{stats}}" as="s" hint-placeholder-count="8">
+          <div style="background: #0F141B; border: 1px solid #243040; border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">{{s.value}}</span>
+            <span style="font-size: 13px; color: #B6C2D1">{{s.label}}</span>
+            <span style="font-size: 12px; color: #93A1B3">{{s.sub}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin: -16px 0 0; font-size: 12px; color: #93A1B3">{{sample}}</p>
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px">
+        <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #93A1B3">Draft, from gol.gg</h2>
+          <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 10px 14px; align-items: start; font-size: 14px">
+            <span style="color: #93A1B3; padding-top: 6px">Most picked</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><span style="width: 24px; height: 24px; border-radius: 50%; background: #1C2633; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700" aria-hidden="true">Am</span>Ambessa <span style="color: #93A1B3">24g 67%</span> <span style="color: #F08A7A; font-size: 11px; font-weight: 700" title="26.20 nerf">&#9660;</span></span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><img src="/_blob/237162463c1ed0d0b1afd685629606cf" alt="" style="width: 24px; height: 24px; border-radius: 50%">Seraphine <span style="color: #93A1B3">20g 75%</span> <span style="color: #F08A7A; font-size: 11px; font-weight: 700" title="26.18 nerf">&#9660; 26.18</span></span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><img src="/_blob/7a10e2cd3991cc3ab453b6ab78a937b3" alt="" style="width: 24px; height: 24px; border-radius: 50%">Ryze <span style="color: #93A1B3">20g 70%</span> <span style="color: #F08A7A; font-size: 11px; font-weight: 700" title="26.19 nerf">&#9660; 26.19</span></span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><img src="/_blob/fa15fee06e6fc46e43b2949a95ba16fd" alt="" style="width: 24px; height: 24px; border-radius: 50%">Jhin <span style="color: #93A1B3">18g 83%</span></span>
+            </div>
+            <span style="color: #93A1B3; padding-top: 6px">Banned against</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><img src="/_blob/d04402f159b2c01323973091088de9cd" alt="" style="width: 24px; height: 24px; border-radius: 50%">Orianna <span style="color: #93A1B3">46, 33%</span></span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><span style="width: 24px; height: 24px; border-radius: 50%; background: #1C2633; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700" aria-hidden="true">Va</span>Varus <span style="color: #93A1B3">43, 31%</span></span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><img src="/_blob/fe05ae9f8093981545babcabda74ed5a" alt="" style="width: 24px; height: 24px; border-radius: 50%">Ezreal <span style="color: #93A1B3">31, 23%</span></span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border: 1px solid #243040; border-radius: 999px; font-size: 13px"><span style="width: 24px; height: 24px; border-radius: 50%; background: #1C2633; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700" aria-hidden="true">Ja</span>Jayce <span style="color: #93A1B3">29, 21%</span></span>
+            </div>
+            <span style="color: #93A1B3; padding-top: 6px">Pick order</span>
+            <span style="color: #B6C2D1; line-height: 1.5">Jungle 2.3, Bot 2.9, Mid 3.0, Support 3.3, Top 3.6 (average pick slot per role; lower is earlier)</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #93A1B3">Identity</h2>
+          <dl style="margin: 0; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 10px 14px; font-size: 14px; line-height: 1.5">
+            <dt style="color: #93A1B3">Wins by</dt><dd style="margin: 0; color: #B6C2D1">Controlling dragons (61.7%) and Nashor (74.2%) with +506 GD@15 in playoffs, then closing fast through Ruler and a high-KP Duro and Canyon.</dd>
+            <dt style="color: #93A1B3">Loses to</dt><dd style="margin: 0; color: #B6C2D1">Scrappy international drafts (0-3 G2, 1-2 DK) and late Baron fights.</dd>
+            <dt style="color: #93A1B3">Form</dt><dd style="margin: 0; color: #B6C2D1">Peaking. 01/09 KT 3-0, 05/09 HLE 3-1, 13/09 HLE 3-1.</dd>
+            <dt style="color: #93A1B3">Coach</dt><dd style="margin: 0; color: #B6C2D1">Ryu Sang-wook (assistant Lyn). No roster change since the final.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #93A1B3">Players and champion pools</h2>
+        <div style="overflow-x: auto">
+          <table style="width: 100%; min-width: 960px">
+            <thead><tr><th>Role</th><th>Player</th><th style="text-align: right">Games</th><th style="text-align: right">KDA</th><th style="text-align: right">GD@15</th><th style="text-align: right">KP</th><th style="text-align: right">Pool</th><th>{{poolHead}}</th></tr></thead>
+            <tbody>
+              <sc-for list="{{players}}" as="p" hint-placeholder-count="5">
+                <tr>
+                  <td style="color: #B6C2D1">{{p.role}}</td>
+                  <td style="font-weight: 600">{{p.name}}</td>
+                  <td style="text-align: right">{{p.games}}</td>
+                  <td style="text-align: right">{{p.kda}}</td>
+                  <td style="text-align: right">{{p.gd}}</td>
+                  <td style="text-align: right">{{p.kp}}</td>
+                  <td style="text-align: right">{{p.pool}}</td>
+                  <td>
+                    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px">
+                      <sc-for list="{{p.champs}}" as="c" hint-placeholder-count="5">
+                        <span style="display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 8px; align-items: center; padding: 4px 8px 4px 4px; border: 1px solid #243040; border-radius: 10px; min-width: 0">
+                          <span style="grid-row: 1 / span 2; width: 28px; height: 28px; border-radius: 8px; background: #1C2633; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; overflow: hidden" aria-hidden="true">{{c.ab}}</span>
+                          <span style="font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.name}}</span>
+                          <span style="font-size: 12px; color: #93A1B3">{{c.rec}}</span>
+                        </span>
+                      </sc-for>
+                    </div>
+                  </td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin: 0; font-size: 12px; color: #93A1B3">Patch flags on champion chips: &#9650; buffed, &#9660; nerfed, &#9670; adjusted on 26.20 unless another patch is shown. Source: gol.gg, accessed 15/10/2026.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer style="border-top: 1px solid #243040; margin-top: auto">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 20px 32px; font-size: 12px; color: #93A1B3">Data: gol.gg, lolesports.com, official patch notes, accessed 15/10/2026. Team names and logos belong to their owners; champion art is Riot Games' via Data Dragon.</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#E8B84A","options":["#E8B84A","#4FD1C5","#C9A0FF","#F08A7A"]},"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { split: 'season' }; }
+  renderVals() {
+    const accent = this.props.accent ?? '#E8B84A';
+    const summer = this.state.split === 'summer';
+    const on = 'appearance: none; border: 0; background: #1C2633; color: #EAF0F6; font: inherit; font-size: 13px; font-weight: 600; padding: 10px 14px; cursor: pointer';
+    const off = 'appearance: none; border: 0; background: transparent; color: #B6C2D1; font: inherit; font-size: 13px; padding: 10px 14px; cursor: pointer';
+    const season = [
+      { value: '68.1%', label: 'Win rate', sub: '94W-44L' }, { value: '+444', label: 'Gold diff @15', sub: '87.2% WR when ahead' },
+      { value: '76.5%', label: 'Blue side WR', sub: '81 games' }, { value: '56.1%', label: 'Red side WR', sub: '57 games' },
+      { value: '47.1%', label: 'First blood', sub: '' }, { value: '58.0%', label: 'First tower', sub: '' },
+      { value: '60.3%', label: 'Dragon share', sub: '' }, { value: '65.9%', label: 'Baron share', sub: 'avg game 31.7 min' },
+    ];
+    const summerStats = [
+      { value: '61.1%', label: 'Win rate', sub: '33W-21L' }, { value: '-6', label: 'Gold diff @15', sub: '78.6% WR when ahead' },
+      { value: '71.9%', label: 'Blue side WR', sub: '32 games' }, { value: '45.5%', label: 'Red side WR', sub: '22 games' },
+      { value: '33.3%', label: 'First blood', sub: '' }, { value: '55.6%', label: 'First tower', sub: '' },
+      { value: '55.1%', label: 'Dragon share', sub: '' }, { value: '54.5%', label: 'Baron share', sub: 'avg game 32.3 min' },
+    ];
+    const pl = (role, name, games, kda, gd, kp, pool, champs) => ({ role, name, games, kda, gd, kp, pool, champs: champs.map((c) => ({ ab: c[0].slice(0, 2), name: c[0], rec: c[1] + 'g · ' + c[2] + '%' })) });
+    const seasonPlayers = [
+      pl('Top', 'Kiin', '133', '3.8', '+301', '59.4%', '25', [['Ambessa', 18, 78], ['Sion', 12, 92], ['Rumble', 12, 58], ['Renekton', 9, 78], ['Gnar', 9, 78]]),
+      pl('Jungle', 'Canyon', '131', '4.9', '+15', '71.1%', '17', [['Pantheon', 16, 69], ['Xin Zhao', 16, 56], ['Jarvan IV', 15, 73], ['Vi', 14, 64], ['Lee Sin', 13, 92]]),
+      pl('Mid', 'Chovy', '129', '5.5', '+320', '65.1%', '23', [['Ryze', 19, 74], ['Galio', 16, 81], ['Anivia', 14, 79], ['Annie', 11, 64], ['Azir', 7, 86]]),
+      pl('Bot', 'Ruler', '129', '5.1', '+109', '66.7%', '22', [['Jhin', 18, 83], ['Ezreal', 16, 69], ['Yunara', 15, 67], ['Ashe', 12, 67], ['Caitlyn', 10, 80]]),
+      pl('Support', 'Duro', '133', '4.8', '-3', '75.4%', '22', [['Seraphine', 17, 71], ['Bard', 14, 79], ['Karma', 12, 67], ['Rakan', 11, 82], ['Neeko', 10, 80]]),
+    ];
+    const summerPlayers = [
+      pl('Top', 'Kiin', '49/133', '3.2', '+344', '59.7%', '19', [['Olaf', 7, 100], ['Ambessa', 7, 86], ['Varus', 6, 67], ['Rumble', 5, 20], ['Gwen', 3, 67]]),
+      pl('Jungle', 'Canyon', '49/131', '4.7', '-64', '71.3%', '12', [['Lee Sin', 11, 91], ['Skarner', 7, 86], ['Jarvan IV', 7, 43], ['Nocturne', 5, 80], ['Pantheon', 5, 60]]),
+      pl('Mid', 'Chovy', '49/129', '4.4', '+228', '61.3%', '15', [['Ryze', 10, 60], ['Galio', 8, 75], ['Syndra', 6, 83], ['Anivia', 5, 80], ['Akali', 3, 100]]),
+      pl('Bot', 'Ruler', '49/129', '4.3', '+26', '65.8%', '18', [['Ezreal', 9, 56], ['Ziggs', 5, 60], ['Kalista', 5, 60], ['Jhin', 4, 75], ['Lucian', 4, 0]]),
+      pl('Support', 'Duro', '49/133', '4.2', '-86', '75.2%', '18', [['Shen', 10, 70], ['Renata Glasc', 5, 60], ['Seraphine', 4, 100], ['Lulu', 4, 75], ['Milio', 4, 0]]),
+    ];
+    return {
+      accent,
+      seasonOn: !summer, summerOn: summer,
+      seasonBtn: summer ? off : on, summerBtn: summer ? on : off,
+      pickSeason: () => this.setState({ split: 'season' }),
+      pickSummer: () => this.setState({ split: 'summer' }),
+      stats: summer ? summerStats : season,
+      sample: summer ? 'Sample: 54 games, Summer split: LCK Rounds 3-4, Season Play-In and Playoffs, EWC (gol.gg team page)' : 'Sample: 138 games, 2026 season, all tournaments (gol.gg team page)',
+      players: summer ? summerPlayers : seasonPlayers,
+      poolHead: summer ? 'Most played, Summer split (games · win rate)' : 'Most played, 2026 season (games · win rate)',
+    };
+  }
+}
+</script>
+</body>
+</html>

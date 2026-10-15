@@ -1,0 +1,1731 @@
+[
+ {
+  "code": "TLAW",
+  "name": "Team Liquid Alienware",
+  "region": "LCS",
+  "seed": 1,
+  "headline": "LCS Summer champions (3-1 over LYON, 04/10/2026), NA seed 1 straight into the Swiss Stage (Pool 1); 6-6 and out in the Play-In at MSI 2026; missed Worlds 2025.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Morgan",
+    "worlds_prior": null
+   },
+   {
+    "role": "JNG",
+    "player": "Josedeodo",
+    "worlds_prior": null
+   },
+   {
+    "role": "MID",
+    "player": "Quid",
+    "worlds_prior": null
+   },
+   {
+    "role": "ADC",
+    "player": "Yeon",
+    "worlds_prior": null
+   },
+   {
+    "role": "SUP",
+    "player": "CoreJJ",
+    "worlds_prior": null
+   }
+  ],
+  "worlds_prior_note": "Not on the 2026 debutant list for any of the five, so all have >=1 prior; only CoreJJ count found (8 as of Aug 2024).",
+  "coach": "Jake 'Spawn' Tiberi (HC); Samuel 'Spookz' Broadley (asst/draft)",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LCS 2026 Lock-In",
+    "placement": "4th",
+    "final": "lost LB semi 1-3 vs LYON"
+   },
+   {
+    "event": "LCS 2026 Spring",
+    "placement": "2nd",
+    "final": "0-3 vs LYON"
+   },
+   {
+    "event": "LCS 2026 Summer",
+    "placement": "1st",
+    "final": "3-1 vs LYON"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "MSI 2026",
+    "placement": "9th (Play-In exit)",
+    "final": "0-3 vs T1 (Play-In qualification match)"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "20/09/2026",
+     "opp": "FLY",
+     "score": "3-0",
+     "event": "LCS Summer PO UB semi"
+    },
+    {
+     "date": "27/09/2026",
+     "opp": "C9",
+     "score": "3-1",
+     "event": "LCS Summer PO UB final"
+    },
+    {
+     "date": "04/10/2026",
+     "opp": "LYON",
+     "score": "3-1",
+     "event": "LCS Summer PO grand final"
+    }
+   ],
+   "trend": "PEAKING"
+  },
+  "team_stats": {
+   "sample": "LCS 2026 Summer Playoffs (gol.gg)",
+   "games": 11,
+   "wr": 81.8,
+   "avg_len_min": 33.75,
+   "gd15": 589,
+   "fb_pct": 54.5,
+   "ft_pct": 72.7,
+   "drag_pct": 57.6,
+   "herald_pct": 63.6,
+   "baron_pct": 77.3,
+   "grubs_avg": 0.82,
+   "wr_ahead15": 100,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "MSI 2026 (Play-In only, gol.gg)",
+   "games": 12,
+   "wr": 50.0,
+   "avg_len_min": 31.35,
+   "gd15": -184,
+   "fb_pct": 25.0,
+   "ft_pct": 75.0,
+   "drag_pct": 47.6,
+   "herald_pct": 50.0,
+   "baron_pct": 57.6,
+   "grubs_avg": 1.33,
+   "wr_ahead15": 66.7,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Morgan",
+    "kda": 6.6,
+    "gd15": 225,
+    "csd15": 1.4,
+    "xpd15": 318,
+    "kp": 57.3,
+    "dmg_pct": 22.3,
+    "gold_share": 21.0,
+    "solo_kills": 3,
+    "pool": 8,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Camille",
+      "w": 3,
+      "l": 0
+     },
+     {
+      "champ": "Ambessa",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Gnar",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Josedeodo",
+    "kda": 8.4,
+    "gd15": 728,
+    "csd15": 5.9,
+    "xpd15": 590,
+    "kp": 69.4,
+    "dmg_pct": 20.7,
+    "gold_share": 21.5,
+    "solo_kills": null,
+    "pool": 7,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Qiyana",
+      "w": 3,
+      "l": 0
+     },
+     {
+      "champ": "Lee Sin",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Vi",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Quid",
+    "kda": 4.9,
+    "gd15": -309,
+    "csd15": -6.3,
+    "xpd15": -60,
+    "kp": 71.9,
+    "dmg_pct": 23.5,
+    "gold_share": 20.4,
+    "solo_kills": 2,
+    "pool": 9,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Orianna",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Galio",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Syndra",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Yeon",
+    "kda": 5.4,
+    "gd15": -39,
+    "csd15": 3.9,
+    "xpd15": 117,
+    "kp": 68.1,
+    "dmg_pct": 26.8,
+    "gold_share": 23.9,
+    "solo_kills": null,
+    "pool": 9,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Ashe",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Lucian",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Xayah",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "CoreJJ",
+    "kda": 8.1,
+    "gd15": -17,
+    "csd15": 2.9,
+    "xpd15": -195,
+    "kp": 78.9,
+    "dmg_pct": 6.8,
+    "gold_share": 13.1,
+    "solo_kills": null,
+    "pool": 9,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Nautilus",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Karma",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Alistar",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   }
+  ],
+  "identity": "Wins through Josedeodo-led jungle tempo (+728 GD@15), a reliable carry top (Morgan) and CoreJJ engage; can play zone-control or fast skirmish. Converts leads (100% WR when ahead @15, baron 77%). Loses when behind early and with Quid's lane deficits; got out-fought early at MSI (FB 25%, GD@15 -184) and went 0-6 in games vs T1.",
+  "draft": "Wide pools (7-9 champions per player in 11 games), no single obvious ban-out. Josedeodo Qiyana 3-0/Lee Sin 2-0; Morgan Camille 3-0; Yeon Ashe/Lucian 2-0; CoreJJ Nautilus 2-0. League-wide top bans in LCS Summer PO: Cassiopeia 37, Nocturne 29. Team-specific ban data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "Worlds 2026 Teams, Play-In Draw & Pools - Insider Gaming",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Worlds 2026 debutants - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Team Liquid, LCS 2026 Summer Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2813/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "Team Liquid, MSI 2026 - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2813/split-ALL/tournament-MSI%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "LCS 2026 Summer Playoffs matches - rdy.gg",
+    "url": "https://rdy.gg/en/lol/tournaments/117322",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Team Liquid win LCS 2026 Summer over LYON - Dot Esports",
+    "url": "https://dotesports.com/league-of-legends/news/team-liquid-lcs-2026-summer-champions",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "T1 sweep Team Liquid - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78715-t1-sweep-team-liquid-to-qualify-for-the-lol-msi-2026-bracket-stage",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "Team Liquid - Leaguepedia",
+    "url": "https://lol.fandom.com/wiki/Team_Liquid",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "TLAW Spawn MSI 2026 interview - Hotspawn",
+    "url": "https://www.hotspawn.com/?p=184369",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "LYON",
+  "name": "LYON (Lyon Gaming)",
+  "region": "LCS",
+  "seed": 2,
+  "headline": "Lock-In and Spring champions, Summer runner-up (1-3 vs TLAW), MSI 2026 3rd place, First Stand and EWC group exits; NA seed 2 directly in Swiss (Pool 3).",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Dhokla",
+    "worlds_prior": null
+   },
+   {
+    "role": "JNG",
+    "player": "Inspired",
+    "worlds_prior": null
+   },
+   {
+    "role": "MID",
+    "player": "Saint",
+    "worlds_prior": 0
+   },
+   {
+    "role": "ADC",
+    "player": "Berserker",
+    "worlds_prior": null
+   },
+   {
+    "role": "SUP",
+    "player": "Isles",
+    "worlds_prior": null
+   }
+  ],
+  "worlds_prior_note": "Only Saint is on the 2026 debutant list; others have >=1 prior (counts UNKNOWN).",
+  "coach": "Kim 'Reignover' Yeu-jin (HC, pre-season report); Han 'Rigby' Earl",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LCS 2026 Lock-In",
+    "placement": "1st",
+    "final": "3-1 vs C9"
+   },
+   {
+    "event": "LCS 2026 Spring",
+    "placement": "1st",
+    "final": "3-0 vs TLAW"
+   },
+   {
+    "event": "LCS 2026 Summer",
+    "placement": "2nd",
+    "final": "1-3 vs TLAW"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "5th-6th",
+    "final": "1-3 vs JDG (group decider)"
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "3rd",
+    "final": "2-3 vs HLE (LB final)"
+   },
+   {
+    "event": "EWC 2026",
+    "placement": "13th-16th",
+    "final": "0-2 vs MIBR.LOS"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "19/09/2026",
+     "opp": "C9",
+     "score": "1-3",
+     "event": "LCS Summer PO UB semi"
+    },
+    {
+     "date": "26/09/2026",
+     "opp": "SR",
+     "score": "3-1",
+     "event": "LCS Summer PO LB semi"
+    },
+    {
+     "date": "03/10/2026",
+     "opp": "C9",
+     "score": "3-1",
+     "event": "LCS Summer PO LB final"
+    },
+    {
+     "date": "04/10/2026",
+     "opp": "TLAW",
+     "score": "1-3",
+     "event": "LCS Summer PO grand final"
+    }
+   ],
+   "trend": "STABLE"
+  },
+  "team_stats": {
+   "sample": "LCS 2026 Summer Playoffs (gol.gg)",
+   "games": 16,
+   "wr": 50.0,
+   "avg_len_min": 34.42,
+   "gd15": 224,
+   "fb_pct": 62.5,
+   "ft_pct": 62.5,
+   "drag_pct": 41.1,
+   "herald_pct": 43.8,
+   "baron_pct": 40.6,
+   "grubs_avg": 1.94,
+   "wr_ahead15": 71.4,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "MSI 2026 (gol.gg)",
+   "games": 17,
+   "wr": 64.7,
+   "avg_len_min": 32.82,
+   "gd15": 193,
+   "fb_pct": 52.9,
+   "ft_pct": 76.5,
+   "drag_pct": 43.5,
+   "herald_pct": 41.2,
+   "baron_pct": 53.3,
+   "grubs_avg": 1.65,
+   "wr_ahead15": 80.0,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Dhokla",
+    "kda": 1.9,
+    "gd15": -206,
+    "csd15": -4.9,
+    "xpd15": -195,
+    "kp": 48.3,
+    "dmg_pct": 23.2,
+    "gold_share": 19.6,
+    "solo_kills": 6,
+    "pool": 11,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Gwen",
+      "w": 1,
+      "l": 3
+     },
+     {
+      "champ": "K'Sante",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Gnar",
+      "w": 0,
+      "l": 2
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Inspired",
+    "kda": 3.0,
+    "gd15": 218,
+    "csd15": 9.0,
+    "xpd15": 628,
+    "kp": 65.4,
+    "dmg_pct": 16.8,
+    "gold_share": 20.4,
+    "solo_kills": null,
+    "pool": 7,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Wukong",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Skarner",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Xin Zhao",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Saint",
+    "kda": 3.6,
+    "gd15": 507,
+    "csd15": 6.4,
+    "xpd15": 423,
+    "kp": 59.3,
+    "dmg_pct": 28.6,
+    "gold_share": 22.4,
+    "solo_kills": 1,
+    "pool": 8,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Syndra",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Twisted Fate",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Ryze",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Berserker",
+    "kda": 4.0,
+    "gd15": 139,
+    "csd15": 2.5,
+    "xpd15": -125,
+    "kp": 63.2,
+    "dmg_pct": 26.1,
+    "gold_share": 24.3,
+    "solo_kills": null,
+    "pool": 4,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Kalista",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Yunara",
+      "w": 0,
+      "l": 1
+     },
+     {
+      "champ": "Jayce",
+      "w": 0,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Isles",
+    "kda": 4.1,
+    "gd15": 4,
+    "csd15": -0.1,
+    "xpd15": -23,
+    "kp": 68.1,
+    "dmg_pct": 5.4,
+    "gold_share": 13.3,
+    "solo_kills": null,
+    "pool": 5,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Renata Glasc",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Lulu",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Alistar",
+      "w": 0,
+      "l": 2
+     }
+    ]
+   }
+  ],
+  "identity": "Wins with Saint/Berserker damage, Inspired jungle tempo and early first blood/tower (62.5% each); rolled FURIA, TSW and G2 3-0 at MSI. Loses via weak top lane (Dhokla KDA 1.9, -206 GD@15) and poor objective control in series they lose (dragon 41%, herald 44%, baron 41%); 0-5 in series vs LCK/LPL sides in 2026.",
+  "draft": "Very wide one-off picks in a small sample: Saint Syndra/TF/Ryze/Locke/Viktor; Berserker Kalista/Yunara/Jayce/Sivir; Inspired Wukong/Skarner/Xin Zhao/Lee Sin; Isles Renata Glasc 2-0. Team-specific ban/first-pick data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "Worlds 2026 Teams, Play-In Draw & Pools - Insider Gaming",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Worlds 2026 debutants - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "LYON, LCS 2026 Summer Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2954/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "LYON, MSI 2026 - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2954/split-ALL/tournament-MSI%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "LCS 2026 Summer Playoffs matches - rdy.gg",
+    "url": "https://rdy.gg/en/lol/tournaments/117322",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "2026 First Stand Tournament - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "LYON sweep G2 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78769-lyon-sweep-g2-3-0-to-secure-first-lcs-top-three-international-finish-since-2019",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "HLE outlast LYON - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78771-hanwha-life-esports-outlast-lyon-to-reach-msi-2026-grand-finals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "LYON 2026 roster - Sheep Esports",
+    "url": "https://www.sheepesports.com/en/articles/lol-lyon-s-completed-2026-lcs-roster/en",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "C9",
+  "name": "Cloud9 KIA",
+  "region": "LCS",
+  "seed": 3,
+  "headline": "NA seed 3 in the Play-In (vs Karmine Corp 15/10); Americas Cup and Lock-In runner-up, 3rd in Spring and Summer; first Worlds since 2023.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Thanatos",
+    "worlds_prior": 0
+   },
+   {
+    "role": "JNG",
+    "player": "Blaber",
+    "worlds_prior": null
+   },
+   {
+    "role": "MID",
+    "player": "Loki",
+    "worlds_prior": 0
+   },
+   {
+    "role": "ADC",
+    "player": "Tactical",
+    "worlds_prior": null
+   },
+   {
+    "role": "SUP",
+    "player": "Vulcan",
+    "worlds_prior": null
+   }
+  ],
+  "worlds_prior_note": "Thanatos and Loki are debutants; Blaber, Tactical, Vulcan have >=1 (counts UNKNOWN). APA and Zven listed on the official page (not starters).",
+  "coach": "IWDominate (HC); Veigar v2, Arrow, YamatoCannon",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LCS 2026 Lock-In",
+    "placement": "2nd",
+    "final": "1-3 vs LYON"
+   },
+   {
+    "event": "LCS 2026 Spring",
+    "placement": "3rd",
+    "final": "0-3 vs TLAW (LB final)"
+   },
+   {
+    "event": "LCS 2026 Summer",
+    "placement": "3rd",
+    "final": "1-3 vs LYON (LB final)"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "Americas Cup",
+    "placement": "2nd",
+    "final": "0-3 vs FURIA"
+   },
+   {
+    "event": "Worlds 2026 Play-In",
+    "placement": "pending",
+    "final": "vs KC 15/10"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "12/09/2026",
+     "opp": "SR",
+     "score": "3-0",
+     "event": "LCS Summer PO UB R1"
+    },
+    {
+     "date": "19/09/2026",
+     "opp": "LYON",
+     "score": "3-1",
+     "event": "LCS Summer PO UB semi"
+    },
+    {
+     "date": "27/09/2026",
+     "opp": "TLAW",
+     "score": "1-3",
+     "event": "LCS Summer PO UB final"
+    },
+    {
+     "date": "03/10/2026",
+     "opp": "LYON",
+     "score": "1-3",
+     "event": "LCS Summer PO LB final"
+    }
+   ],
+   "trend": "STABLE"
+  },
+  "team_stats": {
+   "sample": "LCS 2026 Summer Playoffs (gol.gg)",
+   "games": 15,
+   "wr": 53.3,
+   "avg_len_min": 34.95,
+   "gd15": 594,
+   "fb_pct": 53.3,
+   "ft_pct": 40.0,
+   "drag_pct": 56.3,
+   "herald_pct": 60.0,
+   "baron_pct": 58.9,
+   "grubs_avg": 1.27,
+   "wr_ahead15": 66.7,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": null,
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Thanatos",
+    "kda": 2.7,
+    "gd15": -191,
+    "csd15": -2.8,
+    "xpd15": -223,
+    "kp": 58.2,
+    "dmg_pct": 25.2,
+    "gold_share": 20.3,
+    "solo_kills": 3,
+    "pool": 8,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "K'Sante",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Camille",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Olaf",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Blaber",
+    "kda": 3.9,
+    "gd15": -128,
+    "csd15": -6.4,
+    "xpd15": -496,
+    "kp": 74.4,
+    "dmg_pct": 14.5,
+    "gold_share": 20.3,
+    "solo_kills": null,
+    "pool": 9,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Nocturne",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Naafiri",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Xin Zhao",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Loki",
+    "kda": 3.2,
+    "gd15": 165,
+    "csd15": 3.8,
+    "xpd15": -79,
+    "kp": 67.9,
+    "dmg_pct": 27.0,
+    "gold_share": 21.1,
+    "solo_kills": 2,
+    "pool": 8,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Syndra",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Orianna",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Aurora",
+      "w": 0,
+      "l": 2
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Tactical",
+    "kda": 3.2,
+    "gd15": 319,
+    "csd15": 5.4,
+    "xpd15": 153,
+    "kp": 50.7,
+    "dmg_pct": 26.1,
+    "gold_share": 24.5,
+    "solo_kills": 1,
+    "pool": 9,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Ezreal",
+      "w": 3,
+      "l": 0
+     },
+     {
+      "champ": "Yunara",
+      "w": 1,
+      "l": 2
+     },
+     {
+      "champ": "Kalista",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Vulcan",
+    "kda": 7.3,
+    "gd15": 244,
+    "csd15": 1.5,
+    "xpd15": 322,
+    "kp": 81.7,
+    "dmg_pct": 7.2,
+    "gold_share": 13.8,
+    "solo_kills": null,
+    "pool": 8,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Karma",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Seraphine",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Lulu",
+      "w": 1,
+      "l": 2
+     }
+    ]
+   }
+  ],
+  "identity": "Wins via Vulcan/Blaber-led playmaking (KP 81.7%/74.4%), dragon and herald control (56%/60%), Tactical and Loki damage. Loses early lanes and XP (Blaber -496 XPD@15, Thanatos -191 GD@15), first tower only 40%, and fades in long bracket runs (back-to-back 1-3 losses); 0-2 vs FURIA in the Americas Cup.",
+  "draft": "Thanatos K'Sante/Camille/Olaf; Blaber Nocturne 2-0 (Nocturne 29 bans league-wide), Naafiri; Loki Syndra/Orianna; Tactical Ezreal 3-0; Vulcan Karma 2-0, Seraphine, Lulu. Pool counts are lower bounds from an 11-game sample. Team ban data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "Worlds 2026 Teams, Play-In Draw & Pools - Insider Gaming",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Worlds 2026 debutants - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Cloud9, LCS 2026 Summer Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2812/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "LCS 2026 Summer Playoffs matches - rdy.gg",
+    "url": "https://rdy.gg/en/lol/tournaments/117322",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "Worlds 2026 Play-In Preview - AccountShark",
+    "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "FURIA defeat Cloud9 to win the Americas Cup - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/furia-defeat-cloud9-to-win-the-inaugural-americas-cup/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "FURIA win 2026 Americas Cup - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/furia-win-2026-americas-cup/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "2026 LCS season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCS_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "LCS 2026 Lock-In - Liquipedia",
+    "url": "https://www.liquipedia.net/leagueoflegends/LCS/2026/Lock-In",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "LOS",
+  "name": "LOS (LØS / Los Grandes)",
+  "region": "CBLOL",
+  "seed": 1,
+  "headline": "CBLOL Split 2 champions (3-2 over FURIA, 10/10/2026), Brazil seed 1 directly in Swiss (Pool 2); four Worlds debutants; EWC 9th-12th as MIBR.LOS.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Zest",
+    "worlds_prior": 0
+   },
+   {
+    "role": "JNG",
+    "player": "Curse",
+    "worlds_prior": 0
+   },
+   {
+    "role": "MID",
+    "player": "Feisty",
+    "worlds_prior": 0
+   },
+   {
+    "role": "ADC",
+    "player": "Duduhh",
+    "worlds_prior": 0
+   },
+   {
+    "role": "SUP",
+    "player": "Ackerman",
+    "worlds_prior": null
+   }
+  ],
+  "worlds_prior_note": "Zest, Curse, Feisty, Duduhh are debutants; Ackerman not on the debutant list (count UNKNOWN).",
+  "coach": "Ilias 'Enatron' Theodorou (pre-season Sheep report; unverified for Worlds)",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "CBLOL 2026 Cup",
+    "placement": "UNKNOWN",
+    "final": "UNKNOWN"
+   },
+   {
+    "event": "CBLOL 2026 Split 1",
+    "placement": "2nd",
+    "final": "1-3 vs FURIA"
+   },
+   {
+    "event": "CBLOL 2026 Split 2",
+    "placement": "1st",
+    "final": "3-2 vs FURIA"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "EWC 2026 (as MIBR.LOS)",
+    "placement": "9th-12th",
+    "final": "0-2 vs JDG (lower final)"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "12/09/2026",
+     "opp": "FURIA",
+     "score": "3-1",
+     "event": "CBLOL Split 2 PO UB semi"
+    },
+    {
+     "date": "27/09/2026",
+     "opp": "LOUD",
+     "score": "3-2",
+     "event": "CBLOL Split 2 PO UB final"
+    },
+    {
+     "date": "10/10/2026",
+     "opp": "FURIA",
+     "score": "3-2",
+     "event": "CBLOL Split 2 PO grand final"
+    }
+   ],
+   "trend": "PEAKING"
+  },
+  "team_stats": {
+   "sample": "CBLOL 2026 Split 2 Playoffs (gol.gg)",
+   "games": 14,
+   "wr": 64.3,
+   "avg_len_min": 32.72,
+   "gd15": 846,
+   "fb_pct": 35.7,
+   "ft_pct": 71.4,
+   "drag_pct": 49.3,
+   "herald_pct": 23.1,
+   "baron_pct": 65.5,
+   "grubs_avg": 1.21,
+   "wr_ahead15": 88.9,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": null,
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Zest",
+    "kda": 2.9,
+    "gd15": 497,
+    "csd15": 13.4,
+    "xpd15": 551,
+    "kp": 64.4,
+    "dmg_pct": 26.4,
+    "gold_share": 21.6,
+    "solo_kills": 5,
+    "pool": 10,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Rumble",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Jayce",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Varus",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Curse",
+    "kda": 2.9,
+    "gd15": 81,
+    "csd15": -5.5,
+    "xpd15": -101,
+    "kp": 68.6,
+    "dmg_pct": 14.4,
+    "gold_share": 19.2,
+    "solo_kills": 1,
+    "pool": 8,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Wukong",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Vi",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Jarvan IV",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Feisty",
+    "kda": 5.2,
+    "gd15": 129,
+    "csd15": 2.9,
+    "xpd15": 77,
+    "kp": 75.1,
+    "dmg_pct": 22.9,
+    "gold_share": 20.4,
+    "solo_kills": 1,
+    "pool": 10,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Orianna",
+      "w": 3,
+      "l": 0
+     },
+     {
+      "champ": "Ryze",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Galio",
+      "w": 2,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Duduhh",
+    "kda": 3.3,
+    "gd15": 79,
+    "csd15": 3.4,
+    "xpd15": 279,
+    "kp": 70.8,
+    "dmg_pct": 28.2,
+    "gold_share": 25.3,
+    "solo_kills": 2,
+    "pool": 12,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Ashe",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Sivir",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Taliyah",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Ackerman",
+    "kda": 6.6,
+    "gd15": 60,
+    "csd15": 3.5,
+    "xpd15": -8,
+    "kp": 72.2,
+    "dmg_pct": 8.1,
+    "gold_share": 13.6,
+    "solo_kills": 1,
+    "pool": 10,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Seraphine",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Alistar",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Karma",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   }
+  ],
+  "identity": "Wins via lane dominance (CSD@15 +17.8, GD@15 +846; Zest +13.4 CSD@15), a highly efficient Feisty (Orianna/Ryze/Galio unbeaten) and Ackerman playmaking; converts leads (88.9% WR when ahead @15, first tower 71%, baron 65%). Loses when herald/first-blood are conceded (herald 23%, FB 36%) and drafts are close: two 5-game series in Split 2 PO, beaten 1-3 by FURIA in Split 1 final.",
+  "draft": "Wide pools: Zest Rumble/Jayce/Varus/Ambessa; Feisty Orianna 3-0, Ryze 2-0, Galio 2-0; Duduhh 12 champions (Ashe, Sivir, Taliyah, Kai'Sa, Corki, Jinx); Ackerman Seraphine 2-0, Alistar 2-0, Karma; Curse Wukong/Vi/Jarvan IV. League-wide bans in CBLOL Split 2 PO: Cassiopeia 30, Nocturne 24, Jarvan IV 21. Team ban data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "Worlds 2026 Teams, Play-In Draw & Pools - Insider Gaming",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Worlds 2026 debutants - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Los Grandes, CBLOL 2026 Split 2 Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2895/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "CBLOL 2026 Split 2 Playoffs matches - rdy.gg",
+    "url": "https://rdy.gg/en/lol/tournaments/117170",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "LOS vence a FURIA por 3 a 2 - Mais Esports",
+    "url": "https://maisesports.com.br/cblol-2026-los-vence-a-furia-por-3-a-2-e-e-campea-do-2-split",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "LOS vence FURIA - Olhar Digital",
+    "url": "https://olhardigital.com.br/2026/10/11/games-e-consoles/cblol-2026-los-vence-furia-por-3-a-2-e-conquista-o-2-split",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "Sources: Los Grandes will return to CBLOL in 2026 - Sheep Esports",
+    "url": "https://www.sheepesports.com/articles/sources-los-grandes-will-return-to-cblol-in-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "CBLOL 2026 Split 1 Playoffs matches - rdy.gg",
+    "url": "https://rdy.gg/pt/lol/tournaments/1180",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "FURIA",
+  "name": "FURIA Esports",
+  "region": "CBLOL",
+  "seed": 2,
+  "headline": "Americas Cup and CBLOL Split 1 champions, Split 2 runner-up (2-3 vs LOS); Brazil seed 2 in the Play-In vs MVK (15/10); 0-2 in series at both MSI and EWC.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Guigo",
+    "worlds_prior": null
+   },
+   {
+    "role": "JNG",
+    "player": "Tatu",
+    "worlds_prior": 0
+   },
+   {
+    "role": "MID",
+    "player": "Tutsz",
+    "worlds_prior": 0
+   },
+   {
+    "role": "ADC",
+    "player": "Ayu",
+    "worlds_prior": 0
+   },
+   {
+    "role": "SUP",
+    "player": "JoJo",
+    "worlds_prior": null
+   }
+  ],
+  "worlds_prior_note": "Tatu, Tutsz, Ayu are debutants; Guigo and JoJo not on the debutant list (counts UNKNOWN). Sub jungler Shini on the official page.",
+  "coach": "UNKNOWN head coach; staff furyz, Luuukz, Lanterninho",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "CBLOL 2026 Cup",
+    "placement": "3rd",
+    "final": "UNKNOWN (sources conflict, lost to RED Canids)"
+   },
+   {
+    "event": "CBLOL 2026 Split 1",
+    "placement": "1st",
+    "final": "3-1 vs LOS"
+   },
+   {
+    "event": "CBLOL 2026 Split 2",
+    "placement": "2nd",
+    "final": "2-3 vs LOS"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "Americas Cup",
+    "placement": "1st",
+    "final": "3-0 vs C9"
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "7th-8th",
+    "final": "0-3 vs T1 (LB R1)"
+   },
+   {
+    "event": "EWC 2026",
+    "placement": "13th-16th",
+    "final": "0-2 vs Dplus KIA"
+   },
+   {
+    "event": "Worlds 2026 Play-In",
+    "placement": "pending",
+    "final": "vs MVK 15/10"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "06/09/2026",
+     "opp": "RED",
+     "score": "3-0",
+     "event": "CBLOL Split 2 PO UB R1"
+    },
+    {
+     "date": "12/09/2026",
+     "opp": "LOS",
+     "score": "1-3",
+     "event": "CBLOL Split 2 PO UB semi"
+    },
+    {
+     "date": "26/09/2026",
+     "opp": "RED",
+     "score": "3-2",
+     "event": "CBLOL Split 2 PO LB semi (score derived)"
+    },
+    {
+     "date": "03/10/2026",
+     "opp": "LOUD",
+     "score": "3-0",
+     "event": "CBLOL Split 2 PO LB final"
+    },
+    {
+     "date": "10/10/2026",
+     "opp": "LOS",
+     "score": "2-3",
+     "event": "CBLOL Split 2 PO grand final"
+    }
+   ],
+   "trend": "PEAKING"
+  },
+  "team_stats": {
+   "sample": "CBLOL 2026 Split 2 Playoffs (gol.gg)",
+   "games": 20,
+   "wr": 60.0,
+   "avg_len_min": 32.82,
+   "gd15": 263,
+   "fb_pct": 60.0,
+   "ft_pct": 60.0,
+   "drag_pct": 58.5,
+   "herald_pct": 70.0,
+   "baron_pct": 62.5,
+   "grubs_avg": 1.7,
+   "wr_ahead15": 83.3,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "MSI 2026 (gol.gg; 6 games)",
+   "games": 6,
+   "wr": 0.0,
+   "avg_len_min": 34.73,
+   "gd15": -1329,
+   "fb_pct": 66.7,
+   "ft_pct": null,
+   "drag_pct": 52.0,
+   "herald_pct": 50.0,
+   "baron_pct": 20.0,
+   "grubs_avg": 1.5,
+   "wr_ahead15": 0.0,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Guigo",
+    "kda": 3.2,
+    "gd15": -9,
+    "csd15": -3.9,
+    "xpd15": -269,
+    "kp": 57.0,
+    "dmg_pct": 23.0,
+    "gold_share": 20.5,
+    "solo_kills": 10,
+    "pool": 10,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Ambessa",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Olaf",
+      "w": 1,
+      "l": 2
+     },
+     {
+      "champ": "Gwen",
+      "w": 2,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Tatu",
+    "kda": 5.0,
+    "gd15": 191,
+    "csd15": -3.4,
+    "xpd15": -48,
+    "kp": 67.8,
+    "dmg_pct": 15.0,
+    "gold_share": 20.3,
+    "solo_kills": null,
+    "pool": 6,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Xin Zhao",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Trundle",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Sejuani",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Tutsz",
+    "kda": 5.6,
+    "gd15": 1,
+    "csd15": -5.1,
+    "xpd15": -57,
+    "kp": 62.3,
+    "dmg_pct": 24.8,
+    "gold_share": 20.3,
+    "solo_kills": 5,
+    "pool": 8,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Ryze",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Twisted Fate",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Viktor",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Ayu",
+    "kda": 4.8,
+    "gd15": -58,
+    "csd15": -3.0,
+    "xpd15": -249,
+    "kp": 65.6,
+    "dmg_pct": 28.0,
+    "gold_share": 25.2,
+    "solo_kills": null,
+    "pool": 8,
+    "worlds_prior": 0,
+    "top3": [
+     {
+      "champ": "Ezreal",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Kalista",
+      "w": 1,
+      "l": 2
+     },
+     {
+      "champ": "Ashe",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "JoJo",
+    "kda": 6.7,
+    "gd15": 190,
+    "csd15": 1.8,
+    "xpd15": 353,
+    "kp": 73.4,
+    "dmg_pct": 8.3,
+    "gold_share": 13.8,
+    "solo_kills": null,
+    "pool": 8,
+    "worlds_prior": null,
+    "top3": [
+     {
+      "champ": "Karma",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Seraphine",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Renata Glasc",
+      "w": 1,
+      "l": 2
+     }
+    ]
+   }
+  ],
+  "identity": "Wins through early skirmishes (FB 60%, 14.4 kills vs 9.9 deaths per game), herald control 70%, Tatu/JoJo high-KP enabling and Ayu damage (28%); unbeaten in the Americas Cup. Loses lane phase (CSD@15 -10.1; -41 at MSI), baron control vs elite teams (20% at MSI) and collapsed 0-6 in games at MSI (0-3 LYON, 0-3 T1), then lost 0-1 G2 and 0-2 Dplus KIA at EWC.",
+  "draft": "Wide pools: Guigo Ambessa/Olaf/Gwen/Ornn/Sion; Tatu Xin Zhao 2-0, Trundle, Sejuani, Nasus; Tutsz Ryze/TF/Viktor; Ayu Ezreal/Kalista (3 each), Yunara, Ashe; JoJo Karma/Seraphine/Renata. League-wide bans in CBLOL Split 2 PO: Cassiopeia 30, Nocturne 24, Jarvan IV 21. Team ban data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "Worlds 2026 Teams, Play-In Draw & Pools - Insider Gaming",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Worlds 2026 debutants - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "FURIA, CBLOL 2026 Split 2 Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2889/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "FURIA, MSI 2026 - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2889/split-ALL/tournament-MSI%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "CBLOL 2026 Split 2 Playoffs matches - rdy.gg",
+    "url": "https://rdy.gg/en/lol/tournaments/117170",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "FURIA win CBLOL 2026 Split 1 - RFT",
+    "url": "https://rft.gg/news/furia-win-cblol-2026-split-1-to-lock-in-msi-and-ewc",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "FURIA defeat Cloud9 to win the Americas Cup - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/furia-defeat-cloud9-to-win-the-inaugural-americas-cup/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "BLG sweep LYON as T1 eliminate FURIA - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78739-blg-sweep-lyon-as-t1-eliminate-furia-from-msi-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "Worlds 2026 Play-In Preview - AccountShark",
+    "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+    "accessed": "15/10/2026"
+   }
+  ]
+ }
+]

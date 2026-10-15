@@ -1,0 +1,1725 @@
+[
+ {
+  "code": "AL",
+  "name": "Anyone's Legend",
+  "region": "LPL",
+  "seed": 1,
+  "headline": "LPL Split 3 champions (3-1 over BLG) and seed 1, but no First Stand/MSI in 2026 and a 0-2 EWC quarterfinal exit; had lost six straight series to BLG before the final.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Breathe",
+    "worlds_prior": null
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Tarzan",
+    "worlds_prior": null,
+    "worlds_note": "at least 1 (Worlds 2025 QF vs T1)"
+   },
+   {
+    "role": "MID",
+    "player": "Shanks",
+    "worlds_prior": null,
+    "worlds_note": "at least 1 (Worlds 2025)"
+   },
+   {
+    "role": "BOT",
+    "player": "Hope",
+    "worlds_prior": null,
+    "worlds_note": "at least 1 (Worlds 2025)"
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Kael",
+    "worlds_prior": null,
+    "worlds_note": "at least 1 (Worlds 2025)"
+   }
+  ],
+  "coach": "BigWei (Fu Chien-wei); staff Despa1r, Teacherma, Pewpew",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LPL 2026 Split 1",
+    "placement": "4th",
+    "final": "lost LB R3 1-3 vs WBG"
+   },
+   {
+    "event": "LPL 2026 Split 2",
+    "placement": "4th",
+    "final": "lost LB R3 0-3 vs BLG"
+   },
+   {
+    "event": "LPL 2026 Split 3",
+    "placement": "1st",
+    "final": "3-1 vs BLG"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "04/09/2026",
+     "opp": "LGD",
+     "score": "3-1",
+     "event": "LPL Split 3 Playoffs UB R2"
+    },
+    {
+     "date": "07/09/2026",
+     "opp": "BLG",
+     "score": "0-3",
+     "event": "LPL Split 3 Playoffs UB Final"
+    },
+    {
+     "date": "12/09/2026",
+     "opp": "IG",
+     "score": "3-2",
+     "event": "LPL Split 3 Playoffs LB Final"
+    },
+    {
+     "date": "13/09/2026",
+     "opp": "BLG",
+     "score": "3-1",
+     "event": "LPL Split 3 Grand Final"
+    }
+   ],
+   "trend": "RISING"
+  },
+  "team_stats": {
+   "sample": "LPL 2026 Split 3 playoffs (games derived from series scores)",
+   "games": 16,
+   "wr": 56.3,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "EWC 2026 only: Bo1 group wins vs DK and G2, QF 0-2 vs KC (2-2 in games)",
+   "games": 4,
+   "wr": 50.0,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Breathe",
+    "kda": 4.1,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 52,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 8,
+    "top3": [
+     {
+      "champ": "Gnar",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Ambessa",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "K'Sante",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 36 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Tarzan",
+    "kda": 5.6,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 77,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 10,
+    "top3": [
+     {
+      "champ": "Naafiri",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Jarvan IV",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Skarner",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 36 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "MID",
+    "player": "Shanks",
+    "kda": 4.5,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 69,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Cassiopeia",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Ryze",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Galio",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 36 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "BOT",
+    "player": "Hope",
+    "kda": 5.4,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 63,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Ziggs",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Varus",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Jhin",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 36 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Kael",
+    "kda": 4.7,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 75,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Shen",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Camille",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Rell",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 36 games",
+    "worlds_prior_note": null
+   }
+  ],
+  "identity": "Jungle-led early tempo and engage synergy (Tarzan/Kael) snowball games to ~30-31 min wins; Hope is damage carry. Loses when BLG-style macro denies early snowball (0-3 UBF; six series losses to BLG before the final) or when KC controlled mid-game at EWC (0-2).",
+  "draft": "Limited data. Tarzan on Naafiri/Jarvan/Skarner/Qiyana/Cho'Gath; Hope Varus/Ziggs/Jhin/Miss Fortune; Shanks Cassiopeia/Ryze/Galio; Breathe Gnar/Ambessa/K'Sante. First-pick priorities and target bans UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "gosugamers all qualified teams/rosters",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "Sheep: LPL road back to the top",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Wikipedia 2026 LPL season",
+    "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Sheep LPL Split 1 playoffs matches",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "Sheep LPL Split 2 playoffs matches",
+    "url": "https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "mid.gg team pages (BLG/AL/TES/IG)",
+    "url": "https://mid.gg/esports/teams/bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Sheep MSI 2026 matches",
+    "url": "https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "Wikipedia 2026 First Stand",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "esports.gg EWC 2026 LoL results",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "gosugamers EWC 2026 quarterfinals",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "Sheep team pages",
+    "url": "https://www.sheepesports.com/us/lol/teams/Bilibili%20Gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "Sheep stats pages (Split 3, MSI, First Stand)",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-3/stats",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "gosugamers: Teams to watch Worlds 2026",
+    "url": "https://www.gosugamers.net/lol/news/79328-teams-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "WTFast Worlds 2026 guide (coaches)",
+    "url": "https://blog.wtfast.com/blog/whos-chasing-the-crown-your-complete-worlds-2026-team-guide",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "gosugamers ZUIAN visa",
+    "url": "https://www.gosugamers.net/lol/news/79304-top-esports-zuian-could-miss-worlds-2026-after-visa-denial-369-set-to-step-in",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "gosugamers Worlds 2026 debutants",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "gosugamers IG defeat JDG",
+    "url": "https://www.gosugamers.net/lol/news/79214-invictus-gaming-defeat-jd-gaming-to-become-the-lpl-s-final-representative-in-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Sheep: TES secure third seed",
+    "url": "https://www.sheepesports.com/de/articles/top-esports-secure-lpl-third-worlds-seed-over-invictus-gaming/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "Riftdaily BLG sign Flandre",
+    "url": "https://riftdaily.com/blg-sign-flandre-lpl/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "Sheep: BLG first LPL team to qualify",
+    "url": "https://www.sheepesports.com/en/all/articles/bilibili-gaming-become-first-lpl-team-to-qualify-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "Sheep: EWC 2026 power rankings",
+    "url": "https://www.sheepesports.com/articles/esports-world-cup-2026-lol-power-rankings/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "gosugamers AL crowned champions",
+    "url": "https://www.gosugamers.net/lol/news/79164-anyone-s-legend-crowned-the-lpl-split-3-champions-after-taking-down-bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "Inven: LPL decides all four Worlds representatives",
+    "url": "https://www.invenglobal.com/articles/26251/lcks-rival-lpl-decides-all-four-worlds-representatives",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "Inven: BLG wins First Stand",
+    "url": "https://www.invenglobal.com/articles/20339/bilibili-gaming-wins-first-stand-secures-first-international-title",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "BLG",
+  "name": "Bilibili Gaming",
+  "region": "LPL",
+  "seed": 2,
+  "headline": "First Stand, Split 1 and Split 2 champions and MSI runners-up (2-3 vs HLE), but lost the Split 3 final 1-3 to AL, exited EWC in the QF, and has an unsettled top lane (Bin/Flandre/Wenbo).",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Bin",
+    "worlds_prior": null,
+    "worlds_note": "BLG at Worlds 2023, 2024, 2025; Flandre is alternate (sources conflict on starter)"
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Xun",
+    "worlds_prior": null
+   },
+   {
+    "role": "MID",
+    "player": "Knight",
+    "worlds_prior": null,
+    "worlds_note": "JDG 2023; BLG Worlds 2024 final"
+   },
+   {
+    "role": "BOT",
+    "player": "Viper",
+    "worlds_prior": null,
+    "worlds_note": "Worlds 2021 champion with EDG"
+   },
+   {
+    "role": "SUPPORT",
+    "player": "ON",
+    "worlds_prior": null
+   }
+  ],
+  "coach": "UNKNOWN head coach (mid.gg: zyb, Ben, Chieh, Daeny; WTFast: no announced head coach, JeXeN coach)",
+  "roster_change_since_final": "none found (top lane: Flandre signed from AL 08-09/08/2026; Bin stepped away at start of Split 3, Wenbo promoted)",
+  "domestic_2026": [
+   {
+    "event": "LPL 2026 Split 1",
+    "placement": "1st",
+    "final": "3-1 vs JDG"
+   },
+   {
+    "event": "LPL 2026 Split 2",
+    "placement": "1st",
+    "final": "3-0 vs TES"
+   },
+   {
+    "event": "LPL 2026 Split 3",
+    "placement": "2nd",
+    "final": "1-3 vs AL"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "03/09/2026",
+     "opp": "WE",
+     "score": "3-1",
+     "event": "LPL Split 3 Playoffs UB R2"
+    },
+    {
+     "date": "07/09/2026",
+     "opp": "AL",
+     "score": "3-0",
+     "event": "LPL Split 3 Playoffs UB Final"
+    },
+    {
+     "date": "13/09/2026",
+     "opp": "AL",
+     "score": "1-3",
+     "event": "LPL Split 3 Grand Final"
+    }
+   ],
+   "trend": "STABLE"
+  },
+  "team_stats": {
+   "sample": "LPL 2026 Split 3 playoffs (games derived from series scores)",
+   "games": 11,
+   "wr": 63.6,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "First Stand 12-3, MSI 11-6, EWC 3-2 (derived from series scores / Sheep game win rates)",
+   "games": 37,
+   "wr": 70.3,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Bin",
+    "kda": 2.9,
+    "gd15": 341,
+    "csd15": 14.2,
+    "xpd15": null,
+    "kp": 46,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 9,
+    "top3": [
+     {
+      "champ": "Renekton",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Gnar",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "K'Sante",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "MSI 2026, 17 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Xun",
+    "kda": 4.8,
+    "gd15": 300,
+    "csd15": 7.1,
+    "xpd15": null,
+    "kp": 74,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 10,
+    "top3": [
+     {
+      "champ": "Jarvan IV",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Naafiri",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Skarner",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "MSI 2026, 17 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "MID",
+    "player": "Knight",
+    "kda": 7.2,
+    "gd15": 298,
+    "csd15": 5.2,
+    "xpd15": null,
+    "kp": 69,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Ryze",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Aurora",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Viktor",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "MSI 2026, 17 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "BOT",
+    "player": "Viper",
+    "kda": 4.7,
+    "gd15": -514,
+    "csd15": -6.4,
+    "xpd15": null,
+    "kp": 66,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Ezreal",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Ashe",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Mel",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "MSI 2026, 17 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "SUPPORT",
+    "player": "ON",
+    "kda": 4.1,
+    "gd15": 40,
+    "csd15": -6.2,
+    "xpd15": null,
+    "kp": 77,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 10,
+    "top3": [
+     {
+      "champ": "Bard",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Shen",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Alistar",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "MSI 2026, 17 games",
+    "worlds_prior_note": null
+   }
+  ],
+  "identity": "Wins via top-lane lane dominance (Bin +340 to +490 gold at 15 internationally), Knight control, Xun tempo and global-pressure comps. Loses long series to disciplined opponents (MSI final 2-3 after 2-1 lead, EWC QF 1-2, Split 3 final 1-3); Viper negative at 15 at MSI.",
+  "draft": "Bin Renekton/Gnar/K'Sante/Yorick/Sion; Knight Ryze/Aurora/Viktor/Syndra; Viper Ezreal/Ashe/Mel/Yunara; Pantheon and Galio used for global pressure at First Stand. First-pick priorities and bans UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "gosugamers all qualified teams/rosters",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "Sheep: LPL road back to the top",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Wikipedia 2026 LPL season",
+    "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Sheep LPL Split 1 playoffs matches",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "Sheep LPL Split 2 playoffs matches",
+    "url": "https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "mid.gg team pages (BLG/AL/TES/IG)",
+    "url": "https://mid.gg/esports/teams/bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Sheep MSI 2026 matches",
+    "url": "https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "Wikipedia 2026 First Stand",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "esports.gg EWC 2026 LoL results",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "gosugamers EWC 2026 quarterfinals",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "Sheep team pages",
+    "url": "https://www.sheepesports.com/us/lol/teams/Bilibili%20Gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "Sheep stats pages (Split 3, MSI, First Stand)",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-3/stats",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "gosugamers: Teams to watch Worlds 2026",
+    "url": "https://www.gosugamers.net/lol/news/79328-teams-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "WTFast Worlds 2026 guide (coaches)",
+    "url": "https://blog.wtfast.com/blog/whos-chasing-the-crown-your-complete-worlds-2026-team-guide",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "gosugamers ZUIAN visa",
+    "url": "https://www.gosugamers.net/lol/news/79304-top-esports-zuian-could-miss-worlds-2026-after-visa-denial-369-set-to-step-in",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "gosugamers Worlds 2026 debutants",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "gosugamers IG defeat JDG",
+    "url": "https://www.gosugamers.net/lol/news/79214-invictus-gaming-defeat-jd-gaming-to-become-the-lpl-s-final-representative-in-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Sheep: TES secure third seed",
+    "url": "https://www.sheepesports.com/de/articles/top-esports-secure-lpl-third-worlds-seed-over-invictus-gaming/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "Riftdaily BLG sign Flandre",
+    "url": "https://riftdaily.com/blg-sign-flandre-lpl/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "Sheep: BLG first LPL team to qualify",
+    "url": "https://www.sheepesports.com/en/all/articles/bilibili-gaming-become-first-lpl-team-to-qualify-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "Sheep: EWC 2026 power rankings",
+    "url": "https://www.sheepesports.com/articles/esports-world-cup-2026-lol-power-rankings/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "gosugamers AL crowned champions",
+    "url": "https://www.gosugamers.net/lol/news/79164-anyone-s-legend-crowned-the-lpl-split-3-champions-after-taking-down-bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "Inven: LPL decides all four Worlds representatives",
+    "url": "https://www.invenglobal.com/articles/26251/lcks-rival-lpl-decides-all-four-worlds-representatives",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "Inven: BLG wins First Stand",
+    "url": "https://www.invenglobal.com/articles/20339/bilibili-gaming-wins-first-stand-secures-first-international-title",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "TES",
+  "name": "Top Esports",
+  "region": "LPL",
+  "seed": 3,
+  "headline": "Split 2 runners-up and Worlds 2025 semifinalists who qualified via Regional Finals (3-1 over IG) after a tie for 7th in Split 3; 369 replaces visa-blocked ZUIAN and coach visas are uncertain.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "369",
+    "worlds_prior": null,
+    "worlds_note": "at least 2 (Worlds 2023 JDG, Worlds 2025 TES); replacing ZUIAN (debutant, visa denied)"
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Tian",
+    "worlds_prior": null
+   },
+   {
+    "role": "MID",
+    "player": "Creme",
+    "worlds_prior": null
+   },
+   {
+    "role": "BOT",
+    "player": "JackeyLove",
+    "worlds_prior": null,
+    "worlds_note": "Worlds 2018 champion with IG"
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Zhuo",
+    "worlds_prior": 0,
+    "worlds_note": "debutant"
+   }
+  ],
+  "coach": "Poppy (Chang Po-hao); coaches BoBo, Leo (visa status uncertain)",
+  "roster_change_since_final": "ZUIAN unable to travel (2 US visa denials, announced 06/10/2026); 369 returning as Worlds starter",
+  "domestic_2026": [
+   {
+    "event": "LPL 2026 Split 1",
+    "placement": "5th-6th",
+    "final": "lost LB R2 2-3 vs WBG"
+   },
+   {
+    "event": "LPL 2026 Split 2",
+    "placement": "2nd",
+    "final": "0-3 vs BLG"
+   },
+   {
+    "event": "LPL 2026 Split 3",
+    "placement": "7th-8th",
+    "final": "lost LB R1 2-3 vs IG"
+   },
+   {
+    "event": "LPL 2026 Regional Finals",
+    "placement": "3rd seed",
+    "final": "3-1 vs IG"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "05/09/2026",
+     "opp": "IG",
+     "score": "2-3",
+     "event": "LPL Split 3 Playoffs LB R1"
+    },
+    {
+     "date": "17/09/2026",
+     "opp": "IG",
+     "score": "3-1",
+     "event": "LPL Regional Finals UB Final"
+    }
+   ],
+   "trend": "STABLE"
+  },
+  "team_stats": {
+   "sample": "LPL Split 3 playoffs + Regional Finals (games derived from series scores)",
+   "games": 14,
+   "wr": 50.0,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "MSI 2026 (9 games, Sheep win rate 33.3%)",
+   "games": 9,
+   "wr": 33.3,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "ZUIAN (not traveling; 369 starts)",
+    "kda": 3.0,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 56,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": [
+     {
+      "champ": "Rumble",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Olaf",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 31 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "TOP",
+    "player": "369",
+    "kda": 3.9,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 54,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 14,
+    "top3": [
+     {
+      "champ": "Gnar",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Rumble",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Gangplank",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 1 regular season sample, 18 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Tian",
+    "kda": 3.2,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 69,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 10,
+    "top3": [
+     {
+      "champ": "Lee Sin",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Jarvan IV",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Pantheon",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 31 games (MSI 9g: KDA 2.8, GD@15 -158, CSD@15 -0.4)",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "MID",
+    "player": "Creme",
+    "kda": 3.9,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 62,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Ahri",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Orianna",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Syndra",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 31 games (MSI 9g: KDA 3.7, GD@15 +9, CSD@15 -2.3)",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "BOT",
+    "player": "JackeyLove",
+    "kda": 3.4,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 63,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 13,
+    "top3": [
+     {
+      "champ": "Ezreal",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Jhin",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Lucian",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 31 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Zhuo",
+    "kda": 3.6,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 70,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 11,
+    "top3": [
+     {
+      "champ": "Alistar",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Milio",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Nautilus",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 31 games",
+    "worlds_prior_note": null
+   }
+  ],
+  "identity": "Skill-heavy mid/bot (Creme, JackeyLove top DPM) with Tian's aggressive jungle (Pantheon 8/1/11 vs IG). Loses to disciplined macro teams (0-3 final vs BLG, 0-2 regular season) and close series (2-3 vs LGD, IG, G2); weak MSI (3-6 games).",
+  "draft": "Creme Ahri/Orianna/Syndra/Hwei/Aurora; JackeyLove Ezreal/Jhin/Lucian; Tian Lee Sin/Jarvan/Pantheon/Wukong; 369 historically Gnar/Rumble/Gangplank. First-pick/bans UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "gosugamers all qualified teams/rosters",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "Sheep: LPL road back to the top",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Wikipedia 2026 LPL season",
+    "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Sheep LPL Split 1 playoffs matches",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "Sheep LPL Split 2 playoffs matches",
+    "url": "https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "mid.gg team pages (BLG/AL/TES/IG)",
+    "url": "https://mid.gg/esports/teams/bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Sheep MSI 2026 matches",
+    "url": "https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "Wikipedia 2026 First Stand",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "esports.gg EWC 2026 LoL results",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "gosugamers EWC 2026 quarterfinals",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "Sheep team pages",
+    "url": "https://www.sheepesports.com/us/lol/teams/Bilibili%20Gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "Sheep stats pages (Split 3, MSI, First Stand)",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-3/stats",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "gosugamers: Teams to watch Worlds 2026",
+    "url": "https://www.gosugamers.net/lol/news/79328-teams-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "WTFast Worlds 2026 guide (coaches)",
+    "url": "https://blog.wtfast.com/blog/whos-chasing-the-crown-your-complete-worlds-2026-team-guide",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "gosugamers ZUIAN visa",
+    "url": "https://www.gosugamers.net/lol/news/79304-top-esports-zuian-could-miss-worlds-2026-after-visa-denial-369-set-to-step-in",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "gosugamers Worlds 2026 debutants",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "gosugamers IG defeat JDG",
+    "url": "https://www.gosugamers.net/lol/news/79214-invictus-gaming-defeat-jd-gaming-to-become-the-lpl-s-final-representative-in-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Sheep: TES secure third seed",
+    "url": "https://www.sheepesports.com/de/articles/top-esports-secure-lpl-third-worlds-seed-over-invictus-gaming/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "Riftdaily BLG sign Flandre",
+    "url": "https://riftdaily.com/blg-sign-flandre-lpl/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "Sheep: BLG first LPL team to qualify",
+    "url": "https://www.sheepesports.com/en/all/articles/bilibili-gaming-become-first-lpl-team-to-qualify-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "Sheep: EWC 2026 power rankings",
+    "url": "https://www.sheepesports.com/articles/esports-world-cup-2026-lol-power-rankings/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "gosugamers AL crowned champions",
+    "url": "https://www.gosugamers.net/lol/news/79164-anyone-s-legend-crowned-the-lpl-split-3-champions-after-taking-down-bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "Inven: LPL decides all four Worlds representatives",
+    "url": "https://www.invenglobal.com/articles/26251/lcks-rival-lpl-decides-all-four-worlds-representatives",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "Inven: BLG wins First Stand",
+    "url": "https://www.invenglobal.com/articles/20339/bilibili-gaming-wins-first-stand-secures-first-international-title",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "IG",
+  "name": "Invictus Gaming",
+  "region": "LPL",
+  "seed": 4,
+  "headline": "Seed 4 after a lower-bracket run (Split 3 LBF 2-3 to AL, then 3-1 over JDG in Regional Finals LBF); veterans TheShy, Rookie, Meiko, no 2026 international play and weak Splits 1-2.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "TheShy",
+    "worlds_prior": null,
+    "worlds_note": "Worlds 2018 champion, 2019 3rd-4th; IG at Worlds 2025"
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Wei",
+    "worlds_prior": null,
+    "worlds_note": "at least 1 (Worlds 2025)"
+   },
+   {
+    "role": "MID",
+    "player": "Rookie",
+    "worlds_prior": null,
+    "worlds_note": "Worlds 2018 champion; IG at Worlds 2025"
+   },
+   {
+    "role": "BOT",
+    "player": "JiaQi",
+    "worlds_prior": 0,
+    "worlds_note": "debutant"
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Meiko",
+    "worlds_prior": null,
+    "worlds_note": "7 as of 23/09/2024 per esports.gg; Worlds 2025 with IG"
+   }
+  ],
+  "coach": "Helper (head); Chengz, Fury, Kezman",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "Demacia Cup 2026",
+    "placement": "1st",
+    "final": "UNKNOWN score"
+   },
+   {
+    "event": "LPL 2026 Split 1",
+    "placement": "5th-6th",
+    "final": "lost LB R2 1-3 vs AL"
+   },
+   {
+    "event": "LPL 2026 Split 2",
+    "placement": "9th-12th",
+    "final": "lost Play-In 0-3 vs TTG"
+   },
+   {
+    "event": "LPL 2026 Split 3",
+    "placement": "3rd",
+    "final": "lost LB Final 2-3 vs AL"
+   },
+   {
+    "event": "LPL 2026 Regional Finals",
+    "placement": "4th seed",
+    "final": "3-1 vs JDG (LBF); lost 1-3 vs TES"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "05/09/2026",
+     "opp": "TES",
+     "score": "3-2",
+     "event": "LPL Split 3 Playoffs LB R1"
+    },
+    {
+     "date": "06/09/2026",
+     "opp": "WE",
+     "score": "3-1",
+     "event": "LPL Split 3 Playoffs LB R2"
+    },
+    {
+     "date": "08/09/2026",
+     "opp": "LGD",
+     "score": "3-0",
+     "event": "LPL Split 3 Playoffs LB R3"
+    },
+    {
+     "date": "12/09/2026",
+     "opp": "AL",
+     "score": "2-3",
+     "event": "LPL Split 3 Playoffs LB Final"
+    },
+    {
+     "date": "17/09/2026",
+     "opp": "TES",
+     "score": "1-3",
+     "event": "LPL Regional Finals UB Final"
+    },
+    {
+     "date": "19/09/2026",
+     "opp": "JDG",
+     "score": "3-1",
+     "event": "LPL Regional Finals LB Final"
+    }
+   ],
+   "trend": "PEAKING"
+  },
+  "team_stats": {
+   "sample": "LPL Split 3 playoffs + Regional Finals incl. Knight's Road (games derived from series scores)",
+   "games": 28,
+   "wr": 64.3,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": null,
+  "players": [
+   {
+    "role": "TOP",
+    "player": "TheShy",
+    "kda": null,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": [],
+    "sample": "UNKNOWN (row cut off in Sheep table)",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Wei",
+    "kda": 4.7,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 74,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 7,
+    "top3": [
+     {
+      "champ": "Vi",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Trundle",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Naafiri",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 15 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "MID",
+    "player": "Rookie",
+    "kda": 4.0,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 63,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 8,
+    "top3": [
+     {
+      "champ": "Ryze",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Viktor",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Orianna",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 15 games",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "BOT",
+    "player": "JiaQi",
+    "kda": 3.2,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 59,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 4,
+    "top3": [
+     {
+      "champ": "Jhin",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Yunara",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Ezreal",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 5 games only",
+    "worlds_prior_note": null
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Meiko",
+    "kda": 3.7,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 74,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": 9,
+    "top3": [
+     {
+      "champ": "Bard",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Karma",
+      "w": null,
+      "l": null
+     },
+     {
+      "champ": "Seraphine",
+      "w": null,
+      "l": null
+     }
+    ],
+    "sample": "LPL Split 3 regular season, 15 games",
+    "worlds_prior_note": null
+   }
+  ],
+  "identity": "Wei-led jungle tempo and veteran mid/support coordination; Baron and Dragon Soul pushes, ~7k gold lead by 25 min in Regional Finals G2. Loses when out-tempo'd early (1-3 vs TES, 2-3 vs AL); Splits 1-2 win rates were 34.9% and 39.5%, so strong form is a one-split sample.",
+  "draft": "Rookie Ryze/Aurora/Syndra/Viktor/Orianna; Wei Qiyana/Jarvan/Wukong/Trundle; JiaQi Tristana/Ezreal/Yunara. First-pick/bans UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "gosugamers all qualified teams/rosters",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "Sheep: LPL road back to the top",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Wikipedia 2026 LPL season",
+    "url": "https://en.wikipedia.org/wiki/2026_LPL_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Sheep LPL Split 1 playoffs matches",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "Sheep LPL Split 2 playoffs matches",
+    "url": "https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "mid.gg team pages (BLG/AL/TES/IG)",
+    "url": "https://mid.gg/esports/teams/bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Sheep MSI 2026 matches",
+    "url": "https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "Wikipedia 2026 First Stand",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "esports.gg EWC 2026 LoL results",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "gosugamers EWC 2026 quarterfinals",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "Sheep team pages",
+    "url": "https://www.sheepesports.com/us/lol/teams/Bilibili%20Gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "Sheep stats pages (Split 3, MSI, First Stand)",
+    "url": "https://www.sheepesports.com/en/lol/events/lpl-2026-split-3/stats",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "gosugamers: Teams to watch Worlds 2026",
+    "url": "https://www.gosugamers.net/lol/news/79328-teams-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "WTFast Worlds 2026 guide (coaches)",
+    "url": "https://blog.wtfast.com/blog/whos-chasing-the-crown-your-complete-worlds-2026-team-guide",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "gosugamers ZUIAN visa",
+    "url": "https://www.gosugamers.net/lol/news/79304-top-esports-zuian-could-miss-worlds-2026-after-visa-denial-369-set-to-step-in",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "gosugamers Worlds 2026 debutants",
+    "url": "https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "gosugamers IG defeat JDG",
+    "url": "https://www.gosugamers.net/lol/news/79214-invictus-gaming-defeat-jd-gaming-to-become-the-lpl-s-final-representative-in-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Sheep: TES secure third seed",
+    "url": "https://www.sheepesports.com/de/articles/top-esports-secure-lpl-third-worlds-seed-over-invictus-gaming/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "Riftdaily BLG sign Flandre",
+    "url": "https://riftdaily.com/blg-sign-flandre-lpl/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "Sheep: BLG first LPL team to qualify",
+    "url": "https://www.sheepesports.com/en/all/articles/bilibili-gaming-become-first-lpl-team-to-qualify-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "Sheep: EWC 2026 power rankings",
+    "url": "https://www.sheepesports.com/articles/esports-world-cup-2026-lol-power-rankings/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "gosugamers AL crowned champions",
+    "url": "https://www.gosugamers.net/lol/news/79164-anyone-s-legend-crowned-the-lpl-split-3-champions-after-taking-down-bilibili-gaming",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "Inven: LPL decides all four Worlds representatives",
+    "url": "https://www.invenglobal.com/articles/26251/lcks-rival-lpl-decides-all-four-worlds-representatives",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "Inven: BLG wins First Stand",
+    "url": "https://www.invenglobal.com/articles/20339/bilibili-gaming-wins-first-stand-secures-first-international-title",
+    "accessed": "15/10/2026"
+   }
+  ]
+ }
+]

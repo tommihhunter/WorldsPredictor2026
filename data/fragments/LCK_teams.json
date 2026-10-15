@@ -1,0 +1,1760 @@
+[
+ {
+  "code": "GEN",
+  "name": "Gen.G",
+  "region": "LCK",
+  "seed": 1,
+  "headline": "LCK 2026 champions (3-1 over HLE, Ruler Finals MVP) and Korea's 1st seed; swept 0-3 by G2 at First Stand and missed MSI after losing 2-3 to T1, so the international record is the open question.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Kiin",
+    "worlds_prior": null
+   },
+   {
+    "role": "JNG",
+    "player": "Canyon",
+    "worlds_prior": null
+   },
+   {
+    "role": "MID",
+    "player": "Chovy",
+    "worlds_prior": 7
+   },
+   {
+    "role": "ADC",
+    "player": "Ruler",
+    "worlds_prior": 8
+   },
+   {
+    "role": "SUP",
+    "player": "Duro",
+    "worlds_prior": null
+   }
+  ],
+  "coach": "Ryu Sang-wook (assistant Lyn)",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LCK Cup 2026",
+    "placement": "1st",
+    "final": "3-0 vs BNK FearX"
+   },
+   {
+    "event": "Road to MSI",
+    "placement": "lost MSI qualifier",
+    "final": "2-3 vs T1 (after 3-0 vs KT)"
+   },
+   {
+    "event": "LCK 2026 Season Playoffs",
+    "placement": "1st",
+    "final": "3-1 vs HLE"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "3rd-4th",
+    "final": "0-3 vs G2 (semi); 3-0 JDG, 3-0 LYON"
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "did not qualify",
+    "final": null
+   },
+   {
+    "event": "EWC 2026",
+    "placement": "3rd",
+    "final": "2-1 vs T1 (3rd place); 1-2 vs DK (SF)"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "01/09/2026",
+     "opp": "KT",
+     "score": "3-0",
+     "event": "LCK Playoffs UB R2"
+    },
+    {
+     "date": "05/09/2026",
+     "opp": "HLE",
+     "score": "3-1",
+     "event": "LCK Playoffs UB Final"
+    },
+    {
+     "date": "13/09/2026",
+     "opp": "HLE",
+     "score": "3-1",
+     "event": "LCK Grand Final"
+    }
+   ],
+   "trend": "PEAKING"
+  },
+  "team_stats": {
+   "sample": "LCK 2026 Season Playoffs (gol.gg)",
+   "games": 11,
+   "wr": 81.8,
+   "avg_len_min": 33.2,
+   "gd15": 506,
+   "fb_pct": 18.2,
+   "ft_pct": 54.5,
+   "drag_pct": 61.7,
+   "herald_pct": 45.5,
+   "baron_pct": 74.2,
+   "grubs_avg": 1.82,
+   "wr_ahead15": 85.7,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "First Stand 2026 + EWC 2026 game record from series scores (no gol.gg data)",
+   "games": 19,
+   "wr": 68.4,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Kiin",
+    "worlds_prior": null,
+    "kda": 5.1,
+    "gd15": 354,
+    "csd15": 7.5,
+    "xpd15": 275,
+    "kp": 61.7,
+    "dmg_pct": 22.5,
+    "gold_share": 20.0,
+    "solo_kills": 1,
+    "pool": 8,
+    "top3": [
+     {
+      "champ": "Varus",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Gwen",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Rumble",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Canyon",
+    "worlds_prior": null,
+    "kda": 5.6,
+    "gd15": 61,
+    "csd15": 5.2,
+    "xpd15": 206,
+    "kp": 72.3,
+    "dmg_pct": 15.0,
+    "gold_share": 19.5,
+    "solo_kills": 2,
+    "pool": 8,
+    "top3": [
+     {
+      "champ": "Lee Sin",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Cho'Gath",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Vi",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Chovy",
+    "worlds_prior": 7,
+    "kda": 7.3,
+    "gd15": 181,
+    "csd15": null,
+    "xpd15": null,
+    "kp": 62.6,
+    "dmg_pct": 23.8,
+    "gold_share": 22.1,
+    "solo_kills": null,
+    "pool": null,
+    "top3": [
+     {
+      "champ": "Ryze",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Akali",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Syndra",
+      "w": 1,
+      "l": 0
+     }
+    ],
+    "note": "GD@15 derived (team +506 minus other four); gol.gg player page counts only 3 games so CSD/XPD/pool left null; top3 from that 3-game sample"
+   },
+   {
+    "role": "ADC",
+    "player": "Ruler",
+    "worlds_prior": 8,
+    "kda": 6.0,
+    "gd15": 120,
+    "csd15": -3.5,
+    "xpd15": -124,
+    "kp": 70.6,
+    "dmg_pct": 31.7,
+    "gold_share": 25.4,
+    "solo_kills": null,
+    "pool": 10,
+    "top3": [
+     {
+      "champ": "Ashe",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Yunara",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Zeri",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Duro",
+    "worlds_prior": null,
+    "kda": 5.7,
+    "gd15": -210,
+    "csd15": -8.2,
+    "xpd15": -70,
+    "kp": 79.7,
+    "dmg_pct": 7.0,
+    "gold_share": 13.0,
+    "solo_kills": null,
+    "pool": 9,
+    "top3": [
+     {
+      "champ": "Seraphine",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Karma",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Lulu",
+      "w": 1,
+      "l": 0
+     }
+    ]
+   }
+  ],
+  "identity": "Wins by controlling dragons (61.7%) and Nashor (74.2%) with +506 GD@15 and 85.7% WR when ahead, then closing fast through Ruler (31.7% dmg) and a high-KP Duro/Canyon. Loses to scrappy international drafts (0-3 G2, 1-2 DK) and to late Baron fights (HLE G1s).",
+  "draft": "Own bans Camille 55%, Vi/Cassiopeia/Jarvan IV 36%. Opponents ban Olaf 73%, Cassiopeia 64%, Ezreal 55%, K'Sante 36%. Comfort: Kiin Varus/Gwen, Ruler Ashe/Zeri, Duro Seraphine/Yuumi, Chovy Lissandra/Anivia. First-pick/flex data UNKNOWN.",
+  "sources": [
+   {
+    "id": 3,
+    "title": "Gen.G are the 2026 LCK champions - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "Gen.G beat HLE LCK 2026 - Dot Esports",
+    "url": "https://dotesports.com/league-of-legends/news/geng-beat-hle-lck-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "LCK 2026 Season Playoffs match list - gol.gg",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Gen.G team stats, LCK 2026 Season Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "Gen.G vs HLE UB final - GosuGamers",
+    "url": "https://www.gosugamers.net/entertainment/news/79110-gen-g-are-the-first-lck-2026-grand-finals-spot-and-worlds-2026-seeding",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "2026 LCK season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "2026 First Stand Tournament - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "Road to MSI 2026 - Inven Global",
+    "url": "https://www.invenglobal.com/articles/22799/hanwha-life-esports-makes-historic-first-msi-appearance-t1-extends-record-to-5-consecutive-years",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "Gen.G defeat T1 for third place at EWC 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78824-gen-g-defeat-t1-to-secure-third-place-at-the-league-of-legends-esports-world-cup-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "EWC 2026 quarterfinals - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "Dplus KIA vs Gen.G EWC 2026 - rdy.gg",
+    "url": "https://rdy.gg/en/lol/results/10003368",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "LCK Cup 2026 match list - gol.gg",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LCK%20Cup%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "Gen.G team stats, LCK Cup 2026 - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%20Cup%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 25,
+    "title": "All LCK teams at Worlds 2026 - Strafe",
+    "url": "https://www.strafe.com/news/read/all-lck-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 26,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 28,
+    "title": "Gen.G's completed 2026 LCK roster - Sheep Esports",
+    "url": "https://www.sheepesports.com/articles/lol-gen-g-s-completed-2026-lck-roster/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 31,
+    "title": "2025 League of Legends World Championship - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2025_League_of_Legends_World_Championship",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 32,
+    "title": "Faker - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Faker_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 33,
+    "title": "Chovy - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Chovy_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 34,
+    "title": "Ruler - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Ruler_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 42,
+    "title": "Worlds 2026 guide - Red Bull",
+    "url": "https://www.redbull.com/int-en/league-of-legends-worlds-2026-guide",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 43,
+    "title": "Worlds 2026 hub - esports.gg",
+    "url": "https://esports.gg/guides/league-of-legends/worlds-2026-hub/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 44,
+    "title": "Korea claims second straight LoL gold at Asian Games - Korea JoongAng Daily",
+    "url": "https://www.koreajoongangdaily.com/sports/korea-claims-second-straight-lol-gold-at-asian-games/12902823",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 47,
+    "title": "Teams to watch at Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79328-teams-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "HLE",
+  "name": "Hanwha Life Esports",
+  "region": "LCK",
+  "seed": 2,
+  "headline": "MSI 2026 champions (3-2 over BLG, Zeus Finals MVP) who qualified via that title, then finished LCK runner-up (1-3 to Gen.G twice) with Zeus, Gumayusi and Zeka's big-stage pedigree.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Zeus",
+    "worlds_prior": 4
+   },
+   {
+    "role": "JNG",
+    "player": "Kanavi",
+    "worlds_prior": 4
+   },
+   {
+    "role": "MID",
+    "player": "Zeka",
+    "worlds_prior": null
+   },
+   {
+    "role": "ADC",
+    "player": "Gumayusi",
+    "worlds_prior": 5
+   },
+   {
+    "role": "SUP",
+    "player": "Delight",
+    "worlds_prior": null
+   }
+  ],
+  "coach": "Yoon Sung-young (Homme)",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LCK Cup 2026",
+    "placement": "eliminated in group stage (2-3)",
+    "final": null
+   },
+   {
+    "event": "Road to MSI",
+    "placement": "1st seed",
+    "final": "3-1 vs T1"
+   },
+   {
+    "event": "LCK 2026 Season Playoffs",
+    "placement": "2nd",
+    "final": "1-3 vs Gen.G"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "did not qualify",
+    "final": null
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "1st",
+    "final": "3-2 vs BLG"
+   },
+   {
+    "event": "EWC 2026",
+    "placement": "5th-8th",
+    "final": "0-2 vs T1 (QF)"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "02/09/2026",
+     "opp": "T1",
+     "score": "3-2",
+     "event": "LCK Playoffs UB R2"
+    },
+    {
+     "date": "05/09/2026",
+     "opp": "GEN",
+     "score": "1-3",
+     "event": "LCK Playoffs UB Final"
+    },
+    {
+     "date": "12/09/2026",
+     "opp": "T1",
+     "score": "3-1",
+     "event": "LCK Playoffs LB Final"
+    },
+    {
+     "date": "13/09/2026",
+     "opp": "GEN",
+     "score": "1-3",
+     "event": "LCK Grand Final"
+    }
+   ],
+   "trend": "STABLE"
+  },
+  "team_stats": {
+   "sample": "LCK 2026 Season Playoffs (gol.gg)",
+   "games": 17,
+   "wr": 47.1,
+   "avg_len_min": 32.2,
+   "gd15": 137,
+   "fb_pct": 76.5,
+   "ft_pct": 52.9,
+   "drag_pct": 56.4,
+   "herald_pct": 41.2,
+   "baron_pct": 55.2,
+   "grubs_avg": 1.41,
+   "wr_ahead15": 62.5,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "MSI 2026 + EWC 2026 game record from series scores (no gol.gg data)",
+   "games": 24,
+   "wr": 62.5,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Zeus",
+    "worlds_prior": 4,
+    "kda": 3.0,
+    "gd15": -170,
+    "csd15": -6.4,
+    "xpd15": -227,
+    "kp": 58.5,
+    "dmg_pct": 21.5,
+    "gold_share": 20.1,
+    "solo_kills": 2,
+    "pool": 7,
+    "top3": [
+     {
+      "champ": "Camille",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Ambessa",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Olaf",
+      "w": 0,
+      "l": 1
+     }
+    ],
+    "note": "KDA/KP/DMG/Gold from 17-game team table; GD/CSD/XPD/solo/pool/champs from a 9-game player-page sample"
+   },
+   {
+    "role": "JNG",
+    "player": "Kanavi",
+    "worlds_prior": 4,
+    "kda": 2.3,
+    "gd15": 224,
+    "csd15": 4.7,
+    "xpd15": 40,
+    "kp": 68.8,
+    "dmg_pct": 18.2,
+    "gold_share": 20.1,
+    "solo_kills": 1,
+    "pool": 9,
+    "top3": [
+     {
+      "champ": "Sejuani",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Xin Zhao",
+      "w": 1,
+      "l": 0
+     },
+     {
+      "champ": "Cho'Gath",
+      "w": 1,
+      "l": 0
+     }
+    ],
+    "note": "9-game player-page sample for early stats; all champs 1 game"
+   },
+   {
+    "role": "MID",
+    "player": "Zeka",
+    "worlds_prior": null,
+    "kda": 5.0,
+    "gd15": 125,
+    "csd15": 1.6,
+    "xpd15": -240,
+    "kp": 72.5,
+    "dmg_pct": 25.1,
+    "gold_share": 21.4,
+    "solo_kills": 5,
+    "pool": 8,
+    "top3": [
+     {
+      "champ": "Ahri",
+      "w": 0,
+      "l": 2
+     },
+     {
+      "champ": "Annie",
+      "w": 0,
+      "l": 1
+     },
+     {
+      "champ": "Akali",
+      "w": 1,
+      "l": 0
+     }
+    ],
+    "note": "9-game player-page sample for early stats"
+   },
+   {
+    "role": "ADC",
+    "player": "Gumayusi",
+    "worlds_prior": 5,
+    "kda": 2.9,
+    "gd15": -125,
+    "csd15": 3.3,
+    "xpd15": 72,
+    "kp": 69.3,
+    "dmg_pct": 27.5,
+    "gold_share": 24.6,
+    "solo_kills": null,
+    "pool": 8,
+    "top3": [
+     {
+      "champ": "Caitlyn",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Ashe",
+      "w": 0,
+      "l": 1
+     },
+     {
+      "champ": "Yunara",
+      "w": 0,
+      "l": 1
+     }
+    ],
+    "note": "9-game player-page sample for early stats"
+   },
+   {
+    "role": "SUP",
+    "player": "Delight",
+    "worlds_prior": null,
+    "kda": 3.1,
+    "gd15": 93,
+    "csd15": 8.0,
+    "xpd15": 84,
+    "kp": 76.0,
+    "dmg_pct": 7.8,
+    "gold_share": 13.8,
+    "solo_kills": null,
+    "pool": 9,
+    "top3": [
+     {
+      "champ": "Seraphine",
+      "w": 0,
+      "l": 1
+     },
+     {
+      "champ": "Lulu",
+      "w": 0,
+      "l": 1
+     },
+     {
+      "champ": "Shen",
+      "w": 1,
+      "l": 0
+     }
+    ],
+    "note": "9-game player-page sample for early stats"
+   }
+  ],
+  "identity": "Wins with early aggression (76.5% first blood) and Baron fights (Kanavi's G5 Baron steal at MSI), carried by Zeka and Gumayusi. Loses when early leads do not convert (62.5% WR when ahead @15) and to Gen.G's scaling/fighting; top lane (Zeus) is the weakest stat line.",
+  "draft": "Bans Cassiopeia 59%, Olaf 47%, Bard 47%, Ezreal/Nocturne 35%. Opponents ban Camille 53%, Vi 53%, Cassiopeia/Lee Sin 29%. Comfort: Zeus Camille/Ambessa, Gumayusi Caitlyn/Varus, Zeka Akali (Ahri 0-2). First-pick/flex data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "All LCK teams qualified for Worlds 2026 - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "Gen.G are the 2026 LCK champions - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "HLE beat T1 in LB final - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "LCK 2026 Season Playoffs match list - gol.gg",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Gen.G team stats, LCK 2026 Season Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "HLE team stats, LCK 2026 Season Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2805/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "T1 team stats, LCK 2026 Season Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2809/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "Dplus KIA team stats, LCK 2026 Season Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2802/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "Gen.G vs HLE UB final - GosuGamers",
+    "url": "https://www.gosugamers.net/entertainment/news/79110-gen-g-are-the-first-lck-2026-grand-finals-spot-and-worlds-2026-seeding",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "2026 LCK season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "2026 First Stand Tournament - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "MSI 2026 matches - Sheep Esports",
+    "url": "https://www.sheepesports.com/en/lol/events/2026-mid-invitational/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "HLE win MSI 2026 - rdy.gg",
+    "url": "https://rdy.gg/en/lol/news/hle-wins-msi-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "Road to MSI 2026 - Inven Global",
+    "url": "https://www.invenglobal.com/articles/22799/hanwha-life-esports-makes-historic-first-msi-appearance-t1-extends-record-to-5-consecutive-years",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "EWC 2026 quarterfinals - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 25,
+    "title": "All LCK teams at Worlds 2026 - Strafe",
+    "url": "https://www.strafe.com/news/read/all-lck-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 26,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 27,
+    "title": "All LCK Cup 2026 rosters - Sheep Esports",
+    "url": "https://www.sheepesports.com/articles/all-lck-cup-2026-rosters/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 31,
+    "title": "2025 League of Legends World Championship - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2025_League_of_Legends_World_Championship",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 35,
+    "title": "Zeus - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Zeus_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 38,
+    "title": "Kanavi (gamer) - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Kanavi_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 40,
+    "title": "Gumayusi - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Gumayusi",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 41,
+    "title": "Every team qualified for Worlds 2026 - Egamersworld",
+    "url": "https://egamersworld.com/blog/every-worlds-2026-team-qualified-6Q23AMZcmS",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 44,
+    "title": "Korea claims second straight LoL gold at Asian Games - Korea JoongAng Daily",
+    "url": "https://www.koreajoongangdaily.com/sports/korea-claims-second-straight-lol-gold-at-asian-games/12902823",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 45,
+    "title": "Worlds 2026: LCK always ready for the challenge - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-lck-always-ready-for-the-challenge/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 46,
+    "title": "Players to watch at Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79339-players-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 47,
+    "title": "Teams to watch at Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79328-teams-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "T1",
+  "name": "T1",
+  "region": "LCK",
+  "seed": 3,
+  "headline": "Three-time defending champions in a down domestic year: 3rd in the LCK (9-9 in playoffs), 5th-6th at MSI, 4th at EWC, with Peyz replacing Gumayusi.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Doran",
+    "worlds_prior": 4
+   },
+   {
+    "role": "JNG",
+    "player": "Oner",
+    "worlds_prior": 5
+   },
+   {
+    "role": "MID",
+    "player": "Faker",
+    "worlds_prior": 10
+   },
+   {
+    "role": "ADC",
+    "player": "Peyz",
+    "worlds_prior": null
+   },
+   {
+    "role": "SUP",
+    "player": "Keria",
+    "worlds_prior": 6
+   }
+  ],
+  "coach": "Kim Jeong-gyun (kkOma)",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LCK Cup 2026",
+    "placement": "4th",
+    "final": "2-3 vs DK (LB R3)"
+   },
+   {
+    "event": "Road to MSI",
+    "placement": "2nd seed",
+    "final": "1-3 vs HLE; 3-2 vs Gen.G"
+   },
+   {
+    "event": "LCK 2026 Season Playoffs",
+    "placement": "3rd",
+    "final": "1-3 vs HLE (LB final)"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "did not qualify",
+    "final": null
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "5th-6th",
+    "final": "1-3 vs G2 (LB R2); 2-3 vs BLG (R1)"
+   },
+   {
+    "event": "EWC 2026",
+    "placement": "4th",
+    "final": "1-2 vs Gen.G (3rd place); 1-2 vs KC (SF)"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "02/09/2026",
+     "opp": "HLE",
+     "score": "2-3",
+     "event": "LCK Playoffs UB R2"
+    },
+    {
+     "date": "06/09/2026",
+     "opp": "DK",
+     "score": "3-1",
+     "event": "LCK Playoffs LB R3"
+    },
+    {
+     "date": "12/09/2026",
+     "opp": "HLE",
+     "score": "1-3",
+     "event": "LCK Playoffs LB Final"
+    }
+   ],
+   "trend": "FADING"
+  },
+  "team_stats": {
+   "sample": "LCK 2026 Season Playoffs (gol.gg)",
+   "games": 18,
+   "wr": 50.0,
+   "avg_len_min": 32.6,
+   "gd15": -468,
+   "fb_pct": 22.2,
+   "ft_pct": 44.4,
+   "drag_pct": 42.2,
+   "herald_pct": 66.7,
+   "baron_pct": 37.3,
+   "grubs_avg": 1.0,
+   "wr_ahead15": 57.1,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "MSI 2026 + EWC 2026 game record from series scores (no gol.gg data)",
+   "games": 33,
+   "wr": 66.7,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Doran",
+    "worlds_prior": 4,
+    "kda": 2.9,
+    "gd15": -39,
+    "csd15": -4.6,
+    "xpd15": -101,
+    "kp": 49.4,
+    "dmg_pct": 20.0,
+    "gold_share": 20.0,
+    "solo_kills": 9,
+    "pool": 13,
+    "top3": [
+     {
+      "champ": "Jayce",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Olaf",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Kennen",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Oner",
+    "worlds_prior": 5,
+    "kda": 3.0,
+    "gd15": -325,
+    "csd15": -3.9,
+    "xpd15": -151,
+    "kp": 67.8,
+    "dmg_pct": 19.3,
+    "gold_share": 19.9,
+    "solo_kills": 5,
+    "pool": 9,
+    "top3": [
+     {
+      "champ": "Naafiri",
+      "w": 1,
+      "l": 3
+     },
+     {
+      "champ": "Skarner",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Vi",
+      "w": 2,
+      "l": 0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Faker",
+    "worlds_prior": 10,
+    "kda": 3.0,
+    "gd15": -372,
+    "csd15": -5.9,
+    "xpd15": -97,
+    "kp": 62.1,
+    "dmg_pct": 21.7,
+    "gold_share": 20.3,
+    "solo_kills": 2,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Anivia",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Akali",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Galio",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Peyz",
+    "worlds_prior": null,
+    "kda": 3.6,
+    "gd15": 401,
+    "csd15": 4.5,
+    "xpd15": 130,
+    "kp": 73.1,
+    "dmg_pct": 30.3,
+    "gold_share": 26.2,
+    "solo_kills": 4,
+    "pool": 13,
+    "top3": [
+     {
+      "champ": "Kalista",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Yunara",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Jhin",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Keria",
+    "worlds_prior": 6,
+    "kda": 5.3,
+    "gd15": -134,
+    "csd15": -6.4,
+    "xpd15": -1,
+    "kp": 83.3,
+    "dmg_pct": 8.7,
+    "gold_share": 13.6,
+    "solo_kills": null,
+    "pool": 12,
+    "top3": [
+     {
+      "champ": "Renata Glasc",
+      "w": 3,
+      "l": 0
+     },
+     {
+      "champ": "Lulu",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Bard",
+      "w": 0,
+      "l": 2
+     }
+    ]
+   }
+  ],
+  "identity": "Peyz is the hyper-carry (+401 GD@15, 30.3% dmg) with Keria enabling and Doran's 9 solo kills; wins long scrappy fights. Falls behind early (GD@15 -468, FT 44.4%) and loses Baron/dragon control (37.3%/42.2%); blew a 2-0 lead to HLE.",
+  "draft": "Bans Orianna 44%, Syndra 39%, Cassiopeia/Karma/Camille/Vi 33%. Opponents ban Bard 78%, Nocturne 61%, Cassiopeia 33%, Kalista 28%. Comfort: Peyz Kalista, Keria Renata Glasc/Karma, Faker Anivia/Locke/Ryze, Doran Jayce. First-pick/flex data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "All LCK teams qualified for Worlds 2026 - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "HLE beat T1 in LB final - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "LCK 2026 Season Playoffs match list - gol.gg",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "T1 team stats, LCK 2026 Season Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2809/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "T1 take down Dplus KIA - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79111-t1-dk",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "2026 LCK season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "MSI 2026 matches - Sheep Esports",
+    "url": "https://www.sheepesports.com/en/lol/events/2026-mid-invitational/matches",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "Road to MSI 2026 - Inven Global",
+    "url": "https://www.invenglobal.com/articles/22799/hanwha-life-esports-makes-historic-first-msi-appearance-t1-extends-record-to-5-consecutive-years",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "Gen.G defeat T1 for third place at EWC 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78824-gen-g-defeat-t1-to-secure-third-place-at-the-league-of-legends-esports-world-cup-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "EWC 2026 quarterfinals - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "EWC 2026 group stage - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78809-t1-hle-blg-gen-g-and-four-more-teams-reach-lol-ewc-2026-playoffs",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "LCK Cup 2026 match list - gol.gg",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LCK%20Cup%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 25,
+    "title": "All LCK teams at Worlds 2026 - Strafe",
+    "url": "https://www.strafe.com/news/read/all-lck-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 27,
+    "title": "All LCK Cup 2026 rosters - Sheep Esports",
+    "url": "https://www.sheepesports.com/articles/all-lck-cup-2026-rosters/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 31,
+    "title": "2025 League of Legends World Championship - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2025_League_of_Legends_World_Championship",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 32,
+    "title": "Faker - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Faker_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 36,
+    "title": "Keria (gamer) - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Keria_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 37,
+    "title": "Oner (gamer) - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Oner_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 39,
+    "title": "Doran (gamer) - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Doran_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 41,
+    "title": "Every team qualified for Worlds 2026 - Egamersworld",
+    "url": "https://egamersworld.com/blog/every-worlds-2026-team-qualified-6Q23AMZcmS",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 42,
+    "title": "Worlds 2026 guide - Red Bull",
+    "url": "https://www.redbull.com/int-en/league-of-legends-worlds-2026-guide",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 44,
+    "title": "Korea claims second straight LoL gold at Asian Games - Korea JoongAng Daily",
+    "url": "https://www.koreajoongangdaily.com/sports/korea-claims-second-straight-lol-gold-at-asian-games/12902823",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 46,
+    "title": "Players to watch at Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79339-players-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 47,
+    "title": "Teams to watch at Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79328-teams-to-watch-out-for-at-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 49,
+    "title": "2026 Mid-Season Invitational - Wikipedia (snapshot)",
+    "url": "https://en.wikipedia.org/wiki/2026_Mid-Season_Invitational",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "DK",
+  "name": "Dplus KIA",
+  "region": "LCK",
+  "seed": 4,
+  "headline": "EWC 2026 champions (BLG 2-1, Gen.G 2-1, KC 3-0) who needed a lower-bracket run for the final Korean seed; youngest LCK roster, ShowMaker the 2020 champion.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Siwoo",
+    "worlds_prior": null
+   },
+   {
+    "role": "JNG",
+    "player": "Lucid",
+    "worlds_prior": null
+   },
+   {
+    "role": "MID",
+    "player": "ShowMaker",
+    "worlds_prior": null
+   },
+   {
+    "role": "ADC",
+    "player": "Smash",
+    "worlds_prior": null
+   },
+   {
+    "role": "SUP",
+    "player": "Career",
+    "worlds_prior": null
+   }
+  ],
+  "coach": "Kim Dae-ho (cvMax)",
+  "roster_change_since_final": "none",
+  "domestic_2026": [
+   {
+    "event": "LCK Cup 2026",
+    "placement": "3rd",
+    "final": "0-3 vs BNK FearX (LB final)"
+   },
+   {
+    "event": "Road to MSI",
+    "placement": "lost MSI qualifier",
+    "final": "2-3 vs KT"
+   },
+   {
+    "event": "LCK 2026 Season Playoffs",
+    "placement": "4th",
+    "final": "1-3 vs T1 (LB R3)"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "did not qualify",
+    "final": null
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "did not qualify",
+    "final": null
+   },
+   {
+    "event": "EWC 2026",
+    "placement": "1st",
+    "final": "3-0 vs Karmine Corp"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "03/09/2026",
+     "opp": "BNK FearX",
+     "score": "3-2",
+     "event": "LCK Playoffs LB R1"
+    },
+    {
+     "date": "04/09/2026",
+     "opp": "KT",
+     "score": "3-1",
+     "event": "LCK Playoffs LB R2"
+    },
+    {
+     "date": "06/09/2026",
+     "opp": "T1",
+     "score": "1-3",
+     "event": "LCK Playoffs LB R3"
+    }
+   ],
+   "trend": "STABLE"
+  },
+  "team_stats": {
+   "sample": "LCK 2026 Season Playoffs (gol.gg)",
+   "games": 16,
+   "wr": 43.8,
+   "avg_len_min": 34.8,
+   "gd15": 1198,
+   "fb_pct": 62.5,
+   "ft_pct": 50.0,
+   "drag_pct": 48.8,
+   "herald_pct": 56.3,
+   "baron_pct": 47.9,
+   "grubs_avg": 0.94,
+   "wr_ahead15": 46.2,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "team_stats_intl": {
+   "sample": "EWC 2026 game record from series scores (no gol.gg data)",
+   "games": 14,
+   "wr": 78.6,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Siwoo",
+    "worlds_prior": null,
+    "kda": 1.9,
+    "gd15": 86,
+    "csd15": 7.8,
+    "xpd15": 209,
+    "kp": 38.2,
+    "dmg_pct": 20.4,
+    "gold_share": 20.0,
+    "solo_kills": 3,
+    "pool": 11,
+    "top3": [
+     {
+      "champ": "Jayce",
+      "w": 0,
+      "l": 3
+     },
+     {
+      "champ": "Gnar",
+      "w": 1,
+      "l": 2
+     },
+     {
+      "champ": "Ambessa",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Lucid",
+    "worlds_prior": null,
+    "kda": 2.9,
+    "gd15": 132,
+    "csd15": 5.6,
+    "xpd15": 358,
+    "kp": 71.5,
+    "dmg_pct": 15.5,
+    "gold_share": 19.4,
+    "solo_kills": null,
+    "pool": 10,
+    "top3": [
+     {
+      "champ": "Vi",
+      "w": 1,
+      "l": 2
+     },
+     {
+      "champ": "Naafiri",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Jarvan IV",
+      "w": 1,
+      "l": 2
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "ShowMaker",
+    "worlds_prior": null,
+    "kda": 4.0,
+    "gd15": 336,
+    "csd15": 3.7,
+    "xpd15": 160,
+    "kp": 75.7,
+    "dmg_pct": 27.5,
+    "gold_share": 21.2,
+    "solo_kills": 2,
+    "pool": 9,
+    "top3": [
+     {
+      "champ": "Annie",
+      "w": 2,
+      "l": 2
+     },
+     {
+      "champ": "Orianna",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Taliyah",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Smash",
+    "worlds_prior": null,
+    "kda": 4.1,
+    "gd15": 443,
+    "csd15": 5.5,
+    "xpd15": 63,
+    "kp": 71.7,
+    "dmg_pct": 28.5,
+    "gold_share": 25.7,
+    "solo_kills": null,
+    "pool": 11,
+    "top3": [
+     {
+      "champ": "Ashe",
+      "w": 2,
+      "l": 0
+     },
+     {
+      "champ": "Yunara",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Jhin",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Career",
+    "worlds_prior": null,
+    "kda": 3.8,
+    "gd15": 202,
+    "csd15": 3.8,
+    "xpd15": 273,
+    "kp": 80.6,
+    "dmg_pct": 8.0,
+    "gold_share": 13.6,
+    "solo_kills": null,
+    "pool": 11,
+    "top3": [
+     {
+      "champ": "Lulu",
+      "w": 2,
+      "l": 1
+     },
+     {
+      "champ": "Seraphine",
+      "w": 1,
+      "l": 1
+     },
+     {
+      "champ": "Milio",
+      "w": 1,
+      "l": 1
+     }
+    ]
+   }
+  ],
+  "identity": "Wins lanes/CS (CSD@15 +26.3, +1198 GD@15) with a ShowMaker/Smash carry core and clutch fights/steals; coach blends T1 tempo, Gen.G structure, HLE boldness. Converts leads poorly (46.2% WR when ahead @15, 47.9% baron) and the top lane is isolated (Siwoo 38.2% KP).",
+  "draft": "Bans Nocturne 100%, Kalista 44%, Cassiopeia 31%, Pantheon/Bard 25%. Opponents ban Vi 56%, Orianna 44%, Cassiopeia 44%, Syndra 31%. Comfort: ShowMaker Annie/Orianna/Taliyah, Smash Ashe/Lucian/Jhin, Lucid Vi/Naafiri, Career Lulu. First-pick/flex data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "All LCK teams qualified for Worlds 2026 - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "DK, HLE, Gen.G, T1 represent the LCK at Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79107-dplus-join-hanwha-life-esports-gen-g-and-t1-to-represent-the-lck-at-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "LCK 2026 Season Playoffs match list - gol.gg",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "Dplus KIA team stats, LCK 2026 Season Playoffs - gol.gg",
+    "url": "https://gol.gg/teams/team-stats/2802/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "T1 take down Dplus KIA - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79111-t1-dk",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "2026 LCK season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCK_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "2026 First Stand Tournament - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "EWC 2026 quarterfinals - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78817-t1-gen-g-karmine-corp-and-dplus-advance-to-lol-esports-world-cup-semifinals",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "EWC 2026 group stage - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78809-t1-hle-blg-gen-g-and-four-more-teams-reach-lol-ewc-2026-playoffs",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "Dplus KIA vs Gen.G EWC 2026 - rdy.gg",
+    "url": "https://rdy.gg/en/lol/results/10003368",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "LCK Cup 2026 match list - gol.gg",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LCK%20Cup%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 25,
+    "title": "All LCK teams at Worlds 2026 - Strafe",
+    "url": "https://www.strafe.com/news/read/all-lck-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 26,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 27,
+    "title": "All LCK Cup 2026 rosters - Sheep Esports",
+    "url": "https://www.sheepesports.com/articles/all-lck-cup-2026-rosters/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 29,
+    "title": "Dplus KIA qualify for Worlds 2026 - Dot Esports",
+    "url": "https://dotesports.com/league-of-legends/news/dplus-kia-qualify-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 30,
+    "title": "Dplus KIA absorbs strengths of LCK's top 3 - Inven Global",
+    "url": "https://www.invenglobal.com/articles/23943/dplus-kia-absorbs-strengths-of-lcks-top-3-cvmaxs-ideal-lol",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 32,
+    "title": "Faker - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Faker_(gamer)",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 41,
+    "title": "Every team qualified for Worlds 2026 - Egamersworld",
+    "url": "https://egamersworld.com/blog/every-worlds-2026-team-qualified-6Q23AMZcmS",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 45,
+    "title": "Worlds 2026: LCK always ready for the challenge - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-lck-always-ready-for-the-challenge/en",
+    "accessed": "15/10/2026"
+   }
+  ]
+ }
+]

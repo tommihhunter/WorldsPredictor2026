@@ -1,0 +1,250 @@
+{
+ "Anyone s Legend": {
+  "code": "AL",
+  "region": "LPL"
+ },
+ "Bilibili Gaming": {
+  "code": "BLG",
+  "region": "LPL"
+ },
+ "Top Esports": {
+  "code": "TES",
+  "region": "LPL"
+ },
+ "Invictus Gaming": {
+  "code": "IG",
+  "region": "LPL"
+ },
+ "Gen.G": {
+  "code": "GEN",
+  "region": "LCK"
+ },
+ "Hanwha Life Esports": {
+  "code": "HLE",
+  "region": "LCK"
+ },
+ "T1": {
+  "code": "T1",
+  "region": "LCK"
+ },
+ "Dplus KIA": {
+  "code": "DK",
+  "region": "LCK"
+ },
+ "G2 Esports": {
+  "code": "G2",
+  "region": "LEC"
+ },
+ "Movistar KOI": {
+  "code": "MKOI",
+  "region": "LEC"
+ },
+ "Karmine Corp": {
+  "code": "KC",
+  "region": "LEC"
+ },
+ "Team Liquid": {
+  "code": "TLAW",
+  "region": "LCS"
+ },
+ "LYON": {
+  "code": "LYON",
+  "region": "LCS"
+ },
+ "Cloud9": {
+  "code": "C9",
+  "region": "LCS"
+ },
+ "Team Secret Whales": {
+  "code": "TSW",
+  "region": "LCP"
+ },
+ "CTBC Flying Oyster": {
+  "code": "CFO",
+  "region": "LCP"
+ },
+ "MVK Esports": {
+  "code": "MVK",
+  "region": "LCP"
+ },
+ "Los Grandes": {
+  "code": "LOS",
+  "region": "CBLOL"
+ },
+ "FURIA": {
+  "code": "FURIA",
+  "region": "CBLOL"
+ },
+ "BNK FearX": {
+  "code": "BNK",
+  "region": "LCK"
+ },
+ "DN SOOPers": {
+  "code": "DNS",
+  "region": "LCK"
+ },
+ "HANJIN BRION": {
+  "code": "BRO",
+  "region": "LCK"
+ },
+ "KT Rolster": {
+  "code": "KT",
+  "region": "LCK"
+ },
+ "Kiwoom DRX": {
+  "code": "DRX",
+  "region": "LCK"
+ },
+ "Nongshim RedForce": {
+  "code": "NS",
+  "region": "LCK"
+ },
+ "EDward Gaming": {
+  "code": "EDG",
+  "region": "LPL"
+ },
+ "JD Gaming": {
+  "code": "JDG",
+  "region": "LPL"
+ },
+ "LGD Gaming": {
+  "code": "LGD",
+  "region": "LPL"
+ },
+ "LNG Esports": {
+  "code": "LNG",
+  "region": "LPL"
+ },
+ "Ninjas in Pyjamas": {
+  "code": "NIP",
+  "region": "LPL"
+ },
+ "Oh My God": {
+  "code": "OMG",
+  "region": "LPL"
+ },
+ "Team WE": {
+  "code": "WE",
+  "region": "LPL"
+ },
+ "ThunderTalk Gaming": {
+  "code": "TTG",
+  "region": "LPL"
+ },
+ "Ultra Prime": {
+  "code": "UP",
+  "region": "LPL"
+ },
+ "Weibo Gaming": {
+  "code": "WBG",
+  "region": "LPL"
+ },
+ "Fnatic": {
+  "code": "FNC",
+  "region": "LEC"
+ },
+ "GIANTX": {
+  "code": "GX",
+  "region": "LEC"
+ },
+ "Karmine Corp Blue": {
+  "code": "KCB",
+  "region": "LEC"
+ },
+ "Los Ratones": {
+  "code": "LR",
+  "region": "LEC"
+ },
+ "Natus Vincere": {
+  "code": "NAVI",
+  "region": "LEC"
+ },
+ "SK Gaming": {
+  "code": "SK",
+  "region": "LEC"
+ },
+ "Solary": {
+  "code": "SLY",
+  "region": "LEC"
+ },
+ "Team Heretics": {
+  "code": "TH",
+  "region": "LEC"
+ },
+ "Team Vitality": {
+  "code": "VIT",
+  "region": "LEC"
+ },
+ "Galions": {
+  "code": "GAL",
+  "region": "LEC"
+ },
+ "Dignitas": {
+  "code": "DIG",
+  "region": "LCS"
+ },
+ "Disguised": {
+  "code": "DSG",
+  "region": "LCS"
+ },
+ "FlyQuest": {
+  "code": "FLY",
+  "region": "LCS"
+ },
+ "Sentinels": {
+  "code": "SEN",
+  "region": "LCS"
+ },
+ "Shopify Rebellion": {
+  "code": "SR",
+  "region": "LCS"
+ },
+ "Deep Cross Gaming": {
+  "code": "DCG",
+  "region": "LCP"
+ },
+ "DetonatioN FocusMe": {
+  "code": "DFM",
+  "region": "LCP"
+ },
+ "Fukuoka SoftBank HAWKS gaming": {
+  "code": "SHG",
+  "region": "LCP"
+ },
+ "GAM Esports": {
+  "code": "GAM",
+  "region": "LCP"
+ },
+ "Ground Zero Gaming": {
+  "code": "GZ",
+  "region": "LCP"
+ },
+ "Fluxo W7M": {
+  "code": "FLX",
+  "region": "CBLOL"
+ },
+ "LOUD": {
+  "code": "LOUD",
+  "region": "CBLOL"
+ },
+ "Leviatan": {
+  "code": "LEV",
+  "region": "CBLOL"
+ },
+ "RED Canids": {
+  "code": "RED",
+  "region": "CBLOL"
+ },
+ "Vivo Keyd Stars": {
+  "code": "VKS",
+  "region": "CBLOL"
+ },
+ "paiN Gaming": {
+  "code": "PAIN",
+  "region": "CBLOL"
+ },
+ "Shifters": {
+  "code": "SHIFT",
+  "region": "LEC"
+ }
+}

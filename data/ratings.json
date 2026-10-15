@@ -1,0 +1,403 @@
+{
+ "as_of": "15/10/2026",
+ "generated_utc": "15/10/2026 04:09 UTC",
+ "model": "v4: series-level Bradley-Terry with per-series form shock on the full 2026 season (gol.gg); see model/ratings_v4.py",
+ "params": {
+  "half_life_days": 120.0,
+  "region_prior_2025_shrink": 0.7,
+  "region_prior_mean": {
+   "CBLOL": -0.5276833333333333,
+   "LCK": 0.8940166666666666,
+   "LCP": -0.1594833333333333,
+   "LCS": -0.3232833333333333,
+   "LEC": -0.1776833333333333,
+   "LPL": 0.29411666666666664
+  },
+  "w_regular": 0.5,
+  "w_qualifier": 0.6,
+  "sigma_series": 1.0,
+  "tau": 0.9,
+  "sigma_region": 0.7,
+  "sigma_team": 0.8,
+  "n_series": 1075,
+  "n_games": 2758,
+  "converged": true
+ },
+ "regions": {
+  "CBLOL": {
+   "rating": -0.7093,
+   "sd": 0.5674,
+   "elo": 1377
+  },
+  "LCK": {
+   "rating": 1.3043,
+   "sd": 0.4913,
+   "elo": 1727
+  },
+  "LCP": {
+   "rating": -0.7589,
+   "sd": 0.5613,
+   "elo": 1368
+  },
+  "LCS": {
+   "rating": -0.2877,
+   "sd": 0.5171,
+   "elo": 1450
+  },
+  "LEC": {
+   "rating": -0.2074,
+   "sd": 0.51,
+   "elo": 1464
+  },
+  "LPL": {
+   "rating": 0.659,
+   "sd": 0.5071,
+   "elo": 1614
+  }
+ },
+ "region_gaps": {
+  "LCK-LPL": {
+   "gap": 0.645,
+   "sd": 0.598
+  },
+  "LPL-LEC": {
+   "gap": 0.866,
+   "sd": 0.639
+  },
+  "LEC-LCS": {
+   "gap": 0.08,
+   "sd": 0.668
+  },
+  "LCS-CBLOL": {
+   "gap": 0.422,
+   "sd": 0.685
+  },
+  "CBLOL-LCP": {
+   "gap": 0.05,
+   "sd": 0.776
+  }
+ },
+ "teams": [
+  {
+   "code": "GEN",
+   "region": "LCK",
+   "base_logit": 2.3403,
+   "adj_logit": 2.1063,
+   "sd": 0.6036,
+   "elo_base": 1866,
+   "elo": 1866,
+   "p_vs_avg": 0.7746,
+   "games": 120,
+   "weighted_games": 39.8,
+   "adjustment": null,
+   "rank": 1,
+   "tier": "S"
+  },
+  {
+   "code": "T1",
+   "region": "LCK",
+   "base_logit": 1.8114,
+   "adj_logit": 1.7303,
+   "sd": 0.5466,
+   "elo_base": 1783,
+   "elo": 1801,
+   "p_vs_avg": 0.7138,
+   "games": 150,
+   "weighted_games": 57.3,
+   "adjustment": {
+    "code": "T1",
+    "delta_logit": 0.1,
+    "factor": "pedigree + meta fit",
+    "reason": "Three straight world titles (2023-2025), each won from a non-first domestic seed, so T1's domestic playoff results have under-predicted their Worlds results three years running; 2026 international game record 22-11 versus 9-9 in LCK playoffs. Patch 26.20 buffs Lucian (Peyz's 3rd-most-played champion). Halved to +0.10 in v4 (15/10/2026): pedigree is not a measurement and at +0.20 this single adjustment flipped the T1/HLE order and added 7 points to T1's title odds.",
+    "source": "https://en.wikipedia.org/wiki/2025_League_of_Legends_World_Championship ; https://www.sheepesports.com/de/articles/is-the-worlds-2026-patch-a-t1-patch/en (accessed 15/10/2026)"
+   },
+   "rank": 2,
+   "tier": "S"
+  },
+  {
+   "code": "HLE",
+   "region": "LCK",
+   "base_logit": 1.9167,
+   "adj_logit": 1.725,
+   "sd": 0.5642,
+   "elo_base": 1800,
+   "elo": 1800,
+   "p_vs_avg": 0.7129,
+   "games": 135,
+   "weighted_games": 49.3,
+   "adjustment": null,
+   "rank": 3,
+   "tier": "S"
+  },
+  {
+   "code": "BLG",
+   "region": "LPL",
+   "base_logit": 1.7665,
+   "adj_logit": 1.5399,
+   "sd": 0.5585,
+   "elo_base": 1776,
+   "elo": 1768,
+   "p_vs_avg": 0.68,
+   "games": 177,
+   "weighted_games": 60.8,
+   "adjustment": {
+    "code": "BLG",
+    "delta_logit": -0.05,
+    "factor": "roster instability",
+    "reason": "Top lane churn all summer: Bin stepped away, Wenbo filled in, Flandre signed 08/08, Bin returned 20/08. Starter for Worlds listed as Bin by most outlets but not officially confirmed.",
+    "source": "https://www.sheepesports.com/us/articles/blg-s-top-lane-saga-concludes-with-the-signing-of-flandre/en (accessed 15/10/2026)"
+   },
+   "rank": 4,
+   "tier": "S"
+  },
+  {
+   "code": "DK",
+   "region": "LCK",
+   "base_logit": 1.6316,
+   "adj_logit": 1.4684,
+   "sd": 0.5767,
+   "elo_base": 1755,
+   "elo": 1755,
+   "p_vs_avg": 0.6668,
+   "games": 147,
+   "weighted_games": 49.7,
+   "adjustment": null,
+   "rank": 5,
+   "tier": "S"
+  },
+  {
+   "code": "AL",
+   "region": "LPL",
+   "base_logit": 1.1195,
+   "adj_logit": 1.0075,
+   "sd": 0.6049,
+   "elo_base": 1675,
+   "elo": 1675,
+   "p_vs_avg": 0.5769,
+   "games": 142,
+   "weighted_games": 46.1,
+   "adjustment": null,
+   "rank": 6,
+   "tier": "A"
+  },
+  {
+   "code": "G2",
+   "region": "LEC",
+   "base_logit": 0.9353,
+   "adj_logit": 0.8417,
+   "sd": 0.5616,
+   "elo_base": 1646,
+   "elo": 1646,
+   "p_vs_avg": 0.5431,
+   "games": 131,
+   "weighted_games": 46.9,
+   "adjustment": null,
+   "rank": 7,
+   "tier": "B"
+  },
+  {
+   "code": "IG",
+   "region": "LPL",
+   "base_logit": 0.9075,
+   "adj_logit": 0.8168,
+   "sd": 0.6313,
+   "elo_base": 1642,
+   "elo": 1642,
+   "p_vs_avg": 0.5379,
+   "games": 124,
+   "weighted_games": 43.0,
+   "adjustment": null,
+   "rank": 8,
+   "tier": "B"
+  },
+  {
+   "code": "TES",
+   "region": "LPL",
+   "base_logit": 0.9257,
+   "adj_logit": 0.6331,
+   "sd": 0.6044,
+   "elo_base": 1645,
+   "elo": 1610,
+   "p_vs_avg": 0.5001,
+   "games": 140,
+   "weighted_games": 45.6,
+   "adjustment": {
+    "code": "TES",
+    "delta_logit": -0.2,
+    "factor": "roster change",
+    "reason": "Split 3 All-Pro top laner ZUIAN refused a US visa twice (announced 06/10/2026); 369 starts after not playing competitively since Split 1 (~March). The model's TES games were mostly played with ZUIAN.",
+    "source": "https://www.sheepesports.com/en/articles/zuian-unable-to-start-for-top-esports-at-worlds-due-to-visa-issues-369-returns/en ; https://dotesports.com/league-of-legends/news/tes-zuian-visa-issues-worlds-2026 (accessed 15/10/2026)"
+   },
+   "rank": 9,
+   "tier": "B"
+  },
+  {
+   "code": "TLAW",
+   "region": "LCS",
+   "base_logit": 0.6165,
+   "adj_logit": 0.6048,
+   "sd": 0.6168,
+   "elo_base": 1596,
+   "elo": 1605,
+   "p_vs_avg": 0.4942,
+   "games": 101,
+   "weighted_games": 39.7,
+   "adjustment": {
+    "code": "TLAW",
+    "delta_logit": 0.05,
+    "factor": "venue (LOW-WEIGHT)",
+    "reason": "Swiss and QF/SF in Allen, Texas: home crowd and no long-haul travel for LCS teams.",
+    "source": "https://lolesports.com/en-US/news/worlds-2026-primer (accessed 15/10/2026)"
+   },
+   "rank": 10,
+   "tier": "B"
+  },
+  {
+   "code": "LYON",
+   "region": "LCS",
+   "base_logit": 0.5208,
+   "adj_logit": 0.5188,
+   "sd": 0.5675,
+   "elo_base": 1581,
+   "elo": 1590,
+   "p_vs_avg": 0.4764,
+   "games": 122,
+   "weighted_games": 50.5,
+   "adjustment": {
+    "code": "LYON",
+    "delta_logit": 0.05,
+    "factor": "venue (LOW-WEIGHT)",
+    "reason": "Swiss and QF/SF in Allen, Texas: home crowd and no long-haul travel for LCS teams.",
+    "source": "https://lolesports.com/en-US/news/worlds-2026-primer (accessed 15/10/2026)"
+   },
+   "rank": 11,
+   "tier": "B"
+  },
+  {
+   "code": "KC",
+   "region": "LEC",
+   "base_logit": 0.5715,
+   "adj_logit": 0.5143,
+   "sd": 0.5644,
+   "elo_base": 1589,
+   "elo": 1589,
+   "p_vs_avg": 0.4755,
+   "games": 138,
+   "weighted_games": 50.9,
+   "adjustment": null,
+   "rank": 12,
+   "tier": "B"
+  },
+  {
+   "code": "TSW",
+   "region": "LCP",
+   "base_logit": 0.1038,
+   "adj_logit": 0.0934,
+   "sd": 0.6389,
+   "elo_base": 1516,
+   "elo": 1516,
+   "p_vs_avg": 0.3902,
+   "games": 110,
+   "weighted_games": 37.4,
+   "adjustment": null,
+   "rank": 13,
+   "tier": "C"
+  },
+  {
+   "code": "MKOI",
+   "region": "LEC",
+   "base_logit": 0.1015,
+   "adj_logit": 0.0914,
+   "sd": 0.6212,
+   "elo_base": 1516,
+   "elo": 1516,
+   "p_vs_avg": 0.3897,
+   "games": 111,
+   "weighted_games": 39.0,
+   "adjustment": null,
+   "rank": 14,
+   "tier": "C"
+  },
+  {
+   "code": "C9",
+   "region": "LCS",
+   "base_logit": 0.044,
+   "adj_logit": 0.0896,
+   "sd": 0.6317,
+   "elo_base": 1507,
+   "elo": 1516,
+   "p_vs_avg": 0.3894,
+   "games": 98,
+   "weighted_games": 37.0,
+   "adjustment": {
+    "code": "C9",
+    "delta_logit": 0.05,
+    "factor": "venue (LOW-WEIGHT)",
+    "reason": "Play-In in Los Angeles and Swiss in Allen, Texas: home crowd and no long-haul travel for LCS teams.",
+    "source": "https://lolesports.com/en-US/news/worlds-2026-primer (accessed 15/10/2026)"
+   },
+   "rank": 15,
+   "tier": "C"
+  },
+  {
+   "code": "FURIA",
+   "region": "CBLOL",
+   "base_logit": -0.0151,
+   "adj_logit": -0.0136,
+   "sd": 0.6557,
+   "elo_base": 1498,
+   "elo": 1498,
+   "p_vs_avg": 0.3692,
+   "games": 102,
+   "weighted_games": 40.5,
+   "adjustment": null,
+   "rank": 16,
+   "tier": "C"
+  },
+  {
+   "code": "LOS",
+   "region": "CBLOL",
+   "base_logit": -0.0496,
+   "adj_logit": -0.0446,
+   "sd": 0.6726,
+   "elo_base": 1492,
+   "elo": 1492,
+   "p_vs_avg": 0.3632,
+   "games": 105,
+   "weighted_games": 40.6,
+   "adjustment": null,
+   "rank": 17,
+   "tier": "C"
+  },
+  {
+   "code": "CFO",
+   "region": "LCP",
+   "base_logit": -0.8423,
+   "adj_logit": -0.7581,
+   "sd": 0.7236,
+   "elo_base": 1368,
+   "elo": 1368,
+   "p_vs_avg": 0.238,
+   "games": 87,
+   "weighted_games": 27.5,
+   "adjustment": null,
+   "rank": 18,
+   "tier": "C"
+  },
+  {
+   "code": "MVK",
+   "region": "LCP",
+   "base_logit": -1.0453,
+   "adj_logit": -0.9408,
+   "sd": 0.732,
+   "elo_base": 1337,
+   "elo": 1337,
+   "p_vs_avg": 0.2107,
+   "games": 81,
+   "weighted_games": 25.8,
+   "adjustment": null,
+   "rank": 19,
+   "tier": "C"
+  }
+ ]
+}

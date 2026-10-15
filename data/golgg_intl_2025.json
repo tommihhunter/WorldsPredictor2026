@@ -1,0 +1,912 @@
+[
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "Karmine Corp",
+"score_a": 3,
+"score_b": 1,
+"stage": "FINALS",
+"patch": "15.5",
+"date": "16/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "Top Esports",
+"score_a": 3,
+"score_b": 0,
+"stage": "SEMIFINALS",
+"patch": "15.5",
+"date": "15/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Karmine Corp",
+"score_a": 2,
+"score_b": 3,
+"stage": "SEMIFINALS",
+"patch": "15.5",
+"date": "15/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Team Liquid",
+"team_b": "Hanwha Life eSports",
+"score_a": 1,
+"score_b": 2,
+"stage": "GROUPS.DAY4",
+"patch": "15.5",
+"date": "14/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Top Esports",
+"score_a": 2,
+"score_b": 0,
+"stage": "GROUPS.DAY4",
+"patch": "15.5",
+"date": "14/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Karmine Corp",
+"team_b": "Hanwha Life eSports",
+"score_a": 1,
+"score_b": 2,
+"stage": "GROUPS.DAY4",
+"patch": "15.5",
+"date": "13/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Team Liquid",
+"team_b": "CTBC Flying Oyster",
+"score_a": 0,
+"score_b": 2,
+"stage": "GROUPS.DAY4",
+"patch": "15.5",
+"date": "13/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Top Esports",
+"team_b": "Karmine Corp",
+"score_a": 0,
+"score_b": 2,
+"stage": "GROUPS.DAY3",
+"patch": "15.5",
+"date": "12/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "CTBC Flying Oyster",
+"score_a": 2,
+"score_b": 0,
+"stage": "GROUPS.DAY3",
+"patch": "15.5",
+"date": "12/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Top Esports",
+"team_b": "Team Liquid",
+"score_a": 2,
+"score_b": 0,
+"stage": "GROUPS.DAY2",
+"patch": "15.5",
+"date": "11/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Karmine Corp",
+"score_a": 2,
+"score_b": 0,
+"stage": "GROUPS.DAY2",
+"patch": "15.5",
+"date": "11/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "Top Esports",
+"score_a": 2,
+"score_b": 0,
+"stage": "GROUPS.DAY1",
+"patch": "15.5",
+"date": "10/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Karmine Corp",
+"team_b": "Team Liquid",
+"score_a": 1,
+"score_b": 2,
+"stage": "GROUPS.DAY1",
+"patch": "15.5",
+"date": "10/03/2025",
+"tournament": "First Stand 2025"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "T1",
+"score_a": 3,
+"score_b": 2,
+"stage": "FINALS",
+"patch": "15.13",
+"date": "12/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "T1",
+"team_b": "Anyone s Legend",
+"score_a": 3,
+"score_b": 2,
+"stage": "ROUND4",
+"patch": "15.13",
+"date": "11/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Anyone s Legend",
+"team_b": "Bilibili Gaming",
+"score_a": 3,
+"score_b": 0,
+"stage": "ROUND3",
+"patch": "15.13",
+"date": "10/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "T1",
+"team_b": "Gen.G eSports",
+"score_a": 2,
+"score_b": 3,
+"stage": "ROUND4",
+"patch": "15.13",
+"date": "09/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "Bilibili Gaming",
+"score_a": 2,
+"score_b": 3,
+"stage": "ROUND2",
+"patch": "15.13",
+"date": "08/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Anyone s Legend",
+"score_a": 1,
+"score_b": 3,
+"stage": "ROUND2",
+"patch": "15.13",
+"date": "07/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Bilibili Gaming",
+"team_b": "T1",
+"score_a": 0,
+"score_b": 3,
+"stage": "ROUND2",
+"patch": "15.13",
+"date": "05/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Movistar KOI",
+"score_a": 3,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "15.13",
+"date": "05/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Anyone s Legend",
+"team_b": "Gen.G eSports",
+"score_a": 2,
+"score_b": 3,
+"stage": "ROUND2",
+"patch": "15.13",
+"date": "04/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "G2 Esports",
+"score_a": 3,
+"score_b": 0,
+"stage": "ROUND1",
+"patch": "15.13",
+"date": "04/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "T1",
+"score_a": 2,
+"score_b": 3,
+"stage": "ROUND1",
+"patch": "15.13",
+"date": "03/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Movistar KOI",
+"team_b": "Bilibili Gaming",
+"score_a": 1,
+"score_b": 3,
+"stage": "ROUND1",
+"patch": "15.13",
+"date": "03/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Anyone s Legend",
+"team_b": "FlyQuest",
+"score_a": 3,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "15.13",
+"date": "02/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "G2 Esports",
+"score_a": 3,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "15.13",
+"date": "01/07/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "G2 Esports",
+"team_b": "GAM Esports",
+"score_a": 3,
+"score_b": 2,
+"stage": "PLAYIN-DAY3",
+"patch": "15.13",
+"date": "29/06/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Bilibili Gaming",
+"team_b": "G2 Esports",
+"score_a": 3,
+"score_b": 0,
+"stage": "PLAYIN-DAY2",
+"patch": "15.13",
+"date": "28/06/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "GAM Esports",
+"team_b": "FURIA",
+"score_a": 3,
+"score_b": 2,
+"stage": "PLAYIN-DAY2",
+"patch": "15.13",
+"date": "28/06/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Bilibili Gaming",
+"team_b": "GAM Esports",
+"score_a": 3,
+"score_b": 0,
+"stage": "PLAYIN-DAY1",
+"patch": "15.13",
+"date": "27/06/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "FURIA",
+"team_b": "G2 Esports",
+"score_a": 2,
+"score_b": 3,
+"stage": "PLAYIN-DAY1",
+"patch": "15.13",
+"date": "27/06/2025",
+"tournament": "2025 Mid-Season Invitational"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "Anyone s Legend",
+"score_a": 3,
+"score_b": 2,
+"stage": "FINALS",
+"patch": "15.13",
+"date": "20/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "T1",
+"team_b": "G2 Esports",
+"score_a": 2,
+"score_b": 0,
+"stage": "3RD.PALCE",
+"patch": "15.13",
+"date": "20/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "G2 Esports",
+"team_b": "Gen.G eSports",
+"score_a": 1,
+"score_b": 2,
+"stage": "SEMIFINALS",
+"patch": "15.13",
+"date": "19/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Anyone s Legend",
+"team_b": "T1",
+"score_a": 2,
+"score_b": 0,
+"stage": "SEMIFINALS",
+"patch": "15.13",
+"date": "19/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "Gen.G eSports",
+"score_a": 0,
+"score_b": 2,
+"stage": "QUARTERFINALS",
+"patch": "15.13",
+"date": "18/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "T1",
+"team_b": "Movistar KOI",
+"score_a": 2,
+"score_b": 1,
+"stage": "QUARTERFINALS",
+"patch": "15.13",
+"date": "18/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "G2 Esports",
+"team_b": "Bilibili Gaming",
+"score_a": 2,
+"score_b": 1,
+"stage": "QUARTERFINALS",
+"patch": "15.13",
+"date": "17/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Anyone s Legend",
+"team_b": "Hanwha Life eSports",
+"score_a": 2,
+"score_b": 1,
+"stage": "QUARTERFINALS",
+"patch": "15.13",
+"date": "17/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "FURIA",
+"score_a": 1,
+"score_b": 0,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "17/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Movistar KOI",
+"team_b": "CTBC Flying Oyster",
+"score_a": 1,
+"score_b": 0,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "17/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Cloud9",
+"team_b": "FURIA",
+"score_a": 0,
+"score_b": 1,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "GAM Esports",
+"team_b": "CTBC Flying Oyster",
+"score_a": 0,
+"score_b": 1,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "G2 Esports",
+"score_a": 0,
+"score_b": 1,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "Movistar KOI",
+"score_a": 1,
+"score_b": 0,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "Cloud9",
+"score_a": 1,
+"score_b": 0,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "G2 Esports",
+"team_b": "FURIA",
+"score_a": 1,
+"score_b": 0,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Movistar KOI",
+"team_b": "GAM Esports",
+"score_a": 1,
+"score_b": 0,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "CTBC Flying Oyster",
+"score_a": 1,
+"score_b": 0,
+"stage": "GROUPSTAGE",
+"patch": "15.13",
+"date": "16/07/2025",
+"tournament": "Esports World Cup 2025"
+},
+{
+"team_a": "Invictus Gaming",
+"team_b": "T1",
+"score_a": 1,
+"score_b": 3,
+"stage": "PLAY-IN",
+"patch": "15.20",
+"date": "14/10/2025",
+"tournament": "Worlds 2025 Play-In"
+},
+{
+"team_a": "KT Rolster",
+"team_b": "T1",
+"score_a": 2,
+"score_b": 3,
+"stage": "FINALS",
+"patch": "15.20",
+"date": "09/11/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "T1",
+"team_b": "Top Esports",
+"score_a": 3,
+"score_b": 0,
+"stage": "SEMIFINALS",
+"patch": "15.20",
+"date": "02/11/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "KT Rolster",
+"score_a": 1,
+"score_b": 3,
+"stage": "SEMIFINALS",
+"patch": "15.20",
+"date": "01/11/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Anyone s Legend",
+"team_b": "T1",
+"score_a": 2,
+"score_b": 3,
+"stage": "QUARTERFINALS",
+"patch": "15.20",
+"date": "31/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Top Esports",
+"team_b": "G2 Esports",
+"score_a": 3,
+"score_b": 1,
+"stage": "QUARTERFINALS",
+"patch": "15.20",
+"date": "30/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "KT Rolster",
+"team_b": "CTBC Flying Oyster",
+"score_a": 3,
+"score_b": 0,
+"stage": "QUARTERFINALS",
+"patch": "15.20",
+"date": "29/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "Hanwha Life eSports",
+"score_a": 3,
+"score_b": 1,
+"stage": "QUARTERFINALS",
+"patch": "15.20",
+"date": "28/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Movistar KOI",
+"team_b": "T1",
+"score_a": 0,
+"score_b": 2,
+"stage": "ROUND5",
+"patch": "15.20",
+"date": "25/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Top Esports",
+"team_b": "Bilibili Gaming",
+"score_a": 2,
+"score_b": 1,
+"stage": "ROUND5",
+"patch": "15.20",
+"date": "25/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "FlyQuest",
+"score_a": 2,
+"score_b": 0,
+"stage": "ROUND5",
+"patch": "15.20",
+"date": "25/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "100 Thieves",
+"team_b": "T1",
+"score_a": 0,
+"score_b": 2,
+"stage": "ROUND4",
+"patch": "15.20",
+"date": "24/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Bilibili Gaming",
+"team_b": "Vivo Keyd Stars",
+"score_a": 2,
+"score_b": 0,
+"stage": "ROUND4",
+"patch": "15.20",
+"date": "24/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "Top Esports",
+"score_a": 2,
+"score_b": 0,
+"stage": "ROUND4",
+"patch": "15.20",
+"date": "23/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Movistar KOI",
+"team_b": "Team Secret Whales",
+"score_a": 2,
+"score_b": 1,
+"stage": "ROUND4",
+"patch": "15.20",
+"date": "23/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "G2 Esports",
+"score_a": 1,
+"score_b": 2,
+"stage": "ROUND4",
+"patch": "15.20",
+"date": "22/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Hanwha Life eSports",
+"score_a": 0,
+"score_b": 2,
+"stage": "ROUND4",
+"patch": "15.20",
+"date": "22/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Movistar KOI",
+"team_b": "Fnatic",
+"score_a": 2,
+"score_b": 1,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "19/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "PSG Talon",
+"team_b": "Vivo Keyd Stars",
+"score_a": 1,
+"score_b": 2,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "19/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "100 Thieves",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "18/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "Team Secret Whales",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "18/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "T1",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "18/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Bilibili Gaming",
+"team_b": "G2 Esports",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "18/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "KT Rolster",
+"team_b": "Top Esports",
+"score_a": 2,
+"score_b": 0,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "17/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Anyone s Legend",
+"score_a": 1,
+"score_b": 2,
+"stage": "ROUND3",
+"patch": "15.20",
+"date": "17/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "PSG Talon",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Bilibili Gaming",
+"team_b": "Fnatic",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "Anyone s Legend",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "T1",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Top Esports",
+"team_b": "100 Thieves",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Movistar KOI",
+"team_b": "G2 Esports",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "KT Rolster",
+"team_b": "Team Secret Whales",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Vivo Keyd Stars",
+"team_b": "FlyQuest",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND2",
+"patch": "15.20",
+"date": "16/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Gen.G eSports",
+"team_b": "PSG Talon",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "G2 Esports",
+"team_b": "Top Esports",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Hanwha Life eSports",
+"team_b": "Anyone s Legend",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "FlyQuest",
+"team_b": "T1",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Bilibili Gaming",
+"team_b": "100 Thieves",
+"score_a": 0,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "KT Rolster",
+"team_b": "Movistar KOI",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "CTBC Flying Oyster",
+"team_b": "Fnatic",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+},
+{
+"team_a": "Team Secret Whales",
+"team_b": "Vivo Keyd Stars",
+"score_a": 1,
+"score_b": 0,
+"stage": "ROUND1",
+"patch": "15.20",
+"date": "15/10/2025",
+"tournament": "Worlds 2025 Main Event"
+}
+]

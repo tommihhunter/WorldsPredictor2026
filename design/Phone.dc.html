@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Worlds 2026 Predictor, home on a phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#0B0F14;color:#EAF0F6;font-family:'IBM Plex Sans',system-ui,sans-serif;font-variant-numeric:tabular-nums}
+a{color:#EAF0F6;text-decoration:none}a:hover{color:#E8B84A}
+</style>
+</helmet>
+<div style="width: 390px; height: 1240px; box-sizing: border-box; background: #0B0F14; color: #EAF0F6; display: flex; flex-direction: column; overflow: hidden">
+
+  <header style="padding: 14px 16px; border-bottom: 1px solid #243040; display: flex; align-items: center; gap: 10px">
+    <span style="width: 26px; height: 26px; border-radius: 7px; background: {{accent}}; display: inline-flex; align-items: center; justify-content: center; color: #0B0F14; font-size: 12px; font-weight: 700">26</span>
+    <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px">Worlds 2026 Predictor</span>
+    <button type="button" aria-label="Open menu" style="margin-left: auto; appearance: none; background: none; border: 1px solid #243040; border-radius: 8px; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; color: #EAF0F6; cursor: pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+  </header>
+
+  <nav aria-label="Sections" style="display: flex; gap: 6px; padding: 10px 16px; overflow-x: auto; border-bottom: 1px solid #243040">
+    <a href="Main.dc.html" aria-current="page" style="padding: 8px 12px; border-radius: 999px; background: #1C2633; font-size: 13px; font-weight: 600; white-space: nowrap">Overview</a>
+    <a href="Team.dc.html" style="padding: 8px 12px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1; white-space: nowrap">Teams</a>
+    <a href="Main.dc.html#meta" style="padding: 8px 12px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1; white-space: nowrap">Meta</a>
+    <a href="Bracket.dc.html" style="padding: 8px 12px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1; white-space: nowrap">Predictions</a>
+    <a href="Bracket.dc.html#pickems" style="padding: 8px 12px; border-radius: 999px; border: 1px solid #243040; font-size: 13px; color: #B6C2D1; white-space: nowrap">Pick'Ems</a>
+  </nav>
+
+  <main style="padding: 20px 16px 24px; display: flex; flex-direction: column; gap: 16px">
+    <section style="background: #131A22; border: 1px solid #243040; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Champion pick</span>
+      <div style="display: flex; align-items: center; gap: 14px">
+        <img src="/_blob/43e71142b2d67160d5ebf6f25e0f9183" alt="Gen.G logo" style="width: 56px; height: 68px; object-fit: contain">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 34px; line-height: 1">Gen.G</span>
+          <span style="font-size: 14px; color: #B6C2D1">33.6% to win the title</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <span style="padding: 6px 10px; border-radius: 999px; background: #1C2633; font-size: 12px; font-weight: 600">MVP Ruler</span>
+        <span style="padding: 6px 10px; border-radius: 999px; background: #1C2633; font-size: 12px; font-weight: 600">Play-In KC 49%</span>
+      </div>
+    </section>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="background: #131A22; border: 1px solid #243040; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 11px; color: #93A1B3; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Next lock</span>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700">16/10 07:00</span>
+        <span style="font-size: 12px; color: #B6C2D1">Play-In picks, NZDT</span>
+      </div>
+      <div style="background: #131A22; border: 1px solid #243040; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 11px; color: #93A1B3; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">LCK over LPL</span>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700">+0.65</span>
+        <span style="font-size: 12px; color: #B6C2D1">logit, sd 0.60</span>
+      </div>
+    </div>
+
+    <section style="background: #131A22; border: 1px solid #243040; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">Title odds</h2>
+      <div style="display: flex; flex-direction: column; gap: 9px">
+        <sc-for list="{{odds}}" as="t" hint-placeholder-count="6">
+          <div style="display: grid; grid-template-columns: 48px minmax(0, 1fr) 52px; align-items: center; gap: 10px">
+            <span style="font-weight: 600; font-size: 14px">{{t.code}}</span>
+            <div style="height: 8px; border-radius: 999px; background: #1C2633; overflow: hidden"><div style="{{t.barStyle}}"></div></div>
+            <span style="text-align: right; font-weight: 600; font-size: 14px">{{t.pct}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <a href="Main.dc.html" style="font-size: 13px; font-weight: 600; color: {{accent}}">All 19 teams</a>
+    </section>
+
+    <section style="background: #131A22; border: 1px solid #243040; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">Tonight</h2>
+      <a href="Bracket.dc.html" style="display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: #0F141B; border: 1px solid #243040">
+        <img src="/_blob/ac04a5813d5007cfdd26bc6b0330c272" alt="Karmine Corp logo" style="width: 40px; height: 40px; object-fit: contain">
+        <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+          <span style="font-weight: 600; font-size: 14px">KC v C9</span>
+          <span style="font-size: 12px; color: #93A1B3">07:00 NZDT. 3-0 27%, 3-1 21%, 3-2 14%</span>
+        </span>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: {{accent}}">62%</span>
+      </a>
+      <a href="Bracket.dc.html" style="display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: #0F141B; border: 1px solid #243040">
+        <img src="/_blob/46ee65bf6dddd5d051a6a939a16edfb8" alt="FURIA logo" style="width: 40px; height: 40px; object-fit: contain">
+        <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+          <span style="font-weight: 600; font-size: 14px">FURIA v MVK</span>
+          <span style="font-size: 12px; color: #93A1B3">12:00 NZDT. 3-0 36%, 3-1 23%, 3-2 14%</span>
+        </span>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: {{accent}}">73%</span>
+      </a>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#E8B84A","options":["#E8B84A","#4FD1C5","#C9A0FF","#F08A7A"]},"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#E8B84A';
+    const raw = [["GEN",33.6],["T1",17.2],["HLE",17.0],["BLG",11.7],["DK",9.9],["AL",3.3]];
+    const odds = raw.map((r, i) => ({ code: r[0], pct: r[1].toFixed(1) + '%', barStyle: 'height: 100%; width: ' + (r[1] / 33.6 * 100).toFixed(1) + '%; background: ' + (i === 0 ? accent : '#5B6B80') + '; border-radius: 999px' }));
+    return { accent, odds };
+  }
+}
+</script>
+</body>
+</html>

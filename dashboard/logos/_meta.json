@@ -1,0 +1,42 @@
+{
+ "plates": {
+  "AL": "on-light",
+  "BLG": "on-dark",
+  "TES": "",
+  "IG": "on-light",
+  "GEN": "on-dark",
+  "HLE": "",
+  "T1": "",
+  "DK": "on-dark",
+  "G2": "on-light",
+  "MKOI": "",
+  "KC": "on-dark",
+  "TLAW": "on-light",
+  "LYON": "on-light",
+  "C9": "on-dark",
+  "TSW": "on-dark",
+  "CFO": "",
+  "LOS": "on-dark",
+  "FURIA": "on-dark"
+ },
+ "source": {
+  "AL": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/anyone's-legend",
+  "BLG": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/bilibili-gaming",
+  "TES": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/top-esports",
+  "IG": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/invictus-gaming",
+  "GEN": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/gen.g",
+  "HLE": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/hanwha-life-esports",
+  "T1": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/t1",
+  "DK": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/dplus-kia",
+  "G2": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/g2-esports",
+  "MKOI": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/movistar-koi",
+  "KC": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/karmine-corp",
+  "TLAW": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/team-liquid",
+  "LYON": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/lyon-gaming",
+  "C9": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/cloud9",
+  "TSW": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/secret",
+  "CFO": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/ctbc-flying-oyster",
+  "LOS": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/los",
+  "FURIA": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/furia"
+ }
+}

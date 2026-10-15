@@ -1,0 +1,322 @@
+[
+{
+"name": "Aatrox",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "W cooldown 20/18/16/14/12s to 18/16.5/15/13.5/12s; E heal ratio 1.1% to 1.3% per 100 bonus health",
+"history": "26.19 buff: W cooldown 20/18/16/14/12s to 18/16.5/15/13.5/12s; E heal ratio 1.1% to 1.3% per 100 bonus health"
+},
+{
+"name": "Ambessa",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.20",
+"summary": "Passive damage 5-30 (+25% bonus AD) to 5-25 (+20% bonus AD)",
+"history": "26.20 nerf: Passive damage 5-30 (+25% bonus AD) to 5-25 (+20% bonus AD)"
+},
+{
+"name": "Aphelios",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "Calibrum Moonshot damage 70-160 to 80-170; Severum healing 2-7.1% / 5-17.75% to 2-8% / 5-20%; Gravitum slow decays to 15% instead of 10%; Infernum Duskwave cooldown 9/8.25/7.5/6.75/6s to 8/7.25/6.5/5.75/5s; Crescendum mini-chakram 15% AD to 16% AD, minimum at 9th+ chakram instead of 8th+",
+"history": "26.19 buff: Calibrum Moonshot damage 70-160 to 80-170; Severum healing 2-7.1% / 5-17.75% to 2-8% / 5-20%; Gravitum slow decays to 15% instead of 10%; Infernum Duskwave cooldown 9/8.25/7.5/6.75/6s to 8/7.25/6.5/5.75/5s; Crescendum mini-chakram 15% AD to 16% AD, minimum at 9th+ chakram instead of 8th+"
+},
+{
+"name": "Ashe",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.20",
+"summary": "AD per level 3.5 to 3",
+"history": "26.20 nerf: AD per level 3.5 to 3"
+},
+{
+"name": "Aurora",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "E base damage 70/110/150/190/230 to 80/120/160/200/240; R rift duration 1.75/2.5/3.25s to 2.25/2.75/3.25s",
+"history": "26.19 buff: E base damage 70/110/150/190/230 to 80/120/160/200/240; R rift duration 1.75/2.5/3.25s to 2.25/2.75/3.25s"
+},
+{
+"name": "Bard",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.18",
+"summary": "Base armor 34 + 5/level to 32 + 4.7/level",
+"history": "26.18 nerf: Base armor 34 + 5/level to 32 + 4.7/level"
+},
+{
+"name": "Cassiopeia",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.20",
+"summary": "Base health 630 to 610; base mana 480 to 450",
+"history": "26.20 nerf: Base health 630 to 610; base mana 480 to 450 | 26.18 adjust: Passive move speed 6-40% to 5-36%; Q damage 75/110/145/180/215 to 65/100/135/170/205, AP ratio 65% to 75%; E mana 40 to 45, base AP ratio 10% to 20%, enhanced AP ratio 55% to 45%, damage 52-120 to 50-120; R damage 150/250/350 to 125/225/325, AP ratio 50% to 75%"
+},
+{
+"name": "Diana",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "W shield bonus health ratio 11% to 14%",
+"history": "26.20 buff: W shield bonus health ratio 11% to 14%"
+},
+{
+"name": "Draven",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "Base AD 62 to 64",
+"history": "26.19 buff: Base AD 62 to 64"
+},
+{
+"name": "Ekko",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.18",
+"summary": "Q mana cost 50/60/70/80/90 to 40/50/60/70/80; Q return damage AP ratio 60% to 70%",
+"history": "26.18 buff: Q mana cost 50/60/70/80/90 to 40/50/60/70/80; Q return damage AP ratio 60% to 70%"
+},
+{
+"name": "Elise",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "Passive on-hit magic damage 12/22/32/42 to 14/24/34/44; W bonus attack speed 60/75/90/105/120% to 70/85/100/115/130%",
+"history": "26.19 buff: Passive on-hit magic damage 12/22/32/42 to 14/24/34/44; W bonus attack speed 60/75/90/105/120% to 70/85/100/115/130%"
+},
+{
+"name": "Fiora",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "Health growth 99 to 105; R heal range 550 to 600; R heal per tick 18.75/25/31.25 (+15% bonus AD) to 20/26.25/32.5 (+17.5% bonus AD); R max heal 375/500/625 (+300% bonus AD) to 400/525/650 (+350% bonus AD)",
+"history": "26.19 buff: Health growth 99 to 105; R heal range 550 to 600; R heal per tick 18.75/25/31.25 (+15% bonus AD) to 20/26.25/32.5 (+17.5% bonus AD); R max heal 375/500/625 (+300% bonus AD) to 400/525/650 (+350% bonus AD)"
+},
+{
+"name": "K'Sante",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.20",
+"summary": "W mana cost 40/45/50/55/60 to 45/50/55/60/65; W damage reduction 30/75% to 25/70%",
+"history": "26.20 nerf: W mana cost 40/45/50/55/60 to 45/50/55/60/65; W damage reduction 30/75% to 25/70%"
+},
+{
+"name": "Kassadin",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.18",
+"summary": "Q AP ratio 70% to 80%; R base damage 70/90/110 to 80/95/110",
+"history": "26.18 buff: Q AP ratio 70% to 80%; R base damage 70/90/110 to 80/95/110"
+},
+{
+"name": "Kennen",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "E bonus attack speed 40/50/60/70/80% to 50/60/70/80/90%",
+"history": "26.20 buff: E bonus attack speed 40/50/60/70/80% to 50/60/70/80/90%"
+},
+{
+"name": "Kha'Zix",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "Passive damage 17-136 to 22-141 (+50% bonus AD); evolved W slow 2s to 2.25s; evolved E range bonus +200 to +300",
+"history": "26.19 buff: Passive damage 17-136 to 22-141 (+50% bonus AD); evolved W slow 2s to 2.25s; evolved E range bonus +200 to +300"
+},
+{
+"name": "Kindred",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "W monster mod 150% to 165%; E slow 1s to 1.5s; E no longer targets small monsters",
+"history": "26.20 buff: W monster mod 150% to 165%; E slow 1s to 1.5s; E no longer targets small monsters"
+},
+{
+"name": "Lillia",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "R sleep duration 2.5s to 2.5/2.75/3s",
+"history": "26.20 buff: R sleep duration 2.5s to 2.5/2.75/3s | 26.19 buff: Base armor 22 to 24; R sleep duration 2s to 2.5s"
+},
+{
+"name": "Lucian",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "AD per level 2.5 to 2.9",
+"history": "26.20 buff: AD per level 2.5 to 2.9 | 26.19 adjust: Passive Vigilance empowered on-hit damage 15 (+20% AD) to 5 (+15% AD); Q base damage 80/115/150/185/220 to 90/130/170/210/250 (+100% bonus AD unchanged)"
+},
+{
+"name": "Master Yi",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "Q cooldown refund on hit -1 second scaling down with ability haste to flat 1 second",
+"history": "26.19 buff: Q cooldown refund on hit -1 second scaling down with ability haste to flat 1 second | 26.18 buff: Armor growth 4.5 to 5 per level; R move speed 35/45/55% to 40/50/60%"
+},
+{
+"name": "Mordekaiser",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "Q level 10-20 scaling +5/lvl to +7/lvl; R cooldown 140/120/100s to 120/110/100s",
+"history": "26.20 buff: Q level 10-20 scaling +5/lvl to +7/lvl; R cooldown 140/120/100s to 120/110/100s"
+},
+{
+"name": "Nasus",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.19",
+"summary": "Q bonus damage 40/60/80/100/120 to 30/50/70/90/110",
+"history": "26.19 nerf: Q bonus damage 40/60/80/100/120 to 30/50/70/90/110"
+},
+{
+"name": "Nautilus",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.18",
+"summary": "Base AD 61 to 58 (+3.3/level unchanged); Q damage 85/130/175/220/265 to 85/125/165/205/245 (+90% AP unchanged)",
+"history": "26.18 nerf: Base AD 61 to 58 (+3.3/level unchanged); Q damage 85/130/175/220/265 to 85/125/165/205/245 (+90% AP unchanged)"
+},
+{
+"name": "Neeko",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "E base damage 70/105/140/175/210 to 80/115/150/185/220 (+65% AP unchanged); empowered root 1.8/2.1/2.4/2.7/3s to 2/2.25/2.5/2.75/3s",
+"history": "26.20 buff: E base damage 70/105/140/175/210 to 80/115/150/185/220 (+65% AP unchanged); empowered root 1.8/2.1/2.4/2.7/3s to 2/2.25/2.5/2.75/3s"
+},
+{
+"name": "Nocturne",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.19",
+"summary": "R cooldown 140/115/90s to 160/130/100s",
+"history": "26.19 nerf: R cooldown 140/115/90s to 160/130/100s"
+},
+{
+"name": "Poppy",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.19",
+"summary": "Q minion/monster max health cap 85/120/155/190/225 to 70/105/140/175/210",
+"history": "26.19 nerf: Q minion/monster max health cap 85/120/155/190/225 to 70/105/140/175/210"
+},
+{
+"name": "Rumble",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.19",
+"summary": "Passive overheat attack speed 50-130% to 30-100%; passive monster cap 65-150 to 90-175",
+"history": "26.19 nerf: Passive overheat attack speed 50-130% to 30-100%; passive monster cap 65-150 to 90-175"
+},
+{
+"name": "Ryze",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.19",
+"summary": "Armor growth 4.2 to 4.7; Q Flux bonus damage 25/50/75/100% to 15/40/65/90%; E mana cost 35/45/55/65/75 to 40/50/60/70/80",
+"history": "26.19 nerf: Armor growth 4.2 to 4.7; Q Flux bonus damage 25/50/75/100% to 15/40/65/90%; E mana cost 35/45/55/65/75 to 40/50/60/70/80"
+},
+{
+"name": "Seraphine",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.18",
+"summary": "E cooldown 11/10.5/10/9.5/9s to 11s at all ranks",
+"history": "26.18 nerf: E cooldown 11/10.5/10/9.5/9s to 11s at all ranks"
+},
+{
+"name": "Smolder",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "Passive Super Scorcher bonus magic damage 25-55% (+0-9% with IE) to 25-60% (+0-10.5% with IE); Flap Flap Flap 8-12.8% (+0-1.44% with IE) to 8-14% (+0-1.8% with IE); R self heal 100/135/170 (+50% bonus AD) to 100/175/250 (+75% bonus AD)",
+"history": "26.20 buff: Passive Super Scorcher bonus magic damage 25-55% (+0-9% with IE) to 25-60% (+0-10.5% with IE); Flap Flap Flap 8-12.8% (+0-1.44% with IE) to 8-14% (+0-1.8% with IE); R self heal 100/135/170 (+50% bonus AD) to 100/175/250 (+75% bonus AD)"
+},
+{
+"name": "Swain",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "Base MR 31 to 34; base armor 25 to 23; W damage 70/105/140/175/210 to 70/115/160/205/250 (+60% AP unchanged); W cooldown 22/21/20/19/18s to 20/19/18/17/16s",
+"history": "26.20 buff: Base MR 31 to 34; base armor 25 to 23; W damage 70/105/140/175/210 to 70/115/160/205/250 (+60% AP unchanged); W cooldown 22/21/20/19/18s to 20/19/18/17/16s"
+},
+{
+"name": "Syndra",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.18",
+"summary": "Passive splinter mana 20-255 to 20-199; W cooldown 12/11/10/9/8s to 13/12/11/10/9s",
+"history": "26.18 nerf: Passive splinter mana 20-255 to 20-199; W cooldown 12/11/10/9/8s to 13/12/11/10/9s"
+},
+{
+"name": "Tahm Kench",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "Q base healing 10/13.75/17.5/21.25/25 to 10/20/30/40/50",
+"history": "26.20 buff: Q base healing 10/13.75/17.5/21.25/25 to 10/20/30/40/50"
+},
+{
+"name": "Vayne",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.20",
+"summary": "Health regen 4 + 0.5/level to 5.5 + 0.4/level per 5s; Q mana cost 46/42/38/34/30 to 30 at all ranks",
+"history": "26.20 buff: Health regen 4 + 0.5/level to 5.5 + 0.4/level per 5s; Q mana cost 46/42/38/34/30 to 30 at all ranks"
+},
+{
+"name": "Vi",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.19",
+"summary": "Base AD 63 + 3.5/level to 61 + 3.9/level; passive shield 12% to 10% max health",
+"history": "26.19 nerf: Base AD 63 + 3.5/level to 61 + 3.9/level; passive shield 12% to 10% max health"
+},
+{
+"name": "Viego",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.18",
+"summary": "AD growth 3.5 to 4; passive heal gains +2% per 500 bonus HP of target's max health",
+"history": "26.18 buff: AD growth 3.5 to 4; passive heal gains +2% per 500 bonus HP of target's max health"
+},
+{
+"name": "Volibear",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.19",
+"summary": "Passive attack speed per stack 5% (+3% per 100 AP) to 5% (+4% per 100 AP); passive lightning on-hit damage gains +20% bonus AD",
+"history": "26.19 buff: Passive attack speed per stack 5% (+3% per 100 AP) to 5% (+4% per 100 AP); passive lightning on-hit damage gains +20% bonus AD"
+},
+{
+"name": "Yunara",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.20",
+"summary": "Q passive on-hit damage 5/10/15/20/25 (+20% AP) to 3/8/13/18/23 (+20% AP); W slow no longer stacks with other slows",
+"history": "26.20 nerf: Q passive on-hit damage 5/10/15/20/25 (+20% AP) to 3/8/13/18/23 (+20% AP); W slow no longer stacks with other slows"
+},
+{
+"name": "Zaahen",
+"kind": "champion",
+"direction": "buff",
+"patch": "26.18",
+"summary": "Q2 damage 25/50/75/100/125 to 30/60/90/120/150 (+20/25/30/35/40% bonus AD unchanged); active Q now goes on cooldown immediately when entering Resurrection",
+"history": "26.18 buff: Q2 damage 25/50/75/100/125 to 30/60/90/120/150 (+20/25/30/35/40% bonus AD unchanged); active Q now goes on cooldown immediately when entering Resurrection"
+},
+{
+"name": "Zeri",
+"kind": "champion",
+"direction": "nerf",
+"patch": "26.18",
+"summary": "W damage ratio 120% total AD to 100% total AD; W wall damage ratio 180% total AD to 150% total AD (bases unchanged)",
+"history": "26.18 nerf: W damage ratio 120% total AD to 100% total AD; W wall damage ratio 180% total AD to 150% total AD (bases unchanged)"
+}
+]

@@ -1,0 +1,1 @@
+{"title": "Region strength", "description": "Region ratings learned from 2026 cross-region games (First Stand, MSI, EWC, Americas Cup).", "source": {"kind": "file", "url": "/_blob/21c7242ce908dfb8582d11327258faa2", "name": "regions.json", "format": "json"}, "updated": {"at": "2026-10-15T01:25:23+00:00", "by": "Claude (model run)"}}

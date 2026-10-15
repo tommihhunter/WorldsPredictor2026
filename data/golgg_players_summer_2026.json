@@ -1,0 +1,10809 @@
+{
+ "source": {
+  "url": "https://gol.gg/players/list/season-S16/split-Summer/tournament-ALL/",
+  "ids_url": "https://gol.gg/players/list/season-S16/split-ALL/tournament-ALL/",
+  "player_url": "https://gol.gg/players/player-stats/{pid}/season-S16/split-Summer/tournament-ALL/",
+  "split": "Summer",
+  "scope": "2026 season (gol.gg S16), split-Summer only; season_games from data/golgg_players_2026.json (split-ALL)",
+  "tournaments_in_split": [
+   "Worlds 2026 Play-In",
+   "Demacia Cup Global Invitational 2026",
+   "EMEA Masters 2026 Summer Main Event",
+   "VCS 2026 Finals Stage 2",
+   "EMEA Masters 2026 Summer LCQ",
+   "2026 World Star Challengers Invitational",
+   "LPL 2026 Regional Finals",
+   "LCS 2026 Summer Playoffs",
+   "VCS 2026 Finals Stage 1",
+   "Hitpoint Masters 2026 Summer Playoffs",
+   "EBL 2026 Season Finals",
+   "CBLOL 2026 Split 2 Playoffs",
+   "LEC 2026 Summer Playoffs",
+   "LES 2026 Final Four",
+   "Road Of Legends 2026 Summer Playoffs",
+   "LCK CL 2026 Season Playoffs",
+   "LCK 2026 Season Playoffs",
+   "LPL 2026 Grand Finals",
+   "LCK 2026 Season Play-In",
+   "HLL 2026 Summer Playoffs",
+   "LCK CL 2026 Season Play-In",
+   "NACL 2026 Summer Playoffs",
+   "Arabian League 2026 Summer Playoffs",
+   "Prime League 1st Div 2026 Summer Playoffs",
+   "EBL 2026 Summer Playoffs",
+   "LIT 2026 Summer Playoffs",
+   "LES 2026 Summer Playoffs",
+   "CD 2026 Split 2 Playoffs",
+   "LFL 2026 Summer Playoffs",
+   "Hitpoint Masters 2026 Summer",
+   "Rift Legends 2026 Summer Split",
+   "PCS 2026 Summer Season",
+   "TCL 2026 Summer",
+   "LCK 2026 Rounds 3-4",
+   "EBL 2026 Summer",
+   "LRN 2026 Split 2 Playoffs",
+   "LCK CL 2026 Rounds 3-4",
+   "LCP 2026 Split 3",
+   "LCS 2026 Summer",
+   "CBLOL 2026 Split 2",
+   "LEC 2026 Summer Season",
+   "LIT 2026 Summer Split",
+   "LPL 2026 Split 3",
+   "LPLOL 2026 Summer Split",
+   "LFL 2026 Summer Split",
+   "LRS 2026 Split 2 Playoffs",
+   "KeSPA Cup 2026",
+   "NLC 2026 Summer Split",
+   "CD 2026 Split 2",
+   "LJL 2026 Summer Championship",
+   "NACL 2026 Summer",
+   "Esports World Cup 2026",
+   "Arabian League 2026 Summer",
+   "Road Of Legends 2026 Summer Split",
+   "LES 2026 Summer",
+   "LRN 2026 Split 2",
+   "LRS 2026 Split 2",
+   "Prime League 1st Div 2026 Summer Split",
+   "HLL 2026 Summer Split"
+  ],
+  "accessed": "15/10/2026"
+ },
+ "notes": [
+  "CBLOL: gol.gg split-Summer = CBLOL 2026 Split 2, CBLOL 2026 Split 2 Playoffs",
+  "LCK: gol.gg split-Summer = LCK 2026 Rounds 3-4, LCK 2026 Season Play-In, LCK 2026 Season Playoffs",
+  "LCP: gol.gg split-Summer = LCP 2026 Split 3",
+  "LCS: gol.gg split-Summer = LCS 2026 Summer, LCS 2026 Summer Playoffs",
+  "LEC: gol.gg split-Summer = LEC 2026 Summer Playoffs, LEC 2026 Summer Season",
+  "LPL: gol.gg split-Summer = LPL 2026 Grand Finals, LPL 2026 Regional Finals, LPL 2026 Split 3",
+  "International/other events also inside split-Summer on gol.gg (included in the players' split stats if they played them): 2026 World Star Challengers Invitational, Demacia Cup Global Invitational 2026, Esports World Cup 2026, KeSPA Cup 2026, Worlds 2026 Play-In",
+  "gol.gg maps every league onto four S16 split labels regardless of the league's own naming: Pre-Season (Kespa Cup 2025), Winter (LCK Cup / LPL Split 1 / LCP Split 1 / CBLOL Cup / LCS Lock-In / LEC Versus / First Stand), Spring (LCK Rounds 1-2 + Road to MSI / LPL Split 2 / LCP Split 2 / CBLOL Split 1 / LCS+LEC Spring / MSI) and Summer (LCK Rounds 3-4 + Season Play-In/Playoffs / LPL Split 3 + Grand + Regional Finals / LCP Split 3 / CBLOL Split 2 / LCS+LEC Summer / EWC / Worlds Play-In). The four splits sum to the split-ALL season total.",
+  "Stats are per player (own games only); a split value is the player's own games in that split, so subs/mid-season joiners show fewer games than team-mates and split_share = games / season_games.",
+  "TES 369: 0 games in split-Summer (pid 1922, 43 season games; most recent games in split-Winter: 43)"
+ ],
+ "teams": {
+  "TLAW": [
+   {
+    "role": "TOP",
+    "player": "Morgan",
+    "found": true,
+    "pid": "2545",
+    "split": "Summer",
+    "games": 26,
+    "wr": 80.8,
+    "kda": 5.6,
+    "kp": 54.6,
+    "dmg_pct": 20.6,
+    "gold_pct": 20,
+    "gd15": 244,
+    "csd15": 2,
+    "xpd15": 375,
+    "dpm": 549,
+    "csm": 8.7,
+    "vspm": 1.39,
+    "solo_kills": 8,
+    "season_games": 104,
+    "split_share": 0.25,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Ambessa",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "KSante",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 16.5
+     },
+     {
+      "champ": "Camille",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 11.7
+     },
+     {
+      "champ": "Gnar",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.5
+     },
+     {
+      "champ": "Rumble",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Jax",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 18.0
+     },
+     {
+      "champ": "Renekton",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Ornn",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Olaf",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Kled",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Kennen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Gragas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Josedeodo",
+    "found": true,
+    "pid": "1364",
+    "split": "Summer",
+    "games": 26,
+    "wr": 80.8,
+    "kda": 7,
+    "kp": 69.1,
+    "dmg_pct": 18.7,
+    "gold_pct": 20.7,
+    "gd15": 309,
+    "csd15": 4,
+    "xpd15": 306,
+    "dpm": 501,
+    "csm": 7.4,
+    "vspm": 1.7,
+    "solo_kills": 1,
+    "season_games": 104,
+    "split_share": 0.25,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Pantheon",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.9
+     },
+     {
+      "champ": "Wukong",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Naafiri",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Qiyana",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 8.2
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.7
+     },
+     {
+      "champ": "Vi",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.3
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 25.0
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Nocturne",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Quid",
+    "found": true,
+    "pid": "4246",
+    "split": "Summer",
+    "games": 26,
+    "wr": 80.8,
+    "kda": 5.4,
+    "kp": 72.5,
+    "dmg_pct": 25.5,
+    "gold_pct": 21.2,
+    "gd15": 160,
+    "csd15": -1,
+    "xpd15": 178,
+    "dpm": 671,
+    "csm": 9.1,
+    "vspm": 1.35,
+    "solo_kills": 7,
+    "season_games": 104,
+    "split_share": 0.25,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Syndra",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 8.4
+     },
+     {
+      "champ": "Orianna",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 7.9
+     },
+     {
+      "champ": "Ryze",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 7.2
+     },
+     {
+      "champ": "Ahri",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.2
+     },
+     {
+      "champ": "Locke",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 15.0
+     },
+     {
+      "champ": "Sylas",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Galio",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 14.5
+     },
+     {
+      "champ": "Yone",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Lissandra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Aurora",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Yeon",
+    "found": true,
+    "pid": "3537",
+    "split": "Summer",
+    "games": 26,
+    "wr": 80.8,
+    "kda": 5.9,
+    "kp": 64.7,
+    "dmg_pct": 27.8,
+    "gold_pct": 24.6,
+    "gd15": 430,
+    "csd15": 8,
+    "xpd15": 286,
+    "dpm": 745,
+    "csm": 9.9,
+    "vspm": 1.23,
+    "solo_kills": 1,
+    "season_games": 104,
+    "split_share": 0.25,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Lucian",
+      "games": 5,
+      "wr": 100.0,
+      "kda": 7.4
+     },
+     {
+      "champ": "Ezreal",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Ashe",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 8.8
+     },
+     {
+      "champ": "Kalista",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.3
+     },
+     {
+      "champ": "Jhin",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.8
+     },
+     {
+      "champ": "Kaisa",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 14.0
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Yunara",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "CoreJJ",
+    "found": true,
+    "pid": "257",
+    "split": "Summer",
+    "games": 26,
+    "wr": 80.8,
+    "kda": 7.5,
+    "kp": 76.9,
+    "dmg_pct": 7.4,
+    "gold_pct": 13.4,
+    "gd15": 63,
+    "csd15": 1,
+    "xpd15": -13,
+    "dpm": 191,
+    "csm": 1.1,
+    "vspm": 4.09,
+    "solo_kills": 1,
+    "season_games": 104,
+    "split_share": 0.25,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Nami",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 22.3
+     },
+     {
+      "champ": "Nautilus",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 11.3
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.9
+     },
+     {
+      "champ": "Karma",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 6.4
+     },
+     {
+      "champ": "Leona",
+      "games": 2,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Alistar",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Seraphine",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.8
+     },
+     {
+      "champ": "Rell",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Lulu",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Milio",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Neeko",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     },
+     {
+      "champ": "Bard",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.4
+     }
+    ]
+   }
+  ],
+  "LYON": [
+   {
+    "role": "TOP",
+    "player": "Dhokla",
+    "found": true,
+    "pid": "1135",
+    "split": "Summer",
+    "games": 34,
+    "wr": 61.8,
+    "kda": 2.5,
+    "kp": 46.1,
+    "dmg_pct": 21.2,
+    "gold_pct": 19.3,
+    "gd15": -22,
+    "csd15": -1,
+    "xpd15": -15,
+    "dpm": 528,
+    "csm": 8,
+    "vspm": 1.2,
+    "solo_kills": 13,
+    "season_games": 119,
+    "split_share": 0.286,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Gnar",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 1.9
+     },
+     {
+      "champ": "Gwen",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 1.4
+     },
+     {
+      "champ": "KSante",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.8
+     },
+     {
+      "champ": "Olaf",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.3
+     },
+     {
+      "champ": "Renekton",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.3
+     },
+     {
+      "champ": "Rumble",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 3.9
+     },
+     {
+      "champ": "Jayce",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 0.9
+     },
+     {
+      "champ": "Anivia",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.9
+     },
+     {
+      "champ": "Garen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Sion",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Malphite",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Vayne",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Ornn",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Swain",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Volibear",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Ambessa",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 10.0
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Inspired",
+    "found": true,
+    "pid": "1501",
+    "split": "Summer",
+    "games": 25,
+    "wr": 56.0,
+    "kda": 3.3,
+    "kp": 62.5,
+    "dmg_pct": 16.2,
+    "gold_pct": 20.4,
+    "gd15": 69,
+    "csd15": 5,
+    "xpd15": 310,
+    "dpm": 394,
+    "csm": 7.3,
+    "vspm": 1.64,
+    "solo_kills": 5,
+    "season_games": 113,
+    "split_share": 0.221,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Xin Zhao",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.3
+     },
+     {
+      "champ": "Wukong",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 6.3
+     },
+     {
+      "champ": "Skarner",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.4
+     },
+     {
+      "champ": "Nocturne",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Qiyana",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Trundle",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "KhaZix",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Naafiri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Pantheon",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     },
+     {
+      "champ": "Sejuani",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.2
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Saint",
+    "found": true,
+    "pid": "5123",
+    "split": "Summer",
+    "games": 34,
+    "wr": 61.8,
+    "kda": 4.1,
+    "kp": 60.1,
+    "dmg_pct": 28.4,
+    "gold_pct": 22.2,
+    "gd15": 326,
+    "csd15": 5,
+    "xpd15": 234,
+    "dpm": 710,
+    "csm": 9.2,
+    "vspm": 1.56,
+    "solo_kills": 20,
+    "season_games": 122,
+    "split_share": 0.279,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 3.9
+     },
+     {
+      "champ": "Syndra",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Viktor",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "LeBlanc",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Annie",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 6.2
+     },
+     {
+      "champ": "Sylas",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 13.3
+     },
+     {
+      "champ": "Locke",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Ahri",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.5
+     },
+     {
+      "champ": "Lissandra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Orianna",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Azir",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Berserker",
+    "found": true,
+    "pid": "3322",
+    "split": "Summer",
+    "games": 34,
+    "wr": 61.8,
+    "kda": 5.3,
+    "kp": 63.3,
+    "dmg_pct": 28.7,
+    "gold_pct": 25,
+    "gd15": 515,
+    "csd15": 8,
+    "xpd15": 131,
+    "dpm": 727,
+    "csm": 10,
+    "vspm": 1.14,
+    "solo_kills": 6,
+    "season_games": 122,
+    "split_share": 0.279,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Lucian",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 8.3
+     },
+     {
+      "champ": "Yunara",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Ezreal",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Jhin",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 7.3
+     },
+     {
+      "champ": "Kalista",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Jayce",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Kaisa",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 11.0
+     },
+     {
+      "champ": "Jinx",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Ashe",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 18.0
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.5
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Isles",
+    "found": true,
+    "pid": "2358",
+    "split": "Summer",
+    "games": 34,
+    "wr": 61.8,
+    "kda": 4.4,
+    "kp": 67.7,
+    "dmg_pct": 5.9,
+    "gold_pct": 13.4,
+    "gd15": -7,
+    "csd15": -2,
+    "xpd15": 86,
+    "dpm": 143,
+    "csm": 0.9,
+    "vspm": 4.2,
+    "solo_kills": 1,
+    "season_games": 122,
+    "split_share": 0.279,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Milio",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 10.6
+     },
+     {
+      "champ": "Alistar",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Lulu",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 8.4
+     },
+     {
+      "champ": "Shen",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.5
+     },
+     {
+      "champ": "Nautilus",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.5
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Karma",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Seraphine",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Bard",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Rell",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     }
+    ]
+   }
+  ],
+  "C9": [
+   {
+    "role": "TOP",
+    "player": "Thanatos",
+    "found": true,
+    "pid": "3434",
+    "split": "Summer",
+    "games": 32,
+    "wr": 56.3,
+    "kda": 3.5,
+    "kp": 57.3,
+    "dmg_pct": 24.6,
+    "gold_pct": 20.3,
+    "gd15": 163,
+    "csd15": 6,
+    "xpd15": 125,
+    "dpm": 618,
+    "csm": 8.6,
+    "vspm": 1.46,
+    "solo_kills": 4,
+    "season_games": 107,
+    "split_share": 0.299,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Rumble",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "KSante",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "Ambessa",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.3
+     },
+     {
+      "champ": "Gnar",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.2
+     },
+     {
+      "champ": "Renekton",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.6
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "Jayce",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Olaf",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Aatrox",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Kennen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Volibear",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Malphite",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Jax",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Blaber",
+    "found": true,
+    "pid": "1634",
+    "split": "Summer",
+    "games": 32,
+    "wr": 56.3,
+    "kda": 4.3,
+    "kp": 73.7,
+    "dmg_pct": 14.7,
+    "gold_pct": 20.3,
+    "gd15": 44,
+    "csd15": 0,
+    "xpd15": -8,
+    "dpm": 377,
+    "csm": 7.4,
+    "vspm": 1.88,
+    "solo_kills": 1,
+    "season_games": 107,
+    "split_share": 0.299,
+    "n_champs": 11,
+    "champs": [
+     {
+      "champ": "Vi",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Skarner",
+      "games": 4,
+      "wr": 0.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Poppy",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 7.5
+     },
+     {
+      "champ": "Nocturne",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 7.5
+     },
+     {
+      "champ": "Wukong",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.3
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.0
+     },
+     {
+      "champ": "Naafiri",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.2
+     },
+     {
+      "champ": "Trundle",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Sejuani",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.6
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Loki",
+    "found": true,
+    "pid": "4861",
+    "split": "Summer",
+    "games": 32,
+    "wr": 56.3,
+    "kda": 4.1,
+    "kp": 69.3,
+    "dmg_pct": 26.7,
+    "gold_pct": 21.3,
+    "gd15": 107,
+    "csd15": 4,
+    "xpd15": 58,
+    "dpm": 678,
+    "csm": 9.3,
+    "vspm": 1.44,
+    "solo_kills": 7,
+    "season_games": 50,
+    "split_share": 0.64,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Orianna",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 8.3
+     },
+     {
+      "champ": "Sylas",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Syndra",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Ryze",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Akali",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.4
+     },
+     {
+      "champ": "Yone",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.8
+     },
+     {
+      "champ": "Aurora",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Locke",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 15.0
+     },
+     {
+      "champ": "Ahri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Vex",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.7
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Tactical",
+    "found": true,
+    "pid": "1979",
+    "split": "Summer",
+    "games": 32,
+    "wr": 56.3,
+    "kda": 3.7,
+    "kp": 56,
+    "dmg_pct": 27.1,
+    "gold_pct": 24.4,
+    "gd15": 203,
+    "csd15": 1,
+    "xpd15": -28,
+    "dpm": 704,
+    "csm": 10.1,
+    "vspm": 1.32,
+    "solo_kills": 4,
+    "season_games": 51,
+    "split_share": 0.627,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 9,
+      "wr": 66.7,
+      "kda": 4.4
+     },
+     {
+      "champ": "Kalista",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 6.6
+     },
+     {
+      "champ": "Ziggs",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.6
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.4
+     },
+     {
+      "champ": "Yunara",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.1
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Jhin",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 10.7
+     },
+     {
+      "champ": "Lucian",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Ashe",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Aphelios",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Vulcan",
+    "found": true,
+    "pid": "1301",
+    "split": "Summer",
+    "games": 32,
+    "wr": 56.3,
+    "kda": 6.4,
+    "kp": 79.3,
+    "dmg_pct": 7,
+    "gold_pct": 13.7,
+    "gd15": 181,
+    "csd15": 0,
+    "xpd15": 310,
+    "dpm": 179,
+    "csm": 1.1,
+    "vspm": 3.98,
+    "solo_kills": 1,
+    "season_games": 107,
+    "split_share": 0.299,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Renata Glasc",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 8.9
+     },
+     {
+      "champ": "Karma",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 26.5
+     },
+     {
+      "champ": "Bard",
+      "games": 4,
+      "wr": 0.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Nautilus",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 9.0
+     },
+     {
+      "champ": "Rakan",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 11.7
+     },
+     {
+      "champ": "Leona",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.6
+     },
+     {
+      "champ": "Lulu",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.3
+     },
+     {
+      "champ": "Shen",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 31.0
+     },
+     {
+      "champ": "Seraphine",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 7.3
+     },
+     {
+      "champ": "Neeko",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Camille",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Milio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Thresh",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     }
+    ]
+   }
+  ],
+  "LOS": [
+   {
+    "role": "TOP",
+    "player": "Zest",
+    "found": true,
+    "pid": "4244",
+    "split": "Summer",
+    "games": 34,
+    "wr": 67.6,
+    "kda": 3.4,
+    "kp": 57.6,
+    "dmg_pct": 25.4,
+    "gold_pct": 21.6,
+    "gd15": 417,
+    "csd15": 12,
+    "xpd15": 283,
+    "dpm": 680,
+    "csm": 9.3,
+    "vspm": 1.35,
+    "solo_kills": 12,
+    "season_games": 105,
+    "split_share": 0.324,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Jayce",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Varus",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Gnar",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Rumble",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.7
+     },
+     {
+      "champ": "Renekton",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Ambessa",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Kennen",
+      "games": 2,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Vayne",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Tryndamere",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Dr. Mundo",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Tristana",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.2
+     },
+     {
+      "champ": "Swain",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     },
+     {
+      "champ": "Jax",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Curse",
+    "found": true,
+    "pid": "5274",
+    "split": "Summer",
+    "games": 34,
+    "wr": 67.6,
+    "kda": 3.7,
+    "kp": 67.6,
+    "dmg_pct": 15.7,
+    "gold_pct": 19.2,
+    "gd15": 111,
+    "csd15": -3,
+    "xpd15": -52,
+    "dpm": 432,
+    "csm": 6.6,
+    "vspm": 1.66,
+    "solo_kills": 5,
+    "season_games": 112,
+    "split_share": 0.304,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Vi",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 4.4
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Pantheon",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.2
+     },
+     {
+      "champ": "Wukong",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Naafiri",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 12.3
+     },
+     {
+      "champ": "Trundle",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 18.5
+     },
+     {
+      "champ": "Nocturne",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Chogath",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.9
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Qiyana",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Feisty",
+    "found": true,
+    "pid": "4234",
+    "split": "Summer",
+    "games": 34,
+    "wr": 67.6,
+    "kda": 5.3,
+    "kp": 71.7,
+    "dmg_pct": 24.2,
+    "gold_pct": 21,
+    "gd15": 411,
+    "csd15": 9,
+    "xpd15": 253,
+    "dpm": 650,
+    "csm": 8.8,
+    "vspm": 1.25,
+    "solo_kills": 11,
+    "season_games": 105,
+    "split_share": 0.324,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 7.3
+     },
+     {
+      "champ": "Orianna",
+      "games": 6,
+      "wr": 100.0,
+      "kda": 11.1
+     },
+     {
+      "champ": "Taliyah",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.9
+     },
+     {
+      "champ": "Syndra",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.6
+     },
+     {
+      "champ": "Galio",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 12.5
+     },
+     {
+      "champ": "Viktor",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Hwei",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Aurora",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Ahri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Lissandra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Duduhh",
+    "found": true,
+    "pid": "5786",
+    "split": "Summer",
+    "games": 34,
+    "wr": 67.6,
+    "kda": 3.9,
+    "kp": 63.2,
+    "dmg_pct": 25.9,
+    "gold_pct": 24.6,
+    "gd15": 235,
+    "csd15": 5,
+    "xpd15": 294,
+    "dpm": 690,
+    "csm": 9.7,
+    "vspm": 1.16,
+    "solo_kills": 9,
+    "season_games": 105,
+    "split_share": 0.324,
+    "n_champs": 23,
+    "champs": [
+     {
+      "champ": "Viktor",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Sivir",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Ashe",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Corki",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 9.7
+     },
+     {
+      "champ": "Kaisa",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 29.0
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Lucian",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Jinx",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Yasuo",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "KogMaw",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Tristana",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Locke",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Anivia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 24.0
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.1
+     },
+     {
+      "champ": "Yunara",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Ezreal",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Ackerman",
+    "found": true,
+    "pid": "3640",
+    "split": "Summer",
+    "games": 34,
+    "wr": 67.6,
+    "kda": 5.9,
+    "kp": 70.5,
+    "dmg_pct": 8.7,
+    "gold_pct": 13.7,
+    "gd15": 36,
+    "csd15": 3,
+    "xpd15": 113,
+    "dpm": 231,
+    "csm": 1.2,
+    "vspm": 4.36,
+    "solo_kills": 1,
+    "season_games": 105,
+    "split_share": 0.324,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Alistar",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 10.1
+     },
+     {
+      "champ": "Shen",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 6.3
+     },
+     {
+      "champ": "Nautilus",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.4
+     },
+     {
+      "champ": "Leona",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 10.5
+     },
+     {
+      "champ": "Karma",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 6.2
+     },
+     {
+      "champ": "Neeko",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.8
+     },
+     {
+      "champ": "Bard",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.6
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 25.0
+     },
+     {
+      "champ": "Rell",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Lulu",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 8.5
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Milio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     }
+    ]
+   }
+  ],
+  "FURIA": [
+   {
+    "role": "TOP",
+    "player": "Guigo",
+    "found": true,
+    "pid": "3116",
+    "split": "Summer",
+    "games": 38,
+    "wr": 57.9,
+    "kda": 2.6,
+    "kp": 55.8,
+    "dmg_pct": 23.9,
+    "gold_pct": 20.7,
+    "gd15": -20,
+    "csd15": -3,
+    "xpd15": -247,
+    "dpm": 593,
+    "csm": 8.5,
+    "vspm": 1.32,
+    "solo_kills": 14,
+    "season_games": 102,
+    "split_share": 0.373,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Ambessa",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Camille",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Olaf",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "KSante",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Ornn",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 25.0
+     },
+     {
+      "champ": "Sion",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.4
+     },
+     {
+      "champ": "Volibear",
+      "games": 2,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Gwen",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Jayce",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Jax",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Rumble",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Vayne",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Gnar",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     },
+     {
+      "champ": "Aatrox",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Tatu",
+    "found": true,
+    "pid": "4776",
+    "split": "Summer",
+    "games": 32,
+    "wr": 65.6,
+    "kda": 4.7,
+    "kp": 68.5,
+    "dmg_pct": 15.5,
+    "gold_pct": 20.2,
+    "gd15": -49,
+    "csd15": 0,
+    "xpd15": -76,
+    "dpm": 395,
+    "csm": 7.2,
+    "vspm": 1.89,
+    "solo_kills": 6,
+    "season_games": 96,
+    "split_share": 0.333,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Trundle",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.2
+     },
+     {
+      "champ": "Pantheon",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.3
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 6.8
+     },
+     {
+      "champ": "Vi",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.7
+     },
+     {
+      "champ": "Nasus",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 13.0
+     },
+     {
+      "champ": "Poppy",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.7
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 10.3
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Naafiri",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Wukong",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.5
+     },
+     {
+      "champ": "Sejuani",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Nocturne",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Olaf",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Graves",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Tutsz",
+    "found": true,
+    "pid": "2709",
+    "split": "Summer",
+    "games": 38,
+    "wr": 57.9,
+    "kda": 4.1,
+    "kp": 61.9,
+    "dmg_pct": 24.2,
+    "gold_pct": 20.7,
+    "gd15": -138,
+    "csd15": -5,
+    "xpd15": -191,
+    "dpm": 610,
+    "csm": 8.8,
+    "vspm": 1.38,
+    "solo_kills": 21,
+    "season_games": 102,
+    "split_share": 0.373,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 7,
+      "wr": 85.7,
+      "kda": 6.6
+     },
+     {
+      "champ": "Syndra",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Galio",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 6.1
+     },
+     {
+      "champ": "Akali",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Annie",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Viktor",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.6
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 38.0
+     },
+     {
+      "champ": "Taliyah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Ahri",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "LeBlanc",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Locke",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Ayu",
+    "found": true,
+    "pid": "4976",
+    "split": "Summer",
+    "games": 38,
+    "wr": 57.9,
+    "kda": 4.5,
+    "kp": 63,
+    "dmg_pct": 27.3,
+    "gold_pct": 24.7,
+    "gd15": 49,
+    "csd15": -3,
+    "xpd15": -76,
+    "dpm": 698,
+    "csm": 9.7,
+    "vspm": 1.3,
+    "solo_kills": 5,
+    "season_games": 102,
+    "split_share": 0.373,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 10,
+      "wr": 60.0,
+      "kda": 5.2
+     },
+     {
+      "champ": "Kalista",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 4.9
+     },
+     {
+      "champ": "Lucian",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 6.3
+     },
+     {
+      "champ": "Yunara",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 8.2
+     },
+     {
+      "champ": "Ashe",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Xayah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Zeri",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Jhin",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Kaisa",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Aphelios",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "JoJo",
+    "found": true,
+    "pid": "2329",
+    "split": "Summer",
+    "games": 38,
+    "wr": 57.9,
+    "kda": 5,
+    "kp": 74,
+    "dmg_pct": 8.3,
+    "gold_pct": 13.7,
+    "gd15": 90,
+    "csd15": -1,
+    "xpd15": 96,
+    "dpm": 206,
+    "csm": 1,
+    "vspm": 4.05,
+    "solo_kills": null,
+    "season_games": 102,
+    "split_share": 0.373,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Karma",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 7.0
+     },
+     {
+      "champ": "Bard",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 6.3
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Lulu",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 51.0
+     },
+     {
+      "champ": "Seraphine",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.3
+     },
+     {
+      "champ": "Yuumi",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 13.3
+     },
+     {
+      "champ": "Shen",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.6
+     },
+     {
+      "champ": "Milio",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 24.0
+     },
+     {
+      "champ": "Rakan",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.9
+     },
+     {
+      "champ": "Leona",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Thresh",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Alistar",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Rell",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     }
+    ]
+   }
+  ],
+  "GEN": [
+   {
+    "role": "TOP",
+    "player": "Kiin",
+    "found": true,
+    "pid": "1115",
+    "split": "Summer",
+    "games": 49,
+    "wr": 65.3,
+    "kda": 3.2,
+    "kp": 59.7,
+    "dmg_pct": 23.7,
+    "gold_pct": 20.7,
+    "gd15": 344,
+    "csd15": 4,
+    "xpd15": 153,
+    "dpm": 645,
+    "csm": 8.5,
+    "vspm": 1.35,
+    "solo_kills": 17,
+    "season_games": 133,
+    "split_share": 0.368,
+    "n_champs": 19,
+    "champs": [
+     {
+      "champ": "Olaf",
+      "games": 7,
+      "wr": 100.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "Ambessa",
+      "games": 7,
+      "wr": 85.7,
+      "kda": 2.7
+     },
+     {
+      "champ": "Varus",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 4.3
+     },
+     {
+      "champ": "Rumble",
+      "games": 5,
+      "wr": 20.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Gwen",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.6
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.9
+     },
+     {
+      "champ": "Jayce",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.3
+     },
+     {
+      "champ": "Vayne",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.6
+     },
+     {
+      "champ": "Shen",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "KSante",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Sion",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Aatrox",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Camille",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Ornn",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Gnar",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Gragas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Heimerdinger",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Zaahen",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Canyon",
+    "found": true,
+    "pid": "1909",
+    "split": "Summer",
+    "games": 49,
+    "wr": 65.3,
+    "kda": 4.7,
+    "kp": 71.3,
+    "dmg_pct": 16,
+    "gold_pct": 19.7,
+    "gd15": -64,
+    "csd15": 0,
+    "xpd15": 40,
+    "dpm": 436,
+    "csm": 7.1,
+    "vspm": 2.02,
+    "solo_kills": 10,
+    "season_games": 131,
+    "split_share": 0.374,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Lee Sin",
+      "games": 11,
+      "wr": 90.9,
+      "kda": 6.8
+     },
+     {
+      "champ": "Skarner",
+      "games": 7,
+      "wr": 85.7,
+      "kda": 8.9
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 7,
+      "wr": 42.9,
+      "kda": 2.3
+     },
+     {
+      "champ": "Nocturne",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 8.7
+     },
+     {
+      "champ": "Pantheon",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "Vi",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 3,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Wukong",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Chogath",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Aatrox",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Naafiri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.7
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Chovy",
+    "found": true,
+    "pid": "1629",
+    "split": "Summer",
+    "games": 49,
+    "wr": 65.3,
+    "kda": 4.4,
+    "kp": 61.3,
+    "dmg_pct": 24.1,
+    "gold_pct": 21.6,
+    "gd15": 228,
+    "csd15": 11,
+    "xpd15": 352,
+    "dpm": 648,
+    "csm": 9.7,
+    "vspm": 1.58,
+    "solo_kills": 14,
+    "season_games": 129,
+    "split_share": 0.38,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 10,
+      "wr": 60.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Galio",
+      "games": 8,
+      "wr": 75.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Syndra",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 8.1
+     },
+     {
+      "champ": "Anivia",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Akali",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 11.7
+     },
+     {
+      "champ": "Orianna",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.4
+     },
+     {
+      "champ": "Vex",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.8
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Sylas",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Lissandra",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Yone",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Locke",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Mel",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.7
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Ruler",
+    "found": true,
+    "pid": "685",
+    "split": "Summer",
+    "games": 49,
+    "wr": 65.3,
+    "kda": 4.3,
+    "kp": 65.8,
+    "dmg_pct": 29,
+    "gold_pct": 24.7,
+    "gd15": 26,
+    "csd15": 2,
+    "xpd15": 31,
+    "dpm": 775,
+    "csm": 10.2,
+    "vspm": 1.54,
+    "solo_kills": 4,
+    "season_games": 129,
+    "split_share": 0.38,
+    "n_champs": 18,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 9,
+      "wr": 55.6,
+      "kda": 3.0
+     },
+     {
+      "champ": "Ziggs",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Kalista",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Jhin",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 6.1
+     },
+     {
+      "champ": "Lucian",
+      "games": 4,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Seraphine",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 11.3
+     },
+     {
+      "champ": "Yunara",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.9
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.2
+     },
+     {
+      "champ": "Viktor",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Sivir",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 6.8
+     },
+     {
+      "champ": "Ashe",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.8
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 13.0
+     },
+     {
+      "champ": "KogMaw",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Zeri",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 14.0
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Senna",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Duro",
+    "found": true,
+    "pid": "4259",
+    "split": "Summer",
+    "games": 49,
+    "wr": 65.3,
+    "kda": 4.2,
+    "kp": 75.2,
+    "dmg_pct": 7.2,
+    "gold_pct": 13.3,
+    "gd15": -86,
+    "csd15": -6,
+    "xpd15": -138,
+    "dpm": 197,
+    "csm": 0.9,
+    "vspm": 4.41,
+    "solo_kills": 2,
+    "season_games": 133,
+    "split_share": 0.368,
+    "n_champs": 18,
+    "champs": [
+     {
+      "champ": "Shen",
+      "games": 10,
+      "wr": 70.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Lulu",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Milio",
+      "games": 4,
+      "wr": 0.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Camille",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Karma",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.1
+     },
+     {
+      "champ": "Bard",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.3
+     },
+     {
+      "champ": "Alistar",
+      "games": 2,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Neeko",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Leona",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Pyke",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Lux",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Yuumi",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Nautilus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Braum",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.7
+     }
+    ]
+   }
+  ],
+  "HLE": [
+   {
+    "role": "TOP",
+    "player": "Zeus",
+    "found": true,
+    "pid": "3658",
+    "split": "Summer",
+    "games": 50,
+    "wr": 52.0,
+    "kda": 2.9,
+    "kp": 54.3,
+    "dmg_pct": 22,
+    "gold_pct": 19.9,
+    "gd15": 63,
+    "csd15": 5,
+    "xpd15": 70,
+    "dpm": 618,
+    "csm": 8.2,
+    "vspm": 1.2,
+    "solo_kills": 15,
+    "season_games": 160,
+    "split_share": 0.312,
+    "n_champs": 20,
+    "champs": [
+     {
+      "champ": "Ambessa",
+      "games": 9,
+      "wr": 55.6,
+      "kda": 3.0
+     },
+     {
+      "champ": "Gnar",
+      "games": 8,
+      "wr": 50.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Olaf",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Jayce",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Camille",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.5
+     },
+     {
+      "champ": "Anivia",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.3
+     },
+     {
+      "champ": "Dr. Mundo",
+      "games": 3,
+      "wr": 0.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Galio",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 6.3
+     },
+     {
+      "champ": "Aatrox",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Gragas",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 18.0
+     },
+     {
+      "champ": "Kennen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Fiora",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Nasus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.4
+     },
+     {
+      "champ": "KSante",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Vayne",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Rumble",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Swain",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Kanavi",
+    "found": true,
+    "pid": "2360",
+    "split": "Summer",
+    "games": 50,
+    "wr": 52.0,
+    "kda": 2.7,
+    "kp": 73.1,
+    "dmg_pct": 18.2,
+    "gold_pct": 20.5,
+    "gd15": 126,
+    "csd15": 0,
+    "xpd15": 64,
+    "dpm": 513,
+    "csm": 7.2,
+    "vspm": 1.92,
+    "solo_kills": 7,
+    "season_games": 160,
+    "split_share": 0.312,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Jarvan IV",
+      "games": 11,
+      "wr": 27.3,
+      "kda": 1.8
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 8,
+      "wr": 37.5,
+      "kda": 2.7
+     },
+     {
+      "champ": "Naafiri",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Vi",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Qiyana",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 1.9
+     },
+     {
+      "champ": "Chogath",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.1
+     },
+     {
+      "champ": "Shyvana",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.8
+     },
+     {
+      "champ": "Pantheon",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.5
+     },
+     {
+      "champ": "Nocturne",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Sejuani",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Zeka",
+    "found": true,
+    "pid": "2906",
+    "split": "Summer",
+    "games": 50,
+    "wr": 52.0,
+    "kda": 5.1,
+    "kp": 70.2,
+    "dmg_pct": 24.7,
+    "gold_pct": 21.5,
+    "gd15": 333,
+    "csd15": 0,
+    "xpd15": 24,
+    "dpm": 681,
+    "csm": 9.1,
+    "vspm": 1.35,
+    "solo_kills": 19,
+    "season_games": 160,
+    "split_share": 0.312,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 4.1
+     },
+     {
+      "champ": "Orianna",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 5.9
+     },
+     {
+      "champ": "Akali",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 13.5
+     },
+     {
+      "champ": "Syndra",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 4.9
+     },
+     {
+      "champ": "Ahri",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 7.4
+     },
+     {
+      "champ": "Locke",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Annie",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "Viktor",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 6.0
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Yone",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Aurora",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "LeBlanc",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Gumayusi",
+    "found": true,
+    "pid": "3247",
+    "split": "Summer",
+    "games": 50,
+    "wr": 52.0,
+    "kda": 3.2,
+    "kp": 66.4,
+    "dmg_pct": 27.6,
+    "gold_pct": 24.4,
+    "gd15": -94,
+    "csd15": 4,
+    "xpd15": 52,
+    "dpm": 780,
+    "csm": 10.1,
+    "vspm": 1.5,
+    "solo_kills": 3,
+    "season_games": 160,
+    "split_share": 0.312,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Jhin",
+      "games": 9,
+      "wr": 44.4,
+      "kda": 4.5
+     },
+     {
+      "champ": "Ziggs",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 3.1
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Lucian",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Ashe",
+      "games": 5,
+      "wr": 20.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Yunara",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 1.4
+     },
+     {
+      "champ": "Corki",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.4
+     },
+     {
+      "champ": "Xayah",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 10.5
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Varus",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Seraphine",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Xerath",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Ezreal",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 13.0
+     },
+     {
+      "champ": "KogMaw",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 11.0
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.5
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Delight",
+    "found": true,
+    "pid": "3411",
+    "split": "Summer",
+    "games": 47,
+    "wr": 51.1,
+    "kda": 3.4,
+    "kp": 74.9,
+    "dmg_pct": 7.4,
+    "gold_pct": 13.7,
+    "gd15": 46,
+    "csd15": 4,
+    "xpd15": -151,
+    "dpm": 206,
+    "csm": 1.2,
+    "vspm": 4.4,
+    "solo_kills": null,
+    "season_games": 154,
+    "split_share": 0.305,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Alistar",
+      "games": 8,
+      "wr": 87.5,
+      "kda": 6.6
+     },
+     {
+      "champ": "Karma",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Shen",
+      "games": 6,
+      "wr": 33.3,
+      "kda": 2.3
+     },
+     {
+      "champ": "Milio",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Seraphine",
+      "games": 5,
+      "wr": 20.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Camille",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 1.9
+     },
+     {
+      "champ": "Lulu",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Bard",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.3
+     },
+     {
+      "champ": "Leona",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Nautilus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Pyke",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     }
+    ]
+   }
+  ],
+  "T1": [
+   {
+    "role": "TOP",
+    "player": "Doran",
+    "found": true,
+    "pid": "1242",
+    "split": "Summer",
+    "games": 54,
+    "wr": 50.0,
+    "kda": 2.8,
+    "kp": 48.6,
+    "dmg_pct": 20.6,
+    "gold_pct": 20.4,
+    "gd15": 21,
+    "csd15": -1,
+    "xpd15": 61,
+    "dpm": 587,
+    "csm": 8.6,
+    "vspm": 1.28,
+    "solo_kills": 23,
+    "season_games": 173,
+    "split_share": 0.312,
+    "n_champs": 18,
+    "champs": [
+     {
+      "champ": "Jayce",
+      "games": 8,
+      "wr": 62.5,
+      "kda": 2.8
+     },
+     {
+      "champ": "Ambessa",
+      "games": 8,
+      "wr": 37.5,
+      "kda": 2.3
+     },
+     {
+      "champ": "Gnar",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Olaf",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "KSante",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Jax",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Gwen",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 1.8
+     },
+     {
+      "champ": "Rumble",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.9
+     },
+     {
+      "champ": "Renekton",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 9.7
+     },
+     {
+      "champ": "Vayne",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Kennen",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Camille",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Nasus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Gragas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Aatrox",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Ornn",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Sion",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Oner",
+    "found": true,
+    "pid": "3741",
+    "split": "Summer",
+    "games": 51,
+    "wr": 51.0,
+    "kda": 3.2,
+    "kp": 66.7,
+    "dmg_pct": 17.8,
+    "gold_pct": 20.1,
+    "gd15": -49,
+    "csd15": -1,
+    "xpd15": -35,
+    "dpm": 503,
+    "csm": 6.9,
+    "vspm": 1.9,
+    "solo_kills": 13,
+    "season_games": 170,
+    "split_share": 0.3,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Vi",
+      "games": 10,
+      "wr": 90.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Skarner",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Naafiri",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Pantheon",
+      "games": 5,
+      "wr": 20.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Nocturne",
+      "games": 3,
+      "wr": 0.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Wukong",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Qiyana",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Sejuani",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Faker",
+    "found": true,
+    "pid": "48",
+    "split": "Summer",
+    "games": 54,
+    "wr": 50.0,
+    "kda": 2.8,
+    "kp": 58,
+    "dmg_pct": 23.3,
+    "gold_pct": 20.4,
+    "gd15": -272,
+    "csd15": -6,
+    "xpd15": -144,
+    "dpm": 657,
+    "csm": 8.8,
+    "vspm": 1.42,
+    "solo_kills": 17,
+    "season_games": 173,
+    "split_share": 0.312,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 8,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Orianna",
+      "games": 8,
+      "wr": 37.5,
+      "kda": 2.7
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 7,
+      "wr": 57.1,
+      "kda": 2.3
+     },
+     {
+      "champ": "Akali",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Anivia",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Galio",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.1
+     },
+     {
+      "champ": "Locke",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.8
+     },
+     {
+      "champ": "Syndra",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.6
+     },
+     {
+      "champ": "Yone",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Azir",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Viktor",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Rumble",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 21.0
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.9
+     },
+     {
+      "champ": "Ahri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Lissandra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Peyz",
+    "found": true,
+    "pid": "4247",
+    "split": "Summer",
+    "games": 54,
+    "wr": 50.0,
+    "kda": 3.9,
+    "kp": 68.5,
+    "dmg_pct": 29.5,
+    "gold_pct": 25.3,
+    "gd15": 540,
+    "csd15": 4,
+    "xpd15": 273,
+    "dpm": 829,
+    "csm": 10.3,
+    "vspm": 1.28,
+    "solo_kills": 15,
+    "season_games": 173,
+    "split_share": 0.312,
+    "n_champs": 21,
+    "champs": [
+     {
+      "champ": "Jhin",
+      "games": 7,
+      "wr": 42.9,
+      "kda": 4.2
+     },
+     {
+      "champ": "Taliyah",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 6.4
+     },
+     {
+      "champ": "Ezreal",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Lucian",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Yunara",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 5.2
+     },
+     {
+      "champ": "Sivir",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.5
+     },
+     {
+      "champ": "Kalista",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "Xayah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "Varus",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Kaisa",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.2
+     },
+     {
+      "champ": "Jinx",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.9
+     },
+     {
+      "champ": "Seraphine",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Zeri",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.4
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Mel",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.7
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Keria",
+    "found": true,
+    "pid": "1258",
+    "split": "Summer",
+    "games": 54,
+    "wr": 50.0,
+    "kda": 4.7,
+    "kp": 74.1,
+    "dmg_pct": 9.1,
+    "gold_pct": 13.9,
+    "gd15": 107,
+    "csd15": -2,
+    "xpd15": 154,
+    "dpm": 254,
+    "csm": 1.1,
+    "vspm": 4.38,
+    "solo_kills": 3,
+    "season_games": 173,
+    "split_share": 0.312,
+    "n_champs": 19,
+    "champs": [
+     {
+      "champ": "Camille",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Bard",
+      "games": 6,
+      "wr": 33.3,
+      "kda": 4.0
+     },
+     {
+      "champ": "Shen",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Milio",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Alistar",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.4
+     },
+     {
+      "champ": "Karma",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 30.5
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 6.4
+     },
+     {
+      "champ": "Lux",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 7.7
+     },
+     {
+      "champ": "Lulu",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 21.5
+     },
+     {
+      "champ": "Blitzcrank",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.2
+     },
+     {
+      "champ": "Leona",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Neeko",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Rakan",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Seraphine",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Yuumi",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Skarner",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.7
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Tahm Kench",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Pyke",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     }
+    ]
+   }
+  ],
+  "DK": [
+   {
+    "role": "TOP",
+    "player": "Siwoo",
+    "found": true,
+    "pid": "5392",
+    "split": "Summer",
+    "games": 50,
+    "wr": 60.0,
+    "kda": 2.1,
+    "kp": 44.8,
+    "dmg_pct": 20.8,
+    "gold_pct": 20.1,
+    "gd15": -29,
+    "csd15": 4,
+    "xpd15": 24,
+    "dpm": 536,
+    "csm": 9.1,
+    "vspm": 1.46,
+    "solo_kills": 24,
+    "season_games": 164,
+    "split_share": 0.305,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "KSante",
+      "games": 10,
+      "wr": 90.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Jayce",
+      "games": 9,
+      "wr": 44.4,
+      "kda": 1.8
+     },
+     {
+      "champ": "Gnar",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Olaf",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Ambessa",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Jax",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Aatrox",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.4
+     },
+     {
+      "champ": "Tristana",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Renekton",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Aurora",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Kled",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 11.0
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Vayne",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Lucid",
+    "found": true,
+    "pid": "3895",
+    "split": "Summer",
+    "games": 50,
+    "wr": 60.0,
+    "kda": 3.5,
+    "kp": 70.8,
+    "dmg_pct": 17.6,
+    "gold_pct": 19.7,
+    "gd15": 175,
+    "csd15": 6,
+    "xpd15": 351,
+    "dpm": 459,
+    "csm": 7.3,
+    "vspm": 1.94,
+    "solo_kills": 6,
+    "season_games": 162,
+    "split_share": 0.309,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Xin Zhao",
+      "games": 12,
+      "wr": 66.7,
+      "kda": 4.0
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 10,
+      "wr": 60.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Vi",
+      "games": 8,
+      "wr": 50.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Naafiri",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 6.8
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "Wukong",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Kindred",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Pantheon",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "ShowMaker",
+    "found": true,
+    "pid": "1250",
+    "split": "Summer",
+    "games": 50,
+    "wr": 60.0,
+    "kda": 4.7,
+    "kp": 66,
+    "dmg_pct": 25.5,
+    "gold_pct": 21,
+    "gd15": 75,
+    "csd15": 3,
+    "xpd15": 73,
+    "dpm": 655,
+    "csm": 9.2,
+    "vspm": 1.37,
+    "solo_kills": 6,
+    "season_games": 164,
+    "split_share": 0.305,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Viktor",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 4.1
+     },
+     {
+      "champ": "Orianna",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 6.8
+     },
+     {
+      "champ": "Taliyah",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 7.0
+     },
+     {
+      "champ": "Syndra",
+      "games": 6,
+      "wr": 33.3,
+      "kda": 3.1
+     },
+     {
+      "champ": "Ryze",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Annie",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 9.7
+     },
+     {
+      "champ": "Ahri",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 11.8
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.1
+     },
+     {
+      "champ": "Aurora",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "Zoe",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 14.0
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Anivia",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.4
+     },
+     {
+      "champ": "Locke",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Smash",
+    "found": true,
+    "pid": "4940",
+    "split": "Summer",
+    "games": 50,
+    "wr": 60.0,
+    "kda": 5.5,
+    "kp": 68.8,
+    "dmg_pct": 28.3,
+    "gold_pct": 25.5,
+    "gd15": 180,
+    "csd15": 4,
+    "xpd15": 3,
+    "dpm": 730,
+    "csm": 10.7,
+    "vspm": 1.31,
+    "solo_kills": 5,
+    "season_games": 164,
+    "split_share": 0.305,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Jhin",
+      "games": 7,
+      "wr": 42.9,
+      "kda": 6.4
+     },
+     {
+      "champ": "Lucian",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 7.6
+     },
+     {
+      "champ": "Ezreal",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 3.9
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "Yunara",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Viktor",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Sivir",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 18.0
+     },
+     {
+      "champ": "Kaisa",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Ashe",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.2
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.4
+     },
+     {
+      "champ": "Taliyah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Mel",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Career",
+    "found": true,
+    "pid": "5204",
+    "split": "Summer",
+    "games": 50,
+    "wr": 60.0,
+    "kda": 3.8,
+    "kp": 76.8,
+    "dmg_pct": 7.9,
+    "gold_pct": 13.6,
+    "gd15": 104,
+    "csd15": 4,
+    "xpd15": 312,
+    "dpm": 202,
+    "csm": 1.2,
+    "vspm": 4.47,
+    "solo_kills": null,
+    "season_games": 164,
+    "split_share": 0.305,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Milio",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 6.9
+     },
+     {
+      "champ": "Karma",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Lulu",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 6.7
+     },
+     {
+      "champ": "Shen",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 6.2
+     },
+     {
+      "champ": "Bard",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Camille",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Rakan",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 6.0
+     },
+     {
+      "champ": "Rell",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.7
+     },
+     {
+      "champ": "Lux",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Leona",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 13.0
+     },
+     {
+      "champ": "Nautilus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Neeko",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Pyke",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Alistar",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.2
+     }
+    ]
+   }
+  ],
+  "TSW": [
+   {
+    "role": "TOP",
+    "player": "Pun",
+    "found": true,
+    "pid": "2799",
+    "split": "Summer",
+    "games": 26,
+    "wr": 73.1,
+    "kda": 2.8,
+    "kp": 54.7,
+    "dmg_pct": 20.7,
+    "gold_pct": 19.6,
+    "gd15": 99,
+    "csd15": -2,
+    "xpd15": -237,
+    "dpm": 616,
+    "csm": 8.2,
+    "vspm": 1.51,
+    "solo_kills": 4,
+    "season_games": 109,
+    "split_share": 0.239,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Urgot",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Gnar",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 10.3
+     },
+     {
+      "champ": "Olaf",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 1.3
+     },
+     {
+      "champ": "Galio",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.2
+     },
+     {
+      "champ": "Yorick",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Chogath",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "KSante",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Ambessa",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Volibear",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Jax",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Renekton",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Shen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Udyr",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Hizto",
+    "found": true,
+    "pid": "5960",
+    "split": "Summer",
+    "games": 26,
+    "wr": 73.1,
+    "kda": 5.4,
+    "kp": 72.7,
+    "dmg_pct": 19.3,
+    "gold_pct": 21.4,
+    "gd15": 391,
+    "csd15": 9,
+    "xpd15": 599,
+    "dpm": 551,
+    "csm": 7.8,
+    "vspm": 1.78,
+    "solo_kills": 15,
+    "season_games": 110,
+    "split_share": 0.236,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Qiyana",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 6.6
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 7.4
+     },
+     {
+      "champ": "Vi",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 6.6
+     },
+     {
+      "champ": "Naafiri",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Olaf",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Pantheon",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Graves",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Wukong",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Shyvana",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.4
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.6
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Dire",
+    "found": true,
+    "pid": "5961",
+    "split": "Summer",
+    "games": 26,
+    "wr": 73.1,
+    "kda": 5.5,
+    "kp": 61.8,
+    "dmg_pct": 24.3,
+    "gold_pct": 20.2,
+    "gd15": 202,
+    "csd15": 1,
+    "xpd15": 1,
+    "dpm": 707,
+    "csm": 8.8,
+    "vspm": 1.46,
+    "solo_kills": 4,
+    "season_games": 110,
+    "split_share": 0.236,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Viktor",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 6.2
+     },
+     {
+      "champ": "Ryze",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 7.3
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 11.7
+     },
+     {
+      "champ": "Ahri",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "Orianna",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 28.0
+     },
+     {
+      "champ": "Sylas",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Locke",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Aurora",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Anivia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Annie",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Swain",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Lissandra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.4
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Eddie",
+    "found": true,
+    "pid": "3245",
+    "split": "Summer",
+    "games": 26,
+    "wr": 73.1,
+    "kda": 5.5,
+    "kp": 64.9,
+    "dmg_pct": 28.2,
+    "gold_pct": 25,
+    "gd15": 594,
+    "csd15": 7,
+    "xpd15": 190,
+    "dpm": 814,
+    "csm": 10.2,
+    "vspm": 1.4,
+    "solo_kills": 8,
+    "season_games": 110,
+    "split_share": 0.236,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Yunara",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 7.2
+     },
+     {
+      "champ": "Ezreal",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Kaisa",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 32.0
+     },
+     {
+      "champ": "Jhin",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.4
+     },
+     {
+      "champ": "Ziggs",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.5
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Bie",
+    "found": true,
+    "pid": "1461",
+    "split": "Summer",
+    "games": 26,
+    "wr": 73.1,
+    "kda": 5.6,
+    "kp": 73.4,
+    "dmg_pct": 7.6,
+    "gold_pct": 13.8,
+    "gd15": 229,
+    "csd15": 2,
+    "xpd15": 204,
+    "dpm": 212,
+    "csm": 1.2,
+    "vspm": 4.64,
+    "solo_kills": 1,
+    "season_games": 110,
+    "split_share": 0.236,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Nautilus",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 5.0
+     },
+     {
+      "champ": "Karma",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.7
+     },
+     {
+      "champ": "Shen",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Alistar",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 31.0
+     },
+     {
+      "champ": "Bard",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Elise",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Rell",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.5
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 21.0
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Pantheon",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     }
+    ]
+   }
+  ],
+  "CFO": [
+   {
+    "role": "TOP",
+    "player": "Rest",
+    "found": true,
+    "pid": "1172",
+    "split": "Summer",
+    "games": 35,
+    "wr": 54.3,
+    "kda": 3.4,
+    "kp": 53,
+    "dmg_pct": 21.9,
+    "gold_pct": 19.4,
+    "gd15": -125,
+    "csd15": -6,
+    "xpd15": 265,
+    "dpm": 596,
+    "csm": 7.8,
+    "vspm": 1.12,
+    "solo_kills": 12,
+    "season_games": 87,
+    "split_share": 0.402,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Rumble",
+      "games": 6,
+      "wr": 33.3,
+      "kda": 2.4
+     },
+     {
+      "champ": "Jayce",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Gnar",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.2
+     },
+     {
+      "champ": "KSante",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.4
+     },
+     {
+      "champ": "Renekton",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.3
+     },
+     {
+      "champ": "Malphite",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.4
+     },
+     {
+      "champ": "Nasus",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Camille",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Kled",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Volibear",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Garen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 17.0
+     },
+     {
+      "champ": "Udyr",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Ambessa",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Dr. Mundo",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Olaf",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Shad0w",
+    "found": true,
+    "pid": "2588",
+    "split": "Summer",
+    "games": 35,
+    "wr": 54.3,
+    "kda": 3.8,
+    "kp": 73.6,
+    "dmg_pct": 18.2,
+    "gold_pct": 20.3,
+    "gd15": 73,
+    "csd15": 0,
+    "xpd15": 15,
+    "dpm": 506,
+    "csm": 6.9,
+    "vspm": 1.93,
+    "solo_kills": 10,
+    "season_games": 87,
+    "split_share": 0.402,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Naafiri",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 5,
+      "wr": 20.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Poppy",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Pantheon",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Trundle",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Sejuani",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 7.3
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Wukong",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Nocturne",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Vi",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "POUT",
+    "found": true,
+    "pid": "4251",
+    "split": "Summer",
+    "games": 35,
+    "wr": 54.3,
+    "kda": 4.2,
+    "kp": 60.2,
+    "dmg_pct": 25.4,
+    "gold_pct": 21.2,
+    "gd15": -9,
+    "csd15": 2,
+    "xpd15": 80,
+    "dpm": 696,
+    "csm": 9,
+    "vspm": 1.42,
+    "solo_kills": 13,
+    "season_games": 61,
+    "split_share": 0.574,
+    "n_champs": 10,
+    "champs": [
+     {
+      "champ": "Akali",
+      "games": 8,
+      "wr": 62.5,
+      "kda": 5.6
+     },
+     {
+      "champ": "Syndra",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Orianna",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Ryze",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Sylas",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 7.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.2
+     },
+     {
+      "champ": "Aurora",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Ahri",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Yone",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Doggo",
+    "found": true,
+    "pid": "3737",
+    "split": "Summer",
+    "games": 35,
+    "wr": 54.3,
+    "kda": 3.8,
+    "kp": 64.6,
+    "dmg_pct": 28.5,
+    "gold_pct": 25.4,
+    "gd15": 243,
+    "csd15": 1,
+    "xpd15": -22,
+    "dpm": 794,
+    "csm": 9.7,
+    "vspm": 1.47,
+    "solo_kills": 8,
+    "season_games": 87,
+    "split_share": 0.402,
+    "n_champs": 22,
+    "champs": [
+     {
+      "champ": "Lucian",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 4.9
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.8
+     },
+     {
+      "champ": "Yunara",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "Samira",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 11.7
+     },
+     {
+      "champ": "Ezreal",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Kalista",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Sivir",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Zeri",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Tristana",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Yasuo",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Vayne",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Vladimir",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "KogMaw",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Kaisa",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Jhin",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Xerath",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Kino",
+    "found": true,
+    "pid": "7011",
+    "split": "Summer",
+    "games": 35,
+    "wr": 54.3,
+    "kda": 3.2,
+    "kp": 66.8,
+    "dmg_pct": 5.9,
+    "gold_pct": 13.6,
+    "gd15": 4,
+    "csd15": -1,
+    "xpd15": -256,
+    "dpm": 163,
+    "csm": 1,
+    "vspm": 4.28,
+    "solo_kills": 3,
+    "season_games": 61,
+    "split_share": 0.574,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Milio",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 7.2
+     },
+     {
+      "champ": "Nautilus",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Lulu",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 6.2
+     },
+     {
+      "champ": "Camille",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Karma",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Alistar",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.3
+     },
+     {
+      "champ": "Rakan",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Bard",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Rell",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Braum",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Leona",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.2
+     },
+     {
+      "champ": "Neeko",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     }
+    ]
+   }
+  ],
+  "MVK": [
+   {
+    "role": "TOP",
+    "player": "Kratos",
+    "found": true,
+    "pid": "5169",
+    "split": "Summer",
+    "games": 28,
+    "wr": 46.4,
+    "kda": 2,
+    "kp": 53.9,
+    "dmg_pct": 23.5,
+    "gold_pct": 20.1,
+    "gd15": -13,
+    "csd15": 3,
+    "xpd15": -152,
+    "dpm": 578,
+    "csm": 8.4,
+    "vspm": 1.28,
+    "solo_kills": 11,
+    "season_games": 70,
+    "split_share": 0.4,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Gnar",
+      "games": 6,
+      "wr": 16.7,
+      "kda": 1.1
+     },
+     {
+      "champ": "Ambessa",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Olaf",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Jayce",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "KSante",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Varus",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.6
+     },
+     {
+      "champ": "Vayne",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Rumble",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Renekton",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Aatrox",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Zaahen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.8
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Gury",
+    "found": true,
+    "pid": "5156",
+    "split": "Summer",
+    "games": 28,
+    "wr": 46.4,
+    "kda": 2.5,
+    "kp": 62.7,
+    "dmg_pct": 15.3,
+    "gold_pct": 20,
+    "gd15": -152,
+    "csd15": 1,
+    "xpd15": -82,
+    "dpm": 382,
+    "csm": 7,
+    "vspm": 2.13,
+    "solo_kills": null,
+    "season_games": 82,
+    "split_share": 0.341,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Vi",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "Maokai",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.2
+     },
+     {
+      "champ": "Wukong",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.7
+     },
+     {
+      "champ": "Aatrox",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Malphite",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Pantheon",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Zyra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Qiyana",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Nocturne",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Naafiri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Chika",
+    "found": true,
+    "pid": "6420",
+    "split": "Summer",
+    "games": 28,
+    "wr": 46.4,
+    "kda": 3.1,
+    "kp": 70.9,
+    "dmg_pct": 24.7,
+    "gold_pct": 21.7,
+    "gd15": -141,
+    "csd15": -8,
+    "xpd15": -131,
+    "dpm": 620,
+    "csm": 8.7,
+    "vspm": 1.31,
+    "solo_kills": 5,
+    "season_games": 60,
+    "split_share": 0.467,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Locke",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Yone",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.9
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Sylas",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Zoe",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Hwei",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "LeBlanc",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.4
+     },
+     {
+      "champ": "KSante",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Aurelion Sol",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 18.0
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Harky",
+    "found": true,
+    "pid": "5166",
+    "split": "Summer",
+    "games": 28,
+    "wr": 46.4,
+    "kda": 3.1,
+    "kp": 70.5,
+    "dmg_pct": 28.5,
+    "gold_pct": 24.3,
+    "gd15": -212,
+    "csd15": 1,
+    "xpd15": -51,
+    "dpm": 707,
+    "csm": 9.7,
+    "vspm": 1.29,
+    "solo_kills": null,
+    "season_games": 83,
+    "split_share": 0.337,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Ashe",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Corki",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.3
+     },
+     {
+      "champ": "Taliyah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.6
+     },
+     {
+      "champ": "Lucian",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Jhin",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Xerath",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "SiuLoong",
+    "found": true,
+    "pid": "5913",
+    "split": "Summer",
+    "games": 28,
+    "wr": 46.4,
+    "kda": 2.9,
+    "kp": 73.6,
+    "dmg_pct": 8,
+    "gold_pct": 13.9,
+    "gd15": -107,
+    "csd15": -1,
+    "xpd15": 248,
+    "dpm": 199,
+    "csm": 1,
+    "vspm": 4.11,
+    "solo_kills": 1,
+    "season_games": 78,
+    "split_share": 0.359,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Seraphine",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Alistar",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.6
+     },
+     {
+      "champ": "Bard",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.4
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "Milio",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 11.0
+     },
+     {
+      "champ": "Rell",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Pyke",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.6
+     },
+     {
+      "champ": "Karma",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Shen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Nautilus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.4
+     },
+     {
+      "champ": "Nami",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   }
+  ],
+  "G2": [
+   {
+    "role": "TOP",
+    "player": "BrokenBlade",
+    "found": true,
+    "pid": "1310",
+    "split": "Summer",
+    "games": 35,
+    "wr": 68.6,
+    "kda": 2.9,
+    "kp": 50,
+    "dmg_pct": 23.4,
+    "gold_pct": 20.1,
+    "gd15": -117,
+    "csd15": -3,
+    "xpd15": -100,
+    "dpm": 605,
+    "csm": 8.5,
+    "vspm": 1.5,
+    "solo_kills": 18,
+    "season_games": 131,
+    "split_share": 0.267,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Rumble",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Kled",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.2
+     },
+     {
+      "champ": "KSante",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Ambessa",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Olaf",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Gnar",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.7
+     },
+     {
+      "champ": "Vayne",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 3.4
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Anivia",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Jayce",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 1.4
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Shen",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     },
+     {
+      "champ": "Zaahen",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "SkewMond",
+    "found": true,
+    "pid": "4946",
+    "split": "Summer",
+    "games": 35,
+    "wr": 68.6,
+    "kda": 4.8,
+    "kp": 66.6,
+    "dmg_pct": 17.2,
+    "gold_pct": 20.6,
+    "gd15": 42,
+    "csd15": 2,
+    "xpd15": 180,
+    "dpm": 445,
+    "csm": 7.4,
+    "vspm": 1.98,
+    "solo_kills": 7,
+    "season_games": 131,
+    "split_share": 0.267,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Jarvan IV",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 5.7
+     },
+     {
+      "champ": "Skarner",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 5.4
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 7.7
+     },
+     {
+      "champ": "Naafiri",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.0
+     },
+     {
+      "champ": "Vi",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Wukong",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.7
+     },
+     {
+      "champ": "Trundle",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Pantheon",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Poppy",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 8.7
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Nasus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Olaf",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Caps",
+    "found": true,
+    "pid": "802",
+    "split": "Summer",
+    "games": 35,
+    "wr": 68.6,
+    "kda": 4.3,
+    "kp": 61.9,
+    "dmg_pct": 23.4,
+    "gold_pct": 21,
+    "gd15": 90,
+    "csd15": 7,
+    "xpd15": 385,
+    "dpm": 600,
+    "csm": 9.1,
+    "vspm": 1.28,
+    "solo_kills": 13,
+    "season_games": 131,
+    "split_share": 0.267,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Orianna",
+      "games": 5,
+      "wr": 100.0,
+      "kda": 17.8
+     },
+     {
+      "champ": "Akali",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Galio",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Ahri",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Viktor",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Yone",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 19.0
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "LeBlanc",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Locke",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.4
+     },
+     {
+      "champ": "Anivia",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Annie",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Tristana",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Ryze",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Hans Sama",
+    "found": true,
+    "pid": "732",
+    "split": "Summer",
+    "games": 35,
+    "wr": 68.6,
+    "kda": 4.6,
+    "kp": 57.3,
+    "dmg_pct": 28.8,
+    "gold_pct": 24.7,
+    "gd15": 454,
+    "csd15": 11,
+    "xpd15": 242,
+    "dpm": 761,
+    "csm": 10.3,
+    "vspm": 1.55,
+    "solo_kills": 3,
+    "season_games": 131,
+    "split_share": 0.267,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Lucian",
+      "games": 6,
+      "wr": 33.3,
+      "kda": 3.1
+     },
+     {
+      "champ": "Ziggs",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Yunara",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Ashe",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 5.8
+     },
+     {
+      "champ": "Syndra",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.5
+     },
+     {
+      "champ": "Varus",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.1
+     },
+     {
+      "champ": "Corki",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 13.5
+     },
+     {
+      "champ": "Ezreal",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Xayah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 13.0
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Labrov",
+    "found": true,
+    "pid": "2887",
+    "split": "Summer",
+    "games": 35,
+    "wr": 68.6,
+    "kda": 3.2,
+    "kp": 66.6,
+    "dmg_pct": 7.2,
+    "gold_pct": 13.5,
+    "gd15": 28,
+    "csd15": 0,
+    "xpd15": -83,
+    "dpm": 186,
+    "csm": 1,
+    "vspm": 4.22,
+    "solo_kills": null,
+    "season_games": 131,
+    "split_share": 0.267,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Leona",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 2.1
+     },
+     {
+      "champ": "Shen",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "Alistar",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Lulu",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 8.0
+     },
+     {
+      "champ": "Seraphine",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Rell",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 1.6
+     },
+     {
+      "champ": "Milio",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.4
+     },
+     {
+      "champ": "Nautilus",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Rakan",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "Karma",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Lux",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Camille",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     },
+     {
+      "champ": "Taric",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.8
+     }
+    ]
+   }
+  ],
+  "MKOI": [
+   {
+    "role": "TOP",
+    "player": "Myrwn",
+    "found": true,
+    "pid": "4310",
+    "split": "Summer",
+    "games": 41,
+    "wr": 48.8,
+    "kda": 2.6,
+    "kp": 50.8,
+    "dmg_pct": 22.7,
+    "gold_pct": 19.1,
+    "gd15": 32,
+    "csd15": -1,
+    "xpd15": -6,
+    "dpm": 603,
+    "csm": 8.2,
+    "vspm": 1.43,
+    "solo_kills": 7,
+    "season_games": 111,
+    "split_share": 0.369,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Ambessa",
+      "games": 9,
+      "wr": 55.6,
+      "kda": 1.8
+     },
+     {
+      "champ": "Jayce",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 3.4
+     },
+     {
+      "champ": "Galio",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 6.1
+     },
+     {
+      "champ": "Renekton",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 0.8
+     },
+     {
+      "champ": "Rumble",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.3
+     },
+     {
+      "champ": "Gnar",
+      "games": 3,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Shen",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "KSante",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Gragas",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Anivia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Shyvana",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Vex",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Zaahen",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Olaf",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Gwen",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.5
+     },
+     {
+      "champ": "Mordekaiser",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Elyoya",
+    "found": true,
+    "pid": "2719",
+    "split": "Summer",
+    "games": 41,
+    "wr": 48.8,
+    "kda": 4.4,
+    "kp": 74.4,
+    "dmg_pct": 16.4,
+    "gold_pct": 20.3,
+    "gd15": 62,
+    "csd15": 0,
+    "xpd15": 18,
+    "dpm": 439,
+    "csm": 7.1,
+    "vspm": 1.81,
+    "solo_kills": 5,
+    "season_games": 111,
+    "split_share": 0.369,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Lee Sin",
+      "games": 9,
+      "wr": 66.7,
+      "kda": 5.8
+     },
+     {
+      "champ": "Vi",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Pantheon",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 9.2
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Nocturne",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Qiyana",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.7
+     },
+     {
+      "champ": "Naafiri",
+      "games": 3,
+      "wr": 0.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 10.7
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Sejuani",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 18.0
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Jojopyun",
+    "found": true,
+    "pid": "3544",
+    "split": "Summer",
+    "games": 41,
+    "wr": 48.8,
+    "kda": 3.8,
+    "kp": 67.1,
+    "dmg_pct": 26.2,
+    "gold_pct": 21.3,
+    "gd15": 209,
+    "csd15": 4,
+    "xpd15": 95,
+    "dpm": 695,
+    "csm": 9.4,
+    "vspm": 1.33,
+    "solo_kills": 14,
+    "season_games": 111,
+    "split_share": 0.369,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 8,
+      "wr": 37.5,
+      "kda": 2.6
+     },
+     {
+      "champ": "Galio",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.6
+     },
+     {
+      "champ": "Ahri",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Anivia",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Orianna",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Akali",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 7.5
+     },
+     {
+      "champ": "Yone",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.6
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 14.0
+     },
+     {
+      "champ": "Lissandra",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 6.5
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Supa",
+    "found": true,
+    "pid": "2717",
+    "split": "Summer",
+    "games": 41,
+    "wr": 48.8,
+    "kda": 3.5,
+    "kp": 61.6,
+    "dmg_pct": 27.1,
+    "gold_pct": 25.5,
+    "gd15": 228,
+    "csd15": 2,
+    "xpd15": 49,
+    "dpm": 719,
+    "csm": 9.9,
+    "vspm": 1.24,
+    "solo_kills": 9,
+    "season_games": 111,
+    "split_share": 0.369,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 10,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Ashe",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 7.4
+     },
+     {
+      "champ": "Kaisa",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Kalista",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.9
+     },
+     {
+      "champ": "Sivir",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 9.0
+     },
+     {
+      "champ": "Zeri",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Yunara",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Lucian",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Ziggs",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Tristana",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Alvaro",
+    "found": true,
+    "pid": "4634",
+    "split": "Summer",
+    "games": 41,
+    "wr": 48.8,
+    "kda": 3.4,
+    "kp": 73.4,
+    "dmg_pct": 7.6,
+    "gold_pct": 13.8,
+    "gd15": 110,
+    "csd15": 2,
+    "xpd15": 134,
+    "dpm": 195,
+    "csm": 1.2,
+    "vspm": 4.55,
+    "solo_kills": 3,
+    "season_games": 111,
+    "split_share": 0.369,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Bard",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Leona",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Seraphine",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Neeko",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.1
+     },
+     {
+      "champ": "Rakan",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.2
+     },
+     {
+      "champ": "Shen",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.5
+     },
+     {
+      "champ": "Nautilus",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.5
+     },
+     {
+      "champ": "Rell",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Karma",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.4
+     },
+     {
+      "champ": "Lulu",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Tahm Kench",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Alistar",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.4
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Yuumi",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     }
+    ]
+   }
+  ],
+  "KC": [
+   {
+    "role": "TOP",
+    "player": "Canna",
+    "found": true,
+    "pid": "2671",
+    "split": "Summer",
+    "games": 45,
+    "wr": 66.7,
+    "kda": 3.3,
+    "kp": 51.7,
+    "dmg_pct": 23.3,
+    "gold_pct": 20.6,
+    "gd15": 201,
+    "csd15": 2,
+    "xpd15": 132,
+    "dpm": 646,
+    "csm": 8.7,
+    "vspm": 1.41,
+    "solo_kills": 17,
+    "season_games": 138,
+    "split_share": 0.326,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Rumble",
+      "games": 11,
+      "wr": 81.8,
+      "kda": 3.8
+     },
+     {
+      "champ": "Gnar",
+      "games": 7,
+      "wr": 57.1,
+      "kda": 3.7
+     },
+     {
+      "champ": "Ambessa",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 2.2
+     },
+     {
+      "champ": "Jayce",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Olaf",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.2
+     },
+     {
+      "champ": "Vayne",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Renekton",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Yone",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 19.0
+     },
+     {
+      "champ": "Yorick",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Shyvana",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Gragas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.3
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Yike",
+    "found": true,
+    "pid": "3406",
+    "split": "Summer",
+    "games": 45,
+    "wr": 66.7,
+    "kda": 3.5,
+    "kp": 68.3,
+    "dmg_pct": 16.1,
+    "gold_pct": 20.6,
+    "gd15": 227,
+    "csd15": 3,
+    "xpd15": 223,
+    "dpm": 443,
+    "csm": 7.4,
+    "vspm": 1.85,
+    "solo_kills": 8,
+    "season_games": 138,
+    "split_share": 0.326,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Vi",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 2.4
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 7,
+      "wr": 57.1,
+      "kda": 3.0
+     },
+     {
+      "champ": "Qiyana",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 4.4
+     },
+     {
+      "champ": "Wukong",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 3.7
+     },
+     {
+      "champ": "Naafiri",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 5.9
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.9
+     },
+     {
+      "champ": "Trundle",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Nocturne",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 11.0
+     },
+     {
+      "champ": "Pantheon",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 14.0
+     },
+     {
+      "champ": "Dr. Mundo",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Kyeahoo",
+    "found": true,
+    "pid": "5264",
+    "split": "Summer",
+    "games": 45,
+    "wr": 66.7,
+    "kda": 3.8,
+    "kp": 61.9,
+    "dmg_pct": 22.2,
+    "gold_pct": 19.9,
+    "gd15": 71,
+    "csd15": 1,
+    "xpd15": 17,
+    "dpm": 608,
+    "csm": 8.8,
+    "vspm": 1.42,
+    "solo_kills": 3,
+    "season_games": 138,
+    "split_share": 0.326,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Syndra",
+      "games": 7,
+      "wr": 100.0,
+      "kda": 6.8
+     },
+     {
+      "champ": "Anivia",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 5.4
+     },
+     {
+      "champ": "Ryze",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 3.9
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Viktor",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 4.1
+     },
+     {
+      "champ": "Orianna",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Sylas",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 6.3
+     },
+     {
+      "champ": "Akali",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Annie",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Taliyah",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Ahri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "LeBlanc",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Caliste",
+    "found": true,
+    "pid": "4900",
+    "split": "Summer",
+    "games": 45,
+    "wr": 66.7,
+    "kda": 5.6,
+    "kp": 64.6,
+    "dmg_pct": 30.2,
+    "gold_pct": 25.8,
+    "gd15": 120,
+    "csd15": 3,
+    "xpd15": 40,
+    "dpm": 834,
+    "csm": 10.6,
+    "vspm": 1.45,
+    "solo_kills": 18,
+    "season_games": 138,
+    "split_share": 0.326,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 9,
+      "wr": 55.6,
+      "kda": 4.0
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 5.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 5,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Kaisa",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 10.3
+     },
+     {
+      "champ": "Lucian",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.9
+     },
+     {
+      "champ": "Ashe",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 6.8
+     },
+     {
+      "champ": "Ziggs",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 5.8
+     },
+     {
+      "champ": "Jhin",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 4.8
+     },
+     {
+      "champ": "Varus",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 19.0
+     },
+     {
+      "champ": "Zeri",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "Xayah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Mel",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 13.0
+     },
+     {
+      "champ": "Yunara",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Busio",
+    "found": true,
+    "pid": "4500",
+    "split": "Summer",
+    "games": 45,
+    "wr": 66.7,
+    "kda": 3.3,
+    "kp": 68.7,
+    "dmg_pct": 8.1,
+    "gold_pct": 13.1,
+    "gd15": 40,
+    "csd15": 0,
+    "xpd15": 43,
+    "dpm": 220,
+    "csm": 1,
+    "vspm": 4.25,
+    "solo_kills": 2,
+    "season_games": 138,
+    "split_share": 0.326,
+    "n_champs": 18,
+    "champs": [
+     {
+      "champ": "Leona",
+      "games": 6,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Bard",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 4.4
+     },
+     {
+      "champ": "Rell",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Shen",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Camille",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.2
+     },
+     {
+      "champ": "Milio",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.1
+     },
+     {
+      "champ": "Alistar",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 19.0
+     },
+     {
+      "champ": "Pyke",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Nautilus",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Neeko",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.5
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Lux",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Lulu",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "VelKoz",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Yuumi",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Karma",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     }
+    ]
+   }
+  ],
+  "AL": [
+   {
+    "role": "TOP",
+    "player": "Breathe",
+    "found": true,
+    "pid": "2348",
+    "split": "Summer",
+    "games": 52,
+    "wr": 59.6,
+    "kda": 3.7,
+    "kp": 50,
+    "dmg_pct": 20.2,
+    "gold_pct": 19.9,
+    "gd15": -28,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 555,
+    "csm": 8.5,
+    "vspm": 1.44,
+    "solo_kills": null,
+    "season_games": 90,
+    "split_share": 0.578,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Gnar",
+      "games": 11,
+      "wr": 63.6,
+      "kda": 4.2
+     },
+     {
+      "champ": "KSante",
+      "games": 8,
+      "wr": 75.0,
+      "kda": 7.3
+     },
+     {
+      "champ": "Ambessa",
+      "games": 8,
+      "wr": 50.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Yorick",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 5.3
+     },
+     {
+      "champ": "Rumble",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 6.4
+     },
+     {
+      "champ": "Olaf",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Nasus",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.6
+     },
+     {
+      "champ": "Ornn",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Camille",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     },
+     {
+      "champ": "Jayce",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.0
+     },
+     {
+      "champ": "Kennen",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Tarzan",
+    "found": true,
+    "pid": "1226",
+    "split": "Summer",
+    "games": 56,
+    "wr": 58.9,
+    "kda": 5,
+    "kp": 74.6,
+    "dmg_pct": 18.9,
+    "gold_pct": 21,
+    "gd15": 367,
+    "csd15": 3,
+    "xpd15": 430,
+    "dpm": 513,
+    "csm": 7.4,
+    "vspm": 1.84,
+    "solo_kills": null,
+    "season_games": 142,
+    "split_share": 0.394,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Naafiri",
+      "games": 9,
+      "wr": 55.6,
+      "kda": 6.4
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 7,
+      "wr": 57.1,
+      "kda": 9.1
+     },
+     {
+      "champ": "Qiyana",
+      "games": 7,
+      "wr": 57.1,
+      "kda": 4.2
+     },
+     {
+      "champ": "Skarner",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 5.1
+     },
+     {
+      "champ": "Maokai",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Pantheon",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Nocturne",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 7.1
+     },
+     {
+      "champ": "Vi",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.4
+     },
+     {
+      "champ": "Chogath",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 13.5
+     },
+     {
+      "champ": "Trundle",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Sejuani",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 12.0
+     },
+     {
+      "champ": "Nasus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Shanks",
+    "found": true,
+    "pid": "3344",
+    "split": "Summer",
+    "games": 56,
+    "wr": 58.9,
+    "kda": 4.1,
+    "kp": 65.4,
+    "dmg_pct": 24.4,
+    "gold_pct": 20.9,
+    "gd15": 127,
+    "csd15": 2,
+    "xpd15": 160,
+    "dpm": 649,
+    "csm": 9,
+    "vspm": 1.26,
+    "solo_kills": 1,
+    "season_games": 142,
+    "split_share": 0.394,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Cassiopeia",
+      "games": 8,
+      "wr": 50.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Ryze",
+      "games": 7,
+      "wr": 57.1,
+      "kda": 4.2
+     },
+     {
+      "champ": "Annie",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 3.7
+     },
+     {
+      "champ": "Orianna",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 6.5
+     },
+     {
+      "champ": "Galio",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Sylas",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 6.1
+     },
+     {
+      "champ": "Syndra",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 1.9
+     },
+     {
+      "champ": "Viktor",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 9.0
+     },
+     {
+      "champ": "Yone",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.4
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Locke",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Akali",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 6.7
+     },
+     {
+      "champ": "Ahri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Anivia",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Azir",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Lissandra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Hope",
+    "found": true,
+    "pid": "1561",
+    "split": "Summer",
+    "games": 56,
+    "wr": 58.9,
+    "kda": 5,
+    "kp": 64.5,
+    "dmg_pct": 28.7,
+    "gold_pct": 24.8,
+    "gd15": 48,
+    "csd15": 5,
+    "xpd15": 177,
+    "dpm": 765,
+    "csm": 9.9,
+    "vspm": 1.56,
+    "solo_kills": null,
+    "season_games": 142,
+    "split_share": 0.394,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Varus",
+      "games": 9,
+      "wr": 66.7,
+      "kda": 6.6
+     },
+     {
+      "champ": "Ziggs",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 7.0
+     },
+     {
+      "champ": "Ezreal",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 4.7
+     },
+     {
+      "champ": "Jhin",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Lucian",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Ashe",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Sivir",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 7.8
+     },
+     {
+      "champ": "Corki",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 9.5
+     },
+     {
+      "champ": "Yunara",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Miss Fortune",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 9.7
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Jinx",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Xerath",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 7.7
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Kael",
+    "found": true,
+    "pid": "3323",
+    "split": "Summer",
+    "games": 56,
+    "wr": 58.9,
+    "kda": 4.5,
+    "kp": 73.6,
+    "dmg_pct": 7.9,
+    "gold_pct": 13.4,
+    "gd15": -6,
+    "csd15": -2,
+    "xpd15": -96,
+    "dpm": 210,
+    "csm": 1.2,
+    "vspm": 4.45,
+    "solo_kills": null,
+    "season_games": 142,
+    "split_share": 0.394,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Rell",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 5.6
+     },
+     {
+      "champ": "Karma",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 9.0
+     },
+     {
+      "champ": "Camille",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 2.9
+     },
+     {
+      "champ": "Shen",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 3.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 6,
+      "wr": 16.7,
+      "kda": 3.7
+     },
+     {
+      "champ": "Neeko",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Milio",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 7.3
+     },
+     {
+      "champ": "Leona",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.5
+     },
+     {
+      "champ": "Nautilus",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.9
+     },
+     {
+      "champ": "Lux",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 7.8
+     },
+     {
+      "champ": "Lulu",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Tahm Kench",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 18.0
+     },
+     {
+      "champ": "Bard",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     }
+    ]
+   }
+  ],
+  "BLG": [
+   {
+    "role": "TOP",
+    "player": "Bin",
+    "found": true,
+    "pid": "2606",
+    "split": "Summer",
+    "games": 21,
+    "wr": 66.7,
+    "kda": 3.3,
+    "kp": 52.6,
+    "dmg_pct": 19.2,
+    "gold_pct": 19.3,
+    "gd15": 146,
+    "csd15": 1,
+    "xpd15": 166,
+    "dpm": 517,
+    "csm": 8.4,
+    "vspm": 1.17,
+    "solo_kills": 2,
+    "season_games": 147,
+    "split_share": 0.143,
+    "n_champs": 9,
+    "champs": [
+     {
+      "champ": "Camille",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Ambessa",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.8
+     },
+     {
+      "champ": "KSante",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.1
+     },
+     {
+      "champ": "Rumble",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.4
+     },
+     {
+      "champ": "Jayce",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 2.6
+     },
+     {
+      "champ": "Gnar",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Olaf",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Renekton",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.5
+     },
+     {
+      "champ": "Kaisa",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.2
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Xun",
+    "found": true,
+    "pid": "3330",
+    "split": "Summer",
+    "games": 51,
+    "wr": 68.6,
+    "kda": 4.9,
+    "kp": 71.3,
+    "dmg_pct": 16.5,
+    "gold_pct": 20,
+    "gd15": 15,
+    "csd15": 1,
+    "xpd15": 157,
+    "dpm": 463,
+    "csm": 7.2,
+    "vspm": 1.73,
+    "solo_kills": 2,
+    "season_games": 177,
+    "split_share": 0.288,
+    "n_champs": 12,
+    "champs": [
+     {
+      "champ": "Naafiri",
+      "games": 11,
+      "wr": 63.6,
+      "kda": 4.6
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 9,
+      "wr": 55.6,
+      "kda": 6.4
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 8,
+      "wr": 62.5,
+      "kda": 4.2
+     },
+     {
+      "champ": "Pantheon",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 7.3
+     },
+     {
+      "champ": "Vi",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Trundle",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Poppy",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.1
+     },
+     {
+      "champ": "Skarner",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.7
+     },
+     {
+      "champ": "Nocturne",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Qiyana",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Knight",
+    "found": true,
+    "pid": "1270",
+    "split": "Summer",
+    "games": 51,
+    "wr": 68.6,
+    "kda": 5.5,
+    "kp": 69,
+    "dmg_pct": 25.8,
+    "gold_pct": 22,
+    "gd15": 457,
+    "csd15": -6,
+    "xpd15": 350,
+    "dpm": 716,
+    "csm": 9.2,
+    "vspm": 1.2,
+    "solo_kills": 4,
+    "season_games": 177,
+    "split_share": 0.288,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 7,
+      "wr": 85.7,
+      "kda": 8.8
+     },
+     {
+      "champ": "Akali",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 6.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 6.4
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 6.8
+     },
+     {
+      "champ": "Orianna",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Ahri",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Aurora",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.0
+     },
+     {
+      "champ": "Locke",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.7
+     },
+     {
+      "champ": "Anivia",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 15.5
+     },
+     {
+      "champ": "Annie",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 9.3
+     },
+     {
+      "champ": "Vex",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 7.0
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 11.0
+     },
+     {
+      "champ": "Jayce",
+      "games": 1,
+      "wr": 0.0,
+      "kda": null
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Lissandra",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 5.5
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "Viper",
+    "found": true,
+    "pid": "1228",
+    "split": "Summer",
+    "games": 51,
+    "wr": 68.6,
+    "kda": 5.2,
+    "kp": 66.6,
+    "dmg_pct": 29.9,
+    "gold_pct": 24.8,
+    "gd15": 529,
+    "csd15": 0,
+    "xpd15": 109,
+    "dpm": 840,
+    "csm": 10.1,
+    "vspm": 1.65,
+    "solo_kills": 1,
+    "season_games": 177,
+    "split_share": 0.288,
+    "n_champs": 18,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 8,
+      "wr": 87.5,
+      "kda": 7.5
+     },
+     {
+      "champ": "Yunara",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 4.8
+     },
+     {
+      "champ": "Ashe",
+      "games": 6,
+      "wr": 100.0,
+      "kda": 14.3
+     },
+     {
+      "champ": "Kalista",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 4,
+      "wr": 25.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Xerath",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 5.7
+     },
+     {
+      "champ": "Xayah",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 5.4
+     },
+     {
+      "champ": "Ziggs",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 5.7
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 17.0
+     },
+     {
+      "champ": "Corki",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Lucian",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Orianna",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 13.0
+     },
+     {
+      "champ": "Mel",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Vladimir",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.8
+     },
+     {
+      "champ": "Akali",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Jhin",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "ON",
+    "found": true,
+    "pid": "3353",
+    "split": "Summer",
+    "games": 51,
+    "wr": 68.6,
+    "kda": 3.6,
+    "kp": 73.4,
+    "dmg_pct": 8.5,
+    "gold_pct": 13.9,
+    "gd15": 250,
+    "csd15": -4,
+    "xpd15": -367,
+    "dpm": 239,
+    "csm": 1.1,
+    "vspm": 4.46,
+    "solo_kills": null,
+    "season_games": 177,
+    "split_share": 0.288,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Camille",
+      "games": 8,
+      "wr": 75.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Lulu",
+      "games": 7,
+      "wr": 71.4,
+      "kda": 7.2
+     },
+     {
+      "champ": "Seraphine",
+      "games": 6,
+      "wr": 100.0,
+      "kda": 5.8
+     },
+     {
+      "champ": "Karma",
+      "games": 6,
+      "wr": 83.3,
+      "kda": 5.3
+     },
+     {
+      "champ": "Bard",
+      "games": 5,
+      "wr": 20.0,
+      "kda": 1.7
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.4
+     },
+     {
+      "champ": "Rakan",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 9.3
+     },
+     {
+      "champ": "Alistar",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.4
+     },
+     {
+      "champ": "Shen",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 3.4
+     },
+     {
+      "champ": "Nautilus",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Milio",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Lux",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Pyke",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Nami",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     }
+    ]
+   }
+  ],
+  "TES": [
+   {
+    "role": "TOP",
+    "player": "369",
+    "found": true,
+    "pid": "1922",
+    "split": "Summer",
+    "games": 0,
+    "wr": null,
+    "kda": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_pct": null,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": null,
+    "csm": null,
+    "vspm": null,
+    "solo_kills": null,
+    "season_games": 43,
+    "split_share": 0.0,
+    "last_split_with_games": "Winter",
+    "last_split_games": 43,
+    "n_champs": 0,
+    "champs": []
+   },
+   {
+    "role": "JNG",
+    "player": "Tian",
+    "found": true,
+    "pid": "1269",
+    "split": "Summer",
+    "games": 45,
+    "wr": 55.6,
+    "kda": 3.3,
+    "kp": 69.9,
+    "dmg_pct": 17,
+    "gold_pct": 21,
+    "gd15": -124,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 493,
+    "csm": 7.3,
+    "vspm": 1.8,
+    "solo_kills": null,
+    "season_games": 97,
+    "split_share": 0.464,
+    "n_champs": 13,
+    "champs": [
+     {
+      "champ": "Lee Sin",
+      "games": 8,
+      "wr": 75.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 7,
+      "wr": 42.9,
+      "kda": 3.5
+     },
+     {
+      "champ": "Pantheon",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Vi",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 3.9
+     },
+     {
+      "champ": "Skarner",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.5
+     },
+     {
+      "champ": "Trundle",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.9
+     },
+     {
+      "champ": "Qiyana",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.4
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 3,
+      "wr": 0.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Naafiri",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 11.0
+     },
+     {
+      "champ": "Nocturne",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Wukong",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Maokai",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Chogath",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.2
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Creme",
+    "found": true,
+    "pid": "3906",
+    "split": "Summer",
+    "games": 45,
+    "wr": 55.6,
+    "kda": 3.9,
+    "kp": 63.6,
+    "dmg_pct": 25.9,
+    "gold_pct": 20.8,
+    "gd15": 2,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 744,
+    "csm": 8.6,
+    "vspm": 1.51,
+    "solo_kills": null,
+    "season_games": 140,
+    "split_share": 0.321,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Ryze",
+      "games": 7,
+      "wr": 57.1,
+      "kda": 3.5
+     },
+     {
+      "champ": "Orianna",
+      "games": 6,
+      "wr": 16.7,
+      "kda": 2.4
+     },
+     {
+      "champ": "Ahri",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 5.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 2.3
+     },
+     {
+      "champ": "Locke",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 4.9
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 3,
+      "wr": 100.0,
+      "kda": 24.5
+     },
+     {
+      "champ": "Viktor",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.8
+     },
+     {
+      "champ": "Akali",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.5
+     },
+     {
+      "champ": "Yone",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Azir",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Aurora",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Sylas",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 10.0
+     },
+     {
+      "champ": "Annie",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.0
+     },
+     {
+      "champ": "Galio",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     },
+     {
+      "champ": "Hwei",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.3
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "JackeyLove",
+    "found": true,
+    "pid": "1267",
+    "split": "Summer",
+    "games": 45,
+    "wr": 55.6,
+    "kda": 3.6,
+    "kp": 66.8,
+    "dmg_pct": 28.1,
+    "gold_pct": 24,
+    "gd15": -245,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 826,
+    "csm": 9.7,
+    "vspm": 1.35,
+    "solo_kills": null,
+    "season_games": 97,
+    "split_share": 0.464,
+    "n_champs": 17,
+    "champs": [
+     {
+      "champ": "Ezreal",
+      "games": 8,
+      "wr": 62.5,
+      "kda": 4.5
+     },
+     {
+      "champ": "Lucian",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Ashe",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 7.6
+     },
+     {
+      "champ": "Jhin",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 6.8
+     },
+     {
+      "champ": "Sivir",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.5
+     },
+     {
+      "champ": "Varus",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.6
+     },
+     {
+      "champ": "Ziggs",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Corki",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Xayah",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.8
+     },
+     {
+      "champ": "Zeri",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.9
+     },
+     {
+      "champ": "Kalista",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.5
+     },
+     {
+      "champ": "Kaisa",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Xerath",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Yunara",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Viktor",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Zhuo",
+    "found": true,
+    "pid": "3352",
+    "split": "Summer",
+    "games": 45,
+    "wr": 55.6,
+    "kda": 4.1,
+    "kp": 72.4,
+    "dmg_pct": 6.6,
+    "gold_pct": 13.7,
+    "gd15": -63,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 192,
+    "csm": 1,
+    "vspm": 4.21,
+    "solo_kills": null,
+    "season_games": 112,
+    "split_share": 0.402,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Alistar",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 3.1
+     },
+     {
+      "champ": "Milio",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 6.9
+     },
+     {
+      "champ": "Seraphine",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 6.7
+     },
+     {
+      "champ": "Karma",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 5.9
+     },
+     {
+      "champ": "Nautilus",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 2.7
+     },
+     {
+      "champ": "Bard",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 3.8
+     },
+     {
+      "champ": "Leona",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Camille",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.5
+     },
+     {
+      "champ": "Lulu",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 7.3
+     },
+     {
+      "champ": "Rakan",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.1
+     },
+     {
+      "champ": "Rell",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 6.8
+     },
+     {
+      "champ": "Yuumi",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.3
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.5
+     },
+     {
+      "champ": "Shen",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.4
+     }
+    ]
+   }
+  ],
+  "IG": [
+   {
+    "role": "TOP",
+    "player": "TheShy",
+    "found": true,
+    "pid": "1075",
+    "split": "Summer",
+    "games": 43,
+    "wr": 62.8,
+    "kda": 2.5,
+    "kp": 45.4,
+    "dmg_pct": 21.5,
+    "gold_pct": 19.3,
+    "gd15": 126,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 635,
+    "csm": 8,
+    "vspm": 1.14,
+    "solo_kills": null,
+    "season_games": 43,
+    "split_share": 1.0,
+    "n_champs": 20,
+    "champs": [
+     {
+      "champ": "Rumble",
+      "games": 6,
+      "wr": 66.7,
+      "kda": 2.5
+     },
+     {
+      "champ": "Olaf",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Yorick",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Gnar",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.2
+     },
+     {
+      "champ": "Camille",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 2.7
+     },
+     {
+      "champ": "KSante",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.3
+     },
+     {
+      "champ": "Jayce",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.3
+     },
+     {
+      "champ": "Gwen",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Ambessa",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 0.9
+     },
+     {
+      "champ": "Dr. Mundo",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.0
+     },
+     {
+      "champ": "Vayne",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.0
+     },
+     {
+      "champ": "Gragas",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Kled",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 8.5
+     },
+     {
+      "champ": "Trundle",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 16.0
+     },
+     {
+      "champ": "Ornn",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Zaahen",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Jax",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Renekton",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "Varus",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Anivia",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.3
+     }
+    ]
+   },
+   {
+    "role": "JNG",
+    "player": "Wei",
+    "found": true,
+    "pid": "388",
+    "split": "Summer",
+    "games": 43,
+    "wr": 62.8,
+    "kda": 4,
+    "kp": 74.1,
+    "dmg_pct": 17,
+    "gold_pct": 20.3,
+    "gd15": 51,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 501,
+    "csm": 6.8,
+    "vspm": 1.93,
+    "solo_kills": null,
+    "season_games": 124,
+    "split_share": 0.347,
+    "n_champs": 11,
+    "champs": [
+     {
+      "champ": "Naafiri",
+      "games": 8,
+      "wr": 50.0,
+      "kda": 4.6
+     },
+     {
+      "champ": "Trundle",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 5.1
+     },
+     {
+      "champ": "Jarvan IV",
+      "games": 5,
+      "wr": 80.0,
+      "kda": 7.5
+     },
+     {
+      "champ": "Vi",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Maokai",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 2.8
+     },
+     {
+      "champ": "Lee Sin",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Nocturne",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.2
+     },
+     {
+      "champ": "Qiyana",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 11.5
+     },
+     {
+      "champ": "Skarner",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 3.6
+     },
+     {
+      "champ": "Wukong",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 2.9
+     },
+     {
+      "champ": "Xin Zhao",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.7
+     }
+    ]
+   },
+   {
+    "role": "MID",
+    "player": "Rookie",
+    "found": true,
+    "pid": "109",
+    "split": "Summer",
+    "games": 43,
+    "wr": 62.8,
+    "kda": 5,
+    "kp": 67.1,
+    "dmg_pct": 25.4,
+    "gold_pct": 20.9,
+    "gd15": 172,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 767,
+    "csm": 8.7,
+    "vspm": 1.49,
+    "solo_kills": null,
+    "season_games": 86,
+    "split_share": 0.5,
+    "n_champs": 15,
+    "champs": [
+     {
+      "champ": "Orianna",
+      "games": 7,
+      "wr": 85.7,
+      "kda": 13.0
+     },
+     {
+      "champ": "Ryze",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 3.7
+     },
+     {
+      "champ": "Viktor",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 5.2
+     },
+     {
+      "champ": "Aurora",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 8.3
+     },
+     {
+      "champ": "Syndra",
+      "games": 4,
+      "wr": 100.0,
+      "kda": 23.5
+     },
+     {
+      "champ": "Ahri",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 5.9
+     },
+     {
+      "champ": "Galio",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.5
+     },
+     {
+      "champ": "Twisted Fate",
+      "games": 2,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Yone",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Locke",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 1.1
+     },
+     {
+      "champ": "Sylas",
+      "games": 2,
+      "wr": 0.0,
+      "kda": 0.7
+     },
+     {
+      "champ": "Cassiopeia",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.0
+     },
+     {
+      "champ": "Annie",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.3
+     },
+     {
+      "champ": "Anivia",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     },
+     {
+      "champ": "LeBlanc",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.0
+     }
+    ]
+   },
+   {
+    "role": "ADC",
+    "player": "JiaQi",
+    "found": true,
+    "pid": "5939",
+    "split": "Summer",
+    "games": 33,
+    "wr": 60.6,
+    "kda": 3.3,
+    "kp": 66.8,
+    "dmg_pct": 28.9,
+    "gold_pct": 25.7,
+    "gd15": 360,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 832,
+    "csm": 9.9,
+    "vspm": 1.32,
+    "solo_kills": null,
+    "season_games": 114,
+    "split_share": 0.289,
+    "n_champs": 14,
+    "champs": [
+     {
+      "champ": "Yunara",
+      "games": 5,
+      "wr": 100.0,
+      "kda": 4.2
+     },
+     {
+      "champ": "Jhin",
+      "games": 5,
+      "wr": 40.0,
+      "kda": 4.8
+     },
+     {
+      "champ": "Aphelios",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Ashe",
+      "games": 4,
+      "wr": 50.0,
+      "kda": 3.4
+     },
+     {
+      "champ": "Kalista",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 3.2
+     },
+     {
+      "champ": "Ezreal",
+      "games": 3,
+      "wr": 33.3,
+      "kda": 1.5
+     },
+     {
+      "champ": "Caitlyn",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.4
+     },
+     {
+      "champ": "Syndra",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Lucian",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.5
+     },
+     {
+      "champ": "Tristana",
+      "games": 1,
+      "wr": 100.0,
+      "kda": null
+     },
+     {
+      "champ": "Sivir",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.2
+     },
+     {
+      "champ": "Xayah",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.5
+     },
+     {
+      "champ": "Zeri",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     },
+     {
+      "champ": "Corki",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.9
+     }
+    ]
+   },
+   {
+    "role": "SUP",
+    "player": "Meiko",
+    "found": true,
+    "pid": "386",
+    "split": "Summer",
+    "games": 43,
+    "wr": 62.8,
+    "kda": 4.3,
+    "kp": 77.5,
+    "dmg_pct": 7.6,
+    "gold_pct": 14,
+    "gd15": 87,
+    "csd15": null,
+    "xpd15": null,
+    "dpm": 228,
+    "csm": 1.1,
+    "vspm": 4.09,
+    "solo_kills": null,
+    "season_games": 81,
+    "split_share": 0.531,
+    "n_champs": 16,
+    "champs": [
+     {
+      "champ": "Lulu",
+      "games": 6,
+      "wr": 100.0,
+      "kda": 21.5
+     },
+     {
+      "champ": "Seraphine",
+      "games": 6,
+      "wr": 50.0,
+      "kda": 6.1
+     },
+     {
+      "champ": "Bard",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 2.6
+     },
+     {
+      "champ": "Karma",
+      "games": 5,
+      "wr": 60.0,
+      "kda": 6.3
+     },
+     {
+      "champ": "Thresh",
+      "games": 4,
+      "wr": 75.0,
+      "kda": 5.8
+     },
+     {
+      "champ": "Alistar",
+      "games": 3,
+      "wr": 66.7,
+      "kda": 4.0
+     },
+     {
+      "champ": "Rell",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.1
+     },
+     {
+      "champ": "Milio",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 5.0
+     },
+     {
+      "champ": "Renata Glasc",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 3.3
+     },
+     {
+      "champ": "Nautilus",
+      "games": 2,
+      "wr": 50.0,
+      "kda": 2.2
+     },
+     {
+      "champ": "Leona",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 3.5
+     },
+     {
+      "champ": "Poppy",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 4.2
+     },
+     {
+      "champ": "Lux",
+      "games": 1,
+      "wr": 100.0,
+      "kda": 6.7
+     },
+     {
+      "champ": "Camille",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 0.6
+     },
+     {
+      "champ": "Rakan",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 1.8
+     },
+     {
+      "champ": "Yuumi",
+      "games": 1,
+      "wr": 0.0,
+      "kda": 2.0
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,1937 @@
+[
+ {
+  "code": "G2",
+  "name": "G2 Esports",
+  "region": "LEC",
+  "seed": 1,
+  "headline": "LEC champion in all three 2026 splits (Versus, Spring, Summer; 20th LEC trophy, 3-0 over MKOI in Nice 20/09/2026) and direct Swiss Stage entry as LEC seed 1, but 2026 international form is split: First Stand finalist (1-3 vs BLG), MSI 4th (0-3 to LYON), EWC group-stage exit.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "BrokenBlade",
+    "nationality": "Germany (gol.gg tag DE)",
+    "worlds_prior": 5
+   },
+   {
+    "role": "JUNGLE",
+    "player": "SkewMond",
+    "nationality": "France (Sheep: French-Lebanese)",
+    "worlds_prior": 1
+   },
+   {
+    "role": "MID",
+    "player": "Caps",
+    "nationality": "Denmark",
+    "worlds_prior": 8
+   },
+   {
+    "role": "BOT",
+    "player": "Hans Sama",
+    "nationality": "France",
+    "worlds_prior": 6
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Labrov",
+    "nationality": "Greece",
+    "worlds_prior": 2
+   }
+  ],
+  "coach": "Luka 'Perkz' Perkovic (head coach since 10/07/2026; Dylan Falco benched 10/07/2026 and left 31/08/2026). Staff listed Dec 2025: assistants Rodrigo Domingues Oliveira and Jonas 'Memento' Elmarghichi, performance coach Ismael 'Isma' Pedraza, GM Romain Bigeard. Current assistant line-up UNKNOWN.",
+  "roster_change_since_final": "none to the five players; coaching change (Perkz head coach) happened before the Summer split final (10/07/2026), no change since 20/09/2026 found",
+  "domestic_2026": [
+   {
+    "event": "LEC 2026 Versus",
+    "placement": "1st",
+    "final": "3-2 vs KC (Grand Final 01/03/2026); regular season 6-5 games (gol.gg)"
+   },
+   {
+    "event": "LEC 2026 Spring",
+    "placement": "1st",
+    "final": "3-2 vs KC (Grand Final 07/06/2026); SkewMond Finals MVP (Wikipedia); regular season 15-6 games"
+   },
+   {
+    "event": "LEC 2026 Summer",
+    "placement": "1st",
+    "final": "3-0 vs MKOI (Grand Final, Nice, 20/09/2026); regular season 14-7 games, 2nd in table"
+   },
+   {
+    "event": "EWC 2026 EMEA Online Qualifier",
+    "placement": "1st (beat KC 3-0 in final 16/05/2026)",
+    "final": "qualified for EWC"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026 (S\u00e3o Paulo)",
+    "placement": "2nd",
+    "detail": "Group A 2-1 (3-0 TSW, 0-3 BLG, 3-0 BNK), SF 3-0 Gen.G, Final 1-3 BLG (22/03/2026)"
+   },
+   {
+    "event": "MSI 2026 (Daejeon)",
+    "placement": "4th (inferred: lower bracket R3 loss; HLE champion 3-2 over BLG, LYON 3rd)",
+    "detail": "R1 3-2 TES, UB semi 0-3 HLE, LB R2 3-1 T1, LB R3 0-3 LYON (10/07/2026)"
+   },
+   {
+    "event": "EWC 2026 (Paris)",
+    "placement": "Group stage exit",
+    "detail": "1-0 FURIA (bo1), 0-1 AL (bo1), 0-2 DK (bo3)"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "05/09/2026",
+     "opp": "VIT",
+     "score": "3-0",
+     "event": "LEC Summer Playoffs R1"
+    },
+    {
+     "date": "06/09/2026",
+     "opp": "KC",
+     "score": "3-1",
+     "event": "LEC Summer Playoffs Upper Bracket Final"
+    },
+    {
+     "date": "20/09/2026",
+     "opp": "MKOI",
+     "score": "3-0",
+     "event": "LEC Summer Playoffs Grand Final"
+    }
+   ],
+   "trend": "PEAKING"
+  },
+  "team_stats": {
+   "sample": "LEC 2026 playoffs (Versus+Spring+Summer), game-weighted",
+   "games": 36,
+   "wr": 77.8,
+   "avg_len_min": 32.2,
+   "gd15": 1490,
+   "fb_pct": 52.8,
+   "ft_pct": 69.5,
+   "drag_pct": 61.7,
+   "herald_pct": 66.7,
+   "baron_pct": 81.2,
+   "grubs_avg": 1.5,
+   "wr_ahead15": 88.1,
+   "wr_behind15": null,
+   "blue_wr": 78.6,
+   "red_wr": 75.0,
+   "blue_record": "22-6",
+   "red_record": "6-2",
+   "csd15": 20.6
+  },
+  "team_stats_summer_playoffs": {
+   "sample": "LEC 2026 Summer Playoffs",
+   "games": 10,
+   "wr": 90.0,
+   "avg_len_min": 31.3,
+   "gd15": 856,
+   "fb_pct": 50.0,
+   "ft_pct": 90.0,
+   "drag_pct": 67.2,
+   "herald_pct": 70.0,
+   "baron_pct": 86.7,
+   "grubs_avg": 1.9,
+   "wr_ahead15": 100.0,
+   "wr_behind15": null,
+   "blue_wr": 87.5,
+   "red_wr": 100.0,
+   "blue_record": "7-1",
+   "red_record": "2-0",
+   "csd15": 19.4
+  },
+  "team_stats_intl": {
+   "sample": "First Stand+MSI+EWC 2026",
+   "games": 35,
+   "wr": 48.6,
+   "avg_len_min": 32.8,
+   "gd15": -615,
+   "fb_pct": 42.9,
+   "ft_pct": 37.1,
+   "drag_pct": 48.3,
+   "herald_pct": 42.3,
+   "baron_pct": 47.9,
+   "grubs_avg": 1.4,
+   "wr_ahead15": 78.1,
+   "wr_behind15": null,
+   "blue_wr": 76.5,
+   "red_wr": 22.2,
+   "blue_record": "13-4",
+   "red_record": "4-14",
+   "csd15": -10.1
+  },
+  "players": [
+   {
+    "games": 36,
+    "kda": 3.97,
+    "gd15": 67.5,
+    "csd15": -1.1,
+    "xpd15": 59.9,
+    "kp": 48.0,
+    "dmg_pct": 20.9,
+    "gold_share": 19.4,
+    "solo_kills": 7,
+    "pool": 20,
+    "top3": [
+     {
+      "champ": "KSante",
+      "w": 3,
+      "l": 1
+     },
+     {
+      "champ": "Rumble",
+      "w": 4,
+      "l": 0
+     },
+     {
+      "champ": "Kled",
+      "w": 4,
+      "l": 0
+     }
+    ],
+    "role": "TOP",
+    "player": "BrokenBlade",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 35,
+     "kda": 2.84,
+     "gd15": -284.5,
+     "csd15": -5.7,
+     "xpd15": -268.2,
+     "kp": 52.6,
+     "dmg_pct": 22.3,
+     "gold_share": 20.0,
+     "solo_kills": 14,
+     "pool": 17,
+     "top3": [
+      {
+       "champ": "KSante",
+       "w": 2,
+       "l": 3
+      },
+      {
+       "champ": "Sion",
+       "w": 2,
+       "l": 2
+      },
+      {
+       "champ": "Rumble",
+       "w": 1,
+       "l": 2
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 36,
+    "kda": 6.13,
+    "gd15": 325.5,
+    "csd15": 5.2,
+    "xpd15": 409.5,
+    "kp": 68.6,
+    "dmg_pct": 19.2,
+    "gold_share": 20.8,
+    "solo_kills": 3,
+    "pool": 17,
+    "top3": [
+     {
+      "champ": "Xin Zhao",
+      "w": 4,
+      "l": 2
+     },
+     {
+      "champ": "Skarner",
+      "w": 4,
+      "l": 1
+     },
+     {
+      "champ": "Jarvan IV",
+      "w": 3,
+      "l": 1
+     }
+    ],
+    "role": "JUNGLE",
+    "player": "SkewMond",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 35,
+     "kda": 3.6,
+     "gd15": -95.8,
+     "csd15": 0.6,
+     "xpd15": -17.9,
+     "kp": 71.7,
+     "dmg_pct": 18.1,
+     "gold_share": 20.6,
+     "solo_kills": 6,
+     "pool": 15,
+     "top3": [
+      {
+       "champ": "Jarvan IV",
+       "w": 4,
+       "l": 2
+      },
+      {
+       "champ": "Pantheon",
+       "w": 3,
+       "l": 1
+      },
+      {
+       "champ": "Xin Zhao",
+       "w": 2,
+       "l": 2
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 36,
+    "kda": 5.84,
+    "gd15": 500.9,
+    "csd15": 9.2,
+    "xpd15": 531.4,
+    "kp": 66.2,
+    "dmg_pct": 24.2,
+    "gold_share": 21.3,
+    "solo_kills": 15,
+    "pool": 16,
+    "top3": [
+     {
+      "champ": "Orianna",
+      "w": 5,
+      "l": 0
+     },
+     {
+      "champ": "Taliyah",
+      "w": 3,
+      "l": 1
+     },
+     {
+      "champ": "Ryze",
+      "w": 3,
+      "l": 1
+     }
+    ],
+    "role": "MID",
+    "player": "Caps",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 35,
+     "kda": 3.24,
+     "gd15": 20.6,
+     "csd15": 1.6,
+     "xpd15": 14.6,
+     "kp": 66.4,
+     "dmg_pct": 26.7,
+     "gold_share": 21.2,
+     "solo_kills": 10,
+     "pool": 17,
+     "top3": [
+      {
+       "champ": "Aurora",
+       "w": 2,
+       "l": 2
+      },
+      {
+       "champ": "Ahri",
+       "w": 1,
+       "l": 3
+      },
+      {
+       "champ": "Syndra",
+       "w": 2,
+       "l": 2
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 36,
+    "kda": 5.88,
+    "gd15": 348.3,
+    "csd15": 7.6,
+    "xpd15": 396.8,
+    "kp": 57.3,
+    "dmg_pct": 26.8,
+    "gold_share": 24.8,
+    "solo_kills": 3,
+    "pool": 13,
+    "top3": [
+     {
+      "champ": "Yunara",
+      "w": 6,
+      "l": 2
+     },
+     {
+      "champ": "Ashe",
+      "w": 5,
+      "l": 0
+     },
+     {
+      "champ": "Caitlyn",
+      "w": 3,
+      "l": 1
+     }
+    ],
+    "role": "BOT",
+    "player": "Hans Sama",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 35,
+     "kda": 2.88,
+     "gd15": -180.3,
+     "csd15": -3.7,
+     "xpd15": -176.8,
+     "kp": 58.7,
+     "dmg_pct": 25.0,
+     "gold_share": 24.5,
+     "solo_kills": 4,
+     "pool": 16,
+     "top3": [
+      {
+       "champ": "Ashe",
+       "w": 3,
+       "l": 2
+      },
+      {
+       "champ": "Yunara",
+       "w": 2,
+       "l": 3
+      },
+      {
+       "champ": "Varus",
+       "w": 1,
+       "l": 3
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 36,
+    "kda": 4.56,
+    "gd15": 247.4,
+    "csd15": -0.3,
+    "xpd15": 107.8,
+    "kp": 72.2,
+    "dmg_pct": 9.0,
+    "gold_share": 13.7,
+    "solo_kills": 4,
+    "pool": 14,
+    "top3": [
+     {
+      "champ": "Lulu",
+      "w": 5,
+      "l": 1
+     },
+     {
+      "champ": "Bard",
+      "w": 4,
+      "l": 1
+     },
+     {
+      "champ": "Neeko",
+      "w": 3,
+      "l": 1
+     }
+    ],
+    "role": "SUPPORT",
+    "player": "Labrov",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 35,
+     "kda": 2.82,
+     "gd15": -74.8,
+     "csd15": -2.9,
+     "xpd15": -192.5,
+     "kp": 72.0,
+     "dmg_pct": 7.9,
+     "gold_share": 13.9,
+     "solo_kills": 1,
+     "pool": 15,
+     "top3": [
+      {
+       "champ": "Lulu",
+       "w": 2,
+       "l": 3
+      },
+      {
+       "champ": "Nautilus",
+       "w": 1,
+       "l": 4
+      },
+      {
+       "champ": "Bard",
+       "w": 2,
+       "l": 1
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   }
+  ],
+  "identity": "Wins: early lead into objective conversion. In LEC playoffs G2 averaged GD@15 +1490, 70% first tower, 81% baron and 62% dragon control, with Caps (GD@15 +501, 15 solo kills) and the bot lane (Hans Sama +348) driving leads. Summer playoffs: 9-1, GD@15 +856, first tower 90%, baron 87%. Loses: when behind early against top international teams. Internationally G2 averaged GD@15 -615, first tower 37%, herald 42%, baron 48%; WR when ahead @15 is still ~78% so deficits are the problem. Red side is a stark weakness internationally (4-14, 22%) vs blue 13-4 (76%); in LEC playoffs the gap is small (blue 22-6, red 6-2). Top, bot and support all had negative GD@15 and XPD@15 internationally (BrokenBlade -285, Hans Sama -180, Labrov -75).",
+  "draft": "Picks and bans from gol.gg 2026 samples. Comfort picks (domestic playoffs): Orianna (Caps 5-0), Yunara and Ashe (Hans Sama 6-2, 5-0), Lulu and Bard (Labrov 5-1, 4-1), Xin Zhao/Skarner/Jarvan IV (SkewMond 4-2, 4-1, 3-1), Rumble/Kled/K'Sante (BrokenBlade 4-0, 4-0, 3-1). Internationally pool gets thinner in results: Aurora/Syndra/Ahri (Caps 2-2, 2-2, 1-3), Yunara 2-3, Nautilus 1-4, Lulu 2-3, K'Sante 2-3. Opponents ban Orianna (20% intl, 14% dom), Varus, Pantheon, Poppy, Bard (32% intl) against G2. G2's own bans lean to Orianna (58% intl), Jayce, Ryze, Akali, Varus. Flex: Caps plays Orianna/Taliyah/Ryze/Aurora/Syndra/Ahri/LeBlanc/Akali (pool 16-17), SkewMond pool 15-17. Explicit first-pick priority UNKNOWN (gol.gg draft order not scraped).",
+  "sources": [
+   {
+    "id": 8,
+    "title": "gol.gg G2 Esports S16 team stats (per-tournament filters used: Versus/Spring/Summer Playoffs, First Stand, MSI, EWC)",
+    "url": "https://gol.gg/teams/team-stats/2897/split-ALL/tournament-ALL/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "gol.gg player stat pages, G2 (BrokenBlade 1310, SkewMond 4946, Caps 802, Hans Sama 732, Labrov 2887), S16 with per-tournament filters",
+    "url": "https://gol.gg/players/player-stats/802/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 1,
+    "title": "gol.gg LEC 2026 Summer Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "gol.gg LEC 2026 Spring Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "gol.gg LEC 2026 Versus Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "gol.gg 2026 First Stand match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/2026%20First%20Stand/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "gol.gg MSI 2026 match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/MSI%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "gol.gg Esports World Cup 2026 match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/Esports%20World%20Cup%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "gol.gg EWC 2026 Online Qualifier EMEA match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/EWC%202026%20Online%20Qualifier%20-%20EMEA/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "gol.gg LEC 2026 Summer Playoffs / Summer Season / Spring Season / Versus Season standings",
+    "url": "https://gol.gg/tournament/tournament-ranking/LEC%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "Sheep Esports - G2 and Karmine Corp qualify for 2026 Worlds (05/09/2026)",
+    "url": "https://www.sheepesports.com/us/articles/g2-esports-and-karmine-corp-qualify-for-2026-worlds-championship/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "Sheep Esports - Worlds 2026: the year of reckoning for the LEC",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-year-of-reckoning-for-the-lec/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "Dot Esports - All teams qualified for League of Legends Worlds 2026",
+    "url": "https://dotesports.com/league-of-legends/guides/all-teams-qualified-for-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Strafe - All LEC teams at Worlds 2026 and how they qualified",
+    "url": "https://www.strafe.com/news/read/all-lec-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "GosuGamers - All teams and players qualified for Worlds 2026",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "Insider Gaming - Worlds 2026 Play-In draw and Swiss pools",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "Sheep Esports - G2 to keep full roster and coaching staff for 2026",
+    "url": "https://www.sheepesports.com/articles/sources-g2-esports-to-keep-their-full-roster-for-the-2026-season/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 26,
+    "title": "Sheep Esports - G2 announce Dylan Falco benched, Perkz promoted (10/07/2026)",
+    "url": "https://www.sheepesports.com/pt/cs/articles/g2-esports-announce-dylan-falco-s-bench-perkz-promoted-as-head-coach/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 27,
+    "title": "Players.com.ua - Dylan Falco leaves G2 (01/09/2026)",
+    "url": "https://players.com.ua/en/news/changes-ahead-of-worlds-2026-dylan-falco-leaves-g2-esports-after-five-years-of-dominance/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 28,
+    "title": "Sheep Esports - The Perkz effect at G2 (23/09/2026)",
+    "url": "https://www.sheepesports.com/de/articles/he-s-very-cocky-and-he-gives-that-to-us-the-perkz-effect-at-g2-esports/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 30,
+    "title": "Sheep Esports - KC Caliste on facing G2 (06/09/2026)",
+    "url": "https://www.sheepesports.com/pt/articles/kc-caliste-on-facing-g2-i-m-expecting-some-ego-and-a-lot-of-fighting/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 31,
+    "title": "Wikipedia - 2026 Mid-Season Invitational",
+    "url": "https://en.wikipedia.org/wiki/2026_Mid-Season_Invitational",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 32,
+    "title": "Wikipedia - 2026 First Stand Tournament",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 33,
+    "title": "Inven Global - BLG wins First Stand",
+    "url": "https://www.invenglobal.com/articles/20339/bilibili-gaming-wins-first-stand-secures-first-international-title",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 34,
+    "title": "RDY.gg - HLE win MSI 2026",
+    "url": "https://rdy.gg/en/lol/news/hle-wins-msi-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 35,
+    "title": "Sheep Esports - 2026 MSI event page",
+    "url": "https://www.sheepesports.com/en/lol/events/2026-mid-invitational",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 36,
+    "title": "esports.gg - LoL EWC 2026 winners overview",
+    "url": "https://esports.gg/news/league-of-legends/lol-ewc-2026-winners-overview/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 37,
+    "title": "Sheep Esports - Dplus KIA topple Karmine Corp to win EWC 2026",
+    "url": "https://www.sheepesports.com/de/articles/dplus-kia-topple-karmine-corp-to-win-the-2026-ewc-lol-championship/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 38,
+    "title": "Sheep Esports - HLE, BLG and KC advance to EWC 2026 playoffs",
+    "url": "https://www.sheepesports.com/articles/hle-blg-and-kc-advance-to-the-2026-esports-world-cup-lol-playoffs-stage/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 42,
+    "title": "Wikipedia - 2026 LEC season",
+    "url": "https://en.wikipedia.org/wiki/2026_LEC_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 43,
+    "title": "Sheep Esports - Worlds 2026: 6 must-watch matchups",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-6-must-watch-matchups-fueled-by-past-connections/en",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "MKOI",
+  "name": "Movistar KOI",
+  "region": "LEC",
+  "seed": 2,
+  "headline": "Summer Split runner-up (0-3 vs G2 in Nice) after coming through the lower bracket as the lowest playoff seed (beat VIT 3-2, NAVI 3-1, KC 3-0); LEC seed 2 with direct Swiss Stage entry, but no 2026 international win (EWC groups 0-2 in series) and MSI/First Stand not attended.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Myrwn",
+    "nationality": "Spain",
+    "worlds_prior": 2
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Elyoya",
+    "nationality": "Spain",
+    "worlds_prior": 5
+   },
+   {
+    "role": "MID",
+    "player": "Jojopyun",
+    "nationality": "Canada (gol.gg tag CA)",
+    "worlds_prior": 2
+   },
+   {
+    "role": "BOT",
+    "player": "Supa",
+    "nationality": "Spain",
+    "worlds_prior": 2
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Alvaro",
+    "nationality": "Spain",
+    "worlds_prior": 2
+   }
+  ],
+  "coach": "Tomas 'Melzhet' Campelos (head coach, signed through 2028); assistants Barney 'Alphari' Morris and Eric 'Independent' Ruiz Bogurina (per Dec 2025 announcement). Sheep (21/09/2026): organisation chose not to pursue Dylan Falco.",
+  "roster_change_since_final": "none found since 20/09/2026. Note Myrwn, Supa and Jojopyun contracts expire end of 2026 and renewals were unresolved on 21/09/2026 (Sheep); Elyoya signed to 2028, Alvaro to at least 2027",
+  "domestic_2026": [
+   {
+    "event": "LEC 2026 Versus",
+    "placement": "3rd",
+    "final": "lost Lower Bracket Final 2-3 to KC (28/02/2026); regular season 6-5 games"
+   },
+   {
+    "event": "LEC 2026 Spring",
+    "placement": "3rd",
+    "final": "lost Lower Bracket Final 0-3 to KC (06/06/2026); lost UB Final 2-3 to G2 (25/05/2026); regular season 15-8 games"
+   },
+   {
+    "event": "LEC 2026 Summer",
+    "placement": "2nd",
+    "final": "lost Grand Final 0-3 to G2 (20/09/2026); regular season 10-12 games (6th in table by game record; 4-5 in series per Strafe)"
+   },
+   {
+    "event": "EWC 2026 EMEA Online Qualifier",
+    "placement": "3rd (qualified via rolldown)",
+    "final": "lost 0-2 to KC R4, beat GIANTX 2-0, NAVI 2-0, lost 1-3 to KC R6 (17/05/2026)"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "did not qualify",
+    "detail": ""
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "did not qualify",
+    "detail": ""
+   },
+   {
+    "event": "EWC 2026 (Paris)",
+    "placement": "Group stage exit (Group C)",
+    "detail": "0-1 BLG (bo1), 1-2 GAM (bo3, eliminated) - 15/07/2026"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "12/09/2026",
+     "opp": "VIT",
+     "score": "3-2",
+     "event": "LEC Summer Playoffs Round 1 (lower)"
+    },
+    {
+     "date": "18/09/2026",
+     "opp": "NAVI",
+     "score": "3-1",
+     "event": "LEC Summer Playoffs Round 2 (lower)"
+    },
+    {
+     "date": "19/09/2026",
+     "opp": "KC",
+     "score": "3-0",
+     "event": "LEC Summer Playoffs Lower Bracket Final"
+    },
+    {
+     "date": "20/09/2026",
+     "opp": "G2",
+     "score": "0-3",
+     "event": "LEC Summer Playoffs Grand Final"
+    }
+   ],
+   "trend": "RISING"
+  },
+  "team_stats": {
+   "sample": "LEC 2026 playoffs (Versus+Spring+Summer), game-weighted",
+   "games": 38,
+   "wr": 52.6,
+   "avg_len_min": 33.3,
+   "gd15": -250,
+   "fb_pct": 39.4,
+   "ft_pct": 57.9,
+   "drag_pct": 49.0,
+   "herald_pct": 39.5,
+   "baron_pct": 53.1,
+   "grubs_avg": 1.6,
+   "wr_ahead15": 68.6,
+   "wr_behind15": null,
+   "blue_wr": 73.9,
+   "red_wr": 20.0,
+   "blue_record": "17-6",
+   "red_record": "3-12",
+   "csd15": -7.5
+  },
+  "team_stats_summer_playoffs": {
+   "sample": "LEC 2026 Summer Playoffs",
+   "games": 15,
+   "wr": 60.0,
+   "avg_len_min": 32.9,
+   "gd15": 146,
+   "fb_pct": 33.3,
+   "ft_pct": 53.3,
+   "drag_pct": 53.5,
+   "herald_pct": 46.7,
+   "baron_pct": 70.0,
+   "grubs_avg": 1.6,
+   "wr_ahead15": 75.0,
+   "wr_behind15": null,
+   "blue_wr": 75.0,
+   "red_wr": 42.9,
+   "blue_record": "6-2",
+   "red_record": "3-4",
+   "csd15": -5.9
+  },
+  "team_stats_intl": {
+   "sample": "EWC 2026 only (4 games)",
+   "games": 4,
+   "wr": 25.0,
+   "avg_len_min": 34.6,
+   "gd15": 219,
+   "fb_pct": 50.0,
+   "ft_pct": 25.0,
+   "drag_pct": 60.0,
+   "herald_pct": 75.0,
+   "baron_pct": 50.0,
+   "grubs_avg": 1.0,
+   "wr_ahead15": 50.0,
+   "wr_behind15": null,
+   "blue_wr": 0.0,
+   "red_wr": 33.3,
+   "blue_record": "0-1",
+   "red_record": "1-2",
+   "csd15": -6.8
+  },
+  "players": [
+   {
+    "games": 38,
+    "kda": 2.39,
+    "gd15": -336.2,
+    "csd15": -3.5,
+    "xpd15": -153.3,
+    "kp": 48.4,
+    "dmg_pct": 21.4,
+    "gold_share": 18.8,
+    "solo_kills": 4,
+    "pool": 18,
+    "top3": [
+     {
+      "champ": "Ornn",
+      "w": 2,
+      "l": 2
+     },
+     {
+      "champ": "KSante",
+      "w": 2,
+      "l": 2
+     },
+     {
+      "champ": "Renekton",
+      "w": 3,
+      "l": 1
+     }
+    ],
+    "role": "TOP",
+    "player": "Myrwn",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 4,
+     "kda": 1.2,
+     "gd15": -148.0,
+     "csd15": -6.0,
+     "xpd15": -654.0,
+     "kp": 37.0,
+     "dmg_pct": 21.5,
+     "gold_share": 17.3,
+     "solo_kills": 0,
+     "pool": 4,
+     "top3": [
+      {
+       "champ": "Vex",
+       "w": 0,
+       "l": 1
+      },
+      {
+       "champ": "Ambessa",
+       "w": 1,
+       "l": 0
+      },
+      {
+       "champ": "Gnar",
+       "w": 0,
+       "l": 1
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 38,
+    "kda": 4.31,
+    "gd15": 1.0,
+    "csd15": -2.1,
+    "xpd15": -110.3,
+    "kp": 75.2,
+    "dmg_pct": 16.7,
+    "gold_share": 20.2,
+    "solo_kills": 4,
+    "pool": 18,
+    "top3": [
+     {
+      "champ": "Lee Sin",
+      "w": 3,
+      "l": 2
+     },
+     {
+      "champ": "Pantheon",
+      "w": 3,
+      "l": 1
+     },
+     {
+      "champ": "Qiyana",
+      "w": 2,
+      "l": 2
+     }
+    ],
+    "role": "JUNGLE",
+    "player": "Elyoya",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 4,
+     "kda": 2.8,
+     "gd15": -20.0,
+     "csd15": 3.8,
+     "xpd15": 86.0,
+     "kp": 72.5,
+     "dmg_pct": 13.8,
+     "gold_share": 20.8,
+     "solo_kills": 0,
+     "pool": 4,
+     "top3": [
+      {
+       "champ": "Vi",
+       "w": 0,
+       "l": 1
+      },
+      {
+       "champ": "Lee Sin",
+       "w": 1,
+       "l": 0
+      },
+      {
+       "champ": "Poppy",
+       "w": 0,
+       "l": 1
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 38,
+    "kda": 3.4,
+    "gd15": -109.7,
+    "csd15": -1.4,
+    "xpd15": -103.3,
+    "kp": 56.9,
+    "dmg_pct": 23.6,
+    "gold_share": 20.8,
+    "solo_kills": 11,
+    "pool": 13,
+    "top3": [
+     {
+      "champ": "Ahri",
+      "w": 3,
+      "l": 3
+     },
+     {
+      "champ": "Ryze",
+      "w": 2,
+      "l": 3
+     },
+     {
+      "champ": "Anivia",
+      "w": 3,
+      "l": 1
+     }
+    ],
+    "role": "MID",
+    "player": "Jojopyun",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 4,
+     "kda": 2.9,
+     "gd15": 164.0,
+     "csd15": -0.5,
+     "xpd15": -111.0,
+     "kp": 75.9,
+     "dmg_pct": 29.2,
+     "gold_share": 20.9,
+     "solo_kills": 2,
+     "pool": 4,
+     "top3": [
+      {
+       "champ": "Anivia",
+       "w": 0,
+       "l": 1
+      },
+      {
+       "champ": "Galio",
+       "w": 1,
+       "l": 0
+      },
+      {
+       "champ": "Ryze",
+       "w": 0,
+       "l": 1
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 38,
+    "kda": 4.4,
+    "gd15": 178.4,
+    "csd15": -1.6,
+    "xpd15": -25.2,
+    "kp": 67.6,
+    "dmg_pct": 29.2,
+    "gold_share": 26.3,
+    "solo_kills": 4,
+    "pool": 14,
+    "top3": [
+     {
+      "champ": "Caitlyn",
+      "w": 5,
+      "l": 2
+     },
+     {
+      "champ": "Ezreal",
+      "w": 3,
+      "l": 2
+     },
+     {
+      "champ": "Ashe",
+      "w": 2,
+      "l": 2
+     }
+    ],
+    "role": "BOT",
+    "player": "Supa",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 4,
+     "kda": 2.9,
+     "gd15": 56.0,
+     "csd15": -2.3,
+     "xpd15": -64.0,
+     "kp": 67.0,
+     "dmg_pct": 25.4,
+     "gold_share": 26.2,
+     "solo_kills": 0,
+     "pool": 3,
+     "top3": [
+      {
+       "champ": "Ezreal",
+       "w": 1,
+       "l": 1
+      },
+      {
+       "champ": "Varus",
+       "w": 0,
+       "l": 1
+      },
+      {
+       "champ": "Kaisa",
+       "w": 0,
+       "l": 1
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 38,
+    "kda": 4.23,
+    "gd15": 17.2,
+    "csd15": 1.2,
+    "xpd15": 48.2,
+    "kp": 77.7,
+    "dmg_pct": 9.3,
+    "gold_share": 13.8,
+    "solo_kills": 0,
+    "pool": 13,
+    "top3": [
+     {
+      "champ": "Neeko",
+      "w": 3,
+      "l": 3
+     },
+     {
+      "champ": "Seraphine",
+      "w": 2,
+      "l": 4
+     },
+     {
+      "champ": "Rakan",
+      "w": 3,
+      "l": 2
+     }
+    ],
+    "role": "SUPPORT",
+    "player": "Alvaro",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 4,
+     "kda": 2.0,
+     "gd15": 166.0,
+     "csd15": -1.8,
+     "xpd15": 39.0,
+     "kp": 79.9,
+     "dmg_pct": 10.1,
+     "gold_share": 14.8,
+     "solo_kills": 2,
+     "pool": 4,
+     "top3": [
+      {
+       "champ": "Bard",
+       "w": 0,
+       "l": 1
+      },
+      {
+       "champ": "Leona",
+       "w": 1,
+       "l": 0
+      },
+      {
+       "champ": "Rell",
+       "w": 0,
+       "l": 1
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   }
+  ],
+  "identity": "Wins: draws on late-game and objective control rather than early leads. In 2026 playoffs (38 games) MKOI averaged GD@15 -250, first blood 39%, but baron 53% (70% in Summer playoffs) and first tower 58%; avg game 33.3 min. Elyoya (KP 75%) and Alvaro (KP 78%) are the shot-callers; Supa carries 29% of damage with 26% gold share. Loses: red side (3-12, 20% in LEC playoffs vs blue 17-6, 74%), early top-lane deficits (Myrwn GD@15 -336, CSD@15 -3.5) and slow herald/dragon starts (herald 40%, dragon 49%). Against G2 in the final the team was swept; only 4 international games in 2026 so international sample is tiny.",
+  "draft": "Sample: 38 LEC playoff games. Comfort picks: Caitlyn (Supa 5-2) and Ezreal (3-2), Lee Sin/Pantheon (Elyoya 3-2, 3-1), Anivia (Jojopyun 3-1), Neeko/Rakan (Alvaro 3-3, 3-2), Renekton (Myrwn 3-1); Ornn and K'Sante 2-2 each. Broad pools (Myrwn 18, Elyoya 18 champions). Opponents ban Nocturne (39%), Vi (32%), Cassiopeia and Rumble (26% each) against MKOI. MKOI's own bans: Olaf, Dr. Mundo, Jarvan IV, Nocturne. Flex: Jojopyun Ahri/Ryze/Anivia mid. First-pick priority UNKNOWN. Tiny EWC sample (4 games): Vayne (75% ban rate by MKOI).",
+  "sources": [
+   {
+    "id": 10,
+    "title": "gol.gg Movistar KOI S16 team stats (same filters)",
+    "url": "https://gol.gg/teams/team-stats/2900/split-ALL/tournament-ALL/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "gol.gg player stat pages, MKOI (Myrwn 4310, Elyoya 2719, jojopyun 3544, Supa 2717, Alvaro 4634)",
+    "url": "https://gol.gg/players/player-stats/2719/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 1,
+    "title": "gol.gg LEC 2026 Summer Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "gol.gg LEC 2026 Spring Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "gol.gg LEC 2026 Versus Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "gol.gg Esports World Cup 2026 match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/Esports%20World%20Cup%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "gol.gg EWC 2026 Online Qualifier EMEA match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/EWC%202026%20Online%20Qualifier%20-%20EMEA/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "gol.gg LEC 2026 Summer Playoffs / Summer Season / Spring Season / Versus Season standings",
+    "url": "https://gol.gg/tournament/tournament-ranking/LEC%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "Sheep Esports - G2 and Karmine Corp qualify for 2026 Worlds (05/09/2026)",
+    "url": "https://www.sheepesports.com/us/articles/g2-esports-and-karmine-corp-qualify-for-2026-worlds-championship/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "Sheep Esports - Worlds 2026: the year of reckoning for the LEC",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-year-of-reckoning-for-the-lec/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "Dot Esports - All teams qualified for League of Legends Worlds 2026",
+    "url": "https://dotesports.com/league-of-legends/guides/all-teams-qualified-for-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Strafe - All LEC teams at Worlds 2026 and how they qualified",
+    "url": "https://www.strafe.com/news/read/all-lec-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "GosuGamers - All teams and players qualified for Worlds 2026",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "Insider Gaming - Worlds 2026 Play-In draw and Swiss pools",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "Sheep Esports - Movistar KOI completed 2026 LEC roster",
+    "url": "https://www.sheepesports.com/articles/lol-movistar-koi-s-completed-2026-lec-roster/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 25,
+    "title": "Sheep Esports - Ibai on MKOI offseason plans ahead of Worlds 2026 (21/09/2026)",
+    "url": "https://www.sheepesports.com/de/articles/ibai-reveals-movistar-koi-s-offseason-plans-ahead-of-worlds-2026-as-jojopyun-s-future-remains/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 36,
+    "title": "esports.gg - LoL EWC 2026 winners overview",
+    "url": "https://esports.gg/news/league-of-legends/lol-ewc-2026-winners-overview/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 38,
+    "title": "Sheep Esports - HLE, BLG and KC advance to EWC 2026 playoffs",
+    "url": "https://www.sheepesports.com/articles/hle-blg-and-kc-advance-to-the-2026-esports-world-cup-lol-playoffs-stage/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 39,
+    "title": "Gamereactor - EWC 2026 four teams eliminated from LoL group stage",
+    "url": "https://www.gamereactor.eu/esports-world-cup-2026-four-teams-already-eliminated-from-the-league-of-legends-group-stage-1748313/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 40,
+    "title": "Insider Gaming - Movistar KOI eliminated from LoL EWC by GAM (15/07/2026)",
+    "url": "https://insider-gaming.com/movistar-koi-shockingly-eliminated-from-lol-ewc-early-by-gam/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 41,
+    "title": "RFT.gg - MKOI secure ticket for EWC 2026",
+    "url": "https://rft.gg/news/mkoi-secure-ticket-for-ewc-2026-paris",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 42,
+    "title": "Wikipedia - 2026 LEC season",
+    "url": "https://en.wikipedia.org/wiki/2026_LEC_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 43,
+    "title": "Sheep Esports - Worlds 2026: 6 must-watch matchups",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-6-must-watch-matchups-fueled-by-past-connections/en",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "KC",
+  "name": "Karmine Corp",
+  "region": "LEC",
+  "seed": 3,
+  "headline": "Two-time LEC finalist (Versus, Spring) and EWC 2026 runner-up (0-3 vs Dplus KIA), regular-season 9-0 in Summer, but finished 3rd in Summer playoffs (1-3 G2, 0-3 MKOI), so LEC seed 3 starts in the Play-In (vs Cloud9, bo5); first Worlds in org history.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Canna",
+    "nationality": "South Korea",
+    "worlds_prior": 2
+   },
+   {
+    "role": "JUNGLE",
+    "player": "Yike",
+    "nationality": "Sweden",
+    "worlds_prior": 2
+   },
+   {
+    "role": "MID",
+    "player": "Kyeahoo",
+    "nationality": "South Korea",
+    "worlds_prior": 0
+   },
+   {
+    "role": "BOT",
+    "player": "Caliste",
+    "nationality": "France",
+    "worlds_prior": 0
+   },
+   {
+    "role": "SUPPORT",
+    "player": "Busio",
+    "nationality": "USA (Sheep: Polish passport/EU resident)",
+    "worlds_prior": 2
+   }
+  ],
+  "coach": "Bok 'Reapered' Han-gyu (head coach); Quentin 'Zeph' Viguie (assistant) per Sheep Dec 2025. Other staff UNKNOWN.",
+  "roster_change_since_final": "none found since 19/09/2026 (Yike said the team would review VODs, bootcamp and align on the meta; no roster move reported)",
+  "domestic_2026": [
+   {
+    "event": "LEC 2026 Versus",
+    "placement": "2nd",
+    "final": "lost Grand Final 2-3 to G2 (01/03/2026); regular season 1st, 8-3"
+   },
+   {
+    "event": "LEC 2026 Spring",
+    "placement": "2nd",
+    "final": "lost Grand Final 2-3 to G2 (07/06/2026); regular season 15-8 games, 2nd (7-2 series)"
+   },
+   {
+    "event": "LEC 2026 Summer",
+    "placement": "3rd",
+    "final": "beat GIANTX 3-1, lost UB Final 1-3 to G2, lost LB Final 0-3 to MKOI (19/09/2026); regular season 1st, 18-2 games (9-0 series)"
+   },
+   {
+    "event": "EWC 2026 EMEA Online Qualifier",
+    "placement": "2nd",
+    "final": "lost final 0-3 to G2 (16/05/2026); beat MKOI 3-1 (17/05/2026)"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "did not qualify (G2 was the sole LEC rep as Versus winner)",
+    "detail": ""
+   },
+   {
+    "event": "MSI 2026 (Daejeon)",
+    "placement": "Play-In stage exit (eliminated by Team Liquid)",
+    "detail": "3-0 DCG, 0-3 T1, 0-3 TL (28-30/06/2026)"
+   },
+   {
+    "event": "EWC 2026 (Paris)",
+    "placement": "2nd",
+    "detail": "Group B: 0-1 Gen.G (bo1), 2-1 TSW, 2-0 Sentinels; QF 2-0 AL; SF 2-1 T1; Final 0-3 DK (19/07/2026)"
+   }
+  ],
+  "form_6w": {
+   "series": [
+    {
+     "date": "05/09/2026",
+     "opp": "GIANTX",
+     "score": "3-1",
+     "event": "LEC Summer Playoffs Round 1 (qualified for Worlds)"
+    },
+    {
+     "date": "06/09/2026",
+     "opp": "G2",
+     "score": "1-3",
+     "event": "LEC Summer Playoffs Upper Bracket Final"
+    },
+    {
+     "date": "19/09/2026",
+     "opp": "MKOI",
+     "score": "0-3",
+     "event": "LEC Summer Playoffs Lower Bracket Final"
+    }
+   ],
+   "trend": "FADING"
+  },
+  "team_stats": {
+   "sample": "LEC 2026 playoffs (Versus+Spring+Summer), game-weighted",
+   "games": 50,
+   "wr": 56.0,
+   "avg_len_min": 32.8,
+   "gd15": 238,
+   "fb_pct": 64.0,
+   "ft_pct": 48.0,
+   "drag_pct": 57.8,
+   "herald_pct": 54.0,
+   "baron_pct": 53.2,
+   "grubs_avg": 1.1,
+   "wr_ahead15": 76.9,
+   "wr_behind15": null,
+   "blue_wr": 58.8,
+   "red_wr": 54.5,
+   "blue_record": "10-7",
+   "red_record": "18-15",
+   "csd15": 3.4
+  },
+  "team_stats_summer_playoffs": {
+   "sample": "LEC 2026 Summer Playoffs",
+   "games": 11,
+   "wr": 36.4,
+   "avg_len_min": 31.5,
+   "gd15": 502,
+   "fb_pct": 81.8,
+   "ft_pct": 45.5,
+   "drag_pct": 48.0,
+   "herald_pct": 54.5,
+   "baron_pct": 35.0,
+   "grubs_avg": 1.2,
+   "wr_ahead15": 66.7,
+   "wr_behind15": null,
+   "blue_wr": 33.3,
+   "red_wr": 40.0,
+   "blue_record": "2-4",
+   "red_record": "2-3",
+   "csd15": 4.9
+  },
+  "team_stats_intl": {
+   "sample": "First Stand+MSI+EWC 2026",
+   "games": 23,
+   "wr": 47.8,
+   "avg_len_min": 32.2,
+   "gd15": 80,
+   "fb_pct": 39.1,
+   "ft_pct": 52.2,
+   "drag_pct": 52.0,
+   "herald_pct": 47.8,
+   "baron_pct": 26.1,
+   "grubs_avg": 1.3,
+   "wr_ahead15": 72.8,
+   "wr_behind15": null,
+   "blue_wr": 61.5,
+   "red_wr": 30.0,
+   "blue_record": "8-5",
+   "red_record": "3-7",
+   "csd15": 4.8
+  },
+  "players": [
+   {
+    "games": 50,
+    "kda": 2.61,
+    "gd15": 253.0,
+    "csd15": 3.9,
+    "xpd15": 157.2,
+    "kp": 48.3,
+    "dmg_pct": 22.2,
+    "gold_share": 20.4,
+    "solo_kills": 16,
+    "pool": 19,
+    "top3": [
+     {
+      "champ": "Rumble",
+      "w": 8,
+      "l": 2
+     },
+     {
+      "champ": "Gnar",
+      "w": 3,
+      "l": 2
+     },
+     {
+      "champ": "Jayce",
+      "w": 2,
+      "l": 3
+     }
+    ],
+    "role": "TOP",
+    "player": "Canna",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 23,
+     "kda": 3.1,
+     "gd15": 230.7,
+     "csd15": 3.2,
+     "xpd15": 126.1,
+     "kp": 56.4,
+     "dmg_pct": 23.8,
+     "gold_share": 20.2,
+     "solo_kills": 11,
+     "pool": 8,
+     "top3": [
+      {
+       "champ": "Rumble",
+       "w": 4,
+       "l": 2
+      },
+      {
+       "champ": "Gnar",
+       "w": 3,
+       "l": 2
+      },
+      {
+       "champ": "Renekton",
+       "w": 1,
+       "l": 2
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 50,
+    "kda": 3.67,
+    "gd15": 51.0,
+    "csd15": 2.3,
+    "xpd15": 116.7,
+    "kp": 68.5,
+    "dmg_pct": 15.9,
+    "gold_share": 20.1,
+    "solo_kills": 6,
+    "pool": 19,
+    "top3": [
+     {
+      "champ": "Vi",
+      "w": 8,
+      "l": 3
+     },
+     {
+      "champ": "Wukong",
+      "w": 3,
+      "l": 2
+     },
+     {
+      "champ": "Jarvan IV",
+      "w": 3,
+      "l": 2
+     }
+    ],
+    "role": "JUNGLE",
+    "player": "Yike",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 23,
+     "kda": 2.78,
+     "gd15": 73.3,
+     "csd15": -1.7,
+     "xpd15": 39.4,
+     "kp": 65.0,
+     "dmg_pct": 16.9,
+     "gold_share": 20.6,
+     "solo_kills": 5,
+     "pool": 8,
+     "top3": [
+      {
+       "champ": "Naafiri",
+       "w": 2,
+       "l": 3
+      },
+      {
+       "champ": "Wukong",
+       "w": 3,
+       "l": 2
+      },
+      {
+       "champ": "Qiyana",
+       "w": 2,
+       "l": 2
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 50,
+    "kda": 3.82,
+    "gd15": -41.4,
+    "csd15": -1.2,
+    "xpd15": -87.1,
+    "kp": 65.6,
+    "dmg_pct": 24.8,
+    "gold_share": 20.6,
+    "solo_kills": 5,
+    "pool": 17,
+    "top3": [
+     {
+      "champ": "Ryze",
+      "w": 5,
+      "l": 2
+     },
+     {
+      "champ": "Azir",
+      "w": 2,
+      "l": 3
+     },
+     {
+      "champ": "Ahri",
+      "w": 4,
+      "l": 1
+     }
+    ],
+    "role": "MID",
+    "player": "Kyeahoo",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 23,
+     "kda": 3.76,
+     "gd15": 69.3,
+     "csd15": 2.7,
+     "xpd15": 141.3,
+     "kp": 58.8,
+     "dmg_pct": 21.8,
+     "gold_share": 20.0,
+     "solo_kills": 4,
+     "pool": 10,
+     "top3": [
+      {
+       "champ": "Orianna",
+       "w": 2,
+       "l": 2
+      },
+      {
+       "champ": "Cassiopeia",
+       "w": 2,
+       "l": 2
+      },
+      {
+       "champ": "Anivia",
+       "w": 2,
+       "l": 2
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 50,
+    "kda": 5.13,
+    "gd15": 36.0,
+    "csd15": -0.5,
+    "xpd15": -101.5,
+    "kp": 62.6,
+    "dmg_pct": 28.7,
+    "gold_share": 25.8,
+    "solo_kills": 6,
+    "pool": 13,
+    "top3": [
+     {
+      "champ": "Ezreal",
+      "w": 2,
+      "l": 5
+     },
+     {
+      "champ": "Ashe",
+      "w": 5,
+      "l": 2
+     },
+     {
+      "champ": "Jhin",
+      "w": 2,
+      "l": 4
+     }
+    ],
+    "role": "BOT",
+    "player": "Caliste",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 23,
+     "kda": 4.25,
+     "gd15": -238.6,
+     "csd15": 0.1,
+     "xpd15": -46.8,
+     "kp": 62.5,
+     "dmg_pct": 28.8,
+     "gold_share": 25.6,
+     "solo_kills": 11,
+     "pool": 13,
+     "top3": [
+      {
+       "champ": "Ezreal",
+       "w": 2,
+       "l": 4
+      },
+      {
+       "champ": "Ziggs",
+       "w": 1,
+       "l": 3
+      },
+      {
+       "champ": "Varus",
+       "w": 0,
+       "l": 2
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   },
+   {
+    "games": 50,
+    "kda": 3.8,
+    "gd15": -60.7,
+    "csd15": -1.0,
+    "xpd15": -13.7,
+    "kp": 70.6,
+    "dmg_pct": 8.3,
+    "gold_share": 13.2,
+    "solo_kills": 0,
+    "pool": 15,
+    "top3": [
+     {
+      "champ": "Seraphine",
+      "w": 6,
+      "l": 2
+     },
+     {
+      "champ": "Rakan",
+      "w": 6,
+      "l": 1
+     },
+     {
+      "champ": "Nami",
+      "w": 2,
+      "l": 3
+     }
+    ],
+    "role": "SUPPORT",
+    "player": "Busio",
+    "sample": "LEC 2026 playoffs (Versus+Spring+Summer)",
+    "intl": {
+     "games": 23,
+     "kda": 2.4,
+     "gd15": -55.6,
+     "csd15": 0.5,
+     "xpd15": 53.0,
+     "kp": 68.2,
+     "dmg_pct": 8.8,
+     "gold_share": 13.5,
+     "solo_kills": 0,
+     "pool": 11,
+     "top3": [
+      {
+       "champ": "Camille",
+       "w": 0,
+       "l": 4
+      },
+      {
+       "champ": "Rell",
+       "w": 2,
+       "l": 2
+      },
+      {
+       "champ": "Bard",
+       "w": 2,
+       "l": 1
+      }
+     ]
+    },
+    "intl_sample": "First Stand+MSI+EWC 2026"
+   }
+  ],
+  "identity": "Wins: by getting early advantages and converting through the side lanes: domestic playoffs first blood 64%, GD@15 +238, WR when ahead @15 ~77%; Canna (Rumble 8-2) and Yike (Vi 8-3) are the engines; Busio/Seraphine-Rakan 12-3 combined. Loses: neutral objectives and mid/late game: baron 53% domestic and just 26% internationally (25% at EWC, 28% at MSI), 4-7 in the latest playoffs; red side internationally 3-7 (30%). Caliste's Ezreal is 4-9 over 2026 playoff and international games (Ezreal 2-5 dom, 2-4 intl). Internationally GD@15 only +80 and bot lane negative (Caliste -239).",
+  "draft": "Sample: 50 LEC playoff games, 23 international games. Comfort: Rumble (Canna 8-2 dom, 4-2 intl), Gnar (3-2/3-2), Vi (Yike 8-3 dom), Ryze/Ahri (Kyeahoo 5-2, 4-1 dom), Ashe (Caliste 5-2), Seraphine/Rakan (Busio 6-2, 6-1). Internationally pool shifts: Yike Naafiri/Wukong/Qiyana, Kyeahoo Orianna/Cassiopeia/Anivia (2-2 each), Busio Camille 0-4. Opponents ban Varus (30%), Rumble (22%), Yunara, Nocturne against KC domestically and Poppy 52%, Vi 48%, Jayce 48% internationally. KC bans Pantheon, Nautilus (28% each), Nocturne, Vi domestically; Nocturne 43% internationally. First-pick priorities UNKNOWN.",
+  "sources": [
+   {
+    "id": 9,
+    "title": "gol.gg Karmine Corp S16 team stats (same filters)",
+    "url": "https://gol.gg/teams/team-stats/2899/split-ALL/tournament-ALL/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "gol.gg player stat pages, KC (Canna 2671, Yike 3406, Kyeahoo 5264, Caliste 4900, Busio 4500)",
+    "url": "https://gol.gg/players/player-stats/4900/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 1,
+    "title": "gol.gg LEC 2026 Summer Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "gol.gg LEC 2026 Spring Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "gol.gg LEC 2026 Versus Playoffs match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "gol.gg MSI 2026 match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/MSI%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "gol.gg Esports World Cup 2026 match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/Esports%20World%20Cup%202026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "gol.gg EWC 2026 Online Qualifier EMEA match list",
+    "url": "https://gol.gg/tournament/tournament-matchlist/EWC%202026%20Online%20Qualifier%20-%20EMEA/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "gol.gg LEC 2026 Summer Playoffs / Summer Season / Spring Season / Versus Season standings",
+    "url": "https://gol.gg/tournament/tournament-ranking/LEC%202026%20Summer%20Playoffs/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "Sheep Esports - G2 and Karmine Corp qualify for 2026 Worlds (05/09/2026)",
+    "url": "https://www.sheepesports.com/us/articles/g2-esports-and-karmine-corp-qualify-for-2026-worlds-championship/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "Sheep Esports - Worlds 2026: the year of reckoning for the LEC",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-the-year-of-reckoning-for-the-lec/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "Dot Esports - All teams qualified for League of Legends Worlds 2026",
+    "url": "https://dotesports.com/league-of-legends/guides/all-teams-qualified-for-league-of-legends-worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Strafe - All LEC teams at Worlds 2026 and how they qualified",
+    "url": "https://www.strafe.com/news/read/all-lec-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "GosuGamers - All teams and players qualified for Worlds 2026",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "Insider Gaming - Worlds 2026 Play-In draw and Swiss pools",
+    "url": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "EarlyGame - Worlds 2026 Play-In draw",
+    "url": "https://earlygame.com/news/lol/worlds-2026-play-in-draw-eu-vs-na-right-from-the-start",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "Sheep Esports - Karmine Corp completed 2026 LEC roster (05/12/2025)",
+    "url": "https://www.sheepesports.com/us/articles/lol-karmine-corp-s-completed-2026-lec-roster/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 29,
+    "title": "Sheep Esports - KC Yike: \"It's very embarrassing to lose like this\" (20/09/2026)",
+    "url": "https://www.sheepesports.com/kr/articles/kc-yike-it-s-very-embarrassing-to-lose-like-this-lec-summer-finals-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 30,
+    "title": "Sheep Esports - KC Caliste on facing G2 (06/09/2026)",
+    "url": "https://www.sheepesports.com/pt/articles/kc-caliste-on-facing-g2-i-m-expecting-some-ego-and-a-lot-of-fighting/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 31,
+    "title": "Wikipedia - 2026 Mid-Season Invitational",
+    "url": "https://en.wikipedia.org/wiki/2026_Mid-Season_Invitational",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 36,
+    "title": "esports.gg - LoL EWC 2026 winners overview",
+    "url": "https://esports.gg/news/league-of-legends/lol-ewc-2026-winners-overview/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 37,
+    "title": "Sheep Esports - Dplus KIA topple Karmine Corp to win EWC 2026",
+    "url": "https://www.sheepesports.com/de/articles/dplus-kia-topple-karmine-corp-to-win-the-2026-ewc-lol-championship/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 38,
+    "title": "Sheep Esports - HLE, BLG and KC advance to EWC 2026 playoffs",
+    "url": "https://www.sheepesports.com/articles/hle-blg-and-kc-advance-to-the-2026-esports-world-cup-lol-playoffs-stage/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 39,
+    "title": "Gamereactor - EWC 2026 four teams eliminated from LoL group stage",
+    "url": "https://www.gamereactor.eu/esports-world-cup-2026-four-teams-already-eliminated-from-the-league-of-legends-group-stage-1748313/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 41,
+    "title": "RFT.gg - MKOI secure ticket for EWC 2026",
+    "url": "https://rft.gg/news/mkoi-secure-ticket-for-ewc-2026-paris",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 42,
+    "title": "Wikipedia - 2026 LEC season",
+    "url": "https://en.wikipedia.org/wiki/2026_LEC_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 43,
+    "title": "Sheep Esports - Worlds 2026: 6 must-watch matchups",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-6-must-watch-matchups-fueled-by-past-connections/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 44,
+    "title": "Kami-Labs - Worlds 2026 Paris times and KC debut",
+    "url": "https://kami-labs.fr/en/gaming/mondiaux-league-of-legends-2026-karmine-corp/",
+    "accessed": "15/10/2026"
+   }
+  ]
+ }
+]

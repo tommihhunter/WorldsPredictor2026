@@ -1,0 +1,945 @@
+[
+ {
+  "code": "TSW",
+  "name": "Team Secret Whales",
+  "region": "LCP",
+  "seed": 1,
+  "headline": "Vietnamese LCP three-peat champions (one game dropped across three grand finals) but only 1-6 in 2026 international series (First Stand 0-2, MSI 5th-6th, EWC 13th-16th); enter Swiss directly.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Pun",
+    "worlds_prior": null
+   },
+   {
+    "role": "JNG",
+    "player": "Hizto",
+    "worlds_prior": 1
+   },
+   {
+    "role": "MID",
+    "player": "Dire",
+    "worlds_prior": 1
+   },
+   {
+    "role": "BOT",
+    "player": "Eddie",
+    "worlds_prior": 1
+   },
+   {
+    "role": "SUP",
+    "player": "Bie",
+    "worlds_prior": null
+   }
+  ],
+  "coach": "WarHorse (head), Ciel",
+  "roster_change_since_final": "none found",
+  "domestic_2026": [
+   {
+    "event": "LCP 2026 Split 1",
+    "placement": "1st",
+    "final": "3-0 vs DCG"
+   },
+   {
+    "event": "LCP 2026 Split 2",
+    "placement": "1st",
+    "final": "3-1 vs DCG"
+   },
+   {
+    "event": "LCP 2026 Split 3",
+    "placement": "1st",
+    "final": "3-0 vs CFO"
+   },
+   {
+    "event": "EWC 2026 APAC Online Qualifier",
+    "placement": "1st",
+    "final": "3-1 vs GAM"
+   }
+  ],
+  "international_2026": [
+   {
+    "event": "First Stand 2026",
+    "placement": "7th-8th",
+    "series": "0-3 G2, 0-3 BNK"
+   },
+   {
+    "event": "MSI 2026",
+    "placement": "5th-6th",
+    "series": "0-3 HLE, 3-1 TES, 0-3 LYON"
+   },
+   {
+    "event": "EWC 2026",
+    "placement": "13th-16th",
+    "series": "0-1 Sentinels (Bo1), 1-2 KC"
+   }
+  ],
+  "form_6w": {
+   "series": [],
+   "trend": "PEAKING",
+   "note": "No series since 30/08/2026 (Split 3 final 3-0 CFO). Domestic peak, no international momentum, 45+ day layoff."
+  },
+  "team_stats": {
+   "games": 10,
+   "wr": 90.0,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null,
+   "sample": "LCP 2026 Split 3 playoffs (computed from series scores 3-1 GAM, 3-0 CFO, 3-0 CFO)",
+   "note": "gol.gg/Oracle's Elixir unreachable; games and wr computed from series scores; other metrics UNKNOWN",
+   "season_2026_all_events": {
+    "games": 96,
+    "wr": 68.8,
+    "avg_len_min": 31.0,
+    "first_tower_wr": 88.1,
+    "first_dragon_wr": 75.0,
+    "first_baron_wr": 98.4,
+    "dragons_per_game": 2.5,
+    "barons_per_game": 0.9,
+    "heralds_per_game": 0.7
+   }
+  },
+  "team_stats_intl": {
+   "games": 20,
+   "wr": 20.0,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null,
+   "sample": "First Stand + MSI + EWC 2026, game scores from series results (EWC Bo1 loss + 1-2 KC)",
+   "note": "gol.gg/Oracle's Elixir unreachable; games and wr computed from series scores; other metrics UNKNOWN"
+  },
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Pun",
+    "kda": 4.1,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "JNG",
+    "player": "Hizto",
+    "kda": 5.8,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "MID",
+    "player": "Dire",
+    "kda": 5.5,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "BOT",
+    "player": "Eddie",
+    "kda": 6.2,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "SUP",
+    "player": "Bie",
+    "kda": 7.0,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   }
+  ],
+  "player_stats_note": "KDA from rdy.gg (sample unclear, recent aggregate); other player metrics UNKNOWN.",
+  "identity": "Early-game aggression with Hizto as playmaker; very strong first-tower/baron conversion domestically. Loses to disciplined international teams (0-3 vs G2, BNK, HLE, LYON); wave-management and young-player mistakes cited; was beaten 2-3 by CFO in Split 3 seeding.",
+  "draft": "Past-12-month most played (rdy.gg): Vi, Ryze, Kai'Sa, Yunara, Nautilus, Xin Zhao, Jarvan IV, Aurora. Hizto: Vi 91.7% WR, Qiyana 83.3%, Olaf. Blind/ban data UNKNOWN.",
+  "sources": [
+   {
+    "id": 1,
+    "title": "2026 LCP season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCP_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "LCP 2026 Split 3 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-3",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "LCP Split 3 schedule/results - FPT Shop",
+    "url": "https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "TSW defeat CFO to become Split 3 champions - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79078-team-secret-whales-defeat-ctbc-flying-oyster-to-become-2026-lcp-split-3-champions",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "All LCP teams at Worlds 2026 - Strafe",
+    "url": "https://www.strafe.com/news/read/all-lcp-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "Everything to know about the Worlds 2026 Play-In - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Worlds 2026 schedule, teams, format - mid.gg",
+    "url": "https://mid.gg/esports/worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "Every team qualified for Worlds 2026 - EGamersWorld",
+    "url": "https://egamersworld.com/blog/every-worlds-2026-team-qualified-6Q23AMZcmS",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 10,
+    "title": "2026 First Stand Tournament - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 11,
+    "title": "MSI 2026 match page TSW vs TES - Sheep Esports",
+    "url": "https://www.sheepesports.com/en/lol/matches/2026%20Mid-Season%20Invitational_Bracket%20Round%201_5",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 12,
+    "title": "TSW eliminate TES from MSI 2026 - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/msi-2026-tsw-eliminates-tes/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 13,
+    "title": "LYON sweep TSW at MSI 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78755-lyon-sweep-team-secret-whales-as-at-msi-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 14,
+    "title": "MSI 2026 Team Review: TSW - Yardbarker",
+    "url": "https://www.yardbarker.com/entertainment/articles/msi_2026_team_review_team_secret_whales_achieved_history_by_defeating_top_esports/s1_17456_44069451",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 15,
+    "title": "EWC 2026 LoL results - esports.gg",
+    "url": "https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 16,
+    "title": "Teams reach LoL EWC 2026 playoffs - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/78809-t1-hle-blg-gen-g-and-four-more-teams-reach-lol-ewc-2026-playoffs",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 17,
+    "title": "Sentinels first international win at EWC26 - Crypto Briefing",
+    "url": "https://cryptobriefing.com/sentinels-first-international-victory-ewc26/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Esports World Cup Asia-Pacific Qualifier 2026 - esports.ru",
+    "url": "https://esports.ru/tournaments/esports-world-cup-asia-pacific-qualifier-2026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 19,
+    "title": "Team Secret Whales - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/lol/teams/Team%20Secret%20Whales",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 22,
+    "title": "Team Secret Whales - rdy.gg",
+    "url": "https://rdy.gg/en/lol/teams/16985",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "LCP 2026 Split 1 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-1",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "LCP 2026 Split 2 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-2",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 29,
+    "title": "Worlds 2026 meet the players: jungle - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-meet-the-players-jungle-2-5/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 30,
+    "title": "Worlds 2025 - Liquipedia",
+    "url": "https://liquipedia.net/leagueoflegends/Worlds_2025",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 31,
+    "title": "MSI 2026 Team Preview: TSW - Yardbarker",
+    "url": "https://www.yardbarker.com/entertainment/articles/msi_2026_team_preview_team_secret_whales_hoping_for_a_stronger_performance/s1_17456_43998663",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 32,
+    "title": "TSW Worlds 2025 preview - Sheep Esports",
+    "url": "https://www.sheepesports.com/en/articles/lol-worlds-2025-team-secret-whales-a-chance-to-make-waves-1-17/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 34,
+    "title": "Worlds predictions 2026 - Hotspawn",
+    "url": "https://www.hotspawn.com/league-of-legends/news/worlds-predictions-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 35,
+    "title": "Worlds 2026 power rankings - EGamersWorld",
+    "url": "https://egamersworld.com/blog/worlds-2026-power-rankings-all-19-qualified-teams--PuMsrql9m",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 39,
+    "title": "All qualified LoL EWC 2026 teams - Hotspawn",
+    "url": "https://www.hotspawn.com/league-of-legends/news/all-qualifed-lol-ewc-2026-teams",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "CFO",
+  "name": "CTBC Flying Oyster",
+  "region": "LCP",
+  "seed": 2,
+  "headline": "Taiwanese LCP runner-up (Split 3, 0-3 to TSW) that rebuilt mid and support in May; second straight Worlds (QF in 2025); no 2026 international matches yet; enter Swiss directly.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Rest",
+    "worlds_prior": null
+   },
+   {
+    "role": "JNG",
+    "player": "Shad0w",
+    "worlds_prior": 1
+   },
+   {
+    "role": "MID",
+    "player": "POUT",
+    "worlds_prior": 0
+   },
+   {
+    "role": "BOT",
+    "player": "Doggo",
+    "worlds_prior": null
+   },
+   {
+    "role": "SUP",
+    "player": "Kino",
+    "worlds_prior": null
+   }
+  ],
+  "worlds_prior_note": "Rest and Doggo played Worlds 2025 (at least 1, earlier UNKNOWN); Kino not on debutants list so has prior Worlds experience, count UNKNOWN.",
+  "coach": "Chawy (head), Wulala (assistant)",
+  "roster_change_since_final": "none found (in-season: 04/05/2026 Pungyeon -> POUT mid, 2274 -> Kino support)",
+  "domestic_2026": [
+   {
+    "event": "LCP 2026 Split 1",
+    "placement": "5th-6th",
+    "final": "1-3 vs GZ (R1)"
+   },
+   {
+    "event": "LCP 2026 Split 2",
+    "placement": "5th-6th",
+    "final": "2-3 vs MVK (R1)"
+   },
+   {
+    "event": "LCP 2026 Split 3",
+    "placement": "2nd",
+    "final": "0-3 vs TSW"
+   },
+   {
+    "event": "EWC 2026 APAC Online Qualifier",
+    "placement": "6th",
+    "final": "0-2 DCG, 1-2 SHG"
+   }
+  ],
+  "international_2026": [],
+  "form_6w": {
+   "series": [],
+   "trend": "RISING",
+   "note": "No series since 30/08/2026. Last six: W 3-2 MVK, W 3-2 TSW, W 3-0 MVK, L 0-3 TSW, W 3-1 MVK, L 0-3 TSW. Rising over season, but swept by TSW twice at the end."
+  },
+  "team_stats": {
+   "games": 13,
+   "wr": 46.2,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null,
+   "sample": "LCP 2026 Split 3 playoffs (computed from series scores 3-0 MVK, 0-3 TSW, 3-1 MVK, 0-3 TSW)",
+   "note": "gol.gg/Oracle's Elixir unreachable; games and wr computed from series scores; other metrics UNKNOWN",
+   "season_2026_all_events": {
+    "games": 87,
+    "wr": 46.0,
+    "avg_len_min": 31.9,
+    "first_tower_wr": 59.1,
+    "first_dragon_wr": 56.5,
+    "first_baron_wr": 88.6,
+    "dragons_per_game": 2.3,
+    "barons_per_game": 0.6,
+    "heralds_per_game": 0.5
+   }
+  },
+  "team_stats_intl": null,
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Rest",
+    "kda": 2.84,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "JNG",
+    "player": "Shad0w",
+    "kda": 3.27,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "MID",
+    "player": "POUT",
+    "kda": 3.52,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "BOT",
+    "player": "Doggo",
+    "kda": 3.44,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "SUP",
+    "player": "Kino",
+    "kda": 3.04,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   }
+  ],
+  "player_stats_note": "KDA from Sheep Esports 2026 season (all events); other player metrics UNKNOWN.",
+  "identity": "Solid skirmishing; weaker neutral-objective setups and inconsistent mid-jungle communication (media, subjective). Wins tight Bo5s vs MVK; swept 0-3 by TSW three times in Split 3 (Swiss, semi, final) but took a 3-2 in seeding.",
+  "draft": "UNKNOWN",
+  "sources": [
+   {
+    "id": 1,
+    "title": "2026 LCP season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCP_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "LCP 2026 Split 3 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-3",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "LCP Split 3 schedule/results - FPT Shop",
+    "url": "https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 4,
+    "title": "TSW defeat CFO to become Split 3 champions - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79078-team-secret-whales-defeat-ctbc-flying-oyster-to-become-2026-lcp-split-3-champions",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 5,
+    "title": "All LCP teams at Worlds 2026 - Strafe",
+    "url": "https://www.strafe.com/news/read/all-lcp-teams-at-worlds-2026-and-how-they-qualified/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "Everything to know about the Worlds 2026 Play-In - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Worlds 2026 schedule, teams, format - mid.gg",
+    "url": "https://mid.gg/esports/worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 9,
+    "title": "Every team qualified for Worlds 2026 - EGamersWorld",
+    "url": "https://egamersworld.com/blog/every-worlds-2026-team-qualified-6Q23AMZcmS",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Esports World Cup Asia-Pacific Qualifier 2026 - esports.ru",
+    "url": "https://esports.ru/tournaments/esports-world-cup-asia-pacific-qualifier-2026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 21,
+    "title": "CTBC Flying Oyster - Sheep Esports",
+    "url": "https://www.sheepesports.com/en/lol/teams/CTBC%20Flying%20Oyster",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 23,
+    "title": "LCP 2026 Split 1 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-1",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "LCP 2026 Split 2 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-2",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 25,
+    "title": "CFO parts ways with Pungyeon, replaced by Pout - Hotspawn",
+    "url": "https://www.hotspawn.com/?p=174919",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 26,
+    "title": "CFO completed 2026 LCP roster - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/lol-ctbc-flying-oyster-completed-2026-lcp-roster/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 28,
+    "title": "23 players set to debut at Worlds 2026 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/23-players-are-set-to-make-their-debut-at-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 29,
+    "title": "Worlds 2026 meet the players: jungle - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-meet-the-players-jungle-2-5/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 30,
+    "title": "Worlds 2025 - Liquipedia",
+    "url": "https://liquipedia.net/leagueoflegends/Worlds_2025",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 34,
+    "title": "Worlds predictions 2026 - Hotspawn",
+    "url": "https://www.hotspawn.com/league-of-legends/news/worlds-predictions-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 35,
+    "title": "Worlds 2026 power rankings - EGamersWorld",
+    "url": "https://egamersworld.com/blog/worlds-2026-power-rankings-all-19-qualified-teams--PuMsrql9m",
+    "accessed": "15/10/2026"
+   }
+  ]
+ },
+ {
+  "code": "MVK",
+  "name": "MVK Esports",
+  "region": "LCP",
+  "seed": 3,
+  "headline": "Young all-Vietnamese LCP third seed (76 Championship Points) starting in the Play-In vs FURIA (Bo5, 15/10 23:00 UTC), with C9 and KC in the bracket; no 2026 international matches yet.",
+  "roster": [
+   {
+    "role": "TOP",
+    "player": "Kratos",
+    "worlds_prior": 0
+   },
+   {
+    "role": "JNG",
+    "player": "Gury",
+    "worlds_prior": 1
+   },
+   {
+    "role": "MID",
+    "player": "Chika",
+    "worlds_prior": 0
+   },
+   {
+    "role": "BOT",
+    "player": "Harky",
+    "worlds_prior": 0
+   },
+   {
+    "role": "SUP",
+    "player": "SiuLoong",
+    "worlds_prior": 0
+   }
+  ],
+  "coach": "SofM (head coach, co-owner; occasional jungle), BigKoro, Suga",
+  "roster_change_since_final": "none found",
+  "domestic_2026": [
+   {
+    "event": "LCP 2026 Split 1",
+    "placement": "7th",
+    "final": "missed playoffs (2-5)"
+   },
+   {
+    "event": "LCP 2026 Split 2",
+    "placement": "4th",
+    "final": "0-3 vs GAM (lower bracket)"
+   },
+   {
+    "event": "LCP 2026 Split 3",
+    "placement": "3rd",
+    "final": "1-3 vs CFO (lower final)"
+   },
+   {
+    "event": "EWC 2026 APAC Online Qualifier",
+    "placement": "5th",
+    "final": "0-2 GAM"
+   }
+  ],
+  "international_2026": [],
+  "form_6w": {
+   "series": [],
+   "trend": "STABLE",
+   "note": "No series since 29/08/2026 (47 days before Play-In). Last six: L 0-3 CFO, W 3-2 GAM, L 1-3 CFO, L 2-3 CFO (seeding), W 3-2 DCG, W 2-0 GAM."
+  },
+  "team_stats": {
+   "games": 12,
+   "wr": 33.3,
+   "avg_len_min": null,
+   "gd15": null,
+   "fb_pct": null,
+   "ft_pct": null,
+   "drag_pct": null,
+   "herald_pct": null,
+   "baron_pct": null,
+   "grubs_avg": null,
+   "wr_ahead15": null,
+   "wr_behind15": null,
+   "blue_wr": null,
+   "red_wr": null,
+   "sample": "LCP 2026 Split 3 playoffs (computed from series scores 0-3 CFO, 3-2 GAM, 1-3 CFO)",
+   "note": "gol.gg/Oracle's Elixir unreachable; games and wr computed from series scores; other metrics UNKNOWN",
+   "season_2026_all_events": {
+    "games": 81,
+    "wr": 45.7,
+    "avg_len_min": 33.2,
+    "first_tower_wr": 65.9,
+    "first_dragon_wr": 52.4,
+    "first_baron_wr": 82.1,
+    "dragons_per_game": 2.4,
+    "barons_per_game": 0.7,
+    "heralds_per_game": 0.4
+   }
+  },
+  "team_stats_intl": null,
+  "players": [
+   {
+    "role": "TOP",
+    "player": "Kratos",
+    "kda": 1.88,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "JNG",
+    "player": "Gury",
+    "kda": 2.95,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "MID",
+    "player": "Chika",
+    "kda": 3.06,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "BOT",
+    "player": "Harky",
+    "kda": 3.39,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   },
+   {
+    "role": "SUP",
+    "player": "SiuLoong",
+    "kda": 3.2,
+    "gd15": null,
+    "csd15": null,
+    "xpd15": null,
+    "kp": null,
+    "dmg_pct": null,
+    "gold_share": null,
+    "solo_kills": null,
+    "pool": null,
+    "top3": []
+   }
+  ],
+  "player_stats_note": "KDA from Sheep Esports 2026 season (all events); other player metrics UNKNOWN.",
+  "identity": "Volatile map movement and scrappy Bo5s (3-2 wins over CFO in Split 2, DCG and GAM in Split 3); lacks macro discipline against structured early-game teams (media, subjective). Weak top lane KDA (1.88). Lost 0-3 and 1-3 to CFO and 0-3 to TSW in key series.",
+  "draft": "UNKNOWN",
+  "sources": [
+   {
+    "id": 1,
+    "title": "2026 LCP season - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/2026_LCP_season",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 2,
+    "title": "LCP 2026 Split 3 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-3",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 3,
+    "title": "LCP Split 3 schedule/results - FPT Shop",
+    "url": "https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 6,
+    "title": "Everything to know about the Worlds 2026 Play-In - Sheep Esports",
+    "url": "https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 7,
+    "title": "Worlds 2026 schedule, teams, format - mid.gg",
+    "url": "https://mid.gg/esports/worlds-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 8,
+    "title": "All teams and players qualified for Worlds 2026 - GosuGamers",
+    "url": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 18,
+    "title": "Esports World Cup Asia-Pacific Qualifier 2026 - esports.ru",
+    "url": "https://esports.ru/tournaments/esports-world-cup-asia-pacific-qualifier-2026/",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 20,
+    "title": "MVK Esports - Sheep Esports",
+    "url": "https://www.sheepesports.com/en/lol/teams/MVK%20Esports",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 24,
+    "title": "LCP 2026 Split 2 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/cs/events/lcp-2026-split-2",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 27,
+    "title": "MVK become fourth team to qualify for Worlds 2026 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/mvk-esports-become-the-fourth-team-to-qualify-for-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 28,
+    "title": "23 players set to debut at Worlds 2026 - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/23-players-are-set-to-make-their-debut-at-worlds-2026/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 29,
+    "title": "Worlds 2026 meet the players: jungle - Sheep Esports",
+    "url": "https://www.sheepesports.com/de/articles/worlds-2026-meet-the-players-jungle-2-5/en",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 33,
+    "title": "Worlds 2026 Play-In preview - AccountShark",
+    "url": "https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 34,
+    "title": "Worlds predictions 2026 - Hotspawn",
+    "url": "https://www.hotspawn.com/league-of-legends/news/worlds-predictions-2026",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 35,
+    "title": "Worlds 2026 power rankings - EGamersWorld",
+    "url": "https://egamersworld.com/blog/worlds-2026-power-rankings-all-19-qualified-teams--PuMsrql9m",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 36,
+    "title": "Worlds 2026 Play-Ins preview - Hotspawn",
+    "url": "https://www.hotspawn.com/league-of-legends/news/worlds-2026-play-ins",
+    "accessed": "15/10/2026"
+   },
+   {
+    "id": 37,
+    "title": "MVK Esports (Vikings Gaming) - Liquipedia",
+    "url": "https://liquipedia.net/leagueoflegends/Vikings_Gaming",
+    "accessed": "15/10/2026"
+   }
+  ]
+ }
+]

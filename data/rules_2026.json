@@ -1,0 +1,193 @@
+{
+  "accessed": "15/10/2026",
+  "notes": "Verdicts: CONFIRMED = official Riot document/page or two or more independent reputable outlets with no contradiction; UNKNOWN = not publicly verifiable on 15/10/2026. Details and quotes in /home/claude/worlds2026/research/rules_2026.md. No em dashes.",
+  "official_sources": {
+    "wce_ruleset": "https://cdn.sanity.io/files/dsfx7636/news_live/faa5ce974e58615911fbee931c6123e2785a8b46.pdf",
+    "international_events_ruleset_2026": "https://cdn.sanity.io/files/dsfx7636/news_live/d29e446e0a0d0813a8caaae1d2817dd82cfe79c6.pdf",
+    "global_policies_2026": "https://cdn.sanity.io/files/dsfx7636/news_live/bef3e7b9f7d9be8e5aefd5cfb72c499a785cb33e.pdf",
+    "library": "https://competitiveops.riotgames.com/en-US/library",
+    "primer": "https://lolesports.com/en-US/news/worlds-2026-primer",
+    "pickems_page": "https://lolesports.com/en-US/pickems/115660540725177488"
+  },
+  "draft": {
+    "playin": {
+      "mode": "fearless",
+      "series": "Bo5, all 6 matches",
+      "verdict": "CONFIRMED (secondary sources plus IE ruleset Fearless clauses; no Riot sentence names the stage for 2026)",
+      "source": "https://www.mmorpg.com/other-article/worlds-2026-format-explained-swiss-stage-fearless-draft-and-the-bracket; https://blog.loltheory.gg/how-lol-worlds-works.md; https://accountshark.net/blog/lol-worlds-2026-schedule-format-teams-guide"
+    },
+    "swiss": {
+      "mode": "mixed",
+      "bo1": {
+        "mode": "standard",
+        "matches": "Round 1 (8), Round 2 (8), Round 3 matches between 1-1 teams (4); 20 Bo1 in total",
+        "verdict": "CONFIRMED"
+      },
+      "bo3": {
+        "mode": "fearless",
+        "matches": "Round 3 matches between 2-0 teams and between 0-2 teams (4), Round 4 (6), Round 5 (3); 13 Bo3 in total",
+        "verdict": "CONFIRMED (secondary, consistent; Riot 2025 rule 'all best-of-3 and best-of-5 matches', 2026 continuation confirmed by Riot's Chris Greeley)"
+      },
+      "source": "https://win.gg/lol-worlds-swiss-stage/; https://en.wikipedia.org/wiki/2026_League_of_Legends_World_Championship; https://lolesports.com/en-US/news/fearless-draft-takes-over-2025; https://www.sheepesports.com/articles/lol-worlds-headed-to-texas-first-stand-expands-to-eight-teams-riot-outlines-the-2026/en; round structure from WCE ruleset 4.1.2"
+    },
+    "knockouts": {
+      "mode": "fearless",
+      "series": "Bo5 QF, SF, Final",
+      "verdict": "CONFIRMED (secondary, consistent)",
+      "source": "https://www.mmorpg.com/other-article/worlds-2026-format-explained-swiss-stage-fearless-draft-and-the-bracket; https://blog.loltheory.gg/how-lol-worlds-works.md"
+    },
+    "fearless_rules": "Hard Fearless: a champion picked by either team in an earlier game of the series is unavailable to both teams for the remaining games of that series. Bans do not carry over (only picks). The pool resets at the start of every new series. Normal snake draft with 10 bans and 10 picks each game via the client Tournament Draft feature. Picking an unavailable champion restarts champ select to the error point; banning an unavailable champion is not remade.",
+    "fearless_rules_verdict": "CONFIRMED (Riot definition 16/03/2025: 'champions picked in previous games of a best-of-series become unavailable for both teams in subsequent games'; ban reset and series reset from mmorpg.com; error rules from IE ruleset 4.5.6 and 4.5.7)",
+    "source": "https://lolesports.com/en-US/news/fearless-draft; https://lolesports.com/en-US/news/fearless-draft-takes-over-2025; https://cdn.sanity.io/files/dsfx7636/news_live/d29e446e0a0d0813a8caaae1d2817dd82cfe79c6.pdf",
+    "first_selection": {
+      "rule": "Right of First Selection (RoFS) for Game 1: the holder chooses either pick position or map side; the opponent gets its preference on the other. Play-In R1-R3: coin flip. Play-In R4: the team from the winners' match holds Right of Dual Selection (both side and pick order). Swiss: higher regional seed, coin flip if equal. QF: better Swiss record, QF draw order if equal. SF and Final: coin flip. Games 2+: loser of the previous game holds RoFS.",
+      "verdict": "CONFIRMED",
+      "source": "WCE ruleset 4.1.4; https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+    }
+  },
+  "pickems": {
+    "playin": {
+      "picks": [
+        {"name": "Round 1 match A winner (KC vs C9)", "points": 5},
+        {"name": "Round 1 match B winner (FURIA vs MVK)", "points": 5},
+        {"name": "Round 2 match 1 winner (winners' match)", "points": 5},
+        {"name": "Round 2 match 2 winner (elimination match)", "points": 5},
+        {"name": "Round 3 winner (lower final)", "points": 5},
+        {"name": "Round 4 winner (final, team advancing to Swiss)", "points": 10}
+      ],
+      "total": 35,
+      "total_verdict": "CONFIRMED (official page shows 35 pts)",
+      "per_pick_verdict": "CONFIRMED on two third-party sources whose split matches the official total; not read from Riot's tooltip",
+      "opens_utc": "10/10/2026 23:00",
+      "lock_utc": "15/10/2026 18:00",
+      "lock_local": "15/10/2026 11:00 PDT = 16/10/2026 07:00 NZDT",
+      "lock_verdict": "CONFIRMED (primer: before the first Play-In match; first match 11:00 PDT)",
+      "editable_until_lock": true,
+      "source": "https://lolesports.com/en-US/pickems/115660540725177488; https://lolesports.com/en-US/news/worlds-2026-primer; https://boostingmarket.com/blogs/lol-worlds-2026-pickems-guide/; https://lolpickem.com/worlds-pickems/"
+    },
+    "swiss": {
+      "picks": [
+        {"name": "Advancing team (one of 8 slots: 2 x 3-0, 3 x 3-1, 3 x 3-2)", "points": 10, "count": 8, "verdict": "CONFIRMED by two third parties (UrGameTips, BoostingMarket)"},
+        {"name": "Exact record bonus per correctly placed team", "points": "UNKNOWN", "note": "125 - 80 = 45 bonus points in total; not evenly divisible over 8 slots, so the bonus differs by slot or the structure differs. Worlds 2025 paid 15 per exact record (would total 200), so 2025 cannot be copied."},
+        {"name": "0-3 team picks", "points": "UNKNOWN", "note": "No 2026 source mentions 0-3 picks; probably none"}
+      ],
+      "total": 125,
+      "total_verdict": "CONFIRMED (official page shows 125 pts)",
+      "opens_utc": "19/10/2026 02:00 (primer says opens 18/10 PDT, after the Round 1 draw)",
+      "lock_utc": "23/10/2026 17:00",
+      "lock_local": "23/10/2026 10:00 PDT = 24/10/2026 06:00 NZDT",
+      "lock_verdict": "CONFIRMED (primer: before the first Swiss match; first match 10:00 PDT)",
+      "editable_until_lock": true,
+      "source": "https://lolesports.com/en-US/pickems/115660540725177488; https://lolesports.com/en-US/news/worlds-2026-primer; https://urgametips.com/worlds-2026-pickems-october-15-deadline-rewards/; https://boostingmarket.com/blogs/lol-worlds-2026-pickems-guide/; https://esportsbetting.com/lol-worlds-pickems-format-dates/ (2025 precedent only)"
+    },
+    "knockouts": {
+      "picks": [
+        {"name": "Quarterfinal winner", "points": 10, "count": 4},
+        {"name": "Semifinal winner", "points": 20, "count": 2},
+        {"name": "Final winner (champion)", "points": 80, "count": 1}
+      ],
+      "total": 160,
+      "total_verdict": "CONFIRMED (official page shows 160 pts)",
+      "per_pick_verdict": "CONFIRMED on BoostingMarket plus identical Worlds 2025 split; sums to the official 160; not read from Riot's tooltip",
+      "structure": "Whole bracket submitted once after the QF draw on 31/10 (all 7 series picked before the first QF). Whether a wrong QF pick voids dependent SF/Final picks: UNKNOWN (standard bracket logic says yes).",
+      "opens_utc": "01/11/2026 05:00 (primer says opens 31/10 PDT, after the QF draw)",
+      "lock_utc": "03/11/2026 22:00",
+      "lock_local": "03/11/2026 14:00 PST = 04/11/2026 11:00 NZDT (US clocks change 01/11)",
+      "lock_verdict": "CONFIRMED (primer: before the first Knockouts match; first QF 14:00 local)",
+      "editable_until_lock": true,
+      "source": "https://lolesports.com/en-US/pickems/115660540725177488; https://lolesports.com/en-US/news/worlds-2026-primer; https://boostingmarket.com/blogs/lol-worlds-2026-pickems-guide/; https://esportsbetting.com/lol-worlds-pickems-format-dates/ (2025 precedent)"
+    },
+    "crystal_ball": {
+      "questions": [
+        "Which champion will have the highest presence (pct of games picked or banned)?",
+        "Which champion will have the highest win rate (min 5 games)?",
+        "Which champion will have the highest average deaths per game (min 5 games)?",
+        "Which pro will finish with the highest average KDA?",
+        "Which pro will finish with the highest average damage per game?",
+        "Which pro will finish with the highest average kill participation?",
+        "Peyz vs Gumayusi: who finishes with more total kills?",
+        "Will Faker reach 700 career Worlds kills this year? (616 entering)",
+        "Will Teemo be picked at least once?",
+        "How many unique champions will be picked?",
+        "Will more games end before or after 32:00?",
+        "Will any pro get at least 15 kills in a single game?",
+        "Will any pro reach at least 450 CS in a single game?",
+        "What role will the Finals MVP play?",
+        "How many different regions will be in Knockouts?",
+        "Will a team from LCS reach Knockouts?",
+        "Which team places higher: HLE or T1?",
+        "Which team will win the shortest game?"
+      ],
+      "questions_verdict": "CONFIRMED (18 questions, identical in Strafe, esports.gg, theclick.gg; option lists for champion/pro/team/numeric questions are in-client only: UNKNOWN)",
+      "points_each": "UNKNOWN (single unverified source lolpickem: 15 questions x 50 and 3 x 100; which three are 100 not stated)",
+      "total": "UNKNOWN (lolpickem claims 1,050)",
+      "numeric_range_scoring": "UNKNOWN",
+      "separate_leaderboard": true,
+      "scored_after_worlds": true,
+      "lock_utc": "15/10/2026 18:00",
+      "lock_local": "15/10/2026 11:00 PDT = 16/10/2026 07:00 NZDT; never reopens",
+      "lock_verdict": "CONFIRMED (primer plus theclick.gg, lolpickem, win.gg)",
+      "source": "https://lolesports.com/en-US/news/worlds-2026-primer; https://www.theclick.gg/lol-worlds-2026-crystal-ball/; https://esports.gg/guides/league-of-legends/worlds-2026-pickems/; https://lolpickem.com/crystal-ball-guide/; https://win.gg/lol-worlds-pickems-crystal-ball/"
+    },
+    "general": {
+      "edit_rule": "Picks can be changed any number of times until the stage countdown ends; a missed stage costs only that stage; Crystal Ball cannot be changed after the Play-In lock",
+      "edit_rule_verdict": "CONFIRMED (secondary: BoostingMarket, theclick.gg, lolpickem agree; not stated on Riot pages read)",
+      "scores_finalise": "14/11/2026, rewards aimed within 48 h; report missing rewards to Player Support by 21/11/2026",
+      "contradicted_dates": "esports.gg lock '16/10 11:20 PDT' and Knockouts lock '25/11' contradict Riot's primer; BoostingMarket's '15/10 18:20 UTC' is 20 min after Riot's first-match time"
+    }
+  },
+  "patch": {
+    "worlds": "26.20",
+    "verdict": "CONFIRMED",
+    "quote": "The WCE will be played on the 26.20 patch.",
+    "source": "https://cdn.sanity.io/files/dsfx7636/news_live/faa5ce974e58615911fbee931c6123e2785a8b46.pdf (WCE ruleset section 5.1)"
+  },
+  "tiebreaks_and_edge_cases": {
+    "playin_bracket_reset": {"value": false, "verdict": "CONFIRMED", "source": "WCE ruleset 4.1.1.1.1 (six Bo5 matches) and 4.1.1.1.5 (Round 4 loser is 17th, winner advances); Round 4 winners'-bracket team gets Right of Dual Selection instead (4.1.4.2.2)"},
+    "swiss_rounds": {
+      "r1": "8 x Bo1", "r2": "8 x Bo1", "r3": "4 x Bo3 (2-0 v 2-0, 0-2 v 0-2) and 4 x Bo1 (1-1 v 1-1)", "r4": "6 x Bo3", "r5": "3 x Bo3",
+      "verdict": "CONFIRMED", "source": "WCE ruleset 4.1.2.1.1 to 4.1.2.1.5"
+    },
+    "swiss_pairing": {"rule": "Rounds 2-5: random draw among teams with identical record; no rematches anywhere in Swiss; a drawn team that would create or force a rematch moves to the next slot; officials may waive if no legal draw exists. Round 1: Pool 1 v Pool 4, Pool 2 v Pool 3, no intra-regional match.", "verdict": "CONFIRMED", "source": "WCE ruleset 4.3.2, 4.3.3"},
+    "swiss_standings_tiebreak": {"rule": "None; advancement is 3 wins, elimination 3 losses. RoFS ties: Swiss by regional seed then coin flip; QF by Swiss record then QF draw order.", "verdict": "CONFIRMED", "source": "WCE ruleset 4.1.4.3, 4.1.4.4"},
+    "swiss_placements": {"out_r3": "15th-16th", "out_r4": "12th-14th", "out_r5": "9th-11th", "qf_losers": "5th-8th", "sf_losers": "3rd-4th", "verdict": "CONFIRMED", "source": "WCE ruleset 4.1.2.1.3-5, 4.1.3.1.1-2"},
+    "draw_schedule": {"swiss_r1": "18/10 after Play-In final", "swiss_r2": "23/10 after matches", "swiss_r3": "24/10 after matches", "swiss_r4": "26/10 after matches", "swiss_r5": "30/10 after matches", "qf": "31/10 after matches", "derived_match_days": {"r1": "23/10", "r2": "24/10", "r3": "25/10-26/10", "r4": "28/10-30/10", "r5": "31/10"}, "verdict": "CONFIRMED (schedule); match-day mapping is derived, not quoted", "source": "WCE ruleset 4.3.5"},
+    "qf_draw": {"rule": "Two 3-0 teams randomly paired with two of the three 3-2 teams, placed on opposite halves; remaining four teams (three 3-1 and one 3-2) randomly drawn into two matches, placement by draw order", "verdict": "CONFIRMED", "source": "WCE ruleset 4.3.4"},
+    "prize_pool_usd": {"total": 5000000, "split": {"1": 1000000, "2": 800000, "3-4": 400000, "5-8": 300000, "9-11": 175000, "12-14": 125000, "15-16": 90000, "17": 50000, "18": 40000, "19": 30000}, "verdict": "CONFIRMED (upgrades format.md)", "source": "WCE ruleset 4.5"},
+    "roster_rules": {"active_roster_lock": "15/09/2026 17:59 PST, 5 to 7 players", "emergency_sub": "Visa issues qualify as a Roster Emergency; eligible subs: contracted players registered before lock (incl. affiliated Tier 2), any player with 0% Tier 1 participation in the active split, registered staff; original player must immediately return when cleared; team forfeits if it cannot field 3 original starters 72 h before its first match", "verdict": "CONFIRMED", "source": "WCE ruleset 3.2.1; Global Policies 72-91"}
+  },
+  "roster_flags": [
+    {
+      "team": "Top Esports",
+      "issue": "Starting top laner is 369 (Bai Jia-Hao), not ZUIAN. TES official Weibo 06/10/2026: '369选手将加入首发名单' (369 will join the starting roster) after ZUIAN failed two US visa interviews. Project roster (369 at TOP) is correct. 369 has 0 LPL games since Split 1 (benched since March), so his 2026 form data is stale. ZUIAN obtained a third interview (insider report 08/10/2026); outcome UNKNOWN; if cleared he must immediately replace 369 under Global Policies clause 82.",
+      "verdict": "CONFIRMED (369 starts); ZUIAN return UNKNOWN",
+      "source": "https://news.qq.com/rain/a/20261006A06VV000; https://www.sina.cn/news/detail/5351059216139028.html; https://esports.gg/news/league-of-legends/tes-zuian-worlds-2026-visa-issues/; https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026; https://egamersworld.com/lol/news/37713/top-esports-face-severe-worlds-2026-visa-crisis-co-oBU7IyiDU"
+    },
+    {
+      "team": "Top Esports",
+      "issue": "Coaches BoBo and Leo reportedly refused visas at second interviews and can only assist remotely; head coach Poppy is the only coach on site. Insider report (Summoner Park, 08/10/2026), not confirmed by TES.",
+      "verdict": "UNKNOWN",
+      "source": "https://egamersworld.com/lol/news/37713/top-esports-face-severe-worlds-2026-visa-crisis-co-oBU7IyiDU"
+    },
+    {
+      "team": "Invictus Gaming",
+      "issue": "Possible travel delay for substitute Assum (Zou Wei) per Summoner Park (06/10/2026). Sub only; starters unaffected.",
+      "verdict": "UNKNOWN / immaterial",
+      "source": "https://esports.gg/news/league-of-legends/tes-zuian-worlds-2026-visa-issues/"
+    },
+    {
+      "team": "All other 17 teams",
+      "issue": "No discrepancy: every starter in teams.json matches GosuGamers' full 19-team roster list (BLG with Bin, LYON with Dhokla, etc.). No visa, substitute, withdrawal or rule news found between 14/10 and 15/10/2026 for KC, C9, FURIA, MVK or any Swiss team.",
+      "verdict": "CONFIRMED (single third-party list; Riot roster page not found, Liquipedia unreachable)",
+      "source": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026"
+    }
+  ],
+  "unknown_after_this_pass": [
+    "A 2026 Riot sentence naming which Worlds stages use Fearless (only Riot's 2025 rule plus 2026 secondary sources)",
+    "Swiss exact-record bonus values; whether 0-3 picks exist",
+    "Whether a wrong QF pick voids dependent SF/Final picks",
+    "Crystal Ball per-question points and numeric answer options",
+    "Outcome of ZUIAN's third visa interview; TES coaching staff travel",
+    "Per-match start times within Swiss days; official Day-1 Play-In order"
+  ]
+}
