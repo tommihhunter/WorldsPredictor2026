@@ -7,6 +7,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "model"))
 import ratings_v4 as R  # noqa: E402
 import golgg_games as GG  # noqa: E402
+import side as SD  # noqa: E402
 
 _FIT = {}
 
@@ -58,6 +59,27 @@ def test_games_have_dates_in_order():
     assert dt.date(2026, 1, 1) <= min(ds) and max(ds) <= dt.date(2026, 10, 15)
     inversions = sum(1 for x, y in zip(ds, ds[1:]) if y < x)
     assert inversions / len(ds) < 0.05, f"game ids are not chronological enough: {inversions} inversions in {len(ds)}"
+
+
+def _sg(team, side, win, opp="X"):
+    return dict(team=team, opp=opp, side=side, win=win)
+
+
+def test_side_estimate_shrinks_and_ranks():
+    games = ([_sg("G2", "B", True)] * 40 + [_sg("G2", "B", False)] * 10 + [_sg("G2", "R", True)] * 20 + [_sg("G2", "R", False)] * 30
+             + [_sg("KC", "B", True)] * 30 + [_sg("KC", "B", False)] * 20 + [_sg("KC", "R", True)] * 30 + [_sg("KC", "R", False)] * 20)
+    blue, g = SD.estimate(games, k=20)
+    assert abs(blue - math.log(0.6 / 0.4)) < 1e-9          # blue side won 120 of 200
+    assert g["G2"] > 0.3 > g["KC"]
+    _, g_inf = SD.estimate(games, k=1e9)
+    assert abs(g_inf["G2"]) < 1e-3                          # infinite shrinkage removes the team term
+
+
+def test_side_delta_is_antisymmetric_and_safe():
+    blue, g = 0.1, {"G2": 0.6}
+    assert abs(SD.delta("B", "G2", "KC", blue, g) + SD.delta("R", "KC", "G2", blue, g)) < 1e-12
+    assert SD.delta("B", "NEW", "OTHER", blue, g) == blue     # unknown teams: global blue edge only
+    assert SD.estimate([], k=50) == (0.0, {})
 
 
 if __name__ == "__main__":
