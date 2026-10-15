@@ -5,9 +5,11 @@ with an estimated date per game. Used by the v5 side and pool-depth candidates (
 
 games_log has no dates. gol.gg game ids grow with time, so each game takes the date of the nearest anchor
 at or below its id; an anchor is a game whose (team, opponent, stage) matches exactly one date in
-data/series_2026.json. Games below the first anchor take the first anchor's date.
+data/series_2026.json. Anchor dates are smoothed with a rolling median over +-5 anchors (by id), which drops
+isolated mismatches (a stage label reused by another tournament). Games below the first anchor take the
+first anchor's date. Checked 16/10/2026: 2.4% of consecutive games out of date order (45 of 1856).
 """
-import bisect, json, os, datetime as dt
+import bisect, json, os, statistics, datetime as dt
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -52,6 +54,8 @@ def load_games():
             raw.setdefault(gid, dict(id=gid, team=team, opp=opp, side=g["side"], win=bool(g["win"]),
                                      picks=g["picks"], opp_picks=g["opp_picks"], stage=g["stage"]))
     anchors.sort()
+    ords = [a[1].toordinal() for a in anchors]
+    anchors = [(a[0], dt.date.fromordinal(int(statistics.median(ords[max(0, i - 5): i + 6])))) for i, a in enumerate(anchors)]
     ids = [a[0] for a in anchors]
     for g in raw.values():
         g["date"] = anchors[max(bisect.bisect_right(ids, g["id"]) - 1, 0)][1]
