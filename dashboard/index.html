@@ -213,6 +213,8 @@
 .w26 .next-main { display: grid; gap: 3px; min-width: 0; }
 .w26 .next-p { font-family: var(--font-anthropic-serif); font-size: 22px; font-weight: 700; color: var(--w26-acc); }
 @media (max-width: 640px) { .w26 .odds-row { grid-template-columns: 20px 80px minmax(0, 1fr) 48px; gap: 8px; } }
+.w26 .match .result { color: var(--color-fg); }
+.w26 a.pill.teamlink { text-decoration: none; color: var(--w26-acc); border-color: currentColor; }
 </style>
 
 <div class="w26">
@@ -555,6 +557,7 @@ window.W26 = (() => {
 (() => {
   const { el, rows, enc, pill, emptyRow } = window.W26;
   let region = 'All'; let split = 'season';
+  let openedHash = '';
   const filt = document.getElementById('region-filter');
   filt.addEventListener('click', (e) => { const b = e.target.closest('button[data-r]'); if (b) { region = b.dataset.r; draw(); } });
   const sseg = document.getElementById('split-seg');
@@ -595,7 +598,7 @@ window.W26 = (() => {
       return el('article', { cls: 'card dossier', id: 'team-' + x.code }, [
         el('div', { cls: 'card-head' }, [
           el('h3', { cls: 'card-title' }, [window.W26.teamLogo(x.code) || window.W26.badge(x.code), el('span', { text: x.name })]),
-          el('div', { cls: 'chips' }, [pill(`#${rank[x.code] || '—'} in model`, 'strong'), pill(`${x.region} seed ${x.seed}`, ''), pill(x.stage_start, x.stage_start === 'Play-In' ? 'warn' : '')]),
+          el('div', { cls: 'chips' }, [pill(`#${rank[x.code] || '—'} in model`, 'strong'), pill(`${x.region} seed ${x.seed}`, ''), pill(x.stage_start, x.stage_start === 'Play-In' ? 'warn' : ''), el('a', { cls: 'pill teamlink', href: '#team=' + x.code, text: 'Link' })]),
         ]),
         el('p', { cls: 'lede', ...M('headline'), text: x.headline || '' }),
         (x.flags && x.flags.length) ? el('div', { cls: 'flags', ...M('flags') }, x.flags.map((f) => pill(f, 'warn'))) : null,
@@ -633,8 +636,18 @@ window.W26 = (() => {
         el('details', { cls: 'card-foot' }, [el('summary', { text: 'Sources (accessed 15/10/2026)' }), el('ul', {}, (x.sources || '').split(' ').filter(Boolean).map((u) => el('li', {}, [el('a', { href: u, target: '_blank', rel: 'noopener', text: u.replace(/^https?:\/\/(www\.)?/, '').slice(0, 80) })]))), el('p', { text: 'Full dossier: ' + x.dossier })]),
       ]);
     }));
+    const m = /^#team=([A-Za-z0-9]+)$/.exec(location.hash);
+    const code = m ? m[1].toUpperCase() : '';
+    const card = code && code !== openedHash ? document.getElementById('team-' + code) : null;
+    if (card) {
+      openedHash = code;
+      window.W26.show('dossiers');
+      history.replaceState(null, '', '#team=' + code);
+      card.scrollIntoView({ block: 'start' });
+    }
   }
   dash.onData(draw);
+  window.addEventListener('hashchange', () => { openedHash = ''; draw(); });
 })();
 </script>
 
@@ -683,6 +696,10 @@ window.W26 = (() => {
   const M = (s, f) => ({ 'data-source': 'series', 'data-field': f, 'data-where': 'id=' + enc(s.id) + '&set=' + enc(s.set) });
   const matchCard = (s, key) => {
     const aWin = s.winner === s.team_a;
+    const r = (rows('results') || []).find((x) => x.winner && x.id === s.id && [x.team_a, x.team_b].sort().join() === [s.team_a, s.team_b].sort().join());
+    const score = r ? `${Math.max(r.score_a, r.score_b)}-${Math.min(r.score_a, r.score_b)}` : '';
+    const resultLine = !r ? null : el('span', { cls: 'row cap result' }, [el('span', { cls: 'strong', text: `Result: ${r.winner} ${score}` }),
+      s.actual ? null : pill(r.winner === s.winner ? 'pick right' : 'pick wrong', r.winner === s.winner ? 'good' : 'bad')]);
     const b = el('button', { cls: 'match', type: 'button', 'aria-pressed': String(selected[key] === s.id), id: `m-${s.set}-${s.id}` }, [
       el('span', { cls: 'when', text: (s.stage.replace(/ \(.*\)$/, '')) + (s.time_nz ? ' · ' + s.time_nz.replace(' NZDT', '') : '') }),
       el('span', { cls: 'row' }, [window.W26.badge(s.team_a, { cls: aWin ? '' : 'lose' }), el('span', { cls: 'cap muted', text: 'vs' }), window.W26.badge(s.team_b, { cls: aWin ? 'lose' : '' })]),
@@ -690,6 +707,7 @@ window.W26 = (() => {
       el('span', { cls: 'split cap muted' }, s.bo === 5
         ? [el('span', { cls: s.score === '3-0' ? 'strong' : '' }, ['3-0 ', el('span', { cls: 'num', ...M(s, 'pw30'), text: pct(s.pw30) })]), el('span', { cls: s.score === '3-1' ? 'strong' : '' }, ['3-1 ', el('span', { cls: 'num', ...M(s, 'pw31'), text: pct(s.pw31) })]), el('span', { cls: s.score === '3-2' ? 'strong' : '' }, ['3-2 ', el('span', { cls: 'num', ...M(s, 'pw32'), text: pct(s.pw32) })]), el('span', {}, ['upset ', el('span', { cls: 'num', ...M(s, 'p_upset'), text: pct(s.p_upset) })])]
         : [el('span', { cls: s.score === '2-0' ? 'strong' : '' }, ['2-0 ', el('span', { cls: 'num', ...M(s, 'pw20'), text: pct(s.pw20) })]), el('span', { cls: s.score === '2-1' ? 'strong' : '' }, ['2-1 ', el('span', { cls: 'num', ...M(s, 'pw21'), text: pct(s.pw21) })]), el('span', {}, ['upset ', el('span', { cls: 'num', ...M(s, 'p_upset'), text: pct(s.p_upset) })])]),
+      resultLine,
     ]);
     b.addEventListener('click', () => { selected[key] = s.id; draw(); });
     return b;
