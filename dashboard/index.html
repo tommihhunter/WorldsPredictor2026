@@ -189,7 +189,8 @@
 .w26 .site-title, .w26 .page-title, .w26 .card-title { font-family: var(--font-anthropic-serif); font-weight: 700; letter-spacing: -0.01em; }
 .w26 .site-title { display: flex; align-items: center; gap: 12px; font-size: 22px; }
 .w26 .brand-mark { width: 28px; height: 28px; border-radius: 8px; background: var(--w26-acc); color: #0B0F14; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex: none; }
-.w26 .tabs { background: var(--color-bg); gap: 4px; }
+.w26 .tabs { background: var(--color-bg); gap: 4px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }   /* one row at every width: the sticky bar keeps a fixed height */
+.w26 .tab { white-space: nowrap; }
 .w26 .tab { border: 0; border-radius: 8px; padding: 10px 14px; font-size: 14px; color: var(--w26-text-2); }
 .w26 .tab[aria-selected="true"] { background: #161D27; color: var(--color-fg); font-weight: 600; border: 0; }
 .w26 .label { letter-spacing: .08em; }
