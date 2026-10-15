@@ -45,6 +45,28 @@ def main():
         page.wait_for_function("Array.isArray(window.W26_MISSING)", timeout=30000)
         if not page.is_visible(f"#{tabs[-1]}"):
             problems.append(f"deep link #{tabs[-1]} did not open that tab")
+        shots = os.path.join(ROOT, "dist", "shots"); os.makedirs(shots, exist_ok=True)
+        page.goto(url); page.reload()
+        page.wait_for_function("Array.isArray(window.W26_MISSING)", timeout=30000)
+        if page.locator("#live-odds .odds-row").count() < 10:
+            problems.append("Home: fewer than 10 live odds rows")
+        page.screenshot(path=os.path.join(shots, "home.png"), full_page=True)
+        page.click('.w26 .tab[data-page="predictions"]'); page.wait_for_timeout(200)
+        page.screenshot(path=os.path.join(shots, "bracket.png"), full_page=True)
+        page.goto(url + "#team=GEN"); page.reload()
+        page.wait_for_function("Array.isArray(window.W26_MISSING)", timeout=30000)
+        page.wait_for_timeout(300)
+        in_view = page.evaluate("(() => { const c = document.getElementById('team-GEN'); if (!c) return false; const r = c.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; })()")
+        if not page.is_visible("#dossiers") or not in_view:
+            problems.append("#team=GEN did not open Teams at the GEN card")
+        page.screenshot(path=os.path.join(shots, "team_gen.png"))
+        phone = browser.new_page(viewport={"width": 390, "height": 844})
+        phone.on("pageerror", lambda e: problems.append(f"phone page error: {e}"))
+        phone.goto(url)
+        phone.wait_for_function("Array.isArray(window.W26_MISSING)", timeout=30000)
+        if phone.evaluate("document.documentElement.scrollWidth > innerWidth + 1"):
+            problems.append("phone: page scrolls sideways at 390 px")
+        phone.screenshot(path=os.path.join(shots, "home_phone.png"), full_page=True)
         browser.close()
     srv.shutdown()
     print("tabs checked:", tabs)
