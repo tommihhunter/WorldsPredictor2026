@@ -49,3 +49,17 @@ Player rows and champion pools now come from the whole 2026 season on gol.gg (`m
 
 ## Data expansion (15/10/2026 evening NZDT)
 Five datasets added in parallel (all gol.gg or official Riot sources, accessed 15/10/2026): Summer-split player stats and pools; team pages (record, blue/red win rate, objective shares, pick/ban tables, role pick priority, per-game draft log); every change in patches 26.18-26.20; the 2026 World Championship Event-Specific Ruleset (Fearless in every Bo3 and Bo5, Right of First Selection, Pick'Ems points 5/5/5/5/5/10, 10 per Swiss advancer + 45 record bonus, 10/20/80 in knockouts, locks); and a results updater for the two gol.gg Worlds tournaments. None of this feeds the rating yet; it is descriptive in the dossiers and bracket detail. Candidates to test after the Play-In: a side-selection term (G2 74% blue vs 49% red; BLG 72% on red), a Fearless pool-depth term for Bo5s, and a staleness penalty for 369 (no games since March; TES already carries -0.20 for the ZUIAN visa situation).
+
+## v5 candidates (16/10/2026 NZDT)
+Walk-forward test of the candidates in `docs/superpowers/specs/2026-10-16-model-v5-design.md` (`model/backtest_v5.py` -> `data/backtest_v5.json`, run 16/10/2026 09:47 NZDT). Rule: adopt when the best grid point beats v4 with paired-bootstrap P(improvement) of 0.80 or more on its main set and, for the weight candidates, set B log loss rises by no more than 0.002. Picking the best grid point makes P(improvement) optimistic.
+
+| Candidate | Set | n | v4 log loss | Candidate log loss | P(improve) | Best setting | Adopted |
+|---|---|---|---|---|---|---|---|
+| International weight | A (B check) | 67 (169) | 0.6162 (0.6119) | 0.6230 (0.6126) | 0.146 | w_intl 1.5 | no |
+| Patch recency | A (B check) | 67 (169) | 0.6162 (0.6119) | 0.6164 (0.6191) | 0.491 | patch_n 2, patch_mult 1.5 | no |
+| Fearless pool depth | P: Bo3/Bo5 between Worlds teams | 147 | 0.6576 | 0.6572 | 0.596 | pool_beta 0.02 | no |
+| Side term | S: games between Worlds teams | 497 | 0.6720 | 0.6683 | 0.892 | k 100 | passes the rule (recorded only) |
+
+Outcome: nothing passed that can change a prediction; v4 stays the model (`data/backtest_v5.json` `adopted.env` is empty, so `model/ratings.py` selects v4). Worlds games enter the fit from the Swiss staged run on (Task 7). 369 staleness stays a manual adjustment.
+
+What this means: we tried four tweaks and asked each one to beat the current model on past matches it had not seen yet, by a clear margin. Giving international games extra weight made the predictions worse at every setting tried. Leaning harder on the latest patches, and rewarding teams with deeper champion pools in Fearless series, made no real difference: the scores moved in the fourth decimal place, which is noise. The only tweak that clearly helped is knowing which side (blue or red) each team plays on, but that is not known for each game when we make the prediction, so it cannot be used for the predictions we publish. The predictions therefore stay exactly as they were.

@@ -1,7 +1,7 @@
 {
  "as_of": "15/10/2026",
- "generated_utc": "15/10/2026 04:09 UTC",
- "model": "v4: series-level Bradley-Terry with per-series form shock on the full 2026 season (gol.gg); see model/ratings_v4.py",
+ "generated_utc": "15/10/2026 20:48 UTC",
+ "model": "v4: series-level Bradley-Terry with per-series form shock on the full 2026 season (gol.gg); see model/ratings_v4.py and data/backtest_v5.json",
  "params": {
   "half_life_days": 120.0,
   "region_prior_2025_shrink": 0.7,
@@ -17,6 +17,12 @@
   "w_qualifier": 0.6,
   "sigma_series": 1.0,
   "tau": 0.9,
+  "w_international": 1.0,
+  "patch_boost": {
+   "last_n": 0,
+   "mult": 1.0
+  },
+  "pool_beta": 0.0,
   "sigma_region": 0.7,
   "sigma_team": 0.8,
   "n_series": 1075,

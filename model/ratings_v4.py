@@ -278,7 +278,7 @@ def build(write=True):
         v = ct[ri[g1], ri[g1]] + ct[ri[g2], ri[g2]] - 2 * ct[ri[g1], ri[g2]]
         return dict(gap=round(f["R"][g1] - f["R"][g2], 3), sd=round(math.sqrt(v), 3))
     res = dict(as_of=AS_OF.strftime("%d/%m/%Y"), generated_utc=dt.datetime.now(dt.timezone.utc).strftime("%d/%m/%Y %H:%M UTC"),
-               model="v4: series-level Bradley-Terry with per-series form shock on the full 2026 season (gol.gg); see model/ratings_v4.py",
+               model=os.environ.get("MODEL_LABEL", "v4") + ": series-level Bradley-Terry with per-series form shock on the full 2026 season (gol.gg); see model/ratings_v4.py and data/backtest_v5.json",
                params=dict(half_life_days=HALF_LIFE, region_prior_2025_shrink=PRIOR_SHRINK, region_prior_mean=R_PRIOR, w_regular=W_REG, w_qualifier=W_QUAL, sigma_series=f["sigma"], tau=TAU, w_international=W_INTL, patch_boost=dict(last_n=PATCH_N, mult=PATCH_MULT), pool_beta=POOL_BETA,
                            sigma_region=SIGMA_R, sigma_team=SIGMA_U, n_series=len(rows),
                            n_games=int(sum(r["sa"] + r["sb"] for r in rows)), converged=f["converged"]),

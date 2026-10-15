@@ -45,7 +45,7 @@ Feeds the rating: `data/series_2026.json` (1,075 series from gol.gg incl. regula
 Descriptive only (dossiers, bracket detail panels): `data/golgg_players_2026.json` and `_summer_` (95 players, season and Summer split stats and champion pools), `data/golgg_teams_2026.json` (team pages: record, side win rates, objectives, pick/ban tables, draft log), `data/patch_state.json` (every change in 26.18 to 26.20), `data/rules_2026.json` (Fearless in every Bo3/Bo5, Right of First Selection, Pick'Ems points, locks), `research/teams/*.md` (19 dossiers).
 
 ## Known limits and open items
-- Model ignores everything but results (no style, side, pool-depth or patch term). Candidates to test after the Play-In: side-selection term (G2 74% blue vs 49% red; BLG 72% on red), Fearless pool-depth term for Bo5s, staleness penalty for 369.
+- v5 backtest (16/10/2026): no candidate passed that can change a prediction, so v4 stays the model; the side term passed but is recorded only (side is not known pre-match). See MODEL_REVIEW.md "v5 candidates". 369 staleness stays a manual adjustment.
 - LCK-over-LPL gap is +0.65 logit with sd 0.60, about one standard error from zero; the top four picks lean on it. Early warning: LPL teams going 2-0 or better against LCK in Swiss Bo1s.
 - Pick'Ems: Swiss record-bonus split and 0-3 picks UNKNOWN; whether a wrong QF pick voids later picks UNKNOWN; Crystal Ball points per question UNKNOWN.
 - gol.gg is reachable from a normal home connection (checked 16/10 08:50 NZDT: both Worlds pages respond, no scores yet). If `update_results.py` fails with a DNS error the network is blocking gol.gg; run it from another network or paste the series into `data/results_live.json` by hand (schema in README.md).

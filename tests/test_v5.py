@@ -123,6 +123,15 @@ def test_judge_rules():
     assert not BT.judge([1.0] * 40, [0.9] * 40, [1.0] * 40, [1.01] * 40)["adopt"]   # B worse by more than 0.002
 
 
+def test_model_switch_follows_backtest():
+    import subprocess
+    env = {k: v for k, v in os.environ.items() if k not in ("MODEL", "W_INTL", "PATCH_N", "PATCH_MULT", "POOL_BETA")}
+    out = subprocess.run([sys.executable, "-X", "utf8", "-c", "import ratings; print(ratings.MODEL_NAME)"],
+                         cwd=os.path.join(ROOT, "model"), capture_output=True, text=True, env=env)
+    adopted = json.load(open(os.path.join(ROOT, "data", "backtest_v5.json"), encoding="utf-8"))["adopted"]["env"]
+    assert out.stdout.strip() == ("v5" if adopted else "v4"), out.stdout + out.stderr
+
+
 if __name__ == "__main__":
     tests = [(n, f) for n, f in list(globals().items()) if n.startswith("test_") and callable(f)]
     failed = 0

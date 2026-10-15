@@ -1,0 +1,88 @@
+{
+ "generated_nz": "16/10/2026 09:47 NZDT",
+ "rule": "adopt if paired bootstrap (10000) P(improvement) >= 0.8 on the main set and set B log loss rises by no more than 0.002 (weight candidates); best-of-grid makes P optimistic",
+ "v4": {
+  "A": 0.6162,
+  "nA": 67,
+  "B": 0.6119,
+  "nB": 169
+ },
+ "candidates": {
+  "w_intl": {
+   "n": 67,
+   "ll_v4": 0.6162,
+   "ll": 0.623,
+   "p_improve": 0.146,
+   "b_ll_v4": 0.6119,
+   "b_ll": 0.6126,
+   "adopt": false,
+   "best": {
+    "w_intl": 1.5
+   },
+   "grid": {
+    "{\"w_intl\": 1.5}": 0.623,
+    "{\"w_intl\": 2.0}": 0.6301,
+    "{\"w_intl\": 3.0}": 0.6441
+   }
+  },
+  "patch": {
+   "n": 67,
+   "ll_v4": 0.6162,
+   "ll": 0.6164,
+   "p_improve": 0.491,
+   "b_ll_v4": 0.6119,
+   "b_ll": 0.6191,
+   "adopt": false,
+   "best": {
+    "patch_n": 2,
+    "patch_mult": 1.5
+   },
+   "grid": {
+    "{\"patch_n\": 1, \"patch_mult\": 1.5}": 0.6165,
+    "{\"patch_n\": 1, \"patch_mult\": 2.0}": 0.6178,
+    "{\"patch_n\": 2, \"patch_mult\": 1.5}": 0.6164,
+    "{\"patch_n\": 2, \"patch_mult\": 2.0}": 0.6177,
+    "{\"patch_n\": 3, \"patch_mult\": 1.5}": 0.6195,
+    "{\"patch_n\": 3, \"patch_mult\": 2.0}": 0.6233
+   }
+  },
+  "pool_depth": {
+   "n": 147,
+   "ll_v4": 0.6576,
+   "ll": 0.6572,
+   "p_improve": 0.596,
+   "adopt": false,
+   "best": {
+    "pool_beta": 0.02
+   },
+   "grid": {
+    "0.02": 0.6572,
+    "0.05": 0.6574,
+    "0.1": 0.6603
+   },
+   "caveat": "Pools rebuilt from games dated before each cut; dates estimated from gol.gg game ids."
+  },
+  "side": {
+   "n": 497,
+   "ll_v4": 0.672,
+   "ll": 0.6683,
+   "p_improve": 0.892,
+   "adopt": true,
+   "best": {
+    "k": 100
+   },
+   "grid": {
+    "20": 0.67,
+    "50": 0.6688,
+    "100": 0.6683
+   },
+   "note": "Game-level test. Predictions stay side-neutral: the side of a game is not known before the match."
+  }
+ },
+ "adopted": {
+  "env": {},
+  "notes": [
+   "side term passes at k=100: recorded only, predictions stay side-neutral"
+  ]
+ }
+}
