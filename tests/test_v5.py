@@ -173,6 +173,25 @@ def test_dcgi_check_summary():
     assert s["n"] >= 10 and 0 < s["logloss"] < 1, s
 
 
+def test_exports_h2h_matchups_report():
+    import subprocess
+    out = subprocess.run([sys.executable, "-X", "utf8", "model/export_dashboard.py"], cwd=ROOT, capture_output=True, text=True)
+    assert out.returncode == 0, out.stderr[-800:]
+    h2h = json.load(open(os.path.join(ROOT, "data", "dash", "h2h.json"), encoding="utf-8"))
+    assert all(r["a"] < r["b"] for r in h2h) and len(h2h) > 150
+    gen_hle = [r for r in h2h if (r["a"], r["b"]) == ("GEN", "HLE") and r["year"] == 2026]
+    assert len(gen_hle) == 7, len(gen_hle)
+    assert any(r["year"] == 2025 for r in h2h)
+    assert not [r for r in h2h if {r["a"], r["b"]} == {"CFO", "LOS"}]        # never met: zero rows, no crash
+    mu = json.load(open(os.path.join(ROOT, "data", "dash", "matchups.json"), encoding="utf-8"))
+    assert len(mu) == 171 and all(0 < r["p_bo5"] < 1 and r["a"] < r["b"] for r in mu)
+    row = next(r for r in mu if (r["a"], r["b"]) == ("GEN", "HLE"))
+    assert row["p_bo5"] > row["p_game"] > 0.5                                  # favourite gains from a longer series
+    ds = json.load(open(os.path.join(ROOT, "data", "dash", "dossiers.json"), encoding="utf-8"))
+    assert all(set(d["report"]) == {"who", "wins_by", "loses_to", "draft"} for d in ds)
+    assert all(isinstance(d["pool_depth"], float) for d in ds) and max(d["pool_depth"] for d in ds) > 10
+
+
 if __name__ == "__main__":
     tests = [(n, f) for n, f in list(globals().items()) if n.startswith("test_") and callable(f)]
     failed = 0

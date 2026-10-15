@@ -811,7 +811,14 @@
 },
 "flags": [],
 "sources": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/ https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance https://gol.gg/teams/team-stats/2813/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/ https://gol.gg/teams/team-stats/2813/split-ALL/tournament-MSI%202026/ https://rdy.gg/en/lol/tournaments/117322 https://dotesports.com/league-of-legends/news/team-liquid-lcs-2026-summer-champions https://www.gosugamers.net/lol/news/78715-t1-sweep-team-liquid-to-qualify-for-the-lol-msi-2026-bracket-stage",
-"dossier": "worlds2026/research/teams/TLAW.md"
+"dossier": "worlds2026/research/teams/TLAW.md",
+"report": {
+"who": "LCS Summer champions (3-1 over LYON, 04/10/2026), NA seed 1 straight into the Swiss Stage (Pool 1); 6-6 and out in the Play-In at MSI 2026; missed Worlds 2025.",
+"wins_by": "through Josedeodo-led jungle tempo (+728 GD@15), a reliable carry top (Morgan) and CoreJJ engage; can play zone-control or fast skirmish. Converts leads (100% WR when ahead @15, baron 77%)",
+"loses_to": "when behind early and with Quid's lane deficits; got out-fought early at MSI (FB 25%, GD@15 -184) and went 0-6 in games vs T1.",
+"draft": "Wide pools (7-9 champions per player in 11 games), no single obvious ban-out. Josedeodo Qiyana 3-0/Lee Sin 2-0; Morgan Camille 3-0; Yeon Ashe/Lucian 2-0; CoreJJ Nautilus 2-0. League-wide top bans in LCS Summer PO: Cassiopeia 37, Nocturne 29. Team-specific ban data UNKNOWN."
+},
+"pool_depth": 14.6
 },
 {
 "code": "LYON",
@@ -1627,7 +1634,14 @@
 "Inspired (JNG) played only 25 of the team's recent split (of 113 games this year)."
 ],
 "sources": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/ https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance https://gol.gg/teams/team-stats/2954/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/ https://gol.gg/teams/team-stats/2954/split-ALL/tournament-MSI%202026/ https://rdy.gg/en/lol/tournaments/117322 https://en.wikipedia.org/wiki/2026_First_Stand_Tournament https://www.gosugamers.net/lol/news/78769-lyon-sweep-g2-3-0-to-secure-first-lcs-top-three-international-finish-since-2019",
-"dossier": "worlds2026/research/teams/LYON.md"
+"dossier": "worlds2026/research/teams/LYON.md",
+"report": {
+"who": "Lock-In and Spring champions, Summer runner-up (1-3 vs TLAW), MSI 2026 3rd place, First Stand and EWC group exits; NA seed 2 directly in Swiss (Pool 3).",
+"wins_by": "with Saint/Berserker damage, Inspired jungle tempo and early first blood/tower (62.5% each); rolled FURIA, TSW and G2 3-0 at MSI",
+"loses_to": "via weak top lane (Dhokla KDA 1.9, -206 GD@15) and poor objective control in series they lose (dragon 41%, herald 44%, baron 41%); 0-5 in series vs LCK/LPL sides in 2026.",
+"draft": "Very wide one-off picks in a small sample: Saint Syndra/TF/Ryze/Locke/Viktor; Berserker Kalista/Yunara/Jayce/Sivir; Inspired Wukong/Skarner/Xin Zhao/Lee Sin; Isles Renata Glasc 2-0. Team-specific ban/first-pick data UNKNOWN."
+},
+"pool_depth": 16.6
 },
 {
 "code": "C9",
@@ -2441,7 +2455,14 @@
 },
 "flags": [],
 "sources": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/ https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance https://gol.gg/teams/team-stats/2812/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/ https://rdy.gg/en/lol/tournaments/117322 https://accountshark.net/blog/lol-worlds-2026-play-in-preview-c9-kc-furia-mvk-schedule-ct-times https://www.sheepesports.com/us/articles/furia-defeat-cloud9-to-win-the-inaugural-americas-cup/en https://esports.gg/news/league-of-legends/furia-win-2026-americas-cup/",
-"dossier": "worlds2026/research/teams/C9.md"
+"dossier": "worlds2026/research/teams/C9.md",
+"report": {
+"who": "NA seed 3 in the Play-In (vs Karmine Corp 15/10); Americas Cup and Lock-In runner-up, 3rd in Spring and Summer; first Worlds since 2023.",
+"wins_by": "via Vulcan/Blaber-led playmaking (KP 81.7%/74.4%), dragon and herald control (56%/60%), Tactical and Loki damage",
+"loses_to": "early lanes and XP (Blaber -496 XPD@15, Thanatos -191 GD@15), first tower only 40%, and fades in long bracket runs (back-to-back 1-3 losses); 0-2 vs FURIA in the Americas Cup.",
+"draft": "Thanatos K'Sante/Camille/Olaf; Blaber Nocturne 2-0 (Nocturne 29 bans league-wide), Naafiri; Loki Syndra/Orianna; Tactical Ezreal 3-0; Vulcan Karma 2-0, Seraphine, Lulu. Pool counts are lower bounds from an 11-game sample. Team ban data UNKNOWN."
+},
+"pool_depth": 14.2
 },
 {
 "code": "LOS",
@@ -3255,7 +3276,14 @@
 },
 "flags": [],
 "sources": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/ https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance https://gol.gg/teams/team-stats/2895/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/ https://rdy.gg/en/lol/tournaments/117170 https://maisesports.com.br/cblol-2026-los-vence-a-furia-por-3-a-2-e-e-campea-do-2-split https://olhardigital.com.br/2026/10/11/games-e-consoles/cblol-2026-los-vence-furia-por-3-a-2-e-conquista-o-2-split https://www.sheepesports.com/articles/sources-los-grandes-will-return-to-cblol-in-2026/en",
-"dossier": "worlds2026/research/teams/LOS.md"
+"dossier": "worlds2026/research/teams/LOS.md",
+"report": {
+"who": "CBLOL Split 2 champions (3-2 over FURIA, 10/10/2026), Brazil seed 1 directly in Swiss (Pool 2); four Worlds debutants; EWC 9th-12th as MIBR.LOS.",
+"wins_by": "via lane dominance (CSD@15 +17.8, GD@15 +846; Zest +13.4 CSD@15), a highly efficient Feisty (Orianna/Ryze/Galio unbeaten) and Ackerman playmaking; converts leads (88.9% WR when ahead @15, first tower 71%, baron 65%)",
+"loses_to": "when herald/first-blood are conceded (herald 23%, FB 36%) and drafts are close: two 5-game series in Split 2 PO, beaten 1-3 by FURIA in Split 1 final.",
+"draft": "Wide pools: Zest Rumble/Jayce/Varus/Ambessa; Feisty Orianna 3-0, Ryze 2-0, Galio 2-0; Duduhh 12 champions (Ashe, Sivir, Taliyah, Kai'Sa, Corki, Jinx); Ackerman Seraphine 2-0, Alistar 2-0, Karma; Curse Wukong/Vi/Jarvan IV. League-wide bans in CBLOL Split 2 PO: Cassiopeia 30, Nocturne 24, Jarvan IV 21. Team ban data UNKNOWN."
+},
+"pool_depth": 14.8
 },
 {
 "code": "FURIA",
@@ -4069,7 +4097,14 @@
 },
 "flags": [],
 "sources": "https://insider-gaming.com/league-of-legends-worlds-2026-teams-play-in-draw-pools/ https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.gosugamers.net/lol/news/79319-league-of-legends-worlds-2026-debutants-23-players-making-their-first-worlds-appearance https://gol.gg/teams/team-stats/2889/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/ https://gol.gg/teams/team-stats/2889/split-ALL/tournament-MSI%202026/ https://rdy.gg/en/lol/tournaments/117170 https://rft.gg/news/furia-win-cblol-2026-split-1-to-lock-in-msi-and-ewc https://www.sheepesports.com/us/articles/furia-defeat-cloud9-to-win-the-inaugural-americas-cup/en",
-"dossier": "worlds2026/research/teams/FURIA.md"
+"dossier": "worlds2026/research/teams/FURIA.md",
+"report": {
+"who": "Americas Cup and CBLOL Split 1 champions, Split 2 runner-up (2-3 vs LOS); Brazil seed 2 in the Play-In vs MVK (15/10); 0-2 in series at both MSI and EWC.",
+"wins_by": "through early skirmishes (FB 60%, 14.4 kills vs 9.9 deaths per game), herald control 70%, Tatu/JoJo high-KP enabling and Ayu damage (28%); unbeaten in the Americas Cup",
+"loses_to": "lane phase (CSD@15 -10.1; -41 at MSI), baron control vs elite teams (20% at MSI) and collapsed 0-6 in games at MSI (0-3 LYON, 0-3 T1), then lost 0-1 G2 and 0-2 Dplus KIA at EWC.",
+"draft": "Wide pools: Guigo Ambessa/Olaf/Gwen/Ornn/Sion; Tatu Xin Zhao 2-0, Trundle, Sejuani, Nasus; Tutsz Ryze/TF/Viktor; Ayu Ezreal/Kalista (3 each), Yunara, Ashe; JoJo Karma/Seraphine/Renata. League-wide bans in CBLOL Split 2 PO: Cassiopeia 30, Nocturne 24, Jarvan IV 21. Team ban data UNKNOWN."
+},
+"pool_depth": 14.4
 },
 {
 "code": "GEN",
@@ -4883,7 +4918,14 @@
 },
 "flags": [],
 "sources": "https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports https://dotesports.com/league-of-legends/news/geng-beat-hle-lck-2026 https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/ https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/ https://www.gosugamers.net/entertainment/news/79110-gen-g-are-the-first-lck-2026-grand-finals-spot-and-worlds-2026-seeding https://en.wikipedia.org/wiki/2026_LCK_season https://en.wikipedia.org/wiki/2026_First_Stand_Tournament https://www.invenglobal.com/articles/22799/hanwha-life-esports-makes-historic-first-msi-appearance-t1-extends-record-to-5-consecutive-years",
-"dossier": "worlds2026/research/teams/GEN.md"
+"dossier": "worlds2026/research/teams/GEN.md",
+"report": {
+"who": "LCK 2026 champions (3-1 over HLE, Ruler Finals MVP) and Korea's 1st seed; swept 0-3 by G2 at First Stand and missed MSI after losing 2-3 to T1, so the international record is the open question.",
+"wins_by": "by controlling dragons (61.7%) and Nashor (74.2%) with +506 GD@15 and 85.7% WR when ahead, then closing fast through Ruler (31.7% dmg) and a high-KP Duro/Canyon",
+"loses_to": "to scrappy international drafts (0-3 G2, 1-2 DK) and to late Baron fights (HLE G1s).",
+"draft": "Own bans Camille 55%, Vi/Cassiopeia/Jarvan IV 36%. Opponents ban Olaf 73%, Cassiopeia 64%, Ezreal 55%, K'Sante 36%. Comfort: Kiin Varus/Gwen, Ruler Ashe/Zeri, Duro Seraphine/Yuumi, Chovy Lissandra/Anivia. First-pick/flex data UNKNOWN."
+},
+"pool_depth": 16.0
 },
 {
 "code": "HLE",
@@ -5697,7 +5739,14 @@
 },
 "flags": [],
 "sources": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en https://www.gosugamers.net/lol/news/79163-gen-g-are-the-2026-lck-season-champions-after-defeating-hanwha-life-esports https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/ https://gol.gg/teams/team-stats/2804/split-ALL/tournament-LCK%202026%20Season%20Playoffs/ https://gol.gg/teams/team-stats/2805/split-ALL/tournament-LCK%202026%20Season%20Playoffs/ https://gol.gg/teams/team-stats/2809/split-ALL/tournament-LCK%202026%20Season%20Playoffs/ https://gol.gg/teams/team-stats/2802/split-ALL/tournament-LCK%202026%20Season%20Playoffs/",
-"dossier": "worlds2026/research/teams/HLE.md"
+"dossier": "worlds2026/research/teams/HLE.md",
+"report": {
+"who": "MSI 2026 champions (3-2 over BLG, Zeus Finals MVP) who qualified via that title, then finished LCK runner-up (1-3 to Gen.G twice) with Zeus, Gumayusi and Zeka's big-stage pedigree.",
+"wins_by": "with early aggression (76.5% first blood) and Baron fights (Kanavi's G5 Baron steal at MSI), carried by Zeka and Gumayusi",
+"loses_to": "when early leads do not convert (62.5% WR when ahead @15) and to Gen.G's scaling/fighting; top lane (Zeus) is the weakest stat line.",
+"draft": "Bans Cassiopeia 59%, Olaf 47%, Bard 47%, Ezreal/Nocturne 35%. Opponents ban Camille 53%, Vi 53%, Cassiopeia/Lee Sin 29%. Comfort: Zeus Camille/Ambessa, Gumayusi Caitlyn/Varus, Zeka Akali (Ahri 0-2). First-pick/flex data UNKNOWN."
+},
+"pool_depth": 17.0
 },
 {
 "code": "T1",
@@ -6511,7 +6560,14 @@
 },
 "flags": [],
 "sources": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en https://www.gosugamers.net/lol/news/79150-to-become-make-it-to-the-2026-lck-season-grand-finals https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/ https://gol.gg/teams/team-stats/2809/split-ALL/tournament-LCK%202026%20Season%20Playoffs/ https://www.gosugamers.net/lol/news/79111-t1-dk https://en.wikipedia.org/wiki/2026_LCK_season https://www.sheepesports.com/en/lol/events/2026-mid-invitational/matches https://www.invenglobal.com/articles/22799/hanwha-life-esports-makes-historic-first-msi-appearance-t1-extends-record-to-5-consecutive-years",
-"dossier": "worlds2026/research/teams/T1.md"
+"dossier": "worlds2026/research/teams/T1.md",
+"report": {
+"who": "Three-time defending champions in a down domestic year: 3rd in the LCK (9-9 in playoffs), 5th-6th at MSI, 4th at EWC, with Peyz replacing Gumayusi.",
+"wins_by": "Peyz is the hyper-carry (+401 GD@15, 30.3% dmg) with Keria enabling and Doran's 9 solo kills; wins long scrappy fights. Falls behind early (GD@15 -468, FT 44.4%) and",
+"loses_to": "Baron/dragon control (37.3%/42.2%); blew a 2-0 lead to HLE.",
+"draft": "Bans Orianna 44%, Syndra 39%, Cassiopeia/Karma/Camille/Vi 33%. Opponents ban Bard 78%, Nocturne 61%, Cassiopeia 33%, Kalista 28%. Comfort: Peyz Kalista, Keria Renata Glasc/Karma, Faker Anivia/Locke/Ryze, Doran Jayce. First-pick/flex data UNKNOWN."
+},
+"pool_depth": 17.6
 },
 {
 "code": "DK",
@@ -7325,7 +7381,14 @@
 },
 "flags": [],
 "sources": "https://www.sheepesports.com/us/articles/all-lck-teams-qualified-for-worlds-2026/en https://www.gosugamers.net/lol/news/79107-dplus-join-hanwha-life-esports-gen-g-and-t1-to-represent-the-lck-at-worlds-2026 https://gol.gg/tournament/tournament-matchlist/LCK%202026%20Season%20Playoffs/ https://gol.gg/teams/team-stats/2802/split-ALL/tournament-LCK%202026%20Season%20Playoffs/ https://www.gosugamers.net/lol/news/79111-t1-dk https://en.wikipedia.org/wiki/2026_LCK_season https://en.wikipedia.org/wiki/2026_First_Stand_Tournament https://esports.gg/news/league-of-legends/ewc-2026-lol-results/",
-"dossier": "worlds2026/research/teams/DK.md"
+"dossier": "worlds2026/research/teams/DK.md",
+"report": {
+"who": "EWC 2026 champions (BLG 2-1, Gen.G 2-1, KC 3-0) who needed a lower-bracket run for the final Korean seed; youngest LCK roster, ShowMaker the 2020 champion.",
+"wins_by": "lanes/CS (CSD@15 +26.3, +1198 GD@15) with a ShowMaker/Smash carry core and clutch fights/steals; coach blends T1 tempo, Gen.G structure, HLE boldness. Converts leads poorly (46.2% WR when ahead @15, 47.9% baron) and the top lane is isolated (Siwoo 38.2% KP)",
+"loses_to": "UNKNOWN",
+"draft": "Bans Nocturne 100%, Kalista 44%, Cassiopeia 31%, Pantheon/Bard 25%. Opponents ban Vi 56%, Orianna 44%, Cassiopeia 44%, Syndra 31%. Comfort: ShowMaker Annie/Orianna/Taliyah, Smash Ashe/Lucian/Jhin, Lucid Vi/Naafiri, Career Lulu. First-pick/flex data UNKNOWN."
+},
+"pool_depth": 17.0
 },
 {
 "code": "TSW",
@@ -8146,7 +8209,14 @@
 "Roster note: none found"
 ],
 "sources": "https://en.wikipedia.org/wiki/2026_LCP_season https://www.sheepesports.com/de/cs/events/lcp-2026-split-3 https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277 https://www.gosugamers.net/lol/news/79078-team-secret-whales-defeat-ctbc-flying-oyster-to-become-2026-lcp-split-3-champions https://www.strafe.com/news/read/all-lcp-teams-at-worlds-2026-and-how-they-qualified/ https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en https://mid.gg/esports/worlds-2026 https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
-"dossier": "worlds2026/research/teams/TSW.md"
+"dossier": "worlds2026/research/teams/TSW.md",
+"report": {
+"who": "Vietnamese LCP three-peat champions (one game dropped across three grand finals) but only 1-6 in 2026 international series (First Stand 0-2, MSI 5th-6th, EWC 13th-16th); enter Swiss directly.",
+"wins_by": "Early-game aggression with Hizto as playmaker; very strong first-tower/baron conversion domestically",
+"loses_to": "to disciplined international teams (0-3 vs G2, BNK, HLE, LYON); wave-management and young-player mistakes cited; was beaten 2-3 by CFO in Split 3 seeding.",
+"draft": "Past-12-month most played (rdy.gg): Vi, Ryze, Kai'Sa, Yunara, Nautilus, Xin Zhao, Jarvan IV, Aurora. Hizto: Vi 91.7% WR, Qiyana 83.3%, Olaf. Blind/ban data UNKNOWN."
+},
+"pool_depth": 16.0
 },
 {
 "code": "CFO",
@@ -8962,7 +9032,14 @@
 "Roster note: none found (in-season: 04/05/2026 Pungyeon -> POUT mid, 2274 -> Kino support)"
 ],
 "sources": "https://en.wikipedia.org/wiki/2026_LCP_season https://www.sheepesports.com/de/cs/events/lcp-2026-split-3 https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277 https://www.gosugamers.net/lol/news/79078-team-secret-whales-defeat-ctbc-flying-oyster-to-become-2026-lcp-split-3-champions https://www.strafe.com/news/read/all-lcp-teams-at-worlds-2026-and-how-they-qualified/ https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en https://mid.gg/esports/worlds-2026 https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026",
-"dossier": "worlds2026/research/teams/CFO.md"
+"dossier": "worlds2026/research/teams/CFO.md",
+"report": {
+"who": "Taiwanese LCP runner-up (Split 3, 0-3 to TSW) that rebuilt mid and support in May; second straight Worlds (QF in 2025); no 2026 international matches yet; enter Swiss directly.",
+"wins_by": "Solid skirmishing; weaker neutral-objective setups and inconsistent mid-jungle communication (media, subjective). Wins tight Bo5s vs MVK; swept 0-3 by TSW three times in Split 3 (Swiss, semi, final) but took a 3-2 in seeding",
+"loses_to": "UNKNOWN",
+"draft": "UNKNOWN"
+},
+"pool_depth": 14.0
 },
 {
 "code": "MVK",
@@ -9778,7 +9855,14 @@
 "Roster note: none found"
 ],
 "sources": "https://en.wikipedia.org/wiki/2026_LCP_season https://www.sheepesports.com/de/cs/events/lcp-2026-split-3 https://fptshop.com.vn/tin-tuc/for-gamers/lcp-split-3-210277 https://www.sheepesports.com/us/articles/everything-to-know-about-the-new-worlds-2026-play-ins-stage/en https://mid.gg/esports/worlds-2026 https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://esports.ru/tournaments/esports-world-cup-asia-pacific-qualifier-2026/ https://www.sheepesports.com/en/lol/teams/MVK%20Esports",
-"dossier": "worlds2026/research/teams/MVK.md"
+"dossier": "worlds2026/research/teams/MVK.md",
+"report": {
+"who": "Young all-Vietnamese LCP third seed (76 Championship Points) starting in the Play-In vs FURIA (Bo5, 15/10 23:00 UTC), with C9 and KC in the bracket; no 2026 international matches yet.",
+"wins_by": "Volatile map movement and scrappy Bo5s (3-2 wins over CFO in Split 2, DCG and GAM in Split 3); lacks macro discipline against structured early-game teams (media, subjective). Weak top lane KDA (1.88). Lost 0-3 and 1-3 to CFO and 0-3 to TSW in key series",
+"loses_to": "UNKNOWN",
+"draft": "UNKNOWN"
+},
+"pool_depth": 14.8
 },
 {
 "code": "G2",
@@ -10594,7 +10678,14 @@
 "Roster note: none to the five players; coaching change (Perkz head coach) happened before the Summer split final (10/07/2026), no change since 20/09/2026 found"
 ],
 "sources": "https://gol.gg/teams/team-stats/2897/split-ALL/tournament-ALL/ https://gol.gg/players/player-stats/802/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/2026%20First%20Stand/ https://gol.gg/tournament/tournament-matchlist/MSI%202026/ https://gol.gg/tournament/tournament-matchlist/Esports%20World%20Cup%202026/",
-"dossier": "worlds2026/research/teams/G2.md"
+"dossier": "worlds2026/research/teams/G2.md",
+"report": {
+"who": "LEC champion in all three 2026 splits (Versus, Spring, Summer; 20th LEC trophy, 3-0 over MKOI in Nice 20/09/2026) and direct Swiss Stage entry as LEC seed 1, but 2026 international form is split: First Stand finalist (1-3 vs BLG), MSI 4th (0-3 to LYON), EWC group-stage exit.",
+"wins_by": "early lead into objective conversion. In LEC playoffs G2 averaged GD@15 +1490, 70% first tower, 81% baron and 62% dragon control, with Caps (GD@15 +501, 15 solo kills) and the bot lane (Hans Sama +348) driving leads. Summer playoffs: 9-1, GD@15 +856, first tower 90%, baron 87%",
+"loses_to": "when behind early against top international teams. Internationally G2 averaged GD@15 -615, first tower 37%, herald 42%, baron 48%; WR when ahead @15 is still ~78% so deficits are the problem. Red side is a stark weakness internationally (4-14, 22%) vs blue 13-4 (76%); in LEC playoffs the gap is small (blue 22-6, red 6-2). Top, bot and support all had negative GD@15 and XPD@15 internationally (BrokenBlade -285, Hans Sama -180, Labrov -75).",
+"draft": "Picks and bans from gol.gg 2026 samples. Comfort picks (domestic playoffs): Orianna (Caps 5-0), Yunara and Ashe (Hans Sama 6-2, 5-0), Lulu and Bard (Labrov 5-1, 4-1), Xin Zhao/Skarner/Jarvan IV (SkewMond 4-2, 4-1, 3-1), Rumble/Kled/K'Sante (BrokenBlade 4-0, 4-0, 3-1). Internationally pool gets thinner in results: Aurora/Syndra/Ahri (Caps 2-2, 2-2, 1-3), Yunara 2-3, Nautilus 1-4, Lulu 2-3, K'Sante 2-3. Opponents ban Orianna (20% intl, 14% dom), Varus, Pantheon, Poppy, Bard (32% intl) against G2. G2's own bans lean to Orianna (58% intl), Jayce, Ryze, Akali, Varus. Flex: Caps plays Orianna/Taliyah/Ryze/Aurora/Syndra/Ahri/LeBlanc/Akali (pool 16-17), SkewMond pool 15-17. Explicit first-pick priority UNKNOWN (gol.gg draft order not scraped)."
+},
+"pool_depth": 16.4
 },
 {
 "code": "MKOI",
@@ -11410,7 +11501,14 @@
 "Roster note: none found since 20/09/2026. Note Myrwn, Supa and Jojopyun contracts expire end of 2026 and renewals were unresolved on 21/09/2026 (Sheep); Elyoya signed to 2028, Alvaro to at least 2027"
 ],
 "sources": "https://gol.gg/teams/team-stats/2900/split-ALL/tournament-ALL/ https://gol.gg/players/player-stats/2719/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/Esports%20World%20Cup%202026/ https://gol.gg/tournament/tournament-matchlist/EWC%202026%20Online%20Qualifier%20-%20EMEA/ https://gol.gg/tournament/tournament-ranking/LEC%202026%20Summer%20Playoffs/",
-"dossier": "worlds2026/research/teams/MKOI.md"
+"dossier": "worlds2026/research/teams/MKOI.md",
+"report": {
+"who": "Summer Split runner-up (0-3 vs G2 in Nice) after coming through the lower bracket as the lowest playoff seed (beat VIT 3-2, NAVI 3-1, KC 3-0); LEC seed 2 with direct Swiss Stage entry, but no 2026 international win (EWC groups 0-2 in series) and MSI/First Stand not attended.",
+"wins_by": "draws on late-game and objective control rather than early leads. In 2026 playoffs (38 games) MKOI averaged GD@15 -250, first blood 39%, but baron 53% (70% in Summer playoffs) and first tower 58%; avg game 33.3 min. Elyoya (KP 75%) and Alvaro (KP 78%) are the shot-callers; Supa carries 29% of damage with 26% gold share",
+"loses_to": "red side (3-12, 20% in LEC playoffs vs blue 17-6, 74%), early top-lane deficits (Myrwn GD@15 -336, CSD@15 -3.5) and slow herald/dragon starts (herald 40%, dragon 49%). Against G2 in the final the team was swept; only 4 international games in 2026 so international sample is tiny.",
+"draft": "Sample: 38 LEC playoff games. Comfort picks: Caitlyn (Supa 5-2) and Ezreal (3-2), Lee Sin/Pantheon (Elyoya 3-2, 3-1), Anivia (Jojopyun 3-1), Neeko/Rakan (Alvaro 3-3, 3-2), Renekton (Myrwn 3-1); Ornn and K'Sante 2-2 each. Broad pools (Myrwn 18, Elyoya 18 champions). Opponents ban Nocturne (39%), Vi (32%), Cassiopeia and Rumble (26% each) against MKOI. MKOI's own bans: Olaf, Dr. Mundo, Jarvan IV, Nocturne. Flex: Jojopyun Ahri/Ryze/Anivia mid. First-pick priority UNKNOWN. Tiny EWC sample (4 games): Vayne (75% ban rate by MKOI)."
+},
+"pool_depth": 13.8
 },
 {
 "code": "KC",
@@ -12226,7 +12324,14 @@
 "Roster note: none found since 19/09/2026 (Yike said the team would review VODs, bootcamp and align on the meta; no roster move reported)"
 ],
 "sources": "https://gol.gg/teams/team-stats/2899/split-ALL/tournament-ALL/ https://gol.gg/players/player-stats/4900/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Summer%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Spring%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/LEC%202026%20Versus%20Playoffs/ https://gol.gg/tournament/tournament-matchlist/MSI%202026/ https://gol.gg/tournament/tournament-matchlist/Esports%20World%20Cup%202026/ https://gol.gg/tournament/tournament-matchlist/EWC%202026%20Online%20Qualifier%20-%20EMEA/",
-"dossier": "worlds2026/research/teams/KC.md"
+"dossier": "worlds2026/research/teams/KC.md",
+"report": {
+"who": "Two-time LEC finalist (Versus, Spring) and EWC 2026 runner-up (0-3 vs Dplus KIA), regular-season 9-0 in Summer, but finished 3rd in Summer playoffs (1-3 G2, 0-3 MKOI), so LEC seed 3 starts in the Play-In (vs Cloud9, bo5); first Worlds in org history.",
+"wins_by": "by getting early advantages and converting through the side lanes: domestic playoffs first blood 64%, GD@15 +238, WR when ahead @15 ~77%; Canna (Rumble 8-2) and Yike (Vi 8-3) are the engines; Busio/Seraphine-Rakan 12-3 combined",
+"loses_to": "neutral objectives and mid/late game: baron 53% domestic and just 26% internationally (25% at EWC, 28% at MSI), 4-7 in the latest playoffs; red side internationally 3-7 (30%). Caliste's Ezreal is 4-9 over 2026 playoff and international games (Ezreal 2-5 dom, 2-4 intl). Internationally GD@15 only +80 and bot lane negative (Caliste -239).",
+"draft": "Sample: 50 LEC playoff games, 23 international games. Comfort: Rumble (Canna 8-2 dom, 4-2 intl), Gnar (3-2/3-2), Vi (Yike 8-3 dom), Ryze/Ahri (Kyeahoo 5-2, 4-1 dom), Ashe (Caliste 5-2), Seraphine/Rakan (Busio 6-2, 6-1). Internationally pool shifts: Yike Naafiri/Wukong/Qiyana, Kyeahoo Orianna/Cassiopeia/Anivia (2-2 each), Busio Camille 0-4. Opponents ban Varus (30%), Rumble (22%), Yunara, Nocturne against KC domestically and Poppy 52%, Vi 48%, Jayce 48% internationally. KC bans Pantheon, Nautilus (28% each), Nocturne, Vi domestically; Nocturne 43% internationally. First-pick priorities UNKNOWN."
+},
+"pool_depth": 15.2
 },
 {
 "code": "AL",
@@ -13040,7 +13145,14 @@
 },
 "flags": [],
 "sources": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en https://en.wikipedia.org/wiki/2026_LPL_season https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs https://mid.gg/esports/teams/bilibili-gaming https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
-"dossier": "worlds2026/research/teams/AL.md"
+"dossier": "worlds2026/research/teams/AL.md",
+"report": {
+"who": "LPL Split 3 champions (3-1 over BLG) and seed 1, but no First Stand/MSI in 2026 and a 0-2 EWC quarterfinal exit; had lost six straight series to BLG before the final.",
+"wins_by": "Jungle-led early tempo and engage synergy (Tarzan/Kael) snowball games to ~30-31 min wins; Hope is damage carry",
+"loses_to": "when BLG-style macro denies early snowball (0-3 UBF; six series losses to BLG before the final) or when KC controlled mid-game at EWC (0-2).",
+"draft": "Limited data. Tarzan on Naafiri/Jarvan/Skarner/Qiyana/Cho'Gath; Hope Varus/Ziggs/Jhin/Miss Fortune; Shanks Cassiopeia/Ryze/Galio; Breathe Gnar/Ambessa/K'Sante. First-pick priorities and target bans UNKNOWN."
+},
+"pool_depth": 16.0
 },
 {
 "code": "BLG",
@@ -13857,7 +13969,14 @@
 "Roster note: none found (top lane: Flandre signed from AL 08-09/08/2026; Bin stepped away at start of Split 3, Wenbo promoted)"
 ],
 "sources": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en https://en.wikipedia.org/wiki/2026_LPL_season https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs https://mid.gg/esports/teams/bilibili-gaming https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
-"dossier": "worlds2026/research/teams/BLG.md"
+"dossier": "worlds2026/research/teams/BLG.md",
+"report": {
+"who": "First Stand, Split 1 and Split 2 champions and MSI runners-up (2-3 vs HLE), but lost the Split 3 final 1-3 to AL, exited EWC in the QF, and has an unsettled top lane (Bin/Flandre/Wenbo).",
+"wins_by": "via top-lane lane dominance (Bin +340 to +490 gold at 15 internationally), Knight control, Xun tempo and global-pressure comps",
+"loses_to": "long series to disciplined opponents (MSI final 2-3 after 2-1 lead, EWC QF 1-2, Split 3 final 1-3); Viper negative at 15 at MSI.",
+"draft": "Bin Renekton/Gnar/K'Sante/Yorick/Sion; Knight Ryze/Aurora/Viktor/Syndra; Viper Ezreal/Ashe/Mel/Yunara; Pantheon and Galio used for global pressure at First Stand. First-pick priorities and bans UNKNOWN."
+},
+"pool_depth": 16.2
 },
 {
 "code": "TES",
@@ -14643,7 +14762,14 @@
 "Roster note: ZUIAN unable to travel (2 US visa denials, announced 06/10/2026); 369 returning as Worlds starter"
 ],
 "sources": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en https://en.wikipedia.org/wiki/2026_LPL_season https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs https://mid.gg/esports/teams/bilibili-gaming https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
-"dossier": "worlds2026/research/teams/TES.md"
+"dossier": "worlds2026/research/teams/TES.md",
+"report": {
+"who": "Split 2 runners-up and Worlds 2025 semifinalists who qualified via Regional Finals (3-1 over IG) after a tie for 7th in Split 3; 369 replaces visa-blocked ZUIAN and coach visas are uncertain.",
+"wins_by": "Skill-heavy mid/bot (Creme, JackeyLove top DPM) with Tian's aggressive jungle (Pantheon 8/1/11 vs IG)",
+"loses_to": "to disciplined macro teams (0-3 final vs BLG, 0-2 regular season) and close series (2-3 vs LGD, IG, G2); weak MSI (3-6 games).",
+"draft": "Creme Ahri/Orianna/Syndra/Hwei/Aurora; JackeyLove Ezreal/Jhin/Lucian; Tian Lee Sin/Jarvan/Pantheon/Wukong; 369 historically Gnar/Rumble/Gangplank. First-pick/bans UNKNOWN."
+},
+"pool_depth": 15.8
 },
 {
 "code": "IG",
@@ -15457,6 +15583,13 @@
 },
 "flags": [],
 "sources": "https://www.gosugamers.net/lol/news/79314-all-teams-and-players-qualified-for-the-league-of-legends-world-championship-2026 https://www.sheepesports.com/de/articles/worlds-2026-the-lpl-s-road-back-to-the-top/en https://en.wikipedia.org/wiki/2026_LPL_season https://www.sheepesports.com/en/lol/events/lpl-2026-split-1-playoffs/matches https://www.sheepesports.com/de/cs/events/lpl-2026-split-2-playoffs https://mid.gg/esports/teams/bilibili-gaming https://www.sheepesports.com/us/all/events/2026-mid-invitational/matches https://en.wikipedia.org/wiki/2026_First_Stand_Tournament",
-"dossier": "worlds2026/research/teams/IG.md"
+"dossier": "worlds2026/research/teams/IG.md",
+"report": {
+"who": "Seed 4 after a lower-bracket run (Split 3 LBF 2-3 to AL, then 3-1 over JDG in Regional Finals LBF); veterans TheShy, Rookie, Meiko, no 2026 international play and weak Splits 1-2.",
+"wins_by": "Wei-led jungle tempo and veteran mid/support coordination; Baron and Dragon Soul pushes, ~7k gold lead by 25 min in Regional Finals G2",
+"loses_to": "when out-tempo'd early (1-3 vs TES, 2-3 vs AL); Splits 1-2 win rates were 34.9% and 39.5%, so strong form is a one-split sample.",
+"draft": "Rookie Ryze/Aurora/Syndra/Viktor/Orianna; Wei Qiyana/Jarvan/Wukong/Trundle; JiaQi Tristana/Ezreal/Yunara. First-pick/bans UNKNOWN."
+},
+"pool_depth": 15.4
 }
 ]

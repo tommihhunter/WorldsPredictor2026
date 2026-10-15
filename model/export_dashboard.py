@@ -4,6 +4,9 @@ import json, os, re, glob, datetime as dt
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 os.makedirs("data/dash", exist_ok=True)
+import sys as _sys, math as _math
+_sys.path.insert(0, os.path.join(ROOT, "model"))
+import ratings_v4 as _R, golgg_games as _GG, pools as _PL  # noqa: E402
 J = lambda p: json.load(open(p))
 teams = {t["code"]: t for t in J("data/teams.json")}
 rat = J("data/ratings.json")
@@ -139,6 +142,11 @@ for code, t in teams.items():
         flags=player_flags(code) + ([f"Roster note: {t.get('roster_change_since_final')}"] if t.get("roster_change_since_final") and t.get("roster_change_since_final") != "none" else []),
         sources=" ".join(s["url"] for s in t.get("sources", [])[:8]),
         dossier=f"worlds2026/research/teams/{code}.md"))
+_depths = _PL.depths(_GG.load_games())
+for _d in rows:
+    _d["report"] = dict(who=_d.get("headline") or "UNKNOWN", wins_by=_d.get("strengths") or "UNKNOWN",
+                        loses_to=_d.get("weaknesses") or "UNKNOWN", draft=_d.get("draft") or "UNKNOWN")
+    _d["pool_depth"] = float(_depths.get(_d["code"], 0.0))
 w("dossiers", rows)
 
 # champion patch state (26.18-26.20) for chip flags
@@ -352,3 +360,41 @@ w("regions", [dict(region=g, elo=v["elo"], rating=v["rating"], sd=v["sd"]) for g
 if not os.path.exists("data/results_live.json"):
     json.dump([], open("data/results_live.json", "w"))
 w("results", J("data/results_live.json"))
+
+# ---- head to head (2026 series between Worlds teams, plus 2025 internationals) ----
+WORLDS = [r["code"] for r in rat["teams"]]
+tm = J("data/team_map.json"); name2code = {n: v["code"] for n, v in tm.items()}
+alias25 = {"Gen.G eSports": "GEN", "Gen.G Esports": "GEN", "Hanwha Life eSports": "HLE", "Anyone's Legend": "AL", "Team Liquid Honda": "TLAW", "FURIA Esports": "FURIA"}
+def _code(n): return name2code.get(n) or alias25.get(n)
+def _year(d): return int(d.split("/")[2])
+h2h = []
+for r in J("data/series_2026.json"):
+    if r["a"] in WORLDS and r["b"] in WORLDS:
+        a, b, sa, sb = (r["a"], r["b"], r["sa"], r["sb"]) if r["a"] < r["b"] else (r["b"], r["a"], r["sb"], r["sa"])
+        h2h.append(dict(a=a, b=b, date=r["date"], tournament=r["tournament"], stage=r["stage"], sa=sa, sb=sb, bo=r["bo"], patch=r.get("patch"), year=_year(r["date"])))
+for r in J("data/golgg_intl_2025.json"):
+    ca, cb = _code(r["team_a"]), _code(r["team_b"])
+    if ca in WORLDS and cb in WORLDS:
+        a, b, sa, sb = (ca, cb, r["score_a"], r["score_b"]) if ca < cb else (cb, ca, r["score_b"], r["score_a"])
+        h2h.append(dict(a=a, b=b, date=r["date"], tournament=r["tournament"], stage=r["stage"], sa=sa, sb=sb, bo=2 * max(sa, sb) - 1, patch=r.get("patch"), year=_year(r["date"])))
+h2h.sort(key=lambda r: (r["date"][6:], r["date"][3:5], r["date"][:2]), reverse=True)
+w("h2h", h2h)
+
+# ---- matchups: every pairing at Bo1 / Bo3 / Bo5 ----
+pg = J("data/matchups.json")["p_game"]
+def _pser(p, bo):
+    # p is the model's marginal single-game probability (shock integrated out); recover the latent logit d by
+    # bisection so the series odds use the same per-series shock mixture as every other series number on the site
+    lo, hi = -8.0, 8.0
+    for _ in range(60):
+        mid = (lo + hi) / 2
+        lo, hi = (mid, hi) if _R.p_game_marginal(mid) < p else (lo, mid)
+    d = (lo + hi) / 2; need = bo // 2 + 1
+    return round(sum(v for k, v in _R.series_probs_mixed(d, bo).items() if int(k.split("-")[0]) == need), 4)
+mu = []
+for i, a in enumerate(sorted(WORLDS)):
+    for b in sorted(WORLDS)[i + 1:]:
+        p = pg[a][b]
+        mu.append(dict(a=a, b=b, p_game=round(p, 4), p_bo3=_pser(p, 3), p_bo5=_pser(p, 5)))
+w("matchups", mu)
+print("h2h", len(h2h), "matchups", len(mu))
