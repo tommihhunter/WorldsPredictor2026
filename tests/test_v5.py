@@ -6,6 +6,7 @@ for _k in ("W_INTL", "PATCH_N", "PATCH_MULT", "POOL_BETA", "MODEL"):
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "model"))
 import ratings_v4 as R  # noqa: E402
+import golgg_games as GG  # noqa: E402
 
 _FIT = {}
 
@@ -45,6 +46,18 @@ def test_w_intl_moves_ratings():
 def test_patch_boost_moves_ratings():
     f = R.fit(R.load_series(), patch_n=2, patch_mult=2.0)
     assert max(abs(full_fit()["s"] - f["s"])) > 1e-3
+
+
+def test_games_have_dates_in_order():
+    G = GG.load_games()
+    assert len(G) > 1000
+    assert len({g["id"] for g in G}) == len(G)
+    assert all(g["side"] in ("B", "R") for g in G)
+    assert len(GG.worlds_teams()) == 19
+    ds = [g["date"] for g in G]
+    assert dt.date(2026, 1, 1) <= min(ds) and max(ds) <= dt.date(2026, 10, 15)
+    inversions = sum(1 for x, y in zip(ds, ds[1:]) if y < x)
+    assert inversions / len(ds) < 0.05, f"game ids are not chronological enough: {inversions} inversions in {len(ds)}"
 
 
 if __name__ == "__main__":
