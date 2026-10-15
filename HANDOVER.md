@@ -35,6 +35,7 @@ python3 model/build_local.py                     # -> dist/worlds2026_predictor.
 python3 model/update_results.py --dry-run        # gol.gg Worlds results -> data/results_live.json
 python3 model/grade.py                           # -> data/grading.json
 python3 model/live.py [--sims 20000]             # live odds -> data/dash/live.json (refit to today, finished Worlds series as fact)
+                                                 # after the Swiss R1 draw, add the 8 pairings to data/results_live.json as phase Swiss, round 1, no winner, so live odds use the real draw
 python3 model/backtest_v5.py                     # v5 candidate test -> data/backtest_v5.json (adopted settings drive MODEL=v5)
 python3 model/scrape_golgg_players.py [--split Summer --out ...]
 python3 model/scrape_golgg_teams.py
