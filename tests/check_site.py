@@ -25,6 +25,37 @@ class Quiet(http.server.SimpleHTTPRequestHandler):
         pass
 
 
+VISIBLE_CARDS = "[...document.querySelectorAll('#teams-grid > a')].filter(c => c.offsetParent !== null)"
+
+
+def check_teams_chips(page, tag, problems):
+    """Teams grid: the LCK chip leaves only LCK cards; Blue side then puts the best blue-side record first."""
+    page.click(".chip[data-region='LCK']")
+    regions = page.evaluate(f"{VISIBLE_CARDS}.map(c => c.dataset.region)")
+    print(f"{tag}: LCK chip shows {regions}")
+    if not regions or set(regions) != {"LCK"}:
+        problems.append(f"{tag}: LCK chip shows {regions}")
+    page.click(".chip[data-sort='blue']")
+    blues = page.evaluate(f"{VISIBLE_CARDS}.map(c => Number(c.dataset.blue))")
+    print(f"{tag}: Blue side order {blues}, hash {page.evaluate('location.hash')}")
+    if not blues or blues[0] != max(blues):
+        problems.append(f"{tag}: Blue side sort puts {blues[:1]} first, max is {max(blues or [0])}")
+    if page.evaluate("location.hash") != "#region=LCK&sort=blue":
+        problems.append(f"{tag}: hash not written: {page.evaluate('location.hash')}")
+
+
+def check_teams_nojs(browser, target, problems):
+    """With JavaScript off every card shows, in rank order."""
+    ctx = browser.new_context(java_script_enabled=False, viewport={"width": 1280, "height": 900})
+    page = ctx.new_page()
+    page.goto(target, wait_until="networkidle")
+    ranks = [int(x) for x in page.locator("#teams-grid > a:visible").evaluate_all("cs => cs.map(c => c.dataset.rank)")]
+    print(f"teams no-JS: ranks {ranks}")
+    if ranks != list(range(1, 20)):
+        problems.append(f"teams no-JS: expected ranks 1 to 19 in order, got {ranks}")
+    ctx.close()
+
+
 def main():
     if not os.path.exists(os.path.join(DIST, "index.html")):
         sys.exit("build the site first: (cd site && npm run build)")
@@ -67,7 +98,11 @@ def main():
                     if w == 390 and page.evaluate("document.documentElement.scrollWidth > innerWidth + 1"):
                         problems.append(f"{tag}: page scrolls sideways")
                     page.screenshot(path=os.path.join(shots, f"{name}-{w}.png"), full_page=True)
+                    if pg == "teams/":
+                        check_teams_chips(page, tag, problems)
                     page.close()
+                if pg == "teams/":
+                    check_teams_nojs(browser, url + pg, problems)
             browser.close()
     finally:
         srv.shutdown()

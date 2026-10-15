@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import TeamCard from '../../components/TeamCard.astro';
+import { dossiers, live, ratings } from '../../lib/data';
+import { url } from '../../lib/url';
+
+const rs = [...ratings()].sort((a, b) => a.rank - b.rank);
+const lv = new Map(live().map((x) => [x.team, x]));
+const ds = new Map(dossiers().map((x) => [x.code, x]));
+const max = Math.max(...rs.map((r) => lv.get(r.code)?.p_champion ?? r.p_champion), 0.0001);
+const REGIONS = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL'];
+const TIERS = ['S', 'A', 'B', 'C'];
+const SORTS: [string, string][] = [['odds', 'Title odds'], ['rating', 'Rating'], ['wr', 'Win rate'], ['gd15', 'GD@15'], ['blue', 'Blue side'], ['pool', 'Pool depth']];
+---
+<Base title="Teams" active="teams">
+  <header>
+    <h1>Teams</h1>
+    <p class="muted">{rs.length} teams. Filter by region or tier, sort by what matters to you. Click a team for the scouting report.</p>
+    <a class="more" href={url('teams/compare/')}>Compare two teams</a>
+  </header>
+  <div class="filters" hidden>
+    <div class="chips" role="group" aria-label="Region"><span class="label">Region</span><button class="chip" type="button" data-region="" aria-pressed="true">All</button>{REGIONS.map((g) => <button class="chip" type="button" data-region={g} aria-pressed="false">{g}</button>)}</div>
+    <div class="chips" role="group" aria-label="Tier"><span class="label">Tier</span><button class="chip" type="button" data-tier="" aria-pressed="true">All</button>{TIERS.map((t) => <button class="chip" type="button" data-tier={t} aria-pressed="false">{t}</button>)}</div>
+    <div class="chips" role="group" aria-label="Sort"><span class="label">Sort</span>{SORTS.map(([k, l]) => <button class="chip" type="button" data-sort={k} aria-pressed="false">{l}</button>)}</div>
+  </div>
+  <div id="teams-grid" class="grid-4">
+    {rs.map((r) => <TeamCard r={r} d={ds.get(r.code)} lv={lv.get(r.code)} max={max} />)}
+  </div>
+  <p id="teams-empty" class="muted" hidden>No team matches those filters.</p>
+<script is:inline src={url('js/teams-grid.js')} defer></script>
+</Base>
+<style>
+  header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
+  .more { color:var(--gold); font-weight:600; font-size:14px; align-self:flex-start; }
+  .filters { display:flex; flex-direction:column; gap:10px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; align-items:center; } .chips .label { width:56px; }
+  .chip { font:inherit; font-size:13px; padding:4px 12px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--fg2); cursor:pointer; }
+  .chip[aria-pressed="true"] { border-color:var(--gold); color:var(--gold); font-weight:600; }
+  .filters[hidden] { display:none; }
+</style>
