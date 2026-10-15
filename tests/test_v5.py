@@ -192,6 +192,33 @@ def test_exports_h2h_matchups_report():
     assert all(isinstance(d["pool_depth"], float) for d in ds) and max(d["pool_depth"] for d in ds) > 10
 
 
+def test_hubs_rematch_and_fallbacks():
+    # Build the site against a temp copy of data/dash (W26_DASH): fabricated Play-In results where KC beat C9
+    # in round 1 and C9 win the final rematch, and no dcgi.json. Nothing in the repo is moved or edited.
+    import re, shutil, subprocess, tempfile
+    tmp = tempfile.mkdtemp()
+    try:
+        dash = os.path.join(tmp, "dash")
+        shutil.copytree(os.path.join(ROOT, "data", "dash"), dash)
+        os.remove(os.path.join(dash, "dcgi.json"))
+        res = [dict(id="PI-R1-A", phase="Play-In", kind="series", stage="Play-In R1", start_nz="16/10/2026 07:00", team_a="KC", team_b="C9", score_a=3, score_b=1, winner="KC"),
+               dict(id="PI-GF", phase="Play-In", kind="series", stage="Play-In final", start_nz="19/10/2026 07:00", team_a="KC", team_b="C9", score_a=2, score_b=3, winner="C9")]
+        json.dump(res, open(os.path.join(dash, "results.json"), "w", encoding="utf-8"))
+        out = os.path.join(tmp, "dist")
+        npm = shutil.which("npm")
+        r = subprocess.run([npm, "run", "build", "--", "--outDir", out], cwd=os.path.join(ROOT, "site"), env={**os.environ, "W26_DASH": dash}, capture_output=True, text=True)
+        assert r.returncode == 0, r.stdout[-800:] + r.stderr[-800:]
+        page = lambda p: open(os.path.join(out, p, "index.html"), encoding="utf-8").read()
+        html = page("play-in")
+        slot = lambda i: re.findall(rf'data-id="{i}".*?</details>', html, re.S)
+        assert slot("PI-R1-A") and all("Result: KC 3-1" in x for x in slot("PI-R1-A"))
+        assert slot("PI-GF") and all("Result: C9 3-2" in x and "KC 3-1" not in x for x in slot("PI-GF"))   # id AND pair, never pair alone
+        assert "Not re-run yet" in page("swiss")
+        assert "Check not run yet." in page("demacia-cup")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 if __name__ == "__main__":
     tests = [(n, f) for n, f in list(globals().items()) if n.startswith("test_") and callable(f)]
     failed = 0

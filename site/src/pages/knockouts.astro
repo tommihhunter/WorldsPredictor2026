@@ -1,0 +1,6 @@
+---
+import Base from '../layouts/Base.astro';
+import EventHub from '../components/EventHub.astro';
+import { STAGES } from '../lib/stage';
+---
+<Base title="Knockouts" active="knockouts"><EventHub stage={STAGES[2]} /></Base>

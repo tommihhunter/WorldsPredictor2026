@@ -43,6 +43,7 @@ const [ver, ...verRest] = (o.model_version ?? 'UNKNOWN').split(':');
       <div class="card tile"><span class="label">Model</span><b>{ver}</b><span class="cap muted">{verRest.join(':').trim() || 'UNKNOWN'}. Ratings as of {lv[0]?.as_of ?? 'UNKNOWN'}.</span></div>
     </div>
   </div>
+<script is:inline src={url('js/clock.js')} defer></script>
 </Base>
 <style>
   header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }

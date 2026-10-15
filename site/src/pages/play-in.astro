@@ -1,0 +1,6 @@
+---
+import Base from '../layouts/Base.astro';
+import EventHub from '../components/EventHub.astro';
+import { STAGES } from '../lib/stage';
+---
+<Base title="Play-In" active="play-in"><EventHub stage={STAGES[0]} /></Base>

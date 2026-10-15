@@ -1,0 +1,82 @@
+---
+// Ported from dashboard/index.html detail + onPaper: one <details> per series, the reasoning in the body.
+import Badge from './Badge.astro';
+import { nz, pct } from '../lib/format';
+import { resultFor, started, toUtc } from '../lib/stage';
+import { dossiers, type Series, type TeamBlock } from '../lib/data';
+const { rows, block, phase } = Astro.props as { rows: Series[]; block: string; phase: string };
+const split = (s: Series) => (s.bo === 5 ? `3-0 ${pct(s.pw30)}, 3-1 ${pct(s.pw31)}, 3-2 ${pct(s.pw32)}` : `2-0 ${pct(s.pw20)}, 2-1 ${pct(s.pw21)}`);
+const ITEMS: [string, keyof Series][] = [['Score call', 'score_note'], ['Exact-score odds', 'exact'], ['Key matchup', 'key_matchup'], ['Draft angle', 'draft_angle'], ['Form and context', 'form_context'], ['What flips it', 'what_flips'], ['Note', 'note']];
+const season = (code: string) => dossiers().find((d) => d.code === code)?.team_season ?? null;
+const f1 = (v: unknown) => (v == null ? 'UNKNOWN' : `${Number(v).toFixed(1)}%`);
+const gd = (v: unknown) => (v == null ? 'UNKNOWN' : `${Number(v) > 0 ? '+' : ''}${Math.round(Number(v))}`);
+// [label, field, format, 1 = higher is better, 0 = no comparison]
+const LINES: [string, keyof TeamBlock, (v: unknown) => string, number][] = [
+  ['Record', 'record', (v) => String(v ?? 'UNKNOWN'), 0], ['Win rate', 'wr', f1, 1], ['Blue side', 'blue_wr', f1, 1], ['Red side', 'red_wr', f1, 1],
+  ['GD@15', 'gd15', gd, 1], ['First blood', 'fb_pct', f1, 1], ['Dragon share', 'drag_share', f1, 1], ['Baron share', 'baron_share', f1, 1],
+  ['Avg game', 'avg_game_min', (v) => (v == null ? 'UNKNOWN' : `${Number(v).toFixed(1)} min`), 0],
+];
+const better = (u: unknown, v: unknown, hi: number) => hi > 0 && u != null && v != null && Number(u) > Number(v);
+---
+{rows.length ? (
+  <div class="list">
+    {rows.map((s) => {
+      const r = resultFor(s);
+      const live = !r && started(s);
+      const A = season(s.team_a), B = season(s.team_b);
+      return (
+        <details id={`s-${block}-${s.id}`} class:list={[{ started: live }]} data-start={toUtc(s)}>
+          <summary>
+            <span class="when cap muted">{nz(s.time_nz, true)} ({s.time_venue || 'venue time TBC'}){live && ' (started)'}</span>
+            <span class="line">
+              <span class="teams"><Badge code={s.team_a} /><span class="muted">v</span><Badge code={s.team_b} /><span class="cap muted">{s.stage}</span></span>
+              <span class="pick"><b>{s.winner}</b> <b class="gold">{pct(s.p_winner)}</b> <span class="pill">{s.tier}</span></span>
+            </span>
+            <span class="cap muted">Score call {s.score} ({pct(s.p_score)}). {split(s)}, upset {pct(s.p_upset)}.</span>
+            {r && <span class="cap result"><span class:list={['pill', r.winner === s.winner ? 'good' : 'bad']}>Result: {r.winner} {Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}{s.actual ? '' : r.winner === s.winner ? ', pick right' : ', pick wrong'}</span></span>}
+          </summary>
+          <div class="body">
+            <dl>
+              {ITEMS.filter(([, f]) => s[f]).map(([label, f]) => <><dt>{label}</dt><dd>{String(s[f])}</dd></>)}
+            </dl>
+            {A && B ? (
+              <div class="paper">
+                <span class="label">On paper (2026 season, gol.gg; descriptive, not used by the model)</span>
+                <div class="scroll">
+                  <table>
+                    <thead><tr><th class="r"><Badge code={s.team_a} /></th><th class="c">2026 season</th><th><Badge code={s.team_b} /></th></tr></thead>
+                    <tbody>
+                      {LINES.map(([label, f, fmt, hi]) => (
+                        <tr><td class:list={['r', { better: better(A[f], B[f], hi) }]}>{fmt(A[f])}</td><td class="c muted">{label}</td><td class:list={[{ better: better(B[f], A[f], hi) }]}>{fmt(B[f])}</td></tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : <p class="cap muted">On-paper comparison not available for this pairing.</p>}
+            <p class="cap muted">Predicted {s.created_nz}. Exact scores list the left team first. Sources (accessed 15/10/2026): {String(s.sources || '').split(' ').filter(Boolean).slice(0, 4).map((u, i) => <>{i ? ', ' : ''}<a href={u} target="_blank" rel="noopener">{u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}</a></>)}</p>
+          </div>
+        </details>
+      );
+    })}
+  </div>
+) : <p class="muted cap">No {phase} series predicted yet.</p>}
+<style>
+  .list { display:flex; flex-direction:column; }
+  details { border-top:1px solid var(--line); }
+  details:first-child { border-top:0; }
+  details.started .when { color:var(--gold); }
+  summary { list-style:none; cursor:pointer; padding:12px 0; display:flex; flex-direction:column; gap:4px; }
+  summary::-webkit-details-marker { display:none; }
+  .line { display:flex; justify-content:space-between; align-items:center; gap:8px 16px; flex-wrap:wrap; }
+  .teams { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .pick { display:flex; align-items:center; gap:8px; }
+  .body { padding:0 0 16px; display:flex; flex-direction:column; gap:12px; }
+  dl { display:grid; grid-template-columns:160px minmax(0,1fr); gap:6px 16px; margin:0; font-size:14px; }
+  dt { color:var(--muted); font-weight:600; } dd { margin:0; color:var(--fg2); }
+  .paper { display:flex; flex-direction:column; gap:6px; }
+  .paper table { max-width:520px; }
+  td.c, th.c { text-align:center; } td.better { color:var(--gold); font-weight:600; }
+  a { color:var(--gold); }
+  @media (max-width: 640px) { dl { grid-template-columns:1fr; gap:2px; } dd { margin-bottom:8px; } }
+</style>

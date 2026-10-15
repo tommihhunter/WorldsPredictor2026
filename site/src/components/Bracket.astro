@@ -1,0 +1,61 @@
+---
+// Ported from dashboard/index.html matchCard + bracket: a round per column, a slot per series.
+import Badge from './Badge.astro';
+import { nz, pct } from '../lib/format';
+import { resultFor, started, toUtc } from '../lib/stage';
+import type { Series } from '../lib/data';
+const { cols, rows, block } = Astro.props as { cols: [string, string[]][]; rows: Series[]; block: string };
+const by = (id: string) => rows.find((s) => s.id === id);
+const split = (s: Series): [string, number | undefined][] => (s.bo === 5 ? [['3-0', s.pw30], ['3-1', s.pw31], ['3-2', s.pw32]] : [['2-0', s.pw20], ['2-1', s.pw21]]);
+---
+<div class="bracket">
+  {cols.map(([label, ids]) => (
+    <div class="round">
+      <span class="label">{label}</span>
+      {ids.map(by).filter((s): s is Series => !!s).map((s) => {
+        const r = resultFor(s);
+        const aWin = s.winner === s.team_a;
+        const score = r ? `${Math.max(Number(r.score_a), Number(r.score_b))}-${Math.min(Number(r.score_a), Number(r.score_b))}` : '';
+        const live = !r && started(s);
+        return (
+          <details class:list={['slot', { started: live }]} data-id={s.id} data-start={toUtc(s)}>
+            <summary>
+              <span class="when">{s.stage.replace(/ \(.*\)$/, '')}{s.time_nz && ` · ${nz(s.time_nz)}`}{live && ' (started)'}</span>
+              <span class="row"><span class:list={[{ lose: !aWin }]}><Badge code={s.team_a} /></span><span class="cap muted">v</span><span class:list={[{ lose: aWin }]}><Badge code={s.team_b} /></span></span>
+              <span class="row cap"><span><b>{s.winner}</b> {pct(s.p_winner)}</span><span class="pill">{s.tier}</span></span>
+              <span class="split cap muted">
+                {split(s).map(([sc, p]) => <span class:list={[{ modal: s.score === sc }]}>{sc} {pct(p)}</span>)}
+                <span>upset {pct(s.p_upset)}</span>
+              </span>
+              {/predicted pairing/.test(s.stage) && <span class="cap muted">Predicted pairing; depends on earlier results.</span>}
+              {r && <span class="row cap result"><b>Result: {r.winner} {score}</b>{!s.actual && <span class:list={['pill', r.winner === s.winner ? 'good' : 'bad']}>{r.winner === s.winner ? 'pick right' : 'pick wrong'}</span>}</span>}
+            </summary>
+            <div class="body cap">
+              {s.score_note && <p>{s.score_note}</p>}
+              <a class="gold" href={`#s-${block}-${s.id}`}>Full detail in the series list</a>
+            </div>
+          </details>
+        );
+      })}
+    </div>
+  ))}
+</div>
+<style>
+  .bracket { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(200px, 1fr); gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px; }
+  .round { display:flex; flex-direction:column; justify-content:center; gap:12px; scroll-snap-align:start; }
+  .round > .label { align-self:flex-start; }
+  .slot { border:1px solid var(--line); border-radius:12px; background:var(--bg); }
+  .slot[open] { border-color:var(--fg2); }
+  .slot.started { border-color:var(--gold); }
+  summary { list-style:none; cursor:pointer; padding:12px; display:flex; flex-direction:column; gap:6px; }
+  summary::-webkit-details-marker { display:none; }
+  .when { font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .row { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+  .row:has(.badge) { justify-content:flex-start; }
+  .lose { opacity:.55; }
+  .split { display:flex; flex-wrap:wrap; gap:2px 10px; }
+  .split .modal { color:var(--fg); font-weight:600; }
+  .body { padding:0 12px 12px; color:var(--fg2); display:flex; flex-direction:column; gap:6px; }
+  .body p { margin:0; }
+  @media (max-width: 640px) { .bracket { grid-auto-columns:minmax(240px, 85%); } }
+</style>

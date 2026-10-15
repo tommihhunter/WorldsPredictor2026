@@ -1,0 +1,32 @@
+---
+// Ported from dashboard/index.html draw (Swiss table), plus the live W-L column.
+import Badge from './Badge.astro';
+import { pct } from '../lib/format';
+import type { swiss } from '../lib/data';
+type Row = ReturnType<typeof swiss>[number];
+const { rows, records } = Astro.props as { rows: Row[]; records: Map<string, string> };
+const ORDER = ['3-0', '3-1', '3-2', '2-3', '1-3', '0-3'];
+const KEYS = ['p30', 'p31', 'p32', 'p23', 'p13', 'p03'] as const;
+const list = [...rows].sort((a, b) => ORDER.indexOf(a.predicted_record) - ORDER.indexOf(b.predicted_record) || b.p_advance - a.p_advance);
+---
+<div class="scroll">
+  <table>
+    <thead><tr><th>Team</th><th>Predicted</th><th class="r">Chance</th><th>Live W-L</th><th>Advance</th>{ORDER.map((o) => <th class="r">{o}</th>)}</tr></thead>
+    <tbody>
+      {list.length ? list.map((x) => (
+        <tr>
+          <td><Badge code={x.team} /></td>
+          <td><span class:list={['pill', { good: x.qualifies }]}>{x.predicted_record}</span></td>
+          <td class="r">{pct(x.p_record)}</td>
+          <td>{records.get(x.team) ?? '0-0'}</td>
+          <td><span class="adv"><span class="bar"><i class:list={[{ lead: x.qualifies }]} style={`width:${(100 * x.p_advance).toFixed(1)}%`}></i></span>{pct(x.p_advance, 1)}</span></td>
+          {KEYS.map((k) => <td class="r">{pct(x[k])}</td>)}
+        </tr>
+      )) : <tr><td colspan="11" class="muted">No Swiss predictions.</td></tr>}
+    </tbody>
+  </table>
+</div>
+<style>
+  table { min-width:760px; }
+  .adv { display:grid; grid-template-columns:90px auto; align-items:center; gap:8px; }
+</style>

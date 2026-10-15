@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const DASH = resolve(process.cwd(), '..', 'data', 'dash');
+const DASH = process.env.W26_DASH ?? resolve(process.cwd(), '..', 'data', 'dash');
 const cache = new Map<string, unknown[]>();
 
 /** Rows of data/dash/<name>.json, or [] when the file does not exist yet. */

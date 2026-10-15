@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import Badge from '../components/Badge.astro';
+import { dcgi } from '../lib/data';
+import { pct, num } from '../lib/format';
+
+type Row = { id: string; date: string; stage: string; team_a: string; team_b: string; pick: string; p_pick: number; tier: string; score_call: string; actual_winner: string; actual_score: string; hit: boolean; logloss: number };
+const all = dcgi();
+const sum = all.find((r) => r.kind === 'summary') as Record<string, number | string> | undefined;
+const rows = all.filter((r) => !r.kind) as unknown as Row[];
+const pairs = sum ? Object.keys(sum).filter((k) => /^pair_.+_n$/.test(k)).map((k) => {
+  const p = k.slice(5, -2);
+  return { label: p.replace('_v_', ' v '), n: Number(sum[k]), first: Number(sum[`pair_${p}_first_region_wins`]), hits: Number(sum[`pair_${p}_model_hits`]) };
+}) : [];
+---
+<Base title="Demacia Cup" active="demacia-cup">
+  <header>
+    <h1>Demacia Cup</h1>
+    <p class="muted">A walk-forward test of the model on an event it never saw.</p>
+  </header>
+  <Card tone="gold">
+    <p>Model test. The Demacia Cup Global Invitational (03 to 17/10/2026, China, patch 26.18) is 12 teams that missed Worlds. These picks were generated after the event from a model fitted only on games before 03/10/2026, so they are a walk-forward check, not predictions we made in advance.</p>
+  </Card>
+  {sum ? (
+    <>
+      <div class="grid-4 tiles">
+        <div class="card tile"><span class="label">Series graded</span><b>{sum.n}</b><span class="cap muted">{sum.n_bo5 ?? 'UNKNOWN'} of them Bo5</span></div>
+        <div class="card tile"><span class="label">Winners right</span><b>{sum.hits} / {sum.n}</b><span class="cap muted">{pct(Number(sum.hit_rate))}</span></div>
+        <div class="card tile"><span class="label">Model log loss</span><b>{num(Number(sum.logloss), 3)}</b><span class="cap muted">lower is better</span></div>
+        <div class="card tile"><span class="label">Baselines</span><b>{num(Number(sum.logloss_region_rule), 3)}</b><span class="cap muted">region rule (stronger region wins 70%); coin flip {num(Number(sum.logloss_coin_flip), 3)}</span></div>
+      </div>
+      <p class="cap muted">{sum.note} Generated {sum.created_nz}, fit on games before {sum.fit_cut}.</p>
+      <Card title="Series" note="Picks from the walk-forward fit">
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Date</th><th>Stage</th><th>Teams</th><th>Pick</th><th>Tier</th><th>Score call</th><th>Actual</th><th></th><th class="r">Log loss</th></tr></thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr>
+                  <td>{r.date}</td><td>{r.stage}</td>
+                  <td><span class="teams"><Badge code={r.team_a} /><span class="muted">v</span><Badge code={r.team_b} /></span></td>
+                  <td><b>{r.pick}</b> {pct(r.p_pick)}</td><td><span class="pill">{r.tier}</span></td><td>{r.score_call}</td>
+                  <td>{r.actual_winner} {r.actual_score}</td>
+                  <td><span class:list={['pill', r.hit ? 'good' : 'bad']}>{r.hit ? 'hit' : 'miss'}</span></td>
+                  <td class="r">{num(r.logloss, 3)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+      <Card title="By region pairing" note="Stronger fitted region named first">
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Pairing</th><th class="r">Series</th><th class="r">Stronger region won</th><th class="r">Model right</th></tr></thead>
+            <tbody>{pairs.map((p) => <tr><td>{p.label}</td><td class="r">{p.n}</td><td class="r">{p.first}</td><td class="r">{p.hits}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </Card>
+    </>
+  ) : <p class="muted">Check not run yet.</p>}
+</Base>
+<style>
+  header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
+  .card p { margin:0; }
+  .teams { display:flex; align-items:center; gap:6px; white-space:nowrap; }
+  .tile b { font-size:22px; }
+</style>
