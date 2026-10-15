@@ -1,0 +1,59 @@
+"""Checks for the v5 model work. Run: python -X utf8 tests/test_v5.py (no pytest needed)."""
+import os, sys, json, math, random, datetime as dt
+os.environ.setdefault("AS_OF", "15/10/2026")          # pin the fit date so v4 is reproducible
+for _k in ("W_INTL", "PATCH_N", "PATCH_MULT", "POOL_BETA", "MODEL"):
+    os.environ.pop(_k, None)                           # v4 defaults
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "model"))
+import ratings_v4 as R  # noqa: E402
+
+_FIT = {}
+
+
+def full_fit():
+    if "f" not in _FIT:
+        _FIT["f"] = R.fit(R.load_series())
+    return _FIT["f"]
+
+
+def test_v4_defaults_reproduce_frozen_ratings():
+    path = os.path.join(ROOT, "tests", "fixtures", "ratings_v4_2026-10-15.json")
+    saved = {t["code"]: t["base_logit"] for t in json.load(open(path, encoding="utf-8"))["teams"]}
+    res, _ = R.build(write=False)
+    worst = max(abs(t["base_logit"] - saved[t["code"]]) for t in res["teams"])
+    assert worst < 1e-3, f"v4 defaults drifted: max base_logit diff {worst:.5f}"
+
+
+def test_load_series_keeps_patch():
+    rows = R.load_series()
+    assert all("patch" in r for r in rows)
+    assert sum(1 for r in rows if r["patch"]) > 1000
+
+
+def test_recent_patches():
+    rows = [dict(patch="16.9"), dict(patch="16.10"), dict(patch="16.2"), dict(patch=None)]
+    assert R.recent_patches(rows, 2) == {"16.9", "16.10"}
+    assert R.recent_patches(rows, 0) == set()
+
+
+def test_w_intl_moves_ratings():
+    heavy = R.fit(R.load_series(), w_intl=3.0)
+    assert heavy["converged"]
+    assert max(abs(full_fit()["s"] - heavy["s"])) > 1e-3
+
+
+def test_patch_boost_moves_ratings():
+    f = R.fit(R.load_series(), patch_n=2, patch_mult=2.0)
+    assert max(abs(full_fit()["s"] - f["s"])) > 1e-3
+
+
+if __name__ == "__main__":
+    tests = [(n, f) for n, f in list(globals().items()) if n.startswith("test_") and callable(f)]
+    failed = 0
+    for n, f in tests:
+        try:
+            f(); print("PASS", n)
+        except Exception as e:  # noqa: BLE001
+            failed += 1; print("FAIL", n, "-", type(e).__name__, e)
+    print(f"{len(tests) - failed}/{len(tests)} passed")
+    sys.exit(1 if failed else 0)

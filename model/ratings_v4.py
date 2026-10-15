@@ -40,7 +40,7 @@ CHOICES (walk-forward, model/backtest_v4.py and the region-prior test, 15/10/202
   to 0.616; the naive "stronger region wins 70%" rule scores 0.622, a coin flip 0.693.
   Qualitative adjustments (data/adjustments.json) add a capped logit shift (+/-0.405).
 """
-import json, math, os, sys, datetime as dt
+import json, math, os, re, sys, datetime as dt
 from math import comb
 import numpy as np
 from scipy.optimize import minimize
@@ -57,6 +57,9 @@ SIGMA_U = float(os.environ.get("SIGMA_U", 0.8))
 SIGMA = float(os.environ.get("SIGMA", 1.0))            # per-series shock sd (fitted; see fit_sigma)
 TAU = float(os.environ.get("TAU", 0.9))
 PRIOR_SHRINK = float(os.environ.get("PRIOR_SHRINK", 0.7))   # 2025 region strengths x this = prior mean for 2026 region effects
+W_INTL = float(os.environ.get("W_INTL", 1.0))          # v5 candidate 2: weight of international series (v4 = 1.0)
+PATCH_N = int(os.environ.get("PATCH_N", 0))            # v5 candidate 3: boost series on the last N patches before the cut (0 = off)
+PATCH_MULT = float(os.environ.get("PATCH_MULT", 1.0))  # ... by this multiplier
 _rp = json.load(open("data/region_prior_2025.json")) if os.path.exists("data/region_prior_2025.json") else {}
 _rp_mean = (sum(_rp.values()) / len(_rp)) if _rp else 0.0
 R_PRIOR = {g: PRIOR_SHRINK * (v - _rp_mean) for g, v in _rp.items()}   # centred
@@ -78,7 +81,7 @@ def load_series():
     rows = []
     for r in json.load(open("data/series_2026.json")):
         rows.append(dict(date=pdate(r["date"]), a=r["a"], b=r["b"], sa=r["sa"], sb=r["sb"], bo=r["bo"],
-                         kind=r["kind"], event=r["tournament"], intl=r["intl"]))
+                         kind=r["kind"], event=r["tournament"], intl=r["intl"], patch=r.get("patch") or None))
     # Americas Cup 2026 (LCS v CBLOL) is not on gol.gg: take it from the hand-compiled file
     alias = {"DPLUS": "DK", "MIBR.LOS": "LOS", "Sentinels": "SEN"}
     for h in json.load(open("data/results_2026.json")):
@@ -87,12 +90,20 @@ def load_series():
             if a in REGION and b in REGION:
                 rows.append(dict(date=pdate(h["date"]), a=a, b=b, sa=int(h["score_a"]), sb=int(h["score_b"]),
                                  bo=2 * max(int(h["score_a"]), int(h["score_b"])) - 1, kind="international",
-                                 event="Americas Cup 2026", intl=True))
+                                 event="Americas Cup 2026", intl=True, patch=None))
     return rows
 
 
 def kind_weight(k):
-    return {"regular": W_REG, "qualifier": W_QUAL}.get(k, 1.0)
+    return {"regular": W_REG, "qualifier": W_QUAL, "international": W_INTL}.get(k, 1.0)
+
+
+def recent_patches(rows, n):
+    """The n most recent patch labels in rows (gol.gg labels such as '16.20'); empty set when n is 0."""
+    if not n:
+        return set()
+    vs = sorted({r["patch"] for r in rows if r.get("patch")}, key=lambda p: tuple(int(x) for x in re.findall(r"\d+", p)))
+    return set(vs[-n:])
 
 
 # ---------- series likelihood pieces ----------
@@ -120,12 +131,18 @@ def p_game_marginal(d, sigma=None):
     return float(np.sum(GH_W / (1 + np.exp(-(d + sigma * GH_X)))))
 
 
-def fit(rows, half_life=None, sigma=None, w_reg=None, w_qual=None, as_of=None, r_prior=None):
+def fit(rows, half_life=None, sigma=None, w_reg=None, w_qual=None, as_of=None, r_prior=None,
+        w_intl=None, patch_n=None, patch_mult=None):
     half_life = HALF_LIFE if half_life is None else half_life
     sigma = SIGMA if sigma is None else sigma
     w_reg = W_REG if w_reg is None else w_reg
     w_qual = W_QUAL if w_qual is None else w_qual
     as_of = AS_OF if as_of is None else as_of
+    w_intl = W_INTL if w_intl is None else w_intl
+    patch_n = PATCH_N if patch_n is None else patch_n
+    patch_mult = PATCH_MULT if patch_mult is None else patch_mult
+    recent = recent_patches(rows, patch_n)
+    kinds = {"regular": w_reg, "qualifier": w_qual, "international": w_intl}
     teams = sorted({r["a"] for r in rows} | {r["b"] for r in rows})
     regions = sorted({REGION[t] for t in teams})
     ti = {t: i for i, t in enumerate(teams)}; ri = {g: i for i, g in enumerate(regions)}
@@ -139,7 +156,8 @@ def fit(rows, half_life=None, sigma=None, w_reg=None, w_qual=None, as_of=None, r
 
     A = np.array([ti[r["a"]] for r in rows]); B = np.array([ti[r["b"]] for r in rows])
     X = M[A] - M[B]                                   # n x P
-    W = np.array([0.5 ** (max((as_of - r["date"]).days, 0) / half_life) * {"regular": w_reg, "qualifier": w_qual}.get(r["kind"], 1.0) for r in rows])
+    W = np.array([0.5 ** (max((as_of - r["date"]).days, 0) / half_life) * kinds.get(r["kind"], 1.0)
+                  * (patch_mult if r.get("patch") in recent else 1.0) for r in rows])
     # winner-side representation: n_win games by the winner, n_lose by the loser, sign = +1 if a won
     sign = np.array([1.0 if r["sa"] > r["sb"] else -1.0 for r in rows])
     nwin = np.array([max(r["sa"], r["sb"]) for r in rows], dtype=float)
@@ -252,7 +270,7 @@ def build(write=True):
         return dict(gap=round(f["R"][g1] - f["R"][g2], 3), sd=round(math.sqrt(v), 3))
     res = dict(as_of=AS_OF.strftime("%d/%m/%Y"), generated_utc=dt.datetime.now(dt.timezone.utc).strftime("%d/%m/%Y %H:%M UTC"),
                model="v4: series-level Bradley-Terry with per-series form shock on the full 2026 season (gol.gg); see model/ratings_v4.py",
-               params=dict(half_life_days=HALF_LIFE, region_prior_2025_shrink=PRIOR_SHRINK, region_prior_mean=R_PRIOR, w_regular=W_REG, w_qualifier=W_QUAL, sigma_series=f["sigma"], tau=TAU,
+               params=dict(half_life_days=HALF_LIFE, region_prior_2025_shrink=PRIOR_SHRINK, region_prior_mean=R_PRIOR, w_regular=W_REG, w_qualifier=W_QUAL, sigma_series=f["sigma"], tau=TAU, w_international=W_INTL, patch_boost=dict(last_n=PATCH_N, mult=PATCH_MULT),
                            sigma_region=SIGMA_R, sigma_team=SIGMA_U, n_series=len(rows),
                            n_games=int(sum(r["sa"] + r["sb"] for r in rows)), converged=f["converged"]),
                regions={g: dict(rating=round(f["R"][g], 4), sd=round(f["R_sd"][g], 4), elo=round(to_elo(f["R"][g]))) for g in f["regions"]},
