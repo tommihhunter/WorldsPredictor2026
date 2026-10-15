@@ -63,3 +63,25 @@ Walk-forward test of the candidates in `docs/superpowers/specs/2026-10-16-model-
 Outcome: nothing passed that can change a prediction; v4 stays the model (`data/backtest_v5.json` `adopted.env` is empty, so `model/ratings.py` selects v4). Worlds games enter the fit from the Swiss staged run on (`model/scrape_golgg.py` now lists both Worlds tournaments). 369 staleness stays a manual adjustment.
 
 What this means: we tried four tweaks and asked each one to beat the current model on past matches it had not seen yet, by a clear margin. Giving international games extra weight made the predictions worse at every setting tried. Leaning harder on the latest patches, and rewarding teams with deeper champion pools in Fearless series, made no real difference: the scores moved in the fourth decimal place, which is noise. The only tweak that clearly helped is knowing which side (blue or red) each team plays on, but that is not known for each game when we make the prediction, so it cannot be used for the predictions we publish. The predictions therefore stay exactly as they were.
+
+## Demacia Cup check (16/10/2026)
+Walk-forward check on the 2026 Demacia Cup Global Invitational (`model/dcgi_check.py` -> `data/dash/dcgi.json`, run 16/10/2026 12:13 NZDT). The v4 fit uses only the 1,071 series dated before 03/10/2026 (as_of 03/10/2026); the 15 DCGI series come from the hand-compiled `data/results_2026.json` (event_group "supplementary", never in the fit). Same prediction logit as `model/backtest_v5.py` (`d_pair`, `series_ll`).
+
+| Measure | Model (v4) | Region rule (stronger region 70%) | Coin flip |
+|---|---|---|---|
+| Series | 15 | 15 | 15 |
+| Mean series log loss | 0.4500 | 0.4697 | 0.6931 |
+| Winners called | 13/15 (86.7%) | 13/15 (same picks) | n/a |
+
+| Region pairing | Stronger region side won | Model picked |
+|---|---|---|
+| LCK v LPL | 3/4 | 3/4 |
+| LCK v LEC | 3/3 | 3/3 |
+| LCK v LCS, LCK v CBLOL | 2/2 | 2/2 |
+| LPL v LCS, LPL v LCP | 3/3 | 3/3 |
+| LEC v LCS, LEC v LCP | 2/2 | 2/2 |
+| LEC v CBLOL | 0/1 | 0/1 |
+
+Bo5 score mix: the two Bo5s (both quarterfinals) went 3-2; the model expected 0.90 sweeps, 0.65 3-1s and 0.45 3-2s across them.
+
+What it shows: on this event the model beat a coin flip comfortably and edged the region rule, but it picked the same winner as the region rule in all 15 series, so its gain comes only from how confident it was, not from different picks. The two misses were RED over NAVI (Bo1) and WE over BRO; the model rated both as coin flips. Fifteen series is far too few to judge the model on, and the event is still in progress with some results not yet found, so the numbers can move. These are the teams that missed Worlds, many with limited international data, so this says little about how the model will do on the Worlds field itself. No parameter changes follow from this check.

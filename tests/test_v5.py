@@ -167,6 +167,12 @@ def test_playin_rematch_final_uses_slot_result():
     assert all(S.playin_sample(st, rng, k) == "C9" for _ in range(50))
 
 
+def test_dcgi_check_summary():
+    import dcgi_check
+    s = dcgi_check.main(write=False)
+    assert s["n"] >= 10 and 0 < s["logloss"] < 1, s
+
+
 if __name__ == "__main__":
     tests = [(n, f) for n, f in list(globals().items()) if n.startswith("test_") and callable(f)]
     failed = 0
