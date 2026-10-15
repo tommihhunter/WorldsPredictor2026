@@ -26,9 +26,7 @@ window.W26_ASSETS = null;
   let ready = false;
   const fire = (fn) => { try { fn(); } catch (e) { console.error(e); } };
   const dark = matchMedia('(prefers-color-scheme: dark)');
-  const colors = () => dark.matches
-    ? ['#6d9eff', '#ff7a6b', '#3ccf91', '#e8b03f', '#b18cff', '#3fc6cf', '#f06aa8', '#9aa7b8']
-    : ['#2c62d1', '#cf3f30', '#17885c', '#a8720a', '#7a4fc9', '#0b8791', '#b8336f', '#5e6b7d'];
+  const colors = () => ['#E8B84A', '#6d9eff', '#3ccf91', '#ff7a6b', '#b18cff', '#3fc6cf', '#f06aa8', '#9aa7b8'];   // dark site, gold accent first
   window.dash = {
     get colors() { return colors(); },
     data(id) {

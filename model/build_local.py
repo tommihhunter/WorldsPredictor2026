@@ -56,9 +56,7 @@ window.W26_ASSETS = __ASSETS__;
   const DATA = __DATA__;
   const calcs = {}, cbs = [];
   const dark = matchMedia('(prefers-color-scheme: dark)');
-  const colors = () => dark.matches
-    ? ['#6d9eff', '#ff7a6b', '#3ccf91', '#e8b03f', '#b18cff', '#3fc6cf', '#f06aa8', '#9aa7b8']
-    : ['#2c62d1', '#cf3f30', '#17885c', '#a8720a', '#7a4fc9', '#0b8791', '#b8336f', '#5e6b7d'];
+  const colors = () => ['#E8B84A', '#6d9eff', '#3ccf91', '#ff7a6b', '#b18cff', '#3fc6cf', '#f06aa8', '#9aa7b8'];   // dark site, gold accent first
   window.dash = {
     get colors() { return colors(); },
     data(id) {
@@ -142,27 +140,20 @@ def build_parts():
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Worlds 2026 Predictor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 :root {
-  --color-bg: #f6f7f9; --color-panel: #ffffff; --color-fg: #15191f; --color-fg-muted: #5d6673;
-  --color-border-line: #dde1e7; --color-ok: #17804f; --color-warn: #a2650a; --color-bad: #c0352b;
-  --cds-chart-grid: #e7eaef; --cds-chart-muted: #aab2bf;
+  --color-bg: #0B0F14; --color-panel: #131A22; --color-fg: #EAF0F6; --color-fg-muted: #93A1B3;
+  --color-border-line: #243040; --color-ok: #4cc98a; --color-warn: #E8B84A; --color-bad: #F08A7A;
+  --cds-chart-grid: #1C2633; --cds-chart-muted: #5B6B80;
   --font-anthropic-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-anthropic-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-anthropic-serif: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif;
   --cds-font-size-caption: 12.5px; --cds-font-size-body: 14.5px; --cds-font-size-heading: 17px; --cds-font-size-title: 28px;
   --cds-font-weight-medium: 600;
   --cds-gap-xs: 4px; --cds-gap-sm: 8px; --cds-gap-md: 12px; --cds-gap-lg: 20px; --cds-gap-xl: 32px;
   --cds-pad-xs: 4px; --cds-pad-sm: 8px; --cds-pad-md: 12px; --cds-pad-lg: 18px; --cds-pad-xl: 28px;
-  --cds-radius: 10px; --cds-dur-slow: 300ms;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0f1216; --color-panel: #171b21; --color-fg: #e8ebf0; --color-fg-muted: #9aa3b0;
-    --color-border-line: #2a3039; --color-ok: #4cc98a; --color-warn: #e3a948; --color-bad: #f0776c;
-    --cds-chart-grid: #262c35; --cds-chart-muted: #56606e; color-scheme: dark;
-  }
+  --cds-radius: 16px; --cds-dur-slow: 300ms;
+  color-scheme: dark;
 }
 html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans); font-size: 14px; }
 #dash-root { padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }

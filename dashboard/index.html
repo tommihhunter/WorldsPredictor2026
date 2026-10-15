@@ -184,27 +184,44 @@
 .w26 [data-dash-source-state=empty] { color: transparent; }
 .w26 [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
 @media (max-width: 520px) { .w26 .dl, .w26 .detail .dl { grid-template-columns: minmax(0, 1fr); } .w26 .dl dt { margin-top: 4px; } }
+/* ---------- site skin (design/*.dc.html, 16/10/2026) ---------- */
+.w26 { --w26-acc: #E8B84A; --w26-surface-2: #1C2633; --w26-text-2: #B6C2D1; max-width: 1280px; }
+.w26 .site-title, .w26 .page-title, .w26 .card-title { font-family: var(--font-anthropic-serif); font-weight: 700; letter-spacing: -0.01em; }
+.w26 .site-title { display: flex; align-items: center; gap: 12px; font-size: 22px; }
+.w26 .brand-mark { width: 28px; height: 28px; border-radius: 8px; background: var(--w26-acc); color: #0B0F14; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex: none; }
+.w26 .tabs { background: var(--color-bg); gap: 4px; }
+.w26 .tab { border: 0; border-radius: 8px; padding: 10px 14px; font-size: 14px; color: var(--w26-text-2); }
+.w26 .tab[aria-selected="true"] { background: #161D27; color: var(--color-fg); font-weight: 600; border: 0; }
+.w26 .label { letter-spacing: .08em; }
+.w26 a:hover { color: var(--w26-acc); }
+@media (max-width: 640px) {
+  .w26 .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 6px; }
+  .w26 .tabs::-webkit-scrollbar { display: none; }
+  .w26 .tab { white-space: nowrap; border-radius: 999px; padding: 8px 12px; font-size: 13px; border: 1px solid var(--color-border-line); }
+  .w26 .tab[aria-selected="true"] { background: var(--w26-surface-2); border-color: transparent; }
+  .w26 .site-title { font-size: 16px; }
+}
 </style>
 
 <div class="w26">
   <header class="site-head" id="top">
-    <h1 class="site-title">Worlds 2026 Predictor</h1>
+    <h1 class="site-title"><span class="brand-mark" aria-hidden="true">26</span>Worlds 2026 Predictor</h1>
     <p id="takeaway"><span id="tk-name" data-source="ratings" data-field="name">—</span> <span id="tk-mid"></span><span id="tk-p" data-source="overview" data-field="value" data-where="key=champion_p">—</span><span id="tk-end"></span></p>
     <p class="cap muted" id="stamp">Data exported <span data-source="overview" data-field="value" data-where="key=exported_nz" id="st-exp">—</span>. Baseline frozen <span data-source="overview" data-field="value" data-where="key=baseline_created" id="st-base">—</span>.</p>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Sections">
-    <button class="tab" role="tab" id="tab-overview" data-page="overview" aria-selected="true">Overview</button>
-    <button class="tab" role="tab" id="tab-dossiers" data-page="dossiers" aria-selected="false">Team dossiers</button>
-    <button class="tab" role="tab" id="tab-meta" data-page="meta" aria-selected="false">Meta</button>
-    <button class="tab" role="tab" id="tab-predictions" data-page="predictions" aria-selected="false">Predictions</button>
+    <button class="tab" role="tab" id="tab-overview" data-page="overview" aria-selected="true">Home</button>
+    <button class="tab" role="tab" id="tab-predictions" data-page="predictions" aria-selected="false">Bracket</button>
+    <button class="tab" role="tab" id="tab-dossiers" data-page="dossiers" aria-selected="false">Teams</button>
     <button class="tab" role="tab" id="tab-pickems" data-page="pickems" aria-selected="false">Pick'Ems</button>
     <button class="tab" role="tab" id="tab-scorecard" data-page="scorecard" aria-selected="false">Scorecard</button>
+    <button class="tab" role="tab" id="tab-meta" data-page="meta" aria-selected="false">Meta</button>
   </nav>
 
   <!-- OVERVIEW -->
   <section class="page" id="overview" role="tabpanel" aria-labelledby="tab-overview">
-    <div class="page-head"><div><h2 class="page-title">Overview</h2><p class="page-note">Headline picks from the frozen baseline and title odds from 100,000 simulations.</p></div></div>
+    <div class="page-head"><div><h2 class="page-title">Home</h2><p class="page-note">Headline picks from the frozen baseline and title odds from 100,000 simulations.</p></div></div>
     <div class="tiles">
       <div class="card tile"><span class="label">Predicted champion</span><div class="tile-main"><span id="ov-champ-logo"></span><span class="big" data-source="ratings" data-field="name" id="ov-champ">—</span></div><span class="cap muted"><span data-source="overview" data-field="value" data-where="key=champion_p" id="ov-champ-p">—</span> title chance</span></div>
       <div class="card tile"><span class="label">Finals MVP</span><div class="tile-main"><span class="big" data-source="overview" data-field="value" data-where="key=finals_mvp" id="ov-mvp">—</span></div><span class="cap muted">Frozen baseline pick</span></div>
