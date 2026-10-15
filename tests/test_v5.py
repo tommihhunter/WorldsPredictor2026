@@ -9,6 +9,7 @@ import ratings_v4 as R  # noqa: E402
 import golgg_games as GG  # noqa: E402
 import side as SD  # noqa: E402
 import pools as PL  # noqa: E402
+import backtest_v5 as BT  # noqa: E402
 
 _FIT = {}
 
@@ -102,6 +103,24 @@ def test_model_pool_term_only_in_bo3_plus():
     assert m.d_game("GEN", "KC", 5) == m.d_game("GEN", "KC", 1)      # KC has no depth: no term
     m0 = R.Model(full_fit(), [])
     assert m0.d_game("GEN", "T1", 5) == m0.d_game("GEN", "T1", 1)    # default: v4 behaviour
+
+
+def test_boot_direction():
+    assert BT.boot([1.0] * 40, [0.9] * 40, n=200) == 1.0
+    assert BT.boot([1.0] * 40, [1.1] * 40, n=200) == 0.0
+
+
+def test_series_ll_matches_model():
+    r = dict(bo=5, sa=3, sb=1)
+    sc = R.series_probs_mixed(0.4, 5)
+    pa = sc["3-0"] + sc["3-1"] + sc["3-2"]
+    assert abs(BT.series_ll(0.4, r) - (-math.log(pa))) < 1e-12
+
+
+def test_judge_rules():
+    assert BT.judge([1.0] * 40, [0.9] * 40)["adopt"]
+    assert not BT.judge([1.0] * 40, [1.1] * 40)["adopt"]
+    assert not BT.judge([1.0] * 40, [0.9] * 40, [1.0] * 40, [1.01] * 40)["adopt"]   # B worse by more than 0.002
 
 
 if __name__ == "__main__":
