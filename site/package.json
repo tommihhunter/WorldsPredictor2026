@@ -1,0 +1,21 @@
+{
+  "name": "worlds2026-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "biome check src"
+  },
+  "dependencies": {
+    "astro": "^7.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@biomejs/biome": "^2.1.0",
+    "@types/node": "^24.19.2",
+    "typescript": "^5.6"
+  }
+}

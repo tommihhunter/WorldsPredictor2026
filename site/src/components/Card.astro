@@ -1,0 +1,7 @@
+---
+const { title, note, tone } = Astro.props as { title?: string; note?: string; tone?: 'gold' };
+---
+<section class:list={['card', tone]}>
+  {title && <div class="card-head"><h3>{title}</h3>{note && <span class="cap muted">{note}</span>}</div>}
+  <slot />
+</section>

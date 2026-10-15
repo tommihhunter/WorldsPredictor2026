@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import Sidebar from '../components/Sidebar.astro';
+import BottomBar from '../components/BottomBar.astro';
+import { overview } from '../lib/data';
+export interface Props { title: string; active: string; description?: string }
+const { title, active, description = 'Worlds 2026 picks, live odds and how the model is doing.' } = Astro.props;
+const o = overview();
+---
+<!doctype html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{title} · Worlds 2026 Predictor</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+</head>
+<body>
+  <div class="shell">
+    <Sidebar active={active} />
+    <div>
+      <main><slot /></main>
+      <footer>
+        <span>Data: gol.gg, lolesports.com, official patch notes. Times in NZDT with the venue time alongside. Exported {o.exported_nz ?? 'UNKNOWN'}. Baseline frozen {o.baseline_created ?? 'UNKNOWN'}.</span>
+        <span>A personal fan project. Team names and logos belong to their owners; champion art is Riot Games' via Data Dragon. Not endorsed by Riot Games.</span>
+      </footer>
+    </div>
+  </div>
+  <BottomBar active={active} />
+</body>
+</html>
