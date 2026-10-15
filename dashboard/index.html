@@ -976,6 +976,8 @@ dash.calc('scorecard_rows', {
 (() => {
   const { el, pct, rows } = window.W26;
   const pairKey = (x) => x.id + '|' + [x.team_a, x.team_b].sort().join('|');
+  // start time from time_nz ('16/10/2026 07:00 NZDT', UTC+13) -> has it started?
+  const started = (s) => { const m = /(\d\d)\/(\d\d)\/(\d{4}) (\d\d):(\d\d)/.exec(s.time_nz || ''); return !!m && Date.now() >= Date.UTC(+m[3], +m[2] - 1, +m[1], +m[4] - 13, +m[5]); };
   const sortKey = (s) => { const m = /(\d\d)\/(\d\d)\/(\d{4}) (\d\d):(\d\d)/.exec(s.time_nz || ''); return m ? m[3] + m[2] + m[1] + m[4] + m[5] : '9'; };
   dash.onData(() => {
     const live = (rows('live') || []).slice().sort((a, b) => b.p_champion - a.p_champion);
@@ -995,7 +997,8 @@ dash.calc('scorecard_rows', {
     document.getElementById('next-list').replaceChildren(...(next.length ? next.map((s) => el('a', { cls: 'next', href: '#predictions' }, [
       window.W26.teamLogo(s.winner) || window.W26.badge(s.winner),
       el('span', { cls: 'next-main' }, [el('span', { cls: 'strong', text: `${s.team_a} v ${s.team_b}` }),
-        el('span', { cls: 'cap muted', text: `${s.time_nz || 'Time TBC'}. ${s.winner} to win` + (s.bo === 5 ? `. 3-0 ${pct(s.pw30)}, 3-1 ${pct(s.pw31)}, 3-2 ${pct(s.pw32)}` : '') })]),
+        el('span', { cls: 'cap muted', text: `${s.time_nz || 'Time TBC'}. ${s.winner} to win` + (s.bo === 5 ? `. 3-0 ${pct(s.pw30)}, 3-1 ${pct(s.pw31)}, 3-2 ${pct(s.pw32)}` : '')
+          + (started(s) ? '. In play or awaiting the result' : '') + (/predicted pairing/.test(s.stage || '') ? '. Pairing depends on earlier results' : '') })]),
       el('span', { cls: 'next-p num', text: pct(s.p_winner) }),
     ])) : [el('p', { cls: 'muted cap', text: 'No upcoming predicted series.' })]));
 
