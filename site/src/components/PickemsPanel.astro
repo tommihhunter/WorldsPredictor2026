@@ -46,17 +46,17 @@ const title = `${st.phase} Pick'Ems`;
     {swissLayout ? (
       <div class="pk-grid">
         <div class="pk-cell">
-          <span class:list={['pk-k', full ? 'gold' : 'teal']}>Go 3-0</span>
-          {go30.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 40 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big teal">{pct(r.p_correct)}</span></div>)}
+          <span class="pk-k teal">Go 3-0</span>
+          {go30.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 36 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big">{pct(r.p_correct)}</span></div>)}
         </div>
         <div class="pk-cell">
           <span class="pk-k risk">Go 0-3</span>
-          {go03.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 40 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big risk">{pct(r.p_correct)}</span></div>)}
+          {go03.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 36 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big">{pct(r.p_correct)}</span></div>)}
         </div>
         <div class="pk-cell pk-adv">
           <span class="pk-k gold">{advLabel}{full && ` (pick ${adv.length})`}</span>
           <div class="pk-advgrid">
-            {adv.map((r) => <div class="pk-team sm"><Logo code={r.pick} size={full ? 34 : 26} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p gold">{pct(r.p_correct)}</span></div>)}
+            {adv.map((r) => <div class="pk-team sm"><Logo code={r.pick} size={full ? 36 : 26} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big">{pct(r.p_correct)}</span></div>)}
           </div>
           <span class="pk-advlist code">{adv.map((r) => r.pick).join(', ')}</span>
           {prelim && <span class="pk-phone caption">{drawn ? 'Preliminary until the re-run' : `Preliminary until the ${draw ? `${draw} (US time)` : 'round 1'} draw`}</span>}
@@ -65,7 +65,7 @@ const title = `${st.phase} Pick'Ems`;
     ) : (
       <div class="panel-sec">
         <div class="rows">
-          {rows.map((r) => <div class="pk-row"><span class="muted">{r.slot}</span><Logo code={r.pick} size={26} /><span class="code">{r.pick}</span><span class="gold">{pct(r.p_correct)}</span></div>)}
+          {rows.map((r) => <div class="pk-row"><span class="muted">{r.slot}</span><Logo code={r.pick} size={26} /><span class="code">{r.pick}</span><span class="pk-rp">{pct(r.p_correct)}</span></div>)}
         </div>
       </div>
     )}
@@ -79,38 +79,34 @@ const title = `${st.phase} Pick'Ems`;
   </section>
 )}
 <style>
-  .pk-chips { display: flex; flex-wrap: wrap; gap: 10px; }
-  .full .pk-title { font-size: 30px; }
+  .pk-chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
   .pk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .pk-cell { display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; min-width: 0; }
+  .pk-cell { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg); min-width: 0; }
   .pk:not(.full) .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
   .pk:not(.full) .pk-cell { border-bottom: 1px solid var(--line); }
   .pk-adv { grid-column: 1 / -1; }
-  .pk-k { font-size: 15px; font-weight: 600; }
-  .pk-team { display: flex; align-items: center; gap: 12px; min-width: 0; }
-  .pk-team .code { font-size: 20px; }
-  .pk-p { margin-left: auto; font-size: 26px; }
-  .pk-team.sm { gap: 8px; }
-  .pk-team.sm .code, .pk-team.sm .pk-p { font-size: 17px; }
-  .pk-team.sm .pk-p { font-family: var(--font-body); font-weight: 500; }
-  .pk-advgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 20px; }
+  /* column labels carry the status colour; the numbers stay --fg */
+  .pk-k { font-size: var(--fs-sm); font-weight: 600; }
+  .pk-team { display: flex; align-items: center; gap: var(--space-xs); min-width: 0; }
+  .pk-team .code { font-size: var(--fs-lg); }
+  .pk-p { margin-left: auto; font-size: var(--fs-xl); }
+  .pk-team.sm { gap: var(--space-2xs); }
+  .pk-team.sm .code, .pk-team.sm .pk-p { font-size: var(--fs-md); }
+  .pk-advgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xs) var(--space-lg); }
   .pk-advlist, .pk-phone { display: none; }
-  .pk-status { gap: 4px; padding-top: 18px; padding-bottom: 18px; }
-  .pk-arrow { font-size: 20px; }
-  .pk-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto 56px; align-items: center; gap: 10px; }
-  .pk-row .gold { text-align: right; }
+  .pk-status { gap: var(--space-3xs); }
+  .pk-arrow { font-size: var(--fs-lg); line-height: 1; }
+  .pk-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto 56px; align-items: center; gap: var(--space-xs); }
+  .pk-rp { text-align: right; }
 
-  /* full (Swiss page): one row of three cells */
+  /* full (Swiss page): one row of three cells; every team row is one logo tall so the rows line up across cells */
   .full .pk-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); }
   .full .pk-adv { grid-column: auto; }
-  .full .pk-cell { gap: 16px; padding: 28px 32px; }
-  .full .pk-k { font-size: 16px; }
-  .full .pk-team { gap: 14px; }
-  .full .pk-team .code { font-size: 22px; }
-  .full .pk-p { font-size: 30px; }
-  .full .pk-team.sm { gap: 12px; }
-  .full .pk-team.sm .code, .full .pk-team.sm .pk-p { font-size: 20px; }
-  .full .pk-advgrid { gap: 16px 28px; }
+  .full .pk-cell { gap: var(--space-sm); }
+  .full .pk-team, .full .pk-team.sm { gap: var(--space-xs); }
+  .full .pk-team.sm .code { font-size: var(--fs-lg); }
+  .full .pk-team.sm .pk-p { font-size: var(--fs-xl); }
+  .full .pk-advgrid { gap: var(--space-sm) var(--space-lg); }
   @media (max-width: 1100px) {
     .full .pk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .full .pk-adv { grid-column: 1 / -1; }
@@ -119,21 +115,19 @@ const title = `${st.phase} Pick'Ems`;
   /* phone: no logos, code and % inline, advance as a list */
   @media (max-width: 640px) {
     .pk-your { display: none; }
-    .pk-title, .full .pk-title { font-size: 18px; }
-    .pk .chip { font-size: 13px; padding: 3px 10px; }
+    .full .pk-title { font-size: var(--fs-xl); }
+    .pk .chip { font-size: var(--fs-xs); }
     .pk .pk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .pk .pk-adv { grid-column: 1 / -1; }
-    .pk .pk-cell { gap: 10px; padding: 16px 18px; }
+    .pk .pk-cell { gap: var(--space-2xs); padding: var(--space-sm); }
     .pk .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
     .pk:not(.full) .pk-cell, .pk.full .pk-cell:not(.pk-adv) { border-bottom: 1px solid var(--line); }
-    .pk .pk-k { font-size: 14px; }
     .pk :global(.pk-logo), .pk .pk-advgrid, .pk .pk-desk { display: none; }
     .pk:not(.full) .panel-head { flex-wrap: nowrap; }
-    .pk .pk-team { gap: 6px; }
-    .pk .pk-team .code { font-size: 17px; }
-    .pk .pk-p { margin-left: 0; font-size: 17px; font-family: var(--font-display); font-weight: 600; }
-    .pk .pk-advlist { display: block; font-size: 16px; line-height: 1.5; }
-    .pk .pk-phone { display: block; font-size: 14px; }
-    .pk-status { padding-top: 14px; padding-bottom: 14px; }
+    .pk .pk-team { gap: var(--space-2xs); align-items: baseline; }
+    /* code and % share a line here, so the % drops to the body face to read as a separate value */
+    .pk .pk-p { margin-left: 0; font-family: var(--font-body); font-weight: 500; font-size: var(--fs-md); color: var(--fg2); }
+    .pk .pk-advlist { display: block; line-height: 1.5; }
+    .pk .pk-phone { display: block; }
   }
 </style>

@@ -31,11 +31,18 @@ const asOf = overview().ratings_as_of ?? 'UNKNOWN';
   <script is:inline src={url('js/compare-pick.js')} defer></script>
 </Base>
 <style>
-  .pick { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; margin-top: 8px; }
-  .pick label { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 12rem; max-width: 20rem; }
-  .pick select { font: inherit; font-size: 16px; color: var(--fg); background: var(--surface); border: 1px solid var(--split-off); border-radius: var(--radius-sm); padding: 8px 12px; width: 100%; }
-  .pick .chip { padding: 9px 20px; font-size: 16px; }
+  .pick { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-xs) var(--space-sm); margin-top: var(--space-2xs); }
+  .pick label { display: flex; flex-direction: column; gap: var(--space-3xs); min-width: 0; flex: 1 1 12rem; max-width: 20rem; }
+  /* select and button share one 44px control height so their edges line up */
+  .pick select, .pick .chip { height: 44px; }
+  .pick select { font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--split-off); border-radius: var(--radius-sm); padding: 0 var(--space-xs); width: 100%; cursor: pointer; transition: border-color 120ms ease; }
+  .pick select:hover { border-color: var(--gold); }
+  .pick select:active { border-color: var(--muted2); }
+  .pick .chip { justify-content: center; padding: 0 var(--space-md); font-size: var(--fs-md); }
+  .pick .chip:active { background: var(--muted2); border-color: var(--muted2); }
   .msg { flex-basis: 100%; }
   .msg[hidden] { display: none; }
-  .more { font-size: 17px; font-weight: 600; color: var(--gold); align-self: flex-start; }
+  .more { font-weight: 600; color: var(--gold); align-self: flex-start; padding: var(--space-3xs) 0; }
+  .more:hover { color: var(--fg); }
+  .more:active { color: var(--muted2); }
 </style>

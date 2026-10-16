@@ -52,7 +52,7 @@ const stages = STAGES.map((name) => {
   if (!m) return { name, points: segment(ov.pickems_points ?? '', name), lock: 'Lock UNKNOWN', cls: 'dim' };
   const passed = Date.now() >= Date.UTC(+m[3], +m[2] - 1, +m[1], +m[4] - 13, +m[5]);
   const when = `${m[1]}/${m[2]} ${m[4]}:${m[5]} NZDT`;
-  return { name, points: segment(ov.pickems_points ?? '', name), lock: `${passed ? 'Locked' : 'Locks'} ${when}`, cls: passed ? 'dim' : next?.date === `${m[1]}/${m[2]}/${m[3]}` ? 'teal' : 'fg2' };
+  return { name, points: segment(ov.pickems_points ?? '', name), lock: `${passed ? 'Locked' : 'Locks'} ${when}`, cls: passed ? 'dim' : next?.date === `${m[1]}/${m[2]}/${m[3]}` ? 'gold' : 'fg2' };
 });
 ---
 <Base title="Meta" active="meta" description={`The Worlds 2026 patch ${patch ?? ''}: what changed, the most contested champions, draft rules and Pick'Ems points.`}
@@ -118,25 +118,21 @@ const stages = STAGES.map((name) => {
   </section>
 </Base>
 <style>
-  .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 24px; }
-  .box { display: flex; flex-direction: column; gap: 12px; padding: 28px; }
-  .box > .eyebrow { font-size: 16px; }
-  .big-p { font-size: 19px; line-height: 1.55; }
-  .dirs { display: flex; flex-direction: column; gap: 8px; font-size: 17px; }
+  .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--space-md); }
+  .box { display: flex; flex-direction: column; gap: var(--space-xs); }
+  .dirs { display: flex; flex-direction: column; gap: var(--space-2xs); }
   .b { font-weight: 600; }
-  .crow { display: grid; grid-template-columns: 40px 200px 220px minmax(0, 1fr) 90px 90px 150px; gap: 20px; align-items: center; font-size: 18px; }
-  .rows > .crow { padding: 11px 0; }
-  .crows, .prows { gap: 8px; }
-  .chead { font-size: 15px; color: var(--muted); padding-bottom: 6px; }
+  .crow { display: grid; grid-template-columns: 40px 200px 220px minmax(0, 1fr) 90px 90px 150px; gap: var(--space-md); align-items: center; }
+  .chead { font-size: var(--fs-sm); color: var(--muted); padding-bottom: var(--space-2xs); }
   .r { text-align: right; }
+  /* flex, not inline: an inline icon sits on the text strut and rides above the row's centre line */
+  .nm, .nm .code { display: flex; align-items: center; min-width: 0; }
   .nm .pf { display: none; }
-  .roles { font-size: 16px; }
-  .pres { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .pres { display: flex; align-items: center; gap: var(--space-sm); min-width: 0; }
   .pres .bar { flex: 1; }
-  .pv { width: 60px; text-align: right; }
-  .flag { font-size: 16px; font-weight: 600; }
-  .prow { display: grid; grid-template-columns: 200px minmax(0, 1fr) 260px; gap: 24px; align-items: baseline; font-size: 18px; }
-  .rows > .prow { padding: 14px 0; }
+  .pv { width: 4ch; text-align: right; }
+  .flag { font-weight: 600; }
+  .prow { display: grid; grid-template-columns: 200px minmax(0, 1fr) 260px; gap: var(--space-md); align-items: baseline; }
   .lk { text-align: right; }
   @media (max-width: 1150px) {
     .crow { grid-template-columns: 32px 160px minmax(0, 1fr) 70px 80px 130px; }
@@ -146,13 +142,12 @@ const stages = STAGES.map((name) => {
   /* below 760px the fixed columns would squeeze the presence bar away: two-column rows */
   @media (max-width: 760px) {
     .chead { display: none; }
-    .crow { grid-template-columns: 160px minmax(0, 1fr); gap: 10px; }
-    .crows { gap: 0; }
-    .rows > .crow { padding: 9px 0; }
+    .crow { grid-template-columns: 160px minmax(0, 1fr); gap: var(--space-xs); }
     .rk, .pk, .wr, .flag { display: none; }
-    .nm { display: flex; flex-direction: column; }
-    .nm .pf { display: block; font-size: 14px; }
-    .prow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name lock" "pts pts"; gap: 2px 12px; }
+    .nm { flex-direction: column; align-items: flex-start; gap: var(--space-3xs); }
+    /* the patch flag lines up under the name, past the 32px icon and its 8px gap */
+    .nm .pf { display: block; font-size: var(--fs-sm); padding-left: calc(32px + var(--space-2xs)); }
+    .prow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name lock" "pts pts"; gap: var(--space-3xs) var(--space-xs); }
     .prow > .code { grid-area: name; } .prow > .fg2 { grid-area: pts; } .prow > .lk { grid-area: lock; }
   }
   @media (max-width: 640px) {
@@ -160,15 +155,11 @@ const stages = STAGES.map((name) => {
     .intro { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .intro > :not(h1) { display: none; }
     .draft { display: none; }
-    .box { padding: 16px 18px; gap: 8px; }
-    .box > .eyebrow { font-size: 14px; }
-    .big-p, .dirs { font-size: 15px; line-height: 1.5; }
+    .box { gap: var(--space-2xs); }
     .trio > .panel .big-p { display: none; }
-    .crow { grid-template-columns: 110px minmax(0, 1fr); }
-    .nm .code { font-size: 14px; }
-    .nm .pf { font-size: 12px; }
-    .pres .bar { height: 5px; }
-    .pv { width: 46px; font-size: 15px; }
-    .prow { font-size: 15px; }
+    .crow { grid-template-columns: 136px minmax(0, 1fr); }
+    .nm .code { font-size: var(--fs-sm); }
+    .nm :global(.champ img) { width: 24px; height: 24px; }
+    .nm .pf { font-size: var(--fs-xs); padding-left: calc(24px + var(--space-2xs)); }
   }
 </style>

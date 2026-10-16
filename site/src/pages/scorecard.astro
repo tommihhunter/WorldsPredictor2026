@@ -44,7 +44,7 @@ const pts = pickemPoints();
 const pk = [...pts].reverse().find((p) => p.possible > 0) ?? pts[0];
 const COIN = Math.LN2;
 const tiles = [
-  { k: 'Winners called', v: `${g?.correct ?? 0} / ${n}`, sub: 'Series graded so far', c: 'teal' },
+  { k: 'Winners called', v: `${g?.correct ?? 0} / ${n}`, sub: 'Series graded so far', c: '' },
   { k: 'Exact scores', v: `${g?.exact ?? 0} / ${n}`, sub: exactSub, c: '' },
   { k: 'Log loss', v: num(g?.logloss, 2), sub: `Coin flip ${num(COIN, 2)}, lower is better`, c: 'gold' },
   { k: "Pick'Ems points", v: pk ? String(pk.earned) : 'UNKNOWN', sub: pk ? (pk.max == null ? `${pk.stage}: points per slot not published yet` : `of ${pk.max} in the ${pk.stage}`) : "Pick'Ems not available yet", c: '' },
@@ -95,7 +95,7 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
 
     <aside class="side">
       <div class="section tiers">
-        <span class="eyebrow">By confidence tier</span>
+        <div class="section-head"><h2>By confidence tier</h2></div>
         <div class="rows">
           {TIERS.map((t) => (
             <div class="trow">
@@ -125,7 +125,7 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
           <div class="qrow">
             <span class="dim num">{c.q}</span>
             <span class="fg2">{c.question}</span>
-            <span class="ans"><span class="code">{[1, 2, 3].includes(c.q) && c.answer ? <ChampIcon name={c.answer} size={28} /> : (c.answer || 'UNKNOWN')}</span><span class:list={['tier', CONF[c.confidence] ?? 'coin']}>{c.confidence || 'UNKNOWN'}</span></span>
+            <span class="ans"><span class="code">{[1, 2, 3].includes(c.q) && c.answer ? <ChampIcon name={c.answer} size={20} /> : (c.answer || 'UNKNOWN')}</span><span class:list={['tier', CONF[c.confidence] ?? 'coin']}>{c.confidence || 'UNKNOWN'}</span></span>
             <span class="caption why">{c.reason}</span>
           </div>
         ))}
@@ -135,60 +135,41 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
 </Base>
 <style>
   .sc-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
-  .side { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  .side { display: flex; flex-direction: column; gap: var(--space-lg); min-width: 0; }
   /* the series list lays itself out by its own width (it shares the row with the sidebar from 1151px) */
   .stable { container-type: inline-size; min-width: 0; }
-  .stable > .rows { gap: 8px; }
-  .srow { display: grid; grid-template-columns: 110px minmax(0, 1fr) 140px 120px 110px 110px; gap: 16px; align-items: center; font-size: 18px; }
-  .rows > .srow { padding: 14px 0; }
-
-  .shead { font-size: 15px; color: var(--muted); padding-bottom: 6px; }
-  .when { font-size: 16px; }
-  .title { display: flex; align-items: center; flex-wrap: wrap; gap: 0 10px; min-width: 0; }
-  .assumed { font-size: 14px; color: var(--muted); }
-  .meta { display: contents; }
+  .srow { display: grid; grid-template-columns: 110px minmax(0, 1fr) 140px 130px 90px 90px; gap: var(--space-sm); align-items: center; min-height: 26px; }
+  .shead { font-size: var(--fs-sm); color: var(--muted); padding-bottom: var(--space-2xs); }
   .when { order: -1; }
+  .title { display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--space-2xs); min-width: 0; }
+  .assumed { font-size: var(--fs-xs); color: var(--muted); }
+  .meta { display: contents; }
   .ph { display: none; }
   .w, .sc { font-weight: 600; }
-  .trow { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 16px; align-items: baseline; font-size: 18px; }
-  .tn { display: flex; flex-direction: column; }
-  .tname { font-size: 18px; letter-spacing: 0.06em; }
-  .tp { font-size: 22px; width: 64px; text-align: right; }
-  .tiers { gap: 8px; }
-  .tiers > .eyebrow { font-size: 16px; padding-bottom: 6px; }
-  .callout { gap: 8px; padding: 24px 26px; }
-  .ctext { font-size: 18px; line-height: 1.5; }
-  .qrow { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); gap: 4px 20px; align-items: baseline; }
-  .ans { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .trow { display: grid; grid-template-columns: minmax(0, 1fr) auto 72px; gap: var(--space-sm); align-items: baseline; }
+  .tn { display: flex; flex-direction: column; gap: var(--space-3xs); }
+  .tname { font-size: var(--fs-md); }
+  .tp { font-size: var(--fs-xl); text-align: right; }
+  .qrow { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xs) var(--space-md); align-items: baseline; }
+  .ans { display: flex; align-items: baseline; gap: var(--space-xs); flex-wrap: wrap; }
   .why { grid-column: 2 / -1; }
   @media (max-width: 1150px) { .sc-grid { grid-template-columns: minmax(0, 1fr); } }
   /* two-line rows whenever the six columns would squeeze the Series column (phones, tablets, the two-column laptop band) */
   @container (max-width: 860px) {
     .shead { display: none; }
-    .srow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title w" "meta res"; gap: 2px 10px; font-size: 16px; }
-    .stable > .rows { gap: 0; }
-    .rows > .srow { padding: 11px 0; }
+    .srow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title w" "meta res"; gap: var(--space-3xs) var(--space-xs); }
     .title { grid-area: title; }
     .w { grid-area: w; text-align: right; }
-    .res { grid-area: res; text-align: right; font-size: 15px; color: var(--fg2); }
+    .res { grid-area: res; text-align: right; font-size: var(--fs-sm); color: var(--fg2); }
     .res.dim { color: var(--muted); }
-    .meta { display: block; grid-area: meta; font-size: 15px; color: var(--muted); }
-    .when { font-size: 15px; color: var(--muted); }
+    .meta { display: block; grid-area: meta; font-size: var(--fs-sm); color: var(--muted); }
+    .when { color: var(--muted); }
     .ph { display: inline; } .dt { display: none; }
     .sc { display: none; }
   }
   @media (max-width: 640px) {
     .intro .eyebrow, .intro .lede { display: none; }
-    .stat-strip .sub { font-size: 13px; }
     .title :global(.logo), .title :global(.disc) { display: none; }
-    .title .code { font-size: 15px; }
-    .assumed { font-size: 12px; }
-    .w { font-size: 15px; }
-    .res, .meta, .when { font-size: 13px; }
-    .trow { font-size: 16px; }
-    .tname { font-size: 15px; }
-    .tp { font-size: 18px; width: 52px; }
-    .ctext { font-size: 16px; }
     .qrow { grid-template-columns: 28px minmax(0, 1fr); }
     .ans { grid-column: 2; }
     .why { display: none; }

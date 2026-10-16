@@ -26,7 +26,7 @@ const side = (code: string, other: string) => ({
 const sides = [side(a, b), side(b, a)];
 const name = (code: string) => displayName(rs.find((x) => x.code === code)?.name ?? code);
 ---
-<section class="intro">
+<section class="intro vs">
   {h1 && <span class="eyebrow">Compare</span>}
   <H class="matchup"><a href={url(`teams/${teamSlug(a)}/`)}>{name(a)}</a> <span class="v">v</span> <a href={url(`teams/${teamSlug(b)}/`)}>{name(b)}</a></H>
   <slot />
@@ -81,44 +81,49 @@ const name = (code: string) => displayName(rs.find((x) => x.code === code)?.name
   </section>
 ))}
 <style>
+  /* the matchup heading may run the full width so a long pairing stays on one line on desktop */
+  .vs { max-width: none; }
   .matchup { overflow-wrap: anywhere; }
   /* panel titles look like h3 at either level */
-  .ptitle { font-size: 26px; line-height: 1.15; letter-spacing: 0.03em; }
-  .swaps .chip { padding: 6px 12px; }
-  .v { color: var(--dim); font-weight: 600; font-size: 0.6em; vertical-align: middle; }
-  .sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 56px; padding: 28px; border-bottom: 1px solid var(--line-strong); }
-  .side { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .ptitle { font-size: var(--fs-xl); }
+  .swaps .chip { padding: var(--space-3xs) var(--space-xs); }
+  .swaps .chip:active { color: var(--muted2); }
+  .v { color: var(--dim); font-weight: 600; font-size: var(--fs-xl); vertical-align: middle; }
+  .sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md) var(--space-2xl); padding: var(--space-md) var(--space-lg); border-bottom: 1px solid var(--line-strong); }
+  .side { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
   .side p { overflow-wrap: anywhere; }
   .right { align-items: flex-end; text-align: right; }
   .right .name { flex-direction: row-reverse; }
   .right .swaps { justify-content: flex-end; }
-  .name { display: inline-flex; align-items: center; gap: 16px; min-width: 0; }
-  .name .code { font-size: 26px; line-height: 1.15; }
+  .name { display: inline-flex; align-items: center; gap: var(--space-sm); min-width: 0; margin-bottom: var(--space-3xs); }
+  .name .code { font-size: var(--fs-xl); line-height: var(--lh-tight); transition: color 120ms ease; }
+  .name:active .code { color: var(--muted2); }
   .lg { --s: 72px; }
-  .swaps, .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; }
-  .swaps .caption { margin-right: 4px; }
-  .chips { gap: 8px 16px; }
-  .ch { display: inline-flex; align-items: center; font-size: 15px; white-space: nowrap; }
-  .seg { display: flex; flex-wrap: wrap; gap: 8px; }
+  .swaps, .chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2xs); margin-top: var(--space-3xs); }
+  .swaps .caption { margin-right: var(--space-3xs); }
+  .chips { gap: var(--space-2xs) var(--space-sm); }
+  .ch { display: inline-flex; align-items: center; font-size: var(--fs-sm); white-space: nowrap; }
+  .seg { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
   .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
   .seg label { cursor: pointer; border-color: var(--split-off); }
+  .seg input:not(:checked) + label:hover { color: var(--gold); border-color: var(--gold); }
+  .seg input:not(:checked) + label:active { color: var(--muted2); }
   .seg input:checked + label { background: var(--gold); border-color: var(--gold); color: var(--bg); }
   .seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
   .rows > :global(:first-child) { border-top: 0; }
-  .heads { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; margin-bottom: -8px; }
+  .heads { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--space-sm); margin-bottom: calc(-1 * var(--space-2xs)); }
   .heads span:first-child { text-align: right; }
-  .hrow { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; gap: 16px; align-items: baseline; font-size: 16px; }
+  .hrow { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; gap: var(--space-sm); align-items: baseline; }
   .score { font-family: var(--font-display); font-weight: 600; white-space: nowrap; }
   .score.win { color: var(--fg); }
   :global(.summary:has(input[value="Bo1"]:checked) [data-bo]:not([data-bo="Bo1"])),
   :global(.summary:has(input[value="Bo3"]:checked) [data-bo]:not([data-bo="Bo3"])),
   :global(.summary:has(input[value="Bo5"]:checked) [data-bo]:not([data-bo="Bo5"])) { display: none; }
   @media (max-width: 640px) {
-    .sides { padding: 16px 18px; gap: 16px 12px; }
-    .name { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .sides { padding: var(--space-sm); gap: var(--space-sm) var(--space-xs); }
+    .name { flex-direction: column; align-items: flex-start; gap: var(--space-2xs); }
     .right .name { flex-direction: column; align-items: flex-end; }
-    .name .code { font-size: 18px; }
-    .ptitle { font-size: 18px; letter-spacing: 0; }
+    .name .code { font-size: var(--fs-lg); }
     .lg { --s: 56px; }
     .lg :global(.logo) { --s: 34px !important; }
     .swaps .caption { flex-basis: 100%; }
@@ -126,7 +131,7 @@ const name = (code: string) => displayName(rs.find((x) => x.code === code)?.name
     .heads span:first-child { text-align: left; }
     .heads span:last-child { text-align: right; }
     .heads span:nth-child(2) { display: none; }
-    .hrow { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; font-size: 15px; }
+    .hrow { grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-3xs) var(--space-xs); }
     .hrow .fg2 { grid-column: 1 / -1; order: 3; }
   }
 </style>

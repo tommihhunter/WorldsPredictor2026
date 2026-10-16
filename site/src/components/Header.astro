@@ -35,11 +35,18 @@ const own = !!lock && active === lock.stage.toLowerCase();
   .word, .ptitle, .hnav { text-transform: uppercase; }
   .word, .ptitle { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); letter-spacing: var(--track-caps); line-height: 1.1; }
   .ptitle { display: none; }
-  .hnav { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); letter-spacing: 0.08em; }
+  .hnav { display: flex; flex-wrap: wrap; gap: var(--space-3xs); margin-left: auto; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); letter-spacing: 0.08em; }
   .hnav a { padding: var(--space-2xs) var(--space-xs); border-radius: var(--radius-nav); color: var(--fg2); white-space: nowrap; }
   .hnav a:hover { color: var(--gold); }
+  .hnav a:active { color: var(--muted2); }
   .hnav a[aria-current="page"] { background: var(--gold); color: var(--bg); }
   .hlock .short { display: none; }
+  /* keep brand, nav and chip on one row: the short chip on a laptop, no chip where even that would wrap */
+  @media (max-width: 1400px) and (min-width: 641px) {
+    .hlock .full { display: none; }
+    .hlock .short { display: inline; }
+  }
+  @media (max-width: 1265px) and (min-width: 641px) { .hlock { display: none; } }
   @media (max-width: 640px) {
     .hdr { border-bottom-color: var(--line-strong); }
     .hdr-in { min-height: 0; padding: var(--space-xs) var(--gutter); flex-wrap: nowrap; gap: var(--space-xs); }
@@ -47,7 +54,7 @@ const own = !!lock && active === lock.stage.toLowerCase();
     .avatar { width: 36px; height: 36px; }
     .word, .hnav { display: none; }
     .ptitle { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .hlock { margin-left: auto; font-size: var(--fs-xs); padding: 2px var(--space-2xs); flex: none; }
+    .hlock { margin-left: auto; font-size: var(--fs-xs); padding: 0 var(--space-2xs); line-height: 1.6; flex: none; }
     .hlock.ph-off { display: none; }
     .hlock .full { display: none; }
     .hlock .short { display: inline; }

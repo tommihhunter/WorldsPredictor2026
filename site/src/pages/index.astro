@@ -82,7 +82,7 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
   <section class="cols home">
     <div class="stack">
       <div class="prophecy">
-        <div class="pro-stat">
+        <div class="panel pro-stat">
           <span class="disc pro-disc" style="--s:116px">{champ && <Logo code={champ} size={70} alt={champName} />}</span>
           <div class="pro-p">
             <span class="big gold pro-pct">{pct(cp, 1)}</span>
@@ -99,7 +99,7 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
       </div>
       <div class="section odds-sec">
         <div class="section-head">
-          <h2 class="odds-title">Title odds</h2>
+          <h2>Title odds</h2>
           <span>Top {top.length} of {field.length}, from simulated tournaments</span>
         </div>
         <div class="odds">
@@ -133,60 +133,56 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
 <style>
   /* two independent stacks: neither column waits on the other's height */
   .home { align-items: start; }
-  .stack { display: flex; flex-direction: column; gap: 56px; min-width: 0; }
-  .hero { display: flex; flex-direction: column; gap: 14px; margin-bottom: -16px; }
-  .prophecy { display: flex; flex-direction: column; gap: 28px; }
-  .orb { font-size: clamp(44px, 4.6vw, 80px); line-height: 1; letter-spacing: 0.01em; }
-  .pro-line { font-size: 28px; line-height: 1.35; color: var(--fg2); }
-  .pro-stat { display: flex; flex-wrap: wrap; align-items: center; gap: 28px 36px; padding: 28px 32px; background: var(--surface); border-radius: var(--radius); }
-  .pro-p { display: flex; flex-direction: column; gap: 4px; }
-  .pro-pct { font-size: clamp(72px, 6vw, 112px); line-height: 0.9; }
-  .pro-p .muted2 { font-size: 17px; }
-  .pro-kv { margin: 0; display: flex; flex-direction: column; gap: 14px; padding-left: 36px; border-left: 1px solid var(--line-strong); flex: 1 1 260px; min-width: 0; }
-  .pro-kv dt { font-size: 15px; color: var(--muted); }
-  .pro-kv dd { margin: 0; font-size: 21px; }
+  .stack { display: flex; flex-direction: column; gap: var(--space-xl); min-width: 0; }
+  /* the one display moment: the headline, then the champion % as the single gold number */
+  .hero { display: flex; flex-direction: column; gap: var(--space-xs); margin-bottom: calc(-1 * var(--space-sm)); }
+  .orb { font-size: var(--fs-hero); line-height: 1; }
+  .pro-line { font-size: var(--fs-xl); line-height: 1.35; color: var(--fg2); text-wrap: pretty; }
+  .prophecy { display: flex; flex-direction: column; gap: var(--space-md); }
+  .pro-stat { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md) var(--space-lg); }
+  .pro-p { display: flex; flex-direction: column; gap: var(--space-2xs); }
+  .pro-pct { font-size: var(--fs-hero); }
+  .pro-p .muted2 { font-size: var(--fs-md); }
+  /* key facts under the stat: label left, value right, shared baseline */
+  .pro-kv {
+    flex: 1 1 100%; margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-xs) var(--space-lg);
+    align-items: baseline; padding-top: var(--space-md); border-top: 1px solid var(--line-strong);
+  }
+  .pro-kv > div { display: contents; }
+  .pro-kv dt { font-size: var(--fs-sm); color: var(--muted); }
+  .pro-kv dd { margin: 0; font-size: var(--fs-lg); min-width: 0; }
   .pro-phone { display: none; }
-  .pro-close { font-size: 20px; line-height: 1.6; color: var(--fg2); max-width: 60ch; text-wrap: pretty; }
+  .pro-close { font-size: var(--fs-lg); line-height: 1.5; color: var(--fg2); max-width: 60ch; text-wrap: pretty; }
 
-  .odds-title { font-size: 34px; letter-spacing: 0.03em; }
-  .odds { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); column-gap: 48px; }
-  .odds-row { display: grid; grid-template-columns: 28px 64px minmax(0, 1fr) 72px; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
-  .odds-rank { font-size: 16px; }
-  .odds-row .code { font-size: 18px; }
-  .odds-p { text-align: right; font-size: 21px; }
+  .odds { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); column-gap: var(--space-xl); }
+  .odds-row { display: grid; grid-template-columns: 28px 64px minmax(0, 1fr) 72px; align-items: center; gap: var(--space-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+  .odds-rank { font-size: var(--fs-sm); }
+  .odds-row .code { font-size: var(--fs-lg); }
+  .odds-p { text-align: right; font-size: var(--fs-lg); }
 
-  .side { gap: 36px; }
-  .risk-short { font-size: 24px; line-height: 1.4; text-wrap: pretty; }
-  .risk-watch { font-size: 17px; }
-  .quick { display: flex; flex-direction: column; }
-  .quick > .eyebrow { font-size: 16px; padding-bottom: 8px; }
-  .quick .rows > .quick-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; font-size: 18px; }
+  .risk-short { font-size: var(--fs-lg); line-height: 1.45; text-wrap: pretty; }
+  .risk-watch { text-wrap: pretty; }
+  .quick { display: flex; flex-direction: column; gap: var(--space-2xs); }
+  .quick .rows > .quick-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); }
   .quick-row > span:last-child { text-align: right; }
 
   @media (max-width: 640px) {
     /* phone: one column, Pick'Ems first */
-    .home { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
+    .home { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-lg); }
     .stack { display: contents; }
     .home :global(.pk) { order: -1; }
-    .hero { gap: 8px; margin-bottom: 0; }
-    .prophecy { gap: 12px; padding-top: 0; }
-    .orb { font-size: 32px; line-height: 1.05; }
+    .hero { gap: var(--space-2xs); margin-bottom: 0; }
+    .prophecy { gap: var(--space-xs); }
     .pro-line, .pro-kv, .pro-close { display: none; }
-    .pro-stat { flex-wrap: nowrap; gap: 16px; padding: 16px 18px; }
+    .pro-stat { flex-wrap: nowrap; gap: var(--space-sm); }
     .pro-disc { width: 52px; height: 52px; }
     .pro-disc :global(.logo) { width: 44px; height: 44px; }
-    .pro-pct { font-size: 52px; line-height: 0.95; }
-    .pro-p .muted2 { font-size: 15px; }
-    .pro-phone { display: block; font-size: 16px; line-height: 1.5; color: var(--fg2); }
-    .odds-title { font-size: 21px; }
+    .pro-p { gap: var(--space-3xs); }
+    .pro-phone { display: block; line-height: 1.5; color: var(--fg2); }
     .odds-sec .section-head > span { display: none; }
-    .odds-row { grid-template-columns: 52px minmax(0, 1fr) 60px; gap: 12px; padding: 10px 0; }
+    .odds-row { grid-template-columns: 52px minmax(0, 1fr) 60px; gap: var(--space-xs); }
     .odds-row:nth-child(n + 6), .odds-rank { display: none; }
-    .odds-row .code { font-size: 16px; }
     .odds-row .bar { height: 5px; }
-    .odds-p { font-size: 17px; }
-    .side { gap: 28px; }
-    .risk-short, .risk-watch { font-size: 15px; line-height: 1.5; }
-    .quick-row { font-size: 16px; }
+    .risk-short { font-size: var(--fs-md); }
   }
 </style>

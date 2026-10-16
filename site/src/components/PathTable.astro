@@ -30,9 +30,9 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
       <tbody>
         {sw && (
           <tr>
-            <td class="muted nw">{swissDates}</td><td>Swiss</td><td class="muted">16-team field</td>
-            <td><b>{sw.predicted_record}</b> {pct(sw.p_record)} <span class="caption">advance {pct(sw.p_advance)}{viaPlayin && ' if they win the Play-In'}</span></td>
-            <td class="nw">{record ? <>Live {record}</> : <span class="muted">Not played</span>}</td>
+            <td class="muted nw">{swissDates}</td><td>Swiss</td><td class="muted" data-label="Opponent">16-team field</td>
+            <td data-label="Our pick"><b class="code">{sw.predicted_record}</b> {pct(sw.p_record)} <span class="caption">advance {pct(sw.p_advance)}{viaPlayin && ' if they win the Play-In'}</span></td>
+            <td class="nw" data-label="Result">{record ? <>Live {record}</> : <span class="muted">Not played</span>}</td>
           </tr>
         )}
         {rows.map((s) => {
@@ -41,17 +41,17 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
           if (!confirmed(s)) {
             const bracket = s.phase === 'Play-In';
             return (
-              <tr>
+              <tr class="pending">
                 <td class="muted nw">{nz(startNz(s))}</td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
-                <td class="muted">{bracket ? 'Set by the bracket' : 'Draw not made'}</td><td class="muted">{bracket ? 'Once the opponent is known' : 'After the draw'}</td><td class="muted nw">Not played</td>
+                <td class="muted wait" colspan="3">{bracket ? 'Opponent set by the bracket' : 'Draw not made'}<span class="dim">, not played yet</span></td>
               </tr>
             );
           }
           return (
             <tr>
-              <td class="nw">{nz(startNz(s))}</td><td>{s.stage}</td><td class="nw"><span class="opp"><Logo code={opp} size={24} /><span class="code">{opp}</span></span></td>
-              <td class="nw">{s.actual ? <span class="muted">Actual result</span> : <><b class="code">{s.winner}</b> {s.score} <span class="muted">{pct(s.p_winner)}</span></>}</td>
-              <td class="nw">{r ? <><span class="code">{r.winner}</span> {Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}{!s.actual && <>, <span class={r.winner === s.winner ? 'teal' : 'risk'}>{r.winner === s.winner ? 'called it' : 'missed'}</span></>}</> : <span class="muted">Not played</span>}</td>
+              <td class="nw">{nz(startNz(s))}</td><td>{s.stage}</td><td class="nw" data-label="Opponent"><span class="opp"><Logo code={opp} size={24} /><span class="code">{opp}</span></span></td>
+              <td class="nw" data-label="Our pick">{s.actual ? <span class="muted">Actual result</span> : <><b class="code">{s.winner}</b> {s.score} <span class="muted">{pct(s.p_winner)}</span></>}</td>
+              <td class="nw" data-label="Result">{r ? <><span class="code">{r.winner}</span> {Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}{!s.actual && <>, <span class={r.winner === s.winner ? 'teal' : 'risk'}>{r.winner === s.winner ? 'called it' : 'missed'}</span></>}</> : <span class="muted">Not played</span>}</td>
             </tr>
           );
         })}
@@ -62,7 +62,22 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
 <p class="caption note">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${setLabel(set)})`}. Opponents and picks appear once a round is drawn or the bracket sets them; the Swiss line is the most likely record and its chance{viaPlayin ? ', assuming a Play-In win' : ''}.</p>
 <style>
   .nw { white-space: nowrap; }
-  td b { font-weight: 600; }
-  .opp { display: inline-flex; align-items: center; gap: 10px; }
-  .note { margin-top: 12px; }
+  td b { font-weight: 700; }
+  .opp { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  /* rows not yet drawn: one muted cell across opponent, pick and result */
+  .pending td { color: var(--muted); }
+  .wait .dim { color: var(--dim); }
+  .note { margin-top: var(--space-xs); }
+  /* phone: each series is a short stack (stage, time, then labelled lines) instead of a sideways-scrolling table */
+  @media (max-width: 640px) {
+    thead { display: none; }
+    table, tbody { display: block; }
+    tr { display: flex; flex-direction: column; gap: var(--space-3xs); padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+    tr:first-child { border-top: 0; padding-top: 0; }
+    td { display: block; padding: 0; border: 0; white-space: normal; }
+    td:nth-child(2) { order: -1; font-weight: 600; color: var(--fg); }
+    td:nth-child(1) { font-size: var(--fs-sm); color: var(--muted); }
+    td[data-label] { position: relative; padding-left: 6.5rem; }
+    td[data-label]::before { content: attr(data-label); position: absolute; left: 0; color: var(--muted); }
+  }
 </style>

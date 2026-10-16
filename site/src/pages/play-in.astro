@@ -92,9 +92,9 @@ const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baselin
               <tr>
                 <td>{p.slot.replace(' vs ', ' v ')}</td>
                 <td><span class="pickc"><Logo code={p.pick} size={26} /><span class="code">{p.pick}</span></span></td>
-                <td class="teal">{pct(p.p)}</td>
+                <td>{pct(p.p)}</td>
                 <td class="fld muted2">{p.alternatives || 'UNKNOWN'}</td>
-                <td class:list={['r', 'st', p.actual ? (p.actual === p.pick ? 'gold' : 'risk') : 'muted']}>
+                <td class:list={['r', 'st', p.actual ? (p.actual === p.pick ? 'teal' : 'risk') : 'muted']}>
                   {p.actual ? (p.actual === p.pick ? `Hit, +${p.earned ?? p.points ?? 'UNKNOWN'}` : 'Miss') : 'Pending'}
                 </td>
               </tr>
@@ -108,42 +108,28 @@ const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baselin
   <script is:inline src={url('js/select.js')} defer></script>
 </Base>
 <style>
-  .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px 72px; align-items: end; }
+  /* top-aligned so the eyebrow and h1 sit where they do on every other page */
+  .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-lg) var(--space-2xl); align-items: start; }
   .intro .lede { max-width: 56ch; }
-  .win { display: flex; flex-direction: column; }
-  .win .eyebrow { font-size: 16px; padding-bottom: 8px; }
-  .wr { display: grid; grid-template-columns: 32px 72px minmax(0, 1fr) 56px; align-items: center; gap: 14px; }
-  .rows > .wr { padding: 9px 0; }
-  .wr .code { font-size: 17px; }
-  .wr .r { text-align: right; font-size: 19px; }
-  .win .caption { padding-top: 8px; }
+  .win { display: flex; flex-direction: column; gap: var(--space-2xs); }
+  .wr { display: grid; grid-template-columns: 28px 80px minmax(0, 1fr) 56px; align-items: center; gap: var(--space-xs); }
+  .wr .code { font-size: var(--fs-lg); line-height: var(--lh-tight); }
+  .wr .r { text-align: right; font-size: var(--fs-lg); }
   .pick { display: flex; flex-direction: column; gap: var(--space-xl); min-width: 0; }
-  .pick > .section { gap: 20px; }
-  .bracket { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: start; }
-  .col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-  .colhead { font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: var(--muted2); }
-  .pk td { font-size: 18px; }
-  .pk td.fld { font-size: 16px; }
+  /* columns share the bracket's rows (subgrid), so every card in a row is the same height */
+  .bracket { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-xs) var(--space-md); }
+  .col { display: grid; grid-row: span 3; grid-template-rows: subgrid; min-width: 0; }
+  .colhead { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--muted2); }
   .pk th:nth-child(1) { width: 22%; } .pk th:nth-child(2) { width: 16%; } .pk th:nth-child(3) { width: 18%; }
-  .pickc { display: flex; align-items: center; gap: 10px; }
-  .pk td { padding-top: 17px; padding-bottom: 17px; }
+  .pickc { display: flex; align-items: center; gap: var(--space-xs); }
   .st { font-weight: 600; white-space: nowrap; }
   @media (max-width: 1100px) { .bracket { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 1000px) { .top { grid-template-columns: minmax(0, 1fr); } }
   @media (max-width: 640px) {
-    .top { gap: 26px; }
-    .win { padding: 6px 18px 10px; }
-    .win .eyebrow { font-size: 14px; padding: 10px 0 6px; }
-    .wr { grid-template-columns: 26px 60px minmax(0, 1fr) 46px; gap: 10px; }
-    .rows > .wr { padding: 8px 0; }
-    .wr .code { font-size: 15px; }
-    .wr .r { font-size: 16px; }
-    .pick { gap: 28px; }
-    .pick > .section { gap: 10px; }
-    .bracket { display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
-    .col { gap: 10px; }
+    .wr { grid-template-columns: 28px 64px minmax(0, 1fr) 48px; gap: var(--space-2xs); }
+    .bracket { display: flex; flex-direction: column; gap: var(--space-2xs); }
+    .col { display: contents; }
     .colhead { display: none; }
-    .pk td, .pk td.fld { font-size: 15px; }
     .pk .fld { display: none; }
     .pk th { width: auto !important; }
   }

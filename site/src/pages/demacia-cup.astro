@@ -43,10 +43,10 @@ const lesson = !bo5.length
   : `${bo5.length === 1 ? `The one Bo5 was called ${calls[0]} and went ${went[0]}.` : calls.length === 1 && went.length === 1 ? `${all5} Bo5s were called ${calls[0]} and ${all5.toLowerCase()} went ${went[0]}.` : `${exact} of ${bo5.length} Bo5 score calls were exact.`} ${word(bo5.length)} series is too few to change the model, but it is the first thing the Play-In calibration will check.`;
 
 const tiles = sum ? [
-  { k: 'Winners called', v: `${sum.hits ?? 'UNKNOWN'} / ${sum.n ?? 'UNKNOWN'}`, sub: `${pct(sum.hit_rate as number)} hit rate`, c: 'teal' },
+  { k: 'Winners called', v: `${sum.hits ?? 'UNKNOWN'} / ${sum.n ?? 'UNKNOWN'}`, sub: `${pct(sum.hit_rate as number)} hit rate`, c: '' },
   { k: 'Log loss', v: num(sum.logloss as number, 2), sub: 'Lower is better', c: 'gold' },
   { k: 'Region rule', v: num(sum.logloss_region_rule as number, 2), sub: 'Stronger region wins 70%', c: '' },
-  { k: 'Coin flip', v: num(sum.logloss_coin_flip as number, 2), sub: 'The floor to beat', c: 'dim' },
+  { k: 'Coin flip', v: num(sum.logloss_coin_flip as number, 2), sub: 'The floor to beat', c: '' },
 ] : [];
 ---
 <Base title="Demacia Cup" active="demacia-cup" description="A walk-forward test of the Worlds 2026 model on the Demacia Cup Global Invitational."
@@ -80,7 +80,7 @@ const tiles = sum ? [
                 <span class="dt muted">{dm(r.date)}</span>
                 <span class="st muted2">{stageShort(r.stage)}</span>
                 <span class="tm"><Logo code={r.team_a} size={24} /><span class="code">{r.team_a}</span><span class="dim">v</span><Logo code={r.team_b} size={24} /><span class="code">{r.team_b}</span></span>
-                <span class="pk"><span class="pre">{stageShort(r.stage)}, picked </span>{r.pick} <span class="teal">{pct(r.p_pick)}</span></span>
+                <span class="pk"><span class="pre">{stageShort(r.stage)}, picked </span>{r.pick} {pct(r.p_pick)}</span>
                 <span class="act fg2">{r.actual_winner ? `${r.actual_winner} ${r.actual_score}` : 'UNKNOWN'}</span>
                 <span class:list={['verdict', r.hit ? 'teal' : 'risk']}>{r.hit ? 'Right' : 'Wrong'}</span>
               </div>
@@ -106,23 +106,18 @@ const tiles = sum ? [
 <style>
   .dc-top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: end; }
   .dc-top .lede { max-width: 60ch; }
-  .part { gap: 8px; padding: 22px 26px; font-size: 17px; line-height: 1.5; }
   .dc-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
-  .side { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  .side { display: flex; flex-direction: column; gap: var(--space-lg); min-width: 0; }
   /* the call list lays itself out by its own width (it shares the row with the sidebar from 1151px) */
-  .dlist { container-type: inline-size; gap: 6px; }
-  .drow { display: grid; grid-template-columns: 70px 170px minmax(0, 1fr) 130px 110px 90px; gap: 16px; align-items: center; font-size: 17px; }
-  .rows > .drow { padding: 10px 0; }
-  .dt, .st { font-size: 15px; }
-  .tm { display: flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap; }
+  .dlist { container-type: inline-size; }
+  .drow { display: grid; grid-template-columns: 64px 150px minmax(0, 1fr) 110px 100px 70px; gap: var(--space-sm); align-items: center; min-height: 24px; }
+  .dt, .st { font-size: var(--fs-sm); }
+  .tm { display: flex; align-items: center; gap: var(--space-2xs); min-width: 0; white-space: nowrap; }
   .pre { display: none; }
   .verdict { text-align: right; font-weight: 600; }
-  .side .callout { gap: 10px; padding: 26px; }
-  .lesson { font-size: 19px; line-height: 1.55; }
   .regions { gap: 0; }
-  .regions > .eyebrow { font-size: 16px; padding-bottom: 8px; }
-  .prow { display: flex; justify-content: space-between; gap: 12px; font-size: 17px; }
-  .rows > .prow { padding: 11px 0; }
+  .regions > .eyebrow { padding-bottom: var(--space-2xs); }
+  .prow { display: flex; justify-content: space-between; gap: var(--space-xs); }
   @media (max-width: 1150px) {
     .dc-top, .dc-grid { grid-template-columns: minmax(0, 1fr); }
   }
@@ -132,22 +127,15 @@ const tiles = sum ? [
     .st { display: none; }
   }
   @container (max-width: 580px) {
-    .drow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "tm verdict" "pk act"; gap: 2px 10px; }
+    .drow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "tm verdict" "pk act"; gap: var(--space-3xs) var(--space-xs); }
     .dt { display: none; }
-    .tm { grid-area: tm; gap: 4px; } .tm :global(.logo), .tm :global(.disc) { display: none; }
-    .pk { grid-area: pk; font-size: 15px; color: var(--muted); } .pk .teal { color: inherit; }
+    .tm { grid-area: tm; gap: var(--space-3xs); } .tm :global(.logo), .tm :global(.disc) { display: none; }
+    .pk { grid-area: pk; font-size: var(--fs-sm); color: var(--muted); }
     .pre { display: inline; }
-    .act { grid-area: act; text-align: right; font-size: 15px; }
+    .act { grid-area: act; text-align: right; font-size: var(--fs-sm); }
   }
   @media (max-width: 640px) {
-    .dc-top { gap: 20px; }
-    .dlist { gap: 0; }
+    .dc-top { gap: var(--space-md); }
     .intro .eyebrow { display: none; }
-    .part { padding: 16px 18px; font-size: 15px; }
-    .tm .code { font-size: 14px; }
-    .pk, .act { font-size: 13px; }
-    .verdict { font-size: 14px; }
-    .lesson { font-size: 16px; }
-    .prow { font-size: 15px; }
   }
 </style>

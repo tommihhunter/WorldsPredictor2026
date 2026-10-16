@@ -38,59 +38,62 @@ const attrs = detail ? { type: 'button', 'data-show': detail, 'aria-controls': d
   {round && (
     <span class="meta ph">
       <span>{label ?? round}, {time}</span>
-      {r ? <span class:list={['tag', hit ? 'gold' : 'risk']}>{hit ? 'Called it' : 'Missed'}</span> : <Tier tier={s.tier} />}
+      {r ? <span class:list={['tag', hit ? 'teal' : 'risk']}>{hit ? 'Called it' : 'Missed'}</span> : <Tier tier={s.tier} />}
     </span>
   )}
-  <span class="meta dt"><span>{label ? `${label}, ` : ''}{time}</span><Tier tier={s.tier} /></span>
+  <span class="meta dt"><span>{label ? `${label}, ` : ''}<span class="nw">{time}</span></span><Tier tier={s.tier} /></span>
   <span class="teams dt">
     {rows.map((x, i) => (
       <>
-        <Logo code={x.code} size={large ? 34 : 28} />
-        <span class:list={['code', 'name', { second: i === 1 }]}>{x.code}</span>
-        <span class:list={['big', 'val', i === lead ? 'teal' : 'dim']}>{x.right}</span>
+        <Logo code={x.code} size={large ? 32 : 28} />
+        <span class:list={['code', 'name', { lead: i === lead }]}>{x.code}</span>
+        <span class:list={['big', 'val', { lead: i === lead }]}>{x.right}</span>
       </>
     ))}
   </span>
   <span class="split dt" style={`--pa:${pa ?? 50}`} aria-hidden="true"><i></i><i></i></span>
-  <span class:list={['note', 'dt', r ? (hit ? 'gold' : 'risk') : 'fg2']}>{note}</span>
-  {assumed && <span class="assumed">Assumed pairing: favourites win the earlier rounds</span>}
+  <span class:list={['notes', { dt: !assumed }]}>
+    <span class:list={['note', 'dt', r ? (hit ? 'teal' : 'risk') : 'fg2']}>{note}</span>
+    {assumed && <span class="assumed">Assumed pairing: favourites win the earlier rounds</span>}
+  </span>
   <span class="line ph">
     <Logo code={fav} size={24} />
     <span class="code">{fav}</span>
     <span class="vs">v {dog}</span>
-    <span class:list={['big', 'pv', r ? '' : 'teal']}>{r ? `${hi}-${lo}` : pct(s.p_winner)}</span>
+    <span class="big pv">{r ? `${hi}-${lo}` : pct(s.p_winner)}</span>
   </span>
 </Tag>
 <style>
-  .sc { gap: 12px; }
+  /* card: padding and gap from .card; the favourite (or the winner once played) reads --fg, the other side --muted */
   div.sc { cursor: default; }
-  div.sc:hover { background: var(--surface); }
-  .sc.lg { padding: 18px 22px; }
-  .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 15px; color: var(--muted); }
-  .teams { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; }
-  .lg .teams { grid-template-columns: 34px minmax(0, 1fr) auto; gap: 8px 14px; }
-  .name { font-size: 19px; min-width: 0; overflow-wrap: anywhere; }
-  .name.second { font-weight: 600; color: var(--muted2); }
-  .lg .name { font-size: 22px; }
-  .val { font-size: 24px; text-align: right; }
-  .lg .val { font-size: 28px; }
-  .note { font-size: 15px; }
+  div.sc:hover, div.sc:active { background: var(--surface); }
+  div.sc:not(.is-final):hover { border-color: transparent; }
+  .meta { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-2xs); font-size: var(--fs-sm); color: var(--muted); }
+  .nw { white-space: nowrap; }
+  /* four bracket columns on a laptop: a little less side padding keeps the meta line on one row */
+  .sc:not(.lg) { padding: var(--space-sm); }
+  .teams { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: var(--space-2xs) var(--space-xs); }
+  .lg .teams { grid-template-columns: 32px minmax(0, 1fr) auto; }
+  .name { font-size: var(--fs-lg); line-height: var(--lh-tight); min-width: 0; overflow-wrap: anywhere; color: var(--muted); }
+  .val { font-size: var(--fs-xl); text-align: right; color: var(--muted); }
+  .name.lead, .val.lead { color: var(--fg); }
+  .notes { display: flex; flex-direction: column; gap: var(--space-3xs); text-wrap: balance; }
+  .note { font-size: var(--fs-sm); }
+  .assumed { font-size: var(--fs-xs); color: var(--muted); }
   .ph { display: none; }
-  .tag { font-size: 13px; font-weight: 600; }
-  .assumed { font-size: 14px; color: var(--muted); margin-top: -6px; }
+  .tag { font-size: var(--fs-xs); font-weight: 600; }
   @media (max-width: 640px) {
     .dt { display: none; }
     .ph { display: flex; }
-    .sc, .sc.lg { gap: 8px; padding: 14px 16px; }
-    .meta { font-size: 13px; }
-    .line { align-items: center; gap: 10px; min-width: 0; }
-    .line .code { font-size: 17px; }
-    .vs { font-size: 15px; color: var(--dim); min-width: 0; overflow-wrap: anywhere; }
-    .pv { margin-left: auto; font-size: 22px; }
-    .assumed { font-size: 12px; margin-top: -2px; order: 9; }
-    .sc:not(:has(.meta.ph)) { padding: 12px 14px; border-radius: 12px; }
-    .sc:not(:has(.meta.ph)) .code { font-size: 16px; }
-    .sc:not(:has(.meta.ph)) .vs { font-size: 14px; }
-    .sc:not(:has(.meta.ph)) .pv { font-size: 20px; }
+    .sc { gap: var(--space-2xs); padding: var(--space-xs) var(--space-sm); }
+    .notes { order: 9; }
+    .line { align-items: center; gap: var(--space-2xs); min-width: 0; }
+    .line .code { font-size: var(--fs-lg); }
+    .vs { font-size: var(--fs-sm); color: var(--muted); min-width: 0; overflow-wrap: anywhere; }
+    .pv { margin-left: auto; font-size: var(--fs-xl); }
+    /* knockouts: no round meta, a compact one-line card */
+    .sc:not(:has(.meta.ph)) { border-radius: var(--radius-sm); }
+    .sc:not(:has(.meta.ph)) .code { font-size: var(--fs-md); }
+    .sc:not(:has(.meta.ph)) .pv { font-size: var(--fs-lg); }
   }
 </style>

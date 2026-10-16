@@ -32,12 +32,19 @@ const gd = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Math.ro
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const name = displayName(r.name);
 const headline = nzProse(d?.headline || r.headline || 'UNKNOWN');
-// link text: host and path cut at a segment boundary, with an ellipsis when shortened
-const linkText = (u: string, max: number) => {
-  const t = u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
-  if (t.length <= max) return t;
-  const cut = t.slice(0, max);
-  return `${cut.slice(0, Math.max(cut.lastIndexOf('/'), cut.indexOf('/') + 1) || max)}…`;
+// a source URL as a readable host and a short label from its path: locale, id and "ALL" segments dropped, slug to words
+const source = (u: string) => {
+  let x: URL;
+  try { x = new URL(u); } catch { return { host: u, label: '' }; }
+  const segs = x.pathname.split('/').filter(Boolean).map((t) => { try { return decodeURIComponent(t); } catch { return t; } });
+  const keep = segs.map((t) => t.replace(/^tournament-ALL$/i, 'all tournaments'))
+    .filter((t) => !/^([a-z]{2}(-[a-z]{2})?|[\w-]*-ALL|season-S\d+|matches)$/i.test(t));
+  let last = (keep.at(-1) ?? '').replace(/^tournament-|^\d+-/i, '');
+  if (/^\d+$/.test(last) && keep.length > 1) last = `${keep.at(-2)} ${last}`;
+  const kind = x.hostname.endsWith('gol.gg') ? (segs[1] ?? '').replace(/^tournament-/, '') : '';
+  let label = [kind, last].filter(Boolean).join(', ').replace(/[-_]+/g, ' ').trim();
+  if (label.length > 64) label = `${label.slice(0, label.lastIndexOf(' ', 64))}…`;
+  return { host: x.hostname.replace(/^www\./, ''), label: label && cap(label) };
 };
 // players_sample ends with a note about five champions with games and win rate; the table shows the top three names only
 const sampleText = (s?: string | null) => (s ? s.replace(/;\s*champion pools show[^;]*$/i, '') : 'UNKNOWN');
@@ -69,7 +76,12 @@ const splits = [
 ];
 const clean = (v: string | null | undefined) => cap((v || 'UNKNOWN').trim().replace(/^(by|to) /, ''));
 const form = String(d?.form ?? '').split('|').map((x) => x.trim()).filter(Boolean).slice(-3).join(', ') || 'UNKNOWN';
-const sources = String(d?.sources ?? '').split(' ').filter(Boolean);
+// repeated labels (several player pages of one event) get a counter so every link reads differently
+const sources = String(d?.sources ?? '').split(' ').filter(Boolean).map((u, i, all) => {
+  const sr = source(u);
+  const same = all.slice(0, i).filter((v) => { const o = source(v); return o.host === sr.host && o.label === sr.label; }).length;
+  return { u, ...sr, label: same ? `${sr.label} (${same + 1})` : sr.label };
+});
 const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/\d{4})/)?.[1] ?? 'UNKNOWN';
 ---
@@ -98,7 +110,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
       <div class="callout adj">
         <span class="eyebrow">Manual adjustment: {adj > 0 ? '+' : ''}{adj.toFixed(2)} logit</span>
         <p>{r.adj_reason || 'UNKNOWN'}</p>
-        <p class="caption src">Source: {adjSource.map((t) => (t.startsWith('http') ? <a href={t} target="_blank" rel="noopener">{linkText(t, 60)}</a> : t))}</p>
+        <p class="caption src">Source: {adjSource.map((t) => (t.startsWith('http') ? <a href={t} target="_blank" rel="noopener">{source(t).host}{source(t).label && `, ${source(t).label}`}</a> : t))}</p>
       </div>
     )}
 
@@ -113,7 +125,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
         </div>
         {splits.map((s) => (
           <div class="stats" data-split={s.key}>
-            {s.tb ? stats(s.tb).map(([v, k]) => <div><span class="v">{v}</span><span class="k">{k}</span></div>) : <p class="caption">Key stats not available yet.</p>}
+            {s.tb ? stats(s.tb).map(([v, k]) => <div><span class="k">{k}</span><span class="v">{v}</span></div>) : <p class="caption">Key stats not available yet.</p>}
           </div>
         ))}
         <div class="two">
@@ -164,7 +176,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
 
   <section class="section">
     <div class="section-head"><h2>Sources</h2><span>Accessed {accessed}</span></div>
-    {sources.length ? <ul class="srcs">{sources.map((u) => <li><a href={u} target="_blank" rel="noopener">{linkText(u, 80)}</a></li>)}</ul> : <p class="caption">No sources listed.</p>}
+    {sources.length ? <ul class="srcs">{sources.map((x) => <li><a href={x.u} target="_blank" rel="noopener" title={x.u}><span class="host">{x.host}</span><span class="lbl">{x.label || x.u}</span></a></li>)}</ul> : <p class="caption">No sources listed.</p>}
   </section>
 
   <nav class="pager" aria-label="Other teams">
@@ -180,106 +192,115 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   </nav>
 </Base>
 <style>
-  .back { display: inline-flex; gap: 10px; align-items: center; align-self: flex-start; font-family: var(--font-display); font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg2); padding: 6px 0; margin-bottom: -28px; }
+  /* back link sits 16px above the dossier instead of the 48px section gap */
+  .back { display: inline-flex; gap: var(--space-2xs); align-items: center; align-self: flex-start; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--fg2); padding: var(--space-3xs) 0; margin-bottom: calc(var(--space-sm) - var(--space-xl)); }
   .back:hover { color: var(--gold); }
-  .back .gold { font-size: 20px; }
-  .pager { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; }
-  .pg { gap: 10px; padding: 18px 22px; }
-  .pg:hover { border-color: var(--gold); }
-  .pg-k { font-size: 15px; color: var(--muted); }
-  .pg-t { display: flex; align-items: center; gap: 14px; }
-  .pg-t .code { font-size: 20px; }
-  .next { align-items: flex-end; text-align: right; }
-  .all { justify-content: center; align-items: center; padding: 18px 32px; }
-  .all .code { font-size: 16px; color: var(--fg2); }
-  @media (max-width: 640px) {
-    .pager { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    .all { grid-column: 1 / -1; grid-row: 2; padding: 14px; }
-    .pg { padding: 14px; }
-    .pg-t .code { font-size: 15px; }
-  }
+  .back:active { color: var(--muted2); }
+  .back .gold { font-size: var(--fs-lg); line-height: 1; }
+
   .ph { display: none; }
-  .dossier { display: flex; flex-direction: column; gap: 32px; padding: 40px; }
-  .head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 28px; row-gap: 8px; align-items: center; }
+  .dossier { display: flex; flex-direction: column; gap: var(--space-lg); padding: var(--space-lg); }
+  .head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: var(--space-md); row-gap: var(--space-xs); align-items: center; }
   .lg { --s: 108px; grid-row: 1 / 3; }
-  .who { display: flex; flex-direction: column; gap: 8px; min-width: 0; align-self: end; }
-  .who .eyebrow { font-size: 16px; }
-  h1 { font-size: 48px; }
-  .headline { grid-column: 2; align-self: start; font-size: 19px; line-height: 1.55; color: var(--fg2); max-width: 90ch; text-wrap: pretty; }
-  .tp { grid-column: 3; grid-row: 1 / 3; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-  .tp .big { font-size: 64px; }
-  .tp .muted2 { font-size: 16px; }
-  .path { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 0 32px; }
-  .path > div, .stats > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-  .path > div { padding: 20px 24px; }
-  .path .k { font-size: 15px; color: var(--muted); }
-  .path .v { font-family: var(--font-display); font-weight: 600; font-size: 26px; line-height: 1.15; }
-  .adj { padding: 22px 26px; gap: 8px; }
+  .who { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; align-self: end; }
+  .headline { grid-column: 2; align-self: start; font-size: var(--fs-lg); line-height: 1.45; color: var(--fg2); max-width: 64ch; text-wrap: pretty; }
+  /* the title % is the page's one gold number */
+  .tp { grid-column: 3; grid-row: 1 / 3; display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2xs); }
+  .tp .big { font-size: var(--fs-hero); }
+  .tp .muted2 { font-size: var(--fs-sm); }
+
+  /* path strip and stat cells: label above value, hairline-ruled, flush with the content edge */
+  .path { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .path > div, .stats > div { display: flex; flex-direction: column; gap: var(--space-3xs); min-width: 0; padding: var(--space-sm) var(--space-md) var(--space-sm) 0; }
+  .k { font-size: var(--fs-sm); color: var(--muted); }
+  .path .v, .stats .v { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); line-height: var(--lh-tight); text-transform: uppercase; letter-spacing: var(--track-caps); }
+  .adj { gap: var(--space-2xs); }
   .src { overflow-wrap: anywhere; }
-  .src a, .srcs a { color: var(--gold); }
-  .body { display: flex; flex-direction: column; gap: 32px; }
-  .seg { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-  .seg .caption { margin-right: 8px; }
+  .src a { color: var(--gold); }
+  .src a:hover { color: var(--fg); }
+
+  .body { display: flex; flex-direction: column; gap: var(--space-md); }
+  .seg { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2xs); }
+  .seg .caption { margin-right: var(--space-2xs); }
   .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
   .seg label { cursor: pointer; border-color: var(--split-off); }
+  .seg input:not(:checked):not(:disabled) + label:hover { color: var(--gold); border-color: var(--gold); }
+  .seg input:not(:checked):not(:disabled) + label:active { color: var(--muted2); }
   .seg input:checked + label { background: var(--gold); border-color: var(--gold); color: var(--bg); }
   .seg input:disabled + label { cursor: default; opacity: 0.6; }
   .seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
-  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: -16px; }
-  .stats > div { gap: 2px; padding: 16px 24px 16px 0; border-bottom: 1px solid var(--line); }
-  .stats .v { font-family: var(--font-display); font-weight: 600; font-size: 28px; line-height: 1.3; }
-  .stats .k { font-size: 16px; color: var(--fg2); }
-  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 32px 56px; align-items: start; }
-  .facts { margin: 0; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 14px 20px; font-size: 17px; line-height: 1.55; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .stats > div { border-bottom: 1px solid var(--line); }
+  .stats .k { color: var(--fg2); }
+
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: var(--space-lg) var(--space-2xl); align-items: start; padding-top: var(--space-2xs); }
+  .facts { margin: 0; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: var(--space-xs) var(--space-md); line-height: 1.5; }
   .facts dt { color: var(--muted); }
   .facts dd { margin: 0; min-width: 0; }
-  .players { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .players { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
   :global(main:has(#split-season:checked) [data-split="summer"]),
   :global(main:has(#split-summer:checked) [data-split="season"]) { display: none !important; }
-  .links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 17px; font-weight: 600; margin-top: -24px; }
-  .links a, .links button { color: var(--gold); }
-  .links button { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
-  .links button:hover { color: var(--fg); }
-  .links a, .links button { padding: 6px 0; }
-  .draft { display: flex; flex-direction: column; gap: 20px; }
+
+  /* action links sit 24px under the dossier */
+  .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs) var(--space-md); font-weight: 600; margin-top: calc(var(--space-md) - var(--space-xl)); }
+  .links a, .links button { color: var(--gold); padding: var(--space-3xs) 0; }
+  .links button { font: inherit; background: none; border: 0; cursor: pointer; transition: color 120ms ease; }
+  .links a:hover, .links button:hover { color: var(--fg); }
+  .links a:active, .links button:active { color: var(--muted2); }
+
+  .draft { display: flex; flex-direction: column; gap: var(--space-md); }
   .draft > p { max-width: 90ch; }
-  .srcs { margin: 0; padding-left: 20px; font-size: 15px; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 4px; }
+
+  /* sources: host over a short label, ruled rows in two columns */
+  .srcs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); column-gap: var(--space-lg); }
+  .srcs li { border-top: 1px solid var(--line); min-width: 0; }
+  .srcs a { display: flex; flex-direction: column; padding: var(--space-xs) 0; min-width: 0; }
+  .srcs .host { font-weight: 600; color: var(--fg); transition: color 120ms ease; }
+  .srcs .lbl { font-size: var(--fs-sm); color: var(--muted); overflow-wrap: anywhere; }
+  .srcs a:hover .host { color: var(--gold); }
+  .srcs a:active .host { color: var(--muted2); }
+
+  .pager { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--space-sm); }
+  .pg { gap: var(--space-2xs); padding: var(--space-sm) var(--space-md); }
+  .pg:hover { border-color: var(--gold); }
+  .pg:active { background: var(--surface); }
+  .pg-k { font-size: var(--fs-sm); color: var(--muted); }
+  .pg-t { display: flex; align-items: center; gap: var(--space-xs); }
+  .pg-t .code { font-size: var(--fs-lg); }
+  .next { align-items: flex-end; text-align: right; }
+  .all { justify-content: center; align-items: center; padding: var(--space-sm) var(--space-lg); }
+  .all .code { color: var(--fg2); }
+
   @media (max-width: 1100px) {
-    .path { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0; }
-    .path > div { padding: 12px 24px 12px 0; }
+    .path { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
-    .back { margin-bottom: -6px; }
-    .back .gold { font-size: 22px; }
+    .back { margin-bottom: calc(var(--space-2xs) - var(--space-lg)); }
     .dt { display: none; }
     .ph { display: inline; }
-    h2.ph { display: block; font-size: 19px; }
-    .dossier { background: none; box-shadow: none; padding: 0; gap: 22px; border-radius: 0; }
-    .head { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 16px; row-gap: 22px; }
+    h2.ph { display: block; font-size: var(--fs-xl); }
+    .dossier { background: none; box-shadow: none; padding: 0; gap: var(--space-md); border-radius: 0; }
+    .head { column-gap: var(--space-sm); row-gap: var(--space-sm); }
     .lg { --s: 72px; grid-row: 1; background: var(--surface); }
     .lg :global(.logo) { --s: 44px !important; }
     .who { gap: 0; align-self: center; }
-    .who .eyebrow { font-size: 14px; }
-    h1 { font-size: 30px; }
-    .tp { grid-row: 1; }
-    .tp .big { font-size: 30px; }
-    .tp .muted2 { font-size: 13px; color: var(--muted); }
-    .headline { grid-column: 1 / -1; grid-row: 2; font-size: 15px; }
-    .path { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: var(--radius); overflow: hidden; }
-    .path > div { padding: 14px 16px; gap: 2px; background: var(--surface); }
+    .tp { grid-row: 1; gap: 0; }
+    .tp .big { font-size: var(--fs-3xl); }
+    .tp .muted2 { font-size: var(--fs-xs); color: var(--muted); }
+    .headline { grid-column: 1 / -1; grid-row: 2; font-size: var(--fs-md); }
+    .path { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; border: 0; background: var(--line); border-radius: var(--radius); overflow: hidden; }
+    .path > div { padding: var(--space-xs) var(--space-sm); background: var(--surface); }
     .path > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
-    .path .k { font-size: 13px; }
-    .path .v { font-size: 22px; }
-    .body { gap: 22px; }
     .seg .caption { display: none; }
-    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: -8px; }
-    .stats > div { padding: 12px 12px 12px 0; }
-    .stats .v { font-size: 22px; }
-    .stats .k { font-size: 14px; }
-    .facts { grid-template-columns: minmax(0, 1fr); gap: 0; font-size: 15px; line-height: 1.5; }
-    .facts dd { margin-bottom: 10px; }
-    .links { margin-top: -8px; font-size: 15px; }
-    .links a, .links button { padding: 12px 0; }
-    .back { padding: 6px 0; }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stats > div { padding: var(--space-xs) var(--space-xs) var(--space-xs) 0; }
+    .facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .facts dd { margin-bottom: var(--space-xs); }
+    .links { margin-top: calc(var(--space-2xs) - var(--space-lg)); }
+    .links a, .links button { padding: var(--space-xs) 0; }
+    .pager { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs); }
+    .all { grid-column: 1 / -1; grid-row: 2; padding: var(--space-xs); }
+    .pg { padding: var(--space-xs) var(--space-sm); }
+    .pg-t .code { font-size: var(--fs-md); }
   }
 </style>

@@ -37,6 +37,6 @@ const footLeft = `${staged ? `Staged ${setLabel(v.swissSet)}` : 'Frozen baseline
   <RecordTable rows={rows} records={swissRecords()} caption={caption} />
 </Base>
 <style>
-  /* the h1 needs a little more than the shared 980px to stay on one line at 1920 */
+  /* the h1 needs more than the shared 70ch intro width to stay on one line at desktop widths; the lede keeps its own 60ch */
   .sw-intro { max-width: 1120px; }
 </style>

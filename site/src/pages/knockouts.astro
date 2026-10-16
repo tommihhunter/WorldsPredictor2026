@@ -76,8 +76,8 @@ const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket i
         </div>
         {path.map((t) => (
           <div class="pr" role="row">
-            <span role="cell"><Logo code={t.code} size={34} /></span>
-            <span class="tn" role="cell"><span class="code">{t.name}</span><span class="caption">{t.region || 'UNKNOWN'}</span></span>
+            <span role="cell"><Logo code={t.code} size={32} /></span>
+            <span class="tn" role="cell"><span class="code nm">{t.name}</span><span class="code cd">{t.code}</span><span class="caption">{t.region || 'UNKNOWN'}</span></span>
             {t.p.map((p, i) => (
               <span class="pc" role="cell">
                 <span class:list={['bar', i === 3 ? 'gold' : 'teal']}><i style={`width:${((p ?? 0) * 100).toFixed(1)}%`}></i></span>
@@ -91,45 +91,43 @@ const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket i
   </section>
 </Base>
 <style>
-  .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px 72px; align-items: end; }
+  .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-lg) var(--space-2xl); align-items: end; }
   .intro .lede { max-width: 58ch; }
-  .callout { gap: 10px; padding: 24px 28px; }
-  .cl-text { font-size: 19px; line-height: 1.5; }
-  .section { gap: 20px; }
-  .bracket { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; min-width: 760px; }
-  .col { display: flex; flex-direction: column; min-width: 0; }
-  .colhead { font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: var(--muted2); padding-bottom: 14px; }
+  .cl-text { font-size: var(--fs-lg); line-height: 1.45; }
+  .bracket { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--space-lg); min-width: 760px; }
+  .col { display: flex; flex-direction: column; gap: var(--space-xs); min-width: 0; }
+  .colhead { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--muted2); }
   .colhead.gold { color: var(--gold); }
   .colhead .ph, .ph-lede { display: none; }
-  .stack { display: flex; flex-direction: column; justify-content: space-around; gap: 20px; min-height: 760px; flex: 1; }
+  .stack { display: flex; flex-direction: column; justify-content: space-around; gap: var(--space-sm); min-height: 760px; flex: 1; }
   .path { min-width: 900px; display: flex; flex-direction: column; }
-  .pr { display: grid; grid-template-columns: 40px 240px repeat(4, minmax(0, 1fr)); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
-  .pr.head { border-top: 0; padding: 0 0 6px; font-size: 15px; color: var(--muted); }
+  .pr { display: grid; grid-template-columns: 32px 240px repeat(4, minmax(0, 1fr)); gap: var(--space-md); align-items: center; padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+  .pr.head { border-top: 0; padding: 0 0 var(--space-2xs); font-size: var(--fs-sm); color: var(--muted); }
   .tn { display: flex; flex-direction: column; min-width: 0; }
-  .tn .code { font-size: 18px; }
-  .tn .caption { font-size: 14px; }
-  .pc { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .tn .code { font-size: var(--fs-md); line-height: var(--lh-tight); }
+  .tn .caption { font-size: var(--fs-xs); }
+  .tn .cd { display: none; }
+  .pc { display: flex; align-items: center; gap: var(--space-xs); min-width: 0; }
   .pc .bar { flex: 1; }
-  .pc .num { width: 56px; text-align: right; font-size: 18px; }
+  .pc .num { width: 56px; text-align: right; }
   @media (max-width: 1000px) { .top { grid-template-columns: minmax(0, 1fr); } }
   @media (max-width: 640px) {
-    .top { gap: 22px; }
-    .cl-text { font-size: 15px; }
-    .section { gap: 10px; }
-    .bracket { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
-    .colhead { font-family: var(--font-body); font-size: 14px; letter-spacing: 0; color: var(--gold); padding-bottom: 8px; }
+    .bracket { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
+    .colhead { color: var(--gold); }
     .colhead .ph { display: inline; }
-    .ph-lede { display: block; font-size: 15px; }
+    .ph-lede { display: block; }
     .dt-lede, .top .callout { display: none; }
-    .stack { min-height: 0; gap: 8px; }
-    .path { min-width: 640px; }
-    .pr { grid-template-columns: 28px 130px repeat(4, minmax(0, 1fr)); gap: 12px; }
-    /* keep logo and team name in view while the bars scroll */
+    .stack { min-height: 0; gap: var(--space-2xs); }
+    .path { min-width: 560px; }
+    .pr { grid-template-columns: 28px 72px repeat(4, minmax(0, 1fr)); gap: var(--space-xs); }
+    /* keep logo and team name in view while the bars scroll; the name sits 28px logo + 12px gap in */
     .pr > :nth-child(-n + 2) { position: sticky; z-index: 1; background: var(--bg); align-self: stretch; display: flex; align-items: center; }
     .pr > :nth-child(1) { left: 0; }
     .pr > :nth-child(2) { left: 40px; flex-direction: column; align-items: flex-start; justify-content: center; }
-    .tn .code { font-size: 15px; }
-    .pc { gap: 8px; }
-    .pc .num { width: 44px; font-size: 14px; }
+    /* the code, not the full name, so every row keeps one line */
+    .tn .nm { display: none; }
+    .tn .cd { display: inline; }
+    .pc { gap: var(--space-2xs); }
+    .pc .num { width: 44px; }
   }
 </style>

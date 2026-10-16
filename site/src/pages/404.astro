@@ -14,7 +14,9 @@ import { url } from '../lib/url';
   </section>
 </Base>
 <style>
-  .lost { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; padding: 40px 0; }
+  .lost { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-lg); padding: var(--space-xl) 0; }
   .lost .intro { align-items: center; }
+  .lost .lede { text-wrap: balance; }
   .sad { border-radius: 50%; box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--gold); }
+  .lost .chip { padding: var(--space-2xs) var(--space-sm); }
 </style>

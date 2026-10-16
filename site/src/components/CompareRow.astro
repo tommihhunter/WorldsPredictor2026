@@ -24,23 +24,21 @@ const cls = (side: string, v: unknown) => ['val', { text: row.fmt === 'text', bi
   <span class:list={[...cls('r', row.right), 'r']}>{show(row.right, row.fmt)}</span>
 </div>
 <style>
-  .crow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; align-items: center; }
-  .val { font-size: 19px; min-width: 0; overflow-wrap: anywhere; color: var(--fg2); }
+  .crow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--space-sm); align-items: center; }
+  .val { font-size: var(--fs-lg); min-width: 0; overflow-wrap: anywhere; color: var(--fg2); }
   .val.l { text-align: right; }
-  .val.text { font-size: 15px; }
+  .val.text { font-size: var(--fs-sm); }
   .val.lead { font-weight: 600; color: var(--fg); }
   .val.gold { color: var(--gold); }
   .val.muted { color: var(--muted); }
-  .mid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; min-width: 0; }
-  .label { font-size: 17px; font-weight: 600; }
-  .split { width: 100%; margin-top: 4px; }
-  .strip .val.big { font-family: var(--font-display); font-weight: 600; font-size: 40px; line-height: 1; }
+  .mid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-3xs); min-width: 0; }
+  .label { font-weight: 600; }
+  .split { width: 100%; margin-top: var(--space-3xs); }
+  .strip .val.big { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-2xl); line-height: 1; }
   @media (max-width: 640px) {
-    .crow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
+    .crow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs) var(--space-xs); }
     .mid { grid-column: 1 / -1; order: -1; }
     .val.l { text-align: left; }
     .val.r { text-align: right; }
-    .val { font-size: 17px; }
-    .strip .val.big { font-size: 30px; }
   }
 </style>

@@ -22,6 +22,8 @@ body {
 }
 a { color: inherit; text-decoration: none; transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease; }
 a:hover { color: var(--gold); }
+/* pressed: a step back from the hover gold, colour only */
+a:active { color: var(--muted2); }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
 /* visually hidden, still read by screen readers */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
@@ -54,9 +56,10 @@ th.r, td.r { text-align: right; }
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: var(--space-xl) var(--space-2xl); align-items: start; }
 .cols > * { min-width: 0; }
 /* page intro block: .eyebrow + h1 + .lede */
-.intro { display: flex; flex-direction: column; gap: var(--space-xs); max-width: 70ch; min-width: 0; }
+/* no measure on the block itself: the h1 runs to one line when it fits, the lede keeps its own 60ch */
+.intro { display: flex; flex-direction: column; gap: var(--space-xs); min-width: 0; }
 /* gold label above a title or inside a panel */
-.eyebrow { font-size: var(--fs-sm); font-weight: 600; color: var(--gold); letter-spacing: 0.02em; }
+.eyebrow { font-size: var(--fs-sm); font-weight: 600; color: var(--gold); letter-spacing: 0.02em; text-wrap: balance; }
 /* intro paragraph under h1 */
 .lede { font-size: var(--fs-lg); line-height: 1.45; color: var(--fg2); max-width: 60ch; text-wrap: pretty; }
 /* section header row: h2 on the left, a --muted caption on the right, baseline-aligned */
@@ -81,18 +84,21 @@ th.r, td.r { text-align: right; }
 /* warm callout (risk, notes, Pick'Ems points); works on <div> or <a> */
 .callout { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg); background: var(--surface-warm); border-radius: var(--radius); box-shadow: var(--inset-warm); min-width: 0; }
 a.callout:hover { color: inherit; background: var(--hover-warm); }
+a.callout:active { background: var(--line-strong); }
 /* link row at the foot of a panel: "All Swiss picks ->" */
 .link-row { display: flex; justify-content: space-between; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-lg); font-size: var(--fs-md); font-weight: 600; color: var(--gold); }
 .link-row:hover { background: var(--hover); color: var(--gold); }
+.link-row:active { background: var(--line-strong); color: var(--gold); }
 .link-row:focus-visible { outline-offset: -4px; }
 /* series or team card; use on <button> or <a>; transparent border so selection does not shift it */
 .card {
   appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%; min-width: 0;
   display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-sm) var(--space-md);
   background: var(--surface); border: 1px solid transparent; border-radius: var(--radius);
-  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  transition: background-color 120ms ease, border-color 120ms ease;
 }
 .card:hover { color: inherit; background: var(--hover); border-color: var(--line-head); }
+.card:active { background: var(--line-strong); }
 /* selected card: teal border and ring */
 .card.is-selected, .card[aria-pressed="true"] { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
 /* the Final card: gold border */
@@ -116,22 +122,29 @@ a.callout:hover { color: inherit; background: var(--hover-warm); }
 /* ---------- data ---------- */
 /* pill chip; plain by default (filters), <button class="chip"> toggles */
 .chip {
-  display: inline-flex; align-items: center; gap: 6px; padding: var(--space-3xs) var(--space-xs); border-radius: var(--radius-pill);
+  display: inline-flex; align-items: center; gap: var(--space-3xs); padding: var(--space-3xs) var(--space-xs); border-radius: var(--radius-pill);
   border: 1px solid transparent; background: transparent; color: var(--fg2);
   font-family: var(--font-body); font-weight: 600; font-size: var(--fs-sm); line-height: 1.3; white-space: nowrap;
   transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease;
 }
 button.chip, a.chip { cursor: pointer; }
 button.chip:hover, a.chip:hover { color: var(--gold); }
+button.chip:active, a.chip:active { color: var(--muted2); }
 .chip.lock { color: var(--gold); border-color: var(--gold); }
+/* a lock chip that links fills on hover, since its text is already gold */
+a.chip.lock:hover { background: var(--gold); color: var(--bg); }
+a.chip.lock:active { background: transparent; color: var(--gold); }
 .chip.on, .chip[aria-pressed="true"], button.chip.on:hover, button.chip[aria-pressed="true"]:hover, a.chip.on:hover { background: var(--gold); border-color: var(--gold); color: var(--bg); }
 .chip.outline { border-color: var(--split-off); font-weight: 500; }
-.chip.sm { font-size: var(--fs-xs); padding: 2px var(--space-2xs); }
-/* tier tag LOCK / LEAN / COIN FLIP */
+/* status chips: declared after .chip and .chip.outline so the colour wins */
+.chip.teal { color: var(--teal); border-color: var(--teal); }
+.chip.risk { color: var(--risk); border-color: var(--risk); }
+.chip.sm { font-size: var(--fs-xs); padding: 0 var(--space-2xs); line-height: 1.6; }
+/* tier tag LOCK / LEAN / COIN FLIP: only LOCK carries colour (gold); teal is kept for status */
 .tier { font-family: var(--font-body); font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; }
 .tier.lock { color: var(--gold); }
-.tier.lean { color: var(--teal); }
-.tier.coin { color: var(--muted2); }
+.tier.lean { color: var(--fg2); }
+.tier.coin { color: var(--muted); }
 /* bar: <span class="bar gold"><i style="width:42%"></i></span>; fill defaults to teal */
 .bar { display: block; height: 6px; border-radius: var(--radius-bar); background: var(--track); overflow: hidden; min-width: 0; }
 .bar > i { display: block; height: 100%; border-radius: var(--radius-bar); background: var(--teal); }
@@ -178,7 +191,7 @@ button.chip:hover, a.chip:hover { color: var(--gold); }
   .cols { gap: var(--space-lg); }
   .panel, .panel-head, .panel-sec, .link-row, .callout { padding: var(--space-sm) var(--space-sm); }
   .callout { gap: var(--space-2xs); }
-  .kv { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .kv { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .kv dd { margin-bottom: var(--space-2xs); }
   .stat-strip { padding: 0 var(--space-sm); }
   .stat-strip > * { padding: var(--space-sm) var(--space-xs) var(--space-sm) 0; }

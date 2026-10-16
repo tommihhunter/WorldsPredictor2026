@@ -30,11 +30,11 @@ const order = t.role_priority ? Object.entries(t.role_priority).sort((a, b) => a
 </dl>
 <style>
   .draft { margin: 0; display: flex; flex-direction: column; }
-  .row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 24px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: var(--space-3xs) var(--space-md); align-items: baseline; padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
   .row:first-child { border-top: 0; padding-top: 0; }
-  dt { font-size: 16px; }
-  dd { margin: 0; font-size: 16px; min-width: 0; }
-  .champs { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  .ch { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; white-space: nowrap; }
-  @media (max-width: 640px) { .row { grid-template-columns: minmax(0, 1fr); } .ch { font-size: 14px; } }
+  dt { font-size: var(--fs-md); }
+  dd { margin: 0; min-width: 0; }
+  .champs { display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-md); }
+  .ch { display: inline-flex; align-items: center; gap: var(--space-2xs); font-size: var(--fs-sm); white-space: nowrap; }
+  @media (max-width: 640px) { .row { grid-template-columns: minmax(0, 1fr); } }
 </style>

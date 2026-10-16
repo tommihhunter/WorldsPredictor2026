@@ -32,7 +32,7 @@ const ramp = (k: string) => `background:var(--rec-${k.replace('-', '')})`;
               <span role="cell"><Logo code={r.team} size={34} class="rt-logo" /></span>
               <span role="cell" class="rt-team"><span class="code">{r.team}{wl && <span class="rt-wl"> {wl}</span>}</span><span class="rt-reg">{regionOf(r.team)}</span></span>
               <span role="cell" class="rt-rec">{r.predicted_record || 'UNKNOWN'} <span class="muted">{pct(r.p_record)}</span></span>
-              <span role="cell" class:list={['rt-adv big', r.p_advance >= 0.5 ? 'teal' : 'muted2']}>{pct(r.p_advance)}</span>
+              <span role="cell" class="rt-adv big">{pct(r.p_advance)}</span>
               <span role="cell" class="rt-bar" style={`grid-template-columns:${KEYS.map(([k]) => `${Math.max(Number(r[k]) || 0, 0.003)}fr`).join(' ')}`} aria-label={KEYS.map(([k, l]) => `${l} ${pct(r[k])}`).join(', ')}>
                 {KEYS.map(([, l]) => <i style={ramp(l)}></i>)}
               </span>
@@ -45,38 +45,34 @@ const ramp = (k: string) => `background:var(--rec-${k.replace('-', '')})`;
   {(cut > 0 || caption) && <p class="caption rt-caption">{cut > 0 && `The gold line marks the predicted top ${cut}. `}{caption}</p>}
 </section>
 <style>
-  .rt { gap: 8px; }
-  .rt .section-head { margin-bottom: 8px; }
-  .rt-legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 15px; color: var(--fg2); }
-  .rt-legend span { display: flex; align-items: center; gap: 6px; }
+  .rt-legend { display: flex; flex-wrap: wrap; gap: var(--space-sm); font-size: var(--fs-sm); color: var(--fg2); }
+  .rt-legend span { display: flex; align-items: center; gap: var(--space-2xs); }
   .rt-legend i { width: 12px; height: 12px; border-radius: 2px; }
   .rt-table { min-width: 720px; }
-  .rt-row { display: grid; grid-template-columns: 40px 200px 130px 120px minmax(0, 1fr); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line-row); }
+  /* Advance stays --fg: the ramp bar carries the comparison */
+  .rt-row { display: grid; grid-template-columns: 40px 200px 130px 120px minmax(0, 1fr); gap: var(--space-md); align-items: center; padding: var(--space-xs) 0; border-top: 1px solid var(--line-row); }
   .rt-row > * { min-width: 0; }
-  .rt-headrow { border-top: 0; padding: 0 0 6px; font-size: 15px; color: var(--muted); }
+  .rt-headrow { border-top: 0; padding: 0 0 var(--space-2xs); font-size: var(--fs-sm); color: var(--muted); }
   .rt-row.rt-cut { border-top-color: var(--gold); }
   .r, .rt-adv { text-align: right; }
-  .rt-team { display: flex; flex-direction: column; }
-  .rt-team .code { font-size: 19px; }
-  .rt-wl { font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--gold); }
-  .rt-reg { font-size: 14px; color: var(--muted); }
-  .rt-rec { font-size: 19px; }
-  .rt-rec .muted { font-size: 15px; }
-  .rt-adv { font-size: 24px; }
-  .rt-bar { display: grid; height: 22px; gap: 2px; border-radius: 3px; overflow: hidden; }
-  .rt-caption { margin-top: 8px; }
+  .rt-team { display: flex; flex-direction: column; line-height: 1.25; }
+  .rt-team .code { font-size: var(--fs-lg); }
+  .rt-wl { font-family: var(--font-body); font-weight: 600; font-size: var(--fs-sm); color: var(--muted2); text-transform: none; letter-spacing: 0; }
+  .rt-reg { font-size: var(--fs-xs); color: var(--muted); }
+  .rt-rec { font-size: var(--fs-lg); }
+  .rt-rec .muted { font-size: var(--fs-sm); }
+  .rt-adv { font-size: var(--fs-xl); }
+  /* the 2px seams between record segments are hairlines */
+  .rt-bar { display: grid; height: 22px; gap: 2px; border-radius: var(--radius-bar); overflow: hidden; }
 
   @media (max-width: 640px) {
     .rt-legend, .rt-bar, .rt-barhead, .rt-reg { display: none; }
-    .rt-table { min-width: 0; background: var(--surface); border-radius: var(--radius); padding: 4px 16px 8px; }
-    .rt-row { grid-template-columns: 26px minmax(54px, max-content) minmax(0, 1fr) 50px; gap: 10px; padding: 7px 0; }
-    .rt-headrow { padding: 10px 0 6px; font-size: 13px; }
+    .rt-table { min-width: 0; background: var(--surface); border-radius: var(--radius); padding: var(--space-3xs) var(--space-sm) var(--space-2xs); }
+    .rt-row { grid-template-columns: 26px minmax(54px, max-content) minmax(0, 1fr) 50px; gap: var(--space-xs); padding: var(--space-2xs) 0; }
+    .rt-headrow { padding: var(--space-xs) 0 var(--space-2xs); font-size: var(--fs-xs); }
     .rt-row :global(.rt-logo) { width: 22px; height: 22px; }
-    .rt-team .code { font-size: 14px; }
-    .rt-wl { font-size: 12px; }
-    .rt-rec { font-size: 15px; }
-    .rt-rec .muted { font-size: 13px; }
-    .rt-adv { font-size: 16px; }
-    .rt-caption { font-size: 13px; }
+    .rt-team .code, .rt-rec { font-size: var(--fs-md); }
+    .rt-wl, .rt-rec .muted { font-size: var(--fs-xs); }
+    .rt-adv { font-size: var(--fs-lg); }
   }
 </style>

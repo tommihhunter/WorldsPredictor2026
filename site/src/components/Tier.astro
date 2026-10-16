@@ -1,5 +1,5 @@
 ---
-/* Tier tag: LOCK gold, LEAN teal, COIN FLIP --muted2. Tiers rate the winner only. Empty tier prints UNKNOWN. */
+/* Tier tag: LOCK gold, LEAN --fg2, COIN FLIP --muted (teal is kept for status). Tiers rate the winner only. Empty tier prints UNKNOWN. */
 interface Props { tier?: string | null }
 const t = (Astro.props.tier ?? '').trim().toUpperCase();
 const cls = t === 'LOCK' ? 'lock' : t === 'LEAN' ? 'lean' : t.startsWith('COIN') ? 'coin' : '';

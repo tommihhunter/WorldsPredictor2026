@@ -91,3 +91,4 @@ Shape: `--radius` 14px, `--radius-sm` 10px, `--radius-nav` 3px, `--radius-bar` 3
 - Colour: gold is brand, active nav, lock chips, eyebrows and the ONE number that matters in a view. Teal and risk are status (right / wrong, up / down, go 3-0 / go 0-3). Every other number is `--fg`; bars carry the comparison.
 - Hierarchy per view: one display moment (h1 or hero number), then section titles, then content. Nothing repeats the brand mark inside the page.
 - Every interactive element has hover, focus-visible and active states; transitions 120ms on colour only.
+- Tier tags: LOCK gold, LEAN --fg2, COIN FLIP --muted (teal stays status-only). The 60ch measure sits on `.lede`, not on `.intro`.

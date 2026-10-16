@@ -31,17 +31,18 @@ const role = (r: string) => ROLE[String(r).toUpperCase()] ?? [r, r];
   </table>
 </div>
 <style>
-  .players th { font-size: 14px; padding-bottom: 8px; }
-  .players td { padding: 10px 12px 10px 0; font-size: 17px; }
-  .players td:last-child { padding-right: 0; }
-  .players td.champs { font-size: 15px; color: var(--fg2); }
-  .cl { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .players td.champs { font-size: var(--fs-sm); color: var(--fg2); }
+  .cl { display: flex; flex-wrap: wrap; gap: var(--space-3xs) var(--space-xs); }
   .l { display: none; }
   @media (max-width: 640px) {
     .wide { display: none; }
     .s { display: none; }
     .l { display: inline; }
-    .players td { padding: 9px 10px 9px 0; font-size: 15px; vertical-align: baseline; }
-    .players td.champs { font-size: 13px; }
+    /* phone: role and player on one line, the three champions on a full-width line below, so every row is the same height */
+    .players thead { display: none; }
+    .players tr.player-row { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); row-gap: var(--space-3xs); padding: var(--space-2xs) 0; border-top: 1px solid var(--line); }
+    .players tr.player-row td { padding: 0; border: 0; }
+    .players td.champs { grid-column: 1 / -1; font-size: var(--fs-sm); }
+    .cl { flex-wrap: nowrap; }
   }
 </style>

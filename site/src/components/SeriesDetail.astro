@@ -37,15 +37,15 @@ const caveat = !r && /predicted pairing/i.test(s.stage) ? `Assumed pairing: favo
 <section class="panel sd" id={id} data-detail hidden={hidden} aria-label={`${fav} v ${dog}`}>
   <div class="main">
     <div class="title">
-      <Logo code={fav} size={52} />
+      <Logo code={fav} size={44} />
       <h3>{fav} v {dog}</h3>
-      <Logo code={dog} size={52} />
+      <Logo code={dog} size={44} />
     </div>
     <div class="chips">
       <span class="chip lock">{fav} to win {pct(s.p_winner)}</span>
       <span class="chip outline">Score call {s.score || 'UNKNOWN'} ({pct(s.p_score)})</span>
       <span class="chip outline">{s.tier || 'UNKNOWN'}</span>
-      {r && <span class="chip on">Final: {r.winner} {hi}-{lo}</span>}
+      {r && <span class:list={['chip', 'outline', r.winner === fav ? 'teal' : 'risk']}>Final: {r.winner} {hi}-{lo}</span>}
     </div>
     {caveat && <p class="caption">{caveat}</p>}
     {notes.length
@@ -69,27 +69,22 @@ const caveat = !r && /predicted pairing/i.test(s.stage) ? `Assumed pairing: favo
   </div>
 </section>
 <style>
-  .sd { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 56px; padding: 36px 40px; }
+  .sd { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-xl); padding: var(--space-lg); }
   .sd[hidden] { display: none; }
-  .main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
-  .title { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .title h3 { font-size: 34px; letter-spacing: 0; }
-  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
-  .chips .chip { font-size: 16px; padding: 5px 14px; }
-  .none { font-size: 18px; }
-  .odds { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  .odds .eyebrow { font-size: 16px; padding-bottom: 8px; }
-  .sr { display: grid; grid-template-columns: 120px minmax(0, 1fr) 64px; align-items: center; gap: 14px; padding: 9px 0; font-size: 17px; }
-  .sr .r { text-align: right; font-size: 18px; }
-  .foot { padding-top: 10px; }
-  @media (max-width: 1000px) { .sd { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+  .main { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
+  .title { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .title h3 { font-size: var(--fs-2xl); }
+  .chips { display: flex; gap: var(--space-2xs); flex-wrap: wrap; }
+  .none { font-size: var(--fs-md); }
+  .odds { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
+  .sr { display: grid; grid-template-columns: 96px minmax(0, 1fr) 56px; align-items: center; gap: var(--space-sm); }
+  .sr .r { text-align: right; }
+  .foot { padding-top: var(--space-2xs); }
+  @media (max-width: 1000px) { .sd { grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); } }
   @media (max-width: 640px) {
-    .sd { padding: 18px; gap: 24px; }
-    .main { gap: 16px; }
-    .title { gap: 10px; }
-    .title h3 { font-size: 22px; }
-    .chips .chip { font-size: 14px; padding: 4px 10px; }
-    .sr { grid-template-columns: 84px minmax(0, 1fr) 52px; gap: 10px; font-size: 15px; }
-    .sr .r { font-size: 15px; }
+    .sd { padding: var(--space-sm); gap: var(--space-md); }
+    .main { gap: var(--space-sm); }
+    .title { gap: var(--space-2xs); }
+    .sr { grid-template-columns: 80px minmax(0, 1fr) 48px; gap: var(--space-2xs); }
   }
 </style>
