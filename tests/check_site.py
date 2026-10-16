@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Headless check of the v2 site: serve site/dist under /WorldsPredictor2026/, open every page in PAGES at
+Headless check of the v2 site: serve site/dist under $W26_BASE (default /WorldsPredictor2026/), open every page in PAGES at
 1280 and 390 px, and fail on page errors, console errors (except 404s under art/logos/), any 404 response,
 root-absolute links that skip the base path, and sideways scroll at 390 px. Pages not built yet are skipped.
-Screenshots go to site/dist/shots/<page>-<width>.png.
+Screenshots go to site/shots/<page>-<width>.png (outside dist, so they are never published).
 Run: python -X utf8 model/export_site_assets.py && (cd site && npm run build) && python -X utf8 tests/check_site.py
 """
 import functools, http.server, os, re, shutil, sys, tempfile, threading
@@ -12,12 +12,13 @@ from playwright.sync_api import sync_playwright
 PAGES = ["", "scorecard/", "meta/", "play-in/", "swiss/", "knockouts/", "demacia-cup/", "teams/", "teams/gen/",
          "teams/mvk/", "teams/compare/", "teams/compare/gen-vs-hle/"]
 WIDTHS = [1280, 390]
-BASE = "WorldsPredictor2026"
-OPTIONAL = f"/{BASE}/art/logos/"  # missing logos are allowed to 404
+BASE = os.environ.get("W26_BASE", "/WorldsPredictor2026").strip("/")  # same env as site/astro.config.mjs
+PREFIX = f"/{BASE}" if BASE else ""
+OPTIONAL = f"{PREFIX}/art/logos/"  # missing logos are allowed to 404
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, "site", "dist")
-BAD_LINK = re.compile(rf'(?:href|src)="/(?!{BASE}/)[^"]*"')
+BAD_LINK = re.compile(rf'(?:href|src)="/(?!{BASE}/)[^"]*"') if BASE else None  # base "/": every root link is fine
 
 
 class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -77,7 +78,7 @@ def check_compare_pick(page, tag, problems):
     with page.expect_navigation():
         page.click("#compare-pick button[type=submit]")
     print(f"{tag}: pickers T1, HLE -> {page.url}")
-    if not page.url.endswith(f"/{BASE}/teams/compare/hle-vs-t1/"):
+    if not page.url.endswith(f"{PREFIX}/teams/compare/hle-vs-t1/"):
         problems.append(f"{tag}: pickers landed on {page.url}, expected .../teams/compare/hle-vs-t1/")
 
 
@@ -86,7 +87,7 @@ def main():
         sys.exit("build the site first: (cd site && npm run build)")
     problems, checked, skipped = [], [], []
 
-    for dirpath, _, files in os.walk(DIST):
+    for dirpath, _, files in (os.walk(DIST) if BAD_LINK else []):
         for f in files:
             if f.endswith(".html"):
                 path = os.path.join(dirpath, f)
@@ -95,11 +96,11 @@ def main():
                         problems.append(f"link without base path in {os.path.relpath(path, DIST)}: {hit}")
 
     tmp = tempfile.mkdtemp()
-    shutil.copytree(DIST, os.path.join(tmp, BASE), ignore=shutil.ignore_patterns("shots"))
+    shutil.copytree(DIST, os.path.join(tmp, BASE), ignore=shutil.ignore_patterns("shots"), dirs_exist_ok=True)
     srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=tmp))
     threading.Thread(target=srv.serve_forever, daemon=True).start()
-    url = f"http://127.0.0.1:{srv.server_address[1]}/{BASE}/"
-    shots = os.path.join(DIST, "shots"); os.makedirs(shots, exist_ok=True)
+    url = f"http://127.0.0.1:{srv.server_address[1]}{PREFIX}/"
+    shots = os.path.join(os.path.dirname(DIST), "shots"); os.makedirs(shots, exist_ok=True)
 
     try:
         with sync_playwright() as p:

@@ -10,6 +10,10 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: false
+env:
+  # site/astro.config.mjs and tests/check_site.py read these; a custom domain is a change to these two values
+  W26_SITE_URL: https://tommihhunter.github.io
+  W26_BASE: /WorldsPredictor2026
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -41,7 +45,17 @@ jobs:
           python -X utf8 model/update_results.py
           if git diff --quiet -- data/results_live.json; then
             echo "no new results"
-            if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "publish=yes" >> "$GITHUB_OUTPUT"; else echo "publish=no" >> "$GITHUB_OUTPUT"; fi
+            # Daily publish: "Today" and the In play flags are build-time, so deploy once per NZDT day even with
+            # nothing new. The last export stamp (exported_nz) stands in for the last deploy; re-exporting advances it.
+            today=$(TZ=Pacific/Auckland date +%d/%m/%Y)
+            last=$(python -X utf8 -c "import json; print(next(r['value'] for r in json.load(open('data/dash/overview.json', encoding='utf-8')) if r['key'] == 'exported_nz'))")
+            if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${last#*$today}" = "$last" ]; then
+              echo "publish (dispatch, or last export $last is not today $today)"
+              python -X utf8 model/export_dashboard.py
+              echo "publish=yes" >> "$GITHUB_OUTPUT"
+            else
+              echo "already published today ($last)"; echo "publish=no" >> "$GITHUB_OUTPUT"
+            fi
             exit 0
           fi
           python -X utf8 model/scrape_golgg.py
@@ -68,15 +82,28 @@ jobs:
         run: |
           pip install playwright
           python -m playwright install --with-deps chromium
-      - name: Build and check site
+      - name: Export site assets
         if: steps.data.outputs.publish == 'yes'
+        run: python -X utf8 model/export_site_assets.py
+      - uses: actions/setup-node@v4
+        if: steps.data.outputs.publish == 'yes'
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Build site
+        if: steps.data.outputs.publish == 'yes'
+        working-directory: site
         run: |
-          python -X utf8 model/build_site.py
-          python -X utf8 tests/check_site.py
+          npm ci
+          npm run build
+      - name: Check site
+        if: steps.data.outputs.publish == 'yes'
+        run: python -X utf8 tests/check_site.py
       - uses: actions/upload-pages-artifact@v3
         if: steps.data.outputs.publish == 'yes'
         with:
-          path: dist/site
+          path: site/dist
   deploy:
     needs: update
     if: needs.update.outputs.publish == 'yes'

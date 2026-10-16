@@ -21,7 +21,9 @@ Built 15/10/2026 (NZDT). Dashboard: "Worlds 2026 Predictor" artifact (Dashboard 
 - `data/patch_state.json` + `research/patches_26_18_to_26_20.md`: every champion/item/system change in 26.18-26.20 from the official notes (built by a one-off script; regenerate by hand from the notes).
 - `research/rules_2026.md` + `data/rules_2026.json`: draft mode per stage (Fearless in every Bo3/Bo5), Pick'Ems points per pick, lock times, Swiss pairing rules, Right of First Selection, roster flags (369 confirmed as TES top).
 - `model/update_results.py` -> merges finished Worlds series from gol.gg into `data/results_live.json` (see "Pulling results" below).
-- `model/build_site.py` -> `dist/site/` (the website; deployed by `.github/workflows/publish.yml` and `update.yml`), checked by `tests/check_site.py`.
+- `site/` the website (Astro, static): pages in `site/src/pages/`, data loaders in `site/src/lib/data.ts`, client scripts in `site/public/js/`. `cd site && npm ci && npm run build` -> `site/dist/`, deployed by `.github/workflows/publish.yml` and `update.yml`, checked by `tests/check_site.py`. See HANDOVER.md "Website".
+- `model/export_site_assets.py` -> `site/public/art/` (logos, extras, champion and item art) and `site/src/lib/art.json`. Run after `export_dashboard.py`, before the site build.
+- `model/dcgi_check.py` -> `data/dash/dcgi.json`: walk-forward check of the v4 model on the Demacia Cup Global Invitational (03 to 17/10/2026), shown on the site's Demacia Cup hub.
 
 ## Refreshing data
 Dashboard datasets changed on 15/10/2026 evening: `dossiers` (season + Summer player tables, team stats/draft from gol.gg, flags), `patch_changes` (26.18-26.20), new `patch_state` (chip flags), `overview` (draft modes, Pick'Ems points, locks). The dossiers tab has a season / Summer toggle; bracket detail panels show an 'On paper' comparison (descriptive only, not used by the model).

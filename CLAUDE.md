@@ -23,4 +23,4 @@ Read HANDOVER.md first (current state, what is next, how to verify), then README
 - Network: gol.gg (scrapes), ddragon.leagueoflegends.com (champion art), leagueoflegends.com (patch notes), lolesports.com. Rate-limit scrapes (0.4 to 0.5 s between pages) and keep the User-Agent the scripts set.
 
 ## Where things are
-- `model/` scripts (entry points in README.md); `data/` inputs and outputs; `data/dash/` the dashboard datasets; `dashboard/index.html` the page; `dashboard/logos`, `dashboard/extras`, `dashboard/ddragon_cache` the art; `research/` cited notes and the 19 team dossiers; `design/` the Claude Design artboards for the public site look; `HANDOVER.md` the live state.
+- `model/` scripts (entry points in README.md); `data/` inputs and outputs; `data/dash/` the site datasets; `site/` the website (Astro, build with `cd site && npm ci && npm run build`); `dashboard/logos`, `dashboard/extras`, `dashboard/ddragon_cache` the art sources (copied into `site/public/art/` by `model/export_site_assets.py`); `research/` cited notes and the 19 team dossiers; `design/` the Claude Design artboards for the public site look; `HANDOVER.md` the live state.
