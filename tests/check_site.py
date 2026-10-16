@@ -56,6 +56,20 @@ def check_teams_nojs(browser, target, problems):
     ctx.close()
 
 
+REPORT_HEADINGS = ["Who they are", "Wins by", "Loses to", "Draft"]
+
+
+def check_team_gen(page, tag, problems):
+    """GEN team page: the four scouting-report headings and 5 visible player rows (one split shown at a time)."""
+    heads = page.locator("#report h4").all_inner_texts()
+    rows = page.locator("#players tr.player-row:visible").count()
+    print(f"{tag}: report headings {heads}, player rows {rows}")
+    if [h.strip().lower() for h in heads] != [h.lower() for h in REPORT_HEADINGS]:
+        problems.append(f"{tag}: report headings {heads}, expected {REPORT_HEADINGS}")
+    if rows != 5:
+        problems.append(f"{tag}: expected 5 player rows, got {rows}")
+
+
 def main():
     if not os.path.exists(os.path.join(DIST, "index.html")):
         sys.exit("build the site first: (cd site && npm run build)")
@@ -100,6 +114,8 @@ def main():
                     page.screenshot(path=os.path.join(shots, f"{name}-{w}.png"), full_page=True)
                     if pg == "teams/":
                         check_teams_chips(page, tag, problems)
+                    if pg == "teams/gen/":
+                        check_team_gen(page, tag, problems)
                     page.close()
                 if pg == "teams/":
                     check_teams_nojs(browser, url + pg, problems)

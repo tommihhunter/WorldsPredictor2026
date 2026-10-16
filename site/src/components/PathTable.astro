@@ -1,0 +1,43 @@
+---
+// The team's road through Worlds: every series row of the latest staged set (the baseline when that set has none
+// for this team), plus the Swiss record line. Results are matched by id and pair (resultFor), never by pair alone.
+import Badge from './Badge.astro';
+import { series, swiss } from '../lib/data';
+import { nz, pct } from '../lib/format';
+import { bySchedule, latestSet, resultFor, swissRecords } from '../lib/stage';
+const { code } = Astro.props as { code: string };
+const mine = (set: string) => series().filter((s) => s.set === set && (s.team_a === code || s.team_b === code));
+const latest = latestSet() ?? 'baseline';
+const set = mine(latest).length ? latest : 'baseline';
+const rows = [...mine(set)].sort(bySchedule);
+const sw = swiss().find((x) => x.set === set && x.team === code) ?? swiss().find((x) => x.set === 'baseline' && x.team === code);
+const record = swissRecords().get(code);
+---
+{rows.length || sw ? (
+  <div class="scroll">
+    <table>
+      <thead><tr><th>When (NZDT)</th><th>Stage</th><th>Opponent</th><th>Our pick</th><th>Result</th></tr></thead>
+      <tbody>
+        {sw && (
+          <tr>
+            <td class="muted">24/10 to 01/11/2026</td><td>Swiss</td><td class="muted">16-team field</td>
+            <td>{sw.predicted_record} <span class="gold">{pct(sw.p_record)}</span> <span class="cap muted">advance {pct(sw.p_advance)}</span></td>
+            <td>{record ? <span class="pill strong">Live {record}</span> : <span class="muted">Not played</span>}</td>
+          </tr>
+        )}
+        {rows.map((s) => {
+          const r = resultFor(s);
+          const opp = s.team_a === code ? s.team_b : s.team_a;
+          return (
+            <tr>
+              <td>{nz(s.time_nz)}</td><td>{s.stage}</td><td><Badge code={opp} /></td>
+              <td>{s.actual ? <span class="pill">ACTUAL</span> : <><b>{s.winner}</b> {s.score} <span class="gold">{pct(s.p_winner)}</span></>}</td>
+              <td>{r ? <span class:list={['pill', s.actual ? 'strong' : r.winner === s.winner ? 'good' : 'bad']}>{r.winner} {Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}{s.actual ? '' : r.winner === s.winner ? ', hit' : ', miss'}</span> : <span class="muted">Not played</span>}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+) : <p class="muted cap">No series predicted for this team yet.</p>}
+<p class="cap muted">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Later rounds assume the predicted bracket; the Swiss line is the most likely record and its chance.</p>

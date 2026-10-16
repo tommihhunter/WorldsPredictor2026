@@ -1,0 +1,40 @@
+---
+// Ported from dashboard/index.html (dossiers script, players table): same number formats, five most-played champions.
+import ChampIcon from './ChampIcon.astro';
+import type { Player } from '../lib/data';
+const { players, summer } = Astro.props as { players: Player[]; summer: boolean };
+const ROLE: Record<string, string> = { TOP: 'Top', JNG: 'Jungle', JUNGLE: 'Jungle', MID: 'Mid', ADC: 'Bot', BOT: 'Bot', SUP: 'Support', SUPPORT: 'Support' };
+const f = (v: number | null | undefined, fmt: (n: number) => string) => (v == null ? 'UNKNOWN' : fmt(Number(v)));
+const kda = (n: number) => n.toFixed(1);
+const gd = (n: number) => `${Math.round(n) > 0 ? '+' : ''}${Math.round(n)}`;
+const pc1 = (n: number) => `${n.toFixed(1)}%`;
+const games = (p: Player) => (p.games == null ? 'UNKNOWN' : summer && p.season_games != null ? `${p.games}/${p.season_games}` : String(p.games));
+---
+{players.length ? (
+  <div class="scroll">
+    <table class="players">
+      <thead><tr><th>Role</th><th>Player</th><th class="r">Games</th><th class="r">KDA</th><th class="r">GD@15</th><th class="r">KP</th><th class="r">Pool</th></tr></thead>
+      <tbody>
+        {players.map((p) => (<>
+          <tr class="player-row">
+            <td>{ROLE[String(p.role).toUpperCase()] ?? p.role}</td>
+            <td><b>{p.player}</b></td>
+            <td class="r" title={summer && p.season_games != null ? `${p.games} of ${p.season_games} games this year` : undefined}>{games(p)}</td>
+            <td class="r">{f(p.kda, kda)}</td><td class="r">{f(p.gd15, gd)}</td><td class="r">{f(p.kp, pc1)}</td>
+            <td class="r">{p.n_champs ?? 'UNKNOWN'}</td>
+          </tr>
+          <tr class="pool"><td colspan="7"><div class="champs">{(p.champs ?? []).length ? (p.champs ?? []).slice(0, 5).map((c) => (
+            <span class="chip"><ChampIcon name={c.champ} size={20} /><span class="cap muted">{c.games != null ? `${c.games}g · ${Math.round(Number(c.wr))}%` : ''}</span></span>
+          )) : <span class="muted cap">Champion pool UNKNOWN</span>}</div></td></tr>
+        </>))}
+      </tbody>
+    </table>
+  </div>
+) : <p class="muted cap">No player data found.</p>}
+<p class="cap muted">Under each player: most played, {summer ? 'Summer split' : '2026 season'} (games · win rate).</p>
+<style>
+  .players td { vertical-align:middle; }
+  .players tr.player-row td { border-bottom:0; padding-bottom:2px; }
+  .champs { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { display:inline-flex; align-items:center; gap:6px; padding:2px 8px 2px 2px; border-radius:8px; background:var(--raised); font-size:13px; white-space:nowrap; }
+</style>
