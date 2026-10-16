@@ -17,7 +17,19 @@
   "TSW": "on-dark",
   "CFO": "",
   "LOS": "on-dark",
-  "FURIA": "on-dark"
+  "FURIA": "on-dark",
+  "BNK": "",
+  "BRO": "",
+  "FLY": "",
+  "GAM": "",
+  "JDG": "",
+  "KT": "",
+  "LGD": "",
+  "NAVI": "",
+  "RED": "",
+  "SR": "",
+  "VIT": "",
+  "WE": ""
  },
  "source": {
   "AL": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/anyone's-legend",
@@ -37,6 +49,19 @@
   "TSW": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/secret",
   "CFO": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/ctbc-flying-oyster",
   "LOS": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/los",
-  "FURIA": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/furia"
- }
+  "FURIA": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/furia",
+  "BNK": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/bnk-fearx",
+  "BRO": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/brion",
+  "FLY": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/flyquest",
+  "GAM": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/gam-esports",
+  "JDG": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/jd-gaming",
+  "KT": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/kt-rolster",
+  "LGD": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/lgd-gaming",
+  "NAVI": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/natus-vincere-cis",
+  "RED": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/red-canids",
+  "SR": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/shopify-rebellion",
+  "VIT": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/team-vitality",
+  "WE": "https://github.com/lootmarket/esport-team-logos/tree/master/league-of-legends/team-we"
+ },
+ "accessed_dcgi": "16/10/2026"
 }

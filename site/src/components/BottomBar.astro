@@ -1,6 +1,7 @@
 ---
 import { NAV, liveStage } from '../lib/nav';
 import { url } from '../lib/url';
+import { icon } from '../lib/icons';
 const { active } = Astro.props as { active: string };
 const live = liveStage();
 const pick = (id: string) => NAV.find((n) => n.id === id)!;
@@ -8,6 +9,6 @@ const main = [pick('home'), pick(live), pick('teams'), pick('scorecard')];
 const more = NAV.filter((n) => !main.includes(n));
 ---
 <nav class="bottombar" aria-label="Sections">
-  {main.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}><i></i>{n.label}</a>)}
-  <details><summary><i></i>More</summary><div class="sheet">{more.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}>{n.label}</a>)}</div></details>
+  {main.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}><span class="ico" set:html={icon(n.id)} />{n.label}</a>)}
+  <details><summary><span class="ico" set:html={icon('more')} />More</summary><div class="sheet">{more.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}>{n.label}</a>)}</div></details>
 </nav>

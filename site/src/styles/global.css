@@ -38,8 +38,8 @@ footer { padding:20px clamp(16px, 4vw, 40px); border-top:1px solid var(--line); 
   .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; } .grid-4.tiles { grid-template-columns:1fr 1fr; }
   .bottombar { display:grid; grid-template-columns:repeat(5,1fr); position:fixed; left:0; right:0; bottom:0; background:var(--bg); border-top:1px solid var(--line); padding:6px 4px max(6px, env(safe-area-inset-bottom)); z-index:10; }
   .bottombar a { display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; color:var(--muted); padding:4px 0; }
-  .bottombar a[aria-current="page"] { color:var(--gold); } .bottombar a i { width:18px; height:18px; border-radius:5px; background:var(--raised); display:block; } .bottombar a[aria-current="page"] i { background:var(--gold); }
-  .bottombar details { position:relative; } .bottombar summary { list-style:none; display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; color:var(--muted); padding:4px 0; cursor:pointer; }
+  .bottombar a[aria-current="page"] { color:var(--gold); } .bottombar .ico { display:block; width:20px; height:20px; } .bottombar .ico svg { display:block; width:20px; height:20px; }
+  .bottombar details { position:relative; } .bottombar summary::-webkit-details-marker { display:none; } .bottombar summary { list-style:none; display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; color:var(--muted); padding:4px 0; cursor:pointer; }
   .bottombar details[open] .sheet { display:flex; } .sheet { display:none; position:absolute; right:0; bottom:48px; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:8px; flex-direction:column; gap:2px; min-width:160px; }
   .sheet a { flex-direction:row; justify-content:flex-start; font-size:14px; padding:10px 12px; border-radius:8px; }
 }
