@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>body{margin:0;background:#15112A;font-variant-numeric:tabular-nums}a{color:inherit;text-decoration:none}a:hover{color:#D9B45A}</style>
+</helmet>
+<div style="min-height: 100vh; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; display: flex; flex-direction: column">
+  <dc-import name="Site Header" active="demacia-cup" hint-size="100%,84px"></dc-import>
+  <main style="max-width: 1600px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 56px 40px 80px; display: flex; flex-direction: column; gap: 56px">
+    <section style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 72px; align-items: end">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-size: 17px; font-weight: 600; color: #D9B45A">Demacia Cup Global Invitational, 03 to 17/10/2026</span>
+        <h1 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(40px, 3.8vw, 64px); line-height: 1.05">A dress rehearsal</h1>
+        <p style="margin: 0; font-size: 22px; line-height: 1.45; color: #E0DCEE; max-width: 60ch">Teams that missed Worlds, from every region. The model was frozen on 03/10 and asked to call each series blind, as a live test before Worlds.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 22px 26px; background: #2A2238; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(217,180,90,0.18)">
+        <span style="font-size: 16px; font-weight: 600; color: #D9B45A">Partial data</span>
+        <span style="font-size: 17px; line-height: 1.5">15 series so far. Swiss rounds 3 and 4, two quarterfinals, semis and final not found as of 15/10. Some regions inferred.</span>
+      </div>
+    </section>
+
+    <section style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #1E1939; border-radius: 14px; padding-left: 32px; padding-right: 32px">
+      <sc-for list="{{tiles}}" as="t" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 28px 32px 28px 0">
+          <span style="font-size: 16px; color: #C6C0DD">{{t.k}}</span>
+          <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 56px; line-height: 1; color: {{t.c}}">{{t.v}}</span>
+          <span style="font-size: 16px; color: #E0DCEE">{{t.sub}}</span>
+        </div>
+      </sc-for>
+    </section>
+
+    <section style="display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 56px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px; margin-bottom: 8px">
+          <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 32px">Every call</h2>
+          <span style="font-size: 16px; color: #C6C0DD">Pick, chance, then what happened</span>
+        </div>
+        <sc-for list="{{rows}}" as="r" hint-placeholder-count="15">
+          <div style="display: grid; grid-template-columns: 70px 170px minmax(0, 1fr) 130px 110px 90px; gap: 16px; align-items: center; padding: 10px 0; border-top: 1px solid #251F43; font-size: 17px">
+            <span style="font-size: 15px; color: #C6C0DD">{{r.date}}</span>
+            <span style="font-size: 15px; color: #D4CFE7">{{r.stage}}</span>
+            <span style="display: flex; align-items: center; gap: 8px; min-width: 0"><img src="{{r.logoA}}" alt="" style="width: 24px; height: 24px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700">{{r.a}}</span><span style="color: #B8B0D4">v</span><img src="{{r.logoB}}" alt="" style="width: 24px; height: 24px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700">{{r.b}}</span></span>
+            <span>{{r.pick}} <span style="color: #86BDB5">{{r.p}}</span></span>
+            <span style="color: #E0DCEE">{{r.actual}}</span>
+            <span style="text-align: right; font-weight: 600; color: {{r.c}}">{{r.hit}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <aside style="display: flex; flex-direction: column; gap: 32px">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 26px; background: #2A2238; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(217,180,90,0.18)">
+          <span style="font-size: 16px; font-weight: 600; color: #D9B45A">What it taught us</span>
+          <p style="margin: 0; font-size: 19px; line-height: 1.55">Both Bo5s were called 3-0 and both went 3-2. Two series is too few to change the model, but it is the first thing the Play-In calibration will check.</p>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <span style="font-size: 16px; font-weight: 600; color: #D9B45A; padding-bottom: 8px">Region matchups, model hits</span>
+          <sc-for list="{{pairs}}" as="p" hint-placeholder-count="6">
+            <div style="display: flex; justify-content: space-between; padding: 11px 0; border-top: 1px solid #251F43; font-size: 17px"><span style="color: #E0DCEE">{{p.k}}</span><span style="font-weight: 500">{{p.v}}</span></div>
+          </sc-for>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <footer style="border-top: 1px solid #251F43; margin-top: auto">
+    <div style="max-width: 1600px; margin: 0 auto; padding: 24px 40px; font-size: 14px; color: #C6C0DD; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <span>Walk-forward check, ratings cut 03/10/2026, compiled 16/10/2026 12:13 NZDT.</span>
+      <span>A fan project. Logos belong to their owners.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = c => c === 'MVK' ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' : 'dashboard/logos/' + c + '.png';
+    const tiles = [
+      { k: 'Winners called', v: '13 / 15', sub: '87% hit rate', c: '#86BDB5' },
+      { k: 'Log loss', v: '0.45', sub: 'Lower is better', c: '#D9B45A' },
+      { k: 'Region rule', v: '0.47', sub: "'Stronger region wins 70%'", c: '#EEEAF6' },
+      { k: 'Coin flip', v: '0.69', sub: 'The floor to beat', c: '#B8B0D4' }
+    ];
+    const R = [['03/10','Swiss R1','RED','NAVI','NAVI',57,'RED 1-0',0],['03/10','Swiss R1','LGD','FLY','LGD',63,'LGD 1-0',1],['03/10','Swiss R1','KT','SR','KT',80,'KT 1-0',1],['03/10','Swiss R1','BNK','VIT','BNK',72,'BNK 1-0',1],['03/10','Swiss R1','WE','GAM','WE',69,'WE 1-0',1],['03/10','Swiss R1','BRO','JDG','BRO',52,'BRO 1-0',1],['04/10','Swiss R2','BNK','LGD','BNK',65,'BNK 2-1',1],['04/10','Swiss R2','KT','RED','KT',85,'KT 2-0',1],['04/10','Swiss R2','WE','BRO','BRO',58,'WE 2-1',0],['05/10','Swiss R2','VIT','GAM','VIT',60,'VIT 2-0',1],['05/10','Swiss R2','NAVI','FLY','NAVI',52,'NAVI 2-0',1],['05/10','Swiss R2','JDG','SR','JDG',80,'JDG 2-0',1],['06/10','Swiss R3','BRO','NAVI','BRO',73,'BRO 2-1',1],['12/10','Quarterfinal','KT','VIT','KT',82,'KT 3-2',1],['12/10','Quarterfinal','BNK','JDG','BNK',60,'BNK 3-2',1]];
+    const rows = R.map(r => ({ date: r[0], stage: r[1], a: r[2], b: r[3], logoA: L(r[2]), logoB: L(r[3]), pick: r[4], p: r[5] + '%', actual: r[6], hit: r[7] ? 'Right' : 'Wrong', c: r[7] ? '#86BDB5' : '#F29A8B' }));
+    const pairs = [['LCK v LPL', '3 of 4'], ['LCK v LEC', '3 of 3'], ['LPL v LCS', '2 of 2'], ['LCK v LCS', '1 of 1'], ['LCK v CBLOL', '1 of 1'], ['LEC v LCS', '1 of 1'], ['LEC v LCP', '1 of 1'], ['LPL v LCP', '1 of 1'], ['LEC v CBLOL', '0 of 1']].map(([k, v]) => ({ k, v }));
+    return { tiles, rows, pairs };
+  }
+}
+</script>
+</body>
+</html>

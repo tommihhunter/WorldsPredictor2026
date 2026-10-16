@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>body{margin:0;background:#15112A;font-variant-numeric:tabular-nums}a{color:inherit;text-decoration:none}a:hover{color:#D9B45A}</style>
+</helmet>
+<div style="min-height: 100vh; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; display: flex; flex-direction: column">
+  <dc-import name="Site Header" active="knockouts" hint-size="100%,84px"></dc-import>
+  <main style="max-width: 1600px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 56px 40px 80px; display: flex; flex-direction: column; gap: 56px">
+    <section style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 72px; align-items: end">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-size: 17px; font-weight: 600; color: #D9B45A">Knockouts, Allen then Brooklyn, 04 to 15/11/2026 NZDT</span>
+        <h1 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(40px, 3.8vw, 64px); line-height: 1.05">Eight teams, one cup</h1>
+        <p style="margin: 0; font-size: 22px; line-height: 1.45; color: #E0DCEE; max-width: 58ch">Every series Bo5 with Fearless Draft. The quarterfinal draw on 31/10 is random, so this bracket is an assumed draw: no same-region quarterfinals, favourites spread out.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px 28px; background: #2A2238; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(217,180,90,0.18)">
+        <span style="font-size: 16px; font-weight: 600; color: #D9B45A">Pick'Ems</span>
+        <span style="font-size: 19px; line-height: 1.5">10 per quarterfinal, 20 per semifinal, 80 for the final. Locks 04/11/2026 11:00 NZDT, after the draw.</span>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 20px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px">
+        <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 32px">Assumed bracket</h2>
+        <span style="font-size: 16px; color: #C6C0DD">Percent is the chance the upper team wins the series</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px">
+        <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: #D4CFE7; padding-bottom: 14px">Quarterfinals, Allen</span>
+        <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: #D4CFE7; padding-bottom: 14px">Semifinals, Allen</span>
+        <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: #D9B45A; padding-bottom: 14px">Final, Brooklyn</span>
+        <sc-for list="{{cols}}" as="col" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; justify-content: space-around; gap: 20px; min-height: 760px">
+            <sc-for list="{{col.items}}" as="s" hint-placeholder-count="2">
+              <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px 22px; background: #1E1939; border: 1px solid {{s.border}}; border-radius: 14px">
+                <span style="display: flex; justify-content: space-between; font-size: 15px; color: #C6C0DD"><span>{{s.when}}</span><span style="font-weight: 600; font-size: 13px; letter-spacing: 0.08em; color: {{s.tierColor}}">{{s.tier}}</span></span>
+                <span style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 8px 14px">
+                  <img src="{{s.logoA}}" alt="" style="width: 34px; height: 34px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 22px">{{s.a}}</span><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 28px; color: #86BDB5">{{s.pa}}</span>
+                  <img src="{{s.logoB}}" alt="" style="width: 34px; height: 34px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 22px; color: #D4CFE7">{{s.b}}</span><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 28px; color: #B8B0D4">{{s.pb}}</span>
+                </span>
+                <span style="display: grid; grid-template-columns: {{s.split}}; gap: 3px; height: 4px"><span style="background: #86BDB5; border-radius: 2px"></span><span style="background: #3A3163; border-radius: 2px"></span></span>
+                <span style="font-size: 15px; color: #E0DCEE">{{s.note}}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px; margin-bottom: 8px">
+        <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 32px">How far each team goes</h2>
+        <span style="font-size: 16px; color: #C6C0DD">Over every legal Swiss and knockout draw</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 40px 240px repeat(4, minmax(0, 1fr)); gap: 20px; font-size: 15px; color: #C6C0DD; padding-bottom: 6px">
+        <span></span><span>Team</span><span>Quarterfinal</span><span>Semifinal</span><span>Final</span><span>Champion</span>
+      </div>
+      <sc-for list="{{path}}" as="t" hint-placeholder-count="10">
+        <div style="display: grid; grid-template-columns: 40px 240px repeat(4, minmax(0, 1fr)); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid #251F43">
+          <img src="{{t.logo}}" alt="" style="width: 34px; height: 34px; object-fit: contain">
+          <span style="display: flex; flex-direction: column"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 18px">{{t.name}}</span><span style="font-size: 14px; color: #C6C0DD">{{t.region}}</span></span>
+          <sc-for list="{{t.cells}}" as="c" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; gap: 12px"><div style="flex: 1; height: 6px; border-radius: 3px; background: #2A2448"><div style="height: 6px; border-radius: 3px; background: {{c.color}}; width: {{c.w}}"></div></div><span style="width: 52px; text-align: right; font-size: 18px; font-weight: 500">{{c.pct}}</span></div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </section>
+  </main>
+  <footer style="border-top: 1px solid #251F43; margin-top: auto">
+    <div style="max-width: 1600px; margin: 0 auto; padding: 24px 40px; font-size: 14px; color: #C6C0DD; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <span>Frozen baseline 15/10/2026 17:08 NZDT. The bracket is replaced by the real draw after 31/10.</span>
+      <span>A fan project. Logos belong to their owners.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = c => c === 'MVK' ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' : 'dashboard/logos/' + c + '.png';
+    const tc = t => t === 'LOCK' ? '#D9B45A' : t === 'LEAN' ? '#86BDB5' : '#D4CFE7';
+    const mk = (when, a, b, pa, tier, s30, fin) => ({ when, a, b, logoA: L(a), logoB: L(b), pa: pa + '%', pb: (100 - pa) + '%', tier, tierColor: tc(tier), split: pa + 'fr ' + (100 - pa) + 'fr', note: 'Likeliest ' + a + ' 3-0 (' + s30 + '%)', border: fin ? '#D9B45A' : 'transparent' });
+    const cols = [
+      { items: [mk('04/11 09:00', 'GEN', 'AL', 78, 'LOCK', 41), mk('05/11 09:00', 'T1', 'IG', 74, 'LEAN', 37), mk('06/11 09:00', 'HLE', 'G2', 73, 'LEAN', 36), mk('07/11 09:00', 'BLG', 'DK', 52, 'COIN FLIP', 20)] },
+      { items: [mk('08/11 09:00', 'GEN', 'T1', 61, 'LEAN', 26), mk('09/11 09:00', 'HLE', 'BLG', 55, 'COIN FLIP', 22)] },
+      { items: [mk('15/11 05:00', 'GEN', 'HLE', 61, 'LEAN', 26, true)] }
+    ];
+    const P = [['GEN','Gen.G','LCK',91.9,69.7,49.3,33.6],['T1','T1','LCK',83.7,54.9,32.4,17.2],['HLE','Hanwha Life Esports','LCK',84.1,55.4,32.4,17.0],['BLG','Bilibili Gaming','LPL',77.9,46.7,24.7,11.7],['DK','Dplus KIA','LCK',75.5,43.8,22.2,9.9],['AL',"Anyone's Legend",'LPL',60.1,26.6,10.0,3.3],['G2','G2 Esports','LEC',53.0,20.9,7.0,2.0],['IG','Invictus Gaming','LPL',49.0,18.9,6.2,1.8],['TES','Top Esports','LPL',43.0,14.6,4.2,1.0],['TLAW','Team Liquid Alienware','LCS',43.3,14.5,4.1,1.0]];
+    const path = P.map(r => ({ logo: L(r[0]), name: r[1], region: r[2], cells: r.slice(3).map((v, i) => ({ pct: v.toFixed(1) + '%', w: v + '%', color: i === 3 ? '#D9B45A' : '#86BDB5' })) }));
+    return { cols, path };
+  }
+}
+</script>
+</body>
+</html>

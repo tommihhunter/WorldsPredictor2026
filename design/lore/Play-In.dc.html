@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>body{margin:0;background:#15112A;font-variant-numeric:tabular-nums}a{color:inherit;text-decoration:none}a:hover{color:#D9B45A}</style>
+</helmet>
+<div style="min-height: 100vh; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; display: flex; flex-direction: column">
+  <dc-import name="Site Header" active="play-in" hint-size="100%,84px"></dc-import>
+  <main style="max-width: 1600px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 56px 40px 80px; display: flex; flex-direction: column; gap: 56px">
+    <section style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 72px; align-items: end">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-size: 17px; font-weight: 600; color: #D9B45A">Play-In, Los Angeles, 16 to 19/10/2026 NZDT</span>
+        <h1 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(40px, 3.8vw, 64px); line-height: 1.05">Four teams, one Swiss spot</h1>
+        <p style="margin: 0; font-size: 22px; line-height: 1.45; color: #E0DCEE; max-width: 56ch">Double elimination, every series Bo5 with Fearless Draft. The winner joins the Swiss stage.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; padding: 24px 28px; background: #1E1939; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05)">
+        <span style="font-size: 16px; font-weight: 600; color: #D9B45A; padding-bottom: 8px">Who wins the Play-In</span>
+        <sc-for list="{{winOdds}}" as="w" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 32px 72px minmax(0, 1fr) 56px; align-items: center; gap: 14px; padding: 9px 0; border-top: 1px solid #251F43">
+            <img src="{{w.logo}}" alt="{{w.code}}" style="width: 28px; height: 28px; object-fit: contain">
+            <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 17px">{{w.code}}</span>
+            <div style="height: 6px; border-radius: 3px; background: #2A2448"><div style="height: 6px; border-radius: 3px; background: #86BDB5; width: {{w.w}}"></div></div>
+            <span style="text-align: right; font-size: 19px; font-weight: 500">{{w.pct}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 20px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px">
+        <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 32px">Bracket</h2>
+        <span style="font-size: 16px; color: #C6C0DD">Select a series for the detail. Times NZDT.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: start">
+        <sc-for list="{{cols}}" as="col" hint-placeholder-count="4">
+          <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0">
+            <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: #D4CFE7">{{col.name}}</span>
+            <sc-for list="{{col.items}}" as="s" hint-placeholder-count="2">
+              <button type="button" onClick="{{s.pick}}" style="appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; background: #1E1939; border: 1px solid {{s.border}}; border-radius: 14px; box-shadow: {{s.glow}}">
+                <span style="display: flex; justify-content: space-between; gap: 8px; font-size: 15px; color: #C6C0DD"><span>{{s.when}}</span><span style="font-weight: 600; letter-spacing: 0.08em; font-size: 13px; color: {{s.tierColor}}">{{s.tier}}</span></span>
+                <span style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 6px 12px">
+                  <img src="{{s.logoA}}" alt="{{s.a}}" style="width: 28px; height: 28px; object-fit: contain">
+                  <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 19px">{{s.a}}</span>
+                  <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 24px; color: #86BDB5">{{s.rightA}}</span>
+                  <img src="{{s.logoB}}" alt="{{s.b}}" style="width: 28px; height: 28px; object-fit: contain">
+                  <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 19px; color: #D4CFE7">{{s.b}}</span>
+                  <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 24px; color: #B8B0D4">{{s.rightB}}</span>
+                </span>
+                <span style="display: grid; grid-template-columns: {{s.split}}; gap: 3px; height: 4px"><span style="background: #86BDB5; border-radius: 2px"></span><span style="background: #3A3163; border-radius: 2px"></span></span>
+                <span style="font-size: 15px; color: {{s.noteColor}}">{{s.note}}</span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 56px; padding: 36px 40px; background: #1E1939; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05)">
+      <div style="display: flex; flex-direction: column; gap: 22px; min-width: 0">
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+          <img src="{{d.logoA}}" alt="{{d.a}}" style="width: 52px; height: 52px; object-fit: contain">
+          <h3 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 34px">{{d.title}}</h3>
+          <img src="{{d.logoB}}" alt="{{d.b}}" style="width: 52px; height: 52px; object-fit: contain">
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap">
+          <span style="font-size: 16px; font-weight: 600; color: #D9B45A; border: 1px solid #D9B45A; padding: 5px 14px; border-radius: 999px">{{d.callChip}}</span>
+          <span style="font-size: 16px; color: #E0DCEE; border: 1px solid #3A3163; padding: 5px 14px; border-radius: 999px">{{d.scoreChip}}</span>
+          <span style="font-size: 16px; color: #E0DCEE; border: 1px solid #3A3163; padding: 5px 14px; border-radius: 999px">{{d.tier}}</span>
+          <sc-if value="{{d.played}}" hint-placeholder-val="{{ false }}"><span style="font-size: 16px; font-weight: 600; color: #15112A; background: #D9B45A; padding: 5px 14px; border-radius: 999px">{{d.resultChip}}</span></sc-if>
+        </div>
+        <sc-if value="{{d.hasNotes}}" hint-placeholder-val="{{ true }}">
+          <dl style="margin: 0; display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px 24px; font-size: 18px; line-height: 1.6">
+            <dt style="color: #C6C0DD">Key matchup</dt><dd style="margin: 0; color: #ECE9F5">Top lane: Canna (KC, GD@15 +253 in playoffs, 16 solo kills, Rumble 8-2) against Thanatos (C9, GD@15 -191, Worlds debut). KC's early game runs through Canna and Yike.</dd>
+            <dt style="color: #C6C0DD">Draft angle</dt><dd style="margin: 0; color: #ECE9F5">KC's comforts Rumble, Vi and Seraphine/Rakan are the bans to watch. Fearless Bo5 tests C9's thinner pools more than KC's.</dd>
+            <dt style="color: #C6C0DD">What flips it</dt><dd style="margin: 0; color: #ECE9F5">KC's baron control collapses internationally (26%). If C9 drag games past 30 minutes, Vulcan's playmaking and dragon control can win the long game, plus a home crowd in LA.</dd>
+          </dl>
+        </sc-if>
+        <sc-if value="{{d.noNotes}}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; font-size: 18px; color: #D4CFE7">The matchup write-up is added once both teams are known.</p>
+        </sc-if>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+        <span style="font-size: 16px; font-weight: 600; color: #D9B45A; padding-bottom: 8px">Score chances</span>
+        <sc-for list="{{d.scores}}" as="x" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr) 64px; align-items: center; gap: 14px; padding: 9px 0; border-top: 1px solid #251F43">
+            <span style="font-size: 17px; color: #E0DCEE">{{x.label}}</span>
+            <div style="height: 6px; border-radius: 3px; background: #2A2448"><div style="height: 6px; border-radius: 3px; background: {{x.color}}; width: {{x.w}}"></div></div>
+            <span style="text-align: right; font-size: 18px; font-weight: 500">{{x.pct}}</span>
+          </div>
+        </sc-for>
+        <span style="font-size: 15px; color: #C6C0DD; padding-top: 10px">A 3-0 call is the single likeliest score, not a certainty.</span>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 16px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px">
+        <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 32px">Our Play-In Pick'Ems</h2>
+        <span style="font-size: 16px; color: #C6C0DD">Locked 16/10/2026 07:00 NZDT. 35 points available</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 2fr 1fr; gap: 16px; padding: 4px 0 8px; font-size: 15px; color: #C6C0DD">
+        <span>Slot</span><span>Our pick</span><span>Chance right</span><span>Field</span><span style="text-align: right">Status</span>
+      </div>
+      <sc-for list="{{pickems}}" as="p" hint-placeholder-count="6">
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 2fr 1fr; gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid #251F43; font-size: 18px">
+          <span>{{p.slot}}</span>
+          <span style="display: flex; align-items: center; gap: 10px"><img src="{{p.logo}}" alt="" style="width: 26px; height: 26px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700">{{p.pick}}</span></span>
+          <span style="color: #86BDB5; font-weight: 500">{{p.p}}</span>
+          <span style="font-size: 16px; color: #D4CFE7">{{p.alt}}</span>
+          <span style="text-align: right; font-weight: 600; color: {{p.statusColor}}">{{p.status}}</span>
+        </div>
+      </sc-for>
+    </section>
+  </main>
+  <footer style="border-top: 1px solid #251F43; margin-top: auto">
+    <div style="max-width: 1600px; margin: 0 auto; padding: 24px 40px; font-size: 14px; color: #C6C0DD; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <span>Predicted 15/10/2026 17:08 NZDT (frozen baseline). Results: gol.gg, accessed 16/10/2026 12:45 NZDT.</span>
+      <span>A fan project. Logos belong to their owners.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sel: 'PI-R1-A' };
+  renderVals() {
+    const L = c => c === 'MVK' ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' : 'dashboard/logos/' + c + '.png';
+    const tierColor = t => t === 'LOCK' ? '#D9B45A' : t === 'LEAN' ? '#86BDB5' : '#D4CFE7';
+    const S = [
+      { id: 'PI-R1-A', col: 0, when: '16/10 07:00', a: 'KC', b: 'C9', pa: 62, tier: 'LEAN', s: [26.5, 20.9, 14.2], result: [3, 2], notes: true },
+      { id: 'PI-R1-B', col: 0, when: '16/10 12:00', a: 'FURIA', b: 'MVK', pa: 73, tier: 'LEAN', s: [36, 23, 14] },
+      { id: 'PI-WM', col: 1, when: '17/10 07:00', a: 'KC', b: 'FURIA', pa: 64, tier: 'LEAN', s: [28, 22, 14], label: "Winners' match" },
+      { id: 'PI-EM', col: 1, when: '17/10 12:00', a: 'C9', b: 'MVK', pa: 75, tier: 'LOCK', s: [38, 24, 13], label: 'Elimination' },
+      { id: 'PI-LF', col: 2, when: '18/10 07:00', a: 'C9', b: 'FURIA', pa: 53, tier: 'COIN FLIP', s: [21, 18, 14] },
+      { id: 'PI-GF', col: 3, when: '19/10 07:00', a: 'KC', b: 'C9', pa: 62, tier: 'LEAN', s: [27, 21, 14] }
+    ];
+    const card = x => {
+      const on = this.state.sel === x.id, played = !!x.result;
+      const hit = played && (x.result[0] > x.result[1]);
+      return {
+        when: (x.label ? x.label + ', ' : '') + x.when, a: x.a, b: x.b, tier: x.tier, tierColor: tierColor(x.tier),
+        logoA: L(x.a), logoB: L(x.b),
+        rightA: played ? String(x.result[0]) : x.pa + '%', rightB: played ? String(x.result[1]) : (100 - x.pa) + '%',
+        split: x.pa + 'fr ' + (100 - x.pa) + 'fr',
+        note: played ? (hit ? 'Called it. Score call 3-0 missed' : 'Upset') : 'Likeliest ' + x.a + ' 3-0 (' + Math.round(x.s[0]) + '%)',
+        noteColor: played ? '#D9B45A' : '#E0DCEE',
+        border: on ? '#86BDB5' : 'transparent', glow: on ? '0 0 0 1px #86BDB5' : 'none',
+        pick: () => this.setState({ sel: x.id })
+      };
+    };
+    const names = ['Round 1', 'Round 2', 'Lower final', 'Final'];
+    const cols = names.map((name, i) => ({ name, items: S.filter(x => x.col === i).map(card) }));
+    const x = S.find(s => s.id === this.state.sel) || S[0];
+    const up = 100 - x.pa;
+    const sc = x.notes ? [['KC 3-0', 26.5], ['KC 3-1', 20.9], ['KC 3-2', 14.2], ['C9 3-2', 11.8], ['C9 3-1', 13.8], ['C9 3-0', 12.9]]
+      : [[x.a + ' 3-0', x.s[0]], [x.a + ' 3-1', x.s[1]], [x.a + ' 3-2', x.s[2]], [x.b + ' wins', up]];
+    const max = Math.max(...sc.map(s => s[1]));
+    const d = {
+      a: x.a, b: x.b, logoA: L(x.a), logoB: L(x.b), title: x.a + ' v ' + x.b,
+      callChip: x.a + ' to win ' + x.pa + '%', scoreChip: 'Score call 3-0 (' + Math.round(x.s[0]) + '%)', tier: x.tier,
+      played: !!x.result, resultChip: x.result ? 'Final: ' + x.a + ' ' + x.result[0] + '-' + x.result[1] : '',
+      hasNotes: !!x.notes, noNotes: !x.notes,
+      scores: sc.map((s, i) => ({ label: s[0], pct: s[1].toFixed(1) + '%', w: (s[1] / max * 100).toFixed(0) + '%', color: s[0].startsWith(x.a) ? '#86BDB5' : '#7C6FB0' }))
+    };
+    const winOdds = [['KC', 49], ['C9', 24], ['FURIA', 24], ['MVK', 3]].map(([c, p]) => ({ code: c, logo: L(c), pct: p + '%', w: (p / 49 * 100) + '%' }));
+    const pk = [['R1: KC v C9', 'KC', 62, 'KC 62%, C9 38%', 'Hit, +5'], ['R1: FURIA v MVK', 'FURIA', 73, 'FURIA 73%, MVK 27%', 'Pending'], ["Winners' match", 'KC', 43, 'KC 43%, FURIA 29%, C9 23%', 'Pending'], ['Elimination match', 'C9', 43, 'C9 43%, KC 30%, MVK 15%', 'Pending'], ['Lower final', 'KC', 33, 'KC 33%, FURIA 29%, C9 29%', 'Pending'], ['Final (10 pts)', 'KC', 49, 'KC 49%, C9 24%, FURIA 24%', 'Pending']];
+    const pickems = pk.map(r => ({ slot: r[0], pick: r[1], logo: L(r[1]), p: r[2] + '%', alt: r[3], status: r[4], statusColor: r[4].startsWith('Hit') ? '#D9B45A' : '#C6C0DD' }));
+    return { cols, d, winOdds, pickems };
+  }
+}
+</script>
+</body>
+</html>

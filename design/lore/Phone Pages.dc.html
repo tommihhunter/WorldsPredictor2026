@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:wght@400;500;600&display=swap">
+<style>body{margin:0;background:#2A2D33;font-variant-numeric:tabular-nums}a{color:inherit;text-decoration:none}a:hover{color:#D9B45A}</style>
+</helmet>
+<section style="padding: 80px; display: flex; flex-direction: column; gap: 40px">
+  <div style="display: flex; flex-direction: column; gap: 8px; color: #EDEFF2; font-family: system-ui, sans-serif">
+    <span style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #A6ACB6">Phone, 390 wide</span>
+    <h1 style="margin: 0; font-size: 40px; font-weight: 700">Every page on phone</h1>
+    <p style="margin: 0; font-size: 17px; color: #C3C8D0; max-width: 76ch">Same 5-tab bar as the live site: Home, Play-In, Swiss, Teams, More. Knockouts, Scorecard, Meta and Demacia Cup sit under More. Each page leads with what you need for Pick'Ems.</p>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+    <!-- HOME -->
+    <div id="ph-home" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Home</span>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="Poro Prophet" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">Poro Prophet</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 28px">
+          <section style="display: flex; flex-direction: column; background: #1E1939; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); overflow: hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 16px 18px; border-bottom: 1px solid #2C2550"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 18px">Swiss Pick'Ems</span><span style="font-size: 13px; font-weight: 600; color: #D9B45A; border: 1px solid #D9B45A; padding: 3px 10px; border-radius: 999px; white-space: nowrap">Locks 24/10 06:00</span></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #251F43">
+              <div style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border-right: 1px solid #251F43"><span style="font-size: 14px; font-weight: 600; color: #86BDB5">Go 3-0</span><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 17px">GEN <span style="color: #86BDB5; font-weight: 600">41%</span></span><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 17px">HLE <span style="color: #86BDB5; font-weight: 600">29%</span></span></div>
+              <div style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px"><span style="font-size: 14px; font-weight: 600; color: #F29A8B">Go 0-3</span><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 17px">CFO <span style="color: #F29A8B; font-weight: 600">46%</span></span><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 17px">LOS <span style="color: #F29A8B; font-weight: 600">24%</span></span></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px"><span style="font-size: 14px; font-weight: 600; color: #D9B45A">Advance 3-1 or 3-2</span><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 16px; line-height: 1.5">BLG, T1, DK, AL, G2, IG</span><span style="font-size: 14px; color: #C6C0DD">Preliminary until the 18/10 draw</span></div>
+          </section>
+          <section style="display: flex; flex-direction: column; gap: 12px">
+            <span style="font-size: 15px; font-weight: 600; color: #D9B45A">The prophecy for Worlds 2026</span>
+            <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 32px; line-height: 1.05">The orb favours Gen.G</h2>
+            <div style="display: flex; align-items: center; gap: 16px; padding: 16px 18px; background: #1E1939; border-radius: 14px"><img src="dashboard/logos/GEN.png" alt="Gen.G" style="width: 44px; height: 44px; object-fit: contain"><span style="display: flex; flex-direction: column"><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 52px; line-height: 0.95; color: #D9B45A">33.6%</span><span style="font-size: 15px; color: #D4CFE7">to win Worlds</span></span></div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #E0DCEE">Likeliest final: Gen.G v Hanwha Life. Likeliest spoiler: T1.</p>
+          </section>
+          <section style="display: flex; flex-direction: column">
+            <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; padding-bottom: 6px">Title odds</span>
+            <sc-for list="{{odds5}}" as="t" hint-placeholder-count="5">
+              <div style="display: grid; grid-template-columns: 52px minmax(0, 1fr) 60px; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid #251F43"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 16px">{{t.code}}</span><div style="height: 5px; border-radius: 3px; background: #2A2448"><div style="height: 5px; border-radius: 3px; background: {{t.c}}; width: {{t.w}}"></div></div><span style="text-align: right; font-size: 17px">{{t.pct}}</span></div>
+            </sc-for>
+          </section>
+          <section style="display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; background: #2A2238; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(217,180,90,0.18)"><span style="font-size: 14px; font-weight: 600; color: #D9B45A">Where the orb is clouded</span><p style="margin: 0; font-size: 15px; line-height: 1.5">LCK over LPL is one standard error from zero. Watch LPL v LCK in the Swiss Bo1s.</p></section>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsHome}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+    <!-- PLAY-IN -->
+    <div id="ph-playin" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Play-In</span>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">Play-In</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 26px">
+          <section style="display: flex; flex-direction: column; gap: 8px">
+            <span style="font-size: 15px; font-weight: 600; color: #D9B45A">Los Angeles, 16 to 19/10</span>
+            <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 30px; line-height: 1.05">Four teams, one Swiss spot</h2>
+          </section>
+          <section style="display: flex; flex-direction: column; padding: 6px 18px 10px; background: #1E1939; border-radius: 14px">
+            <span style="font-size: 14px; font-weight: 600; color: #D9B45A; padding: 10px 0 6px">Who wins the Play-In</span>
+            <sc-for list="{{piWin}}" as="w" hint-placeholder-count="4">
+              <div style="display: grid; grid-template-columns: 26px 60px minmax(0, 1fr) 46px; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid #251F43"><img src="{{w.logo}}" alt="" style="width: 24px; height: 24px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 15px">{{w.code}}</span><div style="height: 5px; border-radius: 3px; background: #2A2448"><div style="height: 5px; border-radius: 3px; background: #86BDB5; width: {{w.w}}"></div></div><span style="text-align: right; font-size: 16px">{{w.pct}}</span></div>
+            </sc-for>
+          </section>
+          <section style="display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px">Series</span>
+            <sc-for list="{{piSeries}}" as="s" hint-placeholder-count="6">
+              <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; background: #1E1939; border-radius: 14px">
+                <span style="display: flex; justify-content: space-between; font-size: 13px; color: #C6C0DD"><span>{{s.round}}, {{s.when}}</span><span style="font-weight: 600; color: {{s.tagC}}">{{s.tag}}</span></span>
+                <span style="display: flex; align-items: center; gap: 10px"><img src="{{s.logoA}}" alt="" style="width: 24px; height: 24px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 17px">{{s.a}}</span><span style="color: #B8B0D4; font-size: 15px">v {{s.b}}</span><span style="margin-left: auto; font-family: 'Cinzel', serif; font-weight: 600; font-size: 22px; color: {{s.rc}}">{{s.right}}</span></span>
+              </div>
+            </sc-for>
+          </section>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsPlayIn}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+    <!-- SWISS -->
+    <div id="ph-swiss" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Swiss</span>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">Swiss</span><span style="margin-left: auto; font-size: 13px; font-weight: 600; color: #D9B45A; border: 1px solid #D9B45A; padding: 3px 10px; border-radius: 999px">Locks 24/10</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 22px">
+          <section style="display: flex; flex-direction: column; gap: 8px">
+            <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 28px; line-height: 1.05">Three wins in, three losses out</h2>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #E0DCEE">Preliminary until the round 1 draw on 18/10. Advance is the chance of reaching 3 wins.</p>
+          </section>
+          <section style="display: flex; flex-direction: column; padding: 4px 16px 8px; background: #1E1939; border-radius: 14px">
+            <div style="display: grid; grid-template-columns: 26px 54px minmax(0, 1fr) 50px; gap: 10px; padding: 10px 0 6px; font-size: 13px; color: #C6C0DD"><span></span><span>Team</span><span>Likeliest</span><span style="text-align: right">Adv.</span></div>
+            <sc-for list="{{swiss}}" as="t" hint-placeholder-count="16">
+              <div style="display: grid; grid-template-columns: 26px 54px minmax(0, 1fr) 50px; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid {{t.line}}"><img src="{{t.logo}}" alt="" style="width: 22px; height: 22px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 14px">{{t.code}}</span><span style="font-size: 15px">{{t.rec}} <span style="color: #C6C0DD; font-size: 13px">{{t.recP}}</span></span><span style="text-align: right; font-family: 'Cinzel', serif; font-weight: 600; font-size: 16px; color: {{t.ac}}">{{t.adv}}</span></div>
+            </sc-for>
+          </section>
+          <span style="font-size: 13px; color: #C6C0DD">Gold line marks the predicted top 8.</span>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsSwiss}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+    <!-- TEAMS -->
+    <div id="ph-teams" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Teams, list and dossier</span>
+      <div style="display: flex; gap: 32px">
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">The field</span></header>
+        <div style="padding: 18px 18px 108px; display: flex; flex-direction: column; gap: 16px">
+          <div style="display: flex; gap: 6px; overflow: hidden">
+            <sc-for list="{{regions}}" as="r" hint-placeholder-count="7"><span style="flex: none; font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: {{r.bg}}; color: {{r.fg}}; border: 1px solid {{r.bd}}">{{r.label}}</span></sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <sc-for list="{{teams}}" as="t" hint-placeholder-count="10">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: #1E1939; border-radius: 12px; border: 1px solid {{t.bd}}"><img src="{{t.logo}}" alt="" style="width: 32px; height: 32px; object-fit: contain"><span style="display: flex; flex-direction: column; min-width: 0"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{t.name}}</span><span style="font-size: 13px; color: #C6C0DD">{{t.region}}, advance {{t.adv}}</span></span><span style="margin-left: auto; font-family: 'Cinzel', serif; font-weight: 600; font-size: 19px; color: #D9B45A">{{t.champ}}</span></div>
+            </sc-for>
+          </div>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsTeams}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><span style="font-size: 22px; color: #D9B45A">←</span><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 19px">Teams</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 22px">
+          <section style="display: flex; align-items: center; gap: 16px"><span style="width: 72px; height: 72px; border-radius: 50%; background: #1E1939; display: flex; align-items: center; justify-content: center; flex: none"><img src="dashboard/logos/GEN.png" alt="" style="width: 44px; height: 44px; object-fit: contain"></span><span style="display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 600; color: #D9B45A">LCK seed 1</span><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 30px; line-height: 1.05">Gen.G</span></span><span style="margin-left: auto; display: flex; flex-direction: column; align-items: flex-end"><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 30px; color: #D9B45A">33.6%</span><span style="font-size: 13px; color: #C6C0DD">title</span></span></section>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #E0DCEE">LCK 2026 champions and Korea's first seed. Swept by G2 at First Stand and missed MSI, so the international record is the open question.</p>
+          <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #251F43; border-radius: 14px; overflow: hidden">
+            <sc-for list="{{genPath}}" as="p" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #1E1939"><span style="font-size: 13px; color: #C6C0DD">{{p.k}}</span><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 22px">{{p.v}}</span></div></sc-for>
+          </section>
+          <section style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5">
+            <div><span style="color: #C6C0DD">Wins by </span>controlling dragons (61.7%) and Nashor (74.2%), then closing fast through Ruler.</div>
+            <div><span style="color: #C6C0DD">Loses to </span>scrappy international drafts and late Baron fights.</div>
+          </section>
+          <section style="display: flex; flex-direction: column">
+            <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 19px; padding-bottom: 6px">Players</span>
+            <sc-for list="{{genPlayers}}" as="p" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: 64px 70px minmax(0, 1fr); gap: 10px; padding: 9px 0; border-top: 1px solid #251F43; font-size: 15px; align-items: baseline"><span style="color: #D4CFE7">{{p.role}}</span><span style="font-family: 'Cinzel', serif; font-weight: 700">{{p.name}}</span><span style="font-size: 13px; color: #E0DCEE">{{p.champs}}</span></div></sc-for>
+          </section>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsTeams}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+      </div>
+    </div>
+
+    <!-- MORE SHEET -->
+    <div id="ph-more" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">More menu</span>
+      <div style="width: 390px; height: 844px; box-sizing: border-box; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <div style="position: absolute; inset: 0; background: rgba(10,8,22,0.6)"></div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; background: #1E1939; border-radius: 22px 22px 0 0; padding: 12px 18px 100px; display: flex; flex-direction: column; gap: 4px">
+          <span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #3A3163; margin-bottom: 12px"></span>
+          <sc-for list="{{more}}" as="m" hint-placeholder-count="4"><a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 14px 12px; border-radius: 10px; min-height: 44px"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 18px">{{m.t}}</span><span style="font-size: 14px; color: #C6C0DD">{{m.s}}</span></a></sc-for>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsMore}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+    <!-- KNOCKOUTS -->
+    <div id="ph-knockouts" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Knockouts</span>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">Knockouts</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 22px">
+          <section style="display: flex; flex-direction: column; gap: 8px">
+            <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 28px; line-height: 1.05">Eight teams, one cup</h2>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #E0DCEE">An assumed draw until 31/10. Pick'Ems lock 04/11 11:00 NZDT.</p>
+          </section>
+          <sc-for list="{{ko}}" as="r" hint-placeholder-count="3">
+            <section style="display: flex; flex-direction: column; gap: 8px">
+              <span style="font-size: 14px; font-weight: 600; color: #D9B45A">{{r.name}}</span>
+              <sc-for list="{{r.items}}" as="s" hint-placeholder-count="2">
+                <div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #1E1939; border-radius: 12px"><img src="{{s.logoA}}" alt="" style="width: 24px; height: 24px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 16px">{{s.a}}</span><span style="font-size: 14px; color: #B8B0D4">v {{s.b}}</span><span style="margin-left: auto; font-family: 'Cinzel', serif; font-weight: 600; font-size: 20px; color: #86BDB5">{{s.pa}}</span></div>
+              </sc-for>
+            </section>
+          </sc-for>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsMore}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+    <!-- SCORECARD -->
+    <div id="ph-scorecard" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Scorecard</span>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">Scorecard</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 22px">
+          <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 28px; line-height: 1.05">How the prophet is doing</h2>
+          <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #251F43; border-radius: 14px; overflow: hidden">
+            <sc-for list="{{scTiles}}" as="t" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; gap: 4px; padding: 16px; background: #1E1939"><span style="font-size: 13px; color: #C6C0DD">{{t.k}}</span><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 30px; line-height: 1; color: {{t.c}}">{{t.v}}</span><span style="font-size: 13px; color: #E0DCEE">{{t.sub}}</span></div></sc-for>
+          </section>
+          <section style="display: flex; flex-direction: column">
+            <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 19px; padding-bottom: 6px">Series</span>
+            <sc-for list="{{scSeries}}" as="s" hint-placeholder-count="6"><div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 11px 0; border-top: 1px solid #251F43"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 15px">{{s.title}}</span><span style="text-align: right; font-weight: 600; font-size: 15px; color: {{s.c}}">{{s.verdict}}</span><span style="font-size: 13px; color: #C6C0DD">{{s.when}}, called {{s.call}}</span><span style="text-align: right; font-size: 13px; color: #E0DCEE">{{s.result}}</span></div></sc-for>
+          </section>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsMore}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+    <!-- META -->
+    <div id="ph-meta" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Meta</span>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">Meta</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 20px">
+          <section style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; background: #1E1939; border-radius: 14px">
+            <span style="font-size: 14px; font-weight: 600; color: #D9B45A">Patch 26.20</span>
+            <span style="font-size: 15px; line-height: 1.5"><span style="color: #F29A8B; font-weight: 600">Down</span> Ambessa, K'Sante, Cassiopeia, Ashe, Yunara</span>
+            <span style="font-size: 15px; line-height: 1.5"><span style="color: #86BDB5; font-weight: 600">Up</span> Lucian, Kennen, Smolder, Tahm Kench</span>
+          </section>
+          <section style="display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; background: #2A2238; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(217,180,90,0.18)">
+            <span style="font-size: 14px; font-weight: 600; color: #D9B45A">Why so many 3-0 calls</span>
+            <span style="font-size: 15px; line-height: 1.5">44% of 2026 Bo5s were sweeps. 3-0 is the likeliest single score, not a promise.</span>
+          </section>
+          <section style="display: flex; flex-direction: column">
+            <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 19px; padding-bottom: 6px">Most contested</span>
+            <sc-for list="{{champs}}" as="c" hint-placeholder-count="8"><div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 46px; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #251F43"><span style="display: flex; flex-direction: column"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 14px">{{c.name}}</span><span style="font-size: 12px; color: {{c.pc}}">{{c.patch}}</span></span><div style="height: 5px; border-radius: 3px; background: #2A2448"><div style="height: 5px; border-radius: 3px; background: #86BDB5; width: {{c.w}}"></div></div><span style="text-align: right; font-size: 15px">{{c.pres}}</span></div></sc-for>
+          </section>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsMore}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+    <!-- DEMACIA CUP -->
+    <div id="ph-demacia" style="display: flex; flex-direction: column; gap: 14px">
+      <span style="color: #EDEFF2; font-family: system-ui, sans-serif; font-size: 18px; font-weight: 600">Demacia Cup</span>
+      <div style="width: 390px; border-radius: 44px; border: 10px solid #1B1D22; overflow: hidden; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; font-weight: 500; position: relative">
+        <header style="display: flex; align-items: center; gap: 12px; padding: 36px 20px 14px; border-bottom: 1px solid #2C2550"><img src="poroprophets/PoroMain.jpg" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #15112A, 0 0 0 3px #D9B45A"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.05em">Demacia Cup</span></header>
+        <div style="padding: 22px 18px 108px; display: flex; flex-direction: column; gap: 20px">
+          <section style="display: flex; flex-direction: column; gap: 8px">
+            <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 28px; line-height: 1.05">A dress rehearsal</h2>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #E0DCEE">Model frozen 03/10, every series called blind. Partial data, 15 series so far.</p>
+          </section>
+          <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #251F43; border-radius: 14px; overflow: hidden">
+            <div style="display: flex; flex-direction: column; gap: 4px; padding: 16px; background: #1E1939"><span style="font-size: 13px; color: #C6C0DD">Winners called</span><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 30px; color: #86BDB5">13 / 15</span></div>
+            <div style="display: flex; flex-direction: column; gap: 4px; padding: 16px; background: #1E1939"><span style="font-size: 13px; color: #C6C0DD">Log loss</span><span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 30px; color: #D9B45A">0.45</span></div>
+          </section>
+          <section style="display: flex; flex-direction: column">
+            <sc-for list="{{dc}}" as="r" hint-placeholder-count="10"><div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 10px 0; border-top: 1px solid #251F43"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 14px">{{r.a}} v {{r.b}}</span><span style="text-align: right; font-weight: 600; font-size: 14px; color: {{r.c}}">{{r.hit}}</span><span style="font-size: 13px; color: #C6C0DD">{{r.stage}}, picked {{r.pick}} {{r.p}}</span><span style="text-align: right; font-size: 13px; color: #E0DCEE">{{r.actual}}</span></div></sc-for>
+          </section>
+        </div>
+        <nav style="position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: #15112A; border-top: 1px solid #2C2550; padding: 8px 4px 26px; font-size: 13px; font-weight: 600; text-align: center">
+          <sc-for list="{{tabsMore}}" as="t" hint-placeholder-count="5"><a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; justify-content: center; color: {{t.c}}"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{t.dot}}; box-shadow: inset 0 0 0 1px #5E5487"></span>{{t.label}}</a></sc-for>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = c => c === 'MVK' ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' : 'dashboard/logos/' + c + '.png';
+    const tabs = active => ['Home', 'Play-In', 'Swiss', 'Teams', 'More'].map(l => ({ label: l, c: l === active ? '#D9B45A' : '#E0DCEE', dot: l === active ? '#D9B45A' : 'transparent' }));
+    const odds5 = [['GEN', 33.6], ['T1', 17.2], ['HLE', 17.0], ['BLG', 11.7], ['DK', 9.9]].map((r, i) => ({ code: r[0], pct: r[1].toFixed(1) + '%', w: (r[1] / 33.6 * 100) + '%', c: i === 0 ? '#D9B45A' : '#7C6FB0' }));
+    const piWin = [['KC', 49], ['C9', 24], ['FURIA', 24], ['MVK', 3]].map(([c, p]) => ({ code: c, logo: L(c), pct: p + '%', w: (p / 49 * 100) + '%' }));
+    const piSeries = [
+      ['Round 1', '16/10 07:00', 'KC', 'C9', '3-2', 'Called it', '#D9B45A'],
+      ['Round 1', '16/10 12:00', 'FURIA', 'MVK', '73%', 'LEAN', '#86BDB5'],
+      ["Winners'", '17/10 07:00', 'KC', 'FURIA', '64%', 'LEAN', '#86BDB5'],
+      ['Elimination', '17/10 12:00', 'C9', 'MVK', '75%', 'LOCK', '#D9B45A'],
+      ['Lower final', '18/10 07:00', 'C9', 'FURIA', '53%', 'COIN FLIP', '#D4CFE7'],
+      ['Final', '19/10 07:00', 'KC', 'C9', '62%', 'LEAN', '#86BDB5']
+    ].map(r => ({ round: r[0], when: r[1], a: r[2], b: r[3], logoA: L(r[2]), right: r[4], tag: r[5], tagC: r[6], rc: r[4].includes('-') ? '#EEEAF6' : '#86BDB5' }));
+    const SW = [['GEN','3-0',40,92],['HLE','3-0',29,84],['T1','3-1',33,83],['BLG','3-1',31,77],['DK','3-1',30,75],['AL','3-2',25,59],['G2','3-2',23,52],['IG','3-2',23,48],['TLAW','2-3',24,43],['TES','2-3',24,42],['LYON','2-3',25,37],['KC','1-3',24,36],['TSW','1-3',31,23],['MKOI','1-3',31,23],['LOS','0-3',24,20],['CFO','0-3',47,6]];
+    const swiss = SW.map((r, i) => ({ code: r[0], logo: L(r[0]), rec: r[1], recP: r[2] + '%', adv: r[3] + '%', ac: r[3] >= 50 ? '#86BDB5' : '#D4CFE7', line: i === 8 ? '#D9B45A' : '#251F43' }));
+    const regions = ['All', 'LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL'].map((r, i) => ({ label: r, bg: i === 0 ? '#D9B45A' : 'transparent', fg: i === 0 ? '#15112A' : '#E0DCEE', bd: i === 0 ? '#D9B45A' : '#3A3163' }));
+    const TM = [['GEN','Gen.G','LCK','92%','33.6%'],['T1','T1','LCK','84%','17.2%'],['HLE','Hanwha Life Esports','LCK','84%','17.0%'],['BLG','Bilibili Gaming','LPL','78%','11.7%'],['DK','Dplus KIA','LCK','76%','9.9%'],['AL',"Anyone's Legend",'LPL','60%','3.3%'],['G2','G2 Esports','LEC','53%','2.0%'],['IG','Invictus Gaming','LPL','49%','1.8%'],['TES','Top Esports','LPL','43%','1.0%'],['TLAW','Team Liquid Alienware','LCS','43%','1.0%']];
+    const teams = TM.map((t, i) => ({ logo: L(t[0]), name: t[1], region: t[2], adv: t[3], champ: t[4], bd: i === 0 ? '#86BDB5' : 'transparent' }));
+    const genPath = [['Advance', '91.9%'], ['Semifinal', '69.7%'], ['Final', '49.3%'], ['Trend', 'Peaking']].map(([k, v]) => ({ k, v }));
+    const genPlayers = [['Top', 'Kiin', 'Ambessa, Sion, Rumble'], ['Jungle', 'Canyon', 'Pantheon, Xin Zhao, J4'], ['Mid', 'Chovy', 'Ryze, Galio, Anivia'], ['Bot', 'Ruler', 'Jhin, Ezreal, Yunara'], ['Support', 'Duro', 'Seraphine, Bard, Karma']].map(p => ({ role: p[0], name: p[1], champs: p[2] }));
+    const more = [['Knockouts', 'Assumed bracket and how far each team goes'], ['Scorecard', 'How the predictions are doing'], ['Meta', 'Patch 26.20, champions, Pick\'Ems points'], ['Demacia Cup', 'The warm-up test']].map(([t, s]) => ({ t, s }));
+    const k = (a, b, pa) => ({ a, b, logoA: L(a), pa: pa + '%' });
+    const ko = [{ name: 'Quarterfinals, Allen', items: [k('GEN', 'AL', 78), k('T1', 'IG', 74), k('HLE', 'G2', 73), k('BLG', 'DK', 52)] }, { name: 'Semifinals, Allen', items: [k('GEN', 'T1', 61), k('HLE', 'BLG', 55)] }, { name: 'Final, Brooklyn, 15/11', items: [k('GEN', 'HLE', 61)] }];
+    const scTiles = [['Winners called', '1 / 1', 'graded so far', '#86BDB5'], ['Exact scores', '0 / 1', 'called 3-0, went 3-2', '#EEEAF6'], ['Log loss', '0.49', 'coin flip 0.69', '#D9B45A'], ["Pick'Ems", '5', 'of 35 points', '#EEEAF6']].map(t => ({ k: t[0], v: t[1], sub: t[2], c: t[3] }));
+    const scSeries = [['KC v C9', '16/10 07:00', 'KC 62%', 'KC 3-2', 'Right', '#86BDB5'], ['FURIA v MVK', '16/10 12:00', 'FURIA 73%', 'To play', '', '#C6C0DD'], ['KC v FURIA', '17/10 07:00', 'KC 64%', 'To play', '', '#C6C0DD'], ['C9 v MVK', '17/10 12:00', 'C9 75%', 'To play', '', '#C6C0DD'], ['C9 v FURIA', '18/10 07:00', 'C9 53%', 'To play', '', '#C6C0DD'], ['KC v C9', '19/10 07:00', 'KC 62%', 'To play', '', '#C6C0DD']].map(s => ({ title: s[0], when: s[1], call: s[2], result: s[3], verdict: s[4], c: s[5] }));
+    const champs = [['Cassiopeia', 85.6, 'Nerfed 26.20'], ['Nocturne', 76.8, 'Nerfed 26.19'], ['Vi', 63.1, 'Nerfed 26.19'], ['Orianna', 53.4, ''], ['Olaf', 49.0, ''], ['Ezreal', 48.3, ''], ['Jarvan IV', 46.6, ''], ['Akali', 45.6, '']].map(c => ({ name: c[0], pres: c[1].toFixed(0) + '%', w: c[1] + '%', patch: c[2] || 'Unchanged', pc: c[2] ? '#F29A8B' : '#B8B0D4' }));
+    const dc = [['Swiss R1','RED','NAVI','NAVI','57%','RED 1-0',0],['Swiss R1','LGD','FLY','LGD','63%','LGD 1-0',1],['Swiss R1','KT','SR','KT','80%','KT 1-0',1],['Swiss R1','BNK','VIT','BNK','72%','BNK 1-0',1],['Swiss R1','BRO','JDG','BRO','52%','BRO 1-0',1],['Swiss R2','WE','BRO','BRO','58%','WE 2-1',0],['Swiss R2','KT','RED','KT','85%','KT 2-0',1],['Swiss R3','BRO','NAVI','BRO','73%','BRO 2-1',1],['Quarterfinal','KT','VIT','KT','82%','KT 3-2',1],['Quarterfinal','BNK','JDG','BNK','60%','BNK 3-2',1]].map(r => ({ stage: r[0], a: r[1], b: r[2], pick: r[3], p: r[4], actual: r[5], hit: r[6] ? 'Right' : 'Wrong', c: r[6] ? '#86BDB5' : '#F29A8B' }));
+    return { odds5, piWin, piSeries, swiss, regions, teams, genPath, genPlayers, more, ko, scTiles, scSeries, champs, dc, tabsHome: tabs('Home'), tabsPlayIn: tabs('Play-In'), tabsSwiss: tabs('Swiss'), tabsTeams: tabs('Teams'), tabsMore: tabs('More') };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>body{margin:0;background:#15112A;font-variant-numeric:tabular-nums}a{color:inherit;text-decoration:none}a:hover{color:#D9B45A}</style>
+</helmet>
+<div style="min-height: 100vh; background: #15112A; color: #EEEAF6; font-family: 'Spectral', serif; display: flex; flex-direction: column">
+  <dc-import name="Site Header" active="swiss" hint-size="100%,84px"></dc-import>
+  <main style="max-width: 1600px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 56px 40px 80px; display: flex; flex-direction: column; gap: 56px">
+    <section style="display: flex; flex-direction: column; gap: 14px; max-width: 980px">
+      <span style="font-size: 17px; font-weight: 600; color: #D9B45A">Swiss stage, Allen, Texas, from 23/10/2026 NZDT</span>
+      <h1 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(40px, 3.8vw, 64px); line-height: 1.05">Three wins in, three losses out</h1>
+      <p style="margin: 0; font-size: 22px; line-height: 1.45; color: #E0DCEE">16 teams. Rounds 1 and 2 are Bo1, deciders are Bo3. The round 1 draw is on 18/10, so these picks are preliminary until the re-run.</p>
+    </section>
+
+    <section style="display: flex; flex-direction: column; background: #1E1939; border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); overflow: hidden">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 32px; border-bottom: 1px solid #2C2550; flex-wrap: wrap">
+        <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 30px">Your Swiss Pick'Ems</h2>
+        <div style="display: flex; gap: 10px; align-items: center">
+          <span style="font-size: 15px; font-weight: 600; color: #D9B45A; border: 1px solid #D9B45A; padding: 4px 12px; border-radius: 999px">Preliminary, re-run after 18/10</span>
+          <span style="font-size: 15px; font-weight: 600; color: #D9B45A; border: 1px solid #D9B45A; padding: 5px 12px; border-radius: 999px">Locks 24/10, 06:00 NZDT</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 2fr">
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 28px 32px">
+          <span style="font-size: 16px; font-weight: 600; color: #D9B45A">Go 3-0</span>
+          <sc-for list="{{p30}}" as="p" hint-placeholder-count="2">
+            <div style="display: flex; align-items: center; gap: 14px"><img src="{{p.logo}}" alt="" style="width: 40px; height: 40px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 22px">{{p.code}}</span><span style="margin-left: auto; font-family: 'Cinzel', serif; font-weight: 600; font-size: 30px; color: #86BDB5">{{p.pct}}</span></div>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 28px 32px">
+          <span style="font-size: 16px; font-weight: 600; color: #F29A8B">Go 0-3</span>
+          <sc-for list="{{p03}}" as="p" hint-placeholder-count="2">
+            <div style="display: flex; align-items: center; gap: 14px"><img src="{{p.logo}}" alt="" style="width: 40px; height: 40px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 22px">{{p.code}}</span><span style="margin-left: auto; font-family: 'Cinzel', serif; font-weight: 600; font-size: 30px; color: #F29A8B">{{p.pct}}</span></div>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 28px 32px">
+          <span style="font-size: 16px; font-weight: 600; color: #D9B45A">Advance 3-1 or 3-2 (pick 6)</span>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 28px">
+            <sc-for list="{{pAdv}}" as="p" hint-placeholder-count="6">
+              <div style="display: flex; align-items: center; gap: 12px"><img src="{{p.logo}}" alt="" style="width: 34px; height: 34px; object-fit: contain"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 20px">{{p.code}}</span><span style="margin-left: auto; font-size: 20px; font-weight: 500; color: #D9B45A">{{p.pct}}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px; margin-bottom: 8px; flex-wrap: wrap; gap: 12px">
+        <h2 style="margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 32px">Every team's likely record</h2>
+        <div style="display: flex; gap: 18px; font-size: 15px; color: #E0DCEE; flex-wrap: wrap">
+          <sc-for list="{{legend}}" as="l" hint-placeholder-count="6"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 2px; background: {{l.c}}"></span>{{l.k}}</span></sc-for>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 40px 200px 130px 120px minmax(0, 1fr); gap: 20px; padding: 0 0 6px; font-size: 15px; color: #C6C0DD">
+        <span></span><span>Team</span><span>Likeliest</span><span style="text-align: right">Advance</span><span>Record chances, 3-0 to 0-3</span>
+      </div>
+      <sc-for list="{{rows}}" as="t" hint-placeholder-count="16">
+        <div style="display: grid; grid-template-columns: 40px 200px 130px 120px minmax(0, 1fr); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid {{t.line}}">
+          <img src="{{t.logo}}" alt="" style="width: 34px; height: 34px; object-fit: contain">
+          <span style="display: flex; flex-direction: column"><span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 19px">{{t.code}}</span><span style="font-size: 14px; color: #C6C0DD">{{t.region}}</span></span>
+          <span style="font-size: 19px; font-weight: 500">{{t.rec}} <span style="font-size: 15px; color: #C6C0DD">{{t.recP}}</span></span>
+          <span style="text-align: right; font-family: 'Cinzel', serif; font-weight: 600; font-size: 24px; color: {{t.advColor}}">{{t.adv}}</span>
+          <div style="display: grid; grid-template-columns: {{t.cols}}; height: 22px; gap: 2px; border-radius: 3px; overflow: hidden">
+            <span style="background: #86BDB5"></span><span style="background: #4FB3A8"></span><span style="background: #2F7F78"></span><span style="background: #6B5A9E"></span><span style="background: #514382"></span><span style="background: #3B3063"></span>
+          </div>
+        </div>
+      </sc-for>
+      <p style="margin: 8px 0 0; font-size: 15px; color: #C6C0DD">The gold line marks the predicted top 8. Advance is the chance of reaching 3 wins, averaged over all legal draws.</p>
+    </section>
+  </main>
+  <footer style="border-top: 1px solid #251F43; margin-top: auto">
+    <div style="max-width: 1600px; margin: 0 auto; padding: 24px 40px; font-size: 14px; color: #C6C0DD; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <span>Frozen baseline 15/10/2026 17:08 NZDT, 100,000 simulations. Points: 10 per correct advancer, plus record bonuses.</span>
+      <span>A fan project. Logos belong to their owners.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = c => c === 'MVK' ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' : 'dashboard/logos/' + c + '.png';
+    const reg = { GEN: 'LCK', HLE: 'LCK', T1: 'LCK', DK: 'LCK', BLG: 'LPL', AL: 'LPL', IG: 'LPL', TES: 'LPL', G2: 'LEC', MKOI: 'LEC', KC: 'LEC', TLAW: 'LCS', LYON: 'LCS', TSW: 'LCP', CFO: 'LCP', LOS: 'CBLOL' };
+    const D = [['GEN','3-0',40.4,91.7,[40.4,33.4,17.9,4.8,2.8,0.7]],['HLE','3-0',28.7,83.8,[28.7,32.4,22.7,9.1,5.3,1.8]],['T1','3-1',32.8,83.5,[27.1,32.8,23.6,9.1,5.5,1.9]],['BLG','3-1',31.0,77.3,[20.9,31.0,25.4,11.7,8.0,3.0]],['DK','3-1',29.8,75.1,[19.8,29.8,25.5,13.1,8.5,3.3]],['AL','3-2',24.6,59.4,[12.3,22.5,24.6,19.8,14.6,6.2]],['G2','3-2',23.0,52.1,[9.8,19.2,23.0,22.0,17.8,8.1]],['IG','3-2',22.8,48.3,[7.6,17.8,22.8,22.5,18.9,10.3]],['TLAW','2-3',24.4,42.5,[7.0,15.5,20.0,24.4,21.9,11.2]],['TES','2-3',24.4,42.3,[7.1,15.4,19.9,24.4,21.9,11.4]],['LYON','2-3',24.7,37.4,[5.6,13.4,18.4,24.7,24.1,13.7]],['KC','1-3',24.5,35.9,[4.8,12.7,18.4,24.5,24.5,15.2]],['TSW','1-3',30.7,23.1,[3.1,7.8,12.2,25.5,30.7,20.7]],['MKOI','1-3',30.7,22.6,[2.8,7.8,12.1,24.9,30.7,21.7]],['LOS','0-3',24.1,19.5,[2.5,6.6,10.5,24.4,32.0,24.1]],['CFO','0-3',46.7,5.6,[0.5,1.9,3.2,15.0,32.8,46.7]]];
+    const rows = D.map((r, i) => ({ code: r[0], logo: L(r[0]), region: reg[r[0]], rec: r[1], recP: r[2].toFixed(0) + '%', adv: r[3].toFixed(0) + '%', advColor: r[3] >= 50 ? '#86BDB5' : '#D4CFE7', cols: r[4].map(v => Math.max(v, 0.3) + 'fr').join(' '), line: i === 8 ? '#D9B45A' : '#2F2850' }));
+    const mk = arr => arr.map(([c, p]) => ({ code: c, logo: L(c), pct: p + '%' }));
+    return {
+      rows,
+      p30: mk([['GEN', 41], ['HLE', 29]]), p03: mk([['CFO', 46], ['LOS', 24]]),
+      pAdv: mk([['BLG', 57], ['T1', 57], ['DK', 56], ['AL', 47], ['G2', 43], ['IG', 41]]),
+      legend: [['3-0','#86BDB5'],['3-1','#4FB3A8'],['3-2','#2F7F78'],['2-3','#6B5A9E'],['1-3','#514382'],['0-3','#3B3063']].map(([k, c]) => ({ k, c }))
+    };
+  }
+}
+</script>
+</body>
+</html>
