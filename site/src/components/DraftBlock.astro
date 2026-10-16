@@ -1,5 +1,5 @@
 ---
-// Ported from dashboard/index.html (dossiers script, "Draft (gol.gg)" block).
+// Ported from dashboard/index.html (dossiers script, "Draft (gol.gg)" block). A definition list with hairlines between rows.
 import ChampIcon from './ChampIcon.astro';
 import type { TeamBlock } from '../lib/data';
 const { t, pool } = Astro.props as { t: TeamBlock; pool: number | null | undefined };
@@ -12,19 +12,28 @@ const lines: [string, { champ: string; cap: string }[]][] = [
 ];
 const order = t.role_priority ? Object.entries(t.role_priority).sort((a, b) => a[1] - b[1]).map(([r, v]) => `${ROLE[r] ?? r} ${Number(v).toFixed(1)}`).join(' · ') : null;
 ---
-<div class="draft">
+<dl class="draft">
   {lines.map(([k, cs]) => (
-    <>
-      <span class="k label">{k}</span>
-      {cs.length ? <div class="champs">{cs.map((c) => <span class="chip"><ChampIcon name={c.champ} size={20} /><span class="cap muted">{c.cap}</span></span>)}</div> : <span class="muted cap">UNKNOWN</span>}
-    </>
+    <div class="row">
+      <dt class="caption">{k}</dt>
+      <dd>{cs.length ? <span class="champs">{cs.map((c) => <span class="ch"><ChampIcon name={c.champ} size={20} /><span class="caption num">{c.cap}</span></span>)}</span> : <span class="caption">UNKNOWN</span>}</dd>
+    </div>
   ))}
-  <span class="k label">Pick order</span><span class="muted cap">{order ? `${order} (average pick slot per role, lower = earlier)` : 'UNKNOWN'}</span>
-  <span class="k label">Pool depth</span><span class="muted cap">{pool == null ? 'UNKNOWN' : `${Number(pool).toFixed(1)} champions per player (picked in 2 or more games, model/pools.py)`}</span>
-</div>
+  <div class="row">
+    <dt class="caption">Pick order</dt>
+    <dd>{order ? <><span class="num">{order}</span> <span class="caption">Average pick slot per role, lower is earlier.</span></> : <span class="caption">UNKNOWN</span>}</dd>
+  </div>
+  <div class="row">
+    <dt class="caption">Pool depth</dt>
+    <dd>{pool == null ? <span class="caption">UNKNOWN</span> : <><span class="num">{Number(pool).toFixed(1)}</span> <span class="caption">champions per player, picked in 2 or more games (model/pools.py).</span></>}</dd>
+  </div>
+</dl>
 <style>
-  .draft { display:grid; grid-template-columns:130px minmax(0,1fr); gap:10px 16px; align-items:center; }
-  .champs { display:flex; flex-wrap:wrap; gap:6px; }
-  .chip { display:inline-flex; align-items:center; gap:6px; padding:2px 8px 2px 2px; border-radius:8px; background:var(--raised); font-size:13px; white-space:nowrap; }
-  @media (max-width: 640px) { .draft { grid-template-columns:1fr; gap:4px; } .k { margin-top:8px; } }
+  .draft { margin: 0; display: flex; flex-direction: column; }
+  .row { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: var(--space-3xs) var(--space-sm); align-items: center; padding: var(--space-2xs) 0; border-top: var(--rule); }
+  .row:first-child { border-top: 0; padding-top: 0; }
+  dd { margin: 0; font-size: var(--text-sm); min-width: 0; }
+  .champs { display: flex; flex-wrap: wrap; gap: var(--space-3xs) var(--space-sm); }
+  .ch { display: inline-flex; align-items: center; gap: var(--space-2xs); font-size: var(--text-xs); white-space: nowrap; }
+  @media (max-width: 640px) { .row { grid-template-columns: minmax(0, 1fr); } }
 </style>

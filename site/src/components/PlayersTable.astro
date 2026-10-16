@@ -17,24 +17,25 @@ const games = (p: Player) => (p.games == null ? 'UNKNOWN' : summer && p.season_g
       <tbody>
         {players.map((p) => (<>
           <tr class="player-row">
-            <td>{ROLE[String(p.role).toUpperCase()] ?? p.role}</td>
+            <td class="ink2">{ROLE[String(p.role).toUpperCase()] ?? p.role}</td>
             <td><b>{p.player}</b></td>
-            <td class="r" title={summer && p.season_games != null ? `${p.games} of ${p.season_games} games this year` : undefined}>{games(p)}</td>
-            <td class="r">{f(p.kda, kda)}</td><td class="r">{f(p.gd15, gd)}</td><td class="r">{f(p.kp, pc1)}</td>
-            <td class="r">{p.n_champs ?? 'UNKNOWN'}</td>
+            <td class="num">{games(p)}</td>
+            <td class="num">{f(p.kda, kda)}</td><td class="num">{f(p.gd15, gd)}</td><td class="num">{f(p.kp, pc1)}</td>
+            <td class="num">{p.n_champs ?? 'UNKNOWN'}</td>
           </tr>
           <tr class="pool"><td colspan="7"><div class="champs">{(p.champs ?? []).length ? (p.champs ?? []).slice(0, 5).map((c) => (
-            <span class="chip"><ChampIcon name={c.champ} size={20} /><span class="cap muted">{c.games != null ? `${c.games}g · ${Math.round(Number(c.wr))}%` : ''}</span></span>
-          )) : <span class="muted cap">Champion pool UNKNOWN</span>}</div></td></tr>
+            <span class="ch"><ChampIcon name={c.champ} size={20} />{c.games != null && <span class="caption num">{c.games}g · {Math.round(Number(c.wr))}%</span>}</span>
+          )) : <span class="caption">Champion pool UNKNOWN</span>}</div></td></tr>
         </>))}
       </tbody>
     </table>
   </div>
-) : <p class="muted cap">No player data found.</p>}
-<p class="cap muted">Under each player: most played, {summer ? 'Summer split' : '2026 season'} (games · win rate).</p>
+) : <p class="caption">No player data found.</p>}
+<p class="caption">Under each player: most played, {summer ? 'Summer split' : '2026 season'} (games · win rate).{summer && ' Games reads Summer games / season games.'}</p>
 <style>
-  .players td { vertical-align:middle; }
-  .players tr.player-row td { border-bottom:0; padding-bottom:2px; }
-  .champs { display:flex; flex-wrap:wrap; gap:6px; }
-  .chip { display:inline-flex; align-items:center; gap:6px; padding:2px 8px 2px 2px; border-radius:8px; background:var(--raised); font-size:13px; white-space:nowrap; }
+  .players td { vertical-align: middle; }
+  .players b { font-weight: 600; }
+  .players tr.player-row td { border-bottom: 0; padding-bottom: 0; }
+  .champs { display: flex; flex-wrap: wrap; gap: var(--space-3xs) var(--space-sm); }
+  .ch { display: inline-flex; align-items: center; gap: var(--space-2xs); font-size: var(--text-xs); white-space: nowrap; }
 </style>

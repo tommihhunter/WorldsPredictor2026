@@ -10,12 +10,12 @@ export const getStaticPaths = () => pairs().map((p) => ({ params: { pair: p.slug
 const { a, b } = Astro.props as { a: string; b: string };
 ---
 <Base title={`${a} v ${b}`} active="teams" description={`${teamName(a)} against ${teamName(b)}: model, 2026 season, lanes, champion pools and head to head.`}>
-  <header>
-    <h1>{a} v {b}</h1>
-    <p class="muted"><a class="gold" href={url('teams/compare/')}>Pick two other teams</a> · <a class="gold" href={url('teams/')}>All teams</a></p>
-  </header>
-  <CompareView a={a} b={b} />
+  <CompareView a={a} b={b} h1>
+    <p class="links"><a href={url('teams/compare/')}>Pick two other teams</a><span class="caption" aria-hidden="true">·</span><a href={url('teams/')}>All teams</a></p>
+  </CompareView>
 </Base>
 <style>
-  header p { margin:6px 0 0; }
+  .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs); font-size: var(--text-sm); }
+  .links a { color: var(--color-ink-2); font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
+  .links a:hover { color: var(--color-accent); }
 </style>

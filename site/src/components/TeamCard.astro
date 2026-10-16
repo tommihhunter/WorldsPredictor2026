@@ -1,31 +1,33 @@
 ---
+// One team as a hairline tile: logo and name, region and seed, a mono data line, the form word. Numbers only, no bar.
 import type { Dossier, Live, Rating } from '../lib/data';
 import { teamSlug, REGION_COLOR } from '../lib/data';
 import { pct } from '../lib/format';
 import { url } from '../lib/url';
-const { r, d, lv, max = 1 } = Astro.props as { r: Rating; d: Dossier | undefined; lv: Live | undefined; max?: number };
+const { r, d, lv } = Astro.props as { r: Rating; d: Dossier | undefined; lv: Live | undefined };
 const odds = lv?.p_champion ?? r.p_champion;
 const ts = d?.team_season;
-const FORM: Record<string, string> = { PEAKING: 'good', RISING: 'good', FADING: 'bad' };
 // Sort keys: a missing stat sorts last (-1e9) rather than breaking the order.
 const key = (x: number | null | undefined) => (x == null ? -1e9 : x);
 ---
-<a class="card team" href={url(`teams/${teamSlug(r.code)}/`)} style={`--b:${REGION_COLOR[r.region] ?? 'var(--bar)'}`}
+<a class="team" href={url(`teams/${teamSlug(r.code)}/`)} style={`--b:${REGION_COLOR[r.region] ?? 'var(--color-data)'}`}
   data-region={r.region} data-tier={r.tier} data-rank={r.rank} data-odds={odds} data-rating={r.elo}
   data-wr={key(ts?.wr)} data-gd15={key(ts?.gd15)} data-blue={key(ts?.blue_wr)} data-pool={key(d?.pool_depth)}>
-  <div class="top">
+  <div class="id">
     <img src={url(`art/logos/${r.code}.png`)} alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'dot'}))" />
-    <span class="pill strong">#{r.rank}</span>
+    <h3>{r.name}</h3>
   </div>
-  <div><h3>{r.name}</h3><span class="cap muted">{r.region} seed {r.seed}</span></div>
-  <div class="pills"><span class="pill gold">Tier {r.tier}</span><span class:list={['pill', FORM[r.trend]]}>{r.trend || 'UNKNOWN'}</span><span class="cap muted">Rating {r.elo}</span></div>
-  <div class="odds"><span class="cap muted">Title odds{lv ? '' : ' (frozen)'}</span><span class="bar"><i class="lead" style={`width:${((100 * odds) / max).toFixed(1)}%`}></i></span><b>{pct(odds, 1)}</b></div>
+  <span class="caption">{r.region} seed {r.seed}</span>
+  <span class="num line">rank {r.rank} · rating {r.elo} · title {pct(odds, 1)}{lv ? '' : ' frozen'}</span>
+  <span class="tier">{r.trend || 'UNKNOWN'}</span>
 </a>
 <style>
-  .team { gap:10px; } .team:hover { border-color:var(--gold); color:inherit; }
-  .top { display:flex; justify-content:space-between; align-items:center; }
-  .top img { height:36px; width:auto; max-width:64px; object-fit:contain; }
-  .top :global(.dot) { width:14px; height:14px; border-radius:4px; background:var(--b); }
-  .pills { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
-  .odds { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:8px; align-items:center; }
+  .team { display: flex; flex-direction: column; gap: var(--space-3xs); border-top: var(--rule); padding: var(--space-sm) 0; min-width: 0; }
+  .team:hover { color: inherit; }
+  .team:hover h3 { color: var(--color-accent); }
+  h3 { transition: color var(--dur-short) var(--ease-out); }
+  .id { display: flex; align-items: center; gap: var(--space-xs); min-width: 0; }
+  .id img { height: var(--space-lg); width: auto; max-width: var(--space-xl); object-fit: contain; flex: none; }
+  .id :global(.dot) { width: var(--space-sm); height: var(--space-sm); border-radius: var(--radius-data); background: var(--b); flex: none; }
+  .line { font-size: var(--text-sm); color: var(--color-ink-2); margin-top: var(--space-2xs); }
 </style>

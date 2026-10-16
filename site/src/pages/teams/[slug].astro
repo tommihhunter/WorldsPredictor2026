@@ -24,7 +24,6 @@ const set = latestSet() ?? 'baseline';
 const sw = swiss().find((x) => x.set === set && x.team === code) ?? swiss().find((x) => x.set === 'baseline' && x.team === code);
 const opp = rs.find((x) => x.code !== code)!.code;
 const pair = [code, opp].sort().map(teamSlug).join('-vs-');
-const FORM: Record<string, string> = { PEAKING: 'good', RISING: 'good', FADING: 'bad' };
 
 const pc1 = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Number(v).toFixed(1)}%`);
 const gd = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Math.round(Number(v)) > 0 ? '+' : ''}${Math.round(Number(v))}`);
@@ -51,39 +50,37 @@ const sources = String(d?.sources ?? '').split(' ').filter(Boolean);
 ---
 <Base title={r.name} active="teams" description={d?.headline}>
   <div class="teampage">
-    <header>
+    <header class="page-head">
       <div class="id">
         <img class="logo" src={url(`art/logos/${code}.png`)} alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'dot'}))" />
-        <div>
-          <h1>{r.name}</h1>
-          <p class="muted">{r.region} seed {r.seed} · rank {r.rank} of {rs.length} · tier {r.tier} <span class:list={['pill', FORM[r.trend]]}>{r.trend || 'UNKNOWN'}</span></p>
-        </div>
+        <h1>{r.name}</h1>
       </div>
-      <div class="actions">
-        <a class="pill gold" href={url(`teams/compare/${pair}/`)}>Compare with...</a>
-        <button class="pill" type="button" onclick="navigator.clipboard.writeText(location.href).then(() => { this.textContent = 'Link copied'; })">Copy link</button>
-        <a class="pill" href={url('teams/')}>All teams</a>
-      </div>
+      <p class="caption">{r.region} seed {r.seed} · rank {r.rank} of {rs.length} · tier {r.tier} · {r.trend || 'UNKNOWN'}</p>
+      <p class="links">
+        <a href={url(`teams/compare/${pair}/`)}>Compare with {opp}</a><span class="caption" aria-hidden="true">·</span>
+        <button type="button" onclick="navigator.clipboard.writeText(location.href).then(() => { this.textContent = 'Link copied'; })">Copy link</button><span class="caption" aria-hidden="true">·</span>
+        <a href={url('teams/')}>All teams</a>
+      </p>
+      <nav class="jumps" aria-label="On this page">
+        {[['report', 'Report'], ['path', 'Path'], ['stats', 'Stats'], ['players', 'Players'], ['draft', 'Draft']].map(([id, l]) => <a class="chip" href={`#${id}`}>{l}</a>)}
+      </nav>
     </header>
-    <nav class="jumps" aria-label="On this page">
-      {[['report', 'Report'], ['path', 'Path'], ['stats', 'Stats'], ['players', 'Players'], ['draft', 'Draft']].map(([id, l]) => <a class="pill" href={`#${id}`}>{l}</a>)}
-    </nav>
 
     <div class="cols">
       <div class="left">
-        <StatTiles tiles={odds} />
-        <div id="path"><Card title="Path through Worlds" note="Times NZDT"><PathTable code={code} /></Card></div>
+        <section class="section odds" aria-label="Odds"><StatTiles tiles={odds} /></section>
+        <div id="path"><Card title="Path through Worlds" note="Times NZDT."><PathTable code={code} /></Card></div>
         <div id="stats">
-          <Card title="Key stats" note="gol.gg team page">
+          <Card title="Key stats" note="From the gol.gg team page.">
             <div class="seg" role="radiogroup" aria-label="Split">
               <input type="radio" name="split" id="split-season" value="season" checked />
-              <label for="split-season">2026 season</label>
+              <label class="chip" for="split-season">2026 season</label>
               <input type="radio" name="split" id="split-summer" value="summer" disabled={!hasSummer} />
-              <label for="split-summer">{hasSummer ? 'Summer split' : 'No Summer data'}</label>
+              <label class="chip" for="split-summer">{hasSummer ? 'Summer split' : 'No Summer data'}</label>
             </div>
             {splits.map((s) => (
               <div data-split={s.key}>
-                {s.tb ? <><StatTiles tiles={keyStats(s.tb)} /><p class="cap muted">Sample: {s.tb.games} games, {s.tbName} (gol.gg team page).</p></> : <p class="muted cap">Key stats not available yet.</p>}
+                {s.tb ? <><StatTiles tiles={keyStats(s.tb)} /><p class="caption">Sample: {s.tb.games} games, {s.tbName} (gol.gg team page).</p></> : <p class="caption">Key stats not available yet.</p>}
               </div>
             ))}
           </Card>
@@ -93,57 +90,64 @@ const sources = String(d?.sources ?? '').split(' ').filter(Boolean);
             {splits.map((s) => (
               <div data-split={s.key}>
                 <PlayersTable players={s.players} summer={s.summer} />
-                <p class="cap muted">Sample: {s.sample || 'UNKNOWN'}.</p>
+                <p class="caption">Sample: {s.sample || 'UNKNOWN'}.</p>
               </div>
             ))}
           </Card>
         </div>
         <div id="draft">
-          <Card title="Draft habits" note="gol.gg">
-            {splits.map((s) => <div data-split={s.key}>{s.tb ? <DraftBlock t={s.tb} pool={d?.pool_depth} /> : <p class="muted cap">Draft data not available yet.</p>}</div>)}
+          <Card title="Draft habits" note="From gol.gg.">
+            {splits.map((s) => <div data-split={s.key}>{s.tb ? <DraftBlock t={s.tb} pool={d?.pool_depth} /> : <p class="caption">Draft data not available yet.</p>}</div>)}
           </Card>
         </div>
-        <Card title="Sources" note="accessed 15/10/2026">
-          {sources.length ? <ul class="src">{sources.map((u) => <li><a href={u} target="_blank" rel="noopener">{u.replace(/^https?:\/\/(www\.)?/, '').slice(0, 80)}</a></li>)}</ul> : <p class="muted cap">No sources listed.</p>}
-          {d && <p class="cap muted">Full dossier: research/teams/{code}.md</p>}
+        <Card title="Sources" note="Accessed 15/10/2026.">
+          {sources.length ? <ul class="src">{sources.map((u) => <li><a href={u} target="_blank" rel="noopener">{u.replace(/^https?:\/\/(www\.)?/, '').slice(0, 80)}</a></li>)}</ul> : <p class="caption">No sources listed.</p>}
+          {d && <p class="caption">Full dossier: research/teams/{code}.md</p>}
         </Card>
       </div>
 
       <aside id="report" class="report">
-        <Card title="Scouting report" tone="gold">
-          {d ? REPORT.map(([h, k]) => <section><h4>{h}</h4><p>{d.report?.[k] || 'UNKNOWN'}</p></section>) : <p class="muted cap">Dossier not available yet.</p>}
+        <Card title="Scouting report" panel>
+          {d ? REPORT.map(([h, k]) => <section><h4>{h}</h4><p>{d.report?.[k] || 'UNKNOWN'}</p></section>) : <p class="caption">Dossier not available yet.</p>}
         </Card>
       </aside>
     </div>
   </div>
 </Base>
 <style>
-  .teampage { display:flex; flex-direction:column; gap:20px; }
-  header { display:flex; justify-content:space-between; align-items:flex-end; gap:12px 24px; flex-wrap:wrap; }
-  .id { display:flex; align-items:center; gap:16px; } .id p { margin:6px 0 0; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
-  .logo { height:56px; width:auto; max-width:96px; object-fit:contain; }
-  .id :global(.dot) { width:24px; height:24px; border-radius:6px; background:var(--bar); flex:none; }
-  .actions { display:flex; flex-wrap:wrap; gap:8px; }
-  .actions .pill { font:inherit; font-size:13px; padding:5px 14px; background:transparent; cursor:pointer; }
-  .jumps { display:none; gap:8px; flex-wrap:wrap; }
-  .cols { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:20px; align-items:start; }
-  .left { display:flex; flex-direction:column; gap:20px; min-width:0; }
-  .report { position:sticky; top:16px; }
-  .report h4 { font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); font-family:var(--sans); }
-  .report p { margin:4px 0 0; color:var(--fg2); }
-  .seg { display:inline-flex; align-self:flex-start; border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; }
-  .seg input { position:absolute; opacity:0; width:1px; height:1px; }
-  .seg label { padding:6px 14px; border-radius:999px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; }
-  .seg input:checked + label { background:var(--gold); color:var(--bg); }
-  .seg input:disabled + label { cursor:default; opacity:.6; }
-  .seg input:focus-visible + label { outline:2px solid var(--gold); outline-offset:2px; }
-  :global(.teampage:has(input[value="season"]:checked) [data-split="summer"]), :global(.teampage:has(input[value="summer"]:checked) [data-split="season"]) { display:none; }
-  [data-split] { display:flex; flex-direction:column; gap:10px; }
-  .src { margin:0; padding-left:18px; font-size:13px; overflow-wrap:anywhere; } .src a { color:var(--gold); }
-  p { margin:0; }
+  .teampage { display: flex; flex-direction: column; gap: var(--space-xl); }
+  .id { display: flex; align-items: center; gap: var(--space-md); min-width: 0; }
+  .logo { height: var(--space-2xl); width: auto; max-width: calc(var(--space-2xl) * 1.5); object-fit: contain; flex: none; }
+  .id :global(.dot) { width: var(--space-md); height: var(--space-md); border-radius: var(--radius-data); background: var(--color-data); flex: none; }
+  .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs); font-size: var(--text-sm); }
+  .links a, .links button { color: var(--color-ink-2); font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
+  .links button { font: inherit; font-weight: 600; background: none; border: 0; padding: 0; cursor: pointer; transition: color var(--dur-short) var(--ease-out); }
+  .links button:hover { color: var(--color-accent); }
+  .jumps { display: none; gap: var(--space-2xs); flex-wrap: wrap; margin-top: var(--space-2xs); }
+  .jumps .chip { border-radius: var(--radius-data); }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, calc(var(--space-3xl) * 3)); gap: var(--space-lg); align-items: start; }
+  .left { display: flex; flex-direction: column; gap: var(--space-xl); min-width: 0; }
+  .odds :global(.stat:nth-child(4) b) { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl); letter-spacing: -0.02em; line-height: 1.29; overflow-wrap: anywhere; }
+  .report { position: sticky; top: var(--space-md); }
+  .report section { display: flex; flex-direction: column; gap: var(--space-3xs); }
+  .report h4 { margin: 0; font-size: var(--text-sm); font-weight: 600; color: var(--color-ink); }
+  .report p { color: var(--color-ink-2); font-size: var(--text-sm); }
+  .seg { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
+  .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
+  .seg input:checked + .chip { background: var(--color-ink); color: var(--color-paper); }
+  .seg input:disabled + .chip { cursor: default; opacity: 0.6; }
+  .seg input:focus-visible + .chip { outline: calc(var(--space-3xs) / 2) solid var(--color-focus); outline-offset: calc(var(--space-3xs) / 2); }
+  :global(.teampage:has(input[value="season"]:checked) [data-split="summer"]), :global(.teampage:has(input[value="summer"]:checked) [data-split="season"]) { display: none; }
+  [data-split] { display: flex; flex-direction: column; gap: var(--space-xs); }
+  .src { margin: 0; padding-left: var(--space-md); font-size: var(--text-sm); overflow-wrap: anywhere; }
+  .src a { color: var(--color-ink-2); text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
   @media (max-width: 900px) {
-    .cols { grid-template-columns:minmax(0,1fr); }
-    .report { position:static; }
-    .jumps { display:flex; }
+    .cols { grid-template-columns: minmax(0, 1fr); }
+    .report { position: static; }
+    .jumps { display: flex; }
+  }
+  @media (max-width: 640px) {
+    .teampage, .left { gap: var(--space-lg); }
+    .logo { height: var(--space-xl); }
   }
 </style>

@@ -26,9 +26,9 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
       <tbody>
         {sw && (
           <tr>
-            <td class="muted">24/10 to 01/11/2026</td><td>Swiss</td><td class="muted">16-team field</td>
-            <td>{sw.predicted_record} <span class="gold">{pct(sw.p_record)}</span> <span class="cap muted">advance {pct(sw.p_advance)}</span></td>
-            <td>{record ? <span class="pill strong">Live {record}</span> : <span class="muted">Not played</span>}</td>
+            <td class="muted nw"><span class="n">24/10</span> to <span class="n">01/11/2026</span></td><td>Swiss</td><td class="muted">16-team field</td>
+            <td><span class="n">{sw.predicted_record}</span> <span class="n">{pct(sw.p_record)}</span> <span class="caption">advance <span class="n">{pct(sw.p_advance)}</span></span></td>
+            <td class="nw">{record ? <>Live <span class="n">{record}</span></> : <span class="muted">Not played</span>}</td>
           </tr>
         )}
         {rows.map((s) => {
@@ -36,20 +36,24 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
           const opp = s.team_a === code ? s.team_b : s.team_a;
           if (!confirmed(s)) return (
             <tr>
-              <td class="muted">{nz(s.time_nz)}</td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
-              <td class="muted">Draw not made</td><td class="muted">After the draw</td><td class="muted">Not played</td>
+              <td class="muted nw"><span class="n">{nz(s.time_nz)}</span></td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
+              <td class="muted">Draw not made</td><td class="muted">After the draw</td><td class="muted nw">Not played</td>
             </tr>
           );
           return (
             <tr>
-              <td>{nz(s.time_nz)}</td><td>{s.stage}</td><td><Badge code={opp} /></td>
-              <td>{s.actual ? <span class="pill">ACTUAL</span> : <><b>{s.winner}</b> {s.score} <span class="gold">{pct(s.p_winner)}</span></>}</td>
-              <td>{r ? <span class:list={['pill', s.actual ? 'strong' : r.winner === s.winner ? 'good' : 'bad']}>{r.winner} {Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}{s.actual ? '' : r.winner === s.winner ? ', hit' : ', miss'}</span> : <span class="muted">Not played</span>}</td>
+              <td class="nw"><span class="n">{nz(s.time_nz)}</span></td><td>{s.stage}</td><td><Badge code={opp} /></td>
+              <td class="nw">{s.actual ? <span class="muted">Actual result</span> : <><b>{s.winner}</b> <span class="n">{s.score}</span> <span class="n">{pct(s.p_winner)}</span></>}</td>
+              <td class="nw">{r ? <>{r.winner} <span class="n">{Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}</span>{!s.actual && <>, <span class={r.winner === s.winner ? 'hit' : 'miss'}>{r.winner === s.winner ? 'hit' : 'miss'}</span></>}</> : <span class="muted">Not played</span>}</td>
             </tr>
           );
         })}
       </tbody>
     </table>
   </div>
-) : <p class="muted cap">No series predicted for this team yet.</p>}
-<p class="cap muted">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Opponents and picks appear once a round is drawn; the Swiss line is the most likely record and its chance.</p>
+) : <p class="caption">No series predicted for this team yet.</p>}
+<p class="caption">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Opponents and picks appear once a round is drawn; the Swiss line is the most likely record and its chance.</p>
+<style>
+  .nw { white-space: nowrap; }
+  td b { font-weight: 600; }
+</style>
