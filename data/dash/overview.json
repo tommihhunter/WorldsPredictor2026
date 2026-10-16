@@ -45,15 +45,15 @@
 },
 {
 "key": "ratings_as_of",
-"value": "16/10/2026"
+"value": "17/10/2026"
 },
 {
 "key": "n_series",
-"value": 1076
+"value": 1078
 },
 {
 "key": "n_games",
-"value": 2763
+"value": 2769
 },
 {
 "key": "half_life",
@@ -101,6 +101,6 @@
 },
 {
 "key": "exported_nz",
-"value": "16/10/2026 13:27 NZDT"
+"value": "17/10/2026 11:59 NZDT"
 }
 ]

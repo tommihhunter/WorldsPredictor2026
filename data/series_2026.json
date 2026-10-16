@@ -15904,6 +15904,22 @@
 "intl": true
 },
 {
+"date": "16/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"stage": "ROUND2",
+"kind": "international",
+"league": "INTL",
+"a": "KC",
+"b": "MVK",
+"sa": 3,
+"sb": 0,
+"bo": 5,
+"region_a": "LEC",
+"region_b": "LCP",
+"patch": "16.20",
+"intl": true
+},
+{
 "date": "15/10/2026",
 "tournament": "Worlds 2026 Play-In",
 "stage": "ROUND1",
@@ -15916,6 +15932,22 @@
 "bo": 5,
 "region_a": "LEC",
 "region_b": "LCS",
+"patch": "16.20",
+"intl": true
+},
+{
+"date": "15/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"stage": "ROUND1",
+"kind": "international",
+"league": "INTL",
+"a": "MVK",
+"b": "FURIA",
+"sa": 3,
+"sb": 0,
+"bo": 5,
+"region_a": "LCP",
+"region_b": "CBLOL",
 "patch": "16.20",
 "intl": true
 },
