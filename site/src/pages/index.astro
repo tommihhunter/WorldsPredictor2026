@@ -3,7 +3,8 @@ import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import PickemsPanel from '../components/PickemsPanel.astro';
 import { overview, pickems, ratings, series, teamName } from '../lib/data';
-import { lockStage } from '../lib/nav';
+import { lockStage, stageLine } from '../lib/nav';
+import { url } from '../lib/url';
 import { pct } from '../lib/format';
 
 const o = overview();
@@ -70,51 +71,55 @@ const quick: [string, string][] = [
   ['Finals MVP', o.finals_mvp ? o.finals_mvp.split(' (')[0] : 'UNKNOWN'],
 ];
 const ls = lockStage();
+const sealed = (o.baseline_created ?? '').replace(/(\d{2}:\d{2}):\d{2}/, '$1') || 'UNKNOWN';
+const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesports.com, official patch notes. Times in NZDT. Exported ${o.exported_nz ?? 'UNKNOWN'}.`;
 ---
-<Base title="Home" active="home" home>
-  <section class="cols home-row">
-    <div class="prophecy">
-      <span class="eyebrow">The prophecy for Worlds 2026</span>
-      <div class="pro-head">
-        <h1 class="orb">The orb favours {champName}</h1>
-        <p class="pro-line">{line1}</p>
-      </div>
-      <div class="pro-stat">
-        <span class="disc pro-disc" style="--s:116px">{champ && <Logo code={champ} size={70} alt={champName} />}</span>
-        <div class="pro-p">
-          <span class="big gold pro-pct">{pct(cp, 1)}</span>
-          <span class="muted2">to win Worlds</span>
+<Base title="Home" active="home" footer={{ left: foot }}>
+  <section class="cols home">
+    <div class="stack">
+      <div class="prophecy">
+        <div class="pro-top">
+          <img class="poro" src={url('art/poro/main-256.png')} width="96" height="96" alt="The Poro Prophet" />
+          <span class="eyebrow">The prophecy for Worlds 2026</span>
         </div>
-        <dl class="pro-kv">
-          <div><dt>Likeliest final</dt><dd>{finalPair}</dd></div>
-          <div><dt>Likeliest spoiler</dt><dd>{spoiler}</dd></div>
-          <div><dt>Final</dt><dd>{finalWhere}</dd></div>
-        </dl>
-      </div>
-      <p class="pro-phone">Likeliest final: {finalPair}. Likeliest spoiler: {sp ? teamName(sp.loser) : 'UNKNOWN'}.</p>
-      {closing && <p class="pro-close">{closing}</p>}
-    </div>
-    {ls && <PickemsPanel stage={ls} />}
-  </section>
-
-  <section class="cols home-row2">
-    <div class="section">
-      <div class="section-head">
-        <h2 class="odds-title">Title odds</h2>
-        <span>Top {top.length} of {field.length}, from simulated tournaments</span>
-      </div>
-      <div class="odds">
-        {top.map((t, i) => (
-          <div class="odds-row">
-            <span class="dim odds-rank">{i + 1}</span>
-            <span class="code">{t.code}</span>
-            <span class="bar"><i class={i === 0 ? 'gold' : 'alt'} style={`width:${((t.p / max) * 100).toFixed(1)}%`}></i></span>
-            <span class="odds-p">{pct(t.p, 1)}</span>
+        <div class="pro-head">
+          <h1 class="orb">The orb favours {champName}</h1>
+          <p class="pro-line">{line1}</p>
+        </div>
+        <div class="pro-stat">
+          <span class="disc pro-disc" style="--s:116px">{champ && <Logo code={champ} size={70} alt={champName} />}</span>
+          <div class="pro-p">
+            <span class="big gold pro-pct">{pct(cp, 1)}</span>
+            <span class="muted2">to win Worlds</span>
           </div>
-        ))}
+          <dl class="pro-kv">
+            <div><dt>Likeliest final</dt><dd>{finalPair}</dd></div>
+            <div><dt>Likeliest spoiler</dt><dd>{spoiler}</dd></div>
+            <div><dt>Final</dt><dd>{finalWhere}</dd></div>
+          </dl>
+        </div>
+        <p class="pro-phone">Likeliest final: {finalPair}. Likeliest spoiler: {sp ? teamName(sp.loser) : 'UNKNOWN'}.</p>
+        {closing && <p class="pro-close">{closing}</p>}
+      </div>
+      <div class="section odds-sec">
+        <div class="section-head">
+          <h2 class="odds-title">Title odds</h2>
+          <span>Top {top.length} of {field.length}, from simulated tournaments</span>
+        </div>
+        <div class="odds">
+          {top.map((t, i) => (
+            <div class="odds-row">
+              <span class="dim odds-rank">{i + 1}</span>
+              <span class="code">{t.code}</span>
+              <span class="bar"><i class={i === 0 ? 'gold' : 'alt'} style={`width:${((t.p / max) * 100).toFixed(1)}%`}></i></span>
+              <span class="odds-p">{pct(t.p, 1)}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-    <aside class="side">
+    <div class="stack side">
+      {ls && <PickemsPanel stage={ls} />}
       <div class="callout">
         <span class="eyebrow">Where the orb is clouded</span>
         <p class="risk-short">{riskShort}</p>
@@ -126,11 +131,15 @@ const ls = lockStage();
           {quick.map(([k, v]) => <div class="quick-row"><span class="muted2">{k}</span><span>{v}</span></div>)}
         </div>
       </div>
-    </aside>
+    </div>
   </section>
 </Base>
 <style>
-  .home-row2 { padding-top: 8px; }
+  /* two independent stacks: neither column waits on the other's height */
+  .home { align-items: start; }
+  .stack { display: flex; flex-direction: column; gap: 56px; min-width: 0; }
+  .pro-top { display: flex; align-items: center; gap: 20px; }
+  .poro { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--gold); flex: none; }
   .prophecy { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
   .prophecy > .eyebrow { letter-spacing: 0.04em; }
   .pro-head { display: flex; flex-direction: column; gap: 14px; }
@@ -153,7 +162,7 @@ const ls = lockStage();
   .odds-row .code { font-size: 18px; }
   .odds-p { text-align: right; font-size: 21px; }
 
-  .side { display: flex; flex-direction: column; gap: 36px; min-width: 0; }
+  .side { gap: 36px; }
   .risk-short { font-size: 24px; line-height: 1.4; text-wrap: pretty; }
   .risk-watch { font-size: 17px; }
   .quick { display: flex; flex-direction: column; }
@@ -162,7 +171,12 @@ const ls = lockStage();
   .quick-row > span:last-child { text-align: right; }
 
   @media (max-width: 640px) {
-    .home-row > :global(.pk) { order: -1; }
+    /* phone: one column, Pick'Ems first */
+    .home { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
+    .stack { display: contents; }
+    .home :global(.pk) { order: -1; }
+    .poro { width: 56px; height: 56px; }
+    .pro-top { gap: 14px; }
     .prophecy { gap: 12px; padding-top: 0; }
     .orb { font-size: 32px; line-height: 1.05; }
     .pro-line, .pro-kv, .pro-close { display: none; }
@@ -173,7 +187,7 @@ const ls = lockStage();
     .pro-p .muted2 { font-size: 15px; }
     .pro-phone { display: block; font-size: 16px; line-height: 1.5; color: var(--fg2); }
     .odds-title { font-size: 21px; }
-    .home-row2 .section-head > span { display: none; }
+    .odds-sec .section-head > span { display: none; }
     .odds-row { grid-template-columns: 52px minmax(0, 1fr) 60px; gap: 12px; padding: 10px 0; }
     .odds-row:nth-child(n + 6), .odds-rank { display: none; }
     .odds-row .code { font-size: 16px; }

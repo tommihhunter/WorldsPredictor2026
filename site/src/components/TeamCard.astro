@@ -1,57 +1,26 @@
 ---
-// One team in the Teams grid (design/lore/Teams.dc.html): logo, name, region and seed (plus Play-In), rank,
-// title % gold, advance % teal, trend word. Phone (Phone Pages.dc.html): one compact row, title % on the right.
-// Odds are live (live.json) with the frozen ratings as the fallback.
+// One tile in the Teams grid: logo and name only (owner's pick, 17/10/2026). Every number lives on the team page.
+// data-region and data-rank drive the region filter (teams-grid.js) and tests/check_site.py.
 import Logo from './Logo.astro';
-import type { Live, Rating } from '../lib/data';
+import type { Rating } from '../lib/data';
 import { displayName, teamSlug } from '../lib/data';
-import { pct1 as pc } from '../lib/format';
 import { url } from '../lib/url';
-const { r, lv } = Astro.props as { r: Rating; lv: Live | undefined };
-const pc0 = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : v >= 0.01 ? `${Math.round(v * 100)}%` : v > 0 ? '<1%' : '0%');
-const champ = lv?.p_champion ?? r.p_champion;
-const adv = lv?.p_advance ?? r.p_advance;
-const playin = (lv ? lv.p_playin_win : r.p_playin) != null;
-const trend = (r.trend || 'UNKNOWN').toUpperCase();
-const tone = trend === 'PEAKING' || trend === 'RISING' ? 'teal' : trend === 'FADING' ? 'risk' : 'muted';
+const { r } = Astro.props as { r: Rating };
 ---
 <a class="card team" href={url(`teams/${teamSlug(r.code)}/`)} data-region={r.region} data-rank={r.rank}>
-  <span class="id">
-    <Logo code={r.code} size={44} />
-    <span class="nm">
-      <span class="code name">{displayName(r.name)}</span>
-      <span class="sub dt">{r.region} seed {r.seed}{playin && ', Play-In'}</span>
-      <span class="sub ph">{r.region}, advance {pc0(adv)}</span>
-    </span>
-    <span class="rank dt">#{r.rank}</span>
-    <span class="big gold ph pt">{pc(champ)}</span>
-  </span>
-  <span class="odds dt">
-    <span class="k">Title</span><span class="k">Advance from Swiss</span>
-    <span class="big gold">{pc(champ)}</span><span class="big teal">{pc(adv)}</span>
-  </span>
-  <span class:list={['trend', 'dt', tone]}>{trend}</span>
+  <Logo code={r.code} size={72} />
+  <span class="code name">{displayName(r.name)}</span>
+  <span class="sub">{r.region}</span>
 </a>
 <style>
-  .team { gap: 14px; padding: 20px 22px; }
-  .id { display: flex; align-items: center; gap: 14px; min-width: 0; }
-  .nm { display: flex; flex-direction: column; min-width: 0; }
-  .name { font-size: 19px; line-height: 1.15; }
-  .sub { font-size: 15px; color: var(--muted); }
-  .rank { margin-left: auto; font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--dim); flex: none; }
-  .odds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; padding-top: 12px; border-top: 1px solid var(--line); }
-  .odds .k { font-size: 14px; color: var(--muted); }
-  .odds .big { font-size: 26px; line-height: 1.3; }
-  .trend { font-size: 14px; font-weight: 600; letter-spacing: 0.08em; }
-  .ph { display: none; }
+  .team { align-items: center; justify-content: center; text-align: center; gap: 12px; padding: 28px 16px 22px; }
+  .team:hover .name { color: var(--gold); }
+  .name { font-size: 18px; line-height: 1.2; }
+  .sub { font-size: 14px; color: var(--muted); }
   @media (max-width: 640px) {
-    .team { flex-direction: row; padding: 12px 14px; border-radius: 12px; }
-    .id { gap: 12px; flex: 1; }
-    .id :global(.logo), .id :global(.disc) { --s: 32px !important; }
-    .name { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .team { gap: 8px; padding: 18px 10px 14px; }
+    .team :global(.logo), .team :global(.disc) { --s: 48px !important; }
+    .name { font-size: 15px; }
     .sub { font-size: 13px; }
-    .dt { display: none; }
-    .ph { display: inline; }
-    .pt { margin-left: auto; font-size: 19px; flex: none; }
   }
 </style>

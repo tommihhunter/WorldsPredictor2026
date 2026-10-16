@@ -3,25 +3,22 @@
 // Without JS every card shows and the chips stay hidden; teams-grid.js filters by region (state in location.hash).
 import Base from '../../layouts/Base.astro';
 import TeamCard from '../../components/TeamCard.astro';
-import { dossiers, live, overview, ratings } from '../../lib/data';
+import { dossiers, overview, ratings } from '../../lib/data';
 import { url } from '../../lib/url';
 
 const rs = [...ratings()].sort((a, b) => a.rank - b.rank);
-const lv = new Map(live().map((x) => [x.team, x]));
-const liveStamp = live()[0]?.generated_nz;
 const ORDER = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL'];
 const present = [...new Set(rs.map((r) => r.region))];
 const regions = [...ORDER.filter((g) => present.includes(g)), ...present.filter((g) => !ORDER.includes(g))];
 const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 const accessed = dossiers().map((d) => String((d as { players_sample?: string }).players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/\d{4})/)?.[1]).find(Boolean) ?? 'UNKNOWN';
 ---
-<Base title="The field" active="teams" description="Every team at Worlds 2026, ranked by model rating, with title and advance odds." footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}.` }}>
+<Base title="The field" active="teams" description="Every team at Worlds 2026, ranked by model rating." footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}.` }}>
   <section class="top">
     <div class="intro">
       <span class="eyebrow ph-hide">{rs.length} teams, {regions.length} regions</span>
       <h1 class="ph-hide">The field</h1>
       <p class="lede ph-hide">Ranked by model rating. Pick a team for its full dossier.</p>
-      <p class="caption">Ranked by model rating; odds are live{liveStamp ? `, ${liveStamp}` : ''}.</p>
       <a class="more" href={url('teams/compare/')}>Compare two teams →</a>
     </div>
     <div class="filters" role="group" aria-label="Region" hidden>
@@ -30,7 +27,7 @@ const accessed = dossiers().map((d) => String((d as { players_sample?: string })
     </div>
   </section>
   <section id="teams-grid" class="grid" aria-label="Teams">
-    {rs.map((r) => <TeamCard r={r} lv={lv.get(r.code)} />)}
+    {rs.map((r) => <TeamCard r={r} />)}
   </section>
   <script is:inline src={url('js/teams-grid.js')} defer></script>
 </Base>
@@ -42,7 +39,7 @@ const accessed = dossiers().map((d) => String((d as { players_sample?: string })
   .filters { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
   .filters[hidden] { display: none; }
   .filters .chip { font-size: 16px; padding: 8px 16px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: -8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 16px; margin-top: -8px; }
   @media (max-width: 640px) {
     .top { gap: 12px; }
     .ph-hide { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -51,6 +48,6 @@ const accessed = dossiers().map((d) => String((d as { players_sample?: string })
     .filters { flex-wrap: nowrap; gap: 6px; overflow-x: auto; width: 100%; scrollbar-width: none; }
     .filters .chip { flex: none; font-size: 14px; padding: 6px 12px; }
     .filters .chip[aria-pressed="false"] { border-color: var(--split-off); }
-    .grid { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: -12px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: -12px; }
   }
 </style>

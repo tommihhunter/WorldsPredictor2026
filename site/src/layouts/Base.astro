@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import Header from '../components/Header.astro';
-import Masthead from '../components/Masthead.astro';
 import Footer from '../components/Footer.astro';
 import BottomBar from '../components/BottomBar.astro';
 import { url } from '../lib/url';
@@ -9,12 +8,10 @@ export interface Props {
   title: string;
   active: string;
   description?: string;
-  /** Home only: the masthead replaces the header */
-  home?: boolean;
   /** footer text; left defaults to sources + export stamp, right to the fan-project line. A named slot "footer" replaces the left text. */
   footer?: { left?: string; right?: string };
 }
-const { title, active, description = 'Worlds 2026 picks, live odds and how the model is doing.', home = false, footer } = Astro.props;
+const { title, active, description = 'Worlds 2026 picks, live odds and how the model is doing.', footer } = Astro.props;
 const abs = (p: string) => new URL(p, Astro.site).href;
 const hasFooterSlot = Astro.slots.has('footer');
 ---
@@ -38,8 +35,8 @@ const hasFooterSlot = Astro.slots.has('footer');
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  {home ? <Masthead active={active} /> : <Header active={active} title={title} />}
-  <main id="main" class:list={['page', { home }]}><slot /></main>
+  <Header active={active} title={title} />
+  <main id="main" class="page"><slot /></main>
   {hasFooterSlot
     ? <Footer right={footer?.right}><slot name="footer" /></Footer>
     : <Footer left={footer?.left} right={footer?.right} />}

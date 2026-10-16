@@ -1,5 +1,5 @@
 ---
-/* Site header (every page but Home), per design/lore/Site Header.dc.html.
+/* Site header (every page, Home included, so the nav never moves), per design/lore/Site Header.dc.html.
    Desktop: avatar + wordmark, nav, next-lock chip. Under 640px: avatar + page title, compact lock chip. */
 import { NAV, nextLock } from '../lib/nav';
 import { overview } from '../lib/data';
@@ -16,7 +16,7 @@ const own = !!lock && active === lock.stage.toLowerCase();
     <a class="brand" href={url('')} aria-label="Poro Prophet, Home">
       <img class="avatar" src={url('art/poro/main-256.png')} width="44" height="44" alt="" />
       <span class="word">Poro Prophet</span>
-      <span class="ptitle" aria-hidden="true">{title}</span>
+      <span class="ptitle" aria-hidden="true">{active === 'home' ? 'Poro Prophet' : title}</span>
     </a>
     <nav class="hnav" aria-label="Sections">
       {NAV.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}>{n.label}</a>)}
