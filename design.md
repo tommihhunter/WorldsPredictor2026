@@ -82,3 +82,12 @@ Shape: `--radius` 14px, `--radius-sm` 10px, `--radius-nav` 3px, `--radius-bar` 3
 - Hover on links and nav: colour to gold. Rows and link rows: `--hover` background.
 - Play-In bracket selection: click selects, the detail panel updates. No animations.
 - `:focus-visible` is a 2px gold ring. `prefers-reduced-motion: reduce` turns transitions and animations off.
+
+## Polish pass rules (17/10/2026, supersede any size or spacing above)
+- Fonts: Riot's Beaufort for LoL (display, set in capitals, `--track-caps`) and Spiegel (body). Cinzel and Spectral are retired.
+- Type: only the eight `--fs-*` tokens in `site/src/styles/tokens.css` (13, 15, 16, 20, 24, 32, page-title clamp, hero clamp). Phone values swap in automatically. No raw `font-size: NNpx` in pages or components.
+- Spacing: only the `--space-*` tokens (4, 8, 12, 16, 24, 32, 48, 64, 80). Sections are 48px apart, panels pad 24/32, rows pad 12. Hairlines and icon sizes are the only raw pixel values.
+- One content edge: header, page and footer all use `--wrap` with `--gutter` padding, so the logo, page titles and footer text line up.
+- Colour: gold is brand, active nav, lock chips, eyebrows and the ONE number that matters in a view. Teal and risk are status (right / wrong, up / down, go 3-0 / go 0-3). Every other number is `--fg`; bars carry the comparison.
+- Hierarchy per view: one display moment (h1 or hero number), then section titles, then content. Nothing repeats the brand mark inside the page.
+- Every interactive element has hover, focus-visible and active states; transitions 120ms on colour only.

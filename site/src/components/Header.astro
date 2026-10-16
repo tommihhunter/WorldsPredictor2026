@@ -27,27 +27,27 @@ const own = !!lock && active === lock.stage.toLowerCase();
   </div>
 </header>
 <style>
-  .hdr { border-bottom: 1px solid var(--line-head); background: var(--bg); }
-  /* content-box width as in Site Header.dc.html: 1600px of content plus the gutters; padding so wrapped rows breathe */
-  .hdr-in { max-width: calc(var(--page-max) + 2 * var(--gutter)); margin: 0 auto; padding: 14px var(--gutter); min-height: 84px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; }
-  .brand { display: flex; align-items: center; gap: 14px; color: var(--fg); }
+  .hdr { border-bottom: 1px solid var(--line-head); background: var(--bg); position: sticky; top: 0; z-index: 20; }
+  /* same content edge as the page and footer (--wrap) */
+  .hdr-in { max-width: var(--wrap); margin: 0 auto; padding: var(--space-xs) var(--gutter); min-height: 76px; display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-xs) var(--space-md); }
+  .brand { display: flex; align-items: center; gap: var(--space-xs); color: var(--fg); }
   .avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--gold); }
   .word, .ptitle, .hnav { text-transform: uppercase; }
-  .word, .ptitle { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: 0.05em; line-height: 1.1; }
+  .word, .ptitle { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); letter-spacing: var(--track-caps); line-height: 1.1; }
   .ptitle { display: none; }
-  .hnav { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: 0.08em; }
-  .hnav a { padding: 8px 12px; border-radius: var(--radius-nav); color: var(--fg2); white-space: nowrap; }
+  .hnav { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); letter-spacing: 0.08em; }
+  .hnav a { padding: var(--space-2xs) var(--space-xs); border-radius: var(--radius-nav); color: var(--fg2); white-space: nowrap; }
   .hnav a:hover { color: var(--gold); }
   .hnav a[aria-current="page"] { background: var(--gold); color: var(--bg); }
   .hlock .short { display: none; }
   @media (max-width: 640px) {
     .hdr { border-bottom-color: var(--line-strong); }
-    .hdr-in { min-height: 0; padding: 14px 20px; flex-wrap: nowrap; gap: 12px; }
-    .brand { gap: 12px; min-width: 0; }
+    .hdr-in { min-height: 0; padding: var(--space-xs) var(--gutter); flex-wrap: nowrap; gap: var(--space-xs); }
+    .brand { min-width: 0; }
     .avatar { width: 36px; height: 36px; }
     .word, .hnav { display: none; }
-    .ptitle { display: block; font-size: 21px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .hlock { margin-left: auto; font-size: 13px; padding: 3px 10px; flex: none; }
+    .ptitle { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .hlock { margin-left: auto; font-size: var(--fs-xs); padding: 2px var(--space-2xs); flex: none; }
     .hlock.ph-off { display: none; }
     .hlock .full { display: none; }
     .hlock .short { display: inline; }

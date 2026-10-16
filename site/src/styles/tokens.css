@@ -41,22 +41,35 @@
   --rec-13: #514382;
   --rec-03: #3B3063;
 
-  /* type */
+  /* type: two faces, eight sizes. Pages use only these; phone values swap in below. */
   --font-display: "Beaufort for LoL", Georgia, serif;
   --font-body: "Spiegel", system-ui, sans-serif;
+  --fs-xs: 13px;    /* tier tags, tiny meta */
+  --fs-sm: 15px;    /* captions, labels, table heads, chips, footers */
+  --fs-md: 16px;    /* body, list rows */
+  --fs-lg: 20px;    /* lede, team names and key values in rows */
+  --fs-xl: 24px;    /* panel titles (h3), mid numbers */
+  --fs-2xl: 32px;   /* section titles (h2), row numbers that lead */
+  --fs-3xl: clamp(36px, 3.2vw, 52px);  /* page titles (h1), stat-strip numbers */
+  --fs-hero: clamp(48px, 5.4vw, 96px); /* Home headline and the one hero number */
+  --lh-tight: 1.1;
+  --lh-body: 1.55;
+  --track-caps: 0.04em;   /* letter-spacing for Beaufort capitals */
 
-  /* spacing */
+  /* spacing: 4/8 scale. Section gaps 48, panel padding 24/32, row padding 12/16. */
   --space-3xs: 4px;
   --space-2xs: 8px;
   --space-xs: 12px;
   --space-sm: 16px;
   --space-md: 24px;
   --space-lg: 32px;
-  --space-xl: 56px;
-  --space-2xl: 72px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
   --space-3xl: 80px;
   --page-max: 1600px;
   --gutter: 40px;
+  /* one content edge for header, page and footer: 1600px of content plus the gutters */
+  --wrap: calc(var(--page-max) + 2 * var(--gutter));
 
   /* shape */
   --radius: 14px;           /* panels, cards, callouts */
@@ -68,5 +81,9 @@
   --inset-warm: inset 0 1px 0 rgba(217, 180, 90, 0.18);
 }
 @media (max-width: 640px) {
-  :root { --gutter: 18px; }
+  :root {
+    --gutter: 18px;
+    --fs-xs: 12px; --fs-sm: 14px; --fs-md: 15px; --fs-lg: 17px; --fs-xl: 20px; --fs-2xl: 24px; --fs-3xl: 30px; --fs-hero: 40px;
+    --space-xl: 32px; --space-2xl: 40px; --space-3xl: 48px;
+  }
 }
