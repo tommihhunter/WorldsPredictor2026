@@ -1,43 +1,53 @@
 ---
+// Teams (design/lore/Teams.dc.html): intro, region chips, card grid in rank order. Each card opens the team's dossier.
+// Without JS every card shows and the chips stay hidden; teams-grid.js filters by region (state in location.hash).
 import Base from '../../layouts/Base.astro';
 import TeamCard from '../../components/TeamCard.astro';
-import { dossiers, live, ratings } from '../../lib/data';
+import { dossiers, live, overview, ratings } from '../../lib/data';
 import { url } from '../../lib/url';
 
 const rs = [...ratings()].sort((a, b) => a.rank - b.rank);
 const lv = new Map(live().map((x) => [x.team, x]));
-const ds = new Map(dossiers().map((x) => [x.code, x]));
-const REGIONS = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL'];
-const TIERS = ['S', 'A', 'B', 'C'];
-const SORTS: [string, string][] = [['odds', 'Title odds'], ['rating', 'Rating'], ['wr', 'Win rate'], ['gd15', 'GD@15'], ['blue', 'Blue side'], ['pool', 'Pool depth']];
+const ORDER = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL'];
+const present = [...new Set(rs.map((r) => r.region))];
+const regions = [...ORDER.filter((g) => present.includes(g)), ...present.filter((g) => !ORDER.includes(g))];
+const asOf = overview().ratings_as_of ?? 'UNKNOWN';
+const accessed = dossiers().map((d) => String((d as { players_sample?: string }).players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/\d{4})/)?.[1]).find(Boolean) ?? 'UNKNOWN';
 ---
-<Base title="Teams" active="teams">
-  <header class="page-head">
-    <h1>Teams</h1>
-    <p class="caption">{rs.length} teams in rank order. Filter by region or tier, sort by what matters to you, open a team for its scouting report.</p>
-    <a class="more" href={url('teams/compare/')}>Compare two teams</a>
-  </header>
-  <section class="section">
-    <div class="filters" hidden>
-      <div class="chips" role="group" aria-label="Region"><span class="caption">Region</span><button class="chip" type="button" data-region="" aria-pressed="true">All</button>{REGIONS.map((g) => <button class="chip" type="button" data-region={g} aria-pressed="false">{g}</button>)}</div>
-      <div class="chips" role="group" aria-label="Tier"><span class="caption">Tier</span><button class="chip" type="button" data-tier="" aria-pressed="true">All</button>{TIERS.map((t) => <button class="chip" type="button" data-tier={t} aria-pressed="false">{t}</button>)}</div>
-      <div class="chips" role="group" aria-label="Sort"><span class="caption">Sort</span>{SORTS.map(([k, l]) => <button class="chip" type="button" data-sort={k} aria-pressed="false">{l}</button>)}</div>
+<Base title="The field" active="teams" description="Every team at Worlds 2026, ranked by model rating, with title and advance odds." footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}.` }}>
+  <section class="top">
+    <div class="intro">
+      <span class="eyebrow ph-hide">{rs.length} teams, {regions.length} regions</span>
+      <h1 class="ph-hide">The field</h1>
+      <p class="lede ph-hide">Ranked by model rating. Pick a team for its full dossier.</p>
+      <a class="more" href={url('teams/compare/')}>Compare two teams →</a>
     </div>
-    <div id="teams-grid" class="grid">
-      {rs.map((r) => <TeamCard r={r} d={ds.get(r.code)} lv={lv.get(r.code)} />)}
+    <div class="filters" role="group" aria-label="Region" hidden>
+      <button class="chip" type="button" data-region="" aria-pressed="true">All</button>
+      {regions.map((g) => <button class="chip" type="button" data-region={g} aria-pressed="false">{g}</button>)}
     </div>
-    <p id="teams-empty" class="caption" hidden>No team matches those filters.</p>
   </section>
-<script is:inline src={url('js/teams-grid.js')} defer></script>
+  <section id="teams-grid" class="grid" aria-label="Teams">
+    {rs.map((r) => <TeamCard r={r} lv={lv.get(r.code)} />)}
+  </section>
+  <script is:inline src={url('js/teams-grid.js')} defer></script>
 </Base>
 <style>
-  h1 { font-size: var(--text-xl); line-height: 1.1; }
-  .more { color: var(--color-ink-2); font-size: var(--text-sm); font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); align-self: flex-start; }
-  .filters { display: flex; flex-direction: column; gap: var(--space-2xs); margin-bottom: var(--space-sm); }
+  .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 40px; min-width: 0; }
+  .intro { max-width: 900px; }
+  .more { font-size: 17px; font-weight: 600; color: var(--gold); align-self: flex-start; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
   .filters[hidden] { display: none; }
-  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); align-items: center; }
-  .chips .caption { width: var(--space-2xl); }
-  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-lg); }
-  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 640px) { .grid { grid-template-columns: minmax(0, 1fr); } .chips .caption { width: 100%; } }
+  .filters .chip { font-size: 16px; padding: 8px 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: -8px; }
+  @media (max-width: 640px) {
+    .top { gap: 12px; }
+    .ph-hide { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .intro { order: 2; }
+    .more { font-size: 15px; }
+    .filters { flex-wrap: nowrap; gap: 6px; overflow-x: auto; width: 100%; scrollbar-width: none; }
+    .filters .chip { flex: none; font-size: 14px; padding: 6px 12px; }
+    .filters .chip[aria-pressed="false"] { border-color: var(--split-off); }
+    .grid { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: -12px; }
+  }
 </style>

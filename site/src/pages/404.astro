@@ -3,15 +3,18 @@ import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
 ---
 <Base title="Not found" active="home" description="That page does not exist.">
-  <div class="lost">
-    <img src={url('art/poro/dopey-512.webp')} width="160" height="160" alt="The Poro Prophet, looking sad" />
-    <h1>No prophecy here</h1>
-    <p class="ink2">That page does not exist, but the Poro Prophet has picks waiting on the Home page.</p>
-    <a class="home" href={url('')}>Go to the Home page</a>
-  </div>
+  <section class="lost">
+    <img class="sad" src={url('art/poro/dopey-512.webp')} width="160" height="160" alt="The Poro Prophet, looking sad" />
+    <div class="intro">
+      <span class="eyebrow">Page not found</span>
+      <h1>No prophecy here</h1>
+      <p class="lede">That page does not exist, but the Poro Prophet has picks waiting on the Home page.</p>
+    </div>
+    <a class="chip lock" href={url('')}>Go to the Home page</a>
+  </section>
 </Base>
 <style>
-  .lost { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-sm); padding: var(--space-xl) 0; }
-  .lost img { border-radius: var(--radius-panel); }
-  .home { font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
+  .lost { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; padding: 40px 0; }
+  .lost .intro { align-items: center; }
+  .sad { border-radius: 50%; box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--gold); }
 </style>

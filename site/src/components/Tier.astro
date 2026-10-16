@@ -1,0 +1,7 @@
+---
+/* Tier tag: LOCK gold, LEAN teal, COIN FLIP --muted2. Tiers rate the winner only. Empty tier prints UNKNOWN. */
+interface Props { tier?: string | null }
+const t = (Astro.props.tier ?? '').trim().toUpperCase();
+const cls = t === 'LOCK' ? 'lock' : t === 'LEAN' ? 'lean' : t.startsWith('COIN') ? 'coin' : '';
+---
+<span class:list={['tier', cls]}>{t || 'UNKNOWN'}</span>

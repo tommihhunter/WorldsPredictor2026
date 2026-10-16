@@ -1,0 +1,82 @@
+---
+/* "Every team's likely record": swiss.json rows sorted by p_advance, a stacked p30..p03 bar on the record ramp,
+   and a gold line above the first team outside the predicted qualifiers. Phone: team, likeliest, advance. */
+import Logo from './Logo.astro';
+import { regionOf, type swiss } from '../lib/data';
+import { pct } from '../lib/format';
+type Row = ReturnType<typeof swiss>[number];
+interface Props { rows: Row[]; records?: Map<string, string>; caption?: string; title?: string }
+const { rows, records = new Map<string, string>(), caption, title = "Every team's likely record" } = Astro.props;
+const sorted = [...rows].sort((a, b) => b.p_advance - a.p_advance);
+const cut = rows.filter((r) => r.qualifies).length;
+const KEYS = [['p30', '3-0'], ['p31', '3-1'], ['p32', '3-2'], ['p23', '2-3'], ['p13', '1-3'], ['p03', '0-3']] as const;
+const ramp = (k: string) => `background:var(--rec-${k.replace('-', '')})`;
+---
+<section class="section rt">
+  <div class="section-head">
+    <h2>{title}</h2>
+    <div class="rt-legend" aria-label="Record colours">
+      {KEYS.map(([, k]) => <span><i style={ramp(k)}></i>{k}</span>)}
+    </div>
+  </div>
+  {sorted.length ? (
+    <div class="scroll">
+      <div class="rt-table" role="table" aria-label={title}>
+        <div class="rt-row rt-headrow" role="row">
+          <span role="columnheader"></span><span role="columnheader">Team</span><span role="columnheader">Likeliest</span><span role="columnheader" class="r">Advance</span><span role="columnheader" class="rt-barhead">Record chances, 3-0 to 0-3</span>
+        </div>
+        {sorted.map((r, i) => {
+          const wl = records.get(r.team);
+          return (
+            <div class:list={['rt-row', { 'rt-cut': cut > 0 && i === cut }]} role="row">
+              <span role="cell"><Logo code={r.team} size={34} class="rt-logo" /></span>
+              <span role="cell" class="rt-team"><span class="code">{r.team}{wl && <span class="rt-wl"> {wl}</span>}</span><span class="rt-reg">{regionOf(r.team)}</span></span>
+              <span role="cell" class="rt-rec">{r.predicted_record || 'UNKNOWN'} <span class="muted">{pct(r.p_record)}</span></span>
+              <span role="cell" class:list={['rt-adv big', r.p_advance >= 0.5 ? 'teal' : 'muted2']}>{pct(r.p_advance)}</span>
+              <span role="cell" class="rt-bar" style={`grid-template-columns:${KEYS.map(([k]) => `${Math.max(Number(r[k]) || 0, 0.003)}fr`).join(' ')}`} aria-label={KEYS.map(([k, l]) => `${l} ${pct(r[k])}`).join(', ')}>
+                {KEYS.map(([, l]) => <i style={ramp(l)}></i>)}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  ) : <p class="muted">Swiss records: UNKNOWN until the model exports them.</p>}
+  {(cut > 0 || caption) && <p class="caption rt-caption">{cut > 0 && `The gold line marks the predicted top ${cut}. `}{caption}</p>}
+</section>
+<style>
+  .rt { gap: 8px; }
+  .rt .section-head { margin-bottom: 8px; }
+  .rt-legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 15px; color: var(--fg2); }
+  .rt-legend span { display: flex; align-items: center; gap: 6px; }
+  .rt-legend i { width: 12px; height: 12px; border-radius: 2px; }
+  .rt-table { min-width: 720px; }
+  .rt-row { display: grid; grid-template-columns: 40px 200px 130px 120px minmax(0, 1fr); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .rt-row > * { min-width: 0; }
+  .rt-headrow { border-top: 0; padding: 0 0 6px; font-size: 15px; color: var(--muted); }
+  .rt-row.rt-cut { border-top-color: var(--gold); }
+  .r, .rt-adv { text-align: right; }
+  .rt-team { display: flex; flex-direction: column; }
+  .rt-team .code { font-size: 19px; }
+  .rt-wl { font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--gold); }
+  .rt-reg { font-size: 14px; color: var(--muted); }
+  .rt-rec { font-size: 19px; }
+  .rt-rec .muted { font-size: 15px; }
+  .rt-adv { font-size: 24px; }
+  .rt-bar { display: grid; height: 22px; gap: 2px; border-radius: 3px; overflow: hidden; }
+  .rt-caption { margin-top: 8px; }
+
+  @media (max-width: 640px) {
+    .rt-legend, .rt-bar, .rt-barhead, .rt-reg { display: none; }
+    .rt-table { min-width: 0; background: var(--surface); border-radius: var(--radius); padding: 4px 16px 8px; }
+    .rt-row { grid-template-columns: 26px minmax(54px, max-content) minmax(0, 1fr) 50px; gap: 10px; padding: 7px 0; }
+    .rt-headrow { padding: 10px 0 6px; font-size: 13px; }
+    .rt-row :global(.rt-logo) { width: 22px; height: 22px; }
+    .rt-team .code { font-size: 14px; }
+    .rt-wl { font-size: 12px; }
+    .rt-rec { font-size: 15px; }
+    .rt-rec .muted { font-size: 13px; }
+    .rt-adv { font-size: 16px; }
+    .rt-caption { font-size: 13px; }
+  }
+</style>

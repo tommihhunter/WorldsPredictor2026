@@ -1,7 +1,7 @@
 ---
 // The team's road through Worlds: every series row of the latest staged set (the baseline when that set has none
 // for this team), plus the Swiss record line. Results are matched by id and pair (resultFor), never by pair alone.
-import Badge from './Badge.astro';
+import Logo from './Logo.astro';
 import { results, series, swiss } from '../lib/data';
 import { nz, pct } from '../lib/format';
 import { bySchedule, latestSet, resultFor, swissRecords } from '../lib/stage';
@@ -26,9 +26,9 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
       <tbody>
         {sw && (
           <tr>
-            <td class="muted nw"><span class="n">24/10</span> to <span class="n">01/11/2026</span></td><td>Swiss</td><td class="muted">16-team field</td>
-            <td><span class="n">{sw.predicted_record}</span> <span class="n">{pct(sw.p_record)}</span> <span class="caption">advance <span class="n">{pct(sw.p_advance)}</span></span></td>
-            <td class="nw">{record ? <>Live <span class="n">{record}</span></> : <span class="muted">Not played</span>}</td>
+            <td class="muted nw">24/10 to 01/11/2026</td><td>Swiss</td><td class="muted">16-team field</td>
+            <td><b>{sw.predicted_record}</b> {pct(sw.p_record)} <span class="caption">advance {pct(sw.p_advance)}</span></td>
+            <td class="nw">{record ? <>Live {record}</> : <span class="muted">Not played</span>}</td>
           </tr>
         )}
         {rows.map((s) => {
@@ -36,15 +36,15 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
           const opp = s.team_a === code ? s.team_b : s.team_a;
           if (!confirmed(s)) return (
             <tr>
-              <td class="muted nw"><span class="n">{nz(s.time_nz)}</span></td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
+              <td class="muted nw">{nz(s.time_nz)}</td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
               <td class="muted">Draw not made</td><td class="muted">After the draw</td><td class="muted nw">Not played</td>
             </tr>
           );
           return (
             <tr>
-              <td class="nw"><span class="n">{nz(s.time_nz)}</span></td><td>{s.stage}</td><td><Badge code={opp} /></td>
-              <td class="nw">{s.actual ? <span class="muted">Actual result</span> : <><b>{s.winner}</b> <span class="n">{s.score}</span> <span class="n">{pct(s.p_winner)}</span></>}</td>
-              <td class="nw">{r ? <>{r.winner} <span class="n">{Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}</span>{!s.actual && <>, <span class={r.winner === s.winner ? 'hit' : 'miss'}>{r.winner === s.winner ? 'hit' : 'miss'}</span></>}</> : <span class="muted">Not played</span>}</td>
+              <td class="nw">{nz(s.time_nz)}</td><td>{s.stage}</td><td class="nw"><span class="opp"><Logo code={opp} size={24} /><span class="code">{opp}</span></span></td>
+              <td class="nw">{s.actual ? <span class="muted">Actual result</span> : <><b class="code">{s.winner}</b> {s.score} <span class="muted">{pct(s.p_winner)}</span></>}</td>
+              <td class="nw">{r ? <><span class="code">{r.winner}</span> {Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}{!s.actual && <>, <span class={r.winner === s.winner ? 'teal' : 'risk'}>{r.winner === s.winner ? 'called it' : 'missed'}</span></>}</> : <span class="muted">Not played</span>}</td>
             </tr>
           );
         })}
@@ -52,8 +52,10 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
     </table>
   </div>
 ) : <p class="caption">No series predicted for this team yet.</p>}
-<p class="caption">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Opponents and picks appear once a round is drawn; the Swiss line is the most likely record and its chance.</p>
+<p class="caption note">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Opponents and picks appear once a round is drawn; the Swiss line is the most likely record and its chance.</p>
 <style>
   .nw { white-space: nowrap; }
   td b { font-weight: 600; }
+  .opp { display: inline-flex; align-items: center; gap: 10px; }
+  .note { margin-top: 12px; }
 </style>

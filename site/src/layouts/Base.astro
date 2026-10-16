@@ -1,19 +1,29 @@
 ---
 import '../styles/global.css';
-import Sidebar from '../components/Sidebar.astro';
+import Header from '../components/Header.astro';
+import Masthead from '../components/Masthead.astro';
+import Footer from '../components/Footer.astro';
 import BottomBar from '../components/BottomBar.astro';
-import { overview } from '../lib/data';
 import { url } from '../lib/url';
-export interface Props { title: string; active: string; description?: string }
-const { title, active, description = 'Worlds 2026 picks, live odds and how the model is doing.' } = Astro.props;
-const o = overview();
+export interface Props {
+  title: string;
+  active: string;
+  description?: string;
+  /** Home only: the masthead replaces the header */
+  home?: boolean;
+  /** footer text; left defaults to sources + export stamp, right to the fan-project line. A named slot "footer" replaces the left text. */
+  footer?: { left?: string; right?: string };
+}
+const { title, active, description = 'Worlds 2026 picks, live odds and how the model is doing.', home = false, footer } = Astro.props;
 const abs = (p: string) => new URL(p, Astro.site).href;
+const hasFooterSlot = Astro.slots.has('footer');
 ---
 <!doctype html>
 <html lang="en-NZ">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#15112A" />
   <title>{title} · Worlds 2026 Predictor</title>
   <meta name="description" content={description} />
   <link rel="icon" type="image/png" href={url('art/poro/favicon.png')} />
@@ -23,19 +33,15 @@ const abs = (p: string) => new URL(p, Astro.site).href;
   <meta property="og:image" content={abs(url('art/poro/main-256.png'))} />
   <meta property="og:url" content={abs(Astro.url.pathname)} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:wght@400;500;600&display=swap" />
 </head>
 <body>
-  <div class="shell">
-    <Sidebar active={active} />
-    <div>
-      <main><slot /></main>
-      <footer>
-        <span>Data: gol.gg, lolesports.com and the official patch notes. Times NZDT. Not endorsed by Riot Games.</span>
-        <span class="caption">Exported {o.exported_nz ?? 'UNKNOWN'}</span>
-      </footer>
-    </div>
-  </div>
+  {home ? <Masthead active={active} /> : <Header active={active} title={title} />}
+  <main class="page"><slot /></main>
+  {hasFooterSlot
+    ? <Footer right={footer?.right}><slot name="footer" /></Footer>
+    : <Footer left={footer?.left} right={footer?.right} />}
   <BottomBar active={active} />
 </body>
 </html>

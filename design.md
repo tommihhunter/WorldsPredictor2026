@@ -1,81 +1,84 @@
-# Design: Poro Prophet (poroprophet.lol)
+# Design: Poro Prophet (poroprophet.lol), lore system
 
-A locked design system for the site in `site/`. Every page redesign reads this file before emitting code. Extend or amend this file when the system needs to grow; do not improvise per page.
+The locked design system for the site in `site/`. Every page reads this file before emitting code. Extend or amend this file when the system needs to grow; do not improvise per page.
 
-Written 16/10/2026 after a Hallmark audit (3 critical: card-everything, a tracked uppercase label on every tile, gold doing brand and data at once). Audience: friends following Worlds 2026, mostly on phones between matches. Use case: see the pick and whether it was right. Tone: playful-editorial. Layouts (sidebar, today hero, hub, team page, compare page) are locked from the brainstorm and stay; only the visual layer changes.
+Written 16/10/2026. At the owner's request this lore system **replaces the 16/10/2026 Hallmark system** (sidebar, Space Grotesk and IBM Plex, hairline sections, one panel per page). Where the two disagree, this file wins, including the old "sidebar locked" rule.
+
+Reference: `design/lore/` holds the owner's Claude Design handoff. `design/lore/README.md` is the spec, the `.dc.html` files hold the exact values (inline styles), and `design/lore/screenshots/*.png` are the visual target (desktop 1920 left, phone 390 right).
 
 ## Genre
-editorial (playful notes: the poro mascot, the gold accent)
+Lore. The Poro Prophet mascot palette: deep violet ground, antique gold accent, muted teal for data. Cinzel display type, Spectral body type, solid rounded panels instead of outlined cards, and much less on each page. Audience: friends following Worlds 2026, often on phones between matches. Each page leads with what you need for Pick'Ems.
 
-## Macrostructure family
-- Home: Stat-Led. The lead stat is today's series (or the next one): the matchup in display type, our pick and its chance as the hero number, the result beside it once played.
-- App pages (hubs, Teams, team page, compare, Scorecard, Meta, Demacia Cup): Workbench. Dense, left-aligned, hairline-ruled sections; one lifted panel per page at most.
-- Nav: the fixed left sidebar (desktop) and five-item bottom bar (phone) are locked. Footer: Ft2 inline single line, credit only.
+## Tokens (`site/src/styles/tokens.css`)
+Colour:
+- `--bg` #15112A page
+- `--surface` #1E1939 panels and cards
+- `--surface-warm` #2A2238 warm callouts (risk, notes, points)
+- `--line` #251F43 row hairlines inside lists and tables, footer top border
+- `--line-strong` #2C2550 panel header dividers, phone header and bottom bar borders
+- `--line-head` #3A3163 desktop header and masthead bottom border
+- `--track` #2A2448 empty bar track
+- `--fg` #EEEAF6 primary text; `--fg2` #E0DCEE paragraphs
+- `--muted` #C6C0DD labels, captions, table heads; `--muted2` #D4CFE7 sub-labels; `--dim` #B8B0D4 ranks, minor numbers
+- `--gold` #D9B45A primary accent: active nav, section labels, champion %, lock chips, links, the leading bar
+- `--teal` #86BDB5 data accent: win %, probability bars, positive values; use sparingly
+- `--risk` #F29A8B nerfs, "go 0-3", wrong calls
+- `--bar-alt` #7C6FB0 non-leading bars in ranked lists
+- `--split-off` #3A3163 losing side of a split bar, neutral chip outline
+- `--hover` #241E44 row and link-row hover
+- Swiss record ramp, 3-0 to 0-3: `--rec-30` #6FE3D4, `--rec-31` #4FB3A8, `--rec-32` #2F7F78, `--rec-23` #6B5A9E, `--rec-13` #514382, `--rec-03` #3B3063. The only place the brighter teal appears.
 
-## Theme (OKLCH, tokens in `site/src/styles/tokens.css`)
-- `--color-paper`    oklch(15% 0.012 250)   ground
-- `--color-paper-2`  oklch(20% 0.015 250)   the one lifted panel per page
-- `--color-paper-3`  oklch(26% 0.02 250)    raised interactive (chips, badges)
-- `--color-rule`     oklch(31% 0.025 250)   hairlines
-- `--color-ink`      oklch(95% 0.008 240)
-- `--color-ink-2`    oklch(80% 0.015 245)   secondary text
-- `--color-ink-3`    oklch(69% 0.02 245)    captions
-- `--color-accent`   oklch(80% 0.14 85)     gold: brand, emphasis, the one highlighted number per page; never a data encoding
-- `--color-accent-ink` oklch(15% 0.012 250)
-- `--color-good`     oklch(75% 0.15 160)    hit, only as text
-- `--color-bad`      oklch(72% 0.14 30)     miss, only as text
-- `--color-data`     oklch(50% 0.03 250)    bars that are not the leader
-- `--color-data-lead` oklch(88% 0.012 240)  the leading bar (ink, not gold)
-- `--color-focus`    oklch(80% 0.14 85)
+Spacing: `--space-3xs` 4px to `--space-3xl` 80px; `--page-max` 1600px; `--gutter` 40px (18px on phones).
+Shape: `--radius` 14px, `--radius-sm` 10px, `--radius-nav` 3px, `--radius-bar` 3px, `--radius-pill` 999px, `--inset` and `--inset-warm` highlights.
 
-## Typography
-- Display: Space Grotesk 700, tracking -0.02em, line-height 1.0. Used once per page at `--text-display` (the team name, today's matchup, "GEN v HLE"); section heads at `--text-xl`.
-- Body: IBM Plex Sans 400/600, 16px, line-height 1.55, measure 65ch for prose.
-- Outlier: IBM Plex Mono 500 for every number that is data (odds, scores, records, ratings, KDA, dates in tables). Two roles only: data numerals and the wordmark's "26". Never for prose.
-- Mono weights: Mono 500 for numerals, 600 for the leading value.
-- Scale (ratio 1.333): display clamp(2.5rem, 5.5vw, 4.25rem) · xl 1.75rem · lg 1.3125rem · md 1rem · sm 0.875rem · xs 0.8125rem.
-- Labels: sentence case, `--text-xs`, `--color-ink-3`, no tracking, no uppercase. Section numbers and eyebrows: off.
-- Tables: header cells sentence case, `--text-xs`, `--color-ink-3`; numeric cells mono, right-aligned, `font-variant-numeric: tabular-nums`.
+## Type
+- Google Fonts: Cinzel 500/600/700 (`--font-display`) and Spectral 400/500/600 (`--font-body`).
+- Body: Spectral 500, 17px (16px on phones), line-height 1.55, tabular numerals everywhere.
+- Labels and captions: Spectral 600, 15 to 17px, gold or `--muted`. Sentence case.
+- Display: Cinzel 700. Page h1 `clamp(40px, 3.8vw, 64px)` line-height 1.05 (30px on phones). Home h2 `clamp(44px, 4.6vw, 80px)`. Section h2 32px (22px on phones). Panel h3 26px (18px on phones).
+- Team codes and names in lists: Cinzel 700, 17 to 22px (`.code`).
+- Big numbers: Cinzel 600 (`.big`). Champion % `clamp(72px, 6vw, 112px)` gold, match % 52px teal, stat tiles 56px.
+- Cinzel only at 14px and up, preferably 17px and up. Cinzel sets lowercase as small capitals, so write words in normal case, never in capitals.
+- **No italics anywhere. No uppercase text-transform with tracking**, except the tier tag (13px, 600, .1em) and the nav (Cinzel 600 with .08em tracking in the header, .1em in the masthead).
 
-## Spacing
-4-point named scale in `tokens.css` (`--space-3xs` 0.25rem to `--space-3xl` 7rem). Section gap `--space-xl` on desktop, `--space-lg` on phones. Pages use tokens, never raw values.
+## Shape
+- Panel: `--surface`, 14px radius, inset highlight, no border.
+- Warm callout: `--surface-warm`, 14px radius, gold inset highlight.
+- Card (series or team button): `--surface`, 14px radius, transparent 1px border. Selected: teal border plus a 1px teal ring. The Final card: gold border.
+- Chips: pill, 5px 12px, Spectral 600 15px. Lock chip: gold text, 1px gold border, no fill. Active or result chip: gold fill, dark text.
+- Tier tag: LOCK gold, LEAN teal, COIN FLIP `--muted2`. Tiers rate the winner only.
+- Bars: 6px (4px compact), radius 3px, on `--track`. The leader is gold, the rest `--bar-alt` or teal by context.
+- Split bar: 4px, two parts in proportion to the win %, 3px gap, teal and `--split-off`.
+- Section separation comes from spacing (56 to 72px), not rules. Section headers have no underline. Rows inside lists: `border-top: 1px solid var(--line)`, 10 to 14px padding.
 
-## Surfaces and rules
-- Default container: none. Sections are separated by a hairline (`border-top: 1px solid var(--color-rule)`) and a heading.
-- `.panel` (paper-2, radius `--radius-panel` 12px, no border, no shadow): at most one per page (Home: Today; compare: summary strip; hub: Today strip; team page: the scouting report).
-- Data chrome radius `--radius-data` 4px (badges, bars, chips). Pills (`--radius-pill` 999px) only for chips that switch a view: the Teams filters, the compare format switch, the hub Frozen / Latest toggle and the team page season / Summer toggle.
-- No box shadows. Elevation is lightness only.
-- Bars: 6px high, square ends, `--color-data`; the leader `--color-data-lead`. The compare page uses a split bar (two halves meeting under the label). Swiss and team cards: no bars, numbers only.
+## Layout
+- `.page`: main column capped at 1600px, padding 56px top, 40px sides, 80px bottom, 56px gap.
+- `.cols`: `repeat(auto-fit, minmax(min(100%, 520px), 1fr))`, 56px row gap, 72px column gap; stacks below about 1150px.
+- Fixed-width tables and grids (Swiss, Knockouts path, Meta, Scorecard) sit in `.scroll` (overflow-x auto) or collapse to a phone layout. No horizontal page scroll at 390px. Grid tracks use `minmax(0, 1fr)`.
 
-## Colour discipline
-- Gold appears at under 5% of any viewport: wordmark mark, LIVE, link hover, and exactly one highlighted number per page (the pick's chance on Home and the hubs, the win chance on compare).
-- Right and wrong are words in `--color-good` / `--color-bad` ("hit", "miss"), not pills, not backgrounds.
-- Tiers (LOCK, LEAN, COIN FLIP) are plain text in `--color-ink-2`, weight 600 for LOCK only.
+## Chrome
+- **Header** (`Header.astro`, every page but Home): 84px, `--line-head` bottom border, inner width 1600px with 40px padding. Left: 44px avatar (2px bg ring, 3px gold ring) and "Poro Prophet" in Cinzel 700 26px. Right: the nav from `NAV` in `site/src/lib/nav.ts`, Cinzel 600 15px .08em, 8px 12px padding, 2px gap, nowrap; the active link is gold-filled with dark text and a 3px radius. Far right: the lock chip from `overview.next_lock` ("Swiss lock 24/10, 06:00 NZDT"). The nav wraps on narrow desktop.
+- **Masthead** (`Masthead.astro`, Home only): a 15px meta row (build date with weekday, the stage line in teal from `stageLine()`, "Baseline sealed {baseline_created}"), a centred 60px avatar with "Poro Prophet" at `clamp(40px, 3.4vw, 60px)`, and a centred wrapping nav (16px, .1em, 8px 16px).
+- **Footer** (`Footer.astro`): 14px `--muted`, sources and the export stamp on the left, the fan-project disclaimer on the right, `--line` top border. Pages can pass their own left text (for example which prediction set a hub shows).
+- **Phone (< 640px)**: the header shrinks to a 36px avatar and the page title (Cinzel 21px), with a compact lock chip ("Locks 24/10") on the right; Home shows the avatar and wordmark only. The nav moves to the fixed bottom bar (`BottomBar.astro`): Home, Play-In, Swiss, Teams, More. Each tab is a 7px rotated-square marker over a 13px label, gold when active. More opens a bottom sheet with Knockouts, Scorecard, Meta and Demacia Cup, each with a one-line description; More reads active on those pages.
 
-## Motion
-- `--ease-out: cubic-bezier(0.16, 1, 0.3, 1)`, `--dur-short: 180ms`. Only `opacity` and `transform`.
-- Hover: link colour to gold, chips lighten one step. No reveals on scroll, no counters, no bounces.
-- `prefers-reduced-motion: reduce`: transitions off.
+## Data rules
+- Every number comes from `data/dash/*.json` through `site/src/lib/data.ts`; copy that embeds a number is generated. Missing values print `UNKNOWN`.
+- Dates dd/mm/yyyy, times NZDT. No em dashes in any content. Links go through `url()`.
+- Hubs show the latest staged set (`view(stage, 'latest')`), and the footer names which set and when it was predicted. The Scorecard grades the frozen baseline.
 
-## Microinteractions
-- Silent success. Filters and the compare pickers change the view with no toast.
-- `:focus-visible` ring 2px gold, offset 2px, never animated.
-- Hover tooltips: none. Everything readable is on the page.
+## Pages
+- **Home**: masthead; "The prophecy" (champion, a sentence from `champion_p`, stat panel with a 116px logo disc, likeliest final and spoiler, the final's venue and date) beside the Pick'Ems panel for the stage of the next lock (`lockStage()`). Then Title odds (top 10, leader gold) beside the "Where the orb is clouded" callout and Quick picks.
+- **Play-In**: intro with a "Who wins the Play-In" panel; 4-column bracket of selectable series cards; detail panel (chips, key matchup, draft angle, what flips it, score chances); our Pick'Ems table.
+- **Swiss**: intro; Pick'Ems panel (Go 3-0, Go 0-3, Advance); every team's likely record with the six-stop ramp and a gold line at the predicted top-8 cut.
+- **Knockouts**: intro with a points callout; 3-column bracket (QF, SF, Final with a gold border, 760px minimum height); how far each team goes (champion bars gold).
+- **Teams**: intro with region chips; card grid `repeat(auto-fill, minmax(280px, 1fr))` linking to each team's own route; the dossier page carries the path strip, adjustment callout, stat cells, report and player table. Compare pages use the same panels, chips, split bars and Cinzel names.
+- **Scorecard**: stat strip (4 cells); series table; tier breakdown; a callout to the Demacia Cup.
+- **Meta**: patch, draft and "Why so many 3-0 calls" panels; most contested champions (top 12); Pick'Ems points and locks.
+- **Demacia Cup**: intro with a "Partial data" callout; stat strip; every call; what it taught us.
+- **404**: the sad poro, the intro block and a lock-style chip back to Home.
 
-## Copy
-- dd/mm/yyyy, NZDT with the venue time alongside, UNKNOWN never guessed, no em dashes. Captions are sentences ("Refitted 16/10 09:50 after every result so far."), not labels.
-
-## Per-page allowances
-- Home may show the poro at `--space-2xl` height beside the title; every other page uses the 28px mark only. The 404 page shows the sad poro large.
-- App pages: typography and rules only, no enrichment.
-
-## What pages MUST share
-Wordmark, sidebar and bottom bar, tokens, the display and body and mono faces, the one-panel rule, the label rule, the gold rule, the table style.
-
-## What pages MAY differ on
-Which element is the page's display moment, and which single element is the panel.
-
-## Exports
-
-### tokens.css
-See `site/src/styles/tokens.css` (the file is the source of truth; this section mirrors it).
+## Interaction and motion
+- Hover on links and nav: colour to gold. Rows and link rows: `--hover` background.
+- Play-In bracket selection: click selects, the detail panel updates. No animations.
+- `:focus-visible` is a 2px gold ring. `prefers-reduced-motion: reduce` turns transitions and animations off.

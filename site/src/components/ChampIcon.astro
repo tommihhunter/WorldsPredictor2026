@@ -7,6 +7,6 @@ const file = (art as Record<string, string>)[String(name ?? '').toLowerCase().re
 ---
 {file ? <span class="champ"><img src={url(`art/champ/${file}`)} alt="" width={size} height={size} loading="lazy" />{name}</span> : <span>{name}</span>}
 <style>
-  .champ { display: inline-flex; align-items: center; gap: var(--space-2xs); }
-  .champ img { border-radius: var(--radius-data); flex: none; }
+  .champ { display: inline-flex; align-items: center; gap: 8px; }
+  .champ img { border-radius: 4px; flex: none; }
 </style>

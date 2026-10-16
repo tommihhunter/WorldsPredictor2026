@@ -1,50 +1,60 @@
-/* Hallmark · genre: editorial · design-system: design.md · designed-as-app · theme: project palette (dark paper, gold accent) */
+/* Lore design system tokens (design.md, design/lore/README.md). Replaces the 16/10 Hallmark tokens. */
 :root {
-  --color-paper: oklch(15% 0.012 250);
-  --color-paper-2: oklch(20% 0.015 250);
-  --color-paper-3: oklch(26% 0.02 250);
-  --color-rule: oklch(31% 0.025 250);
-  --color-ink: oklch(95% 0.008 240);
-  --color-ink-2: oklch(80% 0.015 245);
-  --color-ink-3: oklch(69% 0.02 245);
-  --color-accent: oklch(80% 0.14 85);
-  --color-accent-ink: oklch(15% 0.012 250);
-  --color-good: oklch(75% 0.15 160);
-  --color-bad: oklch(72% 0.14 30);
-  --color-data: oklch(50% 0.03 250);
-  --color-data-lead: oklch(88% 0.012 240);
-  --color-focus: oklch(80% 0.14 85);
+  /* colour */
+  --bg: #15112A;            /* page */
+  --surface: #1E1939;       /* panels and cards */
+  --surface-warm: #2A2238;  /* warm callouts: risk, notes */
+  --line: #251F43;          /* row hairlines inside lists and tables */
+  --line-strong: #2C2550;   /* panel header dividers, phone header border */
+  --line-head: #3A3163;     /* desktop header and masthead bottom border (Site Header.dc.html) */
+  --track: #2A2448;         /* empty bar track */
+  --fg: #EEEAF6;            /* primary text */
+  --fg2: #E0DCEE;           /* secondary text, paragraphs */
+  --muted: #C6C0DD;         /* labels, captions, table heads */
+  --muted2: #D4CFE7;        /* sub-labels */
+  --dim: #B8B0D4;           /* ranks, minor numbers */
+  --gold: #D9B45A;          /* primary accent */
+  --teal: #86BDB5;          /* data accent */
+  --risk: #F29A8B;          /* nerfs, go 0-3, wrong calls */
+  --bar-alt: #7C6FB0;       /* non-leading bars */
+  --split-off: #3A3163;     /* losing side of a split bar, neutral chip outline */
+  --hover: #241E44;         /* row and link-row hover */
+  --scrim: rgba(10, 8, 22, 0.6);
 
-  --font-display: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, sans-serif;
-  --font-outlier: "IBM Plex Mono", ui-monospace, monospace;
+  /* Swiss record ramp, 3-0 to 0-3 */
+  --rec-30: #6FE3D4;
+  --rec-31: #4FB3A8;
+  --rec-32: #2F7F78;
+  --rec-23: #6B5A9E;
+  --rec-13: #514382;
+  --rec-03: #3B3063;
 
-  --text-xs: 0.8125rem;
-  --text-sm: 0.875rem;
-  --text-md: 1rem;
-  --text-lg: 1.3125rem;
-  --text-xl: 1.75rem;
-  --text-2xl: 2.25rem;
-  --text-display: clamp(2.5rem, 5.5vw, 4.25rem);
+  /* type */
+  --font-display: "Cinzel", Georgia, serif;
+  --font-body: "Spectral", Georgia, serif;
 
-  --space-3xs: 0.25rem;
-  --space-2xs: 0.5rem;
-  --space-xs: 0.75rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 4.5rem;
-  --space-3xl: 7rem;
+  /* spacing */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 56px;
+  --space-2xl: 72px;
+  --space-3xl: 80px;
+  --page-max: 1600px;
+  --gutter: 40px;
 
-  --radius-data: 4px;
-  --radius-panel: 12px;
+  /* shape */
+  --radius: 14px;           /* panels, cards, callouts */
+  --radius-sm: 10px;        /* sheet rows */
+  --radius-nav: 3px;        /* active nav fill */
+  --radius-bar: 3px;
   --radius-pill: 999px;
-  --rule: 1px solid var(--color-rule);
-
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-short: 180ms;
-
-  --sidebar: 220px;
-  --measure: 65ch;
+  --inset: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --inset-warm: inset 0 1px 0 rgba(217, 180, 90, 0.18);
+}
+@media (max-width: 640px) {
+  :root { --gutter: 18px; }
 }

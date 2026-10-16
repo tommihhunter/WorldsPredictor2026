@@ -1,64 +1,179 @@
 ---
 import Base from '../layouts/Base.astro';
-import Card from '../components/Card.astro';
-import NextUp from '../components/NextUp.astro';
-import OddsList from '../components/OddsList.astro';
-import { live, overview } from '../lib/data';
-import { grade, nzToday, pickemPoints, today } from '../lib/grading';
-import { liveStage } from '../lib/nav';
-import { url } from '../lib/url';
+import Logo from '../components/Logo.astro';
+import PickemsPanel from '../components/PickemsPanel.astro';
+import { live, overview, pickems, ratings, series, teamName } from '../lib/data';
+import { lockStage } from '../lib/nav';
+import { pct } from '../lib/format';
 
 const o = overview();
-const lv = live();
-const todays = today();
-const stage = liveStage();
-const STAGE_NAME: Record<string, string> = { 'play-in': 'Play-In', swiss: 'Swiss', knockouts: 'Knockouts' };
-const rec = grade().find((g) => g.set === 'baseline');
-const pts = pickemPoints().find((p) => p.stage === STAGE_NAME[stage]);
-const lock = o.next_lock ?? '';
-const lm = /(\d\d\/\d\d)\/\d{4} (\d\d:\d\d)/.exec(lock);
-const lockAt = lm ? `${lm[1]} ${lm[2]}` : undefined; // dd/mm hh:mm fits the stat column; the caption carries the full date
-const [ver, ...verRest] = (o.model_version ?? 'UNKNOWN').split(':');
-const stats: [string, string][] = [
-  [rec ? `${rec.correct} / ${rec.n}` : '0 / 0', rec?.n ? 'Winners called right by the frozen baseline.' : 'Winners called right. No results entered yet.'],
-  [pts ? `${pts.earned} / ${pts.max ?? 'UNKNOWN'}` : 'UNKNOWN', pts ? `Pick'Ems points, ${STAGE_NAME[stage]}, ${pts.possible} decided so far.` : `${STAGE_NAME[stage]} Pick'Ems not available yet.`],
-  [lockAt ?? 'UNKNOWN', lock ? `${lock}.` : 'Next lock not available yet.'],
-  [ver, `Model, ${verRest.join(':').trim() || 'UNKNOWN'}. Ratings as of ${lv[0]?.as_of ?? 'UNKNOWN'}.`],
-];
----
-<Base title="Home" active="home">
-  <header class="page-head home-head">
-    <div class="page-head">
-      <p class="wordmark">Poro Prophet</p>
-      <p class="caption">Picks for every Worlds 2026 series, live title odds and how the frozen baseline is doing. Times NZDT with the venue time alongside.</p>
-    </div>
-    <img class="poro" src={url('art/poro/main-512.webp')} width="72" height="72" alt="The Poro Prophet" />
-  </header>
+const rt = ratings();
+const champ = o.champion ?? '';
+const champName = champ ? teamName(champ) : 'UNKNOWN';
+const cpRaw = Number(o.champion_p);
+const cp = Number.isFinite(cpRaw) ? cpRaw : null;
 
-  <section class="panel">
-    <p class="caption">{todays.length ? `Today, ${nzToday()}, NZDT.` : 'Next up, the next open series.'}</p>
-    <NextUp rows={todays.length ? todays : undefined} hero />
-    <a class="more" href={url(`${stage}/`)}>Full bracket and picks</a>
+// "One in every three futures": a simple fraction when champion_p sits close to one, else "About N in 100".
+const WORD = ['', 'One', 'Two', 'Three', 'Four', 'Five'];
+const NOUN: Record<string, string> = { '1/2': 'a half', '1/3': 'a third', '1/4': 'a quarter', '1/5': 'a fifth', '2/3': 'two thirds', '3/4': 'three quarters' };
+const frac = (p: number) => { for (const n of [2, 3, 4, 5]) for (let k = 1; k < n; k++) if (Math.abs(p - k / n) < 0.015) return { k, n }; return null; };
+const f = cp == null ? null : frac(cp);
+const n100 = cp == null ? 0 : Math.round(cp * 100);
+const line1 = cp == null ? 'Title chance: UNKNOWN.'
+  : f ? `${WORD[f.k]} in every ${WORD[f.n].toLowerCase()} futures ${f.k === 1 ? 'ends' : 'end'} with them lifting the cup.`
+  : `About ${n100} in 100 futures end with them lifting the cup.`;
+const others = cp == null ? '' : f ? `${WORD[f.n - f.k]} in ${WORD[f.n].toLowerCase()} futures ${f.n - f.k === 1 ? 'crowns' : 'crown'} someone else.` : `About ${100 - n100} in 100 futures crown someone else.`;
+const noun = f ? NOUN[`${f.k}/${f.n}`] ?? pct(cp, 1) : pct(cp, 1);
+const champRow = rt.find((r) => r.code === champ);
+const byElo = [...rt].sort((a, b) => b.elo - a.elo);
+const eloRank = byElo.findIndex((r) => r.code === champ) + 1;
+const ORD = ['', '', 'second', 'third', 'fourth', 'fifth'];
+const lead = champRow?.headline?.split(/\s*[(;,]/)[0]?.trim() || (champRow ? `${champRow.region} seed ${champRow.seed}` : champName);
+const best = eloRank === 1 ? 'with the best rating in the field' : eloRank > 1 ? `with the ${ORD[eloRank] ?? `number ${eloRank}`} best rating in the field` : 'rating UNKNOWN';
+const closing = cp == null ? '' : `${lead}, ${best}, yet ${noun} is not a certainty. ${others}`;
+
+// Frozen baseline knockouts: KO-F is the likeliest final; the spoiler is the underdog of the series with the highest p_upset.
+const ko = series().filter((s) => s.set === 'baseline' && s.phase === 'Knockouts');
+const fin = ko.find((s) => s.id === 'KO-F');
+const finalPair = fin ? `${teamName(fin.team_a)} v ${teamName(fin.team_b)}` : 'UNKNOWN';
+const sp = ko.filter((s) => s.p_upset != null && s.loser).sort((a, b) => (b.p_upset ?? 0) - (a.p_upset ?? 0))[0];
+const spoiler = sp ? `${teamName(sp.loser)}, in the ${sp.stage.replace(/\s*\(.*\)/, '').toLowerCase()}` : 'UNKNOWN';
+const venue = fin && /\(([^)]+)\)/.exec(fin.time_venue)?.[1];
+const finDate = fin && /\d\d\/\d\d\/\d{4}/.exec(fin.time_nz)?.[0];
+const finalWhere = venue && finDate ? `${venue}, ${finDate} NZDT` : 'UNKNOWN';
+
+// Title odds: live refit when present, else the frozen ratings.
+const lv = live();
+const field = lv.length ? lv.map((x) => ({ code: x.team, p: x.p_champion })) : rt.map((r) => ({ code: r.code, p: r.p_champion }));
+const top = [...field].sort((a, b) => b.p - a.p).slice(0, 10);
+const max = top[0]?.p || 1;
+
+// Callout: first sentence of the assumption, then the detection text without the dashboard-tab pointer.
+const sentences = (s: string) => s.split(/(?<=\.)\s+(?=[A-Z])/);
+const riskShort = o.risk_assumption ? sentences(o.risk_assumption)[0] : 'UNKNOWN';
+const riskWatch = o.risk_detection ? sentences(o.risk_detection).filter((x) => !/\btab\b/i.test(x)).join(' ') : 'UNKNOWN';
+
+// Quick picks from the frozen overview.
+const piw = o.playin_winner;
+const piwP = rt.find((r) => r.code === piw)?.p_playin;
+const sw30 = pickems().filter((p) => p.stage === 'Swiss' && p.slot === '3-0').map((p) => teamName(p.pick));
+const quick: [string, string][] = [
+  ['Play-In winner', piw ? `${teamName(piw)}, ${pct(piwP)}` : 'UNKNOWN'],
+  ['Swiss 3-0', sw30.length ? sw30.join(' and ') : 'UNKNOWN'],
+  ['Finals MVP', o.finals_mvp ? o.finals_mvp.split(' (')[0] : 'UNKNOWN'],
+];
+const ls = lockStage();
+---
+<Base title="Home" active="home" home>
+  <section class="cols home-row">
+    <div class="prophecy">
+      <span class="eyebrow">The prophecy for Worlds 2026</span>
+      <div class="pro-head">
+        <h2 class="orb">The orb favours {champName}</h2>
+        <p class="pro-line">{line1}</p>
+      </div>
+      <div class="pro-stat">
+        <span class="disc pro-disc" style="--s:116px">{champ && <Logo code={champ} size={70} alt={champName} />}</span>
+        <div class="pro-p">
+          <span class="big gold pro-pct">{pct(cp, 1)}</span>
+          <span class="muted2">to win Worlds</span>
+        </div>
+        <dl class="pro-kv">
+          <div><dt>Likeliest final</dt><dd>{finalPair}</dd></div>
+          <div><dt>Likeliest spoiler</dt><dd>{spoiler}</dd></div>
+          <div><dt>Final</dt><dd>{finalWhere}</dd></div>
+        </dl>
+      </div>
+      <p class="pro-phone">Likeliest final: {finalPair}. Likeliest spoiler: {sp ? teamName(sp.loser) : 'UNKNOWN'}.</p>
+      {closing && <p class="pro-close">{closing}</p>}
+    </div>
+    {ls && <PickemsPanel stage={ls} />}
   </section>
 
-  <div class="grid-2">
-    <Card title="Title odds" note={`Live, refitted ${lv[0]?.generated_nz ?? 'UNKNOWN'} after every result so far. The frozen picks never change.`}>
-      <OddsList rows={lv.map((x) => ({ code: x.team, p: x.p_champion }))} top={10} />
-      <a class="more" href={url('teams/')}>All 19 teams</a>
-    </Card>
-    <section class="section" aria-label="How the model is doing">
-      <div class="grid-4 stats">
-        {stats.map(([v, c]) => <div class="stat"><b class:list={[{ muted: v === 'UNKNOWN' }]}>{v}</b><span>{c}</span></div>)}
+  <section class="cols home-row2">
+    <div class="section">
+      <div class="section-head">
+        <h2 class="odds-title">Title odds</h2>
+        <span>Top {top.length} of {field.length}, from simulated tournaments</span>
       </div>
-    </section>
-  </div>
-<script is:inline src={url('js/clock.js')} defer></script>
+      <div class="odds">
+        {top.map((t, i) => (
+          <div class="odds-row">
+            <span class="dim odds-rank">{i + 1}</span>
+            <span class="code">{t.code}</span>
+            <span class="bar"><i class={i === 0 ? 'gold' : 'alt'} style={`width:${((t.p / max) * 100).toFixed(1)}%`}></i></span>
+            <span class="odds-p">{pct(t.p, 1)}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <aside class="side">
+      <div class="callout">
+        <span class="eyebrow">Where the orb is clouded</span>
+        <p class="risk-short">{riskShort}</p>
+        <p class="risk-watch muted2">{riskWatch}</p>
+      </div>
+      <div class="quick">
+        <span class="eyebrow">Quick picks</span>
+        <div class="rows">
+          {quick.map(([k, v]) => <div class="quick-row"><span class="muted2">{k}</span><span>{v}</span></div>)}
+        </div>
+      </div>
+    </aside>
+  </section>
 </Base>
 <style>
-  .home-head { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: var(--space-md); }
-  .wordmark { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl); line-height: 1.1; letter-spacing: -0.02em; }
-  .poro { width: var(--space-2xl); height: var(--space-2xl); border-radius: var(--radius-panel); flex: none; }
-  .more { color: var(--color-ink-2); font-size: var(--text-sm); font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); align-self: flex-start; }
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-lg); }
-  @media (max-width: 640px) { .poro { width: var(--space-xl); height: var(--space-xl); } }
+  .home-row2 { padding-top: 8px; }
+  .prophecy { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
+  .prophecy > .eyebrow { letter-spacing: 0.04em; }
+  .pro-head { display: flex; flex-direction: column; gap: 14px; }
+  .orb { font-size: clamp(44px, 4.6vw, 80px); line-height: 1; letter-spacing: 0.01em; }
+  .pro-line { font-size: 28px; line-height: 1.35; color: var(--fg2); }
+  .pro-stat { display: flex; flex-wrap: wrap; align-items: center; gap: 28px 36px; padding: 28px 32px; background: var(--surface); border-radius: var(--radius); }
+  .pro-p { display: flex; flex-direction: column; gap: 4px; }
+  .pro-pct { font-size: clamp(72px, 6vw, 112px); line-height: 0.9; }
+  .pro-p .muted2 { font-size: 17px; }
+  .pro-kv { margin: 0; display: flex; flex-direction: column; gap: 14px; padding-left: 36px; border-left: 1px solid var(--line-strong); flex: 1 1 260px; min-width: 0; }
+  .pro-kv dt { font-size: 15px; color: var(--muted); }
+  .pro-kv dd { margin: 0; font-size: 21px; }
+  .pro-phone { display: none; }
+  .pro-close { font-size: 20px; line-height: 1.6; color: var(--fg2); max-width: 60ch; text-wrap: pretty; }
+
+  .odds-title { font-size: 34px; letter-spacing: 0.03em; }
+  .odds { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); column-gap: 48px; }
+  .odds-row { display: grid; grid-template-columns: 28px 64px minmax(0, 1fr) 72px; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .odds-rank { font-size: 16px; }
+  .odds-row .code { font-size: 18px; }
+  .odds-p { text-align: right; font-size: 21px; }
+
+  .side { display: flex; flex-direction: column; gap: 36px; min-width: 0; }
+  .risk-short { font-size: 24px; line-height: 1.4; text-wrap: pretty; }
+  .risk-watch { font-size: 17px; }
+  .quick { display: flex; flex-direction: column; }
+  .quick > .eyebrow { font-size: 16px; padding-bottom: 8px; }
+  .quick .rows > .quick-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; font-size: 18px; }
+  .quick-row > span:last-child { text-align: right; }
+
+  @media (max-width: 640px) {
+    .home-row > :global(.pk) { order: -1; }
+    .prophecy { gap: 12px; padding-top: 0; }
+    .orb { font-size: 32px; line-height: 1.05; }
+    .pro-line, .pro-kv, .pro-close { display: none; }
+    .pro-stat { flex-wrap: nowrap; gap: 16px; padding: 16px 18px; }
+    .pro-disc { width: 52px; height: 52px; }
+    .pro-disc :global(.logo) { width: 44px; height: 44px; }
+    .pro-pct { font-size: 52px; line-height: 0.95; }
+    .pro-p .muted2 { font-size: 15px; }
+    .pro-phone { display: block; font-size: 16px; line-height: 1.5; color: var(--fg2); }
+    .odds-title { font-size: 21px; }
+    .home-row2 .section-head > span { display: none; }
+    .odds-row { grid-template-columns: 52px minmax(0, 1fr) 60px; gap: 12px; padding: 10px 0; }
+    .odds-row:nth-child(n + 6), .odds-rank { display: none; }
+    .odds-row .code { font-size: 16px; }
+    .odds-row .bar { height: 5px; }
+    .odds-p { font-size: 17px; }
+    .side { gap: 28px; }
+    .risk-short, .risk-watch { font-size: 15px; line-height: 1.5; }
+    .quick-row { font-size: 16px; }
+  }
 </style>

@@ -1,41 +1,45 @@
 ---
-// Ported from dashboard/index.html (dossiers script, players table): same number formats, five most-played champions.
-import ChampIcon from './ChampIcon.astro';
+// Player table from the dossier (Teams.dc.html): role, player, KDA, GD@15 and the three most-played champions.
+// One tbody per split (data-split), so the page's season / Summer toggle shows one at a time. Phone drops KDA and GD@15.
 import type { Player } from '../lib/data';
-const { players, summer } = Astro.props as { players: Player[]; summer: boolean };
-const ROLE: Record<string, string> = { TOP: 'Top', JNG: 'Jungle', JUNGLE: 'Jungle', MID: 'Mid', ADC: 'Bot', BOT: 'Bot', SUP: 'Support', SUPPORT: 'Support' };
+const { splits } = Astro.props as { splits: { key: string; players: Player[] }[] };
+const ROLE: Record<string, [string, string]> = {
+  TOP: ['Top', 'Top'], JNG: ['Jng', 'Jungle'], JUNGLE: ['Jng', 'Jungle'], MID: ['Mid', 'Mid'],
+  ADC: ['Bot', 'Bot'], BOT: ['Bot', 'Bot'], SUP: ['Sup', 'Support'], SUPPORT: ['Sup', 'Support'],
+};
 const f = (v: number | null | undefined, fmt: (n: number) => string) => (v == null ? 'UNKNOWN' : fmt(Number(v)));
-const kda = (n: number) => n.toFixed(1);
 const gd = (n: number) => `${Math.round(n) > 0 ? '+' : ''}${Math.round(n)}`;
-const pc1 = (n: number) => `${n.toFixed(1)}%`;
-const games = (p: Player) => (p.games == null ? 'UNKNOWN' : summer && p.season_games != null ? `${p.games}/${p.season_games}` : String(p.games));
+const role = (r: string) => ROLE[String(r).toUpperCase()] ?? [r, r];
 ---
-{players.length ? (
-  <div class="scroll">
-    <table class="players">
-      <thead><tr><th>Role</th><th>Player</th><th class="r">Games</th><th class="r">KDA</th><th class="r">GD@15</th><th class="r">KP</th><th class="r">Pool</th></tr></thead>
-      <tbody>
-        {players.map((p) => (<>
+<div class="scroll">
+  <table class="players">
+    <thead><tr><th>Role</th><th>Player</th><th class="r wide">KDA</th><th class="r wide">GD@15</th><th>Most played</th></tr></thead>
+    {splits.map((s) => (
+      <tbody data-split={s.key}>
+        {s.players.length ? s.players.map((p) => (
           <tr class="player-row">
-            <td class="ink2">{ROLE[String(p.role).toUpperCase()] ?? p.role}</td>
-            <td><b>{p.player}</b></td>
-            <td class="num">{games(p)}</td>
-            <td class="num">{f(p.kda, kda)}</td><td class="num">{f(p.gd15, gd)}</td><td class="num">{f(p.kp, pc1)}</td>
-            <td class="num">{p.n_champs ?? 'UNKNOWN'}</td>
+            <td class="muted2"><span class="s">{role(p.role)[0]}</span><span class="l">{role(p.role)[1]}</span></td>
+            <td class="code">{p.player}</td>
+            <td class="r wide">{f(p.kda, (n) => n.toFixed(1))}</td>
+            <td class="r wide">{f(p.gd15, gd)}</td>
+            <td class="champs">{(p.champs ?? []).length ? (p.champs ?? []).slice(0, 3).map((c) => c.champ).join(', ') : 'UNKNOWN'}</td>
           </tr>
-          <tr class="pool"><td colspan="7"><div class="champs">{(p.champs ?? []).length ? (p.champs ?? []).slice(0, 5).map((c) => (
-            <span class="ch"><ChampIcon name={c.champ} size={20} />{c.games != null && <span class="caption num">{c.games}g · {Math.round(Number(c.wr))}%</span>}</span>
-          )) : <span class="caption">Champion pool UNKNOWN</span>}</div></td></tr>
-        </>))}
+        )) : <tr><td colspan="5" class="caption">No player data found.</td></tr>}
       </tbody>
-    </table>
-  </div>
-) : <p class="caption">No player data found.</p>}
-<p class="caption">Under each player: most played, {summer ? 'Summer split' : '2026 season'} (games · win rate).{summer && ' Games reads Summer games / season games.'}</p>
+    ))}
+  </table>
+</div>
 <style>
-  .players td { vertical-align: middle; }
-  .players b { font-weight: 600; }
-  .players tr.player-row td { border-bottom: 0; padding-bottom: 0; }
-  .champs { display: flex; flex-wrap: wrap; gap: var(--space-3xs) var(--space-sm); }
-  .ch { display: inline-flex; align-items: center; gap: var(--space-2xs); font-size: var(--text-xs); white-space: nowrap; }
+  .players th { font-size: 14px; padding-bottom: 8px; }
+  .players td { padding: 10px 12px 10px 0; font-size: 17px; }
+  .players td:last-child { padding-right: 0; }
+  .champs { font-size: 15px; color: var(--fg2); }
+  .l { display: none; }
+  @media (max-width: 640px) {
+    .wide { display: none; }
+    .s { display: none; }
+    .l { display: inline; }
+    .players td { padding: 9px 10px 9px 0; font-size: 15px; vertical-align: baseline; }
+    .champs { font-size: 13px; }
+  }
 </style>

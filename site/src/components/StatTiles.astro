@@ -1,9 +1,0 @@
----
-// A row of stats: [label, value, caption]. Number first, the label and caption as one sentence under it. 'UNKNOWN' is muted.
-const { tiles } = Astro.props as { tiles: [string, string, string?][] };
----
-<div class="grid-4">
-  {tiles.map(([label, value, sub]) => (
-    <div class="stat"><b class:list={[{ muted: value === 'UNKNOWN' }]}>{value}</b><span>{sub ? `${label}, ${sub}` : label}</span></div>
-  ))}
-</div>

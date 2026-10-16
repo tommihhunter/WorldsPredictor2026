@@ -1,69 +1,146 @@
 ---
+// Demacia Cup (design/lore/Demacia Cup.dc.html): walk-forward check on the Demacia Cup Global Invitational (data/dash/dcgi.json).
 import Base from '../layouts/Base.astro';
-import Card from '../components/Card.astro';
-import Badge from '../components/Badge.astro';
+import Logo from '../components/Logo.astro';
 import { dcgi } from '../lib/data';
 import { pct, num } from '../lib/format';
 
-type Row = { id: string; date: string; stage: string; team_a: string; team_b: string; pick: string; p_pick: number; tier: string; score_call: string; actual_winner: string; actual_score: string; hit: boolean; logloss: number };
+type Row = { id: string; date: string; stage: string; team_a: string; team_b: string; region_a: string; region_b: string; bo: number; pick: string; p_pick: number; score_call: string; actual_winner: string; actual_score: string; hit: boolean; note: string };
 const all = dcgi();
 const sum = all.find((r) => r.kind === 'summary') as Record<string, number | string> | undefined;
 const rows = all.filter((r) => !r.kind) as unknown as Row[];
-const pairs = sum ? Object.keys(sum).filter((k) => /^pair_.+_n$/.test(k)).map((k) => {
-  const p = k.slice(5, -2);
-  return { label: p.replace('_v_', ' v '), n: Number(sum[k]), first: Number(sum[`pair_${p}_first_region_wins`]), hits: Number(sum[`pair_${p}_model_hits`]) };
-}) : [];
+const dm = (d: string) => (d || 'UNKNOWN').replace(/\/\d{4}$/, '');
+const stageShort = (s: string) => (s || 'UNKNOWN').replace(/\s*\(.*\)$/, '').replace('Round ', 'R');
+const ddmm = (s: unknown) => String(s ?? 'UNKNOWN').replace(/\/\d{4}$/, '');
+
+// Partial-data line: series count, then the row note that says what is missing
+const partial = (rows.find((r) => /^Partial/i.test(r.note || ''))?.note ?? String(sum?.note ?? '')).replace(/^Partial:\s*/i, '');
+const partialText = `${rows.length} series so far. ${partial.charAt(0).toUpperCase()}${partial.slice(1)}${/\.$/.test(partial) ? '' : '.'}`;
+
+// Region matchups from each row's regions and hit, regions in a fixed order
+const ORDER = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL'];
+const rk = (r: string) => (ORDER.indexOf(r) + 1 || 99);
+const pairMap = new Map<string, { k: string; n: number; hits: number }>();
+for (const r of rows) {
+  const [a, b] = [r.region_a || 'UNKNOWN', r.region_b || 'UNKNOWN'].sort((x, y) => rk(x) - rk(y));
+  const k = `${a} v ${b}`;
+  const p = pairMap.get(k) ?? { k, n: 0, hits: 0 };
+  p.n += 1; p.hits += r.hit ? 1 : 0;
+  pairMap.set(k, p);
+}
+const pairs = [...pairMap.values()].sort((x, y) => y.n - x.n || y.hits - x.hits || x.k.split(' v ').map(rk).join() .localeCompare(y.k.split(' v ').map(rk).join(), 'en', { numeric: true }));
+
+// What it taught us: how the Bo5 score calls went
+const WORD = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
+const word = (n: number) => WORD[n] ?? String(n);
+const bo5 = rows.filter((r) => r.bo === 5);
+const calls = [...new Set(bo5.map((r) => r.score_call))];
+const went = [...new Set(bo5.map((r) => r.actual_score))];
+const exact = bo5.filter((r) => r.hit && r.score_call === r.actual_score).length;
+const all5 = bo5.length === 2 ? 'Both' : `All ${bo5.length}`;
+const lesson = !bo5.length
+  ? 'No Bo5 has finished yet, so the score calls are still untested.'
+  : `${bo5.length === 1 ? `The one Bo5 was called ${calls[0]} and went ${went[0]}.` : calls.length === 1 && went.length === 1 ? `${all5} Bo5s were called ${calls[0]} and ${all5.toLowerCase()} went ${went[0]}.` : `${exact} of ${bo5.length} Bo5 score calls were exact.`} ${word(bo5.length)} series is too few to change the model, but it is the first thing the Play-In calibration will check.`;
+
+const tiles = sum ? [
+  { k: 'Winners called', v: `${sum.hits ?? 'UNKNOWN'} / ${sum.n ?? 'UNKNOWN'}`, sub: `${pct(sum.hit_rate as number)} hit rate`, c: 'teal' },
+  { k: 'Log loss', v: num(sum.logloss as number, 2), sub: 'Lower is better', c: 'gold' },
+  { k: 'Region rule', v: num(sum.logloss_region_rule as number, 2), sub: 'Stronger region wins 70%', c: '' },
+  { k: 'Coin flip', v: num(sum.logloss_coin_flip as number, 2), sub: 'The floor to beat', c: 'dim' },
+] : [];
 ---
-<Base title="Demacia Cup" active="demacia-cup">
-  <header class="page-head">
-    <h1>Demacia Cup</h1>
-    <p class="caption">A walk-forward test of the model on an event it never saw. The Demacia Cup Global Invitational (03 to 17/10/2026, China, patch 26.18) is 12 teams that missed Worlds. These picks were generated after the event from a model fitted only on games before 03/10/2026, so they are a walk-forward check, not predictions we made in advance.</p>
-  </header>
+<Base title="Demacia Cup" active="demacia-cup" description="A walk-forward test of the Worlds 2026 model on the Demacia Cup Global Invitational."
+  footer={{ left: `Walk-forward check, ratings cut ${sum?.fit_cut ?? 'UNKNOWN'}, compiled ${sum?.created_nz ?? 'UNKNOWN'}.` }}>
+  <section class="dc-top">
+    <div class="intro">
+      <span class="eyebrow">Demacia Cup Global Invitational, 03 to 17/10/2026</span>
+      <h1>A dress rehearsal</h1>
+      <p class="lede">Teams that missed Worlds, from every region. The model was fitted only on games before {ddmm(sum?.fit_cut)} and asked to call each series blind: a walk-forward check run afterwards, not picks made in advance.</p>
+    </div>
+    {sum && (
+      <div class="callout part">
+        <span class="eyebrow">Partial data</span>
+        <span>{partialText}</span>
+      </div>
+    )}
+  </section>
+
   {sum ? (
     <>
-      <section class="section" aria-label="Summary">
-        <div class="grid-4">
-          <div class="stat"><b>{sum.n}</b><span>Series graded, {sum.n_bo5 ?? 'UNKNOWN'} of them Bo5.</span></div>
-          <div class="stat"><b>{sum.hits} / {sum.n}</b><span>Winners right, {pct(Number(sum.hit_rate))}.</span></div>
-          <div class="stat"><b>{num(Number(sum.logloss), 3)}</b><span>Model log loss, lower is better.</span></div>
-          <div class="stat"><b>{num(Number(sum.logloss_region_rule), 3)}</b><span>Region rule baseline (stronger region wins 70%). Coin flip {num(Number(sum.logloss_coin_flip), 3)}.</span></div>
-        </div>
-        <p class="ink2 note">{sum.note}. Generated {sum.created_nz}, fit on games before {sum.fit_cut}.</p>
+      <section class="stat-strip" style="--n:4" aria-label="Summary">
+        {tiles.map((t) => <div><span class="k">{t.k}</span><span class:list={['v', t.c]}>{t.v}</span><span class="sub">{t.sub}</span></div>)}
       </section>
-      <Card title="Series" note="Picks from the walk-forward fit.">
-        <div class="scroll">
-          <table>
-            <thead><tr><th>Date</th><th>Stage</th><th>Teams</th><th>Pick</th><th>Tier</th><th>Score call</th><th>Actual</th><th></th><th class="r">Log loss</th></tr></thead>
-            <tbody>
-              {rows.map((r) => (
-                <tr>
-                  <td class="n">{r.date}</td><td class="nw">{r.stage}</td>
-                  <td><span class="teams"><Badge code={r.team_a} /><span class="caption">v</span><Badge code={r.team_b} /></span></td>
-                  <td class="nw">{r.pick} <span class="n">{pct(r.p_pick)}</span></td>
-                  <td><span class:list={['tier', { lock: r.tier === 'LOCK' }]}>{r.tier}</span></td>
-                  <td class="n">{r.score_call}</td>
-                  <td class="nw">{r.actual_winner} <span class="n">{r.actual_score}</span></td>
-                  <td><span class={r.hit ? 'hit' : 'miss'}>{r.hit ? 'hit' : 'miss'}</span></td>
-                  <td class="num">{num(r.logloss, 3)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+      <section class="dc-grid">
+        <div class="section">
+          <div class="section-head"><h2>Every call</h2><span>Pick, chance, then what happened</span></div>
+          <div class="rows">
+            {rows.map((r) => (
+              <div class="drow">
+                <span class="dt muted">{dm(r.date)}</span>
+                <span class="st muted2">{stageShort(r.stage)}</span>
+                <span class="tm"><Logo code={r.team_a} size={24} /><span class="code">{r.team_a}</span><span class="dim">v</span><Logo code={r.team_b} size={24} /><span class="code">{r.team_b}</span></span>
+                <span class="pk"><span class="pre">{stageShort(r.stage)}, picked </span>{r.pick} <span class="teal">{pct(r.p_pick)}</span></span>
+                <span class="act fg2">{r.actual_winner ? `${r.actual_winner} ${r.actual_score}` : 'UNKNOWN'}</span>
+                <span class:list={['verdict', r.hit ? 'teal' : 'risk']}>{r.hit ? 'Right' : 'Wrong'}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </Card>
-      <Card title="By region pairing" note="Stronger fitted region named first.">
-        <div class="scroll">
-          <table>
-            <thead><tr><th>Pairing</th><th class="r">Series</th><th class="r">Stronger region won</th><th class="r">Model right</th></tr></thead>
-            <tbody>{pairs.map((p) => <tr><td>{p.label}</td><td class="num">{p.n}</td><td class="num">{p.first}</td><td class="num">{p.hits}</td></tr>)}</tbody>
-          </table>
-        </div>
-      </Card>
+        <aside class="side">
+          <div class="callout">
+            <span class="eyebrow">What it taught us</span>
+            <p class="lesson">{lesson}</p>
+          </div>
+          <div class="section regions">
+            <span class="eyebrow">Region matchups, model hits</span>
+            <div class="rows">
+              {pairs.map((p) => <div class="prow"><span class="fg2">{p.k}</span><span>{p.hits} of {p.n}</span></div>)}
+            </div>
+          </div>
+        </aside>
+      </section>
     </>
   ) : <p class="caption">Check not run yet.</p>}
 </Base>
 <style>
-  .teams { display: flex; align-items: center; gap: var(--space-2xs); white-space: nowrap; }
-  .nw { white-space: nowrap; }
-  .note { font-size: var(--text-sm); }
+  .dc-top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: end; }
+  .dc-top .lede { max-width: 60ch; }
+  .part { gap: 8px; padding: 22px 26px; font-size: 17px; line-height: 1.5; }
+  .dc-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
+  .side { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  .drow { display: grid; grid-template-columns: 70px 170px minmax(0, 1fr) 130px 110px 90px; gap: 16px; align-items: center; font-size: 17px; }
+  .rows > .drow { padding: 10px 0; }
+  .dt, .st { font-size: 15px; }
+  .tm { display: flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap; }
+  .pre { display: none; }
+  .verdict { text-align: right; font-weight: 600; }
+  .side .callout { gap: 10px; padding: 26px; }
+  .lesson { font-size: 19px; line-height: 1.55; }
+  .regions { gap: 0; }
+  .regions > .eyebrow { font-size: 16px; padding-bottom: 8px; }
+  .prow { display: flex; justify-content: space-between; gap: 12px; font-size: 17px; }
+  .rows > .prow { padding: 11px 0; }
+  @media (max-width: 1150px) {
+    .dc-top, .dc-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .drow { grid-template-columns: 56px minmax(0, 1fr) 110px 90px 60px; }
+    .st { display: none; }
+  }
+  @media (max-width: 640px) {
+    .dc-top { gap: 20px; }
+    .intro .eyebrow { display: none; }
+    .part { padding: 16px 18px; font-size: 15px; }
+    .drow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "tm verdict" "pk act"; gap: 2px 10px; }
+    .dt { display: none; }
+    .tm { grid-area: tm; gap: 4px; } .tm :global(.logo), .tm :global(.disc) { display: none; }
+    .tm .code { font-size: 14px; }
+    .pk { grid-area: pk; font-size: 13px; color: var(--muted); } .pk .teal { color: inherit; }
+    .pre { display: inline; }
+    .act { grid-area: act; text-align: right; font-size: 13px; }
+    .verdict { grid-area: verdict; font-size: 14px; }
+    .lesson { font-size: 16px; }
+    .prow { font-size: 15px; }
+  }
 </style>

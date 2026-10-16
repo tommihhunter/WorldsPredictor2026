@@ -212,10 +212,10 @@ def test_hubs_rematch_and_fallbacks():
         assert r.returncode == 0, r.stdout[-800:] + r.stderr[-800:]
         page = lambda p: open(os.path.join(out, p, "index.html"), encoding="utf-8").read()
         html = page("play-in")
-        slot = lambda i: re.findall(rf'data-id="{i}".*?</details>', html, re.S)
-        assert slot("PI-R1-A") and all("Result: KC 3-1" in x for x in slot("PI-R1-A"))
-        assert slot("PI-GF") and all("Result: C9 3-2" in x and "KC 3-1" not in x for x in slot("PI-GF"))   # id AND pair, never pair alone
-        assert "Not re-run yet" in page("swiss")
+        detail = lambda i: re.findall(rf'id="sd-{i}".*?</section>', html, re.S)   # SeriesDetail panel per series
+        assert detail("PI-R1-A") and all("Final: KC 3-1" in x for x in detail("PI-R1-A"))
+        assert detail("PI-GF") and all("Final: C9 3-2" in x and "Final: KC 3-1" not in x for x in detail("PI-GF"))   # id AND pair, never pair alone
+        assert "preliminary until the re-run" in page("swiss")
         assert "Check not run yet." in page("demacia-cup")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)

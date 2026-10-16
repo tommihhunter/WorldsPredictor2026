@@ -1,6 +1,137 @@
 ---
+// Knockouts hub, per design/lore/Knockouts.dc.html. Rows: the latest staged set (falls back to the frozen baseline).
 import Base from '../layouts/Base.astro';
-import EventHub from '../components/EventHub.astro';
-import { STAGES } from '../lib/stage';
+import Logo from '../components/Logo.astro';
+import SeriesCard from '../components/SeriesCard.astro';
+import { live, overview, ratings, results, series } from '../lib/data';
+import { pct } from '../lib/format';
+import { STAGES, view } from '../lib/stage';
+import type { Series } from '../lib/data';
+
+const st = STAGES[2];
+const v = view(st, 'latest');
+const byId = new Map(v.rows.map((s) => [s.id, s]));
+const VENUE: Record<string, string> = { Quarterfinals: 'Quarterfinals, Allen', Semifinals: 'Semifinals, Allen', Final: 'Final, Brooklyn' };
+const cols = (st.brackets ?? []).map(([name, ids]) => ({ name, head: VENUE[name] ?? name, items: ids.map((id) => byId.get(id)).filter((s): s is Series => !!s) }));
+const all = cols.flatMap((c) => c.items);
+const day = (s?: Series) => (s?.time_nz || '').slice(0, 10);
+const ord = (d: string) => d.split('/').reverse().join('');
+const dates = all.map(day).filter(Boolean).sort((a, b) => ord(a).localeCompare(ord(b)));
+const span = dates.length ? `${dates[0].slice(0, 5)} to ${dates.at(-1)}` : 'UNKNOWN';
+const finalDay = day(cols.at(-1)?.items[0]).slice(0, 5);
+// The real draw is known once knockout results or a knockouts staged run exist.
+const real = results().some((r) => r.phase === 'Knockouts' && r.team_a && r.team_b) || series().some((s) => s.set === 'knockouts');
+
+const ov = overview();
+const pts = (ov.pickems_points ?? '').match(/Knockouts ([^=.]+?) = (\d+)/);
+const ptsText = pts ? pts[1].replace(/\bQF\b/, 'quarterfinal').replace(/\bSF\b/, 'semifinal') : 'UNKNOWN';
+const lock = (ov.locks_nz ?? '').match(/Knockouts (\d\d\/\d\d\/\d{4} \d\d:\d\d)/)?.[1];
+const lockText = lock ? `${lock} NZDT` : 'UNKNOWN';
+
+// How far each team goes: live odds when the pipeline has them, else the ratings at the baseline.
+const lv = live();
+const useLive = lv.length > 0;
+const rmap = new Map(ratings().map((r) => [r.code, r]));
+const src = useLive
+  ? lv.map((l) => ({ code: l.team, region: l.region, p: [l.p_advance, l.p_semis, l.p_final, l.p_champion] }))
+  : ratings().map((r) => ({ code: r.code, region: r.region, p: [r.p_advance, r.p_semis, r.p_final, r.p_champion] }));
+const path = src.sort((a, b) => (b.p[3] ?? -1) - (a.p[3] ?? -1)).slice(0, 10);
+const liveStamp = useLive ? lv[0].generated_nz : null;
+
+const createdNz = (v.rows[0]?.created_nz ?? 'UNKNOWN').replace(/(\d\d:\d\d):\d\d/, '$1');
+const setName = v.set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${v.set})`;
+const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket is replaced by the real draw after 31/10.'}`;
 ---
-<Base title="Knockouts" active="knockouts"><EventHub stage={STAGES[2]} /></Base>
+<Base title="Knockouts" active="knockouts" description="Eight teams, one cup: the knockout bracket and how far each team goes." footer={{ left: footer }}>
+  <section class="top">
+    <div class="intro">
+      <span class="eyebrow">Knockouts, Allen then Brooklyn, {span} NZDT</span>
+      <h1>Eight teams, one cup</h1>
+      <p class="lede ph-lede">{real ? '' : 'An assumed draw until 31/10. '}Pick'Ems lock {lock ? `${lock.slice(0, 5)}${lock.slice(10)} NZDT` : 'UNKNOWN'}.</p>
+      <p class="lede dt-lede">Every series Bo5 with Fearless Draft. {real ? 'The bracket below follows the real draw.' : 'The quarterfinal draw on 31/10 is random, so this bracket is an assumed draw: no same-region quarterfinals, favourites spread out.'}</p>
+    </div>
+    <div class="callout">
+      <span class="eyebrow">Pick'Ems</span>
+      <span class="cl-text">{ptsText}. Locks {lockText}{real ? '.' : ', after the draw.'}</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>{real ? 'Bracket' : 'Assumed bracket'}</h2><span>Percent is the chance the upper team wins the series</span></div>
+    {v.stageNote && <p class="caption">{v.stageNote}</p>}
+    <div class="scroll">
+      <div class="bracket">
+        {cols.map((c, i) => (
+          <div class="col">
+            <span class:list={['colhead', { gold: i === cols.length - 1 }]}>{c.head}{i === cols.length - 1 && finalDay ? <span class="ph">, {finalDay}</span> : ''}</span>
+            <div class="stack">
+              {c.items.map((s) => <SeriesCard s={s} large final={i === cols.length - 1} />)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>How far each team goes</h2><span>{liveStamp ? `Live odds, ${liveStamp}. ` : ''}Over every legal Swiss and knockout draw</span></div>
+    <div class="scroll">
+      <div class="path" role="table" aria-label="How far each team goes">
+        <div class="pr head" role="row">
+          <span role="columnheader"></span><span role="columnheader">Team</span><span role="columnheader">Quarterfinal</span><span role="columnheader">Semifinal</span><span role="columnheader">Final</span><span role="columnheader">Champion</span>
+        </div>
+        {path.map((t) => (
+          <div class="pr" role="row">
+            <span role="cell"><Logo code={t.code} size={34} /></span>
+            <span class="tn" role="cell"><span class="code">{rmap.get(t.code)?.name ?? t.code}</span><span class="caption">{t.region || 'UNKNOWN'}</span></span>
+            {t.p.map((p, i) => (
+              <span class="pc" role="cell">
+                <span class:list={['bar', i === 3 ? 'gold' : 'teal']}><i style={`width:${((p ?? 0) * 100).toFixed(1)}%`}></i></span>
+                <span class="num">{pct(p, 1)}</span>
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px 72px; align-items: end; }
+  .intro .lede { max-width: 58ch; }
+  .callout { gap: 10px; padding: 24px 28px; }
+  .cl-text { font-size: 19px; line-height: 1.5; }
+  .section { gap: 20px; }
+  .bracket { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; min-width: 760px; }
+  .col { display: flex; flex-direction: column; min-width: 0; }
+  .colhead { font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: var(--muted2); padding-bottom: 14px; }
+  .colhead.gold { color: var(--gold); }
+  .colhead .ph, .ph-lede { display: none; }
+  .stack { display: flex; flex-direction: column; justify-content: space-around; gap: 20px; min-height: 760px; flex: 1; }
+  .path { min-width: 900px; display: flex; flex-direction: column; }
+  .pr { display: grid; grid-template-columns: 40px 240px repeat(4, minmax(0, 1fr)); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .pr.head { border-top: 0; padding: 0 0 6px; font-size: 15px; color: var(--muted); }
+  .tn { display: flex; flex-direction: column; min-width: 0; }
+  .tn .code { font-size: 18px; }
+  .tn .caption { font-size: 14px; }
+  .pc { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .pc .bar { flex: 1; }
+  .pc .num { width: 56px; text-align: right; font-size: 18px; }
+  @media (max-width: 1000px) { .top { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 640px) {
+    .top { gap: 22px; }
+    .cl-text { font-size: 15px; }
+    .section { gap: 10px; }
+    .bracket { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+    .colhead { font-family: var(--font-body); font-size: 14px; letter-spacing: 0; color: var(--gold); padding-bottom: 8px; }
+    .colhead .ph { display: inline; }
+    .ph-lede { display: block; font-size: 15px; }
+    .dt-lede, .top .callout { display: none; }
+    .stack { min-height: 0; gap: 8px; }
+    .path { min-width: 640px; }
+    .pr { grid-template-columns: 28px 130px repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .tn .code { font-size: 15px; }
+    .pc { gap: 8px; }
+    .pc .num { width: 44px; font-size: 14px; }
+  }
+</style>

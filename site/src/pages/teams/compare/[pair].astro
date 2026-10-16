@@ -3,19 +3,20 @@
 import Base from '../../../layouts/Base.astro';
 import CompareView from '../../../components/CompareView.astro';
 import { pairs } from '../../../lib/compare';
-import { teamName } from '../../../lib/data';
+import { overview, teamName } from '../../../lib/data';
 import { url } from '../../../lib/url';
 
 export const getStaticPaths = () => pairs().map((p) => ({ params: { pair: p.slug }, props: { a: p.a, b: p.b } }));
 const { a, b } = Astro.props as { a: string; b: string };
+const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 ---
-<Base title={`${a} v ${b}`} active="teams" description={`${teamName(a)} against ${teamName(b)}: model, 2026 season, lanes, champion pools and head to head.`}>
+<Base title={`${a} v ${b}`} active="teams" description={`${teamName(a)} against ${teamName(b)}: model, 2026 season, lanes, champion pools and head to head.`} footer={{ left: `Ratings as of ${asOf}. Team stats and head to head: gol.gg.` }}>
   <CompareView a={a} b={b} h1>
-    <p class="links"><a href={url('teams/compare/')}>Pick two other teams</a><span class="caption" aria-hidden="true">·</span><a href={url('teams/')}>All teams</a></p>
+    <p class="links"><a href={url('teams/compare/')}>Pick two other teams</a><a href={url('teams/')}>All teams</a></p>
   </CompareView>
 </Base>
 <style>
-  .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs); font-size: var(--text-sm); }
-  .links a { color: var(--color-ink-2); font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
-  .links a:hover { color: var(--color-accent); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 17px; font-weight: 600; }
+  .links a { color: var(--gold); }
+  .links a:hover { color: var(--fg); }
 </style>

@@ -1,10 +1,11 @@
 ---
-// The comparison body, shared by /teams/compare/<a>-vs-<b>/ and the picker page's default view.
-// The matchup in display type (the h1 on a pair page, `h1`), the two sides with swap chips, the summary strip as the
-// page's one panel with the Bo1 / Bo3 / Bo5 switch (radios and :has, no script), then the five metric groups. No verdict box.
-import Card from './Card.astro';
+// The comparison body, shared by /teams/compare/<a>-vs-<b>/ and the picker page's default view (lore system, no mock).
+// Intro with the matchup (the h1 on a pair page, `h1`), then one summary panel: both team headers with logos and swap
+// chips, the Bo1 / Bo3 / Bo5 chips (radios and :has, no script) and the win chance as the page's one gold number.
+// Then one panel per metric group, rows with split bars; head to head as a plain row list.
 import ChampIcon from './ChampIcon.astro';
 import CompareRow from './CompareRow.astro';
+import Logo from './Logo.astro';
 import { metrics, slugOf, summary } from '../lib/compare';
 import { dossiers, ratings, teamSlug } from '../lib/data';
 import { url } from '../lib/url';
@@ -21,93 +22,105 @@ const side = (code: string, other: string) => ({
   swaps: rs.filter((x) => x.code !== code && x.code !== other).slice(0, 10).map((x) => ({ code: x.code, href: url(`teams/compare/${slugOf(x.code, other)}/`) })),
 });
 const sides = [side(a, b), side(b, a)];
+const name = (code: string) => rs.find((x) => x.code === code)?.name ?? code;
 ---
-<div class="compare">
-  <header class="page-head">
-    <H class="matchup"><a href={url(`teams/${teamSlug(a)}/`)}>{a}</a> <span class="v">v</span> <a href={url(`teams/${teamSlug(b)}/`)}>{b}</a></H>
-    <slot />
-    <div class="sides">
-      {sides.map((s) => (
-        <div class="side">
-          <a class="name" href={url(`teams/${teamSlug(s.code)}/`)}>
-            <img class="logo" src={url(`art/logos/${s.code}.png`)} alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'dot'}))" />
-            {s.r?.name ?? s.code}
-          </a>
-          <p class="caption">{s.r ? `${s.r.region} seed ${s.r.seed} · rank ${s.r.rank} · tier ${s.r.tier}` : 'UNKNOWN'}</p>
-          <p class="caption">{s.d?.roster || 'Roster UNKNOWN'}</p>
-          <div class="swaps"><span class="caption">Swap {s.code} for</span>{s.swaps.map((x) => <a class="chip" href={x.href}>{x.code}</a>)}</div>
-        </div>
-      ))}
-    </div>
-  </header>
+<section class="intro">
+  {h1 && <span class="eyebrow">Compare</span>}
+  <H class="matchup"><a href={url(`teams/${teamSlug(a)}/`)}>{name(a)}</a> <span class="v">v</span> <a href={url(`teams/${teamSlug(b)}/`)}>{name(b)}</a></H>
+  <slot />
+</section>
 
-  <section class="panel">
-    <div class="section-head">
-      <h2>Summary</h2>
-      <div class="seg" role="radiogroup" aria-label="Series format">
-        {strips.map((s) => <><input type="radio" name="bo" id={`bo-${s.fmt}`} value={s.fmt} checked={s.fmt === 'Bo3'} /><label class="chip" for={`bo-${s.fmt}`}>{s.fmt}</label></>)}
-      </div>
-    </div>
-    {strips.map((s) => (
-      <div data-bo={s.fmt}>
-        <p class="caption">Model win chance for a {s.fmt}, from matchups.json, with live title odds and rank.</p>
-        <div class="rows">{s.rows.map((row, i) => <CompareRow row={row} strip gold={i === 0} />)}</div>
+<section class="panel flush summary">
+  <div class="sides">
+    {sides.map((s, i) => (
+      <div class:list={['side', { right: i === 1 }]}>
+        <a class="name" href={url(`teams/${teamSlug(s.code)}/`)}>
+          <span class="disc lg"><Logo code={s.code} size={44} /></span>
+          <span class="code">{s.r?.name ?? s.code}</span>
+        </a>
+        <p class="caption">{s.r ? `${s.r.region} seed ${s.r.seed}, rank ${s.r.rank}, tier ${s.r.tier}` : 'UNKNOWN'}</p>
+        <p class="caption">{s.d?.roster || 'Roster UNKNOWN'}</p>
+        <div class="swaps"><span class="caption">Swap {s.code} for</span>{s.swaps.map((x) => <a class="chip sm outline" href={x.href}>{x.code}</a>)}</div>
       </div>
     ))}
-  </section>
+  </div>
+  <div class="panel-head">
+    <h3>Win chance</h3>
+    <div class="seg" role="radiogroup" aria-label="Series format">
+      {strips.map((s) => <><input type="radio" name="bo" id={`bo-${s.fmt}`} value={s.fmt} checked={s.fmt === 'Bo3'} /><label class="chip" for={`bo-${s.fmt}`}>{s.fmt}</label></>)}
+    </div>
+  </div>
+  {strips.map((s) => (
+    <div class="panel-sec" data-bo={s.fmt}>
+      <div class="rows">{s.rows.map((row, i) => <CompareRow row={row} strip gold={i === 0} />)}</div>
+      <p class="caption">Model win chance for a {s.fmt}, from matchups.json, with live title odds and rank.</p>
+    </div>
+  ))}
+</section>
 
-  {groups.map((g) => (
-    <Card title={g.title}>
-      {g.title !== 'Head to head' && <div class="cols caption"><span>{a}</span><span /><span>{b}</span></div>}
+{groups.map((g) => (
+  <section class="panel flush">
+    <div class="panel-head"><h3>{g.title}</h3></div>
+    <div class="panel-sec">
       {g.title === 'Head to head'
         ? g.rows.length > 0 && <div class="rows">{g.rows.map((row) => {
             const [date, ...ev] = row.label.split(' · ');
-            return <div class="hrow"><span class="num">{date}</span><span class="caption">{ev.join(' · ')}</span><span class:list={['num', 'score', { win: row.left !== row.right }]}>{row.verdict}</span></div>;
+            return <div class="hrow"><span>{date}</span><span class="fg2">{ev.join(', ')}</span><span class:list={['score', { win: row.left !== row.right }]}>{row.verdict}</span></div>;
           })}</div>
-        : g.rows.length > 0 && <div class="rows">{g.rows.map((row) => <CompareRow row={row} />)}</div>}
+        : g.rows.length > 0 && <>
+            <div class="heads caption"><span class="code">{a}</span><span /><span class="code">{b}</span></div>
+            <div class="rows">{g.rows.map((row) => <CompareRow row={row} />)}</div>
+          </>}
       {g.shared && (g.shared.length
         ? <div class="chips"><span class="caption">Shared picks ({g.shared.length})</span>{g.shared.map((c) => <span class="ch"><ChampIcon name={c} size={20} /></span>)}</div>
         : <p class="caption">No shared champions in the two teams' most-picked lists.</p>)}
       {g.note && <p class="caption">{g.note}</p>}
-    </Card>
-  ))}
-</div>
+    </div>
+  </section>
+))}
 <style>
-  .compare { display: contents; }
-  .matchup { font-size: var(--text-display); line-height: 1; }
-  .v { font-size: var(--text-lg); color: var(--color-ink-3); font-weight: 500; vertical-align: middle; }
-  .sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm) var(--space-lg); margin-top: var(--space-sm); }
-  .side { display: flex; flex-direction: column; gap: var(--space-3xs); min-width: 0; }
+  .matchup { overflow-wrap: anywhere; }
+  .v { color: var(--dim); font-weight: 600; font-size: 0.6em; vertical-align: middle; }
+  .sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 56px; padding: 28px; border-bottom: 1px solid var(--line-strong); }
+  .side { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .side p { overflow-wrap: anywhere; }
-  .name { display: inline-flex; align-items: center; gap: var(--space-2xs); font-weight: 600; align-self: flex-start; }
-  .logo { height: var(--space-md); width: auto; max-width: var(--space-xl); object-fit: contain; }
-  .name :global(.dot) { width: var(--space-xs); height: var(--space-xs); border-radius: var(--radius-data); background: var(--color-data); flex: none; }
-  .swaps, .chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2xs); }
-  .swaps { margin-top: var(--space-2xs); }
-  .swaps .chip { border-radius: var(--radius-data); }
-  .chips { gap: var(--space-2xs) var(--space-sm); }
-  .ch { display: inline-flex; align-items: center; font-size: var(--text-xs); white-space: nowrap; }
-  .seg { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
+  .right { align-items: flex-end; text-align: right; }
+  .right .name { flex-direction: row-reverse; }
+  .right .swaps { justify-content: flex-end; }
+  .name { display: inline-flex; align-items: center; gap: 16px; min-width: 0; }
+  .name .code { font-size: 26px; line-height: 1.15; }
+  .lg { --s: 72px; }
+  .swaps, .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; }
+  .swaps .caption { margin-right: 4px; }
+  .chips { gap: 8px 16px; }
+  .ch { display: inline-flex; align-items: center; font-size: 15px; white-space: nowrap; }
+  .seg { display: flex; flex-wrap: wrap; gap: 8px; }
   .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
-  .seg input:checked + .chip { background: var(--color-ink); color: var(--color-paper); }
-  .seg input:focus-visible + .chip { outline: calc(var(--space-3xs) / 2) solid var(--color-focus); outline-offset: calc(var(--space-3xs) / 2); }
-  [data-bo] { display: flex; flex-direction: column; gap: var(--space-2xs); }
-  .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--space-sm); }
-  .cols span:first-child { text-align: right; }
-  .rows { display: flex; flex-direction: column; }
-  .hrow { display: grid; grid-template-columns: minmax(0, 7rem) minmax(0, 1fr) auto; gap: var(--space-sm); align-items: baseline; padding: var(--space-2xs) 0; border-top: var(--rule); font-size: var(--text-sm); }
-  .hrow:first-child { border-top: 0; }
-  .score.win { font-weight: 600; }
-  :global(.panel:has(input[value="Bo1"]:checked) [data-bo]:not([data-bo="Bo1"])),
-  :global(.panel:has(input[value="Bo3"]:checked) [data-bo]:not([data-bo="Bo3"])),
-  :global(.panel:has(input[value="Bo5"]:checked) [data-bo]:not([data-bo="Bo5"])) { display: none; }
+  .seg label { cursor: pointer; border-color: var(--split-off); }
+  .seg input:checked + label { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+  .seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .rows > :global(:first-child) { border-top: 0; }
+  .heads { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; margin-bottom: -8px; }
+  .heads span:first-child { text-align: right; }
+  .hrow { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; gap: 16px; align-items: baseline; font-size: 16px; }
+  .score { font-family: var(--font-display); font-weight: 600; white-space: nowrap; }
+  .score.win { color: var(--fg); }
+  :global(.summary:has(input[value="Bo1"]:checked) [data-bo]:not([data-bo="Bo1"])),
+  :global(.summary:has(input[value="Bo3"]:checked) [data-bo]:not([data-bo="Bo3"])),
+  :global(.summary:has(input[value="Bo5"]:checked) [data-bo]:not([data-bo="Bo5"])) { display: none; }
   @media (max-width: 640px) {
-    .sides { grid-template-columns: minmax(0, 1fr); }
-    .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .cols span:first-child { text-align: left; }
-    .cols span:last-child { text-align: right; }
-    .cols span:nth-child(2) { display: none; }
-    .hrow { grid-template-columns: minmax(0, 1fr) auto; }
-    .hrow .caption { grid-column: 1 / -1; order: 3; }
+    .sides { padding: 16px 18px; gap: 16px 12px; }
+    .name { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .right .name { flex-direction: column; align-items: flex-end; }
+    .name .code { font-size: 18px; }
+    .lg { --s: 56px; }
+    .lg :global(.logo) { --s: 34px !important; }
+    .swaps .caption { flex-basis: 100%; }
+    .heads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .heads span:first-child { text-align: left; }
+    .heads span:last-child { text-align: right; }
+    .heads span:nth-child(2) { display: none; }
+    .hrow { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; font-size: 15px; }
+    .hrow .fg2 { grid-column: 1 / -1; order: 3; }
   }
 </style>

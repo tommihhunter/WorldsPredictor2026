@@ -1,0 +1,12 @@
+---
+/* Team logo (art/logos/<CODE>.png) at --s px, or a round code-initials disc when there is no art. */
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { url } from '../lib/url';
+interface Props { code: string; size?: number; alt?: string; class?: string }
+const { code, size = 28, alt = '', class: cls = '' } = Astro.props;
+const has = !!code && existsSync(resolve(process.cwd(), 'public', 'art', 'logos', `${code}.png`));
+---
+{has
+  ? <img class:list={['logo', cls]} src={url(`art/logos/${code}.png`)} alt={alt} width={size} height={size} loading="lazy" style={`--s:${size}px`} />
+  : <span class:list={['disc', cls]} style={`--s:${size}px`} role={alt ? 'img' : undefined} aria-label={alt || undefined}>{(code || '?').slice(0, 3)}</span>}

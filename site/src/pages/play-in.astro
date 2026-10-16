@@ -1,6 +1,147 @@
 ---
+// Play-In hub, per design/lore/Play-In.dc.html. Rows: the latest staged set (falls back to the frozen baseline).
 import Base from '../layouts/Base.astro';
-import EventHub from '../components/EventHub.astro';
-import { STAGES } from '../lib/stage';
+import Logo from '../components/Logo.astro';
+import SeriesCard from '../components/SeriesCard.astro';
+import SeriesDetail from '../components/SeriesDetail.astro';
+import { live, pickems, ratings, results } from '../lib/data';
+import { pct } from '../lib/format';
+import { pickemPoints } from '../lib/grading';
+import { url } from '../lib/url';
+import { STAGES, bySchedule, resultFor, stagePickems, started, view } from '../lib/stage';
+import type { Series } from '../lib/data';
+
+const st = STAGES[0];
+const v = view(st, 'latest');
+const byId = new Map(v.rows.map((s) => [s.id, s]));
+const LABEL: Record<string, string> = { 'PI-WM': "Winners' match", 'PI-EM': 'Elimination' };
+const cols = (st.brackets ?? []).map(([name, ids]) => ({ name, items: ids.map((id) => byId.get(id)).filter((s): s is Series => !!s) }));
+const all = cols.flatMap((c) => c.items);
+const played = all.filter((s) => resultFor(s)).sort(bySchedule);
+const sel = (played.at(-1) ?? all[0])?.id;
+const dates = all.map((s) => (s.time_nz || '').slice(0, 10)).filter(Boolean).sort((a, b) => a.split('/').reverse().join('').localeCompare(b.split('/').reverse().join('')));
+const span = dates.length ? `${dates[0].slice(0, 5)} to ${dates.at(-1)}` : 'UNKNOWN';
+
+// Who wins the Play-In: live odds when the pipeline has them, else the ratings at the baseline.
+const teams = ratings().filter((r) => r.p_playin != null);
+const lv = new Map(live().map((l) => [l.team, l]));
+const useLive = teams.some((t) => lv.get(t.code)?.p_playin_win != null);
+const odds = teams.map((t) => ({ code: t.code, p: useLive ? (lv.get(t.code)?.p_playin_win ?? null) : t.p_playin })).sort((a, b) => (b.p ?? -1) - (a.p ?? -1));
+const top = Math.max(...odds.map((o) => o.p ?? 0)) || 1;
+const liveStamp = useLive ? lv.get(teams[0].code)?.generated_nz : null;
+
+const alts = pickems().filter((p) => p.stage === st.pickemsStage).map((p) => p.alternatives);
+const picks = stagePickems(st.pickemsStage).map((p, i) => ({ ...p, alternatives: alts[i] }));
+const pts = pickemPoints().find((p) => p.stage === st.pickemsStage);
+const lockText = picks[0]?.status.match(/lock (\d\d\/\d\d\/\d{4} \d\d:\d\d NZDT)/)?.[1] ?? st.lock.match(/^\S+ \S+ NZDT/)?.[0] ?? 'UNKNOWN';
+const locked = started({ time_nz: lockText } as Series);
+const pickCap = `${locked ? 'Locked' : 'Locks'} ${lockText}. ${pts?.max ?? 'UNKNOWN'} points available${pts && pts.possible ? `, ${pts.earned} earned so far` : ''}`;
+
+const createdNz = (v.rows[0]?.created_nz ?? 'UNKNOWN').replace(/(\d\d:\d\d):\d\d/, '$1');
+const key = (d: string) => d.replace(/(\d\d)\/(\d\d)\/(\d{4})/, '$3$2$1');
+const accessed = results().map((r) => (r as { source?: { accessed?: string } }).source?.accessed).filter((a): a is string => !!a).sort((a, b) => key(a).localeCompare(key(b))).at(-1);
+const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baseline' : `latest staged run, ${v.set}`}). ${accessed ? `Results: gol.gg, accessed ${accessed}.` : 'No results entered yet.'}`;
 ---
-<Base title="Play-In" active="play-in"><EventHub stage={STAGES[0]} /></Base>
+<Base title="Play-In" active="play-in" description="Four teams, one Swiss spot: the Play-In bracket, series odds and our Pick'Ems." footer={{ left: footer }}>
+  <section class="top">
+    <div class="intro">
+      <span class="eyebrow">Play-In, Los Angeles, {span} NZDT</span>
+      <h1>Four teams, one Swiss spot</h1>
+      <p class="lede">Double elimination, every series Bo5 with Fearless Draft. The winner joins the Swiss stage.</p>
+    </div>
+    <div class="panel win">
+      <span class="eyebrow">Who wins the Play-In</span>
+      <div class="rows">
+        {odds.map((o) => (
+          <div class="wr">
+            <Logo code={o.code} size={28} />
+            <span class="code">{o.code}</span>
+            <span class="bar"><i style={`width:${(((o.p ?? 0) / top) * 100).toFixed(0)}%`}></i></span>
+            <span class="r num">{pct(o.p)}</span>
+          </div>
+        ))}
+      </div>
+      {liveStamp && <span class="caption">Live odds after the results so far, {liveStamp}.</span>}
+    </div>
+  </section>
+
+  <div class="pick" data-select>
+    <section class="section">
+      <div class="section-head"><h2>Bracket</h2><span>Select a series for the detail. Times NZDT.</span></div>
+      {v.stageNote && <p class="caption">{v.stageNote}</p>}
+      <div class="bracket">
+        {cols.map((c) => (
+          <div class="col">
+            <span class="colhead">{c.name}</span>
+            {c.items.map((s) => <SeriesCard s={s} detail={`sd-${s.id}`} selected={s.id === sel} round={c.name} label={LABEL[s.id]} />)}
+          </div>
+        ))}
+      </div>
+    </section>
+    {all.map((s) => <SeriesDetail s={s} id={`sd-${s.id}`} hidden={s.id !== sel} />)}
+  </div>
+
+  <section class="section">
+    <div class="section-head"><h2>Our Play-In Pick'Ems</h2><span>{pickCap}</span></div>
+    {picks.length ? (
+      <div class="scroll">
+        <table class="pk">
+          <thead><tr><th>Slot</th><th>Our pick</th><th>Chance right</th><th class="fld">Field</th><th class="r">Status</th></tr></thead>
+          <tbody>
+            {picks.map((p) => (
+              <tr>
+                <td>{p.slot.replace(' vs ', ' v ')}</td>
+                <td><span class="pickc"><Logo code={p.pick} size={26} /><span class="code">{p.pick}</span></span></td>
+                <td class="teal">{pct(p.p)}</td>
+                <td class="fld muted2">{p.alternatives || 'UNKNOWN'}</td>
+                <td class:list={['r', 'st', p.actual ? (p.actual === p.pick ? 'gold' : 'risk') : 'muted']}>
+                  {p.actual ? (p.actual === p.pick ? `Hit, +${p.earned ?? p.points ?? 'UNKNOWN'}` : 'Miss') : 'Pending'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : <p class="caption">Play-In picks not available yet.</p>}
+  </section>
+  <script is:inline src={url('js/select.js')} defer></script>
+</Base>
+<style>
+  .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px 72px; align-items: end; }
+  .win { display: flex; flex-direction: column; }
+  .win .eyebrow { font-size: 16px; padding-bottom: 8px; }
+  .wr { display: grid; grid-template-columns: 32px 72px minmax(0, 1fr) 56px; align-items: center; gap: 14px; }
+  .rows > .wr { padding: 9px 0; }
+  .wr .code { font-size: 17px; }
+  .wr .r { text-align: right; font-size: 19px; }
+  .win .caption { padding-top: 8px; }
+  .pick { display: flex; flex-direction: column; gap: var(--space-xl); min-width: 0; }
+  .pick > .section { gap: 20px; }
+  .bracket { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: start; }
+  .col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .colhead { font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.08em; color: var(--muted2); }
+  .pk td { font-size: 18px; }
+  .pk td.fld { font-size: 16px; }
+  .pk th:nth-child(1) { width: 22%; } .pk th:nth-child(2) { width: 16%; } .pk th:nth-child(3) { width: 18%; }
+  .pickc { display: inline-flex; align-items: center; gap: 10px; }
+  .st { font-weight: 600; white-space: nowrap; }
+  @media (max-width: 1100px) { .bracket { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 1000px) { .top { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 640px) {
+    .top { gap: 26px; }
+    .win { padding: 6px 18px 10px; }
+    .win .eyebrow { font-size: 14px; padding: 10px 0 6px; }
+    .wr { grid-template-columns: 26px 60px minmax(0, 1fr) 46px; gap: 10px; }
+    .rows > .wr { padding: 8px 0; }
+    .wr .code { font-size: 15px; }
+    .wr .r { font-size: 16px; }
+    .pick { gap: 28px; }
+    .pick > .section { gap: 10px; }
+    .bracket { display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
+    .col { gap: 10px; }
+    .colhead { display: none; }
+    .pk td, .pk td.fld { font-size: 15px; }
+    .pk .fld { display: none; }
+    .pk th { width: auto !important; }
+  }
+</style>

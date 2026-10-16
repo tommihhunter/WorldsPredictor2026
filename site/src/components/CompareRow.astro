@@ -1,50 +1,46 @@
 ---
-// One compare row: value | label, verdict and a split bar | value. The leading value is weight 600; with `gold` (the
-// summary's win chance, the page's one gold number) it is gold instead. `strip` is the summary look: bigger numbers, no bar.
-// No bars when lower is better (rank) or a side is UNKNOWN; no leader when the verdict is "about the same".
+// One compare row: value | label, verdict and a split bar | value. The leading value is fg 600; with `gold` (the
+// summary's win chance, the page's one gold number) it is gold instead. `strip` is the summary look: big Cinzel numbers.
+// The split bar (global .split, --pa = left side's share) shows when both sides are numbers and higher is better.
 import { show, type Row } from '../lib/compare';
 const { row, strip = false, gold = false } = Astro.props as { row: Row; strip?: boolean; gold?: boolean };
 const [l, r] = row.bar ?? [typeof row.left === 'number' ? row.left : null, typeof row.right === 'number' ? row.right : null];
 const both = l != null && r != null;
 const even = row.verdict.startsWith('about the same');
 const lead = !both || even || row.higherIsBetter == null || l === r ? '' : (l > r) === row.higherIsBetter ? 'l' : 'r';
-const bars = !strip && both && row.higherIsBetter !== false;
-const scale = Math.max(Math.abs(l ?? 0), Math.abs(r ?? 0)) || 1;
-const w = (v: number | null) => `width:${((Math.abs(v ?? 0) / scale) * 100).toFixed(1)}%`;
-const cls = (side: string, v: unknown) => ['val', 'num', { text: row.fmt === 'text', lead: lead === side && !gold, gold: lead === side && gold, muted: v == null }];
+const bars = both && row.higherIsBetter !== false;
+// Share of the pair when both are non-negative; otherwise the gap scaled around 50 (gold diff can be negative).
+const m = Math.max(Math.abs(l ?? 0), Math.abs(r ?? 0)) || 1;
+const pa = !both ? 50 : l! >= 0 && r! >= 0 ? (l! + r! > 0 ? (l! / (l! + r!)) * 100 : 50) : 50 + ((l! - r!) / (2 * m)) * 50;
+const cls = (side: string, v: unknown) => ['val', { text: row.fmt === 'text', big: strip && row.fmt !== 'text', lead: lead === side && !gold, gold: lead === side && gold, muted: v == null }];
 ---
 <div class:list={['crow', { strip }]}>
   <span class:list={[...cls('l', row.left), 'l']}>{show(row.left, row.fmt)}</span>
   <div class="mid">
     <span class="label">{row.label}</span>
     <span class="caption">{row.verdict}</span>
-    {bars && (
-      <div class="split" aria-hidden="true">
-        <div class="bar l"><i class:list={[{ lead: lead === 'l' }]} style={w(l)} /></div>
-        <div class="bar"><i class:list={[{ lead: lead === 'r' }]} style={w(r)} /></div>
-      </div>
-    )}
+    {bars && <span class="split" style={`--pa:${pa.toFixed(1)}`} aria-hidden="true"><i></i><i></i></span>}
   </div>
-  <span class:list={cls('r', row.right)}>{show(row.right, row.fmt)}</span>
+  <span class:list={[...cls('r', row.right), 'r']}>{show(row.right, row.fmt)}</span>
 </div>
 <style>
-  .crow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--space-sm); align-items: center; padding: var(--space-xs) 0; border-top: var(--rule); }
-  .crow:first-child { border-top: 0; }
-  .val { font-size: var(--text-md); min-width: 0; overflow-wrap: anywhere; }
+  .crow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; align-items: center; }
+  .val { font-size: 19px; min-width: 0; overflow-wrap: anywhere; color: var(--fg2); }
   .val.l { text-align: right; }
-  .val.text { font-size: var(--text-xs); color: var(--color-ink-2); }
-  .val.lead { font-weight: 600; color: var(--color-ink); }
-  .mid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-3xs); min-width: 0; }
-  .label { font-size: var(--text-sm); }
-  .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--space-3xs) / 2); width: 100%; margin-top: var(--space-3xs); }
-  .split .l { display: flex; justify-content: flex-end; }
-  .strip { padding: var(--space-sm) 0; }
-  .strip .val { font-size: var(--text-xl); line-height: 1; }
-  .strip .val.text { font-size: var(--text-md); }
+  .val.text { font-size: 15px; }
+  .val.lead { font-weight: 600; color: var(--fg); }
+  .val.gold { color: var(--gold); }
+  .val.muted { color: var(--muted); }
+  .mid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; min-width: 0; }
+  .label { font-size: 17px; font-weight: 600; }
+  .split { width: 100%; margin-top: 4px; }
+  .strip .val.big { font-family: var(--font-display); font-weight: 600; font-size: 40px; line-height: 1; }
   @media (max-width: 640px) {
-    .crow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs) var(--space-sm); }
+    .crow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
     .mid { grid-column: 1 / -1; order: -1; }
     .val.l { text-align: left; }
-    .val:last-child { text-align: right; }
+    .val.r { text-align: right; }
+    .val { font-size: 17px; }
+    .strip .val.big { font-size: 30px; }
   }
 </style>

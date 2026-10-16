@@ -30,19 +30,19 @@ VISIBLE_CARDS = "[...document.querySelectorAll('#teams-grid > a')].filter(c => c
 
 
 def check_teams_chips(page, tag, problems):
-    """Teams grid: the LCK chip leaves only LCK cards; Blue side then puts the best blue-side record first."""
+    """Teams grid: the LCK chip leaves only LCK cards, still in rank order, and writes the hash."""
     page.click(".chip[data-region='LCK']")
     regions = page.evaluate(f"{VISIBLE_CARDS}.map(c => c.dataset.region)")
-    print(f"{tag}: LCK chip shows {regions}")
+    ranks = page.evaluate(f"{VISIBLE_CARDS}.map(c => Number(c.dataset.rank))")
+    print(f"{tag}: LCK chip shows {regions}, ranks {ranks}, hash {page.evaluate('location.hash')}")
     if not regions or set(regions) != {"LCK"}:
         problems.append(f"{tag}: LCK chip shows {regions}")
-    page.click(".chip[data-sort='blue']")
-    blues = page.evaluate(f"{VISIBLE_CARDS}.map(c => Number(c.dataset.blue))")
-    print(f"{tag}: Blue side order {blues}, hash {page.evaluate('location.hash')}")
-    if not blues or blues[0] != max(blues):
-        problems.append(f"{tag}: Blue side sort puts {blues[:1]} first, max is {max(blues or [0])}")
-    if page.evaluate("location.hash") != "#region=LCK&sort=blue":
+    if ranks != sorted(ranks):
+        problems.append(f"{tag}: LCK cards out of rank order: {ranks}")
+    if page.evaluate("location.hash") != "#region=LCK":
         problems.append(f"{tag}: hash not written: {page.evaluate('location.hash')}")
+    if page.get_attribute(".chip[data-region='LCK']", "aria-pressed") != "true":
+        problems.append(f"{tag}: LCK chip not pressed")
 
 
 def check_teams_nojs(browser, target, problems):
@@ -57,16 +57,16 @@ def check_teams_nojs(browser, target, problems):
     ctx.close()
 
 
-REPORT_HEADINGS = ["Who they are", "Wins by", "Loses to", "Draft"]
+REPORT_KEYS = ["Wins by", "Loses to", "Last 3 series", "Coach", "Sample"]
 
 
 def check_team_gen(page, tag, problems):
-    """GEN team page: the four scouting-report headings and 5 visible player rows (one split shown at a time)."""
-    heads = page.locator("#report h4").all_inner_texts()
+    """GEN dossier: the five report keys and 5 visible player rows (one split shown at a time)."""
+    keys = page.locator("#report dt").all_inner_texts()
     rows = page.locator("#players tr.player-row:visible").count()
-    print(f"{tag}: report headings {heads}, player rows {rows}")
-    if [h.strip().lower() for h in heads] != [h.lower() for h in REPORT_HEADINGS]:
-        problems.append(f"{tag}: report headings {heads}, expected {REPORT_HEADINGS}")
+    print(f"{tag}: report keys {keys}, player rows {rows}")
+    if [k.strip().lower() for k in keys] != [k.lower() for k in REPORT_KEYS]:
+        problems.append(f"{tag}: report keys {keys}, expected {REPORT_KEYS}")
     if rows != 5:
         problems.append(f"{tag}: expected 5 player rows, got {rows}")
 

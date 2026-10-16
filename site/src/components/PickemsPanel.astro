@@ -1,0 +1,138 @@
+---
+/* "Your {stage} Pick'Ems" panel, shared by Home (compact, status + link row) and Swiss (full: three cells in one row).
+   Swiss slots come from pickems.json: '3-0', '0-3', 'Advance (3-1 or 3-2)'. Any other stage lists its slots as rows.
+   Renders nothing when the stage has no Pick'Ems rows yet. */
+import Logo from './Logo.astro';
+import { pickems } from '../lib/data';
+import { resultRows } from '../lib/grading';
+import { nextLock } from '../lib/nav';
+import { STAGES, view } from '../lib/stage';
+import { pct } from '../lib/format';
+import { url } from '../lib/url';
+interface Props { stage: 'swiss' | 'knockouts'; full?: boolean }
+const { stage, full = false } = Astro.props;
+const st = STAGES.find((s) => s.id === stage)!;
+const rows = pickems().filter((p) => p.stage === st.pickemsStage);
+const go30 = rows.filter((r) => r.slot === '3-0');
+const go03 = rows.filter((r) => r.slot === '0-3');
+const adv = rows.filter((r) => /^advance/i.test(r.slot));
+const swissLayout = stage === 'swiss' && go30.length + go03.length + adv.length > 0;
+const advLabel = (adv[0]?.slot ?? 'Advance').replace(/[()]/g, '');
+const nl = nextLock();
+const lock = nl && nl.stage.toLowerCase() === stage ? nl : null;
+const draw = /draw on (\d\d\/\d\d)/.exec(st.note)?.[1];
+// Preliminary while the Swiss rows are not from a Swiss (or later) staged run.
+const prelim = stage === 'swiss' && view(st, 'latest').swissSet === 'baseline';
+// ponytail: "latest" = last finished row in results.json order (the file is appended as series finish); sort by start_nz if that changes.
+const last = resultRows().at(-1);
+const lastLine = last ? (() => {
+  const [a, b] = last.score.split('-').map(Number);
+  const loser = last.winner === last.team_a ? last.team_b : last.team_a;
+  const call = last.hit == null ? 'no baseline call' : `winner called ${last.hit ? 'right' : 'wrong'}`;
+  return `Latest ${last.phase} result: ${last.winner} beat ${loser} ${Math.max(a, b)}-${Math.min(a, b)}, ${call}.`;
+})() : null;
+const title = `${st.phase} Pick'Ems`;
+---
+{rows.length > 0 && (
+  <section class:list={['panel flush pk', { full }]} aria-label={`Your ${title}`}>
+    <div class="panel-head">
+      {full ? <h2 class="pk-title"><span class="pk-your">Your </span>{title}</h2> : <h3 class="pk-title"><span class="pk-your">Your </span>{title}</h3>}
+      <div class="pk-chips">
+        {full && prelim && <span class="chip lock">Preliminary{draw ? `, re-run after ${draw}` : ''}</span>}
+        {lock && <span class="chip lock"><span>Locks {lock.day}<span class="pk-desk">,</span> {lock.time}<span class="pk-desk"> NZDT</span></span></span>}
+      </div>
+    </div>
+    {swissLayout ? (
+      <div class="pk-grid">
+        <div class="pk-cell">
+          <span class="pk-k teal">Go 3-0</span>
+          {go30.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 40 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big teal">{pct(r.p_correct)}</span></div>)}
+        </div>
+        <div class="pk-cell">
+          <span class="pk-k risk">Go 0-3</span>
+          {go03.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 40 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big risk">{pct(r.p_correct)}</span></div>)}
+        </div>
+        <div class="pk-cell pk-adv">
+          <span class="pk-k gold">{advLabel}{full && ` (pick ${adv.length})`}</span>
+          <div class="pk-advgrid">
+            {adv.map((r) => <div class="pk-team sm"><Logo code={r.pick} size={full ? 34 : 26} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p gold">{pct(r.p_correct)}</span></div>)}
+          </div>
+          <span class="pk-advlist code">{adv.map((r) => r.pick).join(', ')}</span>
+          {prelim && <span class="pk-phone caption">Preliminary until the {draw ?? 'round 1'} draw</span>}
+        </div>
+      </div>
+    ) : (
+      <div class="panel-sec">
+        <div class="rows">
+          {rows.map((r) => <div class="pk-row"><span class="muted">{r.slot}</span><Logo code={r.pick} size={26} /><span class="code">{r.pick}</span><span class="gold">{pct(r.p_correct)}</span></div>)}
+        </div>
+      </div>
+    )}
+    {!full && (prelim || lastLine) && (
+      <div class="panel-sec pk-status caption">
+        {prelim && <span class="pk-desk">Preliminary. Re-run after the round 1 draw{draw ? ` on ${draw}` : ''}.</span>}
+        {lastLine && <span>{lastLine}</span>}
+      </div>
+    )}
+    {!full && <a class="link-row" href={url(`${stage}/`)}>All {st.phase} picks<span class="pk-arrow" aria-hidden="true">→</span></a>}
+  </section>
+)}
+<style>
+  .pk-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .full .pk-title { font-size: 30px; }
+  .pk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pk-cell { display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; min-width: 0; }
+  .pk:not(.full) .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
+  .pk:not(.full) .pk-cell:not(.pk-adv) { border-bottom: 1px solid var(--line); }
+  .pk-adv { grid-column: 1 / -1; }
+  .pk-k { font-size: 15px; font-weight: 600; }
+  .pk-team { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .pk-team .code { font-size: 20px; }
+  .pk-p { margin-left: auto; font-size: 26px; }
+  .pk-team.sm { gap: 8px; }
+  .pk-team.sm .code, .pk-team.sm .pk-p { font-size: 17px; }
+  .pk-team.sm .pk-p { font-family: var(--font-body); font-weight: 500; }
+  .pk-advgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 20px; }
+  .pk-advlist, .pk-phone { display: none; }
+  .pk-status { gap: 4px; padding-top: 18px; padding-bottom: 18px; }
+  .pk-arrow { font-size: 20px; }
+  .pk-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto 56px; align-items: center; gap: 10px; }
+  .pk-row .gold { text-align: right; }
+
+  /* full (Swiss page): one row of three cells */
+  .full .pk-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); }
+  .full .pk-adv { grid-column: auto; }
+  .full .pk-cell { gap: 16px; padding: 28px 32px; }
+  .full .pk-k { font-size: 16px; }
+  .full .pk-team { gap: 14px; }
+  .full .pk-team .code { font-size: 22px; }
+  .full .pk-p { font-size: 30px; }
+  .full .pk-team.sm { gap: 12px; }
+  .full .pk-team.sm .code, .full .pk-team.sm .pk-p { font-size: 20px; }
+  .full .pk-advgrid { gap: 16px 28px; }
+  @media (max-width: 1100px) {
+    .full .pk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .full .pk-adv { grid-column: 1 / -1; }
+  }
+
+  /* phone: no logos, code and % inline, advance as a list */
+  @media (max-width: 640px) {
+    .pk-your { display: none; }
+    .pk-title, .full .pk-title { font-size: 18px; }
+    .pk .chip { font-size: 13px; padding: 3px 10px; }
+    .pk .pk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pk .pk-adv { grid-column: 1 / -1; }
+    .pk .pk-cell { gap: 10px; padding: 16px 18px; }
+    .pk .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
+    .pk .pk-cell:not(.pk-adv) { border-bottom: 1px solid var(--line); }
+    .pk .pk-k { font-size: 14px; }
+    .pk :global(.pk-logo), .pk .pk-advgrid, .pk .pk-desk { display: none; }
+    .pk:not(.full) .panel-head { flex-wrap: nowrap; }
+    .pk .pk-team { gap: 6px; }
+    .pk .pk-team .code { font-size: 17px; }
+    .pk .pk-p { margin-left: 0; font-size: 17px; font-family: var(--font-display); font-weight: 600; }
+    .pk .pk-advlist { display: block; font-size: 16px; line-height: 1.5; }
+    .pk .pk-phone { display: block; font-size: 14px; }
+    .pk-status { padding-top: 14px; padding-bottom: 14px; }
+  }
+</style>

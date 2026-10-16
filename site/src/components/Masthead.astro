@@ -1,0 +1,51 @@
+---
+/* Home masthead, per design/lore/Home.dc.html: meta row (date, stage, baseline seal), centred avatar +
+   wordmark, centred wrapping nav. Under 640px only the avatar + wordmark row stays. */
+import { NAV, stageLine } from '../lib/nav';
+import { overview } from '../lib/data';
+import { url } from '../lib/url';
+interface Props { active?: string }
+const { active = 'home' } = Astro.props;
+// build date in NZ time; the site rebuilds daily
+const today = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' }).formatToParts(new Date());
+const part = (t: string) => today.find((p) => p.type === t)?.value ?? '';
+const dateText = `${part('weekday')} ${part('day')}/${part('month')}/${part('year')}`;
+// "15/10/2026 17:08:07 NZDT" -> "15/10/2026 17:08 NZDT"
+const sealed = (overview().baseline_created ?? '').replace(/(\d{2}:\d{2}):\d{2}/, '$1') || 'UNKNOWN';
+---
+<header class="mast">
+  <div class="mast-in">
+    <div class="meta">
+      <span>{dateText}</span>
+      <span class="teal">{stageLine()}</span>
+      <span>Baseline sealed {sealed}</span>
+    </div>
+    <a class="brand" href={url('')} aria-label="Poro Prophet, Home">
+      <img class="avatar" src={url('art/poro/main-256.png')} width="60" height="60" alt="" />
+      <span class="word">Poro Prophet</span>
+    </a>
+    <nav class="mnav" aria-label="Sections">
+      {NAV.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}>{n.label}</a>)}
+    </nav>
+  </div>
+</header>
+<style>
+  .mast { border-bottom: 1px solid var(--line-head); background: var(--bg); }
+  .mast-in { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); display: flex; flex-direction: column; }
+  .meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 24px; padding: 14px 0; font-size: 15px; color: var(--muted2); border-bottom: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 22px 0 16px; color: var(--fg); }
+  .avatar { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--gold); }
+  .word { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 3.4vw, 60px); line-height: 1; letter-spacing: 0.05em; }
+  .mnav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding-bottom: 14px; font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.1em; }
+  .mnav a { padding: 8px 16px; border-radius: var(--radius-nav); color: var(--fg2); white-space: nowrap; }
+  .mnav a:hover { color: var(--gold); }
+  .mnav a[aria-current="page"] { background: var(--gold); color: var(--bg); }
+  @media (max-width: 640px) {
+    .mast { border-bottom-color: var(--line-strong); }
+    .mast-in { padding: 0 20px; }
+    .meta, .mnav { display: none; }
+    .brand { justify-content: flex-start; gap: 12px; padding: 14px 0; }
+    .avatar { width: 36px; height: 36px; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--gold); }
+    .word { font-size: 21px; }
+  }
+</style>

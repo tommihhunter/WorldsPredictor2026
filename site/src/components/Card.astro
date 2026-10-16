@@ -1,8 +1,0 @@
----
-// A hairline section with a head (default), or the page's one lifted panel. `tone` is accepted and ignored (old callers).
-const { title, note, panel = false } = Astro.props as { title?: string; note?: string; panel?: boolean; tone?: string };
----
-<section class={panel ? 'panel' : 'section'}>
-  {title && <div class="section-head"><h2>{title}</h2>{note && <span class="caption">{note}</span>}</div>}
-  <slot />
-</section>

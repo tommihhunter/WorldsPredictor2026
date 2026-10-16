@@ -1,118 +1,182 @@
 ---
-// Workbench: hairline sections, tables and one definition list. No panel on this page.
+// Scorecard (design/lore/Scorecard.dc.html): grades the frozen baseline against results.
 import Base from '../layouts/Base.astro';
-import Badge from '../components/Badge.astro';
-import Card from '../components/Card.astro';
-import ChampIcon from '../components/ChampIcon.astro';
-import StatTiles from '../components/StatTiles.astro';
-import { crystal, results, series } from '../lib/data';
+import Logo from '../components/Logo.astro';
+import { crystal, dcgi, results, series, type Series } from '../lib/data';
 import { pct, num } from '../lib/format';
-import { grade, pickemPoints, pickemSlots, resultRows } from '../lib/grading';
+import { grade, pickemPoints, started } from '../lib/grading';
+import { url } from '../lib/url';
 
-const played = results().filter((r) => r.winner).length;
-const graded = grade().filter((g) => g.n > 0);
-const tiers = graded.flatMap((g) => Object.entries(g.byTier).map(([tier, t]) => ({ set: g.set, tier, ...t })));
-const points = pickemPoints();
-const slots = pickemSlots();
-const rows = resultRows();
+const pair = (x: { team_a?: string; team_b?: string }) => [x.team_a, x.team_b].sort().join('|');
+const hiLo = (a: unknown, b: unknown) => `${Math.max(Number(a), Number(b))}-${Math.min(Number(a), Number(b))}`;
+// "dd/mm/yyyy HH:MM" to a sortable "yyyymmddHHMM", null when unparseable
+const stamp = (s?: string | null) => { const m = /(\d\d)\/(\d\d)\/(\d{4}) (\d\d):(\d\d)/.exec(s || ''); return m ? m[3] + m[2] + m[1] + m[4] + m[5] : null; };
+const short = (s?: string | null) => { const m = /(\d\d\/\d\d)\/\d{4} (\d\d:\d\d)/.exec(s || ''); return m ? `${m[1]} ${m[2]}` : 'UNKNOWN'; };
+
+const g = grade().find((x) => x.set === 'baseline');
+const n = g?.n ?? 0;
+const done = results().filter((r) => r.kind !== 'swiss_record' && r.winner);
+
+// Series table: every baseline call for the phases that have results so far (or the first phase before any result).
+const base = series().filter((s) => s.set === 'baseline' && !s.actual && s.p_winner != null).sort((a, b) => (stamp(a.time_nz) ?? '9').localeCompare(stamp(b.time_nz) ?? '9'));
+const phases = [...new Set(done.map((r) => r.phase))];
+if (!phases.length && base[0]) phases.push(base[0].phase);
+type Row = { s: Series; result: string; resCls: string; w: string; wCls: string; sc: string; scCls: string };
+const rows: Row[] = base.filter((s) => phases.includes(s.phase)).map((s) => {
+  const r = done.find((x) => x.id === s.id);
+  const call = { s, result: started(s) ? 'Pending' : 'To play', resCls: 'dim', w: '', wCls: '', sc: '', scCls: '' };
+  if (!r) return call;
+  if (pair(r) !== pair(s)) return { ...call, result: 'Not this pairing' };
+  const result = `${r.winner} ${hiLo(r.score_a, r.score_b)}`;
+  const made = stamp(s.created_nz), start = stamp(r.start_nz);
+  if (made && start && made >= start) return { ...call, result, resCls: '', w: 'INVALID - post-start', wCls: 'risk' };
+  const hit = s.winner === r.winner;
+  const exact = hit && hiLo(r.score_a, r.score_b) === s.score;
+  return { s, result, resCls: '', w: hit ? 'Right' : 'Wrong', wCls: hit ? 'teal' : 'risk', sc: exact ? 'Right' : 'Missed', scCls: exact ? 'teal' : 'muted' };
+});
+const graded = rows.filter((r) => r.sc);
+const last = graded[graded.length - 1];
+const exactSub = !last ? 'No series graded yet' : `${n > 1 ? 'Latest: called' : 'Called'} ${last.s.score}, it went ${last.result.split(' ').pop()}`;
+
+// Pick'Ems: the latest stage with points decided, else the first stage
+const pts = pickemPoints();
+const pk = [...pts].reverse().find((p) => p.possible > 0) ?? pts[0];
+const COIN = Math.LN2;
+const tiles = [
+  { k: 'Winners called', v: `${g?.correct ?? 0} / ${n}`, sub: 'Series graded so far', c: 'teal' },
+  { k: 'Exact scores', v: `${g?.exact ?? 0} / ${n}`, sub: exactSub, c: '' },
+  { k: 'Log loss', v: num(g?.logloss, 2), sub: `Coin flip ${num(COIN, 2)}, lower is better`, c: 'gold' },
+  { k: "Pick'Ems points", v: pk ? String(pk.earned) : 'UNKNOWN', sub: pk ? (pk.max == null ? `${pk.stage}: points per slot not published yet` : `of ${pk.max} in the ${pk.stage}`) : "Pick'Ems not available yet", c: '' },
+];
+
+const TIERS = [['LOCK', '75% and up', 'lock'], ['LEAN', '60 to 74%', 'lean'], ['COIN FLIP', 'Below 60%', 'coin']].map(([name, range, cls]) => {
+  const t = g?.byTier[name];
+  return { name, range, cls, rec: `${t?.hit ?? 0} / ${t?.n ?? 0}`, pct: t?.n ? pct(t.hit / t.n) : 'N/A' };
+});
+
+const dc = dcgi().find((r) => r.kind === 'summary') as Record<string, number> | undefined;
+const accessed = done.map((r) => (r as { source?: { accessed?: string } }).source?.accessed).filter(Boolean).pop();
 const cb = crystal();
-const tiles: [string, string, string?][] = points.map((p) =>
-  p.max == null ? [`${p.stage} Pick'Ems`, 'UNKNOWN', 'points per slot not published yet'] : [`${p.stage} Pick'Ems points`, `${p.earned} / ${p.max}`, `${p.possible} decided so far`],
-);
-// Results carry the NZDT start; the venue time comes from the baseline series with the same id.
-const startNz = (id: string) => results().find((r) => r.id === id)?.start_nz ?? null;
-const venue = (id: string) => series().find((s) => s.id === id && s.set === 'baseline')?.time_venue ?? '';
-const won = (score: string) => { const [a, b] = score.split('-').map(Number); return `${Math.max(a, b)}-${Math.min(a, b)}`; };
+const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin' };
 ---
-<Base title="Scorecard" active="scorecard" description="How the Worlds 2026 picks are doing: accuracy, calibration, Pick'Ems points and the Crystal Ball.">
-  <header class="page-head">
-    <h1>Scorecard</h1>
-    <p class="caption">{played ? `${played} series graded so far. Only predictions made before each series started count.` : 'No results entered yet. The first Play-In series starts 16/10/2026 07:00 NZDT.'}</p>
-  </header>
+<Base title="Scorecard" active="scorecard" description="How the Worlds 2026 picks are doing: winners, exact scores, log loss, Pick'Ems points and the Crystal Ball."
+  footer={{ left: `Results: gol.gg, accessed ${accessed ?? 'UNKNOWN'}. Log loss: lower is better, a coin flip scores ${num(COIN, 3)}.` }}>
+  <section class="intro">
+    <span class="eyebrow">Graded against results, updated as series finish</span>
+    <h1>How the prophet is doing</h1>
+    <p class="lede">Every call was made before the series started and is never edited. A call made after the start would be marked invalid.</p>
+  </section>
 
-  <Card title="Accuracy by prediction set" note="Brier and log loss on the stated win chance of the actual winner.">
-    {graded.length ? (
-      <div class="scroll"><table>
-        <thead><tr><th>Set</th><th class="r">Graded</th><th class="r">Winners</th><th class="r">Accuracy</th><th class="r">Exact score</th><th class="r">Brier</th><th class="r">Log loss</th></tr></thead>
-        <tbody>{graded.map((g) => <tr><td>{g.set}</td><td class="num">{g.n}</td><td class="num">{g.correct}</td><td class="num">{pct(g.correct / g.n)}</td><td class="num">{pct(g.exact / g.n)}</td><td class="num">{num(g.brier, 3)}</td><td class="num">{num(g.logloss, 3)}</td></tr>)}</tbody>
-      </table></div>
-    ) : <p class="caption">No results entered yet.</p>}
-  </Card>
+  <section class="stat-strip" style="--n:4" aria-label="Summary">
+    {tiles.map((t) => <div><span class="k">{t.k}</span><span class:list={['v', t.c]}>{t.v}</span><span class="sub">{t.sub}</span></div>)}
+  </section>
 
-  <Card title="Calibration by tier" note="Average stated chance of the pick against how often it won.">
-    {tiers.length ? (
-      <div class="scroll"><table>
-        <thead><tr><th>Set</th><th>Tier</th><th class="r">Graded</th><th class="r">Stated</th><th class="r">Won</th></tr></thead>
-        <tbody>{tiers.map((t) => <tr><td>{t.set}</td><td><span class:list={['tier', { lock: t.tier === 'LOCK' }]}>{t.tier}</span></td><td class="num">{t.n}</td><td class="num">{pct(t.stated)}</td><td class="num">{pct(t.hit / t.n)}</td></tr>)}</tbody>
-      </table></div>
-    ) : <p class="caption">No results entered yet.</p>}
-  </Card>
+  <section class="sc-grid">
+    <div class="section">
+      <div class="section-head"><h2>Series</h2><span>{phases.join(' and ')} so far</span></div>
+      {rows.length ? (
+        <div>
+          <div class="srow shead" aria-hidden="true"><span>Start</span><span>Series</span><span>Our call</span><span>Result</span><span>Winner</span><span>Score</span></div>
+          <div class="rows">
+            {rows.map((r) => (
+              <div class="srow">
+                <span class="title"><Logo code={r.s.team_a} size={26} /><span class="code">{r.s.team_a} v {r.s.team_b}</span></span>
+                <span class="meta"><span class="when muted2">{short(r.s.time_nz)}</span><span class="ph">, called </span><span class="call">{r.s.winner} {pct(r.s.p_winner)}<span class="dt">, {r.s.score}</span></span></span>
+                <span class:list={['res', r.resCls]}>{r.result}</span>
+                <span class:list={['w', r.wCls]}>{r.w}</span>
+                <span class:list={['sc', r.scCls]}>{r.sc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : <p class="caption">No baseline calls to show yet.</p>}
+    </div>
 
-  <Card title="Pick'Ems" note="Scored against the result in the same slot.">
-    {points.length ? (
-      <>
-        <StatTiles tiles={tiles} />
-        <div class="scroll"><table>
-          <thead><tr><th>Stage</th><th>Slot</th><th>Pick</th><th>Actual</th><th class="r">Points</th><th class="r">Earned</th></tr></thead>
-          <tbody>{slots.map((s) => (
-            <tr>
-              <td class="ink2 nw">{s.stage}</td><td>{s.slot}</td><td><Badge code={s.pick} /></td>
-              <td class="nw">{s.actual ? <>{s.actual}, <span class={s.actual === s.pick ? 'hit' : 'miss'}>{s.actual === s.pick ? 'hit' : 'miss'}</span></> : <span class="caption">Not played</span>}</td>
-              <td class:list={['num', { muted: s.points == null }]}>{s.points ?? 'UNKNOWN'}</td>
-              <td class:list={['num', { muted: s.actual && s.earned == null }]}>{s.actual ? (s.earned ?? 'UNKNOWN') : ''}</td>
-            </tr>
-          ))}</tbody>
-        </table></div>
-      </>
-    ) : <p class="caption">Pick'Ems not available yet.</p>}
-  </Card>
+    <aside class="side">
+      <div class="section tiers">
+        <span class="eyebrow">By confidence tier</span>
+        <div class="rows">
+          {TIERS.map((t) => (
+            <div class="trow">
+              <span class="tn"><span class:list={['tname', 'tier', t.cls]}>{t.name}</span><span class="caption">{t.range}</span></span>
+              <span class="fg2">{t.rec}</span>
+              <span class="big tp">{t.pct}</span>
+            </div>
+          ))}
+        </div>
+        <span class="caption">Tiers rate the winner only, never the score.</span>
+      </div>
+      {dc && (
+        <a class="callout" href={url('demacia-cup/')}>
+          <span class="eyebrow">Warm-up: Demacia Cup check</span>
+          <span class="ctext">{dc.hits ?? 'UNKNOWN'} of {dc.n ?? 'UNKNOWN'} winners right, log loss {num(dc.logloss, 2)} against {num(dc.logloss_region_rule, 2)} for the region rule.</span>
+          <span class="eyebrow">See the check →</span>
+        </a>
+      )}
+    </aside>
+  </section>
 
-  <Card title="Results" note="Each finished series beside the frozen baseline pick and the latest staged pick.">
-    {rows.length ? (
-      <div class="scroll"><table>
-        <thead><tr><th>When, NZDT</th><th>Series</th><th>Baseline pick</th><th>Result</th><th>Latest staged pick</th></tr></thead>
-        <tbody>{rows.map((r) => {
-          const pick = (p: { pick: string | null; p: number | null; pick_score: string | null } | null) => (p?.pick ? <span class="pk"><Badge code={p.pick} /><span class="num">{pct(p.p)}</span><span class="num caption">{p.pick_score}</span></span> : <span class="caption">Not predicted</span>);
-          return (
-            <tr>
-              <td class="when"><span class="num">{startNz(r.id) ?? 'UNKNOWN'}</span>{venue(r.id) && <span class="caption">{venue(r.id)}</span>}</td>
-              <td><span class="pk"><Badge code={r.team_a} /><span class="caption">v</span><Badge code={r.team_b} /></span></td>
-              <td>{pick(r)}</td>
-              <td class="nw">{r.winner} <span class="num">{won(r.score)}</span>{r.hit != null && <>, <span class={r.hit ? 'hit' : 'miss'}>{r.hit ? 'hit' : 'miss'}</span></>}</td>
-              <td><span class="pk">{pick(r.staged)}{r.staged && <span class={r.staged.hit ? 'hit' : 'miss'}>{r.staged.hit ? 'hit' : 'miss'}</span>}</span></td>
-            </tr>
-          );
-        })}</tbody>
-      </table></div>
-    ) : <p class="caption">No results entered yet. Results appear here as each series ends.</p>}
-  </Card>
-
-  <Card title="Crystal Ball" note="Our answers, entered before the 16/10/2026 07:00 NZDT lock.">
-    {cb.length ? (
-      <dl class="qa">
+  {cb.length > 0 && (
+    <section class="section">
+      <div class="section-head"><h2>Crystal Ball</h2><span>Our answers, entered before the Play-In lock</span></div>
+      <div class="rows">
         {cb.map((c) => (
-          <div>
-            <dt><span class="num">{c.q}.</span> {c.question}</dt>
-            <dd>
-              <span class="answer">{[1, 2, 3].includes(c.q) ? <ChampIcon name={c.answer} /> : c.answer}<span class:list={['tier', { lock: c.confidence === 'HIGH' }]}>{c.confidence}</span></span>
-              <span class="caption">{c.reason}</span>
-            </dd>
+          <div class="qrow">
+            <span class="dim num">{c.q}</span>
+            <span class="fg2">{c.question}</span>
+            <span class="ans"><span class="code">{c.answer || 'UNKNOWN'}</span><span class:list={['tier', CONF[c.confidence] ?? 'coin']}>{c.confidence || 'UNKNOWN'}</span></span>
+            <span class="caption why">{c.reason}</span>
           </div>
         ))}
-      </dl>
-    ) : <p class="caption">Crystal Ball answers not available yet.</p>}
-  </Card>
+      </div>
+    </section>
+  )}
 </Base>
 <style>
-  .page-head h1 { font-size: var(--text-xl); line-height: 1.1; }
-  .nw { white-space: nowrap; }
-  .pk { display: inline-flex; align-items: center; gap: var(--space-2xs); white-space: nowrap; }
-  .when { display: flex; flex-direction: column; gap: var(--space-3xs); white-space: nowrap; }
-  .qa { margin: 0; display: flex; flex-direction: column; font-size: var(--text-sm); }
-  .qa > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--space-3xs) var(--space-md); padding: var(--space-xs) 0; border-top: var(--rule); }
-  .qa > div:first-child { border-top: 0; padding-top: 0; }
-  .qa dt { color: var(--color-ink-3); }
-  .qa dd { margin: 0; display: flex; flex-direction: column; gap: var(--space-3xs); max-width: var(--measure); }
-  .answer { display: flex; align-items: center; gap: var(--space-xs); font-weight: 600; }
-  @media (max-width: 640px) { .qa > div { grid-template-columns: minmax(0, 1fr); } }
+  .sc-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
+  .side { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  .srow { display: grid; grid-template-columns: 110px minmax(0, 1fr) 140px 120px 110px 110px; gap: 16px; align-items: center; font-size: 18px; }
+  .rows > .srow { padding: 14px 0; }
+  .shead { font-size: 15px; color: var(--muted); padding-bottom: 6px; }
+  .when { font-size: 16px; }
+  .title { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .meta { display: contents; }
+  .when { order: -1; }
+  .ph { display: none; }
+  .w, .sc { font-weight: 600; }
+  .trow { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 16px; align-items: baseline; font-size: 18px; }
+  .tn { display: flex; flex-direction: column; }
+  .tname { font-size: 18px; letter-spacing: 0.06em; }
+  .tp { font-size: 22px; width: 64px; text-align: right; }
+  .tiers { gap: 8px; }
+  .tiers > .eyebrow { font-size: 16px; padding-bottom: 6px; }
+  .callout { gap: 8px; padding: 24px 26px; }
+  .ctext { font-size: 18px; line-height: 1.5; }
+  .qrow { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); gap: 4px 20px; align-items: baseline; }
+  .ans { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .why { grid-column: 2 / -1; }
+  @media (max-width: 1150px) { .sc-grid { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 640px) {
+    .intro .eyebrow, .intro .lede { display: none; }
+    .stat-strip .sub { font-size: 13px; }
+    .shead { display: none; }
+    .srow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title w" "meta res"; gap: 2px 10px; }
+    .rows > .srow { padding: 11px 0; }
+    .title { grid-area: title; } .title :global(.logo), .title :global(.disc) { display: none; }
+    .title .code { font-size: 15px; }
+    .w { grid-area: w; text-align: right; font-size: 15px; }
+    .res { grid-area: res; text-align: right; font-size: 13px; color: var(--fg2); }
+    .res.dim { color: var(--muted); }
+    .meta { display: block; grid-area: meta; font-size: 13px; color: var(--muted); }
+    .when { font-size: 13px; color: var(--muted); }
+    .ph { display: inline; } .dt { display: none; }
+    .sc { display: none; }
+    .trow { font-size: 16px; }
+    .tname { font-size: 15px; }
+    .tp { font-size: 18px; width: 52px; }
+    .ctext { font-size: 16px; }
+    .qrow { grid-template-columns: 28px minmax(0, 1fr); }
+    .ans { grid-column: 2; }
+    .why { display: none; }
+  }
 </style>

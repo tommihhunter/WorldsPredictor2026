@@ -1,6 +1,42 @@
 ---
 import Base from '../layouts/Base.astro';
-import EventHub from '../components/EventHub.astro';
-import { STAGES } from '../lib/stage';
+import PickemsPanel from '../components/PickemsPanel.astro';
+import RecordTable from '../components/RecordTable.astro';
+import { overview, series, swiss } from '../lib/data';
+import { nzToday } from '../lib/grading';
+import { STAGES, swissRecords, view } from '../lib/stage';
+
+const st = STAGES[1];
+const v = view(st, 'latest');
+const rows = swiss().filter((r) => r.set === v.swissSet);
+const staged = v.swissSet !== 'baseline';
+const created = (series().find((s) => s.set === v.swissSet)?.created_nz ?? 'UNKNOWN').replace(/(\d\d:\d\d):\d\d/, '$1');
+const year = /\d{4}/.exec(st.dates)?.[0];
+const from = /^\d\d\/\d\d/.exec(st.dates)?.[0];
+const where = st.venue.split(', ').slice(-2).join(', ');
+const draw = /draw on (\d\d\/\d\d)/.exec(st.note)?.[1];
+const ymd = (d: string) => d.split('/').reverse().join('');
+const drawn = !!draw && !!year && ymd(nzToday()) >= ymd(`${draw}/${year}`);
+const drawLine = staged
+  ? `Re-run after the round 1 draw, predicted ${created}.`
+  : !draw ? 'These picks are preliminary until the re-run after the round 1 draw.'
+  : drawn ? `The round 1 draw was on ${draw}; these picks stay preliminary until the re-run.`
+  : `The round 1 draw is on ${draw}, so these picks are preliminary until the re-run.`;
+const lede = `${rows.length || 'UNKNOWN'} teams. Rounds 1 and 2 are Bo1, deciders are Bo3. ${drawLine}`;
+const caption = `Advance is the chance of reaching 3 wins${staged ? ' given the actual draw' : ', averaged over all legal draws'}.`;
+const points = /Swiss [^.]*\./.exec(overview().pickems_points ?? '')?.[0].replace(/^Swiss /, '');
+const footLeft = `${staged ? `Staged ${v.swissSet} run` : 'Frozen baseline'}, predicted ${created}.${points ? ` Points: ${points}` : ''}`;
 ---
-<Base title="Swiss" active="swiss"><EventHub stage={STAGES[1]} /></Base>
+<Base title="Swiss" active="swiss" description="Swiss stage Pick'Ems and every team's likely record." footer={{ left: footLeft }}>
+  <section class="intro sw-intro">
+    <span class="eyebrow">Swiss stage, {where}, from {from && year ? `${from}/${year}` : 'UNKNOWN'} NZDT</span>
+    <h1>Three wins in, three losses out</h1>
+    <p class="lede">{lede}</p>
+  </section>
+  <PickemsPanel stage="swiss" full />
+  <RecordTable rows={rows} records={swissRecords()} caption={caption} />
+</Base>
+<style>
+  /* the h1 needs a little more than the shared 980px to stay on one line at 1920 */
+  .sw-intro { max-width: 1120px; }
+</style>

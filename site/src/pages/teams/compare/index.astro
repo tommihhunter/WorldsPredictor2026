@@ -1,38 +1,41 @@
 ---
-// Picker page: two selects and Go (compare-pick.js navigates to the canonical <min>-vs-<max> page),
-// with the top two teams compared below by default.
+// Picker page: two selects and Compare (compare-pick.js navigates to the canonical <min>-vs-<max> page),
+// with the top two teams by rank compared below by default.
 import Base from '../../../layouts/Base.astro';
 import CompareView from '../../../components/CompareView.astro';
-import { ratings } from '../../../lib/data';
+import { overview, ratings } from '../../../lib/data';
 import { url } from '../../../lib/url';
 
 const rs = [...ratings()].sort((x, y) => x.rank - y.rank);
 const [a, b] = [rs[0].code, rs[1].code].sort();
 const selects = [{ name: 'a', sel: rs[0].code }, { name: 'b', sel: rs[1].code }];
+const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 ---
-<Base title="Compare teams" active="teams">
-  <header class="page-head">
+<Base title="Compare teams" active="teams" footer={{ left: `Ratings as of ${asOf}. Team stats and head to head: gol.gg.` }}>
+  <section class="intro">
+    <span class="eyebrow">Teams</span>
     <h1>Compare teams</h1>
-    <p class="caption">Pick two teams. Every pairing has its own page you can share. The top two by rank are below.</p>
+    <p class="lede">Pick two teams. Every pairing has its own page you can share. The top two by rank are below.</p>
     <form id="compare-pick" class="pick" data-base={url('teams/compare/')}>
       {selects.map((s, i) => (
         <label><span class="caption">Team {i + 1}</span>
-          <select name={s.name}>{rs.map((r) => <option value={r.code} selected={r.code === s.sel}>{r.code} · {r.name}</option>)}</select>
+          <select name={s.name}>{rs.map((r) => <option value={r.code} selected={r.code === s.sel}>{r.code}, {r.name}</option>)}</select>
         </label>
       ))}
-      <button class="chip" type="submit">Go</button>
-      <p class="caption bad msg" hidden>Pick two different teams.</p>
+      <button class="chip on" type="submit">Compare</button>
+      <p class="caption risk msg" hidden>Pick two different teams.</p>
     </form>
-  </header>
+    <a class="more" href={url('teams/')}>All teams</a>
+  </section>
   <CompareView a={a} b={b} />
-<script is:inline src={url('js/compare-pick.js')} defer></script>
+  <script is:inline src={url('js/compare-pick.js')} defer></script>
 </Base>
 <style>
-  h1 { font-size: var(--text-xl); line-height: 1.1; }
-  .pick { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-xs) var(--space-sm); margin-top: var(--space-2xs); }
-  .pick label { display: flex; flex-direction: column; gap: var(--space-3xs); min-width: 0; flex: 1 1 12rem; max-width: 20rem; }
-  .pick select { font: inherit; font-size: var(--text-sm); color: var(--color-ink); background: var(--color-paper-3); border: 0; border-radius: var(--radius-data); padding: var(--space-2xs) var(--space-xs); width: 100%; }
-  .pick .chip { padding: var(--space-2xs) var(--space-md); font-weight: 600; }
+  .pick { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; margin-top: 8px; }
+  .pick label { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 12rem; max-width: 20rem; }
+  .pick select { font: inherit; font-size: 16px; color: var(--fg); background: var(--surface); border: 1px solid var(--split-off); border-radius: var(--radius-sm); padding: 8px 12px; width: 100%; }
+  .pick .chip { padding: 9px 20px; font-size: 16px; }
   .msg { flex-basis: 100%; }
   .msg[hidden] { display: none; }
+  .more { font-size: 17px; font-weight: 600; color: var(--gold); align-self: flex-start; }
 </style>
