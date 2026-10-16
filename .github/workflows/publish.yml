@@ -12,8 +12,8 @@ concurrency:
   cancel-in-progress: false
 env:
   # site/astro.config.mjs and tests/check_site.py read these; a custom domain is a change to these two values
-  W26_SITE_URL: https://tommihhunter.github.io
-  W26_BASE: /WorldsPredictor2026
+  W26_SITE_URL: https://poroprophet.lol
+  W26_BASE: /
 jobs:
   build:
     runs-on: ubuntu-latest
