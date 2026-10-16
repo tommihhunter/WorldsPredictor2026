@@ -1,9 +1,11 @@
 ---
-/* "Your {stage} Pick'Ems" panel, shared by Home (compact, status + link row) and Swiss (full: three cells in one row).
-   Swiss slots come from pickems.json: '3-0', '0-3', 'Advance (3-1 or 3-2)'. Any other stage lists its slots as rows.
-   Renders nothing when the stage has no Pick'Ems rows yet. */
+/* Our Pick'Ems for a stage, read in order: what the picks are and how they score, then one card per pick type
+   (Go 3-0, Go 0-3, Advance) whose rows show the team and the chance that pick comes true, next to a bar,
+   then how close the call was ("Also close": the best teams we did not pick). Swiss page = full; Home = compact
+   (same cards, smaller, plus status and a link). Any other stage lists its slots as rows. Renders nothing when
+   the stage has no Pick'Ems rows yet. */
 import Logo from './Logo.astro';
-import { pickems } from '../lib/data';
+import { pickems, teamName } from '../lib/data';
 import { resultRows } from '../lib/grading';
 import { nextLock } from '../lib/nav';
 import { STAGES, drawPassed, view } from '../lib/stage';
@@ -13,17 +15,25 @@ interface Props { stage: 'swiss' | 'knockouts'; full?: boolean }
 const { stage, full = false } = Astro.props;
 const st = STAGES.find((s) => s.id === stage)!;
 const rows = pickems().filter((p) => p.stage === st.pickemsStage);
-const go30 = rows.filter((r) => r.slot === '3-0');
-const go03 = rows.filter((r) => r.slot === '0-3');
-const adv = rows.filter((r) => /^advance/i.test(r.slot));
-const swissLayout = stage === 'swiss' && go30.length + go03.length + adv.length > 0;
-const advLabel = (adv[0]?.slot ?? 'Advance').replace(/[()]/g, '');
+const picked = new Set(rows.map((r) => r.pick));
+// the best teams we did not pick in this slot, from the slot's alternatives ("GEN 41%, HLE 29%, ...")
+const alsoClose = (alt: string) => alt.split(',').map((x) => x.trim()).filter((x) => x && !picked.has(x.split(' ')[0])).slice(0, 2).join(', ');
+const CARDS = [
+  { key: 'go30', title: 'Go 3-0', tone: 'teal', what: 'Win all three matches', test: (s: string) => s === '3-0' },
+  { key: 'go03', title: 'Go 0-3', tone: 'risk', what: 'Lose all three matches', test: (s: string) => s === '0-3' },
+  { key: 'adv', title: 'Advance', tone: 'gold', what: 'Reach three wins with one or two losses', test: (s: string) => /^advance/i.test(s) },
+].map((c) => {
+  const rs = rows.filter((r) => c.test(r.slot));
+  return { ...c, rows: rs, close: rs[0] ? alsoClose(rs[0].alternatives ?? '') : '' };
+}).filter((c) => c.rows.length);
+const swissLayout = stage === 'swiss' && CARDS.length > 0;
 const nl = nextLock();
 const lock = nl && nl.stage.toLowerCase() === stage ? nl : null;
 const draw = /draw on (\d\d\/\d\d)/.exec(st.note)?.[1];
 const drawn = drawPassed().passed;
 // Preliminary while the Swiss rows are not from a Swiss (or later) staged run.
 const prelim = stage === 'swiss' && view(st, 'latest').swissSet === 'baseline';
+const prelimLine = prelim ? (drawn ? 'Preliminary: re-run after the round 1 draw.' : `Preliminary until the round 1 draw${draw ? ` on ${draw} (US time)` : ''}, then re-run.`) : '';
 // ponytail: "latest" = last finished row in results.json order (the file is appended as series finish); sort by start_nz if that changes.
 const last = resultRows().at(-1);
 const lastLine = last ? (() => {
@@ -33,34 +43,42 @@ const lastLine = last ? (() => {
   return `Latest ${last.phase} result: ${last.winner} beat ${loser} ${Math.max(a, b)}-${Math.min(a, b)}, ${call}.`;
 })() : null;
 const title = `${st.phase} Pick'Ems`;
+const pts = stage === 'swiss' ? 'Each correct advancer scores 10 points, with bonuses for the exact record.' : '';
 ---
 {rows.length > 0 && (
-  <section class:list={['panel flush pk', { full }]} aria-label={`Your ${title}`}>
-    <div class="panel-head">
-      {full ? <h2 class="pk-title"><span class="pk-your">Your </span>{title}</h2> : <h3 class="pk-title"><span class="pk-your">Your </span>{title}</h3>}
+  <section class:list={['pk', full ? 'full' : 'panel flush']} aria-label={`Our ${title}`}>
+    <div class:list={[full ? 'section-head' : 'panel-head']}>
+      {full ? <h2>Our {title}</h2> : <h3 class="pk-title"><span class="pk-your">Our </span>{title}</h3>}
       <div class="pk-chips">
-        {full && prelim && <span class="chip lock">Preliminary{draw ? `, re-run after ${draw}` : ''}</span>}
-        {lock && <span class="chip lock"><span>Locks {lock.day}<span class="pk-desk">,</span> {lock.time}<span class="pk-desk"> NZDT</span></span></span>}
+        {full && prelim && <span class="chip outline">Preliminary{draw ? `, re-run after ${draw}` : ''}</span>}
+        {lock && <span class="chip lock">Locks {lock.day}<span class="pk-desk">,</span> {lock.time}<span class="pk-desk"> NZDT</span></span>}
       </div>
     </div>
+    {full && swissLayout && (
+      <p class="pk-how">Pick two teams to go 3-0, two to go 0-3, and six more to advance. The percentage is the model's chance that pick comes true. {pts}</p>
+    )}
     {swissLayout ? (
-      <div class="pk-grid">
-        <div class="pk-cell">
-          <span class="pk-k teal">Go 3-0</span>
-          {go30.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 36 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big">{pct(r.p_correct)}</span></div>)}
-        </div>
-        <div class="pk-cell">
-          <span class="pk-k risk">Go 0-3</span>
-          {go03.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 36 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big">{pct(r.p_correct)}</span></div>)}
-        </div>
-        <div class="pk-cell pk-adv">
-          <span class="pk-k gold">{advLabel}{full && ` (pick ${adv.length})`}</span>
-          <div class="pk-advgrid">
-            {adv.map((r) => <div class="pk-team sm"><Logo code={r.pick} size={full ? 36 : 26} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big">{pct(r.p_correct)}</span></div>)}
-          </div>
-          <span class="pk-advlist code">{adv.map((r) => r.pick).join(', ')}</span>
-          {prelim && <span class="pk-phone caption">{drawn ? 'Preliminary until the re-run' : `Preliminary until the ${draw ? `${draw} (US time)` : 'round 1'} draw`}</span>}
-        </div>
+      <div class="pk-cards">
+        {CARDS.map((c) => (
+          <article class:list={['pk-card', c.key]}>
+            <header class="pk-ch">
+              <h3 class:list={['pk-ct', c.tone]}>{c.title}</h3>
+              <span class="caption">Pick {c.rows.length}</span>
+              {full && <span class="caption pk-what">{c.what}</span>}
+            </header>
+            <ol class="pk-list">
+              {c.rows.map((r) => (
+                <li>
+                  <Logo code={r.pick} size={full ? 32 : 26} />
+                  <span class="pk-nm"><span class="code">{r.pick}</span>{full && <span class="caption pk-full">{teamName(r.pick)}</span>}</span>
+                  <span class:list={['bar', c.tone === 'gold' ? 'alt' : c.tone]}><i style={`width:${((r.p_correct ?? 0) * 100).toFixed(1)}%`}></i></span>
+                  <span class="pk-p">{pct(r.p_correct)}</span>
+                </li>
+              ))}
+            </ol>
+            {full && c.close && <p class="caption pk-close">Also close: {c.close}</p>}
+          </article>
+        ))}
       </div>
     ) : (
       <div class="panel-sec">
@@ -69,9 +87,10 @@ const title = `${st.phase} Pick'Ems`;
         </div>
       </div>
     )}
-    {!full && (prelim || lastLine) && (
+    {full && prelimLine && <p class="caption">{prelimLine}</p>}
+    {!full && (prelimLine || lastLine) && (
       <div class="panel-sec pk-status caption">
-        {prelim && <span class="pk-desk">{drawn ? 'Preliminary until the re-run after the round 1 draw.' : `Preliminary. Re-run after the round 1 draw${draw ? ` on ${draw} (US time)` : ''}.`}</span>}
+        {prelimLine && <span>{prelimLine}</span>}
         {lastLine && <span>{lastLine}</span>}
       </div>
     )}
@@ -79,55 +98,47 @@ const title = `${st.phase} Pick'Ems`;
   </section>
 )}
 <style>
+  .pk.full { display: flex; flex-direction: column; gap: var(--space-sm); }
   .pk-chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
-  .pk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .pk-cell { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg); min-width: 0; }
-  .pk:not(.full) .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
-  .pk:not(.full) .pk-cell { border-bottom: 1px solid var(--line); }
-  .pk-adv { grid-column: 1 / -1; }
-  /* column labels carry the status colour; the numbers stay --fg */
-  .pk-k { font-size: var(--fs-sm); font-weight: 600; }
-  .pk-team { display: flex; align-items: center; gap: var(--space-xs); min-width: 0; }
-  .pk-team .code { font-size: var(--fs-lg); }
-  .pk-p { margin-left: auto; font-size: var(--fs-xl); }
-  .pk-team.sm { gap: var(--space-2xs); }
-  .pk-team.sm .code, .pk-team.sm .pk-p { font-size: var(--fs-md); }
-  .pk-advgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xs) var(--space-lg); }
-  .pk-advlist, .pk-phone { display: none; }
+  .pk-how { font-size: var(--fs-lg); color: var(--fg2); max-width: 70ch; line-height: 1.45; }
+
+  /* cards: Go 3-0 and Go 0-3 stacked on the left, Advance (six picks) on the right */
+  .pk-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: 'go30 adv' 'go03 adv'; gap: var(--space-md); }
+  .go30 { grid-area: go30; } .go03 { grid-area: go03; } .adv { grid-area: adv; }
+  .pk-card { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-md) var(--space-lg); background: var(--surface); border-radius: var(--radius); box-shadow: var(--inset); min-width: 0; }
+  .pk-ch { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0 var(--space-sm); }
+  .pk-ct { font-size: var(--fs-xl); }
+  .pk-what { grid-column: 1 / -1; }
+  .pk-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  /* logo | name | bar | % : the number sits right after the bar, never across the card */
+  .pk-list li { display: grid; grid-template-columns: auto minmax(7rem, 11rem) minmax(0, 1fr) 3.5ch; align-items: center; gap: var(--space-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+  .pk-nm { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+  .pk-nm .code { font-size: var(--fs-lg); }
+  .pk-full { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pk-p { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); text-align: right; }
+  .pk-close { margin-top: auto; }
+
+  /* compact (Home): no "how", no names; the Advance card lists its six picks in two columns */
+  .pk:not(.full) .pk-cards { padding: var(--space-md) var(--space-lg); gap: var(--space-sm); grid-template-areas: 'go30 go03' 'adv adv'; }
+  .pk:not(.full) .pk-card { padding: 0; background: none; box-shadow: none; gap: var(--space-2xs); }
+  .pk:not(.full) .pk-ct { font-size: var(--fs-md); }
+  .pk:not(.full) .pk-list li { grid-template-columns: auto 3.5rem minmax(0, 1fr) 3.5ch; gap: var(--space-xs); padding: var(--space-2xs) 0; }
+  .pk:not(.full) .pk-nm .code, .pk:not(.full) .pk-p { font-size: var(--fs-md); }
+  .pk:not(.full) .adv .pk-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-lg); }
   .pk-status { gap: var(--space-3xs); }
   .pk-arrow { font-size: var(--fs-lg); line-height: 1; }
   .pk-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto 56px; align-items: center; gap: var(--space-xs); }
   .pk-rp { text-align: right; }
 
-  /* full (Swiss page): one row of three cells; every team row is one logo tall so the rows line up across cells */
-  .full .pk-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); }
-  .full .pk-adv { grid-column: auto; }
-  .full .pk-cell { gap: var(--space-sm); }
-  .full .pk-team, .full .pk-team.sm { gap: var(--space-xs); }
-  .full .pk-team.sm .code { font-size: var(--fs-lg); }
-  .full .pk-team.sm .pk-p { font-size: var(--fs-xl); }
-  .full .pk-advgrid { gap: var(--space-sm) var(--space-lg); }
-  @media (max-width: 1100px) {
-    .full .pk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .full .pk-adv { grid-column: 1 / -1; }
+  @media (max-width: 900px) {
+    .pk-cards, .pk:not(.full) .pk-cards { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'go30' 'go03' 'adv'; }
   }
-
-  /* phone: no logos, code and % inline, advance as a list */
   @media (max-width: 640px) {
-    .pk-your { display: none; }
-    .full .pk-title { font-size: var(--fs-xl); }
-    .pk .chip { font-size: var(--fs-xs); }
-    .pk .pk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .pk .pk-adv { grid-column: 1 / -1; }
-    .pk .pk-cell { gap: var(--space-2xs); padding: var(--space-sm); }
-    .pk .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
-    .pk:not(.full) .pk-cell, .pk.full .pk-cell:not(.pk-adv) { border-bottom: 1px solid var(--line); }
-    .pk :global(.pk-logo), .pk .pk-advgrid, .pk .pk-desk { display: none; }
-    .pk:not(.full) .panel-head { flex-wrap: nowrap; }
-    .pk .pk-team { gap: var(--space-2xs); align-items: baseline; }
-    /* code and % share a line here, so the % drops to the body face to read as a separate value */
-    .pk .pk-p { margin-left: 0; font-family: var(--font-body); font-weight: 500; font-size: var(--fs-md); color: var(--fg2); }
-    .pk .pk-advlist { display: block; line-height: 1.5; }
-    .pk .pk-phone { display: block; }
+    .pk-your, .pk-desk, .pk-full { display: none; }
+    .pk-how { font-size: var(--fs-md); }
+    .pk-card { padding: var(--space-sm); }
+    .pk-list li { grid-template-columns: auto 3.5rem minmax(0, 1fr) 3.5ch; gap: var(--space-xs); }
+    .pk:not(.full) .pk-cards { padding: var(--space-sm); }
+    .pk:not(.full) .adv .pk-list { grid-template-columns: minmax(0, 1fr); }
   }
 </style>

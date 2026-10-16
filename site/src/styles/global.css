@@ -151,6 +151,7 @@ a.chip.lock:active { background: transparent; color: var(--gold); }
 .bar.gold > i, .bar > i.gold { background: var(--gold); }
 .bar.teal > i, .bar > i.teal { background: var(--teal); }
 .bar.alt > i, .bar > i.alt { background: var(--bar-alt); }
+.bar.risk > i, .bar > i.risk { background: var(--risk); }
 /* split bar for a match: <span class="split" style="--pa:62"><i></i><i></i></span> */
 .split { display: flex; gap: 3px; height: 4px; }
 .split > i { border-radius: 2px; min-width: 0; }
