@@ -17,6 +17,10 @@ export const getStaticPaths = () => ratings().map((r) => ({ params: { slug: team
 const code = codeFromSlug(Astro.params.slug as string);
 const rs = [...ratings()].sort((a, b) => a.rank - b.rank);
 const r = rs.find((x) => x.code === code)!;
+// previous / next team in rank order, wrapping round the field
+const at = rs.indexOf(r);
+const prev = rs[(at - 1 + rs.length) % rs.length];
+const next = rs[(at + 1) % rs.length];
 // players_sample and summer_sample are exported but not in the Dossier type.
 const d = dossiers().find((x) => x.code === code) as (Dossier & { players_sample?: string; summer_sample?: string | null }) | undefined;
 const lv = live().find((x) => x.team === code);
@@ -162,9 +166,38 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
     <div class="section-head"><h2>Sources</h2><span>Accessed {accessed}</span></div>
     {sources.length ? <ul class="srcs">{sources.map((u) => <li><a href={u} target="_blank" rel="noopener">{linkText(u, 80)}</a></li>)}</ul> : <p class="caption">No sources listed.</p>}
   </section>
+
+  <nav class="pager" aria-label="Other teams">
+    <a class="card pg prev" href={url(`teams/${teamSlug(prev.code)}/`)}>
+      <span class="pg-k"><span class="gold" aria-hidden="true">←</span> Previous team</span>
+      <span class="pg-t"><Logo code={prev.code} size={40} /><span class="code">{displayName(prev.name)}</span></span>
+    </a>
+    <a class="card pg all" href={url('teams/')}><span class="code">All teams</span></a>
+    <a class="card pg next" href={url(`teams/${teamSlug(next.code)}/`)}>
+      <span class="pg-k">Next team <span class="gold" aria-hidden="true">→</span></span>
+      <span class="pg-t"><span class="code">{displayName(next.name)}</span><Logo code={next.code} size={40} /></span>
+    </a>
+  </nav>
 </Base>
 <style>
-  .back { display: none; }
+  .back { display: inline-flex; gap: 10px; align-items: center; align-self: flex-start; font-family: var(--font-display); font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg2); padding: 6px 0; margin-bottom: -28px; }
+  .back:hover { color: var(--gold); }
+  .back .gold { font-size: 20px; }
+  .pager { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; }
+  .pg { gap: 10px; padding: 18px 22px; }
+  .pg:hover { border-color: var(--gold); }
+  .pg-k { font-size: 15px; color: var(--muted); }
+  .pg-t { display: flex; align-items: center; gap: 14px; }
+  .pg-t .code { font-size: 20px; }
+  .next { align-items: flex-end; text-align: right; }
+  .all { justify-content: center; align-items: center; padding: 18px 32px; }
+  .all .code { font-size: 16px; color: var(--fg2); }
+  @media (max-width: 640px) {
+    .pager { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .all { grid-column: 1 / -1; grid-row: 2; padding: 14px; }
+    .pg { padding: 14px; }
+    .pg-t .code { font-size: 15px; }
+  }
   .ph { display: none; }
   .dossier { display: flex; flex-direction: column; gap: 32px; padding: 40px; }
   .head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 28px; row-gap: 8px; align-items: center; }
@@ -216,7 +249,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
     .path > div { padding: 12px 24px 12px 0; }
   }
   @media (max-width: 640px) {
-    .back { display: inline-flex; gap: 10px; align-items: center; font-family: var(--font-display); font-weight: 700; font-size: 19px; margin-bottom: -6px; }
+    .back { margin-bottom: -6px; }
     .back .gold { font-size: 22px; }
     .dt { display: none; }
     .ph { display: inline; }
