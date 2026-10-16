@@ -32,6 +32,7 @@ const own = !!lock && active === lock.stage.toLowerCase();
   .hdr-in { max-width: calc(var(--page-max) + 2 * var(--gutter)); margin: 0 auto; padding: 14px var(--gutter); min-height: 84px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; }
   .brand { display: flex; align-items: center; gap: 14px; color: var(--fg); }
   .avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--gold); }
+  .word, .ptitle, .hnav { text-transform: uppercase; }
   .word, .ptitle { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: 0.05em; line-height: 1.1; }
   .ptitle { display: none; }
   .hnav { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: 0.08em; }

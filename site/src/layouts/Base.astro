@@ -29,9 +29,8 @@ const hasFooterSlot = Astro.slots.has('footer');
   <meta property="og:description" content={description} />
   <meta property="og:image" content={abs(url('art/poro/main-256.png'))} />
   <meta property="og:url" content={abs(Astro.url.pathname)} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:wght@400;500;600&display=swap" />
+  <link rel="preload" href={url('fonts/BeaufortforLOL-Bold.otf')} as="font" type="font/otf" crossorigin />
+  <link rel="preload" href={url('fonts/Spiegel-Regular.otf')} as="font" type="font/otf" crossorigin />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>

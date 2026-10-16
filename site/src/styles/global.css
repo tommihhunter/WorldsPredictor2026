@@ -23,6 +23,8 @@ a:hover { color: var(--gold); }
 img { max-width: 100%; }
 button { font: inherit; color: inherit; }
 p { margin: 0; }
+/* Beaufort headings are set in capitals, as in the League client (Cinzel was a capitals face) */
+h1, h2, h3, .code { text-transform: uppercase; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0; overflow-wrap: anywhere; min-width: 0; }
 /* page title */
 h1 { font-size: clamp(40px, 3.8vw, 64px); line-height: 1.05; }
