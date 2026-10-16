@@ -1,6 +1,7 @@
 ---
 // Player table from the dossier (Teams.dc.html): role, player, KDA, GD@15 and the three most-played champions.
 // One tbody per split (data-split), so the page's season / Summer toggle shows one at a time. Phone drops KDA and GD@15.
+import ChampIcon from './ChampIcon.astro';
 import type { Player } from '../lib/data';
 const { splits } = Astro.props as { splits: { key: string; players: Player[] }[] };
 const ROLE: Record<string, [string, string]> = {
@@ -22,7 +23,7 @@ const role = (r: string) => ROLE[String(r).toUpperCase()] ?? [r, r];
             <td class="code">{p.player}</td>
             <td class="r wide">{f(p.kda, (n) => n.toFixed(1))}</td>
             <td class="r wide">{f(p.gd15, gd)}</td>
-            <td class="champs">{(p.champs ?? []).length ? (p.champs ?? []).slice(0, 3).map((c) => c.champ).join(', ') : 'UNKNOWN'}</td>
+            <td class="champs">{(p.champs ?? []).length ? <span class="cl">{(p.champs ?? []).slice(0, 3).map((c) => <ChampIcon name={c.champ} size={24} />)}</span> : 'UNKNOWN'}</td>
           </tr>
         )) : <tr><td colspan="5" class="caption">No player data found.</td></tr>}
       </tbody>
@@ -34,6 +35,7 @@ const role = (r: string) => ROLE[String(r).toUpperCase()] ?? [r, r];
   .players td { padding: 10px 12px 10px 0; font-size: 17px; }
   .players td:last-child { padding-right: 0; }
   .players td.champs { font-size: 15px; color: var(--fg2); }
+  .cl { display: flex; flex-wrap: wrap; gap: 4px 14px; }
   .l { display: none; }
   @media (max-width: 640px) {
     .wide { display: none; }

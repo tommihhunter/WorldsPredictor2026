@@ -4,7 +4,6 @@ import Logo from '../components/Logo.astro';
 import PickemsPanel from '../components/PickemsPanel.astro';
 import { overview, pickems, ratings, series, teamName } from '../lib/data';
 import { lockStage, stageLine } from '../lib/nav';
-import { url } from '../lib/url';
 import { pct } from '../lib/format';
 
 const o = overview();
@@ -75,17 +74,14 @@ const sealed = (o.baseline_created ?? '').replace(/(\d{2}:\d{2}):\d{2}/, '$1') |
 const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesports.com, official patch notes. Times in NZDT. Exported ${o.exported_nz ?? 'UNKNOWN'}.`;
 ---
 <Base title="Home" active="home" footer={{ left: foot }}>
+  <header class="hero">
+    <span class="eyebrow">The prophecy for Worlds 2026</span>
+    <h1 class="orb">The orb favours {champName}</h1>
+    <p class="pro-line">{line1}</p>
+  </header>
   <section class="cols home">
     <div class="stack">
       <div class="prophecy">
-        <div class="pro-top">
-          <img class="poro" src={url('art/poro/main-256.png')} width="96" height="96" alt="The Poro Prophet" />
-          <span class="eyebrow">The prophecy for Worlds 2026</span>
-        </div>
-        <div class="pro-head">
-          <h1 class="orb">The orb favours {champName}</h1>
-          <p class="pro-line">{line1}</p>
-        </div>
         <div class="pro-stat">
           <span class="disc pro-disc" style="--s:116px">{champ && <Logo code={champ} size={70} alt={champName} />}</span>
           <div class="pro-p">
@@ -138,11 +134,8 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
   /* two independent stacks: neither column waits on the other's height */
   .home { align-items: start; }
   .stack { display: flex; flex-direction: column; gap: 56px; min-width: 0; }
-  .pro-top { display: flex; align-items: center; gap: 20px; }
-  .poro { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--gold); flex: none; }
-  .prophecy { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
-  .prophecy > .eyebrow { letter-spacing: 0.04em; }
-  .pro-head { display: flex; flex-direction: column; gap: 14px; }
+  .hero { display: flex; flex-direction: column; gap: 14px; margin-bottom: -16px; }
+  .prophecy { display: flex; flex-direction: column; gap: 28px; }
   .orb { font-size: clamp(44px, 4.6vw, 80px); line-height: 1; letter-spacing: 0.01em; }
   .pro-line { font-size: 28px; line-height: 1.35; color: var(--fg2); }
   .pro-stat { display: flex; flex-wrap: wrap; align-items: center; gap: 28px 36px; padding: 28px 32px; background: var(--surface); border-radius: var(--radius); }
@@ -175,8 +168,7 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
     .home { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
     .stack { display: contents; }
     .home :global(.pk) { order: -1; }
-    .poro { width: 56px; height: 56px; }
-    .pro-top { gap: 14px; }
+    .hero { gap: 8px; margin-bottom: 0; }
     .prophecy { gap: 12px; padding-top: 0; }
     .orb { font-size: 32px; line-height: 1.05; }
     .pro-line, .pro-kv, .pro-close { display: none; }

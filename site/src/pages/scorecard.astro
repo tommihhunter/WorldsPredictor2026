@@ -1,5 +1,6 @@
 ---
 // Scorecard (design/lore/Scorecard.dc.html): grades the frozen baseline against results.
+import ChampIcon from '../components/ChampIcon.astro';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import { crystal, dcgi, results, series, type Series } from '../lib/data';
@@ -124,7 +125,7 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
           <div class="qrow">
             <span class="dim num">{c.q}</span>
             <span class="fg2">{c.question}</span>
-            <span class="ans"><span class="code">{c.answer || 'UNKNOWN'}</span><span class:list={['tier', CONF[c.confidence] ?? 'coin']}>{c.confidence || 'UNKNOWN'}</span></span>
+            <span class="ans"><span class="code">{[1, 2, 3].includes(c.q) && c.answer ? <ChampIcon name={c.answer} size={28} /> : (c.answer || 'UNKNOWN')}</span><span class:list={['tier', CONF[c.confidence] ?? 'coin']}>{c.confidence || 'UNKNOWN'}</span></span>
             <span class="caption why">{c.reason}</span>
           </div>
         ))}

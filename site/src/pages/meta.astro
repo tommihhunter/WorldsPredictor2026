@@ -1,5 +1,6 @@
 ---
 // Meta (design/lore/Meta.dc.html): the Worlds patch, draft rules, the 3-0 note, contested champions, Pick'Ems points and locks.
+import ChampIcon from '../components/ChampIcon.astro';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import Base from '../layouts/Base.astro';
@@ -90,7 +91,7 @@ const stages = STAGES.map((name) => {
           {champs.map((c) => (
             <div class="crow">
               <span class="rk dim">{c.rank}</span>
-              <span class="nm"><span class="code">{c.champion}</span><span class:list={['pf', flag(note(c))]}>{note(c)}</span></span>
+              <span class="nm"><span class="code"><ChampIcon name={c.champion} size={32} /></span><span class:list={['pf', flag(note(c))]}>{note(c)}</span></span>
               <span class="roles muted2">{c.roles || 'UNKNOWN'}</span>
               <span class="pres"><span class="bar"><i style={`width:${c.presence ?? 0}%`}></i></span><span class="pv">{p0(c.presence)}</span></span>
               <span class="r pk">{c.picks ?? 'UNKNOWN'}</span>
