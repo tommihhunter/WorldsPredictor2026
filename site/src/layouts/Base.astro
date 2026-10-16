@@ -23,7 +23,7 @@ const abs = (p: string) => new URL(p, Astro.site).href;
   <meta property="og:image" content={abs(url('art/poro/main-256.png'))} />
   <meta property="og:url" content={abs(Astro.url.pathname)} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" />
 </head>
 <body>
   <div class="shell">
@@ -31,8 +31,8 @@ const abs = (p: string) => new URL(p, Astro.site).href;
     <div>
       <main><slot /></main>
       <footer>
-        <span>Data: gol.gg, lolesports.com, official patch notes. Times in NZDT with the venue time alongside. Exported {o.exported_nz ?? 'UNKNOWN'}. Baseline frozen {o.baseline_created ?? 'UNKNOWN'}.</span>
-        <span>A personal fan project. Team names and logos belong to their owners; champion art is Riot Games' via Data Dragon. Not endorsed by Riot Games.</span>
+        <span>Data: gol.gg, lolesports.com and the official patch notes. Times NZDT. Not endorsed by Riot Games.</span>
+        <span class="caption">Exported {o.exported_nz ?? 'UNKNOWN'}</span>
       </footer>
     </div>
   </div>

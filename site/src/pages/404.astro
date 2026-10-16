@@ -6,12 +6,12 @@ import { url } from '../lib/url';
   <div class="lost">
     <img src={url('art/poro/dopey-512.webp')} width="160" height="160" alt="The Poro Prophet, looking sad" />
     <h1>No prophecy here</h1>
-    <p class="muted">That page does not exist. The Poro Prophet suggests the Home page.</p>
+    <p class="ink2">That page does not exist, but the Poro Prophet has picks waiting on the Home page.</p>
     <a class="home" href={url('')}>Go to the Home page</a>
   </div>
 </Base>
 <style>
-  .lost { display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:48px 0; }
-  .lost img { border-radius:24px; } .lost p { margin:0; }
-  .home { color:var(--gold); font-weight:600; }
+  .lost { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-sm); padding: var(--space-xl) 0; }
+  .lost img { border-radius: var(--radius-panel); }
+  .home { font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
 </style>

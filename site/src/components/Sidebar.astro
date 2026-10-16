@@ -6,7 +6,7 @@ const live = liveStage();
 const group = (g: string) => NAV.filter((n) => n.group === g);
 ---
 <aside class="sidebar">
-  <a class="brand" href={url('')}><img class="mark-img" src={url('art/poro/favicon.png')} width="28" height="28" alt="" />Worlds 2026 Predictor</a>
+  <a class="brand" href={url('')}><img class="mark-img" src={url('art/poro/favicon.png')} width="28" height="28" alt="" /><span>Poro Prophet <span class="num">26</span></span></a>
   <nav class="nav" aria-label="Sections">
     {group('home').map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}>{n.label}</a>)}
     <div class="nav-group">Event</div>

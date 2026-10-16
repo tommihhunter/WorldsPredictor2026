@@ -1,12 +1,9 @@
 ---
-// A row of number tiles: [label, value, caption]. A value of 'UNKNOWN' is shown muted.
+// A row of stats: [label, value, caption]. Number first, the label and caption as one sentence under it. 'UNKNOWN' is muted.
 const { tiles } = Astro.props as { tiles: [string, string, string?][] };
 ---
-<div class="grid-4 tiles">
+<div class="grid-4">
   {tiles.map(([label, value, sub]) => (
-    <div class="card tile"><span class="label">{label}</span><b class:list={[{ muted: value === 'UNKNOWN' }]}>{value}</b>{sub && <span class="cap muted">{sub}</span>}</div>
+    <div class="stat"><b class:list={[{ muted: value === 'UNKNOWN' }]}>{value}</b><span>{sub ? `${label}, ${sub}` : label}</span></div>
   ))}
 </div>
-<style>
-  .tile { padding:14px 16px; gap:4px; } .tile b { font-size:22px; }
-</style>

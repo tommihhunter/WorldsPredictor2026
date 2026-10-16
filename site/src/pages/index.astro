@@ -16,41 +16,49 @@ const STAGE_NAME: Record<string, string> = { 'play-in': 'Play-In', swiss: 'Swiss
 const rec = grade().find((g) => g.set === 'baseline');
 const pts = pickemPoints().find((p) => p.stage === STAGE_NAME[stage]);
 const lock = o.next_lock ?? '';
-const lockAt = /\d\d\/\d\d\/\d{4} \d\d:\d\d/.exec(lock)?.[0];
+const lm = /(\d\d\/\d\d)\/\d{4} (\d\d:\d\d)/.exec(lock);
+const lockAt = lm ? `${lm[1]} ${lm[2]}` : undefined; // dd/mm hh:mm fits the stat column; the caption carries the full date
 const [ver, ...verRest] = (o.model_version ?? 'UNKNOWN').split(':');
+const stats: [string, string][] = [
+  [rec ? `${rec.correct} / ${rec.n}` : '0 / 0', rec?.n ? 'Winners called right by the frozen baseline.' : 'Winners called right. No results entered yet.'],
+  [pts ? `${pts.earned} / ${pts.max ?? 'UNKNOWN'}` : 'UNKNOWN', pts ? `Pick'Ems points, ${STAGE_NAME[stage]}, ${pts.possible} decided so far.` : `${STAGE_NAME[stage]} Pick'Ems not available yet.`],
+  [lockAt ?? 'UNKNOWN', lock ? `${lock}.` : 'Next lock not available yet.'],
+  [ver, `Model, ${verRest.join(':').trim() || 'UNKNOWN'}. Ratings as of ${lv[0]?.as_of ?? 'UNKNOWN'}.`],
+];
 ---
 <Base title="Home" active="home">
-  <header>
-    <div class="title"><img src={url('art/poro/main-512.webp')} width="72" height="72" alt="The Poro Prophet" /><h1>Worlds 2026 Predictor</h1></div>
-    <p class="muted">Picks for every series, live title odds and how the frozen baseline is doing. Times in NZDT with the venue time alongside.</p>
+  <header class="page-head home-head">
+    <div class="page-head">
+      <p class="wordmark">Poro Prophet</p>
+      <p class="caption">Picks for every Worlds 2026 series, live title odds and how the frozen baseline is doing. Times NZDT with the venue time alongside.</p>
+    </div>
+    <img class="poro" src={url('art/poro/main-512.webp')} width="72" height="72" alt="The Poro Prophet" />
   </header>
 
-  <Card title={todays.length ? 'Today' : 'Next up'} note={todays.length ? `${nzToday()}, NZDT` : 'The next open series'} tone="gold">
-    <NextUp rows={todays.length ? todays : undefined} />
+  <section class="panel">
+    <p class="caption">{todays.length ? `Today, ${nzToday()}, NZDT.` : 'Next up, the next open series.'}</p>
+    <NextUp rows={todays.length ? todays : undefined} hero />
     <a class="more" href={url(`${stage}/`)}>Full bracket and picks</a>
-  </Card>
+  </section>
 
   <div class="grid-2">
-    <Card>
-      <div class="card-head"><h3>Title odds <span class="pill gold">Live</span></h3><span class="cap muted">{lv[0] ? `Refitted ${lv[0].generated_nz}` : 'Refit time UNKNOWN'}</span></div>
+    <Card title="Title odds" note={`Live, refitted ${lv[0]?.generated_nz ?? 'UNKNOWN'} after every result so far. The frozen picks never change.`}>
       <OddsList rows={lv.map((x) => ({ code: x.team, p: x.p_champion }))} top={10} />
       <a class="more" href={url('teams/')}>All 19 teams</a>
     </Card>
-    <div class="grid-4 tiles home-tiles">
-      <div class="card tile"><span class="label">Record</span><b>{rec ? `${rec.correct} / ${rec.n}` : '0 / 0'}</b><span class="cap muted">{rec?.n ? 'winners, frozen baseline' : 'No results entered yet.'}</span></div>
-      <div class="card tile"><span class="label">Pick'Ems</span><b>{pts ? `${pts.earned} / ${pts.max ?? 'UNKNOWN'}` : 'UNKNOWN'}</b><span class="cap muted">{pts ? `${STAGE_NAME[stage]}, ${pts.possible} points decided so far` : `${STAGE_NAME[stage]} picks not available yet.`}</span></div>
-      <div class="card tile"><span class="label">Next lock</span><b>{lockAt ?? 'UNKNOWN'}</b><span class="cap muted">{lock || 'Not available yet.'}</span></div>
-      <div class="card tile"><span class="label">Model</span><b>{ver}</b><span class="cap muted">{verRest.join(':').trim() || 'UNKNOWN'}. Ratings as of {lv[0]?.as_of ?? 'UNKNOWN'}.</span></div>
-    </div>
+    <section class="section" aria-label="How the model is doing">
+      <div class="grid-4 stats">
+        {stats.map(([v, c]) => <div class="stat"><b class:list={[{ muted: v === 'UNKNOWN' }]}>{v}</b><span>{c}</span></div>)}
+      </div>
+    </section>
   </div>
 <script is:inline src={url('js/clock.js')} defer></script>
 </Base>
 <style>
-  header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
-  .title { display:flex; align-items:center; gap:16px; } .title img { width:72px; height:72px; border-radius:16px; flex:none; }
-  @media (max-width: 640px) { .title { gap:12px; } .title img { width:48px; height:48px; border-radius:12px; } }
-  .more { color:var(--gold); font-weight:600; font-size:14px; align-self:flex-start; }
-  .home-tiles { grid-template-columns:1fr 1fr; align-content:start; }
-  .tile { gap:4px; } .tile b { font-size:22px; }
-  h3 .pill { margin-left:8px; vertical-align:middle; }
+  .home-head { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: var(--space-md); }
+  .wordmark { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl); line-height: 1.1; letter-spacing: -0.02em; }
+  .poro { width: var(--space-2xl); height: var(--space-2xl); border-radius: var(--radius-panel); flex: none; }
+  .more { color: var(--color-ink-2); font-size: var(--text-sm); font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); align-self: flex-start; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-lg); }
+  @media (max-width: 640px) { .poro { width: var(--space-xl); height: var(--space-xl); } }
 </style>

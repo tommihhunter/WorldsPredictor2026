@@ -8,12 +8,13 @@ const max = list[0]?.p || 1;
 {list.length ? (
   <ol class="odds">
     {list.map((r, i) => (
-      <li><span class="cap muted">{i + 1}</span><Badge code={r.code} /><span class="bar"><i class:list={[{ lead: i === 0 }]} style={`width:${((100 * r.p) / max).toFixed(1)}%`}></i></span><b>{pct(r.p, 1)}</b></li>
+      <li><span class="num rank">{i + 1}</span><Badge code={r.code} /><span class="bar"><i class:list={[{ lead: i === 0 }]} style={`width:${((100 * r.p) / max).toFixed(1)}%`}></i></span><span class="num p">{pct(r.p, 1)}</span></li>
     ))}
   </ol>
-) : <p class="muted cap">Live odds not available yet.</p>}
+) : <p class="caption">Live odds not available yet.</p>}
 <style>
-  .odds { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
-  .odds li { display:grid; grid-template-columns:20px 84px minmax(0,1fr) 52px; align-items:center; gap:10px; }
-  .odds b { text-align:right; font-weight:600; }
+  .odds { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2xs); }
+  .odds li { display: grid; grid-template-columns: var(--space-md) calc(var(--space-2xl) + var(--space-2xs)) minmax(0, 1fr) var(--space-xl); align-items: center; gap: var(--space-xs); }
+  .rank { color: var(--color-ink-3); font-size: var(--text-xs); }
+  .p { text-align: right; font-size: var(--text-sm); }
 </style>

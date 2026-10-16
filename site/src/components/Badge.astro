@@ -4,6 +4,6 @@ import { url } from '../lib/url';
 const { code, size = 18 } = Astro.props as { code: string; size?: number };
 const g = regionOf(code);
 ---
-<span class="badge" title={`${code} · ${g}`} style={`--b:${REGION_COLOR[g] ?? 'var(--bar)'}`}>
+<span class="badge" style={`--b:${REGION_COLOR[g] ?? 'var(--color-data)'}`}>
   <img src={url(`art/logos/${code}.png`)} alt="" style={`height:${size}px`} onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'dot'}))" />{code}
 </span>
