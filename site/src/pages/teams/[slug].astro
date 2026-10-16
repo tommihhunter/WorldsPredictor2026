@@ -1,14 +1,15 @@
 ---
-// Team dossier (design/lore/Teams.dc.html dossier panel, Phone Pages.dc.html): logo disc, name, headline, title %;
-// the path strip; the manual adjustment callout; 8 stat cells; wins by / loses to / form / coach / sample; players.
-// Below: path through Worlds, draft habits, sources. The season / Summer toggle is two radios and CSS (:has),
-// switching every [data-split] block on the page.
+// Team page, laid out in the order a fan reads it (redesign 17/10/2026):
+//   1. who they are and their title chance   2. the road: chance of reaching each stage, then the fixtures
+//   3. how they win and how they lose, and recent form   4. the numbers, each ranked against the other 18 teams
+//   5. the roster   6. draft habits   7. small print (coach, sample, sources)   8. previous / next team.
+// The season / Summer toggle is two radios and CSS (:has), switching every [data-split] block on the page.
 import Base from '../../layouts/Base.astro';
 import Logo from '../../components/Logo.astro';
+import ChampIcon from '../../components/ChampIcon.astro';
 import PathTable from '../../components/PathTable.astro';
-import PlayersTable from '../../components/PlayersTable.astro';
 import DraftBlock from '../../components/DraftBlock.astro';
-import { codeFromSlug, displayName, dossiers, live, overview, ratings, teamSlug, type Dossier, type TeamBlock } from '../../lib/data';
+import { codeFromSlug, displayName, dossiers, live, overview, ratings, teamSlug, type Dossier, type Player, type TeamBlock } from '../../lib/data';
 import { nzProse, pct1 as pc } from '../../lib/format';
 import { url } from '../../lib/url';
 
@@ -22,17 +23,87 @@ const at = rs.indexOf(r);
 const prev = rs[(at - 1 + rs.length) % rs.length];
 const next = rs[(at + 1) % rs.length];
 // players_sample and summer_sample are exported but not in the Dossier type.
-const d = dossiers().find((x) => x.code === code) as (Dossier & { players_sample?: string; summer_sample?: string | null }) | undefined;
+type D = Dossier & { players_sample?: string; summer_sample?: string | null };
+const all = dossiers() as D[];
+const d = all.find((x) => x.code === code);
 const lv = live().find((x) => x.team === code);
 const opp = rs.find((x) => x.code !== code)!.code;
 const pair = [code, opp].sort().map(teamSlug).join('-vs-');
 
-const pc1 = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Number(v).toFixed(1)}%`);
-const gd = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Math.round(Number(v)) > 0 ? '+' : ''}${Math.round(Number(v))}`);
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const name = displayName(r.name);
 const headline = nzProse(d?.headline || r.headline || 'UNKNOWN');
-// a source URL as a readable host and a short label from its path: locale, id and "ALL" segments dropped, slug to words
+
+// ---- 1. hero
+const title = lv?.p_champion ?? r.p_champion;
+const trend = r.trend ? cap(r.trend.toLowerCase()) : 'UNKNOWN';
+const trendTone = /peak|ris/i.test(trend) ? 'teal' : /fad/i.test(trend) ? 'risk' : 'muted';
+
+// ---- 2. the road: chance of reaching each stage (live odds when the bot has refitted, else the frozen ratings)
+const playin = lv ? lv.p_playin_win : r.p_playin;
+const road: { k: string; p: number | null; note?: string }[] = [
+  playin == null ? { k: 'Swiss stage', p: null, note: 'Seeded straight in' } : { k: 'Win the Play-In', p: playin },
+  { k: 'Advance from Swiss', p: lv?.p_advance ?? r.p_advance },
+  { k: 'Reach the semifinal', p: lv?.p_semis ?? r.p_semis },
+  { k: 'Reach the final', p: lv?.p_final ?? r.p_final },
+  { k: 'Win Worlds', p: title },
+];
+const adj = Number(r.adj_logit) || 0;
+
+// ---- 3. scouting report and form
+const clean = (v: string | null | undefined) => cap((v || 'UNKNOWN').trim().replace(/^(by|to) /, ''));
+// form: "dd/mm/yyyy OPP a-b | ..." -> newest first, last three
+const form = String(d?.form ?? '').split('|').map((x) => x.trim()).filter(Boolean).slice(-3).reverse().map((x) => {
+  const m = /^(\d\d\/\d\d\/\d{4})\s+(\S+)\s+(\d+)-(\d+)/.exec(x);
+  if (!m) return { raw: x };
+  const [, date, vs, a, b] = m;
+  return { date, vs, score: `${a}-${b}`, win: Number(a) > Number(b) };
+});
+
+// ---- 4. the numbers, ranked against the field for the same split
+const ord = (n: number) => { const s = ['th', 'st', 'nd', 'rd'], v = n % 100; return `${n}${s[(v - 20) % 10] || s[v] || s[0]}`; };
+const blockOf = (x: D, key: string): TeamBlock | null => (key === 'summer' ? (x.team_summer ?? x.team_season) : x.team_season) ?? null;
+type Fmt = (v: number) => string;
+const P: Fmt = (v) => `${v.toFixed(1)}%`;
+const GD: Fmt = (v) => `${Math.round(v) > 0 ? '+' : ''}${Math.round(v)}`;
+const N1: Fmt = (v) => v.toFixed(1);
+const MIN: Fmt = (v) => `${v.toFixed(1)} min`;
+// [field, label, format, higher is better (null: no rank), optional sub-line]
+type Item = [keyof TeamBlock, string, Fmt, boolean | null, ((t: TeamBlock) => string)?];
+const GROUPS: { title: string; items: Item[] }[] = [
+  { title: 'Results', items: [['wr', 'Win rate', P, true, (t) => t.record], ['kills_pg', 'Kills per game', N1, true], ['deaths_pg', 'Deaths per game', N1, false], ['avg_game_min', 'Average game', MIN, null]] },
+  { title: 'Early game', items: [['fb_pct', 'First blood', P, true], ['ft_pct', 'First tower', P, true], ['gd15', 'Gold lead at 15', GD, true], ['wr_ahead15', 'Win rate when ahead at 15', P, true]] },
+  { title: 'Objectives', items: [['drag_share', 'Dragon share', P, true], ['herald_share', 'Herald share', P, true], ['baron_share', 'Baron share', P, true]] },
+  { title: 'Sides', items: [['blue_wr', 'Blue side win rate', P, true, (t) => `${t.blue_games} games`], ['red_wr', 'Red side win rate', P, true, (t) => `${t.red_games} games`]] },
+];
+const statRows = (key: string, t: TeamBlock, items: Item[]) => items.map(([f, label, fmt, hib, sub]) => {
+  const v = t[f] as unknown as number | null | undefined;
+  const value = v == null || Number.isNaN(Number(v)) ? 'UNKNOWN' : fmt(Number(v));
+  let rank = '', tone = 'muted';
+  if (hib != null && v != null) {
+    const field = all.map((x) => blockOf(x, key)?.[f] as unknown as number | null | undefined).filter((x): x is number => x != null && !Number.isNaN(Number(x)));
+    const better = field.filter((x) => (hib ? x > Number(v) : x < Number(v))).length;
+    const n = field.length, k = better + 1;
+    rank = `${ord(k)} of ${n}`;
+    tone = k <= 5 ? 'teal' : k > n - 5 ? 'risk' : 'muted';
+  }
+  return { label, value, rank, tone, sub: sub ? sub(t) : '' };
+});
+
+// ---- 5. roster
+const ROLE: Record<string, string> = { TOP: 'Top', JNG: 'Jungle', JUNGLE: 'Jungle', MID: 'Mid', ADC: 'Bot', BOT: 'Bot', SUP: 'Support', SUPPORT: 'Support' };
+const kda = (p: Player) => (p.kda == null ? 'UNKNOWN' : Number(p.kda).toFixed(1));
+const gd15 = (p: Player) => (p.gd15 == null ? 'UNKNOWN' : GD(Number(p.gd15)));
+
+// Summer falls back to the season when a split is missing (as the old dashboard did); the sample line says which.
+const hasSummer = !!(d?.signature_summer || d?.team_summer);
+const splits = [
+  { key: 'season', tb: d?.team_season ?? null, tbName: '2026 season', players: d?.signature ?? [], sample: d?.players_sample },
+  { key: 'summer', tb: d?.team_summer ?? d?.team_season ?? null, tbName: d?.team_summer ? 'Summer split' : '2026 season (no Summer split data)', players: d?.signature_summer ?? d?.signature ?? [], sample: d?.signature_summer ? d?.summer_sample : d?.players_sample },
+];
+const sampleText = (s?: string | null) => (s ? s.replace(/;\s*champion pools show[^;]*$/i, '') : 'UNKNOWN');
+
+// ---- 7. small print: a source URL as a readable host and a short label from its path
 const source = (u: string) => {
   let x: URL;
   try { x = new URL(u); } catch { return { host: u, label: '' }; }
@@ -46,261 +117,294 @@ const source = (u: string) => {
   if (label.length > 64) label = `${label.slice(0, label.lastIndexOf(' ', 64))}…`;
   return { host: x.hostname.replace(/^www\./, ''), label: label && cap(label) };
 };
-// players_sample ends with a note about five champions with games and win rate; the table shows the top three names only
-const sampleText = (s?: string | null) => (s ? s.replace(/;\s*champion pools show[^;]*$/i, '') : 'UNKNOWN');
-
-const playin = lv ? lv.p_playin_win : r.p_playin;
-const trend = r.trend ? cap(r.trend.toLowerCase()) : 'UNKNOWN';
-const path: [string, string][] = [
-  ['Win Play-In', playin == null ? 'Direct' : pc(playin)],
-  ['Advance from Swiss', pc(lv?.p_advance ?? r.p_advance)],
-  ['Reach semifinal', pc(lv?.p_semis ?? r.p_semis)],
-  ['Reach final', pc(lv?.p_final ?? r.p_final)],
-  ['Trend', trend],
-];
-const adj = Number(r.adj_logit) || 0;
-// adj_source is "url ; url (accessed dd/mm/yyyy)": links for the URLs, text for the rest.
-const adjSource = String(r.adj_source || 'UNKNOWN').split(/(https?:\/\/\S+)/).filter(Boolean);
-
-const stats = (t: TeamBlock): [string, string][] => [
-  [pc1(t.wr), `Win rate, ${t.record ?? 'UNKNOWN'}`], [gd(t.gd15), 'Gold diff at 15'],
-  [pc1(t.blue_wr), 'Blue side win rate'], [pc1(t.red_wr), 'Red side win rate'],
-  [pc1(t.fb_pct), 'First blood'], [pc1(t.ft_pct), 'First tower'],
-  [pc1(t.drag_share), 'Dragon share'], [pc1(t.baron_share), 'Baron share'],
-];
-// Summer falls back to the season when a split is missing (as the old dashboard did); the sample line says which.
-const hasSummer = !!(d?.signature_summer || d?.team_summer);
-const splits = [
-  { key: 'season', tb: d?.team_season ?? null, tbName: '2026 season', players: d?.signature ?? [], sample: d?.players_sample },
-  { key: 'summer', tb: d?.team_summer ?? d?.team_season ?? null, tbName: d?.team_summer ? 'Summer split' : '2026 season (no Summer split data)', players: d?.signature_summer ?? d?.signature ?? [], sample: d?.signature_summer ? d?.summer_sample : d?.players_sample },
-];
-const clean = (v: string | null | undefined) => cap((v || 'UNKNOWN').trim().replace(/^(by|to) /, ''));
-const form = String(d?.form ?? '').split('|').map((x) => x.trim()).filter(Boolean).slice(-3).join(', ') || 'UNKNOWN';
-// repeated labels (several player pages of one event) get a counter so every link reads differently
-const sources = String(d?.sources ?? '').split(' ').filter(Boolean).map((u, i, all) => {
+const sources = String(d?.sources ?? '').split(' ').filter(Boolean).map((u, i, list) => {
   const sr = source(u);
-  const same = all.slice(0, i).filter((v) => { const o = source(v); return o.host === sr.host && o.label === sr.label; }).length;
+  const same = list.slice(0, i).filter((v) => { const o = source(v); return o.host === sr.host && o.label === sr.label; }).length;
   return { u, ...sr, label: same ? `${sr.label} (${same + 1})` : sr.label };
 });
+const adjSource = String(r.adj_source || 'UNKNOWN').split(/(https?:\/\/\S+)/).filter(Boolean);
 const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/\d{4})/)?.[1] ?? 'UNKNOWN';
 ---
 <Base title={name} active="teams" description={headline} footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}.` }}>
-  <a class="back" href={url('teams/')}><span class="gold" aria-hidden="true">←</span> Teams</a>
+  <a class="back" href={url('teams/')}><span aria-hidden="true">←</span> All teams</a>
 
-  <section class="panel dossier" aria-label="Dossier">
-    <div class="head">
-      <span class="disc lg"><Logo code={code} size={66} /></span>
-      <div class="who">
-        <span class="eyebrow"><span class="dt">Dossier, </span>{r.region} seed {r.seed}</span>
-        <h1>{name}</h1>
-      </div>
-      <p class="headline">{headline}</p>
-      <div class="tp">
-        <span class="big gold">{pc(lv?.p_champion ?? r.p_champion)}</span>
-        <span class="muted2"><span class="dt">to win Worlds</span><span class="ph">title</span></span>
-      </div>
+  <!-- 1. who they are -->
+  <header class="hero">
+    <span class="disc crest"><Logo code={code} size={84} /></span>
+    <div class="who">
+      <span class="eyebrow">{r.region} seed {r.seed}, ranked {ord(r.rank)} of {rs.length} by the model</span>
+      <h1>{name}</h1>
+      <p class="story">{headline}</p>
+      <p class="acts">
+        <a href={url(`teams/compare/${pair}/`)}>Compare with {opp} <span aria-hidden="true">→</span></a>
+        <button type="button" class="copy" aria-live="polite">Copy link</button>
+      </p>
     </div>
-
-    <div class="path">
-      {path.map(([k, v]) => <div><span class="k">{k}</span><span class="v">{v}</span></div>)}
+    <div class="odds">
+      <span class="big gold">{pc(title)}</span>
+      <span class="muted2">to win Worlds</span>
+      <span class:list={['trend', trendTone]}>{trend}</span>
     </div>
-
-    {adj !== 0 && (
-      <div class="callout adj">
-        <span class="eyebrow">Manual adjustment: {adj > 0 ? '+' : ''}{adj.toFixed(2)} logit</span>
-        <p>{r.adj_reason || 'UNKNOWN'}</p>
-        <p class="caption src">Source: {adjSource.map((t) => (t.startsWith('http') ? <a href={t} target="_blank" rel="noopener">{source(t).host}{source(t).label && `, ${source(t).label}`}</a> : t))}</p>
-      </div>
-    )}
-
-    {d ? (
-      <div class="body">
-        <div class="seg" role="radiogroup" aria-label="Split">
-          <span class="caption">Stats and players</span>
-          <input type="radio" name="split" id="split-season" value="season" checked />
-          <label class="chip" for="split-season">2026 season</label>
-          <input type="radio" name="split" id="split-summer" value="summer" disabled={!hasSummer} />
-          <label class="chip" for="split-summer">{hasSummer ? 'Summer split' : 'No Summer data'}</label>
-        </div>
-        {splits.map((s) => (
-          <div class="stats" data-split={s.key}>
-            {s.tb ? stats(s.tb).map(([v, k]) => <div><span class="k">{k}</span><span class="v">{v}</span></div>) : <p class="caption">Key stats not available yet.</p>}
-          </div>
-        ))}
-        <div class="two">
-          <dl id="report" class="facts">
-            <dt>Wins by</dt><dd>{clean(d.report?.wins_by)}</dd>
-            <dt>Loses to</dt><dd>{clean(d.report?.loses_to)}</dd>
-            <dt>Last 3 series</dt><dd>{form}</dd>
-            <dt>Coach</dt><dd>{d.coach || 'UNKNOWN'}</dd>
-            <dt>Sample</dt><dd>{splits.map((s) => <span data-split={s.key}>{s.tb ? `${s.tb.games} games, ${s.tbName}, gol.gg` : 'UNKNOWN'}</span>)}</dd>
-          </dl>
-          <div id="players" class="players">
-            <h2 class="ph">Players</h2>
-            <PlayersTable splits={splits.map((s) => ({ key: s.key, players: s.players }))} />
-            {splits.map((s) => <p class="caption" data-split={s.key}>Players: {sampleText(s.sample)}.</p>)}
-          </div>
-        </div>
-      </div>
-    ) : <p class="caption">Dossier not available yet.</p>}
-  </section>
-
-  <p class="links">
-    <a href={url(`teams/compare/${pair}/`)}>Compare with {opp} →</a>
-    <button type="button" class="copy" aria-live="polite">Copy link</button>
-    <a href={url('teams/')}>All teams</a>
-  </p>
+  </header>
   <script is:inline>
-    document.querySelector('.links .copy')?.addEventListener('click', async (e) => {
+    document.querySelector('.acts .copy')?.addEventListener('click', async (e) => {
       const b = e.currentTarget;
       try { await navigator.clipboard.writeText(location.href); b.textContent = 'Link copied'; }
       catch { b.textContent = 'Copy failed: use the address bar'; }
     });
   </script>
 
+  <!-- 2. the road -->
   <section class="section">
-    <div class="section-head"><h2>Path through Worlds</h2><span>Times NZDT</span></div>
-    <div class="panel"><PathTable code={code} /></div>
-  </section>
-
-  {d && (
-    <section class="section">
-      <div class="section-head"><h2>Draft habits</h2><span>From gol.gg</span></div>
-      <div class="panel draft">
-        {d.report?.draft && <p class="fg2">{d.report.draft}</p>}
-        {splits.map((s) => <div data-split={s.key}>{s.tb ? <DraftBlock t={s.tb} pool={d.pool_depth} /> : <p class="caption">Draft data not available yet.</p>}</div>)}
+    <div class="section-head"><h2>The road to the trophy</h2><span>Chance of reaching each stage{lv ? ', live odds' : ''}</span></div>
+    <ol class="road">
+      {road.map((s, i) => (
+        <li class:list={[{ end: i === road.length - 1 }]}>
+          <span class="step">{s.k}</span>
+          <span class="pv">{s.p == null ? 'Direct' : pc(s.p)}</span>
+          {s.p == null ? <span class="caption">{s.note}</span> : <span class="bar alt"><i style={`width:${Math.max(1, s.p * 100).toFixed(1)}%`}></i></span>}
+        </li>
+      ))}
+    </ol>
+    {adj !== 0 && (
+      <div class="callout adj">
+        <span class="eyebrow">Manual adjustment: {adj > 0 ? '+' : ''}{adj.toFixed(2)} logit</span>
+        <p>{r.adj_reason || 'UNKNOWN'}</p>
+        <p class="caption">Source: {adjSource.map((t) => (t.startsWith('http') ? <a href={t} target="_blank" rel="noopener">{source(t).host}{source(t).label && `, ${source(t).label}`}</a> : t))}</p>
       </div>
-    </section>
-  )}
-
-  <section class="section">
-    <div class="section-head"><h2>Sources</h2><span>Accessed {accessed}</span></div>
-    {sources.length ? <ul class="srcs">{sources.map((x) => <li><a href={x.u} target="_blank" rel="noopener" title={x.u}><span class="host">{x.host}</span><span class="lbl">{x.label || x.u}</span></a></li>)}</ul> : <p class="caption">No sources listed.</p>}
+    )}
+    <details class="fixtures">
+      <summary>Fixtures and our picks <span class="caption">Times NZDT</span></summary>
+      <PathTable code={code} />
+    </details>
   </section>
 
+  {d ? (
+    <>
+      <!-- 3. how they play -->
+      <section class="section">
+        <div class="section-head"><h2>How they play</h2><span>Scouting report</span></div>
+        <div class="report" id="report">
+          <article class="rcard win"><h3>How they win</h3><p>{clean(d.report?.wins_by)}</p></article>
+          <article class="rcard lose"><h3>How they lose</h3><p>{clean(d.report?.loses_to)}</p></article>
+        </div>
+        {form.length > 0 && (
+          <div class="form">
+            <span class="caption">Recent form</span>
+            <ul>
+              {form.map((g) => ('raw' in g ? <li class="fx">{g.raw}</li> : (
+                <li class="fx">
+                  <span class:list={['wl', g.win ? 'teal' : 'risk']}>{g.win ? 'W' : 'L'}</span>
+                  <span class="fs">{g.score}</span><span class="muted2">v</span><Logo code={g.vs} size={22} /><span class="code">{g.vs}</span>
+                  <span class="caption">{g.date}</span>
+                </li>
+              )))}
+            </ul>
+          </div>
+        )}
+      </section>
+
+      <!-- 4. the numbers -->
+      <section class="section">
+        <div class="section-head">
+          <h2>By the numbers</h2>
+          <div class="seg" role="radiogroup" aria-label="Split">
+            <input type="radio" name="split" id="split-season" value="season" checked />
+            <label class="chip" for="split-season">2026 season</label>
+            <input type="radio" name="split" id="split-summer" value="summer" disabled={!hasSummer} />
+            <label class="chip" for="split-summer">{hasSummer ? 'Summer split' : 'No Summer data'}</label>
+          </div>
+        </div>
+        <p class="caption">Each number is ranked against the other teams at Worlds. Top five in teal, bottom five in red.</p>
+        {splits.map((s) => (
+          <div class="groups" data-split={s.key}>
+            {s.tb ? GROUPS.map((g) => (
+              <div class="panel group">
+                <h3>{g.title}</h3>
+                <ul class="srows">
+                  {statRows(s.key, s.tb!, g.items).map((x) => (
+                    <li>
+                      <span class="sl">{x.label}{x.sub && <span class="caption"> {x.sub}</span>}</span>
+                      <span class="sv">{x.value}</span>
+                      <span class:list={['sr', x.tone]}>{x.rank}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )) : <p class="caption">Key stats not available yet.</p>}
+          </div>
+        ))}
+      </section>
+
+      <!-- 5. roster -->
+      <section class="section" id="players">
+        <div class="section-head"><h2>The roster</h2><span>Coach {d.coach || 'UNKNOWN'}</span></div>
+        {splits.map((s) => (
+          <div class="roster" data-split={s.key}>
+            {s.players.length ? s.players.map((p) => (
+              <article class="panel player-row">
+                <span class="caption">{ROLE[String(p.role).toUpperCase()] ?? p.role}</span>
+                <span class="code pn">{p.player}</span>
+                <dl class="pstats"><div><dt>KDA</dt><dd>{kda(p)}</dd></div><div><dt>Gold at 15</dt><dd>{gd15(p)}</dd></div></dl>
+                <ul class="pchamps">{(p.champs ?? []).slice(0, 3).map((c) => <li><ChampIcon name={c.champ} size={28} /></li>)}</ul>
+              </article>
+            )) : <p class="caption">No player data found.</p>}
+          </div>
+        ))}
+        {splits.map((s) => <p class="caption" data-split={s.key}>Players: {sampleText(s.sample)}.</p>)}
+      </section>
+
+      <!-- 6. draft -->
+      <section class="section">
+        <div class="section-head"><h2>Draft habits</h2><span>From gol.gg</span></div>
+        <div class="panel draft">
+          {d.report?.draft && <p class="fg2">{d.report.draft}</p>}
+          {splits.map((s) => <div data-split={s.key}>{s.tb ? <DraftBlock t={s.tb} pool={d.pool_depth} /> : <p class="caption">Draft data not available yet.</p>}</div>)}
+        </div>
+      </section>
+    </>
+  ) : <p class="caption">Dossier not available yet.</p>}
+
+  <!-- 7. small print -->
+  <details class="fine">
+    <summary>Sources and sample <span class="caption">{sources.length} sources, accessed {accessed}</span></summary>
+    {d && <p class="caption">{splits.map((s) => <span data-split={s.key}>Team stats: {s.tb ? `${s.tb.games} games, ${s.tbName}, gol.gg` : 'UNKNOWN'}.</span>)}</p>}
+    {sources.length ? <ul class="srcs">{sources.map((x) => <li><a href={x.u} target="_blank" rel="noopener" title={x.u}><span class="host">{x.host}</span> <span class="lbl">{x.label || x.u}</span></a></li>)}</ul> : <p class="caption">No sources listed.</p>}
+  </details>
+
+  <!-- 8. other teams -->
   <nav class="pager" aria-label="Other teams">
     <a class="card pg prev" href={url(`teams/${teamSlug(prev.code)}/`)}>
-      <span class="pg-k"><span class="gold" aria-hidden="true">←</span> Previous team</span>
-      <span class="pg-t"><Logo code={prev.code} size={40} /><span class="code">{displayName(prev.name)}</span></span>
+      <span class="caption"><span aria-hidden="true">←</span> Previous</span>
+      <span class="pg-t"><Logo code={prev.code} size={36} /><span class="code">{displayName(prev.name)}</span></span>
     </a>
-    <a class="card pg all" href={url('teams/')}><span class="code">All teams</span></a>
     <a class="card pg next" href={url(`teams/${teamSlug(next.code)}/`)}>
-      <span class="pg-k">Next team <span class="gold" aria-hidden="true">→</span></span>
-      <span class="pg-t"><span class="code">{displayName(next.name)}</span><Logo code={next.code} size={40} /></span>
+      <span class="caption">Next <span aria-hidden="true">→</span></span>
+      <span class="pg-t"><span class="code">{displayName(next.name)}</span><Logo code={next.code} size={36} /></span>
     </a>
   </nav>
 </Base>
 <style>
-  /* back link sits 16px above the dossier instead of the 48px section gap */
-  .back { display: inline-flex; gap: var(--space-2xs); align-items: center; align-self: flex-start; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--fg2); padding: var(--space-3xs) 0; margin-bottom: calc(var(--space-sm) - var(--space-xl)); }
-  .back:hover { color: var(--gold); }
-  .back:active { color: var(--muted2); }
-  .back .gold { font-size: var(--fs-lg); line-height: 1; }
+  /* back link */
+  .back { align-self: flex-start; display: inline-flex; gap: var(--space-2xs); font-size: var(--fs-sm); font-weight: 600; color: var(--muted); margin-bottom: calc(var(--space-xl) * -1 + var(--space-sm)); }
 
-  .ph { display: none; }
-  .dossier { display: flex; flex-direction: column; gap: var(--space-lg); padding: var(--space-lg); }
-  .head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: var(--space-md); row-gap: var(--space-xs); align-items: center; }
-  .lg { --s: 108px; grid-row: 1 / 3; }
-  .who { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; align-self: end; }
-  .headline { grid-column: 2; align-self: start; font-size: var(--fs-lg); line-height: 1.45; color: var(--fg2); max-width: 64ch; text-wrap: pretty; }
-  /* the title % is the page's one gold number */
-  .tp { grid-column: 3; grid-row: 1 / 3; display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2xs); }
-  .tp .big { font-size: var(--fs-hero); }
-  .tp .muted2 { font-size: var(--fs-sm); }
+  /* 1. hero: crest, identity, odds */
+  .hero { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--space-lg); align-items: center; padding-bottom: var(--space-lg); border-bottom: 1px solid var(--line); }
+  .crest { --s: 128px; background: var(--surface); box-shadow: var(--inset); }
+  .who { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
+  .story { font-size: var(--fs-lg); line-height: 1.45; color: var(--fg2); max-width: 62ch; text-wrap: pretty; }
+  .acts { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-2xs); font-size: var(--fs-sm); font-weight: 600; }
+  .acts a, .acts button { color: var(--gold); background: none; border: 0; padding: var(--space-3xs) 0; cursor: pointer; }
+  .acts a:hover, .acts button:hover { color: var(--fg); }
+  .odds { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-3xs); text-align: right; }
+  .odds .big { font-size: var(--fs-hero); }
+  .trend { margin-top: var(--space-2xs); font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 
-  /* path strip and stat cells: label above value, hairline-ruled, flush with the content edge */
-  .path { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .path > div, .stats > div { display: flex; flex-direction: column; gap: var(--space-3xs); min-width: 0; padding: var(--space-sm) var(--space-md) var(--space-sm) 0; }
-  .k { font-size: var(--fs-sm); color: var(--muted); }
-  .path .v, .stats .v { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); line-height: var(--lh-tight); text-transform: uppercase; letter-spacing: var(--track-caps); }
-  .adj { gap: var(--space-2xs); }
-  .src { overflow-wrap: anywhere; }
-  .src a { color: var(--gold); }
-  .src a:hover { color: var(--fg); }
+  /* 2. road: five steps that narrow */
+  .road { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-sm); }
+  .road li { display: flex; flex-direction: column; gap: var(--space-2xs); padding: var(--space-md); background: var(--surface); border-radius: var(--radius); box-shadow: var(--inset); position: relative; }
+  .road li:not(.end)::after { content: '›'; position: absolute; right: calc(var(--space-sm) * -0.75); top: 50%; transform: translateY(-50%); color: var(--dim); font-size: var(--fs-xl); z-index: 1; }
+  .road .step { font-size: var(--fs-sm); color: var(--muted); }
+  .road .pv { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-2xl); line-height: 1; }
+  .road .end { box-shadow: var(--inset-warm); background: var(--surface-warm); }
+  .road .end .bar > i { background: var(--gold); }
+  .fixtures, .fine { border-top: 1px solid var(--line); padding-top: var(--space-sm); }
+  .fixtures summary, .fine summary { cursor: pointer; font-weight: 600; display: flex; gap: var(--space-sm); align-items: baseline; list-style: none; }
+  .fixtures summary::before, .fine summary::before { content: '+'; color: var(--gold); width: 1ch; }
+  .fixtures[open] summary::before, .fine[open] summary::before { content: '−'; }
+  .fixtures summary:hover, .fine summary:hover { color: var(--gold); }
+  .fixtures[open] summary { margin-bottom: var(--space-sm); }
 
-  .body { display: flex; flex-direction: column; gap: var(--space-md); }
-  .seg { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2xs); }
-  .seg .caption { margin-right: var(--space-2xs); }
+  /* 3. report: two contrasting cards, then form */
+  .report { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+  .rcard { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg); background: var(--surface); border-radius: var(--radius); border-top: 3px solid var(--teal); }
+  .rcard.lose { border-top-color: var(--risk); }
+  .rcard h3 { font-size: var(--fs-lg); }
+  .rcard.win h3 { color: var(--teal); }
+  .rcard.lose h3 { color: var(--risk); }
+  .rcard p { font-size: var(--fs-lg); line-height: 1.5; text-wrap: pretty; }
+  .form { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-md); }
+  .form ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+  .fx { display: inline-flex; align-items: center; gap: var(--space-2xs); padding: var(--space-2xs) var(--space-sm); background: var(--surface); border-radius: var(--radius-pill); }
+  .wl { font-family: var(--font-display); font-weight: 700; width: 1.4em; text-align: center; }
+  .fs { font-weight: 600; }
+
+  /* 4. numbers: four groups, value + rank */
+  .section-head .seg { display: flex; gap: var(--space-2xs); }
   .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
   .seg label { cursor: pointer; border-color: var(--split-off); }
   .seg input:not(:checked):not(:disabled) + label:hover { color: var(--gold); border-color: var(--gold); }
-  .seg input:not(:checked):not(:disabled) + label:active { color: var(--muted2); }
   .seg input:checked + label { background: var(--gold); border-color: var(--gold); color: var(--bg); }
   .seg input:disabled + label { cursor: default; opacity: 0.6; }
   .seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
-  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .stats > div { border-bottom: 1px solid var(--line); }
-  .stats .k { color: var(--fg2); }
+  /* four groups: 4 across on wide screens, 2 x 2 on laptops and tablets, stacked on phones (never 3 + 1) */
+  .groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-md); align-items: start; }
+  .group { display: flex; flex-direction: column; gap: var(--space-xs); }
+  .group h3 { font-size: var(--fs-lg); }
+  .srows { list-style: none; margin: 0; padding: 0; }
+  .srows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'l v' 'l r'; column-gap: var(--space-md); align-items: baseline; padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+  .sl { grid-area: l; align-self: center; color: var(--fg2); }
+  .sl .caption { display: block; }
+  .sv { grid-area: v; text-align: right; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); line-height: 1.1; }
+  .sr { grid-area: r; text-align: right; font-size: var(--fs-xs); font-weight: 600; }
 
-  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: var(--space-lg) var(--space-2xl); align-items: start; padding-top: var(--space-2xs); }
-  .facts { margin: 0; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: var(--space-xs) var(--space-md); line-height: 1.5; }
-  .facts dt { color: var(--muted); }
-  .facts dd { margin: 0; min-width: 0; }
-  .players { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
+  /* 5. roster: one card per role */
+  .roster { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-sm); }
+  .player-row { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md); }
+  .pn { font-size: var(--fs-xl); line-height: 1.1; }
+  .pstats { margin: 0; display: flex; gap: var(--space-md); }
+  .pstats div { display: flex; flex-direction: column; }
+  .pstats dt { font-size: var(--fs-xs); color: var(--muted); }
+  .pstats dd { margin: 0; font-weight: 600; }
+  .pchamps { list-style: none; margin: 0; padding: var(--space-xs) 0 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: var(--space-2xs); font-size: var(--fs-sm); }
+
+  .draft { display: flex; flex-direction: column; gap: var(--space-md); }
+
+  /* 7. small print */
+  .fine { font-size: var(--fs-sm); }
+  .fine > p { margin-bottom: var(--space-xs); }
+  .srcs { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: var(--space-xl); }
+  .srcs li { break-inside: avoid; padding: var(--space-3xs) 0; }
+  .srcs .host { color: var(--fg2); font-weight: 600; }
+  .srcs .lbl { color: var(--muted); }
+
+  /* 8. pager */
+  .pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+  .pg { gap: var(--space-2xs); }
+  .pg-t { display: flex; align-items: center; gap: var(--space-xs); font-size: var(--fs-lg); }
+  .next { align-items: flex-end; text-align: right; }
+
   :global(main:has(#split-season:checked) [data-split="summer"]),
   :global(main:has(#split-summer:checked) [data-split="season"]) { display: none !important; }
 
-  /* action links sit 24px under the dossier */
-  .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs) var(--space-md); font-weight: 600; margin-top: calc(var(--space-md) - var(--space-xl)); }
-  .links a, .links button { color: var(--gold); padding: var(--space-3xs) 0; }
-  .links button { font: inherit; background: none; border: 0; cursor: pointer; transition: color 120ms ease; }
-  .links a:hover, .links button:hover { color: var(--fg); }
-  .links a:active, .links button:active { color: var(--muted2); }
-
-  .draft { display: flex; flex-direction: column; gap: var(--space-md); }
-  .draft > p { max-width: 90ch; }
-
-  /* sources: host over a short label, ruled rows in two columns */
-  .srcs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); column-gap: var(--space-lg); }
-  .srcs li { border-top: 1px solid var(--line); min-width: 0; }
-  .srcs a { display: flex; flex-direction: column; padding: var(--space-xs) 0; min-width: 0; }
-  .srcs .host { font-weight: 600; color: var(--fg); transition: color 120ms ease; }
-  .srcs .lbl { font-size: var(--fs-sm); color: var(--muted); overflow-wrap: anywhere; }
-  .srcs a:hover .host { color: var(--gold); }
-  .srcs a:active .host { color: var(--muted2); }
-
-  .pager { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--space-sm); }
-  .pg { gap: var(--space-2xs); padding: var(--space-sm) var(--space-md); }
-  .pg:hover { border-color: var(--gold); }
-  .pg:active { background: var(--surface); }
-  .pg-k { font-size: var(--fs-sm); color: var(--muted); }
-  .pg-t { display: flex; align-items: center; gap: var(--space-xs); }
-  .pg-t .code { font-size: var(--fs-lg); }
-  .next { align-items: flex-end; text-align: right; }
-  .all { justify-content: center; align-items: center; padding: var(--space-sm) var(--space-lg); }
-  .all .code { color: var(--fg2); }
-
   @media (max-width: 1100px) {
-    .path { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .road { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .road li::after { display: none; }
+    .roster { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
+  @media (max-width: 1500px) { .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 640px) {
-    .back { margin-bottom: calc(var(--space-2xs) - var(--space-lg)); }
-    .dt { display: none; }
-    .ph { display: inline; }
-    h2.ph { display: block; font-size: var(--fs-xl); }
-    .dossier { background: none; box-shadow: none; padding: 0; gap: var(--space-md); border-radius: 0; }
-    .head { column-gap: var(--space-sm); row-gap: var(--space-sm); }
-    .lg { --s: 72px; grid-row: 1; background: var(--surface); }
-    .lg :global(.logo) { --s: 44px !important; }
-    .who { gap: 0; align-self: center; }
-    .tp { grid-row: 1; gap: 0; }
-    .tp .big { font-size: var(--fs-3xl); }
-    .tp .muted2 { font-size: var(--fs-xs); color: var(--muted); }
-    .headline { grid-column: 1 / -1; grid-row: 2; font-size: var(--fs-md); }
-    .path { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; border: 0; background: var(--line); border-radius: var(--radius); overflow: hidden; }
-    .path > div { padding: var(--space-xs) var(--space-sm); background: var(--surface); }
-    .path > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
-    .seg .caption { display: none; }
-    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .stats > div { padding: var(--space-xs) var(--space-xs) var(--space-xs) 0; }
-    .facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .facts dd { margin-bottom: var(--space-xs); }
-    .links { margin-top: calc(var(--space-2xs) - var(--space-lg)); }
-    .links a, .links button { padding: var(--space-xs) 0; }
-    .pager { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs); }
-    .all { grid-column: 1 / -1; grid-row: 2; padding: var(--space-xs); }
-    .pg { padding: var(--space-xs) var(--space-sm); }
-    .pg-t .code { font-size: var(--fs-md); }
+    .back { margin-bottom: calc(var(--space-lg) * -1 + var(--space-2xs)); }
+    .hero { grid-template-columns: auto minmax(0, 1fr); gap: var(--space-sm); padding-bottom: var(--space-md); }
+    .crest { --s: 72px; }
+    .crest :global(.logo) { --s: 48px !important; }
+    .who { grid-column: 1 / -1; grid-row: 2; }
+    .odds { grid-column: 2; grid-row: 1; }
+    .road { grid-template-columns: minmax(0, 1fr); gap: 0; background: var(--surface); border-radius: var(--radius); padding: 0 var(--space-sm); }
+    .road li { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 's v' 'b b'; gap: var(--space-2xs) var(--space-sm); padding: var(--space-xs) 0; background: none; box-shadow: none; border-radius: 0; border-top: 1px solid var(--line); }
+    .road li:first-child { border-top: 0; }
+    .road .end { background: none; box-shadow: none; }
+    .road .step { grid-area: s; align-self: center; }
+    .road .pv { grid-area: v; font-size: var(--fs-xl); }
+    .road .bar, .road .caption { grid-area: b; }
+    .report, .groups { grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }
+    .rcard { padding: var(--space-sm); }
+    .rcard p { font-size: var(--fs-md); }
+    .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .player-row { padding: var(--space-sm); }
+    .srcs { columns: 1; }
+    .pager { gap: var(--space-xs); }
+    .pg-t { font-size: var(--fs-md); }
   }
 </style>

@@ -97,13 +97,13 @@ def check_teams_nojs(browser, target, problems):
     ctx.close()
 
 
-REPORT_KEYS = ["Wins by", "Loses to", "Last 3 series", "Coach", "Sample"]
+REPORT_KEYS = ["How they win", "How they lose"]
 
 
 def check_team_gen(page, tag, problems):
-    """GEN dossier: the five report keys and 5 visible player rows (one split shown at a time)."""
-    keys = page.locator("#report dt").all_inner_texts()
-    rows = page.locator("#players tr.player-row:visible").count()
+    """GEN team page: the two scouting-report cards and 5 visible player cards (one split shown at a time)."""
+    keys = page.locator("#report h3").all_inner_texts()
+    rows = page.locator("#players .player-row:visible").count()
     print(f"{tag}: report keys {keys}, player rows {rows}")
     if [k.strip().lower() for k in keys] != [k.lower() for k in REPORT_KEYS]:
         problems.append(f"{tag}: report keys {keys}, expected {REPORT_KEYS}")
