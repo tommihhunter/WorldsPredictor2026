@@ -42,7 +42,7 @@ editorial (playful notes: the poro mascot, the gold accent)
 ## Surfaces and rules
 - Default container: none. Sections are separated by a hairline (`border-top: 1px solid var(--color-rule)`) and a heading.
 - `.panel` (paper-2, radius `--radius-panel` 12px, no border, no shadow): at most one per page (Home: Today; compare: summary strip; hub: Today strip; team page: the scouting report).
-- Data chrome radius `--radius-data` 4px (badges, bars, chips). Pills (`--radius-pill` 999px) only for filter chips on Teams and the format switch on compare.
+- Data chrome radius `--radius-data` 4px (badges, bars, chips). Pills (`--radius-pill` 999px) only for chips that switch a view: the Teams filters, the compare format switch, the hub Frozen / Latest toggle and the team page season / Summer toggle.
 - No box shadows. Elevation is lightness only.
 - Bars: 6px high, square ends, `--color-data`; the leader `--color-data-lead`. The compare page uses a split bar (two halves meeting under the label). Swiss and team cards: no bars, numbers only.
 

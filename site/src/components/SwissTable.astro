@@ -1,5 +1,5 @@
 ---
-// Ported from dashboard/index.html draw (Swiss table), plus the live W-L column.
+// Swiss standings: predicted record and its chance, live W-L, advance chance and the six record odds. Numbers only, no bars.
 import Badge from './Badge.astro';
 import { pct } from '../lib/format';
 import type { swiss } from '../lib/data';
@@ -11,22 +11,22 @@ const list = [...rows].sort((a, b) => ORDER.indexOf(a.predicted_record) - ORDER.
 ---
 <div class="scroll">
   <table>
-    <thead><tr><th>Team</th><th>Predicted</th><th class="r">Chance</th><th>Live W-L</th><th>Advance</th>{ORDER.map((o) => <th class="r">{o}</th>)}</tr></thead>
+    <thead><tr><th>Team</th><th class="r">Predicted</th><th class="r">Chance</th><th class="r">Live W-L</th><th class="r">Advance</th>{ORDER.map((o) => <th class="r">{o}</th>)}</tr></thead>
     <tbody>
       {list.length ? list.map((x) => (
         <tr>
           <td><Badge code={x.team} /></td>
-          <td><span class:list={['pill', { good: x.qualifies }]}>{x.predicted_record}</span></td>
-          <td class="r">{pct(x.p_record)}</td>
-          <td>{records.get(x.team) ?? '0-0'}</td>
-          <td><span class="adv"><span class="bar"><i class:list={[{ lead: x.qualifies }]} style={`width:${(100 * x.p_advance).toFixed(1)}%`}></i></span>{pct(x.p_advance, 1)}</span></td>
-          {KEYS.map((k) => <td class="r">{pct(x[k])}</td>)}
+          <td class:list={['num', { q: x.qualifies }]}>{x.predicted_record}</td>
+          <td class="num">{pct(x.p_record)}</td>
+          <td class="num">{records.get(x.team) ?? '0-0'}</td>
+          <td class="num">{pct(x.p_advance, 1)}</td>
+          {KEYS.map((k) => <td class="num ink2">{pct(x[k])}</td>)}
         </tr>
-      )) : <tr><td colspan="11" class="muted">No Swiss predictions.</td></tr>}
+      )) : <tr><td colspan="11" class="caption">No Swiss predictions.</td></tr>}
     </tbody>
   </table>
 </div>
 <style>
-  table { min-width:760px; }
-  .adv { display:grid; grid-template-columns:90px auto; align-items:center; gap:8px; }
+  table { min-width: calc(var(--space-3xl) * 6); }
+  td.q { font-weight: 600; }
 </style>

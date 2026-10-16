@@ -1,5 +1,6 @@
 ---
-// One hub per stage. The Frozen / Latest toggle is two radios: CSS shows one pre-rendered block, no script needed.
+// One hub per stage. The Frozen / Latest toggle is two chip radios: CSS shows one pre-rendered block, no script needed.
+// The display moment is the Today strip's first matchup (NextUp hero) in the page's one panel.
 import Card from './Card.astro';
 import NextUp from './NextUp.astro';
 import Bracket from './Bracket.astro';
@@ -23,51 +24,53 @@ const strip = todays.length ? todays : sorted.filter((s) => !resultFor(s)).slice
 const picks = stagePickems(st.pickemsStage);
 const locked = started({ time_nz: st.lock } as Series);
 const records = swissRecords();
-const facts: [string, string][] = [['Dates', st.dates], ['Venue', st.venue], ['Format', st.format], ['Draft', st.draft], ["Pick'Ems lock", st.lock]];
+// "FINAL - lock ..." -> "Final, lock ..." (the status string is data; only its case and dash change here)
+const status = (picks[0]?.status ?? '').replace(/^([A-Z]+) - /, (_, w: string) => `${w[0]}${w.slice(1).toLowerCase()}, `);
 ---
 <div class="hub">
-  <header>
-    <div class="title"><h1>{st.title}</h1>{liveStage() === st.id && <span class="pill gold">LIVE</span>}</div>
-    <dl class="facts">{facts.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+  <header class="page-head">
+    <div class="title"><h1>{st.title}</h1>{liveStage() === st.id && <span class="live-tag">LIVE</span>}</div>
+    <p class="caption">Played {st.dates} at {st.venue}. {st.format} {st.draft} Pick'Ems lock {st.lock}.</p>
     <div class="seg" role="radiogroup" aria-label="Prediction set">
       <input type="radio" name={`set-${st.id}`} id={`${st.id}-baseline`} value="baseline" checked={!hasLatest} />
-      <label for={`${st.id}-baseline`}>Frozen baseline</label>
+      <label class="chip" for={`${st.id}-baseline`}>Frozen baseline</label>
       <input type="radio" name={`set-${st.id}`} id={`${st.id}-latest`} value="latest" checked={hasLatest} disabled={!hasLatest} />
-      <label for={`${st.id}-latest`}>{hasLatest ? 'Latest staged' : 'No staged run yet'}</label>
+      <label class="chip" for={`${st.id}-latest`}>{hasLatest ? 'Latest staged' : 'No staged run yet'}</label>
     </div>
-    {blocks.map((b) => <p class="cap muted" data-set={b.which}>{b.note}</p>)}
+    {blocks.map((b) => <p class="caption" data-set={b.which}>{b.note}</p>)}
   </header>
 
-  <Card tone="gold">
-    <div class="card-head">
-      <h3>{todays.length ? 'Today' : 'Next up'}</h3>
-      <span class="cap muted">{todays.length ? <><span data-today>{nzToday()}</span>, NZDT</> : `The next open ${st.title} series`}</span>
-    </div>
-    <NextUp rows={strip} />
-  </Card>
+  <section class="panel">
+    <p class="caption">{todays.length ? <>Today, <span data-today>{nzToday()}</span>, NZDT.</> : `Next up, the next open ${st.title} series.`}</p>
+    <NextUp rows={strip} hero />
+  </section>
 
   {blocks.map((b) => (
     <div class="block" data-set={b.which}>
       {st.brackets ? (
         <Card title="Bracket" note={st.venue}>
-          <p class="cap muted">{st.note}</p>
-          {b.stageNote && <p class="cap gold">{b.stageNote}</p>}
+          <p class="caption">{st.note}</p>
+          {b.stageNote && <p class="caption">{b.stageNote}</p>}
           <Bracket cols={st.brackets} rows={b.rows} block={b.which} />
         </Card>
       ) : (
-        <Card title="Standings" note="Predicted record and live W-L">
-          <p class="cap muted">{st.note}</p>
-          {b.stageNote && <p class="cap gold">{b.stageNote}</p>}
+        <Card title="Standings" note="Predicted record and live W-L.">
+          <p class="caption">{st.note}</p>
+          {b.stageNote && <p class="caption">{b.stageNote}</p>}
           <SwissTable rows={swiss().filter((x) => x.set === b.swissSet)} records={records} />
         </Card>
       )}
-      <Card title="Series" note="Tap a series for the reasoning">
+      <Card title="Series" note="Tap a series for the reasoning.">
         <SeriesList rows={b.rows} block={b.which} phase={st.title} />
       </Card>
     </div>
   ))}
 
-  <Card title="Pick'Ems" note={picks[0]?.status ?? undefined}>
+  <section class="section">
+    <div class="section-head">
+      <h2>Pick'Ems</h2>
+      <span class="caption">{status && `${status}. `}{locked ? 'Locked, the picks below are final.' : 'Still open.'} <a class="more" href={url('scorecard/')}>Scorecard</a></span>
+    </div>
     {picks.length ? (
       <div class="scroll">
         <table>
@@ -75,60 +78,48 @@ const facts: [string, string][] = [['Dates', st.dates], ['Venue', st.venue], ['F
           <tbody>
             {picks.map((p) => (
               <tr>
-                <td>{p.slot}</td><td><Badge code={p.pick} /></td><td class="r">{pct(p.p)}</td><td class="r">{p.points ?? 'UNKNOWN'}</td>
-                <td>{p.actual ? <span class:list={['pill', p.actual === p.pick ? 'good' : 'bad']}>{p.actual}</span> : <span class="muted">Not played</span>}</td>
-                <td class="r">{p.earned ?? ''}</td>
+                <td>{p.slot}</td><td><Badge code={p.pick} /></td><td class="num">{pct(p.p)}</td><td class:list={['num', { muted: p.points == null }]}>{p.points ?? 'UNKNOWN'}</td>
+                <td class="nw">{p.actual ? <>{p.actual}, <span class={p.actual === p.pick ? 'hit' : 'miss'}>{p.actual === p.pick ? 'hit' : 'miss'}</span></> : <span class="caption">Not played</span>}</td>
+                <td class="num">{p.earned ?? ''}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    ) : <p class="muted cap">{st.title} picks not available yet.</p>}
-  </Card>
+    ) : <p class="caption">{st.title} picks not available yet.</p>}
+  </section>
 
   {blocks.map((b) => {
     const x = expectations(b.rows);
     return (
-      <div data-set={b.which}>
-        <Card title="Expected vs actual" note={x.n ? `${x.act.done} of ${x.n} Bo5s decided` : undefined}>
+      <div class="block" data-set={b.which}>
+        <Card title="Expected vs actual" note={x.n ? `${x.act.done} of ${x.n} Bo5s decided.` : undefined}>
           {x.n ? (
             <>
-              <p class="cap muted">Across these {x.n} series the model expects about {num(x.e30)} sweeps, {num(x.e31)} 3-1s, {num(x.e32)} 3-2s and {num(x.up)} upsets. A sweep is the single most likely score in most matchups, but most series are still expected not to be sweeps. Check against 2026: of 178 Bo5s predicted walk-forward, 44% ended 3-0, 31% 3-1 and 25% 3-2, and 3-0 was the most common result at every favourite strength (model/sweep_check.py).</p>
-              <div class="grid-4 tiles">
+              <p class="caption">Across these {x.n} series the model expects about {num(x.e30)} sweeps, {num(x.e31)} 3-1s, {num(x.e32)} 3-2s and {num(x.up)} upsets. A sweep is the single most likely score in most matchups, but most series are still expected not to be sweeps. Check against 2026: of 178 Bo5s predicted walk-forward, 44% ended 3-0, 31% 3-1 and 25% 3-2, and 3-0 was the most common result at every favourite strength (model/sweep_check.py).</p>
+              <div class="grid-4">
                 {([['3-0', x.e30, x.act['3-0']], ['3-1', x.e31, x.act['3-1']], ['3-2', x.e32, x.act['3-2']], ['Upsets', x.up, x.act.upset]] as const).map(([k, e, a]) => (
-                  <div class="card tile"><span class="label">{k}</span><b>{a}</b><span class="cap muted">expected {num(e)}</span></div>
+                  <div class="stat"><b>{a}</b><span>{k}, expected {num(e)}.</span></div>
                 ))}
               </div>
             </>
-          ) : <p class="muted cap">No Bo5 series predicted for this stage yet.</p>}
+          ) : <p class="caption">No Bo5 series predicted for this stage yet.</p>}
         </Card>
       </div>
     );
   })}
-
-  <div class="card tile lock">
-    <span class="label">Pick'Ems lock</span><b>{st.lock}</b>
-    <span class="cap muted">{locked ? 'Locked. Picks above are final.' : 'Still open.'} <a href={url('scorecard/')}>Scorecard</a></span>
-  </div>
 </div>
 <script is:inline src={url('js/clock.js')} defer></script>
 <style>
-  .hub { display:flex; flex-direction:column; gap:24px; }
-  header { display:flex; flex-direction:column; gap:10px; }
-  header p { margin:0; }
-  .title { display:flex; align-items:center; gap:12px; }
-  .facts { display:grid; grid-template-columns:120px minmax(0,1fr); gap:4px 16px; margin:0; font-size:14px; }
-  .facts dt { color:var(--muted); font-weight:600; } .facts dd { margin:0; color:var(--fg2); }
-  .seg { display:inline-flex; align-self:flex-start; border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; }
-  .seg input { position:absolute; opacity:0; width:1px; height:1px; }
-  .seg label { padding:6px 14px; border-radius:999px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; }
-  .seg input:checked + label { background:var(--gold); color:var(--bg); }
-  .seg input:disabled + label { cursor:default; opacity:.6; }
-  .seg input:focus-visible + label { outline:2px solid var(--gold); outline-offset:2px; }
-  .block { display:flex; flex-direction:column; gap:24px; }
-  :global(.hub:has(input[value="baseline"]:checked) [data-set="latest"]), :global(.hub:has(input[value="latest"]:checked) [data-set="baseline"]) { display:none; }
-  .tile b { font-size:22px; }
-  .lock a { color:var(--gold); font-weight:600; }
-  p { margin:0; }
-  @media (max-width: 640px) { .facts { grid-template-columns:1fr; gap:0; } .facts dd { margin-bottom:6px; } }
+  .hub, .block { display: contents; }
+  .title { display: flex; align-items: baseline; gap: var(--space-xs); }
+  .title h1 { font-size: var(--text-xl); line-height: 1.1; }
+  .seg { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-2xs); }
+  .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
+  .seg input:checked + .chip { background: var(--color-ink); color: var(--color-paper); }
+  .seg input:disabled + .chip { cursor: default; opacity: 0.6; }
+  .seg input:focus-visible + .chip { outline: calc(var(--space-3xs) / 2) solid var(--color-focus); outline-offset: calc(var(--space-3xs) / 2); }
+  .nw { white-space: nowrap; }
+  .more { color: var(--color-ink-2); font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
+  :global(.hub:has(input[value="baseline"]:checked) [data-set="latest"]), :global(.hub:has(input[value="latest"]:checked) [data-set="baseline"]) { display: none; }
 </style>

@@ -1,5 +1,5 @@
 ---
-// Ported from dashboard/index.html matchCard + bracket: a round per column, a slot per series.
+// A round per column, a slot per series. Slots are hairline-topped blocks, not cards.
 import Badge from './Badge.astro';
 import { nz, pct } from '../lib/format';
 import { resultFor, started, toUtc } from '../lib/stage';
@@ -11,28 +11,27 @@ const split = (s: Series): [string, number | undefined][] => (s.bo === 5 ? [['3-
 <div class="bracket">
   {cols.map(([label, ids]) => (
     <div class="round">
-      <span class="label">{label}</span>
+      <p class="caption">{label}</p>
       {ids.map(by).filter((s): s is Series => !!s).map((s) => {
         const r = resultFor(s);
-        const aWin = s.winner === s.team_a;
         const score = r ? `${Math.max(Number(r.score_a), Number(r.score_b))}-${Math.min(Number(r.score_a), Number(r.score_b))}` : '';
         const live = !r && started(s);
         return (
           <details class:list={['slot', { started: live }]} data-id={s.id} data-start={toUtc(s)}>
             <summary>
-              <span class="when">{s.stage.replace(/ \(.*\)$/, '')}{s.time_nz && ` · ${nz(s.time_nz)}`}{live && ' (started)'}</span>
-              <span class="row"><span class:list={[{ lose: !aWin }]}><Badge code={s.team_a} /></span><span class="cap muted">v</span><span class:list={[{ lose: aWin }]}><Badge code={s.team_b} /></span></span>
-              <span class="row cap"><span><b>{s.winner}</b> {pct(s.p_winner)}</span><span class="pill">{s.tier}</span></span>
-              <span class="split cap muted">
+              <span class="caption when">{s.stage.replace(/ \(.*\)$/, '')}{s.time_nz && `, ${nz(s.time_nz)}`}{live && ' (started)'}</span>
+              <span class="teams"><Badge code={s.team_a} /><span class="caption">v</span><Badge code={s.team_b} /></span>
+              <span class="pick"><span class="num">{s.winner} {pct(s.p_winner)}</span><span class:list={['tier', { lock: s.tier === 'LOCK' }]}>{s.tier}</span></span>
+              <span class="num caption split">
                 {split(s).map(([sc, p]) => <span class:list={[{ modal: s.score === sc }]}>{sc} {pct(p)}</span>)}
                 <span>upset {pct(s.p_upset)}</span>
               </span>
-              {/predicted pairing/.test(s.stage) && <span class="cap muted">Predicted pairing; depends on earlier results.</span>}
-              {r && <span class="row cap result"><b>Result: {r.winner} {score}</b>{!s.actual && <span class:list={['pill', r.winner === s.winner ? 'good' : 'bad']}>{r.winner === s.winner ? 'pick right' : 'pick wrong'}</span>}</span>}
+              {/predicted pairing/.test(s.stage) && <span class="caption">Predicted pairing, depends on earlier results.</span>}
+              {r && <span class="result">Result: {r.winner} {score}{!s.actual && <>, <span class={r.winner === s.winner ? 'hit' : 'miss'}>{r.winner === s.winner ? 'hit' : 'miss'}</span></>}</span>}
             </summary>
-            <div class="body cap">
+            <div class="body caption">
               {s.score_note && <p>{s.score_note}</p>}
-              <a class="gold" href={`#s-${block}-${s.id}`}>Full detail in the series list</a>
+              <a href={`#s-${block}-${s.id}`}>Full detail in the series list</a>
             </div>
           </details>
         );
@@ -41,21 +40,19 @@ const split = (s: Series): [string, number | undefined][] => (s.bo === 5 ? [['3-
   ))}
 </div>
 <style>
-  .bracket { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(200px, 1fr); gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px; }
-  .round { display:flex; flex-direction:column; justify-content:center; gap:12px; scroll-snap-align:start; }
-  .round > .label { align-self:flex-start; }
-  .slot { border:1px solid var(--line); border-radius:12px; background:var(--bg); }
-  .slot[open] { border-color:var(--fg2); }
-  .slot.started { border-color:var(--gold); }
-  summary { list-style:none; cursor:pointer; padding:12px; display:flex; flex-direction:column; gap:6px; }
-  summary::-webkit-details-marker { display:none; }
-  .when { font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .row { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; }
-  .row:has(.badge) { justify-content:flex-start; }
-  .lose { opacity:.55; }
-  .split { display:flex; flex-wrap:wrap; gap:2px 10px; }
-  .split .modal { color:var(--fg); font-weight:600; }
-  .body { padding:0 12px 12px; color:var(--fg2); display:flex; flex-direction:column; gap:6px; }
-  .body p { margin:0; }
-  @media (max-width: 640px) { .bracket { grid-auto-columns:minmax(240px, 85%); } }
+  .bracket { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(calc(var(--space-3xl) * 2), 1fr); gap: var(--space-md); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-3xs); }
+  .round { display: flex; flex-direction: column; justify-content: center; gap: var(--space-sm); scroll-snap-align: start; min-width: 0; }
+  .slot { border-top: var(--rule); }
+  summary { list-style: none; cursor: pointer; padding-top: var(--space-2xs); display: flex; flex-direction: column; gap: var(--space-3xs); }
+  summary::-webkit-details-marker { display: none; }
+  .when { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .teams { display: flex; align-items: center; gap: var(--space-2xs); }
+  .pick { display: flex; align-items: baseline; gap: var(--space-2xs); font-size: var(--text-sm); }
+  .split { display: flex; flex-wrap: wrap; gap: 0 var(--space-xs); }
+  .split .modal { color: var(--color-ink-2); font-weight: 600; }
+  .result { font-size: var(--text-sm); }
+  .body { padding-top: var(--space-2xs); display: flex; flex-direction: column; gap: var(--space-2xs); }
+  .body a { color: var(--color-ink-2); text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
+  .body a:hover { color: var(--color-accent); }
+  @media (max-width: 640px) { .bracket { grid-auto-columns: minmax(calc(var(--space-3xl) * 2), 85%); } }
 </style>

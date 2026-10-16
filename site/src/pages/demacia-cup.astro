@@ -15,55 +15,55 @@ const pairs = sum ? Object.keys(sum).filter((k) => /^pair_.+_n$/.test(k)).map((k
 }) : [];
 ---
 <Base title="Demacia Cup" active="demacia-cup">
-  <header>
+  <header class="page-head">
     <h1>Demacia Cup</h1>
-    <p class="muted">A walk-forward test of the model on an event it never saw.</p>
+    <p class="caption">A walk-forward test of the model on an event it never saw. The Demacia Cup Global Invitational (03 to 17/10/2026, China, patch 26.18) is 12 teams that missed Worlds. These picks were generated after the event from a model fitted only on games before 03/10/2026, so they are a walk-forward check, not predictions we made in advance.</p>
   </header>
-  <Card tone="gold">
-    <p>Model test. The Demacia Cup Global Invitational (03 to 17/10/2026, China, patch 26.18) is 12 teams that missed Worlds. These picks were generated after the event from a model fitted only on games before 03/10/2026, so they are a walk-forward check, not predictions we made in advance.</p>
-  </Card>
   {sum ? (
     <>
-      <div class="grid-4 tiles">
-        <div class="card tile"><span class="label">Series graded</span><b>{sum.n}</b><span class="cap muted">{sum.n_bo5 ?? 'UNKNOWN'} of them Bo5</span></div>
-        <div class="card tile"><span class="label">Winners right</span><b>{sum.hits} / {sum.n}</b><span class="cap muted">{pct(Number(sum.hit_rate))}</span></div>
-        <div class="card tile"><span class="label">Model log loss</span><b>{num(Number(sum.logloss), 3)}</b><span class="cap muted">lower is better</span></div>
-        <div class="card tile"><span class="label">Baselines</span><b>{num(Number(sum.logloss_region_rule), 3)}</b><span class="cap muted">region rule (stronger region wins 70%); coin flip {num(Number(sum.logloss_coin_flip), 3)}</span></div>
-      </div>
-      <p class="cap muted">{sum.note} Generated {sum.created_nz}, fit on games before {sum.fit_cut}.</p>
-      <Card title="Series" note="Picks from the walk-forward fit">
+      <section class="section" aria-label="Summary">
+        <div class="grid-4">
+          <div class="stat"><b>{sum.n}</b><span>Series graded, {sum.n_bo5 ?? 'UNKNOWN'} of them Bo5.</span></div>
+          <div class="stat"><b>{sum.hits} / {sum.n}</b><span>Winners right, {pct(Number(sum.hit_rate))}.</span></div>
+          <div class="stat"><b>{num(Number(sum.logloss), 3)}</b><span>Model log loss, lower is better.</span></div>
+          <div class="stat"><b>{num(Number(sum.logloss_region_rule), 3)}</b><span>Region rule baseline (stronger region wins 70%). Coin flip {num(Number(sum.logloss_coin_flip), 3)}.</span></div>
+        </div>
+        <p class="ink2 note">{sum.note}. Generated {sum.created_nz}, fit on games before {sum.fit_cut}.</p>
+      </section>
+      <Card title="Series" note="Picks from the walk-forward fit.">
         <div class="scroll">
           <table>
             <thead><tr><th>Date</th><th>Stage</th><th>Teams</th><th>Pick</th><th>Tier</th><th>Score call</th><th>Actual</th><th></th><th class="r">Log loss</th></tr></thead>
             <tbody>
               {rows.map((r) => (
                 <tr>
-                  <td>{r.date}</td><td>{r.stage}</td>
-                  <td><span class="teams"><Badge code={r.team_a} /><span class="muted">v</span><Badge code={r.team_b} /></span></td>
-                  <td><b>{r.pick}</b> {pct(r.p_pick)}</td><td><span class="pill">{r.tier}</span></td><td>{r.score_call}</td>
-                  <td>{r.actual_winner} {r.actual_score}</td>
-                  <td><span class:list={['pill', r.hit ? 'good' : 'bad']}>{r.hit ? 'hit' : 'miss'}</span></td>
-                  <td class="r">{num(r.logloss, 3)}</td>
+                  <td class="n">{r.date}</td><td class="nw">{r.stage}</td>
+                  <td><span class="teams"><Badge code={r.team_a} /><span class="caption">v</span><Badge code={r.team_b} /></span></td>
+                  <td class="nw">{r.pick} <span class="n">{pct(r.p_pick)}</span></td>
+                  <td><span class:list={['tier', { lock: r.tier === 'LOCK' }]}>{r.tier}</span></td>
+                  <td class="n">{r.score_call}</td>
+                  <td class="nw">{r.actual_winner} <span class="n">{r.actual_score}</span></td>
+                  <td><span class={r.hit ? 'hit' : 'miss'}>{r.hit ? 'hit' : 'miss'}</span></td>
+                  <td class="num">{num(r.logloss, 3)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </Card>
-      <Card title="By region pairing" note="Stronger fitted region named first">
+      <Card title="By region pairing" note="Stronger fitted region named first.">
         <div class="scroll">
           <table>
             <thead><tr><th>Pairing</th><th class="r">Series</th><th class="r">Stronger region won</th><th class="r">Model right</th></tr></thead>
-            <tbody>{pairs.map((p) => <tr><td>{p.label}</td><td class="r">{p.n}</td><td class="r">{p.first}</td><td class="r">{p.hits}</td></tr>)}</tbody>
+            <tbody>{pairs.map((p) => <tr><td>{p.label}</td><td class="num">{p.n}</td><td class="num">{p.first}</td><td class="num">{p.hits}</td></tr>)}</tbody>
           </table>
         </div>
       </Card>
     </>
-  ) : <p class="muted">Check not run yet.</p>}
+  ) : <p class="caption">Check not run yet.</p>}
 </Base>
 <style>
-  header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
-  .card p { margin:0; }
-  .teams { display:flex; align-items:center; gap:6px; white-space:nowrap; }
-  .tile b { font-size:22px; }
+  .teams { display: flex; align-items: center; gap: var(--space-2xs); white-space: nowrap; }
+  .nw { white-space: nowrap; }
+  .note { font-size: var(--text-sm); }
 </style>
