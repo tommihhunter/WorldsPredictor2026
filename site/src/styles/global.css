@@ -10,6 +10,7 @@ h1 { font-size:34px; line-height:1.05; } h2 { font-size:22px; } h3 { font-size:1
 .sidebar { position:sticky; top:0; height:100vh; border-right:1px solid var(--line); padding:20px 12px; display:flex; flex-direction:column; gap:4px; }
 .brand { display:flex; align-items:center; gap:10px; font-family:var(--head); font-weight:700; font-size:16px; padding:6px 10px 16px; }
 .mark { width:28px; height:28px; border-radius:8px; background:var(--gold); color:var(--bg); display:inline-flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex:none; }
+.mark-img { width:28px; height:28px; border-radius:8px; flex:none; }
 .nav-group { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:12px 10px 4px; }
 .nav a { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:8px; color:var(--fg2); }
 .nav a[aria-current="page"] { background:#161D27; color:var(--fg); font-weight:600; }

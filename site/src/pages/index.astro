@@ -21,7 +21,7 @@ const [ver, ...verRest] = (o.model_version ?? 'UNKNOWN').split(':');
 ---
 <Base title="Home" active="home">
   <header>
-    <h1>Worlds 2026 Predictor</h1>
+    <div class="title"><img src={url('art/poro/main-512.webp')} width="72" height="72" alt="The Poro Prophet" /><h1>Worlds 2026 Predictor</h1></div>
     <p class="muted">Picks for every series, live title odds and how the frozen baseline is doing. Times in NZDT with the venue time alongside.</p>
   </header>
 
@@ -47,6 +47,8 @@ const [ver, ...verRest] = (o.model_version ?? 'UNKNOWN').split(':');
 </Base>
 <style>
   header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
+  .title { display:flex; align-items:center; gap:16px; } .title img { width:72px; height:72px; border-radius:16px; flex:none; }
+  @media (max-width: 640px) { .title { gap:12px; } .title img { width:48px; height:48px; border-radius:12px; } }
   .more { color:var(--gold); font-weight:600; font-size:14px; align-self:flex-start; }
   .home-tiles { grid-template-columns:1fr 1fr; align-content:start; }
   .tile { gap:4px; } .tile b { font-size:22px; }

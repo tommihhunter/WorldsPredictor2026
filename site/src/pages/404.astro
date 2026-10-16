@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+---
+<Base title="Not found" active="home" description="That page does not exist.">
+  <div class="lost">
+    <img src={url('art/poro/dopey-512.webp')} width="160" height="160" alt="The Poro Prophet, looking sad" />
+    <h1>No prophecy here</h1>
+    <p class="muted">That page does not exist. The Poro Prophet suggests the Home page.</p>
+    <a class="home" href={url('')}>Go to the Home page</a>
+  </div>
+</Base>
+<style>
+  .lost { display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:48px 0; }
+  .lost img { border-radius:24px; } .lost p { margin:0; }
+  .home { color:var(--gold); font-weight:600; }
+</style>

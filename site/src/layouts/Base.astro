@@ -3,9 +3,11 @@ import '../styles/global.css';
 import Sidebar from '../components/Sidebar.astro';
 import BottomBar from '../components/BottomBar.astro';
 import { overview } from '../lib/data';
+import { url } from '../lib/url';
 export interface Props { title: string; active: string; description?: string }
 const { title, active, description = 'Worlds 2026 picks, live odds and how the model is doing.' } = Astro.props;
 const o = overview();
+const abs = (p: string) => new URL(p, Astro.site).href;
 ---
 <!doctype html>
 <html lang="en-NZ">
@@ -14,7 +16,12 @@ const o = overview();
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{title} · Worlds 2026 Predictor</title>
   <meta name="description" content={description} />
-  <link rel="icon" href="data:," />
+  <link rel="icon" type="image/png" href={url('art/poro/favicon.png')} />
+  <link rel="apple-touch-icon" href={url('art/poro/apple-touch.png')} />
+  <meta property="og:title" content={`${title} · Worlds 2026 Predictor`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={abs(url('art/poro/main-256.png'))} />
+  <meta property="og:url" content={abs(Astro.url.pathname)} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 </head>

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Copy team logos and cached Riot art into site/public/art/ for the Astro build. Run after export_dashboard.py."""
+"""Copy team logos and cached Riot art into site/public/art/ for the Astro build, and resize the poroprophets/ mascots. Run after export_dashboard.py."""
 import glob, json, os, re, shutil
+from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "site", "public", "art")
 CACHE = os.path.join(ROOT, "dashboard", "ddragon_cache")
@@ -26,4 +27,14 @@ for p in glob.glob(os.path.join(CACHE, "cdn_*_data_en_US_champion.json")):
 os.makedirs(os.path.join(ROOT, "site", "src", "lib"), exist_ok=True)
 with open(os.path.join(ROOT, "site", "src", "lib", "art.json"), "w", encoding="utf-8") as fh:
     json.dump(art, fh, indent=0, sort_keys=True)
+# Mascots: poroprophets/*.jpg are the source of truth; sizes are what the site uses (brand mark, home, 404, favicon, OG).
+PORO = os.path.join(OUT, "poro"); os.makedirs(PORO, exist_ok=True)
+for name, src in (("main", "PoroMain.jpg"), ("dopey", "PoroDopey.jpg")):
+    im = Image.open(os.path.join(ROOT, "poroprophets", src)).convert("RGB")
+    im.resize((256, 256), Image.LANCZOS).save(os.path.join(PORO, f"{name}-256.png"), optimize=True)
+    im.resize((512, 512), Image.LANCZOS).save(os.path.join(PORO, f"{name}-512.webp"), quality=82)
+    if name == "main":
+        im.resize((64, 64), Image.LANCZOS).save(os.path.join(PORO, "favicon.png"), optimize=True)
+        im.resize((180, 180), Image.LANCZOS).save(os.path.join(PORO, "apple-touch.png"), optimize=True)
+print("poro", ", ".join(f"{f} {os.path.getsize(os.path.join(PORO, f)) // 1024} kB" for f in sorted(os.listdir(PORO))))
 print(f"logos {logos} extras {extras} champions {champs} items {items}")

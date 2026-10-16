@@ -86,6 +86,8 @@ def main():
     if not os.path.exists(os.path.join(DIST, "index.html")):
         sys.exit("build the site first: (cd site && npm run build)")
     problems, checked, skipped = [], [], []
+    if not os.path.exists(os.path.join(DIST, "404.html")):  # GitHub Pages serves this for unknown paths
+        problems.append("404.html missing from site/dist")
 
     for dirpath, _, files in (os.walk(DIST) if BAD_LINK else []):
         for f in files:
