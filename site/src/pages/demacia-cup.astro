@@ -74,7 +74,7 @@ const tiles = sum ? [
       <section class="dc-grid">
         <div class="section">
           <div class="section-head"><h2>Every call</h2><span>Pick, chance, then what happened</span></div>
-          <div class="rows">
+          <div class="rows dlist">
             {rows.map((r) => (
               <div class="drow">
                 <span class="dt muted">{dm(r.date)}</span>
@@ -109,6 +109,8 @@ const tiles = sum ? [
   .part { gap: 8px; padding: 22px 26px; font-size: 17px; line-height: 1.5; }
   .dc-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
   .side { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  /* the call list lays itself out by its own width (it shares the row with the sidebar from 1151px) */
+  .dlist { container-type: inline-size; gap: 6px; }
   .drow { display: grid; grid-template-columns: 70px 170px minmax(0, 1fr) 130px 110px 90px; gap: 16px; align-items: center; font-size: 17px; }
   .rows > .drow { padding: 10px 0; }
   .dt, .st { font-size: 15px; }
@@ -124,22 +126,27 @@ const tiles = sum ? [
   @media (max-width: 1150px) {
     .dc-top, .dc-grid { grid-template-columns: minmax(0, 1fr); }
   }
-  @media (max-width: 760px) {
+  /* the stage column goes first, then the rows become two lines, by the list's own width */
+  @container (max-width: 840px) {
     .drow { grid-template-columns: 56px minmax(0, 1fr) 110px 90px 60px; }
     .st { display: none; }
   }
-  @media (max-width: 640px) {
-    .dc-top { gap: 20px; }
-    .intro .eyebrow { display: none; }
-    .part { padding: 16px 18px; font-size: 15px; }
+  @container (max-width: 580px) {
     .drow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "tm verdict" "pk act"; gap: 2px 10px; }
     .dt { display: none; }
     .tm { grid-area: tm; gap: 4px; } .tm :global(.logo), .tm :global(.disc) { display: none; }
-    .tm .code { font-size: 14px; }
-    .pk { grid-area: pk; font-size: 13px; color: var(--muted); } .pk .teal { color: inherit; }
+    .pk { grid-area: pk; font-size: 15px; color: var(--muted); } .pk .teal { color: inherit; }
     .pre { display: inline; }
-    .act { grid-area: act; text-align: right; font-size: 13px; }
-    .verdict { grid-area: verdict; font-size: 14px; }
+    .act { grid-area: act; text-align: right; font-size: 15px; }
+  }
+  @media (max-width: 640px) {
+    .dc-top { gap: 20px; }
+    .dlist { gap: 0; }
+    .intro .eyebrow { display: none; }
+    .part { padding: 16px 18px; font-size: 15px; }
+    .tm .code { font-size: 14px; }
+    .pk, .act { font-size: 13px; }
+    .verdict { font-size: 14px; }
     .lesson { font-size: 16px; }
     .prow { font-size: 15px; }
   }

@@ -34,15 +34,17 @@ export const crystal = () => load<{ q: number; question: string; answer: string;
 export const regions = () => load<{ region: string; elo: number; rating: number; sd: number }>('regions');
 export const patchChanges = () => load<{ kind: string; name: string; change: string; detail: string; patch: string; date: string; label: string; source: string }>('patch_changes');
 export const metaChamps = () => load<{ rank: number; champion: string; roles: string; picks: number; bans: number; presence: number; pick_wr: number; presence_ex_lcp: number; msi_presence: number; patch_note: string }>('meta_champs');
-export const metaFit = () => load<{ subject: string; note: string; source: string }>('meta_fit');
+
 export const h2h = () => load<H2H>('h2h');
 export const matchups = () => load<Matchup>('matchups');
 export const dcgi = () => load<Record<string, unknown>>('dcgi');
 export const overview = (): Record<string, string> => Object.fromEntries(load<{ key: string; value: string }>('overview').map((r) => [r.key, String(r.value)]));
 
 const byCode = () => new Map(ratings().map((r) => [r.code, r]));
-export const teamName = (code: string) => byCode().get(code)?.name ?? code;
+/** Team name for display: the data's trailing alternates in brackets are dropped ("LOS (LØS / Los Grandes)" -> "LOS"). */
+export const displayName = (name: string) => name.replace(/\s*\([^()]*\)$/, '') || name;
+export const teamName = (code: string) => displayName(byCode().get(code)?.name ?? code);
 export const regionOf = (code: string) => byCode().get(code)?.region ?? 'UNKNOWN';
 export const teamSlug = (code: string) => code.toLowerCase();
 export const codeFromSlug = (slug: string) => ratings().find((r) => r.code.toLowerCase() === slug)?.code ?? slug.toUpperCase();
-export const REGION_COLOR: Record<string, string> = { LCK: '#6d9eff', LPL: '#ff7a6b', LEC: '#3ccf91', LCS: '#e8b03f', LCP: '#b18cff', CBLOL: '#3fc6cf' };
+

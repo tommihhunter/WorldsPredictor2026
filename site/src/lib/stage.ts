@@ -32,7 +32,7 @@ export const STAGES: Stage[] = [
     format: '16 teams paired by record, no rematches. 3 wins advance, 3 losses are out, 8 advance. Bo1 in rounds 1 and 2 and for 1-1 teams in round 3; Bo3 whenever a result qualifies or eliminates.',
     draft: 'Standard draft in Bo1s, Fearless Draft in Bo3s.',
     lock: '24/10/2026 06:00 NZDT (23/10 10:00 PDT)',
-    note: 'Round 1 draw on 18/10: Tier 1 v Tier 4 and Tier 2 v Tier 3, no same-region pairings in round 1.',
+    note: 'Round 1 draw on 18/10 (US time): Tier 1 v Tier 4 and Tier 2 v Tier 3, no same-region pairings in round 1.',
   },
   {
     id: 'knockouts', phase: 'Knockouts', pickemsStage: 'Knockouts', setKey: 'knockouts', title: 'Knockouts',
@@ -49,7 +49,31 @@ export const STAGES: Stage[] = [
 /** The most advanced staged set (knockouts, swiss, playin), or null when only the baseline exists. */
 export const latestSet = (all: Series[] = series()): string | null => ['knockouts', 'swiss', 'playin'].find((o) => all.some((s) => s.set === o)) ?? null;
 export const seriesFor = (phase: string, set: string) => series().filter((s) => s.set === set && s.phase === phase);
-export const isToday = (s: Series) => (s.time_nz || '').startsWith(nzToday());
+
+/** Display name of a prediction set id ('playin' -> 'Play-In run'). */
+const SET_LABEL: Record<string, string> = { baseline: 'Frozen baseline', playin: 'Play-In run', swiss: 'Swiss run', knockouts: 'Knockouts run' };
+export const setLabel = (set: string) => SET_LABEL[set] ?? set;
+
+// Knockout start times from research/format.md (Riot primer, accessed 15/10/2026): quarterfinals and semifinals
+// 11:00 NZDT (14:00 PST), the final 08:00 NZDT (11:00 PST). The frozen baseline and runs copied from it still carry
+// the old 09:00 and 05:00 slots, so until a knockouts staged run exists the published stage start is shown instead.
+const KO_START: Record<string, string> = { QF: '11:00', SF: '11:00', F: '08:00' };
+/** The series' NZDT start "dd/mm/yyyy HH:MM NZDT" as shown on the site (time_nz, corrected for pre-draw knockout rows). */
+export function startNz(s: Pick<Series, 'phase' | 'set' | 'id' | 'time_nz'>): string {
+  const t = s.time_nz || '';
+  const k = /^KO-(QF|SF|F)/.exec(s.id)?.[1];
+  return s.phase === 'Knockouts' && s.set !== 'knockouts' && k ? t.replace(/\b\d\d:\d\d\b/, KO_START[k]) : t;
+}
+
+/** Has the Swiss round 1 draw (a US date in STAGES[1].note) surely happened? True from the NZ day after it. */
+export function drawPassed(): { draw: string | null; passed: boolean } {
+  const draw = /draw on (\d\d\/\d\d)/.exec(STAGES[1].note)?.[1] ?? null;
+  const year = /\d{4}/.exec(STAGES[1].dates)?.[0];
+  if (!draw || !year) return { draw, passed: false };
+  const [d, m] = draw.split('/').map(Number);
+  const nextDay = new Date(Date.UTC(+year, m - 1, d + 1)).toISOString().slice(0, 10).replace(/-/g, '');
+  return { draw, passed: nzToday().split('/').reverse().join('') >= nextDay };
+}
 
 const ZONE: Record<string, number> = { PDT: -7, PST: -8, CDT: -5, CST: -6, EDT: -4, EST: -5 };
 /** Venue start time as an ISO UTC string, from the zone in `time_venue` ("14/11/2026 11:00 EST (Brooklyn)"). */
@@ -69,13 +93,13 @@ export type View = { set: string; rows: Series[]; note: string; stageNote: strin
 export function view(st: Stage, which: 'baseline' | 'latest'): View {
   const set = which === 'baseline' ? 'baseline' : (latestSet() ?? 'baseline');
   const created = series().find((s) => s.set === set)?.created_nz ?? 'UNKNOWN';
-  const note = set === 'baseline' ? `Frozen baseline, predicted ${created} and never edited since.` : `Latest staged run (${set}), predicted ${created}. Stages not yet re-run show the frozen baseline.`;
+  const note = set === 'baseline' ? `Frozen baseline, predicted ${created} and never edited since.` : `Latest staged run (${setLabel(set)}), predicted ${created}. Stages not yet re-run show the frozen baseline.`;
   let rows = seriesFor(st.phase, set);
   let stageNote = '';
   if (!rows.length && set !== 'baseline') { rows = seriesFor(st.phase, 'baseline'); stageNote = 'Not re-run yet; showing the frozen baseline.'; }
   const own = ['swiss', 'knockouts'].includes(set) && swiss().some((x) => x.set === set);
   const swissSet = own ? set : 'baseline';
-  if (st.phase === 'Swiss') stageNote = own ? '' : set !== 'baseline' ? 'Not re-run yet (due after the 18/10 draw, before the 24/10 06:00 NZDT lock); showing the frozen baseline.' : 'The round 1 draw is on 18/10. Until then records are averaged over every legal draw.';
+  if (st.phase === 'Swiss') stageNote = own ? '' : set !== 'baseline' ? 'Not re-run yet (due after the 18/10 US-time draw, before the 24/10 06:00 NZDT lock); showing the frozen baseline.' : 'The round 1 draw is on 18/10 (US time). Until then records are averaged over every legal draw.';
   return { set, rows, note, stageNote, swissSet };
 }
 
@@ -97,19 +121,3 @@ export const stagePickems = (stage: string) => {
   return pickemSlots().map((x, i) => ({ ...x, p: p[i].p_correct, status: p[i].status })).filter((x) => x.stage === stage);
 };
 
-/** Expected vs actual scores over the Bo5 rows (mixLine), actuals from results matched by id and pair. */
-export function expectations(rows: Series[]) {
-  const bo5 = rows.filter((s) => s.bo === 5);
-  const sum = (f: 'pw30' | 'pw31' | 'pw32' | 'p_upset') => bo5.reduce((t, s) => t + (s[f] ?? 0), 0);
-  const act = { '3-0': 0, '3-1': 0, '3-2': 0, upset: 0, done: 0 };
-  for (const s of bo5) {
-    const r = resultFor(s);
-    if (!r) continue;
-    const a = Number(r.score_a), b = Number(r.score_b);
-    const sc = `${Math.max(a, b)}-${Math.min(a, b)}` as '3-0' | '3-1' | '3-2';
-    if (sc in act) act[sc] += 1;
-    if (r.winner !== s.winner) act.upset += 1;
-    act.done += 1;
-  }
-  return { n: bo5.length, e30: sum('pw30'), e31: sum('pw31'), e32: sum('pw32'), up: sum('p_upset'), act };
-}

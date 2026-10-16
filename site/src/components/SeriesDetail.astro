@@ -31,6 +31,8 @@ scores.sort((a, b) => (a.fav === b.fav ? (a.fav ? b.margin - a.margin : a.margin
 const max = Math.max(...scores.map((x) => x.p), 0) || 1;
 
 const notes = ([['Key matchup', s.key_matchup], ['Draft angle', s.draft_angle], ['What flips it', s.what_flips]] as const).filter(([, v]) => v && v.trim());
+// the data's caveats for the later Play-In rounds: assumed pairing, unconfirmed slot order
+const caveat = !r && /predicted pairing/i.test(s.stage) ? `Assumed pairing: favourites win the earlier rounds.${/slot order/i.test(s.note || '') ? ' The order of the two matches that day is not confirmed.' : ''}` : '';
 ---
 <section class="panel sd" id={id} data-detail hidden={hidden} aria-label={`${fav} v ${dog}`}>
   <div class="main">
@@ -45,6 +47,7 @@ const notes = ([['Key matchup', s.key_matchup], ['Draft angle', s.draft_angle], 
       <span class="chip outline">{s.tier || 'UNKNOWN'}</span>
       {r && <span class="chip on">Final: {r.winner} {hi}-{lo}</span>}
     </div>
+    {caveat && <p class="caption">{caveat}</p>}
     {notes.length
       ? <dl class="kv">{notes.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
       : <p class="none muted2">The matchup write-up is added once both teams are known.</p>}

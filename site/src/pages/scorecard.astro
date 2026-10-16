@@ -4,13 +4,12 @@ import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import { crystal, dcgi, results, series, type Series } from '../lib/data';
 import { pct, num } from '../lib/format';
-import { grade, pickemPoints, started } from '../lib/grading';
+import { grade, pickemPoints, stamp, started } from '../lib/grading';
+import { startNz } from '../lib/stage';
 import { url } from '../lib/url';
 
 const pair = (x: { team_a?: string; team_b?: string }) => [x.team_a, x.team_b].sort().join('|');
 const hiLo = (a: unknown, b: unknown) => `${Math.max(Number(a), Number(b))}-${Math.min(Number(a), Number(b))}`;
-// "dd/mm/yyyy HH:MM" to a sortable "yyyymmddHHMM", null when unparseable
-const stamp = (s?: string | null) => { const m = /(\d\d)\/(\d\d)\/(\d{4}) (\d\d):(\d\d)/.exec(s || ''); return m ? m[3] + m[2] + m[1] + m[4] + m[5] : null; };
 const short = (s?: string | null) => { const m = /(\d\d\/\d\d)\/\d{4} (\d\d:\d\d)/.exec(s || ''); return m ? `${m[1]} ${m[2]}` : 'UNKNOWN'; };
 
 const g = grade().find((x) => x.set === 'baseline');
@@ -24,6 +23,7 @@ if (!phases.length && base[0]) phases.push(base[0].phase);
 type Row = { s: Series; result: string; resCls: string; w: string; wCls: string; sc: string; scCls: string };
 const rows: Row[] = base.filter((s) => phases.includes(s.phase)).map((s) => {
   const r = done.find((x) => x.id === s.id);
+  // Round 2 onwards of the Play-In: the model's assumed pairing until the bracket settles it
   const call = { s, result: started(s) ? 'Pending' : 'To play', resCls: 'dim', w: '', wCls: '', sc: '', scCls: '' };
   if (!r) return call;
   if (pair(r) !== pair(s)) return { ...call, result: 'Not this pairing' };
@@ -75,13 +75,13 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
     <div class="section">
       <div class="section-head"><h2>Series</h2><span>{phases.join(' and ')} so far</span></div>
       {rows.length ? (
-        <div>
-          <div class="srow shead" aria-hidden="true"><span>Start</span><span>Series</span><span>Our call</span><span>Result</span><span>Winner</span><span>Score</span></div>
+        <div class="stable">
+          <div class="srow shead"><span>Start</span><span>Series</span><span>Our call</span><span>Result</span><span>Winner</span><span>Score</span></div>
           <div class="rows">
             {rows.map((r) => (
               <div class="srow">
-                <span class="title"><Logo code={r.s.team_a} size={26} /><span class="code">{r.s.team_a} v {r.s.team_b}</span></span>
-                <span class="meta"><span class="when muted2">{short(r.s.time_nz)}</span><span class="ph">, called </span><span class="call">{r.s.winner} {pct(r.s.p_winner)}<span class="dt">, {r.s.score}</span></span></span>
+                <span class="title"><Logo code={r.s.team_a} size={26} /><span class="code">{r.s.team_a} v {r.s.team_b}</span>{!r.result.includes('-') && /predicted pairing/i.test(r.s.stage) && <span class="assumed">assumed pairing</span>}</span>
+                <span class="meta"><span class="when muted2">{short(startNz(r.s))}</span><span class="ph">, called </span><span class="call">{r.s.winner} {pct(r.s.p_winner)}<span class="dt">, {r.s.score}</span></span></span>
                 <span class:list={['res', r.resCls]}>{r.result}</span>
                 <span class:list={['w', r.wCls]}>{r.w}</span>
                 <span class:list={['sc', r.scCls]}>{r.sc}</span>
@@ -135,11 +135,16 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
 <style>
   .sc-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
   .side { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  /* the series list lays itself out by its own width (it shares the row with the sidebar from 1151px) */
+  .stable { container-type: inline-size; min-width: 0; }
+  .stable > .rows { gap: 8px; }
   .srow { display: grid; grid-template-columns: 110px minmax(0, 1fr) 140px 120px 110px 110px; gap: 16px; align-items: center; font-size: 18px; }
   .rows > .srow { padding: 14px 0; }
+
   .shead { font-size: 15px; color: var(--muted); padding-bottom: 6px; }
   .when { font-size: 16px; }
-  .title { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .title { display: flex; align-items: center; flex-wrap: wrap; gap: 0 10px; min-width: 0; }
+  .assumed { font-size: 14px; color: var(--muted); }
   .meta { display: contents; }
   .when { order: -1; }
   .ph { display: none; }
@@ -156,21 +161,29 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
   .ans { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
   .why { grid-column: 2 / -1; }
   @media (max-width: 1150px) { .sc-grid { grid-template-columns: minmax(0, 1fr); } }
+  /* two-line rows whenever the six columns would squeeze the Series column (phones, tablets, the two-column laptop band) */
+  @container (max-width: 860px) {
+    .shead { display: none; }
+    .srow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title w" "meta res"; gap: 2px 10px; font-size: 16px; }
+    .stable > .rows { gap: 0; }
+    .rows > .srow { padding: 11px 0; }
+    .title { grid-area: title; }
+    .w { grid-area: w; text-align: right; }
+    .res { grid-area: res; text-align: right; font-size: 15px; color: var(--fg2); }
+    .res.dim { color: var(--muted); }
+    .meta { display: block; grid-area: meta; font-size: 15px; color: var(--muted); }
+    .when { font-size: 15px; color: var(--muted); }
+    .ph { display: inline; } .dt { display: none; }
+    .sc { display: none; }
+  }
   @media (max-width: 640px) {
     .intro .eyebrow, .intro .lede { display: none; }
     .stat-strip .sub { font-size: 13px; }
-    .shead { display: none; }
-    .srow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title w" "meta res"; gap: 2px 10px; }
-    .rows > .srow { padding: 11px 0; }
-    .title { grid-area: title; } .title :global(.logo), .title :global(.disc) { display: none; }
+    .title :global(.logo), .title :global(.disc) { display: none; }
     .title .code { font-size: 15px; }
-    .w { grid-area: w; text-align: right; font-size: 15px; }
-    .res { grid-area: res; text-align: right; font-size: 13px; color: var(--fg2); }
-    .res.dim { color: var(--muted); }
-    .meta { display: block; grid-area: meta; font-size: 13px; color: var(--muted); }
-    .when { font-size: 13px; color: var(--muted); }
-    .ph { display: inline; } .dt { display: none; }
-    .sc { display: none; }
+    .assumed { font-size: 12px; }
+    .w { font-size: 15px; }
+    .res, .meta, .when { font-size: 13px; }
     .trow { font-size: 16px; }
     .tname { font-size: 15px; }
     .tp { font-size: 18px; width: 52px; }

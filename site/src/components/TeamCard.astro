@@ -4,11 +4,10 @@
 // Odds are live (live.json) with the frozen ratings as the fallback.
 import Logo from './Logo.astro';
 import type { Live, Rating } from '../lib/data';
-import { teamSlug } from '../lib/data';
+import { displayName, teamSlug } from '../lib/data';
+import { pct1 as pc } from '../lib/format';
 import { url } from '../lib/url';
 const { r, lv } = Astro.props as { r: Rating; lv: Live | undefined };
-// Under 1% reads "<1%", exactly 0 reads "0%" (the mock's format).
-const pc = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : v >= 0.01 ? `${(v * 100).toFixed(1)}%` : v > 0 ? '<1%' : '0%');
 const pc0 = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : v >= 0.01 ? `${Math.round(v * 100)}%` : v > 0 ? '<1%' : '0%');
 const champ = lv?.p_champion ?? r.p_champion;
 const adv = lv?.p_advance ?? r.p_advance;
@@ -20,7 +19,7 @@ const tone = trend === 'PEAKING' || trend === 'RISING' ? 'teal' : trend === 'FAD
   <span class="id">
     <Logo code={r.code} size={44} />
     <span class="nm">
-      <span class="code name">{r.name}</span>
+      <span class="code name">{displayName(r.name)}</span>
       <span class="sub dt">{r.region} seed {r.seed}{playin && ', Play-In'}</span>
       <span class="sub ph">{r.region}, advance {pc0(adv)}</span>
     </span>

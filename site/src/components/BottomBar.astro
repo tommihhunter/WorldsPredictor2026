@@ -23,7 +23,7 @@ const moreOn = more.some((n) => n.id === active);
 <script is:inline>
   // close the More sheet on a tap outside it or on Escape
   document.addEventListener('click', (e) => { const d = document.querySelector('.bbar details[open]'); if (d && !e.target.closest('.sheet, .bbar summary')) d.open = false; });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelectorAll('.bbar details[open]').forEach((d) => { d.open = false; }); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelectorAll('.bbar details[open]').forEach((d) => { d.open = false; d.querySelector('summary').focus(); }); });
 </script>
 <style>
   .bbar { display: none; }
@@ -36,7 +36,7 @@ const moreOn = more.some((n) => n.id === active);
     .bbar::before { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--bg); border-top: 1px solid var(--line-strong); }
     .tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 44px; color: var(--fg2); white-space: nowrap; cursor: pointer; list-style: none; position: relative; z-index: 3; }
     .tab::-webkit-details-marker { display: none; }
-    .mk { width: 7px; height: 7px; transform: rotate(45deg); background: transparent; box-shadow: inset 0 0 0 1px #5E5487; }
+    .mk { width: 7px; height: 7px; transform: rotate(45deg); background: transparent; box-shadow: inset 0 0 0 1px var(--marker); }
     .tab[aria-current="page"], .tab.on, .more[open] > .tab { color: var(--gold); }
     .tab[aria-current="page"] .mk, .tab.on .mk, .more[open] > .tab .mk { background: var(--gold); }
     .scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 0; }
@@ -45,6 +45,7 @@ const moreOn = more.some((n) => n.id === active);
       display: flex; flex-direction: column; gap: 4px; text-align: left;
       background: var(--surface); border-radius: 22px 22px 0 0;
       padding: 12px 18px calc(84px + env(safe-area-inset-bottom));
+      max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain;
     }
     .grab { align-self: center; width: 40px; height: 4px; border-radius: 2px; background: var(--split-off); margin-bottom: 12px; }
     .sheet a { display: flex; flex-direction: column; gap: 2px; padding: 14px 12px; border-radius: var(--radius-sm); min-height: 44px; }

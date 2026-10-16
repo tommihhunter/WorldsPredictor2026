@@ -11,7 +11,7 @@ const f = (v: number | null | undefined, fmt: (n: number) => string) => (v == nu
 const gd = (n: number) => `${Math.round(n) > 0 ? '+' : ''}${Math.round(n)}`;
 const role = (r: string) => ROLE[String(r).toUpperCase()] ?? [r, r];
 ---
-<div class="scroll">
+<div class="scroll" tabindex="0" role="region" aria-label="Players, scrolls sideways">
   <table class="players">
     <thead><tr><th>Role</th><th>Player</th><th class="r wide">KDA</th><th class="r wide">GD@15</th><th>Most played</th></tr></thead>
     {splits.map((s) => (
@@ -33,13 +33,13 @@ const role = (r: string) => ROLE[String(r).toUpperCase()] ?? [r, r];
   .players th { font-size: 14px; padding-bottom: 8px; }
   .players td { padding: 10px 12px 10px 0; font-size: 17px; }
   .players td:last-child { padding-right: 0; }
-  .champs { font-size: 15px; color: var(--fg2); }
+  .players td.champs { font-size: 15px; color: var(--fg2); }
   .l { display: none; }
   @media (max-width: 640px) {
     .wide { display: none; }
     .s { display: none; }
     .l { display: inline; }
     .players td { padding: 9px 10px 9px 0; font-size: 15px; vertical-align: baseline; }
-    .champs { font-size: 13px; }
+    .players td.champs { font-size: 13px; }
   }
 </style>

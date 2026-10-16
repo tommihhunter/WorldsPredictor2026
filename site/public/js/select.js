@@ -14,5 +14,6 @@ document.addEventListener('click', (e) => {
     d.hidden = d.id !== card.dataset.show;
     if (!d.hidden) shown = d;
   }
-  if (shown && matchMedia('(max-width: 640px)').matches) shown.scrollIntoView({ block: 'nearest' });
+  // bring the panel into view when it sits below the fold (always on phones); instant, no animation
+  if (shown && (matchMedia('(max-width: 640px)').matches || shown.getBoundingClientRect().top > innerHeight * 0.7)) shown.scrollIntoView({ block: 'nearest' });
 });

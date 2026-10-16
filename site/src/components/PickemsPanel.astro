@@ -6,7 +6,7 @@ import Logo from './Logo.astro';
 import { pickems } from '../lib/data';
 import { resultRows } from '../lib/grading';
 import { nextLock } from '../lib/nav';
-import { STAGES, view } from '../lib/stage';
+import { STAGES, drawPassed, view } from '../lib/stage';
 import { pct } from '../lib/format';
 import { url } from '../lib/url';
 interface Props { stage: 'swiss' | 'knockouts'; full?: boolean }
@@ -21,6 +21,7 @@ const advLabel = (adv[0]?.slot ?? 'Advance').replace(/[()]/g, '');
 const nl = nextLock();
 const lock = nl && nl.stage.toLowerCase() === stage ? nl : null;
 const draw = /draw on (\d\d\/\d\d)/.exec(st.note)?.[1];
+const drawn = drawPassed().passed;
 // Preliminary while the Swiss rows are not from a Swiss (or later) staged run.
 const prelim = stage === 'swiss' && view(st, 'latest').swissSet === 'baseline';
 // ponytail: "latest" = last finished row in results.json order (the file is appended as series finish); sort by start_nz if that changes.
@@ -45,7 +46,7 @@ const title = `${st.phase} Pick'Ems`;
     {swissLayout ? (
       <div class="pk-grid">
         <div class="pk-cell">
-          <span class="pk-k teal">Go 3-0</span>
+          <span class:list={['pk-k', full ? 'gold' : 'teal']}>Go 3-0</span>
           {go30.map((r) => <div class="pk-team"><Logo code={r.pick} size={full ? 40 : 32} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p big teal">{pct(r.p_correct)}</span></div>)}
         </div>
         <div class="pk-cell">
@@ -58,7 +59,7 @@ const title = `${st.phase} Pick'Ems`;
             {adv.map((r) => <div class="pk-team sm"><Logo code={r.pick} size={full ? 34 : 26} class="pk-logo" /><span class="code">{r.pick}</span><span class="pk-p gold">{pct(r.p_correct)}</span></div>)}
           </div>
           <span class="pk-advlist code">{adv.map((r) => r.pick).join(', ')}</span>
-          {prelim && <span class="pk-phone caption">Preliminary until the {draw ?? 'round 1'} draw</span>}
+          {prelim && <span class="pk-phone caption">{drawn ? 'Preliminary until the re-run' : `Preliminary until the ${draw ? `${draw} (US time)` : 'round 1'} draw`}</span>}
         </div>
       </div>
     ) : (
@@ -70,7 +71,7 @@ const title = `${st.phase} Pick'Ems`;
     )}
     {!full && (prelim || lastLine) && (
       <div class="panel-sec pk-status caption">
-        {prelim && <span class="pk-desk">Preliminary. Re-run after the round 1 draw{draw ? ` on ${draw}` : ''}.</span>}
+        {prelim && <span class="pk-desk">{drawn ? 'Preliminary until the re-run after the round 1 draw.' : `Preliminary. Re-run after the round 1 draw${draw ? ` on ${draw} (US time)` : ''}.`}</span>}
         {lastLine && <span>{lastLine}</span>}
       </div>
     )}
@@ -83,7 +84,7 @@ const title = `${st.phase} Pick'Ems`;
   .pk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pk-cell { display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; min-width: 0; }
   .pk:not(.full) .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
-  .pk:not(.full) .pk-cell:not(.pk-adv) { border-bottom: 1px solid var(--line); }
+  .pk:not(.full) .pk-cell { border-bottom: 1px solid var(--line); }
   .pk-adv { grid-column: 1 / -1; }
   .pk-k { font-size: 15px; font-weight: 600; }
   .pk-team { display: flex; align-items: center; gap: 12px; min-width: 0; }
@@ -124,7 +125,7 @@ const title = `${st.phase} Pick'Ems`;
     .pk .pk-adv { grid-column: 1 / -1; }
     .pk .pk-cell { gap: 10px; padding: 16px 18px; }
     .pk .pk-cell:nth-child(1) { border-right: 1px solid var(--line); }
-    .pk .pk-cell:not(.pk-adv) { border-bottom: 1px solid var(--line); }
+    .pk:not(.full) .pk-cell, .pk.full .pk-cell:not(.pk-adv) { border-bottom: 1px solid var(--line); }
     .pk .pk-k { font-size: 14px; }
     .pk :global(.pk-logo), .pk .pk-advgrid, .pk .pk-desk { display: none; }
     .pk:not(.full) .panel-head { flex-wrap: nowrap; }

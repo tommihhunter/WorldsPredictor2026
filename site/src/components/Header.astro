@@ -8,6 +8,8 @@ interface Props { active: string; title: string }
 const { active, title } = Astro.props;
 const lock = nextLock();
 const raw = overview().next_lock;
+// phone: the lock chip only on its own stage's page (Phone Pages.dc.html shows it on Swiss only)
+const own = !!lock && active === lock.stage.toLowerCase();
 ---
 <header class="hdr">
   <div class="hdr-in">
@@ -20,13 +22,14 @@ const raw = overview().next_lock;
       {NAV.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}>{n.label}</a>)}
     </nav>
     {lock
-      ? <span class="chip lock hlock"><span class="full">{lock.stage} lock {lock.day}, {lock.time} NZDT</span><span class="short">Locks {lock.day}</span></span>
+      ? <span class:list={['chip lock hlock', { 'ph-off': !own }]}><span class="full">{lock.stage} lock {lock.day}, {lock.time} NZDT</span><span class="short">Locks {lock.day}</span></span>
       : raw && <span class="chip lock hlock">{raw}</span>}
   </div>
 </header>
 <style>
   .hdr { border-bottom: 1px solid var(--line-head); background: var(--bg); }
-  .hdr-in { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); min-height: 84px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; }
+  /* content-box width as in Site Header.dc.html: 1600px of content plus the gutters; padding so wrapped rows breathe */
+  .hdr-in { max-width: calc(var(--page-max) + 2 * var(--gutter)); margin: 0 auto; padding: 14px var(--gutter); min-height: 84px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; }
   .brand { display: flex; align-items: center; gap: 14px; color: var(--fg); }
   .avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--gold); }
   .word, .ptitle { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: 0.05em; line-height: 1.1; }
@@ -43,7 +46,8 @@ const raw = overview().next_lock;
     .avatar { width: 36px; height: 36px; }
     .word, .hnav { display: none; }
     .ptitle { display: block; font-size: 21px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .hlock { margin-left: auto; font-size: 13px; padding: 3px 10px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .hlock { margin-left: auto; font-size: 13px; padding: 3px 10px; flex: none; }
+    .hlock.ph-off { display: none; }
     .hlock .full { display: none; }
     .hlock .short { display: inline; }
   }

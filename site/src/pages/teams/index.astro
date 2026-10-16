@@ -8,6 +8,7 @@ import { url } from '../../lib/url';
 
 const rs = [...ratings()].sort((a, b) => a.rank - b.rank);
 const lv = new Map(live().map((x) => [x.team, x]));
+const liveStamp = live()[0]?.generated_nz;
 const ORDER = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL'];
 const present = [...new Set(rs.map((r) => r.region))];
 const regions = [...ORDER.filter((g) => present.includes(g)), ...present.filter((g) => !ORDER.includes(g))];
@@ -20,6 +21,7 @@ const accessed = dossiers().map((d) => String((d as { players_sample?: string })
       <span class="eyebrow ph-hide">{rs.length} teams, {regions.length} regions</span>
       <h1 class="ph-hide">The field</h1>
       <p class="lede ph-hide">Ranked by model rating. Pick a team for its full dossier.</p>
+      <p class="caption">Ranked by model rating; odds are live{liveStamp ? `, ${liveStamp}` : ''}.</p>
       <a class="more" href={url('teams/compare/')}>Compare two teams →</a>
     </div>
     <div class="filters" role="group" aria-label="Region" hidden>
@@ -35,7 +37,8 @@ const accessed = dossiers().map((d) => String((d as { players_sample?: string })
 <style>
   .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 40px; min-width: 0; }
   .intro { max-width: 900px; }
-  .more { font-size: 17px; font-weight: 600; color: var(--gold); align-self: flex-start; }
+  .more { font-size: 17px; font-weight: 600; color: var(--gold); align-self: flex-start; padding: 6px 0; }
+  .filters .chip:focus-visible { outline-offset: -3px; }
   .filters { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
   .filters[hidden] { display: none; }
   .filters .chip { font-size: 16px; padding: 8px 16px; }

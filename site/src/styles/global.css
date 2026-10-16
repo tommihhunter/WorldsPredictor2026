@@ -15,6 +15,11 @@ body {
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--gold); }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+/* visually hidden, still read by screen readers */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* skip link: hidden until focused */
+.skip { position: absolute; left: 12px; top: -60px; z-index: 50; padding: 8px 14px; border-radius: var(--radius-sm); background: var(--gold); color: var(--bg); font-weight: 600; }
+.skip:focus { top: 12px; color: var(--bg); }
 img { max-width: 100%; }
 button { font: inherit; color: inherit; }
 p { margin: 0; }
@@ -40,6 +45,8 @@ th.r, td.r { text-align: right; }
   padding: var(--space-xl) var(--gutter) var(--space-3xl);
   display: flex; flex-direction: column; gap: var(--space-xl); min-width: 0;
 }
+/* Home's main column is content-box in Home.dc.html: 1600px of content plus the gutters */
+.page.home { max-width: calc(var(--page-max) + 2 * var(--gutter)); }
 /* two auto-fit columns that stack below about 1150px */
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: var(--space-xl) var(--space-2xl); align-items: start; }
 .cols > * { min-width: 0; }
@@ -48,7 +55,7 @@ th.r, td.r { text-align: right; }
 /* gold label above a title or inside a panel */
 .eyebrow { font-size: 17px; font-weight: 600; color: var(--gold); }
 /* intro paragraph under h1 */
-.lede { font-size: 22px; line-height: 1.45; color: var(--fg2); max-width: 56ch; text-wrap: pretty; }
+.lede { font-size: 22px; line-height: 1.45; color: var(--fg2); text-wrap: pretty; }
 /* section header row: h2 on the left, a --muted caption on the right */
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding-bottom: 6px; }
 .section-head > span, .section-head > p { font-size: 16px; color: var(--muted); }
@@ -56,6 +63,7 @@ th.r, td.r { text-align: right; }
 .section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 /* wrapper for wide tables and fixed-width grids: scrolls sideways on phones, never the page */
 .scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+.scroll:focus-visible { outline-offset: -2px; }
 
 /* ---------- surfaces ---------- */
 /* solid rounded panel, no border; default padding 24/28 */
@@ -70,10 +78,12 @@ th.r, td.r { text-align: right; }
 /* warm callout (risk, notes, Pick'Ems points); works on <div> or <a> */
 .callout { display: flex; flex-direction: column; gap: 12px; padding: 28px; background: var(--surface-warm); border-radius: var(--radius); box-shadow: var(--inset-warm); min-width: 0; }
 .callout > .eyebrow { font-size: 16px; }
-a.callout:hover { color: inherit; background: #30283F; }
+a.callout:hover { color: inherit; background: var(--hover-warm); }
 /* link row at the foot of a panel: "All Swiss picks ->" */
 .link-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 28px; font-size: 17px; font-weight: 600; color: var(--gold); }
 .link-row:hover { background: var(--hover); color: var(--gold); }
+/* inset ring: the flush panel clips anything outside */
+.link-row:focus-visible { outline-offset: -4px; }
 /* series or team card; use on <button> or <a>; transparent border so selection does not shift it */
 .card {
   appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%; min-width: 0;
@@ -82,13 +92,13 @@ a.callout:hover { color: inherit; background: #30283F; }
 }
 .card:hover { color: inherit; background: var(--hover); }
 /* selected card: teal border and ring */
-.card.is-selected, .card[aria-pressed="true"], .card[aria-current="true"] { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
+.card.is-selected, .card[aria-pressed="true"] { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
 /* the Final card: gold border */
 .card.is-final { border-color: var(--gold); }
 
 /* ---------- text ---------- */
 /* team code or team name in lists */
-.code { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.02em; }
+.code { font-family: var(--font-display); font-weight: 700; }
 /* big numbers: Cinzel 600, size set where used */
 .big { font-family: var(--font-display); font-weight: 600; line-height: 1; }
 /* tabular numerals */
@@ -115,7 +125,7 @@ button.chip:hover, a.chip:hover { color: var(--gold); }
 /* lock chip: gold text, 1px gold border, no fill */
 .chip.lock { color: var(--gold); border-color: var(--gold); }
 /* active or result chip: gold fill, dark text */
-.chip.on, .chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+.chip.on, .chip[aria-pressed="true"], button.chip.on:hover, button.chip[aria-pressed="true"]:hover, a.chip.on:hover { background: var(--gold); border-color: var(--gold); color: var(--bg); }
 /* neutral outline chip (score call, tier in a detail panel) */
 .chip.outline { border-color: var(--split-off); font-weight: 500; }
 /* compact chip for phone headers and tight spots */
@@ -131,8 +141,7 @@ button.chip:hover, a.chip:hover { color: var(--gold); }
 .bar.gold > i, .bar > i.gold { background: var(--gold); }
 .bar.teal > i, .bar > i.teal { background: var(--teal); }
 .bar.alt > i, .bar > i.alt { background: var(--bar-alt); }
-/* compact bar, 4px */
-.bar.thin { height: 4px; }
+
 /* split bar for a match: <span class="split" style="--pa:62"><i></i><i></i></span>, --pa is team A's % (0 to 100) */
 .split { display: flex; gap: 3px; height: 4px; }
 .split > i { border-radius: 2px; min-width: 0; }
@@ -149,7 +158,7 @@ button.chip:hover, a.chip:hover { color: var(--gold); }
 .stat-strip { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); background: var(--surface); border-radius: var(--radius); box-shadow: var(--inset); padding: 0 32px; }
 .stat-strip > * { display: flex; flex-direction: column; gap: 6px; padding: 28px 32px 28px 0; min-width: 0; }
 .stat-strip .k { font-size: 16px; color: var(--muted); }
-.stat-strip .v { font-family: var(--font-display); font-weight: 600; font-size: 56px; line-height: 1; }
+.stat-strip .v { font-family: var(--font-display); font-weight: 600; font-size: clamp(40px, 3.4vw, 56px); line-height: 1; white-space: nowrap; }
 .stat-strip .sub { font-size: 16px; color: var(--fg2); }
 /* team logo image, size via --s (Logo.astro sets it) */
 .logo { width: var(--s, 28px); height: var(--s, 28px); object-fit: contain; flex: none; display: inline-block; vertical-align: middle; }
@@ -159,6 +168,11 @@ button.chip:hover, a.chip:hover { color: var(--gold); }
   display: inline-flex; align-items: center; justify-content: center; vertical-align: middle;
   background: var(--bg); color: var(--fg2);
   font-family: var(--font-display); font-weight: 700; font-size: max(10px, calc(var(--s, 28px) * 0.34)); line-height: 1;
+}
+
+/* ---------- tablet ---------- */
+@media (max-width: 900px) {
+  .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- phone ---------- */

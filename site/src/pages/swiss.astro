@@ -3,8 +3,7 @@ import Base from '../layouts/Base.astro';
 import PickemsPanel from '../components/PickemsPanel.astro';
 import RecordTable from '../components/RecordTable.astro';
 import { overview, series, swiss } from '../lib/data';
-import { nzToday } from '../lib/grading';
-import { STAGES, swissRecords, view } from '../lib/stage';
+import { STAGES, drawPassed, setLabel, swissRecords, view } from '../lib/stage';
 
 const st = STAGES[1];
 const v = view(st, 'latest');
@@ -14,18 +13,19 @@ const created = (series().find((s) => s.set === v.swissSet)?.created_nz ?? 'UNKN
 const year = /\d{4}/.exec(st.dates)?.[0];
 const from = /^\d\d\/\d\d/.exec(st.dates)?.[0];
 const where = st.venue.split(', ').slice(-2).join(', ');
-const draw = /draw on (\d\d\/\d\d)/.exec(st.note)?.[1];
-const ymd = (d: string) => d.split('/').reverse().join('');
-const drawn = !!draw && !!year && ymd(nzToday()) >= ymd(`${draw}/${year}`);
+// the draw date is a US date: it counts as done only from the NZ day after it
+const { draw, passed: drawn } = drawPassed();
 const drawLine = staged
   ? `Re-run after the round 1 draw, predicted ${created}.`
   : !draw ? 'These picks are preliminary until the re-run after the round 1 draw.'
-  : drawn ? `The round 1 draw was on ${draw}; these picks stay preliminary until the re-run.`
-  : `The round 1 draw is on ${draw}, so these picks are preliminary until the re-run.`;
+  : drawn ? `The round 1 draw was on ${draw} (US time); these picks stay preliminary until the re-run.`
+  : `The round 1 draw is on ${draw} (US time), so these picks are preliminary until the re-run.`;
 const lede = `${rows.length || 'UNKNOWN'} teams. Rounds 1 and 2 are Bo1, deciders are Bo3. ${drawLine}`;
-const caption = `Advance is the chance of reaching 3 wins${staged ? ' given the actual draw' : ', averaged over all legal draws'}.`;
+// before a Swiss run the 16th team is the predicted Play-In winner (model/predict.py), so every row assumes it
+const piw = overview().playin_winner;
+const caption = `Advance is the chance of reaching 3 wins${staged ? ' given the actual draw' : `, averaged over all legal draws${piw ? ` and assuming ${piw} win the Play-In` : ''}`}.`;
 const points = /Swiss [^.]*\./.exec(overview().pickems_points ?? '')?.[0].replace(/^Swiss /, '');
-const footLeft = `${staged ? `Staged ${v.swissSet} run` : 'Frozen baseline'}, predicted ${created}.${points ? ` Points: ${points}` : ''}`;
+const footLeft = `${staged ? `Staged ${setLabel(v.swissSet)}` : 'Frozen baseline'}, predicted ${created}.${points ? ` Points: ${points}` : ''}`;
 ---
 <Base title="Swiss" active="swiss" description="Swiss stage Pick'Ems and every team's likely record." footer={{ left: footLeft }}>
   <section class="intro sw-intro">

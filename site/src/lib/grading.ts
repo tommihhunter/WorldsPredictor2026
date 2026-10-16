@@ -3,6 +3,8 @@
 import { pickems, results, series, type Result, type Series } from './data';
 
 type Pair = { team_a?: string; team_b?: string };
+/** "dd/mm/yyyy HH:MM" to a sortable "yyyymmddHHMM", null when unparseable. */
+export const stamp = (s?: string | null) => { const m = /(\d\d)\/(\d\d)\/(\d{4}) (\d\d):(\d\d)/.exec(s || ''); return m ? m[3] + m[2] + m[1] + m[4] + m[5] : null; };
 const pair = (s: Pair) => [s.team_a, s.team_b].sort().join('|');
 const pairKey = (x: Pair & { id: string }) => `${x.id}|${pair(x)}`;
 /** Graded results: finished series (a winner entered), not Swiss records. */
@@ -31,6 +33,9 @@ export function grade(): Grade[] {
     for (const r of done()) {
       const s = match(r, set);
       if (!s) continue;
+      // no look-ahead (model/grade.py): a call made at or after the start is INVALID - post-start and not graded
+      const made = stamp(s.created_nz), start = stamp(r.start_nz);
+      if (made && start && made >= start) continue;
       const pa = s.p_series_a as number;
       const pWin = r.winner === s.team_a ? pa : 1 - pa;
       const hit = s.winner === r.winner ? 1 : 0;
@@ -97,12 +102,10 @@ const open = (s: Series) => predicted(s) && !playedResult(s);
 /** The live set: the most advanced staged set that still has an open series. */
 export const liveSet = () => ['knockouts', 'swiss', 'playin', 'baseline'].find((st) => series().some((s) => s.set === st && open(s)));
 const bySchedule = (a: Series, b: Series) => sortKey(a).localeCompare(sortKey(b));
-/** The next n open series of the live set, in schedule order. */
-export const nextUp = (n = 4) => series().filter((s) => s.set === liveSet() && open(s)).sort(bySchedule).slice(0, n);
+
 /** Today's date in NZDT (UTC+13) as dd/mm/yyyy. */
 export const nzToday = (now = Date.now()) => new Date(now + 13 * 3600e3).toISOString().slice(0, 10).split('-').reverse().join('/');
 /** Series of the live set dated today in NZDT, played or not. */
 export const today = () => { const d = nzToday(); return series().filter((s) => s.set === liveSet() && predicted(s) && (s.time_nz || '').startsWith(d)).sort(bySchedule); };
 /** The entered result for a series (same id and pair), if it has finished. */
 export const resultFor = playedResult;
-export const HUB: Record<string, string> = { 'Play-In': 'play-in/', Swiss: 'swiss/', Knockouts: 'knockouts/' };

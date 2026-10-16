@@ -24,11 +24,11 @@ const hasFooterSlot = Astro.slots.has('footer');
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#15112A" />
-  <title>{title} · Worlds 2026 Predictor</title>
+  <title>{title} · Poro Prophet</title>
   <meta name="description" content={description} />
   <link rel="icon" type="image/png" href={url('art/poro/favicon.png')} />
   <link rel="apple-touch-icon" href={url('art/poro/apple-touch.png')} />
-  <meta property="og:title" content={`${title} · Worlds 2026 Predictor`} />
+  <meta property="og:title" content={`${title} · Poro Prophet`} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={abs(url('art/poro/main-256.png'))} />
   <meta property="og:url" content={abs(Astro.url.pathname)} />
@@ -37,8 +37,9 @@ const hasFooterSlot = Astro.slots.has('footer');
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:wght@400;500;600&display=swap" />
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   {home ? <Masthead active={active} /> : <Header active={active} title={title} />}
-  <main class="page"><slot /></main>
+  <main id="main" class:list={['page', { home }]}><slot /></main>
   {hasFooterSlot
     ? <Footer right={footer?.right}><slot name="footer" /></Footer>
     : <Footer left={footer?.left} right={footer?.right} />}

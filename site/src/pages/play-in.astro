@@ -8,7 +8,7 @@ import { live, pickems, ratings, results } from '../lib/data';
 import { pct } from '../lib/format';
 import { pickemPoints } from '../lib/grading';
 import { url } from '../lib/url';
-import { STAGES, bySchedule, resultFor, stagePickems, started, view } from '../lib/stage';
+import { STAGES, bySchedule, resultFor, setLabel, stagePickems, started, view } from '../lib/stage';
 import type { Series } from '../lib/data';
 
 const st = STAGES[0];
@@ -40,7 +40,7 @@ const pickCap = `${locked ? 'Locked' : 'Locks'} ${lockText}. ${pts?.max ?? 'UNKN
 const createdNz = (v.rows[0]?.created_nz ?? 'UNKNOWN').replace(/(\d\d:\d\d):\d\d/, '$1');
 const key = (d: string) => d.replace(/(\d\d)\/(\d\d)\/(\d{4})/, '$3$2$1');
 const accessed = results().map((r) => (r as { source?: { accessed?: string } }).source?.accessed).filter((a): a is string => !!a).sort((a, b) => key(a).localeCompare(key(b))).at(-1);
-const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baseline' : `latest staged run, ${v.set}`}). ${accessed ? `Results: gol.gg, accessed ${accessed}.` : 'No results entered yet.'}`;
+const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baseline' : `latest staged run, ${setLabel(v.set)}`}). ${accessed ? `Results: gol.gg, accessed ${accessed}.` : 'No results entered yet.'}`;
 ---
 <Base title="Play-In" active="play-in" description="Four teams, one Swiss spot: the Play-In bracket, series odds and our Pick'Ems." footer={{ left: footer }}>
   <section class="top">
@@ -84,9 +84,9 @@ const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baselin
   <section class="section">
     <div class="section-head"><h2>Our Play-In Pick'Ems</h2><span>{pickCap}</span></div>
     {picks.length ? (
-      <div class="scroll">
+      <div class="scroll" tabindex="0" role="region" aria-label="Our Play-In Pick'Ems, scrolls sideways">
         <table class="pk">
-          <thead><tr><th>Slot</th><th>Our pick</th><th>Chance right</th><th class="fld">Field</th><th class="r">Status</th></tr></thead>
+          <thead><tr><th>Slot</th><th>Our pick</th><th>Chance right at the lock</th><th class="fld">Field</th><th class="r">Status</th></tr></thead>
           <tbody>
             {picks.map((p) => (
               <tr>
@@ -104,10 +104,12 @@ const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baselin
       </div>
     ) : <p class="caption">Play-In picks not available yet.</p>}
   </section>
+  <noscript><style>.pick [data-detail][hidden] { display: grid !important; }</style></noscript>
   <script is:inline src={url('js/select.js')} defer></script>
 </Base>
 <style>
   .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px 72px; align-items: end; }
+  .intro .lede { max-width: 56ch; }
   .win { display: flex; flex-direction: column; }
   .win .eyebrow { font-size: 16px; padding-bottom: 8px; }
   .wr { display: grid; grid-template-columns: 32px 72px minmax(0, 1fr) 56px; align-items: center; gap: 14px; }
@@ -123,7 +125,8 @@ const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baselin
   .pk td { font-size: 18px; }
   .pk td.fld { font-size: 16px; }
   .pk th:nth-child(1) { width: 22%; } .pk th:nth-child(2) { width: 16%; } .pk th:nth-child(3) { width: 18%; }
-  .pickc { display: inline-flex; align-items: center; gap: 10px; }
+  .pickc { display: flex; align-items: center; gap: 10px; }
+  .pk td { padding-top: 17px; padding-bottom: 17px; }
   .st { font-weight: 600; white-space: nowrap; }
   @media (max-width: 1100px) { .bracket { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 1000px) { .top { grid-template-columns: minmax(0, 1fr); } }

@@ -24,9 +24,19 @@ const sw = existsSync(SWEEP) ? (JSON.parse(readFileSync(SWEEP, 'utf8')) as { row
 const sweepPct = sw.length ? `${Math.round((100 * sw.filter((r) => Math.min(r.sa, r.sb) === 0).length) / sw.length)}%` : 'UNKNOWN';
 const nBo5 = sw.length || 'UNKNOWN';
 
-const champs = [...metaChamps()].sort((a, b) => a.rank - b.rank).slice(0, 12);
+const all = metaChamps();
+const champs = [...all].sort((a, b) => a.rank - b.rank).slice(0, 12);
 const p0 = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Math.round(v)}%`);
-const flag = (note: string) => (note.startsWith('Nerf') ? 'risk' : note.startsWith('Buff') ? 'teal' : 'dim');
+// Patch flag: the champion's latest change in patch_changes.json (the export's patch_note covers only a few champions)
+const VERB: Record<string, string> = { nerf: 'Nerfed', buff: 'Buffed', adjust: 'Adjusted' };
+const latest = new Map<string, string>();
+for (const c of [...changes].filter((x) => x.kind === 'champion').sort((a, b) => b.patch.localeCompare(a.patch, 'en', { numeric: true }))) {
+  if (!latest.has(c.name)) latest.set(c.name, `${VERB[c.change] ?? 'Changed'} ${c.patch}`);
+}
+const note = (c: { champion: string; patch_note: string }) => latest.get(c.champion) || c.patch_note || 'Unchanged';
+const flag = (n: string) => (n.startsWith('Nerf') ? 'risk' : n.startsWith('Buff') ? 'teal' : n === 'Unchanged' ? 'dim' : 'muted2');
+// Sample size: presence = (picks + bans) / games, so games = (picks + bans) / presence
+const games = (() => { const t = champs[0]; return t && t.presence ? Math.round(((t.picks + t.bans) / t.presence) * 100) : null; })();
 
 // Pick'Ems rows: points text per stage from overview.pickems_points, lock from overview.locks_nz
 const STAGES = ['Play-In', 'Swiss', 'Knockouts'];
@@ -45,7 +55,7 @@ const stages = STAGES.map((name) => {
 });
 ---
 <Base title="Meta" active="meta" description={`The Worlds 2026 patch ${patch ?? ''}: what changed, the most contested champions, draft rules and Pick'Ems points.`}
-  footer={{ left: `Champion data: gol.gg; patch notes: leagueoflegends.com. Exported ${ov.exported_nz ?? 'UNKNOWN'}.`, right: 'A fan project. Champion names belong to Riot Games.' }}>
+  footer={{ left: `Champion presence: gol.gg, most recent domestic playoffs; patch notes: leagueoflegends.com. Exported ${ov.exported_nz ?? 'UNKNOWN'}.`, right: 'A fan project. Champion names belong to Riot Games.' }}>
   <section class="intro">
     <span class="eyebrow">Patch {patch ?? 'UNKNOWN'}, the Worlds patch</span>
     <h1>The meta and the rules</h1>
@@ -67,25 +77,25 @@ const stages = STAGES.map((name) => {
     </div>
     <div class="callout box">
       <span class="eyebrow">Why so many 3-0 calls</span>
-      <p class="big-p">Of {nBo5} Bo5s in 2026, {sweepPct} were sweeps, and 3-0 was the most common score at every favourite strength. A 3-0 call is the single likeliest score, not a promise.</p>
+      <p class="big-p">Of {nBo5} Bo5s in 2026, {sweepPct} were sweeps, and 3-0 was the most common score at every favourite strength except true coin flips. A 3-0 call is the single likeliest score, not a promise.</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="section-head"><h2>Most contested champions</h2><span>Presence = picked or banned, all 2026 pro games, top {champs.length}</span></div>
+    <div class="section-head"><h2>Most contested champions</h2><span>Presence = picked or banned, in the {games ?? 'UNKNOWN'} games of the most recent domestic playoffs (gol.gg), top {champs.length}</span></div>
     {champs.length ? (
       <div>
-        <div class="crow chead" aria-hidden="true"><span></span><span>Champion</span><span>Roles</span><span>Presence</span><span class="r">Picks</span><span class="r">Win rate</span><span>Patch</span></div>
-        <div class="rows">
+        <div class="crow chead"><span><span class="sr-only">Rank</span></span><span>Champion</span><span>Roles</span><span>Presence</span><span class="r">Picks</span><span class="r">Win rate</span><span>Patch</span></div>
+        <div class="rows crows">
           {champs.map((c) => (
             <div class="crow">
               <span class="rk dim">{c.rank}</span>
-              <span class="nm"><span class="code">{c.champion}</span><span class:list={['pf', flag(c.patch_note || '')]}>{c.patch_note || 'Unchanged'}</span></span>
+              <span class="nm"><span class="code">{c.champion}</span><span class:list={['pf', flag(note(c))]}>{note(c)}</span></span>
               <span class="roles muted2">{c.roles || 'UNKNOWN'}</span>
               <span class="pres"><span class="bar"><i style={`width:${c.presence ?? 0}%`}></i></span><span class="pv">{p0(c.presence)}</span></span>
               <span class="r pk">{c.picks ?? 'UNKNOWN'}</span>
               <span class="r wr">{p0(c.pick_wr)}</span>
-              <span class:list={['flag', flag(c.patch_note || '')]}>{c.patch_note || 'Unchanged'}</span>
+              <span class:list={['flag', flag(note(c))]}>{note(c)}</span>
             </div>
           ))}
         </div>
@@ -95,7 +105,7 @@ const stages = STAGES.map((name) => {
 
   <section class="section">
     <div class="section-head"><h2>Pick'Ems points and locks</h2></div>
-    <div class="rows">
+    <div class="rows prows">
       {stages.map((s) => (
         <div class="prow">
           <span class="code">{s.name}</span>
@@ -115,6 +125,7 @@ const stages = STAGES.map((name) => {
   .b { font-weight: 600; }
   .crow { display: grid; grid-template-columns: 40px 200px 220px minmax(0, 1fr) 90px 90px 150px; gap: 20px; align-items: center; font-size: 18px; }
   .rows > .crow { padding: 11px 0; }
+  .crows, .prows { gap: 8px; }
   .chead { font-size: 15px; color: var(--muted); padding-bottom: 6px; }
   .r { text-align: right; }
   .nm .pf { display: none; }
@@ -131,22 +142,32 @@ const stages = STAGES.map((name) => {
     .roles { display: none; }
     .chead > span:nth-child(3) { display: none; }
   }
+  /* below 760px the fixed columns would squeeze the presence bar away: two-column rows */
+  @media (max-width: 760px) {
+    .chead { display: none; }
+    .crow { grid-template-columns: 160px minmax(0, 1fr); gap: 10px; }
+    .crows { gap: 0; }
+    .rows > .crow { padding: 9px 0; }
+    .rk, .pk, .wr, .flag { display: none; }
+    .nm { display: flex; flex-direction: column; }
+    .nm .pf { display: block; font-size: 14px; }
+    .prow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name lock" "pts pts"; gap: 2px 12px; }
+    .prow > .code { grid-area: name; } .prow > .fg2 { grid-area: pts; } .prow > .lk { grid-area: lock; }
+  }
   @media (max-width: 640px) {
-    .intro, .draft { display: none; }
+    /* the h1 stays for screen readers (Phone Pages.dc.html has no visible intro here) */
+    .intro { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .intro > :not(h1) { display: none; }
+    .draft { display: none; }
     .box { padding: 16px 18px; gap: 8px; }
     .box > .eyebrow { font-size: 14px; }
     .big-p, .dirs { font-size: 15px; line-height: 1.5; }
     .trio > .panel .big-p { display: none; }
-    .chead { display: none; }
-    .crow { grid-template-columns: 110px minmax(0, 1fr); gap: 10px; }
-    .rows > .crow { padding: 9px 0; }
-    .rk, .pk, .wr, .flag { display: none; }
-    .nm { display: flex; flex-direction: column; }
+    .crow { grid-template-columns: 110px minmax(0, 1fr); }
     .nm .code { font-size: 14px; }
-    .nm .pf { display: block; font-size: 12px; }
+    .nm .pf { font-size: 12px; }
     .pres .bar { height: 5px; }
     .pv { width: 46px; font-size: 15px; }
-    .prow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name lock" "pts pts"; gap: 2px 12px; font-size: 15px; }
-    .prow > .code { grid-area: name; } .prow > .fg2 { grid-area: pts; } .prow > .lk { grid-area: lock; }
+    .prow { font-size: 15px; }
   }
 </style>

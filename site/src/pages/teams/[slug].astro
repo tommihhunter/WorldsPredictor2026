@@ -8,7 +8,8 @@ import Logo from '../../components/Logo.astro';
 import PathTable from '../../components/PathTable.astro';
 import PlayersTable from '../../components/PlayersTable.astro';
 import DraftBlock from '../../components/DraftBlock.astro';
-import { codeFromSlug, dossiers, live, overview, ratings, teamSlug, type Dossier, type TeamBlock } from '../../lib/data';
+import { codeFromSlug, displayName, dossiers, live, overview, ratings, teamSlug, type Dossier, type TeamBlock } from '../../lib/data';
+import { nzProse, pct1 as pc } from '../../lib/format';
 import { url } from '../../lib/url';
 
 export const getStaticPaths = () => ratings().map((r) => ({ params: { slug: teamSlug(r.code) } }));
@@ -22,11 +23,20 @@ const lv = live().find((x) => x.team === code);
 const opp = rs.find((x) => x.code !== code)!.code;
 const pair = [code, opp].sort().map(teamSlug).join('-vs-');
 
-// Under 1% reads "<1%", exactly 0 reads "0%" (the mock's format).
-const pc = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : v >= 0.01 ? `${(v * 100).toFixed(1)}%` : v > 0 ? '<1%' : '0%');
 const pc1 = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Number(v).toFixed(1)}%`);
 const gd = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Math.round(Number(v)) > 0 ? '+' : ''}${Math.round(Number(v))}`);
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const name = displayName(r.name);
+const headline = nzProse(d?.headline || r.headline || 'UNKNOWN');
+// link text: host and path cut at a segment boundary, with an ellipsis when shortened
+const linkText = (u: string, max: number) => {
+  const t = u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  return `${cut.slice(0, Math.max(cut.lastIndexOf('/'), cut.indexOf('/') + 1) || max)}…`;
+};
+// players_sample ends with a note about five champions with games and win rate; the table shows the top three names only
+const sampleText = (s?: string | null) => (s ? s.replace(/;\s*champion pools show[^;]*$/i, '') : 'UNKNOWN');
 
 const playin = lv ? lv.p_playin_win : r.p_playin;
 const trend = r.trend ? cap(r.trend.toLowerCase()) : 'UNKNOWN';
@@ -59,7 +69,7 @@ const sources = String(d?.sources ?? '').split(' ').filter(Boolean);
 const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/\d{4})/)?.[1] ?? 'UNKNOWN';
 ---
-<Base title={r.name} active="teams" description={d?.headline || r.headline} footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}.` }}>
+<Base title={name} active="teams" description={headline} footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}.` }}>
   <a class="back" href={url('teams/')}><span class="gold" aria-hidden="true">←</span> Teams</a>
 
   <section class="panel dossier" aria-label="Dossier">
@@ -67,9 +77,9 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
       <span class="disc lg"><Logo code={code} size={66} /></span>
       <div class="who">
         <span class="eyebrow"><span class="dt">Dossier, </span>{r.region} seed {r.seed}</span>
-        <h1>{r.name}</h1>
+        <h1>{name}</h1>
       </div>
-      <p class="headline">{d?.headline || r.headline || 'UNKNOWN'}</p>
+      <p class="headline">{headline}</p>
       <div class="tp">
         <span class="big gold">{pc(lv?.p_champion ?? r.p_champion)}</span>
         <span class="muted2"><span class="dt">to win Worlds</span><span class="ph">title</span></span>
@@ -84,7 +94,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
       <div class="callout adj">
         <span class="eyebrow">Manual adjustment: {adj > 0 ? '+' : ''}{adj.toFixed(2)} logit</span>
         <p>{r.adj_reason || 'UNKNOWN'}</p>
-        <p class="caption src">Source: {adjSource.map((t) => (t.startsWith('http') ? <a href={t} target="_blank" rel="noopener">{t.replace(/^https?:\/\/(www\.)?/, '').slice(0, 60)}</a> : t))}</p>
+        <p class="caption src">Source: {adjSource.map((t) => (t.startsWith('http') ? <a href={t} target="_blank" rel="noopener">{linkText(t, 60)}</a> : t))}</p>
       </div>
     )}
 
@@ -113,7 +123,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
           <div id="players" class="players">
             <h2 class="ph">Players</h2>
             <PlayersTable splits={splits.map((s) => ({ key: s.key, players: s.players }))} />
-            {splits.map((s) => <p class="caption" data-split={s.key}>Players: {s.sample || 'UNKNOWN'}.</p>)}
+            {splits.map((s) => <p class="caption" data-split={s.key}>Players: {sampleText(s.sample)}.</p>)}
           </div>
         </div>
       </div>
@@ -122,9 +132,16 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
 
   <p class="links">
     <a href={url(`teams/compare/${pair}/`)}>Compare with {opp} →</a>
-    <button type="button" onclick="navigator.clipboard.writeText(location.href).then(() => { this.textContent = 'Link copied'; })">Copy link</button>
+    <button type="button" class="copy" aria-live="polite">Copy link</button>
     <a href={url('teams/')}>All teams</a>
   </p>
+  <script is:inline>
+    document.querySelector('.links .copy')?.addEventListener('click', async (e) => {
+      const b = e.currentTarget;
+      try { await navigator.clipboard.writeText(location.href); b.textContent = 'Link copied'; }
+      catch { b.textContent = 'Copy failed: use the address bar'; }
+    });
+  </script>
 
   <section class="section">
     <div class="section-head"><h2>Path through Worlds</h2><span>Times NZDT</span></div>
@@ -143,8 +160,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
 
   <section class="section">
     <div class="section-head"><h2>Sources</h2><span>Accessed {accessed}</span></div>
-    {sources.length ? <ul class="srcs">{sources.map((u) => <li><a href={u} target="_blank" rel="noopener">{u.replace(/^https?:\/\/(www\.)?/, '').slice(0, 80)}</a></li>)}</ul> : <p class="caption">No sources listed.</p>}
-    {d && <p class="caption">Full dossier: research/teams/{code}.md</p>}
+    {sources.length ? <ul class="srcs">{sources.map((u) => <li><a href={u} target="_blank" rel="noopener">{linkText(u, 80)}</a></li>)}</ul> : <p class="caption">No sources listed.</p>}
   </section>
 </Base>
 <style>
@@ -191,6 +207,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   .links a, .links button { color: var(--gold); }
   .links button { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
   .links button:hover { color: var(--fg); }
+  .links a, .links button { padding: 6px 0; }
   .draft { display: flex; flex-direction: column; gap: 20px; }
   .draft > p { max-width: 90ch; }
   .srcs { margin: 0; padding-left: 20px; font-size: 15px; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 4px; }
@@ -229,5 +246,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
     .facts { grid-template-columns: minmax(0, 1fr); gap: 0; font-size: 15px; line-height: 1.5; }
     .facts dd { margin-bottom: 10px; }
     .links { margin-top: -8px; font-size: 15px; }
+    .links a, .links button { padding: 12px 0; }
+    .back { padding: 6px 0; }
   }
 </style>

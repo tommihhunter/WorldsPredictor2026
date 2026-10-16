@@ -3,7 +3,7 @@
 // with the top two teams by rank compared below by default.
 import Base from '../../../layouts/Base.astro';
 import CompareView from '../../../components/CompareView.astro';
-import { overview, ratings } from '../../../lib/data';
+import { displayName, overview, ratings } from '../../../lib/data';
 import { url } from '../../../lib/url';
 
 const rs = [...ratings()].sort((x, y) => x.rank - y.rank);
@@ -19,7 +19,7 @@ const asOf = overview().ratings_as_of ?? 'UNKNOWN';
     <form id="compare-pick" class="pick" data-base={url('teams/compare/')}>
       {selects.map((s, i) => (
         <label><span class="caption">Team {i + 1}</span>
-          <select name={s.name}>{rs.map((r) => <option value={r.code} selected={r.code === s.sel}>{r.code}, {r.name}</option>)}</select>
+          <select name={s.name}>{rs.map((r) => <option value={r.code} selected={r.code === s.sel}>{r.code}, {displayName(r.name)}</option>)}</select>
         </label>
       ))}
       <button class="chip on" type="submit">Compare</button>

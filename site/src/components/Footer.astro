@@ -5,7 +5,7 @@ interface Props { left?: string; right?: string }
 const exported = overview().exported_nz ?? 'UNKNOWN';
 const {
   left = `Data: gol.gg, lolesports.com, official patch notes. Times in NZDT. Exported ${exported}.`,
-  right = 'A fan project. Logos belong to their owners.',
+  right = 'A fan project. Logos belong to their owners; champion art via Riot Data Dragon.',
 } = Astro.props;
 ---
 <footer class="foot">
@@ -16,5 +16,5 @@ const {
 </footer>
 <style>
   .foot { border-top: 1px solid var(--line); }
-  .foot-in { max-width: var(--page-max); margin: 0 auto; padding: 24px var(--gutter); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: var(--muted); }
+  .foot-in { max-width: calc(var(--page-max) + 2 * var(--gutter)); margin: 0 auto; padding: 24px var(--gutter); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: var(--muted); }
 </style>

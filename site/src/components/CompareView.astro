@@ -7,11 +7,13 @@ import ChampIcon from './ChampIcon.astro';
 import CompareRow from './CompareRow.astro';
 import Logo from './Logo.astro';
 import { metrics, slugOf, summary } from '../lib/compare';
-import { dossiers, ratings, teamSlug } from '../lib/data';
+import { displayName, dossiers, ratings, teamSlug } from '../lib/data';
 import { url } from '../lib/url';
 
 const { a, b, h1 = false } = Astro.props as { a: string; b: string; h1?: boolean };
 const H = h1 ? 'h1' : 'h2';
+// panel titles sit one level under the matchup heading
+const P = h1 ? 'h2' : 'h3';
 const rs = [...ratings()].sort((x, y) => x.rank - y.rank);
 const groups = metrics(a, b);
 const strips = summary(a, b);
@@ -22,7 +24,7 @@ const side = (code: string, other: string) => ({
   swaps: rs.filter((x) => x.code !== code && x.code !== other).slice(0, 10).map((x) => ({ code: x.code, href: url(`teams/compare/${slugOf(x.code, other)}/`) })),
 });
 const sides = [side(a, b), side(b, a)];
-const name = (code: string) => rs.find((x) => x.code === code)?.name ?? code;
+const name = (code: string) => displayName(rs.find((x) => x.code === code)?.name ?? code);
 ---
 <section class="intro">
   {h1 && <span class="eyebrow">Compare</span>}
@@ -36,7 +38,7 @@ const name = (code: string) => rs.find((x) => x.code === code)?.name ?? code;
       <div class:list={['side', { right: i === 1 }]}>
         <a class="name" href={url(`teams/${teamSlug(s.code)}/`)}>
           <span class="disc lg"><Logo code={s.code} size={44} /></span>
-          <span class="code">{s.r?.name ?? s.code}</span>
+          <span class="code">{name(s.code)}</span>
         </a>
         <p class="caption">{s.r ? `${s.r.region} seed ${s.r.seed}, rank ${s.r.rank}, tier ${s.r.tier}` : 'UNKNOWN'}</p>
         <p class="caption">{s.d?.roster || 'Roster UNKNOWN'}</p>
@@ -45,7 +47,7 @@ const name = (code: string) => rs.find((x) => x.code === code)?.name ?? code;
     ))}
   </div>
   <div class="panel-head">
-    <h3>Win chance</h3>
+    <P class="ptitle">Win chance</P>
     <div class="seg" role="radiogroup" aria-label="Series format">
       {strips.map((s) => <><input type="radio" name="bo" id={`bo-${s.fmt}`} value={s.fmt} checked={s.fmt === 'Bo3'} /><label class="chip" for={`bo-${s.fmt}`}>{s.fmt}</label></>)}
     </div>
@@ -53,14 +55,14 @@ const name = (code: string) => rs.find((x) => x.code === code)?.name ?? code;
   {strips.map((s) => (
     <div class="panel-sec" data-bo={s.fmt}>
       <div class="rows">{s.rows.map((row, i) => <CompareRow row={row} strip gold={i === 0} />)}</div>
-      <p class="caption">Model win chance for a {s.fmt}, from matchups.json, with live title odds and rank.</p>
+      <p class="caption">Model win chance for a {s.fmt}, with live title odds and rank.</p>
     </div>
   ))}
 </section>
 
 {groups.map((g) => (
   <section class="panel flush">
-    <div class="panel-head"><h3>{g.title}</h3></div>
+    <div class="panel-head"><P class="ptitle">{g.title}</P></div>
     <div class="panel-sec">
       {g.title === 'Head to head'
         ? g.rows.length > 0 && <div class="rows">{g.rows.map((row) => {
@@ -80,6 +82,9 @@ const name = (code: string) => rs.find((x) => x.code === code)?.name ?? code;
 ))}
 <style>
   .matchup { overflow-wrap: anywhere; }
+  /* panel titles look like h3 at either level */
+  .ptitle { font-size: 26px; line-height: 1.15; letter-spacing: 0.03em; }
+  .swaps .chip { padding: 6px 12px; }
   .v { color: var(--dim); font-weight: 600; font-size: 0.6em; vertical-align: middle; }
   .sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 56px; padding: 28px; border-bottom: 1px solid var(--line-strong); }
   .side { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -113,6 +118,7 @@ const name = (code: string) => rs.find((x) => x.code === code)?.name ?? code;
     .name { flex-direction: column; align-items: flex-start; gap: 8px; }
     .right .name { flex-direction: column; align-items: flex-end; }
     .name .code { font-size: 18px; }
+    .ptitle { font-size: 18px; letter-spacing: 0; }
     .lg { --s: 56px; }
     .lg :global(.logo) { --s: 34px !important; }
     .swaps .caption { flex-basis: 100%; }

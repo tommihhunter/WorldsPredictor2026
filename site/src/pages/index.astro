@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import PickemsPanel from '../components/PickemsPanel.astro';
-import { live, overview, pickems, ratings, series, teamName } from '../lib/data';
+import { overview, pickems, ratings, series, teamName } from '../lib/data';
 import { lockStage } from '../lib/nav';
 import { pct } from '../lib/format';
 
@@ -42,16 +42,23 @@ const venue = fin && /\(([^)]+)\)/.exec(fin.time_venue)?.[1];
 const finDate = fin && /\d\d\/\d\d\/\d{4}/.exec(fin.time_nz)?.[0];
 const finalWhere = venue && finDate ? `${venue}, ${finDate} NZDT` : 'UNKNOWN';
 
-// Title odds: live refit when present, else the frozen ratings.
-const lv = live();
-const field = lv.length ? lv.map((x) => ({ code: x.team, p: x.p_champion })) : rt.map((r) => ({ code: r.code, p: r.p_champion }));
+// Title odds: the frozen ratings (design/lore/README.md), the same run as the prophecy above and the quick picks.
+const field = rt.map((r) => ({ code: r.code, p: r.p_champion }));
 const top = [...field].sort((a, b) => b.p - a.p).slice(0, 10);
 const max = top[0]?.p || 1;
 
-// Callout: first sentence of the assumption, then the detection text without the dashboard-tab pointer.
+// Callout, short form (README: risk_assumption "in short form"): the region gap in standard errors from
+// overview.region_gap_lck_lpl, plus the assumption's closing sentence (what depends on it). Then the detection text
+// without the dashboard-tab pointer, US-venue dates in brackets or the internal word "staged".
 const sentences = (s: string) => s.split(/(?<=\.)\s+(?=[A-Z])/);
-const riskShort = o.risk_assumption ? sentences(o.risk_assumption)[0] : 'UNKNOWN';
-const riskWatch = o.risk_detection ? sentences(o.risk_detection).filter((x) => !/\btab\b/i.test(x)).join(' ') : 'UNKNOWN';
+const gap = /([+-]?\d*\.?\d+) logit, sd (\d*\.?\d+)/.exec(o.region_gap_lck_lpl ?? '');
+const z = gap ? Math.abs(Number(gap[1]) / Number(gap[2])) : null;
+const zText = z == null ? null : z < 1.5 ? 'about one standard error' : `about ${Math.round(z)} standard errors`;
+const tail = o.risk_assumption ? sentences(o.risk_assumption).at(-1) : null;
+const riskShort = zText ? `The LCK-over-LPL gap is ${zText} from zero.${tail ? ` ${tail}` : ''}` : o.risk_assumption ? sentences(o.risk_assumption)[0] : 'UNKNOWN';
+const riskWatch = o.risk_detection
+  ? sentences(o.risk_detection).filter((x) => !/\btab\b/i.test(x)).join(' ').replace(/\s*\([^()]*\d\d\/\d\d[^()]*\)/g, '').replace(/\bstaged /g, '')
+  : 'UNKNOWN';
 
 // Quick picks from the frozen overview.
 const piw = o.playin_winner;
@@ -69,7 +76,7 @@ const ls = lockStage();
     <div class="prophecy">
       <span class="eyebrow">The prophecy for Worlds 2026</span>
       <div class="pro-head">
-        <h2 class="orb">The orb favours {champName}</h2>
+        <h1 class="orb">The orb favours {champName}</h1>
         <p class="pro-line">{line1}</p>
       </div>
       <div class="pro-stat">

@@ -15,15 +15,15 @@ const ramp = (k: string) => `background:var(--rec-${k.replace('-', '')})`;
 <section class="section rt">
   <div class="section-head">
     <h2>{title}</h2>
-    <div class="rt-legend" aria-label="Record colours">
+    <div class="rt-legend">
       {KEYS.map(([, k]) => <span><i style={ramp(k)}></i>{k}</span>)}
     </div>
   </div>
   {sorted.length ? (
-    <div class="scroll">
+    <div class="scroll" tabindex="0" role="region" aria-label={`${title}, scrolls sideways`}>
       <div class="rt-table" role="table" aria-label={title}>
         <div class="rt-row rt-headrow" role="row">
-          <span role="columnheader"></span><span role="columnheader">Team</span><span role="columnheader">Likeliest</span><span role="columnheader" class="r">Advance</span><span role="columnheader" class="rt-barhead">Record chances, 3-0 to 0-3</span>
+          <span role="columnheader"><span class="sr-only">Logo</span></span><span role="columnheader">Team</span><span role="columnheader">Likeliest</span><span role="columnheader" class="r">Advance</span><span role="columnheader" class="rt-barhead">Record chances, 3-0 to 0-3</span>
         </div>
         {sorted.map((r, i) => {
           const wl = records.get(r.team);
@@ -51,7 +51,7 @@ const ramp = (k: string) => `background:var(--rec-${k.replace('-', '')})`;
   .rt-legend span { display: flex; align-items: center; gap: 6px; }
   .rt-legend i { width: 12px; height: 12px; border-radius: 2px; }
   .rt-table { min-width: 720px; }
-  .rt-row { display: grid; grid-template-columns: 40px 200px 130px 120px minmax(0, 1fr); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .rt-row { display: grid; grid-template-columns: 40px 200px 130px 120px minmax(0, 1fr); gap: 20px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line-row); }
   .rt-row > * { min-width: 0; }
   .rt-headrow { border-top: 0; padding: 0 0 6px; font-size: 15px; color: var(--muted); }
   .rt-row.rt-cut { border-top-color: var(--gold); }

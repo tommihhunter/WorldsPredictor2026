@@ -4,7 +4,8 @@
 import Logo from './Logo.astro';
 import { results, series, swiss } from '../lib/data';
 import { nz, pct } from '../lib/format';
-import { bySchedule, latestSet, resultFor, swissRecords } from '../lib/stage';
+import { STAGES, bySchedule, latestSet, resultFor, setLabel, startNz, swissRecords } from '../lib/stage';
+import { ratings } from '../lib/data';
 const { code } = Astro.props as { code: string };
 const mine = (set: string) => series().filter((s) => s.set === set && (s.team_a === code || s.team_b === code));
 const latest = latestSet() ?? 'baseline';
@@ -12,6 +13,9 @@ const set = mine(latest).length ? latest : 'baseline';
 const rows = [...mine(set)].sort(bySchedule);
 const sw = swiss().find((x) => x.set === set && x.team === code) ?? swiss().find((x) => x.set === 'baseline' && x.team === code);
 const record = swissRecords().get(code);
+// Swiss rows for a Play-In team assume it wins the Play-In (model/predict.py)
+const viaPlayin = ratings().find((x) => x.code === code)?.p_playin != null;
+const swissDates = /^\S+ to \S+/.exec(STAGES[1].dates)?.[0] ?? 'UNKNOWN';
 // A pairing is a fixture only once it exists outside the model: a result, a draw row in results_live.json (unplayed is fine),
 // or a Play-In slot the bracket has settled. Everything else is the model's assumed bracket and shows no opponent here.
 const pairKey = (a: string, b: string) => [a, b].sort().join('|');
@@ -20,29 +24,32 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
   || (s.phase === 'Play-In' && !/predicted pairing/i.test(s.stage));
 ---
 {rows.length || sw ? (
-  <div class="scroll">
+  <div class="scroll" tabindex="0" role="region" aria-label="Path through Worlds, scrolls sideways">
     <table>
       <thead><tr><th>When (NZDT)</th><th>Stage</th><th>Opponent</th><th>Our pick</th><th>Result</th></tr></thead>
       <tbody>
         {sw && (
           <tr>
-            <td class="muted nw">24/10 to 01/11/2026</td><td>Swiss</td><td class="muted">16-team field</td>
-            <td><b>{sw.predicted_record}</b> {pct(sw.p_record)} <span class="caption">advance {pct(sw.p_advance)}</span></td>
+            <td class="muted nw">{swissDates}</td><td>Swiss</td><td class="muted">16-team field</td>
+            <td><b>{sw.predicted_record}</b> {pct(sw.p_record)} <span class="caption">advance {pct(sw.p_advance)}{viaPlayin && ' if they win the Play-In'}</span></td>
             <td class="nw">{record ? <>Live {record}</> : <span class="muted">Not played</span>}</td>
           </tr>
         )}
         {rows.map((s) => {
           const r = resultFor(s);
           const opp = s.team_a === code ? s.team_b : s.team_a;
-          if (!confirmed(s)) return (
-            <tr>
-              <td class="muted nw">{nz(s.time_nz)}</td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
-              <td class="muted">Draw not made</td><td class="muted">After the draw</td><td class="muted nw">Not played</td>
-            </tr>
-          );
+          if (!confirmed(s)) {
+            const bracket = s.phase === 'Play-In';
+            return (
+              <tr>
+                <td class="muted nw">{nz(startNz(s))}</td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
+                <td class="muted">{bracket ? 'Set by the bracket' : 'Draw not made'}</td><td class="muted">{bracket ? 'Once the opponent is known' : 'After the draw'}</td><td class="muted nw">Not played</td>
+              </tr>
+            );
+          }
           return (
             <tr>
-              <td class="nw">{nz(s.time_nz)}</td><td>{s.stage}</td><td class="nw"><span class="opp"><Logo code={opp} size={24} /><span class="code">{opp}</span></span></td>
+              <td class="nw">{nz(startNz(s))}</td><td>{s.stage}</td><td class="nw"><span class="opp"><Logo code={opp} size={24} /><span class="code">{opp}</span></span></td>
               <td class="nw">{s.actual ? <span class="muted">Actual result</span> : <><b class="code">{s.winner}</b> {s.score} <span class="muted">{pct(s.p_winner)}</span></>}</td>
               <td class="nw">{r ? <><span class="code">{r.winner}</span> {Math.max(Number(r.score_a), Number(r.score_b))}-{Math.min(Number(r.score_a), Number(r.score_b))}{!s.actual && <>, <span class={r.winner === s.winner ? 'teal' : 'risk'}>{r.winner === s.winner ? 'called it' : 'missed'}</span></>}</> : <span class="muted">Not played</span>}</td>
             </tr>
@@ -52,7 +59,7 @@ const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s
     </table>
   </div>
 ) : <p class="caption">No series predicted for this team yet.</p>}
-<p class="caption note">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Opponents and picks appear once a round is drawn; the Swiss line is the most likely record and its chance.</p>
+<p class="caption note">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${setLabel(set)})`}. Opponents and picks appear once a round is drawn or the bracket sets them; the Swiss line is the most likely record and its chance{viaPlayin ? ', assuming a Play-In win' : ''}.</p>
 <style>
   .nw { white-space: nowrap; }
   td b { font-weight: 600; }

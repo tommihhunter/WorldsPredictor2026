@@ -31,7 +31,7 @@ const sealed = (overview().baseline_created ?? '').replace(/(\d{2}:\d{2}):\d{2}/
 </header>
 <style>
   .mast { border-bottom: 1px solid var(--line-head); background: var(--bg); }
-  .mast-in { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); display: flex; flex-direction: column; }
+  .mast-in { max-width: calc(var(--page-max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); display: flex; flex-direction: column; }
   .meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 24px; padding: 14px 0; font-size: 15px; color: var(--muted2); border-bottom: 1px solid var(--line); }
   .brand { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 22px 0 16px; color: var(--fg); }
   .avatar { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--gold); }

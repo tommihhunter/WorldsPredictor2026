@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
 Headless check of the v2 site: serve site/dist under $W26_BASE (default /poroprophet/), open every page in PAGES at
-1280 and 390 px, and fail on page errors, console errors (except 404s under art/logos/), any 404 response,
-root-absolute links that skip the base path, and sideways scroll at 390 px. Pages not built yet are skipped.
+1280, 768 and 390 px, and fail on page errors, console errors, any 404 response, root-absolute links that skip the
+base path, content wider than the viewport at 768 and 390 px (outside .scroll wrappers), a page without exactly one
+h1, and em or en dashes in page text. Also clicks a Play-In card and opens and closes the phone More sheet.
+Pages not built yet are skipped.
 Screenshots go to site/shots/<page>-<width>.png (outside dist, so they are never published).
 Run: python -X utf8 model/export_site_assets.py && (cd site && npm run build) && python -X utf8 tests/check_site.py
 """
@@ -11,10 +13,9 @@ from playwright.sync_api import sync_playwright
 
 PAGES = ["", "scorecard/", "meta/", "play-in/", "swiss/", "knockouts/", "demacia-cup/", "teams/", "teams/gen/",
          "teams/mvk/", "teams/compare/", "teams/compare/gen-vs-hle/"]
-WIDTHS = [1280, 390]
+WIDTHS = [1280, 768, 390]
 BASE = os.environ.get("W26_BASE", "/poroprophet").strip("/")  # same env as site/astro.config.mjs
 PREFIX = f"/{BASE}" if BASE else ""
-OPTIONAL = f"{PREFIX}/art/logos/"  # missing logos are allowed to 404
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, "site", "dist")
@@ -24,6 +25,45 @@ BAD_LINK = re.compile(rf'(?:href|src)="/(?!{BASE}/)[^"]*"') if BASE else None  #
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *a):
         pass
+
+
+# Elements wider than the viewport. html and body clip overflow-x, so scrollWidth alone cannot see it; content inside a
+# .scroll wrapper or another clipping box is allowed to be wider.
+OVERFLOW = """(() => {
+  const clips = (el) => { for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+    if (a.classList.contains('scroll') || /hidden|clip|auto|scroll/.test(getComputedStyle(a).overflowX)) return true; } return false; };
+  const out = [];
+  for (const el of document.body.querySelectorAll('*')) {
+    const r = el.getBoundingClientRect();
+    if (r.width && r.right > innerWidth + 1 && !clips(el)) out.push(`${el.tagName.toLowerCase()}.${[...el.classList].join('.')} right ${Math.round(r.right)}`);
+  }
+  return out.slice(0, 3);
+})()"""
+
+
+def check_play_in(page, tag, problems):
+    """Play-In: clicking a card shows exactly its detail panel and marks only that card pressed."""
+    cards = page.locator("[data-show]")
+    target = cards.nth(cards.count() - 1)
+    want = target.get_attribute("data-show")
+    target.click()
+    shown = page.evaluate("[...document.querySelectorAll('[data-detail]')].filter(d => !d.hidden).map(d => d.id)")
+    pressed = page.evaluate("[...document.querySelectorAll('[data-show][aria-pressed=true]')].map(c => c.dataset.show)")
+    print(f"{tag}: clicked {want}, shown {shown}, pressed {pressed}")
+    if shown != [want] or pressed != [want]:
+        problems.append(f"{tag}: Play-In click on {want} shows {shown}, pressed {pressed}")
+
+
+def check_more_sheet(page, tag, problems):
+    """Phone More sheet: opens from the tab, closes on Escape and gives focus back to the tab."""
+    page.click(".bbar summary")
+    opened = page.evaluate("document.querySelector('.bbar details').open")
+    page.keyboard.press("Escape")
+    closed = not page.evaluate("document.querySelector('.bbar details').open")
+    focus = page.evaluate("document.activeElement && document.activeElement.tagName")
+    print(f"{tag}: More sheet opened {opened}, closed on Escape {closed}, focus {focus}")
+    if not (opened and closed and focus == "SUMMARY"):
+        problems.append(f"{tag}: More sheet opened {opened}, closed {closed}, focus {focus}")
 
 
 VISIBLE_CARDS = "[...document.querySelectorAll('#teams-grid > a')].filter(c => c.offsetParent !== null)"
@@ -119,12 +159,20 @@ def main():
                     page = browser.new_page(viewport={"width": w, "height": 900 if w > 600 else 844})
                     page.on("pageerror", lambda e, t=tag: problems.append(f"{t}: page error: {e}"))
                     page.on("console", lambda m, t=tag: problems.append(f"{t}: console error: {m.text} {m.location.get('url', '')}")
-                            if m.type == "error" and OPTIONAL not in (m.location.get("url") or "") else None)
-                    page.on("response", lambda r, t=tag: problems.append(f"{t}: 404 {r.url}")
-                            if r.status == 404 and OPTIONAL not in r.url else None)
+                            if m.type == "error" else None)
+                    page.on("response", lambda r, t=tag: problems.append(f"{t}: 404 {r.url}") if r.status == 404 else None)
                     page.goto(url + pg, wait_until="networkidle")
-                    if w == 390 and page.evaluate("document.documentElement.scrollWidth > innerWidth + 1"):
-                        problems.append(f"{tag}: page scrolls sideways")
+                    if w < 1000:
+                        wide = page.evaluate(OVERFLOW)
+                        if page.evaluate("document.documentElement.scrollWidth > innerWidth + 1") or wide:
+                            problems.append(f"{tag}: content wider than the viewport: {wide}")
+                    if w == 1280:
+                        h1s = page.evaluate("document.querySelectorAll('h1').length")
+                        if h1s != 1:
+                            problems.append(f"{tag}: {h1s} h1 elements, expected 1")
+                        dashes = page.evaluate("(document.body.innerText.match(/[\\u2013\\u2014]/g) || []).length")
+                        if dashes:
+                            problems.append(f"{tag}: {dashes} em or en dashes in page text")
                     page.screenshot(path=os.path.join(shots, f"{name}-{w}.png"), full_page=True)
                     if pg == "teams/":
                         check_teams_chips(page, tag, problems)
@@ -132,6 +180,10 @@ def main():
                         check_team_gen(page, tag, problems)
                     if pg == "teams/compare/":
                         check_compare_pick(page, tag, problems)
+                    if pg == "play-in/" and w == 1280:
+                        check_play_in(page, tag, problems)
+                    if pg == "" and w == 390:
+                        check_more_sheet(page, tag, problems)
                     page.close()
                 if pg == "teams/":
                     check_teams_nojs(browser, url + pg, problems)

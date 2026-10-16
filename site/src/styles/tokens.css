@@ -19,6 +19,9 @@
   --bar-alt: #7C6FB0;       /* non-leading bars */
   --split-off: #3A3163;     /* losing side of a split bar, neutral chip outline */
   --hover: #241E44;         /* row and link-row hover */
+  --hover-warm: #30283F;    /* warm callout link hover */
+  --line-row: #2F2850;      /* Swiss record table row dividers (Swiss.dc.html) */
+  --marker: #5E5487;        /* phone bottom bar marker outline (Phone Pages.dc.html) */
   --scrim: rgba(10, 8, 22, 0.6);
 
   /* Swiss record ramp, 3-0 to 0-3 */

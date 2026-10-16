@@ -1,8 +1,8 @@
 import { overview, patchChanges } from './data';
 export type NavItem = { id: string; label: string; path: string; group: 'event' | 'reference' | 'home'; desc: string };
 
-/** Newest patch in the patch-change dataset, e.g. "26.20"; the literal stays as the fallback. */
-const patch = patchChanges().map((r) => r.patch).filter(Boolean).sort((a, b) => a.localeCompare(b, 'en', { numeric: true })).pop() ?? '26.20';
+/** Newest patch in the patch-change dataset, e.g. "26.20"; UNKNOWN when the dataset has none. */
+const patch = patchChanges().map((r) => r.patch).filter(Boolean).sort((a, b) => a.localeCompare(b, 'en', { numeric: true })).pop() ?? 'UNKNOWN';
 
 export const NAV: NavItem[] = [
   { id: 'home', label: 'Home', path: '', group: 'home', desc: 'The prophecy, title odds and your next Pick\'Ems' },
