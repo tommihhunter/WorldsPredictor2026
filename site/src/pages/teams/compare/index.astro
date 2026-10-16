@@ -1,0 +1,37 @@
+---
+// Picker page: two selects and Go (compare-pick.js navigates to the canonical <min>-vs-<max> page),
+// with the top two teams compared below by default.
+import Base from '../../../layouts/Base.astro';
+import CompareView from '../../../components/CompareView.astro';
+import { ratings } from '../../../lib/data';
+import { url } from '../../../lib/url';
+
+const rs = [...ratings()].sort((x, y) => x.rank - y.rank);
+const [a, b] = [rs[0].code, rs[1].code].sort();
+const selects = [{ name: 'a', sel: rs[0].code }, { name: 'b', sel: rs[1].code }];
+---
+<Base title="Compare teams" active="teams">
+  <header>
+    <h1>Compare teams</h1>
+    <p class="muted">Pick two teams. Every pairing has its own page you can share.</p>
+  </header>
+  <form id="compare-pick" class="card pick" data-base={url('teams/compare/')}>
+    {selects.map((s, i) => (
+      <label><span class="label">Team {i + 1}</span>
+        <select name={s.name}>{rs.map((r) => <option value={r.code} selected={r.code === s.sel}>{r.code} · {r.name}</option>)}</select>
+      </label>
+    ))}
+    <button class="pill gold" type="submit">Go</button>
+    <p class="cap bad msg" hidden>Pick two different teams.</p>
+  </form>
+  <CompareView a={a} b={b} />
+<script is:inline src={url('js/compare-pick.js')} defer></script>
+</Base>
+<style>
+  .pick { flex-direction:row; flex-wrap:wrap; align-items:flex-end; gap:12px 16px; }
+  .pick label { display:flex; flex-direction:column; gap:4px; min-width:0; flex:1 1 180px; }
+  .pick select { font:inherit; color:var(--fg); background:var(--raised); border:1px solid var(--line); border-radius:8px; padding:8px 10px; width:100%; }
+  .pick button { font:inherit; font-size:14px; padding:8px 20px; background:transparent; cursor:pointer; }
+  .msg { flex-basis:100%; margin:0; }
+  header p { margin:6px 0 0; }
+</style>

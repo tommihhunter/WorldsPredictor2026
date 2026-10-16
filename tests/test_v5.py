@@ -219,6 +219,20 @@ def test_hubs_rematch_and_fallbacks():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def test_compare_pages():
+    # Reads the built site (cd site && npm run build): GEN v HLE has the five groups and the LCK final; CFO v LOS never met.
+    dist = os.path.join(ROOT, "site", "dist", "teams", "compare")
+    assert os.path.exists(os.path.join(dist, "gen-vs-hle", "index.html")), "build the site first"
+    assert len([d for d in os.listdir(dist) if os.path.isdir(os.path.join(dist, d))]) == 171
+    assert not os.path.exists(os.path.join(dist, "hle-vs-gen"))                     # canonical order only
+    html = open(os.path.join(dist, "gen-vs-hle", "index.html"), encoding="utf-8").read()
+    for t in ["Model", "2026 season", "Lanes", "Champion pool overlap", "Head to head", "GEN 3-1"]:
+        assert t in html, t
+    assert "Never met" not in html
+    cfo = open(os.path.join(dist, "cfo-vs-los", "index.html"), encoding="utf-8").read()
+    assert "Never met in 2025 or 2026." in cfo
+
+
 if __name__ == "__main__":
     tests = [(n, f) for n, f in list(globals().items()) if n.startswith("test_") and callable(f)]
     failed = 0

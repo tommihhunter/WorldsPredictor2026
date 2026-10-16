@@ -1,0 +1,94 @@
+---
+// The comparison body, shared by /teams/compare/<a>-vs-<b>/ and the picker page's default view.
+// Header cards with VS and swap chips, the Bo1 / Bo3 / Bo5 switch (radios and :has, no script), the
+// summary strip, then the five metric groups. No verdict box.
+import Card from './Card.astro';
+import ChampIcon from './ChampIcon.astro';
+import CompareRow from './CompareRow.astro';
+import { metrics, slugOf, summary } from '../lib/compare';
+import { dossiers, ratings, teamSlug } from '../lib/data';
+import { url } from '../lib/url';
+
+const { a, b } = Astro.props as { a: string; b: string };
+const rs = [...ratings()].sort((x, y) => x.rank - y.rank);
+const groups = metrics(a, b);
+const strips = summary(a, b);
+const side = (code: string, other: string) => ({
+  code,
+  r: rs.find((x) => x.code === code),
+  d: dossiers().find((x) => x.code === code),
+  swaps: rs.filter((x) => x.code !== code && x.code !== other).slice(0, 10).map((x) => ({ code: x.code, href: url(`teams/compare/${slugOf(x.code, other)}/`) })),
+});
+const sides = [side(a, b), side(b, a)];
+---
+<div class="compare">
+  <div class="heads">
+    {sides.map((s, i) => (
+      <>
+        {i === 1 && <span class="vs">VS</span>}
+        <div class="card head">
+          <a class="id" href={url(`teams/${teamSlug(s.code)}/`)}>
+            <img class="logo" src={url(`art/logos/${s.code}.png`)} alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'dot'}))" />
+            <h2>{s.r?.name ?? s.code}</h2>
+          </a>
+          <p class="cap muted">{s.r ? `${s.r.region} seed ${s.r.seed} · rank ${s.r.rank} · tier ${s.r.tier}` : 'UNKNOWN'}</p>
+          <p class="cap">{s.d?.roster || 'Roster UNKNOWN'}</p>
+          <div class="swaps"><span class="label">Swap {s.code} for</span>{s.swaps.map((x) => <a class="pill" href={x.href}>{x.code}</a>)}</div>
+        </div>
+      </>
+    ))}
+  </div>
+
+  <div class="seg" role="radiogroup" aria-label="Series format">
+    {strips.map((s) => <><input type="radio" name="bo" id={`bo-${s.fmt}`} value={s.fmt} checked={s.fmt === 'Bo3'} /><label for={`bo-${s.fmt}`}>{s.fmt}</label></>)}
+  </div>
+  {strips.map((s) => (
+    <div data-bo={s.fmt}>
+      <Card tone="gold" title={`Summary, ${s.fmt}`} note="Model win chance for this format, from matchups.json">
+        <div class="rows">{s.rows.map((row) => <CompareRow row={row} />)}</div>
+      </Card>
+    </div>
+  ))}
+
+  {groups.map((g) => (
+    <Card title={g.title}>
+      <div class="cols cap muted"><span>{a}</span><span /><span>{b}</span></div>
+      {g.rows.length > 0 && <div class="rows">{g.rows.map((row) => <CompareRow row={row} />)}</div>}
+      {g.shared && (g.shared.length
+        ? <div class="chips"><span class="label">Shared picks ({g.shared.length})</span>{g.shared.map((c) => <span class="chip"><ChampIcon name={c} /></span>)}</div>
+        : <p class="cap muted">No shared champions in the two teams' most-picked lists.</p>)}
+      {g.note && <p class="cap">{g.note}</p>}
+    </Card>
+  ))}
+</div>
+<style>
+  .compare { display:flex; flex-direction:column; gap:20px; }
+  .heads { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:16px; align-items:center; }
+  .vs { font-family:var(--head); font-weight:700; font-size:22px; color:var(--gold); }
+  .head { gap:8px; }
+  .id { display:flex; align-items:center; gap:12px; }
+  .logo { height:44px; width:auto; max-width:80px; object-fit:contain; }
+  .id :global(.dot) { width:20px; height:20px; border-radius:6px; background:var(--bar); flex:none; }
+  .head p { margin:0; overflow-wrap:anywhere; }
+  .swaps, .chips { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+  .swaps .label, .chips .label { margin-right:4px; }
+  .chip { display:inline-flex; padding:3px 10px 3px 4px; border-radius:8px; background:var(--raised); font-size:13px; }
+  .cols { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1fr); gap:12px; font-weight:600; }
+  .cols span:first-child { text-align:right; }
+  .rows { display:flex; flex-direction:column; }
+  .card :global(p) { margin:0; }
+  .seg { display:inline-flex; align-self:center; border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; }
+  .seg input { position:absolute; opacity:0; width:1px; height:1px; }
+  .seg label { padding:6px 16px; border-radius:999px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; }
+  .seg input:checked + label { background:var(--gold); color:var(--bg); }
+  .seg input:focus-visible + label { outline:2px solid var(--gold); outline-offset:2px; }
+  :global(.compare:has(input[value="Bo1"]:checked) [data-bo]:not([data-bo="Bo1"])),
+  :global(.compare:has(input[value="Bo3"]:checked) [data-bo]:not([data-bo="Bo3"])),
+  :global(.compare:has(input[value="Bo5"]:checked) [data-bo]:not([data-bo="Bo5"])) { display:none; }
+  @media (max-width: 640px) {
+    .heads { grid-template-columns:minmax(0,1fr); }
+    .vs { justify-self:center; }
+    .cols { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+    .cols span:nth-child(2) { display:none; }
+  }
+</style>

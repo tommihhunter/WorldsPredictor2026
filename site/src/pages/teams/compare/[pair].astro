@@ -1,0 +1,21 @@
+---
+// One static page per unordered pairing (171), slug <a>-vs-<b> with a < b by code.
+import Base from '../../../layouts/Base.astro';
+import CompareView from '../../../components/CompareView.astro';
+import { pairs } from '../../../lib/compare';
+import { teamName } from '../../../lib/data';
+import { url } from '../../../lib/url';
+
+export const getStaticPaths = () => pairs().map((p) => ({ params: { pair: p.slug }, props: { a: p.a, b: p.b } }));
+const { a, b } = Astro.props as { a: string; b: string };
+---
+<Base title={`${a} v ${b}`} active="teams" description={`${teamName(a)} against ${teamName(b)}: model, 2026 season, lanes, champion pools and head to head.`}>
+  <header>
+    <h1>{a} v {b}</h1>
+    <p class="muted"><a class="gold" href={url('teams/compare/')}>Pick two other teams</a> · <a class="gold" href={url('teams/')}>All teams</a></p>
+  </header>
+  <CompareView a={a} b={b} />
+</Base>
+<style>
+  header p { margin:6px 0 0; }
+</style>

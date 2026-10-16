@@ -70,6 +70,17 @@ def check_team_gen(page, tag, problems):
         problems.append(f"{tag}: expected 5 player rows, got {rows}")
 
 
+def check_compare_pick(page, tag, problems):
+    """Compare pickers: T1 then HLE lands on the canonical hle-vs-t1 page."""
+    page.select_option("#compare-pick select[name=a]", "T1")
+    page.select_option("#compare-pick select[name=b]", "HLE")
+    with page.expect_navigation():
+        page.click("#compare-pick button[type=submit]")
+    print(f"{tag}: pickers T1, HLE -> {page.url}")
+    if not page.url.endswith(f"/{BASE}/teams/compare/hle-vs-t1/"):
+        problems.append(f"{tag}: pickers landed on {page.url}, expected .../teams/compare/hle-vs-t1/")
+
+
 def main():
     if not os.path.exists(os.path.join(DIST, "index.html")):
         sys.exit("build the site first: (cd site && npm run build)")
@@ -116,6 +127,8 @@ def main():
                         check_teams_chips(page, tag, problems)
                     if pg == "teams/gen/":
                         check_team_gen(page, tag, problems)
+                    if pg == "teams/compare/":
+                        check_compare_pick(page, tag, problems)
                     page.close()
                 if pg == "teams/":
                     check_teams_nojs(browser, url + pg, problems)
