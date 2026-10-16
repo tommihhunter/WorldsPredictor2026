@@ -97,6 +97,9 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Site tests
+        if: steps.data.outputs.publish == 'yes'
+        run: python -X utf8 tests/test_v5.py
       - name: Check site
         if: steps.data.outputs.publish == 'yes'
         run: python -X utf8 tests/check_site.py

@@ -193,6 +193,8 @@ def test_exports_h2h_matchups_report():
 
 
 def test_hubs_rematch_and_fallbacks():
+    if not os.path.exists(os.path.join(ROOT, "site", "node_modules", ".bin", "astro")):
+        print("  (skipped: Astro not installed; runs again after the site build)"); return
     # Build the site against a temp copy of data/dash (W26_DASH): fabricated Play-In results where KC beat C9
     # in round 1 and C9 win the final rematch, and no dcgi.json. Nothing in the repo is moved or edited.
     import re, shutil, subprocess, tempfile
@@ -221,6 +223,8 @@ def test_hubs_rematch_and_fallbacks():
 
 def test_compare_pages():
     # Reads the built site (cd site && npm run build): GEN v HLE has the five groups and the LCK final; CFO v LOS never met.
+    if not os.path.exists(os.path.join(ROOT, "site", "node_modules", ".bin", "astro")):
+        print("  (skipped: Astro not installed; runs again after the site build)"); return
     dist = os.path.join(ROOT, "site", "dist", "teams", "compare")
     assert os.path.exists(os.path.join(dist, "gen-vs-hle", "index.html")), "build the site first"
     assert len([d for d in os.listdir(dist) if os.path.isdir(os.path.join(dist, d))]) == 171
