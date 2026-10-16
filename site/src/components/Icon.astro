@@ -1,0 +1,31 @@
+---
+// League icons from site/public/art (exported by model/export_site_assets.py):
+//   lanes (any spelling: Top, Jng, Jungle, Mid, Middle, Bot, ADC, Sup, Support), objectives (gold, dragon, baron)
+//   and the patch items by name. Unknown names render nothing, so callers can pass free text safely.
+// With `label`, the icon sits before the text; without it, the icon carries an alt text of its own.
+import { url } from '../lib/url';
+interface Props { name: string; size?: number; label?: string; class?: string }
+const { name, size = 20, label, class: cls } = Astro.props;
+const key = String(name ?? '').toLowerCase().replace(/[^a-z]/g, '');
+const LANES: Record<string, [string, string]> = {
+  top: ['top', 'Top'], jng: ['jungle', 'Jungle'], jungle: ['jungle', 'Jungle'], jg: ['jungle', 'Jungle'],
+  mid: ['middle', 'Mid'], middle: ['middle', 'Mid'], bot: ['bottom', 'Bot'], bottom: ['bottom', 'Bot'], adc: ['bottom', 'Bot'],
+  sup: ['support', 'Support'], support: ['support', 'Support'],
+  gold: ['gold', 'Gold'], dragon: ['infernal', 'Dragon'], drake: ['infernal', 'Dragon'], baron: ['nashor', 'Baron'], nashor: ['nashor', 'Baron'],
+};
+const ITEMS: Record<string, string> = {
+  experimentalhexplate: '223073', runaanshurricane: '223085', guinsoosrageblade: '223124', hextechrocketbelt: '223152', worldatlas: '3865', runiccompass: '3866',
+};
+const lane = LANES[key];
+const src = lane ? url(`art/extras/${lane[0]}.png`) : ITEMS[key] ? url(`art/item/${ITEMS[key]}.png`) : null;
+const alt = label ? '' : lane ? lane[1] : name;
+---
+{src
+  ? (label != null
+    ? <span class:list={['ico-l', cls]}><img class="ico" src={src} alt="" width={size} height={size} loading="lazy" />{label}</span>
+    : <img class:list={['ico', cls]} src={src} alt={alt} width={size} height={size} loading="lazy" />)
+  : label != null ? <span class={cls}>{label}</span> : null}
+<style>
+  .ico { display: inline-block; vertical-align: middle; flex: none; object-fit: contain; }
+  .ico-l { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+</style>

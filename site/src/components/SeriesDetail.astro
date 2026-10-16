@@ -33,6 +33,9 @@ const max = Math.max(...scores.map((x) => x.p), 0) || 1;
 const notes = ([['Key matchup', s.key_matchup], ['Draft angle', s.draft_angle], ['What flips it', s.what_flips]] as const).filter(([, v]) => v && v.trim());
 // the data's caveats for the later Play-In rounds: assumed pairing, unconfirmed slot order
 const caveat = !r && /predicted pairing/i.test(s.stage) ? `Assumed pairing: favourites win the earlier rounds.${/slot order/i.test(s.note || '') ? ' The order of the two matches that day is not confirmed.' : ''}` : '';
+import Icon from './Icon.astro';
+// a write-up that opens with a lane ("Top lane: ...", "Jungle tempo: ...") gets that lane's icon
+const LANE = /^(Top|Jungle|Mid|Bot|Support)\b[^:]{0,12}:/;
 ---
 <section class="panel sd" id={id} data-detail hidden={hidden} aria-label={`${fav} v ${dog}`}>
   <div class="main">
@@ -49,7 +52,7 @@ const caveat = !r && /predicted pairing/i.test(s.stage) ? `Assumed pairing: favo
     </div>
     {caveat && <p class="caption">{caveat}</p>}
     {notes.length
-      ? <dl class="kv">{notes.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+      ? <dl class="kv">{notes.map(([k, v]) => { const m = LANE.exec(v); return <><dt>{k}</dt><dd>{m ? <><span class="lane"><Icon name={m[1]} size={20} label={m[1]} /></span> {v.slice(m[0].length).trim()}</> : v}</dd></>; })}</dl>
       : <p class="none muted2">The matchup write-up is added once both teams are known.</p>}
   </div>
   <div class="odds">
@@ -87,4 +90,5 @@ const caveat = !r && /predicted pairing/i.test(s.stage) ? `Assumed pairing: favo
     .title { gap: var(--space-2xs); }
     .sr { grid-template-columns: 80px minmax(0, 1fr) 48px; gap: var(--space-2xs); }
   }
+  .lane { display: inline-flex; font-weight: 600; color: var(--fg); }
 </style>

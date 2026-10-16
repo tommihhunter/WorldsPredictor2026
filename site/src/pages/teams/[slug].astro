@@ -7,6 +7,7 @@
 import Base from '../../layouts/Base.astro';
 import Logo from '../../components/Logo.astro';
 import ChampIcon from '../../components/ChampIcon.astro';
+import Icon from '../../components/Icon.astro';
 import PathTable from '../../components/PathTable.astro';
 import DraftBlock from '../../components/DraftBlock.astro';
 import { codeFromSlug, displayName, dossiers, live, overview, ratings, teamSlug, type Dossier, type Player, type TeamBlock } from '../../lib/data';
@@ -87,7 +88,8 @@ const statRows = (key: string, t: TeamBlock, items: Item[]) => items.map(([f, la
     rank = `${ord(k)} of ${n}`;
     tone = k <= 5 ? 'teal' : k > n - 5 ? 'risk' : 'muted';
   }
-  return { label, value, rank, tone, sub: sub ? sub(t) : '' };
+  const icon = f === 'gd15' ? 'gold' : f === 'drag_share' ? 'dragon' : f === 'baron_share' ? 'baron' : '';
+  return { label, value, rank, tone, sub: sub ? sub(t) : '', icon };
 });
 
 // ---- 5. roster
@@ -225,7 +227,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
                 <ul class="srows">
                   {statRows(s.key, s.tb!, g.items).map((x) => (
                     <li>
-                      <span class="sl">{x.label}{x.sub && <span class="caption"> {x.sub}</span>}</span>
+                      <span class="sl"><span class="slt">{x.icon && <Icon name={x.icon} size={22} />}{x.label}</span>{x.sub && <span class="caption">{x.sub}</span>}</span>
                       <span class="sv">{x.value}</span>
                       <span class:list={['sr', x.tone]}>{x.rank}</span>
                     </li>
@@ -244,7 +246,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
           <div class="roster" data-split={s.key}>
             {s.players.length ? s.players.map((p) => (
               <article class="panel player-row">
-                <span class="caption">{ROLE[String(p.role).toUpperCase()] ?? p.role}</span>
+                <span class="role"><Icon name={p.role} size={26} label={ROLE[String(p.role).toUpperCase()] ?? p.role} /></span>
                 <span class="code pn">{p.player}</span>
                 <dl class="pstats"><div><dt>KDA</dt><dd>{kda(p)}</dd></div><div><dt>Gold at 15</dt><dd>{gd15(p)}</dd></div></dl>
                 <ul class="pchamps">{(p.champs ?? []).slice(0, 3).map((c) => <li><ChampIcon name={c.champ} size={28} /></li>)}</ul>
@@ -346,6 +348,8 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   .srows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'l v' 'l r'; column-gap: var(--space-md); align-items: baseline; padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
   .sl { grid-area: l; align-self: center; color: var(--fg2); }
   .sl .caption { display: block; }
+  .slt { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  .role { font-size: var(--fs-sm); color: var(--muted); }
   .sv { grid-area: v; text-align: right; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); line-height: 1.1; }
   .sr { grid-area: r; text-align: right; font-size: var(--fs-xs); font-weight: 600; }
 

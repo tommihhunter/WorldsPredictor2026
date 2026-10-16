@@ -1,6 +1,7 @@
 ---
 // Draft habits from gol.gg: a definition list with hairlines between rows (lore system).
 import ChampIcon from './ChampIcon.astro';
+import Icon from './Icon.astro';
 import type { TeamBlock } from '../lib/data';
 const { t, pool } = Astro.props as { t: TeamBlock; pool: number | null | undefined };
 const ROLE: Record<string, string> = { TOP: 'Top', JNG: 'Jungle', JUNGLE: 'Jungle', MID: 'Mid', ADC: 'Bot', BOT: 'Bot', SUP: 'Support', SUPPORT: 'Support' };
@@ -10,7 +11,8 @@ const lines: [string, { champ: string; cap: string }[]][] = [
   ['Own bans', (t.bans_by ?? []).slice(0, 6).map((c) => ({ champ: c.champ, cap: `${c.n} · ${Math.round(c.rate)}%` }))],
   ['First picks', (t.first_picks ?? []).map((c) => ({ champ: c.champ, cap: `${c.n}×` }))],
 ];
-const order = t.role_priority ? Object.entries(t.role_priority).sort((a, b) => a[1] - b[1]).map(([r, v]) => `${ROLE[r] ?? r} ${Number(v).toFixed(1)}`).join(' · ') : null;
+// roles in the order the team picks them (average pick slot, lower is earlier)
+const order = t.role_priority ? Object.entries(t.role_priority).sort((a, b) => a[1] - b[1]).map(([r, v]) => ({ r, name: ROLE[r] ?? r, v: Number(v).toFixed(1) })) : null;
 ---
 <dl class="draft">
   {lines.map(([k, cs]) => (
@@ -21,7 +23,7 @@ const order = t.role_priority ? Object.entries(t.role_priority).sort((a, b) => a
   ))}
   <div class="row">
     <dt class="caption">Pick order</dt>
-    <dd>{order ? <><span class="num">{order}</span> <span class="caption">Average pick slot per role, lower is earlier.</span></> : <span class="caption">UNKNOWN</span>}</dd>
+    <dd>{order ? <><ol class="order">{order.map((o) => <li><Icon name={o.r} size={22} label={o.name} /><span class="caption num">{o.v}</span></li>)}</ol><span class="caption">Average pick slot per role, earliest first.</span></> : <span class="caption">UNKNOWN</span>}</dd>
   </div>
   <div class="row">
     <dt class="caption">Pool depth</dt>
@@ -36,5 +38,8 @@ const order = t.role_priority ? Object.entries(t.role_priority).sort((a, b) => a
   dd { margin: 0; min-width: 0; }
   .champs { display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-md); }
   .ch { display: inline-flex; align-items: center; gap: var(--space-2xs); font-size: var(--fs-sm); white-space: nowrap; }
+  .order { list-style: none; margin: 0 0 var(--space-3xs); padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-md); }
+  .order li { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  .order li + li::before { content: '›'; color: var(--dim); margin-right: var(--space-2xs); }
   @media (max-width: 640px) { .row { grid-template-columns: minmax(0, 1fr); } }
 </style>

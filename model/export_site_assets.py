@@ -17,6 +17,16 @@ logos = copy_all(os.path.join(ROOT, "dashboard", "logos", "*.png"), os.path.join
 extras = copy_all(os.path.join(ROOT, "dashboard", "extras", "*.png"), os.path.join(OUT, "extras"))
 champs = copy_all(os.path.join(CACHE, "cdn_*_img_champion_*.png"), os.path.join(OUT, "champ"), lambda f: f.split("_img_champion_")[1])
 items = copy_all(os.path.join(CACHE, "cdn_*_img_item_*.png"), os.path.join(OUT, "item"), lambda f: f.split("_img_item_")[1])
+# Splash ("centered", 1280x720) and loading-screen tiles for the champions the cache holds: resized for the web.
+def resize_all(kind, dest, width):
+    os.makedirs(dest, exist_ok=True); n = 0
+    for p in sorted(glob.glob(os.path.join(CACHE, f"cdn_img_champion_{kind}_*_0.jpg"))):
+        name = os.path.basename(p).split(f"_{kind}_")[1].rsplit("_", 1)[0]
+        im = Image.open(p).convert("RGB")
+        im.resize((width, round(im.height * width / im.width)), Image.LANCZOS).save(os.path.join(dest, f"{name}.jpg"), quality=82, optimize=True); n += 1
+    return n
+splash = resize_all("centered", os.path.join(OUT, "splash"), 960)
+tiles = resize_all("tiles", os.path.join(OUT, "tile"), 240)
 files = set(os.listdir(os.path.join(OUT, "champ")))
 art = {nkey(f[:-4]): f for f in files}
 # Display names differ from Riot ids for some champions (Wukong is MonkeyKing, Renata Glasc is Renata): map those too.
@@ -37,4 +47,4 @@ for name, src in (("main", "PoroMain.jpg"), ("dopey", "PoroDopey.jpg")):
         im.resize((64, 64), Image.LANCZOS).save(os.path.join(PORO, "favicon.png"), optimize=True)
         im.resize((180, 180), Image.LANCZOS).save(os.path.join(PORO, "apple-touch.png"), optimize=True)
 print("poro", ", ".join(f"{f} {os.path.getsize(os.path.join(PORO, f)) // 1024} kB" for f in sorted(os.listdir(PORO))))
-print(f"logos {logos} extras {extras} champions {champs} items {items}")
+print(f"logos {logos} extras {extras} champions {champs} items {items} splash {splash} tiles {tiles}")

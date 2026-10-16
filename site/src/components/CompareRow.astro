@@ -13,11 +13,14 @@ const bars = both && row.higherIsBetter !== false;
 const m = Math.max(Math.abs(l ?? 0), Math.abs(r ?? 0)) || 1;
 const pa = !both ? 50 : l! >= 0 && r! >= 0 ? (l! + r! > 0 ? (l! / (l! + r!)) * 100 : 50) : 50 + ((l! - r!) / (2 * m)) * 50;
 const cls = (side: string, v: unknown) => ['val', { text: row.fmt === 'text', big: strip && row.fmt !== 'text', lead: lead === side && !gold, gold: lead === side && gold, muted: v == null }];
+import Icon from './Icon.astro';
+// stat labels that have League art; lane labels (Top, Jungle, ...) map inside Icon itself
+const ICON: Record<string, string> = { 'Gold diff @15': 'gold', 'Gold diff at 15': 'gold', 'Gold lead at 15': 'gold', 'Dragon share': 'dragon', 'Baron share': 'baron' };
 ---
 <div class:list={['crow', { strip }]}>
   <span class:list={[...cls('l', row.left), 'l']}>{show(row.left, row.fmt)}</span>
   <div class="mid">
-    <span class="label">{row.label}</span>
+    <span class="label"><Icon name={ICON[row.label] ?? row.label} size={20} label={row.label} /></span>
     <span class="caption">{row.verdict}</span>
     {bars && <span class="split" style={`--pa:${pa.toFixed(1)}`} aria-hidden="true"><i></i><i></i></span>}
   </div>

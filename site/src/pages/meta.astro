@@ -1,6 +1,9 @@
 ---
 // Meta (design/lore/Meta.dc.html): the Worlds patch, draft rules, the 3-0 note, contested champions, Pick'Ems points and locks.
 import ChampIcon from '../components/ChampIcon.astro';
+import Icon from '../components/Icon.astro';
+import art from '../lib/art.json';
+import { url } from '../lib/url';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import Base from '../layouts/Base.astro';
@@ -13,8 +16,9 @@ const patch = changes.map((r) => r.patch).filter(Boolean).sort((a, b) => a.local
 const cur = changes.filter((c) => c.patch === patch);
 const nChamps = cur.filter((c) => c.kind === 'champion').length;
 const nItems = cur.filter((c) => c.kind === 'item').length;
-const names = (dir: string) => cur.filter((c) => c.kind === 'champion' && c.change === dir).map((c) => c.name).join(', ');
+const names = (dir: string) => cur.filter((c) => c.kind === 'champion' && c.change === dir).map((c) => c.name);
 const down = names('nerf'), up = names('buff');
+const items = cur.filter((c) => c.kind === 'item').map((c) => ({ name: c.name, change: c.change }));
 
 // Draft rules from overview.draft_modes, without the trailing source note
 const draft = (ov.draft_modes ?? '').replace(/\s*\([^()]*\.md\)\s*$/, '').replace(/\.?$/, '.');
@@ -25,6 +29,14 @@ const sw = existsSync(SWEEP) ? (JSON.parse(readFileSync(SWEEP, 'utf8')) as { row
 const sweepPct = sw.length ? `${Math.round((100 * sw.filter((r) => Math.min(r.sa, r.sb) === 0).length) / sw.length)}%` : 'UNKNOWN';
 const nBo5 = sw.length || 'UNKNOWN';
 
+// splash art (art/splash/<Riot id>.jpg) for the champions the cache holds
+const splashOf = (name: string) => {
+  const f = (art as Record<string, string>)[name.toLowerCase().replace(/[^a-z]/g, '')];
+  const id = f?.replace(/\.png$/, '');
+  return id && existsSync(resolve(process.cwd(), 'public', 'art', 'splash', `${id}.jpg`)) ? url(`art/splash/${id}.jpg`) : null;
+};
+// roles text "Mid 18 / Bot 7" -> [{ role, n }]
+const rolesOf = (t: string) => String(t || '').split('/').map((x) => x.trim()).filter(Boolean).map((x) => { const m = /^(\D+?)\s*(\d+)?$/.exec(x); return { role: m?.[1] ?? x, n: m?.[2] ?? '' }; });
 const all = metaChamps();
 const champs = [...all].sort((a, b) => a.rank - b.rank).slice(0, 12);
 const p0 = (v: number | null | undefined) => (v == null ? 'UNKNOWN' : `${Math.round(v)}%`);
@@ -68,8 +80,9 @@ const stages = STAGES.map((name) => {
       <span class="eyebrow">Patch {patch ?? 'UNKNOWN'}</span>
       <p class="big-p">{cur.length ? `${nChamps} champions and ${nItems} items changed.` : 'Patch changes not available yet.'}</p>
       <div class="dirs">
-        {down && <span><span class="risk b">Down</span> {down}</span>}
-        {up && <span><span class="teal b">Up</span> {up}</span>}
+        {down.length > 0 && <div class="dir"><span class="risk b">Down</span><span class="chl">{down.map((n) => <ChampIcon name={n} size={22} />)}</span></div>}
+        {up.length > 0 && <div class="dir"><span class="teal b">Up</span><span class="chl">{up.map((n) => <ChampIcon name={n} size={22} />)}</span></div>}
+        {items.length > 0 && <div class="dir"><span class="muted b">Items</span><span class="chl">{items.map((it) => <Icon name={it.name} size={22} label={it.name} />)}</span></div>}
       </div>
     </div>
     <div class="panel box draft">
@@ -82,6 +95,22 @@ const stages = STAGES.map((name) => {
     </div>
   </section>
 
+  {champs.some((c) => splashOf(c.champion)) && (
+    <section class="splashes" aria-label="The most contested champions">
+      {champs.slice(0, 3).map((c) => {
+        const img = splashOf(c.champion);
+        return (
+          <article class="splash" style={img ? `--img:url(${img})` : undefined}>
+            <span class="srk">#{c.rank} most contested</span>
+            <span class="code sname">{c.champion}</span>
+            <span class="sline"><span class="big">{p0(c.presence)}</span> <span class="fg2">presence</span></span>
+            <span class:list={['pf2', flag(note(c))]}>{note(c)}</span>
+          </article>
+        );
+      })}
+    </section>
+  )}
+
   <section class="section">
     <div class="section-head"><h2>Most contested champions</h2><span>Presence = picked or banned, in the {games ?? 'UNKNOWN'} games of the most recent domestic playoffs (gol.gg), top {champs.length}</span></div>
     {champs.length ? (
@@ -92,7 +121,7 @@ const stages = STAGES.map((name) => {
             <div class="crow">
               <span class="rk dim">{c.rank}</span>
               <span class="nm"><span class="code"><ChampIcon name={c.champion} size={32} /></span><span class:list={['pf', flag(note(c))]}>{note(c)}</span></span>
-              <span class="roles muted2">{c.roles || 'UNKNOWN'}</span>
+              <span class="roles muted2">{c.roles ? rolesOf(c.roles).map((x) => <Icon name={x.role} size={20} label={x.n ? `${x.role} ${x.n}` : x.role} />) : 'UNKNOWN'}</span>
               <span class="pres"><span class="bar"><i style={`width:${c.presence ?? 0}%`}></i></span><span class="pv">{p0(c.presence)}</span></span>
               <span class="r pk">{c.picks ?? 'UNKNOWN'}</span>
               <span class="r wr">{p0(c.pick_wr)}</span>
@@ -121,7 +150,19 @@ const stages = STAGES.map((name) => {
   .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--space-md); }
   .box { display: flex; flex-direction: column; gap: var(--space-xs); }
   .dirs { display: flex; flex-direction: column; gap: var(--space-2xs); }
-  .b { font-weight: 600; }
+  .b { font-weight: 600; min-width: 4.5em; }
+  .dir { display: flex; gap: var(--space-sm); align-items: flex-start; }
+  .chl { display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-sm); font-size: var(--fs-sm); }
+  .roles { display: flex; flex-wrap: wrap; gap: var(--space-3xs) var(--space-sm); font-size: var(--fs-sm); }
+  /* top three as splash cards: the art fills the card, a gradient keeps the text readable */
+  .splashes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-md); }
+  .splash { position: relative; min-height: 260px; border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-3xs); padding: var(--space-md); background: var(--surface) var(--img, none) center 25% / cover no-repeat; box-shadow: var(--inset); }
+  .splash::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 8%, rgba(21, 17, 42, 0.55) 55%, rgba(21, 17, 42, 0.05)); }
+  .splash > * { position: relative; }
+  .srk { font-size: var(--fs-sm); color: var(--gold); font-weight: 600; }
+  .sname { font-size: var(--fs-2xl); line-height: 1.05; }
+  .sline .big { font-size: var(--fs-xl); }
+  .pf2 { font-size: var(--fs-sm); font-weight: 600; }
   .crow { display: grid; grid-template-columns: 40px 200px 220px minmax(0, 1fr) 90px 90px 150px; gap: var(--space-md); align-items: center; }
   .chead { font-size: var(--fs-sm); color: var(--muted); padding-bottom: var(--space-2xs); }
   .r { text-align: right; }
@@ -140,6 +181,7 @@ const stages = STAGES.map((name) => {
     .chead > span:nth-child(3) { display: none; }
   }
   /* below 760px the fixed columns would squeeze the presence bar away: two-column rows */
+  @media (max-width: 900px) { .splashes { grid-template-columns: minmax(0, 1fr); } .splash { min-height: 180px; } }
   @media (max-width: 760px) {
     .chead { display: none; }
     .crow { grid-template-columns: 160px minmax(0, 1fr); gap: var(--space-xs); }

@@ -63,11 +63,13 @@ const riskWatch = o.risk_detection
 // Quick picks from the frozen overview.
 const piw = o.playin_winner;
 const piwP = rt.find((r) => r.code === piw)?.p_playin;
-const sw30 = pickems().filter((p) => p.stage === 'Swiss' && p.slot === '3-0').map((p) => teamName(p.pick));
-const quick: [string, string][] = [
-  ['Play-In winner', piw ? `${teamName(piw)}, ${pct(piwP)}` : 'UNKNOWN'],
-  ['Swiss 3-0', sw30.length ? sw30.join(' and ') : 'UNKNOWN'],
-  ['Finals MVP', o.finals_mvp ? o.finals_mvp.split(' (')[0] : 'UNKNOWN'],
+const sw30 = pickems().filter((p) => p.stage === 'Swiss' && p.slot === '3-0').map((p) => p.pick);
+// "Ruler (GEN, ADC)" -> player, team, role
+const mvp = /^(.+?)\s*\(([A-Z0-9]+),\s*([A-Za-z]+)\)/.exec(o.finals_mvp ?? '');
+const quick: { k: string; teams: string[]; text: string; role?: string }[] = [
+  { k: 'Play-In winner', teams: piw ? [piw] : [], text: piw ? `${teamName(piw)}, ${pct(piwP)}` : 'UNKNOWN' },
+  { k: 'Swiss 3-0', teams: sw30, text: sw30.length ? sw30.map(teamName).join(' and ') : 'UNKNOWN' },
+  { k: 'Finals MVP', teams: mvp ? [mvp[2]] : [], text: mvp ? mvp[1] : (o.finals_mvp ? o.finals_mvp.split(' (')[0] : 'UNKNOWN'), role: mvp?.[3] },
 ];
 const ls = lockStage();
 const sealed = (o.baseline_created ?? '').replace(/(\d{2}:\d{2}):\d{2}/, '$1') || 'UNKNOWN';
@@ -106,7 +108,7 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
           {top.map((t, i) => (
             <div class="odds-row">
               <span class="dim odds-rank">{i + 1}</span>
-              <span class="code">{t.code}</span>
+              <span class="code oc"><Logo code={t.code} size={24} />{t.code}</span>
               <span class="bar"><i class={i === 0 ? 'gold' : 'alt'} style={`width:${((t.p / max) * 100).toFixed(1)}%`}></i></span>
               <span class="odds-p">{pct(t.p, 1)}</span>
             </div>
@@ -124,7 +126,7 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
       <div class="quick">
         <span class="eyebrow">Quick picks</span>
         <div class="rows">
-          {quick.map(([k, v]) => <div class="quick-row"><span class="muted2">{k}</span><span>{v}</span></div>)}
+          {quick.map((q) => <div class="quick-row"><span class="muted2">{q.k}</span><span class="qv">{q.teams.map((c) => <Logo code={c} size={24} />)}<span>{q.text}</span></span></div>)}
         </div>
       </div>
     </div>
@@ -155,7 +157,7 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
   .pro-close { font-size: var(--fs-lg); line-height: 1.5; color: var(--fg2); max-width: 60ch; text-wrap: pretty; }
 
   .odds { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); column-gap: var(--space-xl); }
-  .odds-row { display: grid; grid-template-columns: 28px 64px minmax(0, 1fr) 72px; align-items: center; gap: var(--space-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+  .odds-row { display: grid; grid-template-columns: 28px 96px minmax(0, 1fr) 72px; align-items: center; gap: var(--space-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
   .odds-rank { font-size: var(--fs-sm); }
   .odds-row .code { font-size: var(--fs-lg); }
   .odds-p { text-align: right; font-size: var(--fs-lg); }
@@ -165,6 +167,8 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
   .quick { display: flex; flex-direction: column; gap: var(--space-2xs); }
   .quick .rows > .quick-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); }
   .quick-row > span:last-child { text-align: right; }
+  .qv { display: inline-flex; align-items: center; justify-content: flex-end; gap: var(--space-2xs); flex-wrap: wrap; }
+  .oc { display: inline-flex; align-items: center; gap: var(--space-2xs); }
 
   @media (max-width: 640px) {
     /* phone: one column, Pick'Ems first */
@@ -180,7 +184,7 @@ const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesport
     .pro-p { gap: var(--space-3xs); }
     .pro-phone { display: block; line-height: 1.5; color: var(--fg2); }
     .odds-sec .section-head > span { display: none; }
-    .odds-row { grid-template-columns: 52px minmax(0, 1fr) 60px; gap: var(--space-xs); }
+    .odds-row { grid-template-columns: 84px minmax(0, 1fr) 60px; gap: var(--space-xs); }
     .odds-row:nth-child(n + 6), .odds-rank { display: none; }
     .odds-row .bar { height: 5px; }
     .risk-short { font-size: var(--fs-md); }

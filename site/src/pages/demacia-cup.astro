@@ -1,5 +1,6 @@
 ---
 // Demacia Cup (design/lore/Demacia Cup.dc.html): walk-forward check on the Demacia Cup Global Invitational (data/dash/dcgi.json).
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import { dcgi } from '../lib/data';
@@ -82,7 +83,7 @@ const tiles = sum ? [
                 <span class="tm"><Logo code={r.team_a} size={24} /><span class="code">{r.team_a}</span><span class="dim">v</span><Logo code={r.team_b} size={24} /><span class="code">{r.team_b}</span></span>
                 <span class="pk"><span class="pre">{stageShort(r.stage)}, picked </span>{r.pick} {pct(r.p_pick)}</span>
                 <span class="act fg2">{r.actual_winner ? `${r.actual_winner} ${r.actual_score}` : 'UNKNOWN'}</span>
-                <span class:list={['verdict', r.hit ? 'teal' : 'risk']}>{r.hit ? 'Right' : 'Wrong'}</span>
+                <span class:list={['verdict', r.hit ? 'teal' : 'risk']}><img class="poro" src={url(r.hit ? 'art/poro/main-256.png' : 'art/poro/dopey-256.png')} alt="" width="20" height="20" />{r.hit ? 'Right' : 'Wrong'}</span>
               </div>
             ))}
           </div>
@@ -114,7 +115,8 @@ const tiles = sum ? [
   .dt, .st { font-size: var(--fs-sm); }
   .tm { display: flex; align-items: center; gap: var(--space-2xs); min-width: 0; white-space: nowrap; }
   .pre { display: none; }
-  .verdict { text-align: right; font-weight: 600; }
+  .verdict { display: inline-flex; align-items: center; justify-content: flex-end; gap: var(--space-2xs); font-weight: 600; }
+  .poro { border-radius: 50%; flex: none; }
   .regions { gap: 0; }
   .regions > .eyebrow { padding-bottom: var(--space-2xs); }
   .prow { display: flex; justify-content: space-between; gap: var(--space-xs); }

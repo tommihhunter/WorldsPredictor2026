@@ -3,6 +3,10 @@
 import ChampIcon from '../components/ChampIcon.astro';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import Icon from '../components/Icon.astro';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { ratings } from '../lib/data';
 import { crystal, dcgi, results, series, type Series } from '../lib/data';
 import { pct, num } from '../lib/format';
 import { grade, pickemPoints, stamp, started } from '../lib/grading';
@@ -58,6 +62,10 @@ const TIERS = [['LOCK', '75% and up', 'lock'], ['LEAN', '60 to 74%', 'lean'], ['
 const dc = dcgi().find((r) => r.kind === 'summary') as Record<string, number> | undefined;
 const accessed = done.map((r) => (r as { source?: { accessed?: string } }).source?.accessed).filter(Boolean).pop();
 const cb = crystal();
+// Crystal Ball answers get their art: champion tiles (art/tile) or icons, team logos, the lane icon for a role
+const codes = new Set(ratings().map((r) => r.code));
+const tileOf = (name: string) => existsSync(resolve(process.cwd(), 'public', 'art', 'tile', `${name}.jpg`)) ? url(`art/tile/${name}.jpg`) : null;
+const roleOf = (a: string) => /^(Top|Jungle|Mid|Bot|Support)\b/.exec(a)?.[1];
 const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin' };
 ---
 <Base title="Scorecard" active="scorecard" description="How the Worlds 2026 picks are doing: winners, exact scores, log loss, Pick'Ems points and the Crystal Ball."
@@ -84,7 +92,7 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
                 <span class="title"><Logo code={r.s.team_a} size={26} /><span class="code">{r.s.team_a} v {r.s.team_b}</span>{!r.result.includes('-') && /predicted pairing/i.test(r.s.stage) && <span class="assumed">assumed pairing</span>}</span>
                 <span class="meta"><span class="when muted2">{short(startNz(r.s))}</span><span class="ph">, called </span><span class="call">{r.s.winner} {pct(r.s.p_winner)}<span class="dt">, {r.s.score}</span></span></span>
                 <span class:list={['res', r.resCls]}>{r.result}</span>
-                <span class:list={['w', r.wCls]}>{r.w}</span>
+                <span class:list={['w', r.wCls]}>{r.w === 'Right' && <img class="poro" src={url('art/poro/main-256.png')} alt="" width="22" height="22" />}{r.w === 'Wrong' && <img class="poro" src={url('art/poro/dopey-256.png')} alt="" width="22" height="22" />}{r.w}</span>
                 <span class:list={['sc', r.scCls]}>{r.sc}</span>
               </div>
             ))}
@@ -125,7 +133,11 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
           <div class="qrow">
             <span class="dim num">{c.q}</span>
             <span class="fg2">{c.question}</span>
-            <span class="ans"><span class="code">{[1, 2, 3].includes(c.q) && c.answer ? <ChampIcon name={c.answer} size={20} /> : (c.answer || 'UNKNOWN')}</span><span class:list={['tier', CONF[c.confidence] ?? 'coin']}>{c.confidence || 'UNKNOWN'}</span></span>
+            <span class="ans"><span class="code aart">{[1, 2, 3].includes(c.q) && c.answer
+              ? (tileOf(c.answer) ? <><img class="tile" src={tileOf(c.answer)} alt="" width="36" height="36" />{c.answer}</> : <ChampIcon name={c.answer} size={28} />)
+              : codes.has(c.answer) ? <><Logo code={c.answer} size={26} />{c.answer}</>
+              : roleOf(c.answer) ? <Icon name={roleOf(c.answer)!} size={24} label={c.answer} />
+              : (c.answer || 'UNKNOWN')}</span><span class:list={['tier', CONF[c.confidence] ?? 'coin']}>{c.confidence || 'UNKNOWN'}</span></span>
             <span class="caption why">{c.reason}</span>
           </div>
         ))}
@@ -151,7 +163,7 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
   .tname { font-size: var(--fs-md); }
   .tp { font-size: var(--fs-xl); text-align: right; }
   .qrow { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xs) var(--space-md); align-items: baseline; }
-  .ans { display: flex; align-items: baseline; gap: var(--space-xs); flex-wrap: wrap; }
+  .ans { display: flex; align-items: center; gap: var(--space-xs); flex-wrap: wrap; }
   .why { grid-column: 2 / -1; }
   @media (max-width: 1150px) { .sc-grid { grid-template-columns: minmax(0, 1fr); } }
   /* two-line rows whenever the six columns would squeeze the Series column (phones, tablets, the two-column laptop band) */
@@ -174,4 +186,8 @@ const CONF: Record<string, string> = { HIGH: 'lock', MEDIUM: 'lean', LOW: 'coin'
     .ans { grid-column: 2; }
     .why { display: none; }
   }
+  .w { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  .poro { border-radius: 50%; flex: none; }
+  .aart { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  .tile { border-radius: var(--radius-sm); object-fit: cover; object-position: center 20%; flex: none; }
 </style>
