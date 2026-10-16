@@ -24,17 +24,22 @@
   ]
  },
  "playin": {
-  "graded": 2,
-  "winner_acc": 0.5,
-  "exact_acc": 0.0,
-  "brier": 0.34084676,
-  "logloss": 0.8985204155500346,
+  "graded": 3,
+  "winner_acc": 0.6666666666666666,
+  "exact_acc": 0.3333333333333333,
+  "brier": 0.23594680333333337,
+  "logloss": 0.6578066928127981,
   "invalid_post_start": [],
   "calibration": {
    "LEAN": {
     "n": 2,
     "hit": 0.5,
     "stated": 0.673
+   },
+   "LOCK": {
+    "n": 1,
+    "hit": 1.0,
+    "stated": 0.8383
    }
   },
   "worst_misses": [
@@ -48,9 +53,9 @@
   ]
  },
  "pickems_playin": {
-  "earned": 5,
-  "possible_so_far": 10,
+  "earned": 10,
+  "possible_so_far": 15,
   "stage_max": 35
  },
- "graded_at_nz": "16/10/2026 16:11 NZDT"
+ "graded_at_nz": "17/10/2026 11:59 NZDT"
 }
