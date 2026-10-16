@@ -22,7 +22,7 @@ export const STAGES: Stage[] = [
     format: 'Four teams, double elimination, every series Bo5, no bracket reset in the final. The final winner goes to Swiss as a Tier 4 team.',
     draft: 'Fearless Draft in all six series.',
     lock: '16/10/2026 07:00 NZDT (15/10 11:00 PDT)',
-    note: 'Each card shows the favourite, its win chance, and the odds of every winning score; the bold score is the single most likely one and is what gets graded.',
+    note: 'Each slot shows the favourite, its win chance, and the odds of every winning score; the bold score is the single most likely one and is what gets graded.',
     brackets: [['Round 1', ['PI-R1-A', 'PI-R1-B']], ['Round 2', ['PI-WM', 'PI-EM']], ['Lower final', ['PI-LF']], ['Final', ['PI-GF']]],
   },
   {

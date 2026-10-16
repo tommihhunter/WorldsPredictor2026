@@ -1,11 +1,12 @@
 ---
+// A champion name with its 20px icon inline; no box. Unknown art falls back to the name alone.
 import art from '../lib/art.json';
 import { url } from '../lib/url';
-const { name, size = 22 } = Astro.props as { name: string; size?: number };
+const { name, size = 20 } = Astro.props as { name: string; size?: number };
 const file = (art as Record<string, string>)[String(name ?? '').toLowerCase().replace(/[^a-z]/g, '')];
 ---
 {file ? <span class="champ"><img src={url(`art/champ/${file}`)} alt="" width={size} height={size} loading="lazy" />{name}</span> : <span>{name}</span>}
 <style>
-  .champ { display:inline-flex; align-items:center; gap:8px; }
-  .champ img { border-radius:6px; flex:none; }
+  .champ { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  .champ img { border-radius: var(--radius-data); flex: none; }
 </style>

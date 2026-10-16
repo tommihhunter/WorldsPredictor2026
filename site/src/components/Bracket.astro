@@ -40,8 +40,8 @@ const split = (s: Series): [string, number | undefined][] => (s.bo === 5 ? [['3-
   ))}
 </div>
 <style>
-  .bracket { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(calc(var(--space-3xl) * 2), 1fr); gap: var(--space-md); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-3xs); }
-  .round { display: flex; flex-direction: column; justify-content: center; gap: var(--space-sm); scroll-snap-align: start; min-width: 0; }
+  .bracket { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(calc(var(--space-3xl) * 2), 1fr); gap: var(--space-md); align-items: start; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-3xs); }
+  .round { display: flex; flex-direction: column; gap: var(--space-sm); scroll-snap-align: start; min-width: 0; }
   .slot { border-top: var(--rule); }
   summary { list-style: none; cursor: pointer; padding-top: var(--space-2xs); display: flex; flex-direction: column; gap: var(--space-3xs); }
   summary::-webkit-details-marker { display: none; }

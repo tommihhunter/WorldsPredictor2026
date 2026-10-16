@@ -1,4 +1,5 @@
 ---
+// Workbench: two tables and a definition list under hairlines. No panel on this page.
 import Base from '../layouts/Base.astro';
 import Card from '../components/Card.astro';
 import ChampIcon from '../components/ChampIcon.astro';
@@ -8,45 +9,79 @@ import { num } from '../lib/format';
 const changes = patchChanges();
 const champs = metaChamps();
 const fit = metaFit();
-const CHANGE: Record<string, [string, string]> = { buff: ['good', 'up'], nerf: ['bad', 'down'] };
+// buff and nerf read as up and down; adjust and rework as neutral (the detail says what moved).
+const CHANGE: Record<string, [string, string]> = { buff: ['ok', 'up'], nerf: ['bad', 'down'] };
+const pc1 = (v: number | null) => (v == null ? 'UNKNOWN' : `${num(v, 1)}%`);
 ---
 <Base title="Meta" active="meta" description="The Worlds 2026 patch: what changed from 26.18 to 26.20, the most contested champions and how the meta fits each team.">
-  <header>
+  <header class="page-head">
     <h1>Meta</h1>
-    <p class="muted">Worlds 2026 is played on patch 26.20. What changed on the way there, who the teams fight over, and who it suits.</p>
+    <p class="caption">Worlds 2026 is played on patch 26.20. What changed on the way there, who the teams fight over, and who it suits.</p>
   </header>
 
-  <Card title="Patch changes 26.18 to 26.20" note={`${changes.length} changes, from the official patch notes`}>
+  <Card title="Patch changes 26.18 to 26.20" note={`${changes.length} changes, from the official patch notes.`}>
     {changes.length ? (
-      <div class="scroll"><table>
-        <thead><tr><th>Kind</th><th>Name</th><th>Change</th><th>Detail</th><th>Patch</th><th>Source</th></tr></thead>
+      <div class="scroll"><table class="changes">
+        <thead><tr><th>Kind</th><th>Name</th><th>Change</th><th>Detail</th><th class="r">Patch</th><th>Source</th></tr></thead>
         <tbody>{changes.map((c) => {
-          const [cls, dir] = CHANGE[c.change] ?? ['', 'neutral'];
-          return <tr><td class="muted">{c.kind}</td><td><b>{c.kind === 'champion' ? <ChampIcon name={c.name} /> : c.name}</b></td><td><span class:list={['pill', cls]} title={dir}>{c.change}</span></td><td>{c.detail}</td><td>{c.patch}</td><td>{c.source ? <a class="gold" href={c.source} rel="noopener">notes</a> : 'UNKNOWN'}</td></tr>;
+          const [cls, dir] = CHANGE[c.change] ?? ['ink2', 'neutral'];
+          return (
+            <tr>
+              <td class="ink2 kind">{c.kind}</td>
+              <td class="name">{c.kind === 'champion' ? <ChampIcon name={c.name} /> : c.name}</td>
+              <td class:list={['dir', cls]}>{dir}</td>
+              <td class="ink2 detail">{c.detail}</td>
+              <td class="num patch">{c.patch}</td>
+              <td class="source">{c.source ? <a class="src" href={c.source} target="_blank" rel="noopener">Notes</a> : <span class="muted">UNKNOWN</span>}</td>
+            </tr>
+          );
         })}</tbody>
       </table></div>
-    ) : <p class="muted cap">Patch changes not available yet.</p>}
+    ) : <p class="caption">Patch changes not available yet.</p>}
   </Card>
 
-  <Card title="Most contested champions" note="Presence is picks plus bans over games, Worlds teams in 2026">
+  <Card title="Most contested champions" note="Presence is picks plus bans over games, Worlds teams in 2026.">
     {champs.length ? (
       <div class="scroll"><table>
-        <thead><tr><th class="r">#</th><th>Champion</th><th>Roles</th><th class="r">Presence</th><th class="r">Pick win rate</th></tr></thead>
-        <tbody>{champs.map((c) => <tr><td class="r">{c.rank}</td><td><b><ChampIcon name={c.champion} /></b></td><td class="muted">{c.roles}</td><td class="r">{c.presence == null ? 'UNKNOWN' : `${num(c.presence, 1)}%`}</td><td class="r">{c.pick_wr == null ? 'UNKNOWN' : `${num(c.pick_wr, 1)}%`}</td></tr>)}</tbody>
+        <thead><tr><th class="r">Rank</th><th>Champion</th><th>Roles</th><th class="r">Presence</th><th class="r">Pick win rate</th></tr></thead>
+        <tbody>{champs.map((c) => <tr><td class="num">{c.rank}</td><td class="name"><ChampIcon name={c.champion} /></td><td class="caption">{c.roles}</td><td class:list={['num', { muted: c.presence == null }]}>{pc1(c.presence)}</td><td class:list={['num', { muted: c.pick_wr == null }]}>{pc1(c.pick_wr)}</td></tr>)}</tbody>
       </table></div>
-    ) : <p class="muted cap">Champion presence not available yet.</p>}
+    ) : <p class="caption">Champion presence not available yet.</p>}
   </Card>
 
-  <Card title="Meta fit by team" note="What the patch does for particular teams and players, from analysts">
+  <Card title="Meta fit by team" note="What the patch does for particular teams and players, from analysts.">
     {fit.length ? (
-      <div class="scroll"><table>
-        <thead><tr><th>Subject</th><th>Note</th><th>Source</th></tr></thead>
-        <tbody>{fit.map((f) => <tr><td><b>{f.subject}</b></td><td>{f.note}</td><td class="muted cap src">{f.source || 'UNKNOWN'}</td></tr>)}</tbody>
-      </table></div>
-    ) : <p class="muted cap">Meta fit notes not available yet.</p>}
+      <dl class="fit">
+        {fit.map((f) => (
+          <div>
+            <dt>{f.subject}</dt>
+            <dd><span>{f.note}</span><span class="caption src-line">Source: {f.source || 'UNKNOWN'}</span></dd>
+          </div>
+        ))}
+      </dl>
+    ) : <p class="caption">Meta fit notes not available yet.</p>}
   </Card>
 </Base>
 <style>
-  header { display:flex; flex-direction:column; gap:6px; } header p { margin:0; }
-  .src { overflow-wrap:anywhere; max-width:260px; }
+  .page-head h1 { font-size: var(--text-xl); line-height: 1.1; }
+  .name { font-weight: 600; white-space: nowrap; }
+  .dir { font-weight: 600; }
+  .src { color: var(--color-ink-2); text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: var(--space-3xs); }
+  .src:hover { color: var(--color-accent); }
+  .fit { margin: 0; display: flex; flex-direction: column; font-size: var(--text-sm); }
+  .fit > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--space-3xs) var(--space-md); padding: var(--space-xs) 0; border-top: var(--rule); }
+  .fit > div:first-child { border-top: 0; padding-top: 0; }
+  .fit dt { font-weight: 600; }
+  .fit dd { margin: 0; display: flex; flex-direction: column; gap: var(--space-3xs); max-width: var(--measure); color: var(--color-ink-2); }
+  .src-line { overflow-wrap: anywhere; }
+  @media (max-width: 640px) {
+    .fit > div { grid-template-columns: minmax(0, 1fr); }
+    /* patch changes stack per row: name and direction, the detail, then kind, patch and source */
+    .changes thead { display: none; }
+    .changes tr { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "name name dir" "detail detail detail" "kind patch source"; column-gap: var(--space-sm); padding: var(--space-xs) 0; border-bottom: var(--rule); }
+    .changes tr:last-child { border-bottom: 0; }
+    .changes td { border: 0; padding: 0; text-align: left; }
+    .changes .name { grid-area: name; } .changes .dir { grid-area: dir; } .changes .detail { grid-area: detail; padding: var(--space-3xs) 0; }
+    .changes .kind { grid-area: kind; font-size: var(--text-xs); color: var(--color-ink-3); } .changes .patch { grid-area: patch; font-size: var(--text-xs); } .changes .source { grid-area: source; font-size: var(--text-xs); }
+  }
 </style>

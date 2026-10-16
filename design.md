@@ -32,6 +32,7 @@ editorial (playful notes: the poro mascot, the gold accent)
 - Display: Space Grotesk 700, tracking -0.02em, line-height 1.0. Used once per page at `--text-display` (the team name, today's matchup, "GEN v HLE"); section heads at `--text-xl`.
 - Body: IBM Plex Sans 400/600, 16px, line-height 1.55, measure 65ch for prose.
 - Outlier: IBM Plex Mono 500 for every number that is data (odds, scores, records, ratings, KDA, dates in tables). Two roles only: data numerals and the wordmark's "26". Never for prose.
+- Mono weights: Mono 500 for numerals, 600 for the leading value.
 - Scale (ratio 1.333): display clamp(2.5rem, 5.5vw, 4.25rem) · xl 1.75rem · lg 1.3125rem · md 1rem · sm 0.875rem · xs 0.8125rem.
 - Labels: sentence case, `--text-xs`, `--color-ink-3`, no tracking, no uppercase. Section numbers and eyebrows: off.
 - Tables: header cells sentence case, `--text-xs`, `--color-ink-3`; numeric cells mono, right-aligned, `font-variant-numeric: tabular-nums`.
