@@ -1,0 +1,50 @@
+/* Hallmark · genre: editorial · design-system: design.md · designed-as-app · theme: project palette (dark paper, gold accent) */
+:root {
+  --color-paper: oklch(15% 0.012 250);
+  --color-paper-2: oklch(20% 0.015 250);
+  --color-paper-3: oklch(26% 0.02 250);
+  --color-rule: oklch(31% 0.025 250);
+  --color-ink: oklch(95% 0.008 240);
+  --color-ink-2: oklch(80% 0.015 245);
+  --color-ink-3: oklch(69% 0.02 245);
+  --color-accent: oklch(80% 0.14 85);
+  --color-accent-ink: oklch(15% 0.012 250);
+  --color-good: oklch(75% 0.15 160);
+  --color-bad: oklch(72% 0.14 30);
+  --color-data: oklch(50% 0.03 250);
+  --color-data-lead: oklch(88% 0.012 240);
+  --color-focus: oklch(80% 0.14 85);
+
+  --font-display: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-outlier: "IBM Plex Mono", ui-monospace, monospace;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.3125rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-display: clamp(2.5rem, 5.5vw, 4.25rem);
+
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+
+  --radius-data: 4px;
+  --radius-panel: 12px;
+  --radius-pill: 999px;
+  --rule: 1px solid var(--color-rule);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-short: 180ms;
+
+  --sidebar: 220px;
+  --measure: 65ch;
+}
