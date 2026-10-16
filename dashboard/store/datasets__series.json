@@ -1,1 +1,0 @@
-{"title": "Series predictions", "description": "Every predicted series: frozen baseline and staged runs, with win probability, exact-score distribution, tier and written justification.", "source": {"kind": "file", "url": "/_blob/cdc94fd430c9a25393fb41408c85bc09", "name": "series.json", "format": "json"}, "updated": {"at": "2026-10-15T01:25:23+00:00", "by": "Claude (model run)"}}
