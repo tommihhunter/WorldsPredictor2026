@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Headless check of the v2 site: serve site/dist under $W26_BASE (default /WorldsPredictor2026/), open every page in PAGES at
+Headless check of the v2 site: serve site/dist under $W26_BASE (default /poroprophet/), open every page in PAGES at
 1280 and 390 px, and fail on page errors, console errors (except 404s under art/logos/), any 404 response,
 root-absolute links that skip the base path, and sideways scroll at 390 px. Pages not built yet are skipped.
 Screenshots go to site/shots/<page>-<width>.png (outside dist, so they are never published).
@@ -12,7 +12,7 @@ from playwright.sync_api import sync_playwright
 PAGES = ["", "scorecard/", "meta/", "play-in/", "swiss/", "knockouts/", "demacia-cup/", "teams/", "teams/gen/",
          "teams/mvk/", "teams/compare/", "teams/compare/gen-vs-hle/"]
 WIDTHS = [1280, 390]
-BASE = os.environ.get("W26_BASE", "/WorldsPredictor2026").strip("/")  # same env as site/astro.config.mjs
+BASE = os.environ.get("W26_BASE", "/poroprophet").strip("/")  # same env as site/astro.config.mjs
 PREFIX = f"/{BASE}" if BASE else ""
 OPTIONAL = f"{PREFIX}/art/logos/"  # missing logos are allowed to 404
 

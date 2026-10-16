@@ -434,7 +434,7 @@ In `HANDOVER.md`, after the "## What this is" paragraph, add:
 
 ```markdown
 ## Website
-- Live site: https://tommihhunter.github.io/WorldsPredictor2026/ (GitHub Pages, built by `model/build_site.py` from the same page as the local file; `tests/check_site.py` opens every tab headless before each deploy).
+- Live site: https://tommihhunter.github.io/poroprophet/ (GitHub Pages, built by `model/build_site.py` from the same page as the local file; `tests/check_site.py` opens every tab headless before each deploy).
 - `.github/workflows/publish.yml`: every push to main (and on demand) runs the model tests, builds, checks and deploys.
 - `.github/workflows/update.yml`: every 30 minutes from 16/10 to 16/11/2026 NZDT (and on demand) pulls Worlds results from gol.gg; when there is something new it rescrapes, refreshes live odds, exports, regrades, runs the tests, commits `data/` only (bot commit, agreed 16/10/2026) and deploys. Pull before working locally: the bot pushes to main.
 - Rows the bot adds have no `start_nz` (gol.gg has no start times); grading treats them as valid because every frozen pick was made before its stage began.
@@ -458,4 +458,4 @@ git commit -m "GitHub Actions: publish on push, scheduled results update with da
 
 ### Task 4: go live (head only, gated)
 
-Not for a subagent. The head shows Tommi, verbatim, every remote action and waits for an explicit go: (1) merge `site-phase0` into `main` and push; (2) `gh repo edit tommihhunter/WorldsPredictor2026 --visibility public --accept-visibility-change-consequences`; (3) `gh api -X POST repos/tommihhunter/WorldsPredictor2026/pages -f build_type=workflow`; (4) `gh workflow run publish.yml` then `gh workflow run "Update results"`. Then verify: the Publish run is green, the URL serves the page, `tests/check_site.py` against the live URL equivalent passes (open it headless), and the Update run fetched gol.gg (its log shows the Play-In match list) without errors.
+Not for a subagent. The head shows Tommi, verbatim, every remote action and waits for an explicit go: (1) merge `site-phase0` into `main` and push; (2) `gh repo edit tommihhunter/poroprophet --visibility public --accept-visibility-change-consequences`; (3) `gh api -X POST repos/tommihhunter/poroprophet/pages -f build_type=workflow`; (4) `gh workflow run publish.yml` then `gh workflow run "Update results"`. Then verify: the Publish run is green, the URL serves the page, `tests/check_site.py` against the live URL equivalent passes (open it headless), and the Update run fetched gol.gg (its log shows the Play-In match list) without errors.
