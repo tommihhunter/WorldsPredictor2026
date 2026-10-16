@@ -28,8 +28,17 @@
 "start_nz": "16/10/2026 12:00",
 "team_a": "FURIA",
 "team_b": "MVK",
-"score_a": null,
-"score_b": null,
-"winner": null
+"score_a": 0,
+"score_b": 3,
+"winner": "MVK",
+"bo": 5,
+"date": "15/10/2026",
+"patch": "16.20",
+"golgg_stage": "ROUND1",
+"source": {
+"url": "https://gol.gg/tournament/tournament-matchlist/Worlds%202026%20Play-In/",
+"series_url": "https://gol.gg/game/stats/83593/page-summary/",
+"accessed": "16/10/2026 16:05 NZDT"
+}
 }
 ]

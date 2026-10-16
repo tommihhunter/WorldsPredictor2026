@@ -1,40 +1,56 @@
 {
  "baseline": {
-  "graded": 1,
-  "winner_acc": 1.0,
+  "graded": 2,
+  "winner_acc": 0.5,
   "exact_acc": 0.0,
-  "brier": 0.14791716000000005,
-  "logloss": 0.4854828160941957,
+  "brier": 0.34084676,
+  "logloss": 0.8985204155500346,
   "invalid_post_start": [],
   "calibration": {
    "LEAN": {
-    "n": 1,
-    "hit": 1.0,
-    "stated": 0.6154
+    "n": 2,
+    "hit": 0.5,
+    "stated": 0.673
    }
   },
-  "worst_misses": []
+  "worst_misses": [
+   {
+    "id": "PI-R1-B",
+    "predicted": "FURIA 3-0",
+    "p": 0.7306,
+    "actual": "MVK 3-0",
+    "surprise": 1.312
+   }
+  ]
  },
  "playin": {
-  "graded": 1,
-  "winner_acc": 1.0,
+  "graded": 2,
+  "winner_acc": 0.5,
   "exact_acc": 0.0,
-  "brier": 0.14791716000000005,
-  "logloss": 0.4854828160941957,
+  "brier": 0.34084676,
+  "logloss": 0.8985204155500346,
   "invalid_post_start": [],
   "calibration": {
    "LEAN": {
-    "n": 1,
-    "hit": 1.0,
-    "stated": 0.6154
+    "n": 2,
+    "hit": 0.5,
+    "stated": 0.673
    }
   },
-  "worst_misses": []
+  "worst_misses": [
+   {
+    "id": "PI-R1-B",
+    "predicted": "FURIA 3-0",
+    "p": 0.7306,
+    "actual": "MVK 3-0",
+    "surprise": 1.312
+   }
+  ]
  },
  "pickems_playin": {
   "earned": 5,
-  "possible_so_far": 5,
+  "possible_so_far": 10,
   "stage_max": 35
  },
- "graded_at_nz": "16/10/2026 12:47 NZDT"
+ "graded_at_nz": "16/10/2026 16:11 NZDT"
 }

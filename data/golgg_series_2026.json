@@ -11928,6 +11928,18 @@
 "kind": "international"
 },
 {
+"team_a": "MVK Esports",
+"team_b": "FURIA",
+"score_a": 3,
+"score_b": 0,
+"stage": "ROUND1",
+"patch": "16.20",
+"date": "15/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"league": "INTL",
+"kind": "international"
+},
+{
 "team_a": "Dplus KIA",
 "team_b": "Hanwha Life Esports",
 "score_a": 0,

@@ -15920,6 +15920,22 @@
 "intl": true
 },
 {
+"date": "15/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"stage": "ROUND1",
+"kind": "international",
+"league": "INTL",
+"a": "MVK",
+"b": "FURIA",
+"sa": 3,
+"sb": 0,
+"bo": 5,
+"region_a": "LCP",
+"region_b": "CBLOL",
+"patch": "16.20",
+"intl": true
+},
+{
 "date": "26/05/2026",
 "tournament": "EWC 2026 Online Qualifier - Korea",
 "stage": "ROUND4",

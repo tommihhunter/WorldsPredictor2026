@@ -13,6 +13,18 @@
 },
 {
 "a": "FURIA",
+"b": "MVK",
+"date": "15/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"stage": "ROUND1",
+"sa": 0,
+"sb": 3,
+"bo": 5,
+"patch": "16.20",
+"year": 2026
+},
+{
+"a": "FURIA",
 "b": "LOS",
 "date": "10/10/2026",
 "tournament": "CBLOL 2026 Split 2 Playoffs",
