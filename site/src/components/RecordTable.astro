@@ -1,6 +1,7 @@
 ---
 /* "Every team's likely record": swiss.json rows sorted by p_advance, a stacked p30..p03 bar on the record ramp,
    and a gold line above the first team outside the predicted qualifiers. Phone: team, likeliest, advance. */
+import Icon from './Icon.astro';
 import Logo from './Logo.astro';
 import { regionOf, type swiss } from '../lib/data';
 import { pct } from '../lib/format';
@@ -30,7 +31,7 @@ const ramp = (k: string) => `background:var(--rec-${k.replace('-', '')})`;
           return (
             <div class:list={['rt-row', { 'rt-cut': cut > 0 && i === cut }]} role="row">
               <span role="cell"><Logo code={r.team} size={34} class="rt-logo" /></span>
-              <span role="cell" class="rt-team"><span class="code">{r.team}{wl && <span class="rt-wl"> {wl}</span>}</span><span class="rt-reg">{regionOf(r.team)}</span></span>
+              <span role="cell" class="rt-team"><span class="code">{r.team}{wl && <span class="rt-wl"> {wl}</span>}</span><span class="rt-reg"><Icon name={regionOf(r.team)} size={16} label={regionOf(r.team)} /></span></span>
               <span role="cell" class="rt-rec">{r.predicted_record || 'UNKNOWN'} <span class="muted">{pct(r.p_record)}</span></span>
               <span role="cell" class="rt-adv big">{pct(r.p_advance)}</span>
               <span role="cell" class="rt-bar" style={`grid-template-columns:${KEYS.map(([k]) => `${Math.max(Number(r[k]) || 0, 0.003)}fr`).join(' ')}`} aria-label={KEYS.map(([k, l]) => `${l} ${pct(r[k])}`).join(', ')}>

@@ -1,8 +1,9 @@
 ---
 /* Phone bottom bar (< 640px), per design/lore/Phone Pages.dc.html: Home, Play-In, Swiss, Teams, More.
-   7px rotated-square marker over a --fs-xs label, gold when active. More is a <details> bottom sheet. */
+   A stroke icon (lib/icons.ts) over a --fs-xs label, gold when active. More is a <details> bottom sheet. */
 import { NAV } from '../lib/nav';
 import { url } from '../lib/url';
+import { icon } from '../lib/icons';
 const { active } = Astro.props as { active: string };
 const pick = (id: string) => NAV.find((n) => n.id === id)!;
 const tabs = ['home', 'play-in', 'swiss', 'teams'].map(pick);
@@ -10,13 +11,13 @@ const more = ['knockouts', 'scorecard', 'meta', 'demacia-cup'].map(pick);
 const moreOn = more.some((n) => n.id === active);
 ---
 <nav class="bbar" aria-label="Sections">
-  {tabs.map((n) => <a class="tab" href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}><i class="mk" aria-hidden="true" />{n.label}</a>)}
+  {tabs.map((n) => <a class="tab" href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}><span class="ic" set:html={icon(n.id)} />{n.label}</a>)}
   <details class="more">
-    <summary class:list={['tab', { on: moreOn }]}><i class="mk" aria-hidden="true" />More</summary>
+    <summary class:list={['tab', { on: moreOn }]}><span class="ic" set:html={icon('more')} />More</summary>
     <div class="scrim" aria-hidden="true"></div>
     <div class="sheet">
       <span class="grab" aria-hidden="true"></span>
-      {more.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}><span class="t">{n.label}</span><span class="s">{n.desc}</span></a>)}
+      {more.map((n) => <a href={url(n.path)} aria-current={active === n.id ? 'page' : undefined}><span class="ic" set:html={icon(n.id)} /><span class="tx"><span class="t">{n.label}</span><span class="s">{n.desc}</span></span></a>)}
     </div>
   </details>
 </nav>
@@ -43,10 +44,8 @@ const moreOn = more.some((n) => n.id === active);
     .tab:hover { color: var(--gold); }
     .tab:active { background: var(--hover); }
     .tab:focus-visible { outline-offset: -2px; }
-    .mk { width: 7px; height: 7px; transform: rotate(45deg); background: transparent; box-shadow: inset 0 0 0 1px var(--marker); transition: background-color 120ms ease; }
-    .tab:hover .mk { box-shadow: inset 0 0 0 1px var(--gold); }
+    .ic, .ic :global(svg) { display: block; width: 22px; height: 22px; flex: none; }
     .tab[aria-current="page"], .tab.on, .more[open] > .tab { color: var(--gold); }
-    .tab[aria-current="page"] .mk, .tab.on .mk, .more[open] > .tab .mk { background: var(--gold); }
     .scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 0; }
     /* bottom padding clears the bar (78px) plus a step */
     .sheet {
@@ -57,13 +56,15 @@ const moreOn = more.some((n) => n.id === active);
       max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain;
     }
     .grab { align-self: center; width: 40px; height: 4px; border-radius: 2px; background: var(--split-off); margin-bottom: var(--space-xs); }
-    .sheet a { display: flex; flex-direction: column; gap: var(--space-3xs); padding: var(--space-xs); border-radius: var(--radius-sm); min-height: 44px; }
+    .sheet a { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-xs); border-radius: var(--radius-sm); min-height: 44px; }
     .sheet a:hover, .sheet a[aria-current="page"] { background: var(--hover); }
     .sheet a:active { background: var(--line-strong); }
     .sheet a:focus-visible { outline-offset: -2px; }
     .sheet .t { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); line-height: var(--lh-tight); text-transform: uppercase; letter-spacing: var(--track-caps); }
     .sheet a[aria-current="page"] .t { color: var(--gold); }
     .sheet .s { font-size: var(--fs-sm); font-weight: 500; color: var(--muted); }
+    .sheet .tx { display: flex; flex-direction: column; gap: 2px; }
+    .sheet .ic { color: var(--gold); }
     .more { display: block; }
   }
 </style>

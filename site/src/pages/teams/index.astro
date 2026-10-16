@@ -1,6 +1,7 @@
 ---
 // Teams (design/lore/Teams.dc.html): intro, region chips, card grid in rank order. Each card opens the team's dossier.
 // Without JS every card shows and the chips stay hidden; teams-grid.js filters by region (state in location.hash).
+import Icon from '../../components/Icon.astro';
 import Base from '../../layouts/Base.astro';
 import TeamCard from '../../components/TeamCard.astro';
 import { dossiers, overview, ratings } from '../../lib/data';
@@ -23,7 +24,7 @@ const accessed = dossiers().map((d) => String((d as { players_sample?: string })
     </div>
     <div class="filters" role="group" aria-label="Region" hidden>
       <button class="chip" type="button" data-region="" aria-pressed="true">All</button>
-      {regions.map((g) => <button class="chip" type="button" data-region={g} aria-pressed="false">{g}</button>)}
+      {regions.map((g) => <button class="chip" type="button" data-region={g} aria-pressed="false"><Icon name={g} size={18} label={g} /></button>)}
     </div>
   </section>
   <section id="teams-grid" class="grid" aria-label="Teams">

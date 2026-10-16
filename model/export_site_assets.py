@@ -15,6 +15,8 @@ def copy_all(pattern, dest, rename=lambda f: f):
 
 logos = copy_all(os.path.join(ROOT, "dashboard", "logos", "*.png"), os.path.join(OUT, "logos"))
 extras = copy_all(os.path.join(ROOT, "dashboard", "extras", "*.png"), os.path.join(OUT, "extras"))
+regions = copy_all(os.path.join(ROOT, "dashboard", "regions", "*.png"), os.path.join(OUT, "regions"))
+objectives = copy_all(os.path.join(ROOT, "dashboard", "objectives", "*.png"), os.path.join(OUT, "objectives"))
 champs = copy_all(os.path.join(CACHE, "cdn_*_img_champion_*.png"), os.path.join(OUT, "champ"), lambda f: f.split("_img_champion_")[1])
 items = copy_all(os.path.join(CACHE, "cdn_*_img_item_*.png"), os.path.join(OUT, "item"), lambda f: f.split("_img_item_")[1])
 # Splash ("centered", 1280x720) and loading-screen tiles for the champions the cache holds: resized for the web.
@@ -47,4 +49,4 @@ for name, src in (("main", "PoroMain.jpg"), ("dopey", "PoroDopey.jpg")):
         im.resize((64, 64), Image.LANCZOS).save(os.path.join(PORO, "favicon.png"), optimize=True)
         im.resize((180, 180), Image.LANCZOS).save(os.path.join(PORO, "apple-touch.png"), optimize=True)
 print("poro", ", ".join(f"{f} {os.path.getsize(os.path.join(PORO, f)) // 1024} kB" for f in sorted(os.listdir(PORO))))
-print(f"logos {logos} extras {extras} champions {champs} items {items} splash {splash} tiles {tiles}")
+print(f"logos {logos} extras {extras} regions {regions} objectives {objectives} champions {champs} items {items} splash {splash} tiles {tiles}")

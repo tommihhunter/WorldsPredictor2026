@@ -1,7 +1,7 @@
 ---
 // League icons from site/public/art (exported by model/export_site_assets.py):
-//   lanes (any spelling: Top, Jng, Jungle, Mid, Middle, Bot, ADC, Sup, Support), objectives (gold, dragon, baron)
-//   and the patch items by name. Unknown names render nothing, so callers can pass free text safely.
+//   lanes (any spelling: Top, Jng, Jungle, Mid, Middle, Bot, ADC, Sup, Support), objectives (gold, dragon, baron, herald,
+//   tower, inhibitor), league marks (LCK, LPL, LEC, LCS, LCP, CBLOL, Worlds, DCGI) and the patch items by name. Unknown names render nothing, so callers can pass free text safely.
 // With `label`, the icon sits before the text; without it, the icon carries an alt text of its own.
 import { url } from '../lib/url';
 interface Props { name: string; size?: number; label?: string; class?: string }
@@ -11,14 +11,20 @@ const LANES: Record<string, [string, string]> = {
   top: ['top', 'Top'], jng: ['jungle', 'Jungle'], jungle: ['jungle', 'Jungle'], jg: ['jungle', 'Jungle'],
   mid: ['middle', 'Mid'], middle: ['middle', 'Mid'], bot: ['bottom', 'Bot'], bottom: ['bottom', 'Bot'], adc: ['bottom', 'Bot'],
   sup: ['support', 'Support'], support: ['support', 'Support'],
-  gold: ['gold', 'Gold'], dragon: ['infernal', 'Dragon'], drake: ['infernal', 'Dragon'], baron: ['nashor', 'Baron'], nashor: ['nashor', 'Baron'],
+  gold: ['gold', 'Gold'],
 };
+// objectives: the client's match-history set (model/fetch_art.py)
+const OBJ: Record<string, [string, string]> = {
+  dragon: ['dragon', 'Dragon'], drake: ['dragon', 'Dragon'], baron: ['baron', 'Baron'], nashor: ['baron', 'Baron'], herald: ['herald', 'Herald'],
+  tower: ['tower', 'Tower'], turret: ['tower', 'Tower'], inhibitor: ['inhibitor', 'Inhibitor'],
+};
+const LEAGUES: Record<string, string> = { lck: 'LCK', lpl: 'LPL', lec: 'LEC', lcs: 'LCS', lcp: 'LCP', cblol: 'CBLOL', worlds: 'WORLDS', dcgi: 'DCGI', demaciacup: 'DCGI' };
 const ITEMS: Record<string, string> = {
   experimentalhexplate: '223073', runaanshurricane: '223085', guinsoosrageblade: '223124', hextechrocketbelt: '223152', worldatlas: '3865', runiccompass: '3866',
 };
-const lane = LANES[key];
-const src = lane ? url(`art/extras/${lane[0]}.png`) : ITEMS[key] ? url(`art/item/${ITEMS[key]}.png`) : null;
-const alt = label ? '' : lane ? lane[1] : name;
+const lane = LANES[key], obj = OBJ[key], league = LEAGUES[key];
+const src = lane ? url(`art/extras/${lane[0]}.png`) : obj ? url(`art/objectives/${obj[0]}.png`) : league ? url(`art/regions/${league}.png`) : ITEMS[key] ? url(`art/item/${ITEMS[key]}.png`) : null;
+const alt = label ? '' : lane ? lane[1] : obj ? obj[1] : league ?? name;
 ---
 {src
   ? (label != null

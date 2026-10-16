@@ -1,6 +1,7 @@
 ---
 // One tile in the Teams grid: logo and name only (owner's pick, 17/10/2026). Every number lives on the team page.
 // data-region and data-rank drive the region filter (teams-grid.js) and tests/check_site.py.
+import Icon from './Icon.astro';
 import Logo from './Logo.astro';
 import type { Rating } from '../lib/data';
 import { displayName, teamSlug } from '../lib/data';
@@ -10,7 +11,7 @@ const { r } = Astro.props as { r: Rating };
 <a class="card team" href={url(`teams/${teamSlug(r.code)}/`)} data-region={r.region} data-rank={r.rank}>
   <Logo code={r.code} size={112} />
   <span class="code name">{displayName(r.name)}</span>
-  <span class="sub">{r.region}</span>
+  <span class="sub"><Icon name={r.region} size={18} label={r.region} /></span>
 </a>
 <style>
   /* logo and name start at the same height in every tile of a row, even when a long name wraps */

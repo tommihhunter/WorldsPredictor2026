@@ -1,0 +1,142 @@
+{
+ "regions/LCK.png": {
+  "source": "https://static.lolesports.com/leagues/lck-color-on-black.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "regions/LPL.png": {
+  "source": "https://static.lolesports.com/leagues/1592516115322_LPL-01-FullonDark.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "regions/LEC.png": {
+  "source": "https://static.lolesports.com/leagues/1592516184297_LEC-01-FullonDark.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "regions/LCS.png": {
+  "source": "https://static.lolesports.com/leagues/1706356907418_LCSNew-01-FullonDark.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "regions/LCP.png": {
+  "source": "https://static.lolesports.com/leagues/1733468139601_lcp-color-golden.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "regions/CBLOL.png": {
+  "source": "https://static.lolesports.com/leagues/cblol-logo-symbol-offwhite.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "regions/WORLDS.png": {
+  "source": "https://static.lolesports.com/leagues/1592594612171_WorldsDarkBG.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "regions/DCGI.png": {
+  "source": "https://static.lolesports.com/leagues/1788253732774_94x-81.png",
+  "via": "esports-api.lolesports.com getLeagues",
+  "accessed": "17/10/2026"
+ },
+ "objectives/baron.png": {
+  "source": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/baron-100.png",
+  "accessed": "17/10/2026"
+ },
+ "objectives/dragon.png": {
+  "source": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/dragon-100.png",
+  "accessed": "17/10/2026"
+ },
+ "objectives/herald.png": {
+  "source": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/herald-100.png",
+  "accessed": "17/10/2026"
+ },
+ "objectives/tower.png": {
+  "source": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/tower-100.png",
+  "accessed": "17/10/2026"
+ },
+ "objectives/inhibitor.png": {
+  "source": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/inhibitor-100.png",
+  "accessed": "17/10/2026"
+ },
+ "splash/Akali.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Akali_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Ambessa.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Ambessa_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Cassiopeia.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Cassiopeia_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Corki.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Corki_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Ezreal.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Ezreal_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/JarvanIV.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/JarvanIV_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Jayce.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Jayce_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/KSante.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/KSante_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/LeeSin.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/LeeSin_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Lulu.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Lulu_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Nautilus.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Nautilus_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Nocturne.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Nocturne_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Olaf.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Olaf_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Orianna.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Orianna_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Pantheon.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Pantheon_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Rumble.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Rumble_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Ryze.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Ryze_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Syndra.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Syndra_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/Vi.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/Vi_0.jpg",
+  "accessed": "17/10/2026"
+ },
+ "splash/XinZhao.jpg": {
+  "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/XinZhao_0.jpg",
+  "accessed": "17/10/2026"
+ }
+}

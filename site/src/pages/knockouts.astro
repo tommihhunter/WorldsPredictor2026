@@ -1,5 +1,6 @@
 ---
 // Knockouts hub, per design/lore/Knockouts.dc.html. Rows: the latest staged set (falls back to the frozen baseline).
+import Icon from '../components/Icon.astro';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import SeriesCard from '../components/SeriesCard.astro';
@@ -77,7 +78,7 @@ const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket i
         {path.map((t) => (
           <div class="pr" role="row">
             <span role="cell"><Logo code={t.code} size={32} /></span>
-            <span class="tn" role="cell"><span class="code nm">{t.name}</span><span class="code cd">{t.code}</span><span class="caption">{t.region || 'UNKNOWN'}</span></span>
+            <span class="tn" role="cell"><span class="code nm">{t.name}</span><span class="code cd">{t.code}</span><span class="caption"><Icon name={t.region} size={16} label={t.region || 'UNKNOWN'} /></span></span>
             {t.p.map((p, i) => (
               <span class="pc" role="cell">
                 <span class:list={['bar', i === 3 ? 'gold' : 'teal']}><i style={`width:${((p ?? 0) * 100).toFixed(1)}%`}></i></span>

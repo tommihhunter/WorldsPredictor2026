@@ -1,5 +1,6 @@
 ---
 // Demacia Cup (design/lore/Demacia Cup.dc.html): walk-forward check on the Demacia Cup Global Invitational (data/dash/dcgi.json).
+import Icon from '../components/Icon.astro';
 import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
@@ -54,7 +55,7 @@ const tiles = sum ? [
   footer={{ left: `Walk-forward check, ratings cut ${sum?.fit_cut ?? 'UNKNOWN'}, compiled ${sum?.created_nz ?? 'UNKNOWN'}.` }}>
   <section class="dc-top">
     <div class="intro">
-      <span class="eyebrow">Demacia Cup Global Invitational, 03 to 17/10/2026</span>
+      <span class="eyebrow dcm"><Icon name="DCGI" size={28} />Demacia Cup Global Invitational, 03 to 17/10/2026</span>
       <h1>A dress rehearsal</h1>
       <p class="lede">Teams that missed Worlds, from every region. The model was fitted only on games before {ddmm(sum?.fit_cut)} and asked to call each series blind: a walk-forward check run afterwards, not picks made in advance.</p>
     </div>
@@ -96,7 +97,7 @@ const tiles = sum ? [
           <div class="section regions">
             <span class="eyebrow">Region matchups, model hits</span>
             <div class="rows">
-              {pairs.map((p) => <div class="prow"><span class="fg2">{p.k}</span><span>{p.hits} of {p.n}</span></div>)}
+              {pairs.map((p) => <div class="prow"><span class="fg2 rp">{p.k.split(' v ').map((g, i) => <>{i > 0 && <span class="muted">v</span>}<Icon name={g} size={20} label={g} /></>)}</span><span>{p.hits} of {p.n}</span></div>)}
             </div>
           </div>
         </aside>
@@ -118,6 +119,8 @@ const tiles = sum ? [
   .verdict { display: inline-flex; align-items: center; justify-content: flex-end; gap: var(--space-2xs); font-weight: 600; }
   .poro { border-radius: 50%; flex: none; }
   .regions { gap: 0; }
+  .rp { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  .dcm { display: inline-flex; align-items: center; gap: var(--space-xs); }
   .regions > .eyebrow { padding-bottom: var(--space-2xs); }
   .prow { display: flex; justify-content: space-between; gap: var(--space-xs); }
   @media (max-width: 1150px) {

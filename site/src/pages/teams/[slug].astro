@@ -13,6 +13,9 @@ import DraftBlock from '../../components/DraftBlock.astro';
 import { codeFromSlug, displayName, dossiers, live, overview, ratings, teamSlug, type Dossier, type Player, type TeamBlock } from '../../lib/data';
 import { nzProse, pct1 as pc } from '../../lib/format';
 import { url } from '../../lib/url';
+import art from '../../lib/art.json';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 export const getStaticPaths = () => ratings().map((r) => ({ params: { slug: teamSlug(r.code) } }));
 
@@ -38,6 +41,10 @@ const headline = nzProse(d?.headline || r.headline || 'UNKNOWN');
 // ---- 1. hero
 const title = lv?.p_champion ?? r.p_champion;
 const trend = r.trend ? cap(r.trend.toLowerCase()) : 'UNKNOWN';
+// hero art: splash of the team's most-picked champion this season, when the art was fetched (model/fetch_art.py)
+const topPick = d?.team_season?.picks?.[0]?.champ;
+const splashId = topPick ? (art as Record<string, string>)[topPick.toLowerCase().replace(/[^a-z]/g, '')]?.replace(/\.png$/, '') : undefined;
+const splash = splashId && existsSync(resolve(process.cwd(), 'public', 'art', 'splash', `${splashId}.jpg`)) ? url(`art/splash/${splashId}.jpg`) : null;
 const trendTone = /peak|ris/i.test(trend) ? 'teal' : /fad/i.test(trend) ? 'risk' : 'muted';
 
 // ---- 2. the road: chance of reaching each stage (live odds when the bot has refitted, else the frozen ratings)
@@ -88,7 +95,7 @@ const statRows = (key: string, t: TeamBlock, items: Item[]) => items.map(([f, la
     rank = `${ord(k)} of ${n}`;
     tone = k <= 5 ? 'teal' : k > n - 5 ? 'risk' : 'muted';
   }
-  const icon = f === 'gd15' ? 'gold' : f === 'drag_share' ? 'dragon' : f === 'baron_share' ? 'baron' : '';
+  const icon = ({ gd15: 'gold', drag_share: 'dragon', baron_share: 'baron', herald_share: 'herald', ft_pct: 'tower' } as Record<string, string>)[f as string] ?? '';
   return { label, value, rank, tone, sub: sub ? sub(t) : '', icon };
 });
 
@@ -132,10 +139,10 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   <a class="back" href={url('teams/')}><span aria-hidden="true">←</span> All teams</a>
 
   <!-- 1. who they are -->
-  <header class="hero">
+  <header class:list={['hero', { art: splash }]} style={splash ? `--splash:url(${splash})` : undefined}>
     <span class="disc crest"><Logo code={code} size={84} /></span>
     <div class="who">
-      <span class="eyebrow">{r.region} seed {r.seed}, ranked {ord(r.rank)} of {rs.length} by the model</span>
+      <span class="eyebrow reg"><Icon name={r.region} size={22} />{r.region} seed {r.seed}, ranked {ord(r.rank)} of {rs.length} by the model</span>
       <h1>{name}</h1>
       <p class="story">{headline}</p>
       <p class="acts">
@@ -148,6 +155,7 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
       <span class="muted2">to win Worlds</span>
       <span class:list={['trend', trendTone]}>{trend}</span>
     </div>
+    {splash && <span class="art-cap caption">Signature pick: {topPick}</span>}
   </header>
   <script is:inline>
     document.querySelector('.acts .copy')?.addEventListener('click', async (e) => {
@@ -293,6 +301,13 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
 
   /* 1. hero: crest, identity, odds */
   .hero { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--space-lg); align-items: center; padding-bottom: var(--space-lg); border-bottom: 1px solid var(--line); }
+  /* splash of the signature champion behind the hero, faded into the page on the left and bottom */
+  .hero { position: relative; isolation: isolate; }
+  .hero.art { padding: var(--space-xl) var(--space-lg) var(--space-lg); border-bottom: 0; border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .hero.art::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--splash) right 20% / auto 140% no-repeat; opacity: 0.55; }
+  .hero.art::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--surface) 30%, rgba(30, 25, 57, 0.75) 60%, rgba(30, 25, 57, 0.35)), linear-gradient(0deg, var(--surface), transparent 40%); }
+  .art-cap { position: absolute; right: var(--space-lg); bottom: var(--space-sm); font-size: var(--fs-xs); }
+  .reg { display: inline-flex; align-items: center; gap: var(--space-2xs); }
   .crest { --s: 128px; background: var(--surface); box-shadow: var(--inset); }
   .who { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
   .story { font-size: var(--fs-lg); line-height: 1.45; color: var(--fg2); max-width: 62ch; text-wrap: pretty; }
@@ -391,6 +406,9 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   @media (max-width: 640px) {
     .back { margin-bottom: calc(var(--space-lg) * -1 + var(--space-2xs)); }
     .hero { grid-template-columns: auto minmax(0, 1fr); gap: var(--space-sm); padding-bottom: var(--space-md); }
+    .hero.art { padding: var(--space-md) var(--space-sm); }
+    .hero.art::before { background-size: auto 100%; background-position: right top; opacity: 0.4; }
+    .art-cap { display: none; }
     .crest { --s: 72px; }
     .crest :global(.logo) { --s: 48px !important; }
     .who { grid-column: 1 / -1; grid-row: 2; }
