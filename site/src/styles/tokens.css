@@ -1,11 +1,11 @@
 /* Riot's League of Legends fonts (owner-supplied pack, 17/10/2026): Beaufort for LoL = display, Spiegel = body.
    Served from public/fonts/. Check the licence before publishing. */
-@font-face { font-family: "Beaufort for LoL"; src: url("/fonts/BeaufortforLOL-Medium.otf") format("opentype"); font-weight: 400 500; font-display: swap; }
-@font-face { font-family: "Beaufort for LoL"; src: url("/fonts/BeaufortforLOL-Bold.otf") format("opentype"); font-weight: 600 700; font-display: swap; }
-@font-face { font-family: "Beaufort for LoL"; src: url("/fonts/BeaufortforLOL-Heavy.otf") format("opentype"); font-weight: 800 900; font-display: swap; }
-@font-face { font-family: "Spiegel"; src: url("/fonts/Spiegel-Regular.otf") format("opentype"); font-weight: 400 500; font-display: swap; }
-@font-face { font-family: "Spiegel"; src: url("/fonts/Spiegel-SemiBold.otf") format("opentype"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Spiegel"; src: url("/fonts/Spiegel-Bold.otf") format("opentype"); font-weight: 700 800; font-display: swap; }
+@font-face { font-family: "Beaufort for LoL"; src: url("/fonts/BeaufortforLOL-Medium.otf") format("opentype"); font-weight: 400 500; font-display: block; }
+@font-face { font-family: "Beaufort for LoL"; src: url("/fonts/BeaufortforLOL-Bold.otf") format("opentype"); font-weight: 600 700; font-display: block; }
+@font-face { font-family: "Beaufort for LoL"; src: url("/fonts/BeaufortforLOL-Heavy.otf") format("opentype"); font-weight: 800 900; font-display: block; }
+@font-face { font-family: "Spiegel"; src: url("/fonts/Spiegel-Regular.otf") format("opentype"); font-weight: 400 500; font-display: block; }
+@font-face { font-family: "Spiegel"; src: url("/fonts/Spiegel-SemiBold.otf") format("opentype"); font-weight: 600; font-display: block; }
+@font-face { font-family: "Spiegel"; src: url("/fonts/Spiegel-Bold.otf") format("opentype"); font-weight: 700 800; font-display: block; }
 
 /* Lore design system tokens (design.md, design/lore/README.md). Replaces the 16/10 Hallmark tokens. */
 :root {
