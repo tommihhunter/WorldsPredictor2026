@@ -2,7 +2,7 @@
 // The team's road through Worlds: every series row of the latest staged set (the baseline when that set has none
 // for this team), plus the Swiss record line. Results are matched by id and pair (resultFor), never by pair alone.
 import Badge from './Badge.astro';
-import { series, swiss } from '../lib/data';
+import { results, series, swiss } from '../lib/data';
 import { nz, pct } from '../lib/format';
 import { bySchedule, latestSet, resultFor, swissRecords } from '../lib/stage';
 const { code } = Astro.props as { code: string };
@@ -12,6 +12,12 @@ const set = mine(latest).length ? latest : 'baseline';
 const rows = [...mine(set)].sort(bySchedule);
 const sw = swiss().find((x) => x.set === set && x.team === code) ?? swiss().find((x) => x.set === 'baseline' && x.team === code);
 const record = swissRecords().get(code);
+// A pairing is a fixture only once it exists outside the model: a result, a draw row in results_live.json (unplayed is fine),
+// or a Play-In slot the bracket has settled. Everything else is the model's assumed bracket and shows no opponent here.
+const pairKey = (a: string, b: string) => [a, b].sort().join('|');
+const drawn = new Set(results().filter((r) => r.kind === 'series' && r.team_a && r.team_b).map((r) => `${r.id}|${pairKey(r.team_a!, r.team_b!)}`));
+const confirmed = (s: (typeof rows)[number]) => !!resultFor(s) || drawn.has(`${s.id}|${pairKey(s.team_a, s.team_b)}`)
+  || (s.phase === 'Play-In' && !/predicted pairing/i.test(s.stage));
 ---
 {rows.length || sw ? (
   <div class="scroll">
@@ -28,6 +34,12 @@ const record = swissRecords().get(code);
         {rows.map((s) => {
           const r = resultFor(s);
           const opp = s.team_a === code ? s.team_b : s.team_a;
+          if (!confirmed(s)) return (
+            <tr>
+              <td class="muted">{nz(s.time_nz)}</td><td>{s.stage.replace(/ \((predicted pairing|assumed draw)\)/i, '')}</td>
+              <td class="muted">Draw not made</td><td class="muted">After the draw</td><td class="muted">Not played</td>
+            </tr>
+          );
           return (
             <tr>
               <td>{nz(s.time_nz)}</td><td>{s.stage}</td><td><Badge code={opp} /></td>
@@ -40,4 +52,4 @@ const record = swissRecords().get(code);
     </table>
   </div>
 ) : <p class="muted cap">No series predicted for this team yet.</p>}
-<p class="cap muted">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Later rounds assume the predicted bracket; the Swiss line is the most likely record and its chance.</p>
+<p class="cap muted">{set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${set})`}. Opponents and picks appear once a round is drawn; the Swiss line is the most likely record and its chance.</p>
