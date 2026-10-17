@@ -24,6 +24,7 @@
   --dim: #B8B0D4;           /* ranks, minor numbers */
   --gold: #D9B45A;          /* primary accent */
   --teal: #86BDB5;          /* data accent */
+  --live: #4ADE80;          /* a series in play: the Live now dot, label and border */
   --risk: #F29A8B;          /* nerfs, go 0-3, wrong calls */
   --bar-alt: #7C6FB0;       /* non-leading bars */
   --split-off: #3A3163;     /* losing side of a split bar, neutral chip outline */
