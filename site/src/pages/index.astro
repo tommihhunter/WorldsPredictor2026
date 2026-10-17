@@ -20,9 +20,16 @@ const NOUN: Record<string, string> = { '1/2': 'a half', '1/3': 'a third', '1/4':
 const frac = (p: number) => { for (const n of [2, 3, 4, 5]) for (let k = 1; k < n; k++) if (Math.abs(p - k / n) < 0.015) return { k, n }; return null; };
 const f = cp == null ? null : frac(cp);
 const n100 = cp == null ? 0 : Math.round(cp * 100);
-const line1 = cp == null ? 'Title chance: UNKNOWN.'
-  : f ? `${WORD[f.k]} in every ${WORD[f.n].toLowerCase()} futures ${f.k === 1 ? 'ends' : 'end'} with them lifting the cup.`
-  : `About ${n100} in 100 futures end with them lifting the cup.`;
+// Tagline: how far the favourite is ahead of the next best team (frozen ratings, same run as the hero number)
+const runnerUp = [...rt].filter((r) => r.code !== champ).sort((a, b) => b.p_champion - a.p_champion)[0];
+const ratio = cp != null && runnerUp?.p_champion ? cp / runnerUp.p_champion : null;
+const ru = runnerUp ? teamName(runnerUp.code) : 'UNKNOWN';
+const line1 = ratio == null ? 'Title chance: UNKNOWN.'
+  : ratio >= 2.5 ? `${Math.round(ratio)} times as likely as ${ru}, the next best, to lift the cup.`
+  : ratio >= 1.95 ? `Twice as likely as ${ru}, the next best, to lift the cup.`
+  : ratio >= 1.6 ? `Nearly twice as likely as ${ru}, the next best, to lift the cup.`
+  : ratio >= 1.15 ? `Clear of ${ru}, the next best at ${pct(runnerUp.p_champion, 1)}, as the likeliest champion.`
+  : `Barely ahead of ${ru} (${pct(runnerUp.p_champion, 1)}) as the likeliest champion.`;
 const others = cp == null ? '' : f ? `${WORD[f.n - f.k]} in ${WORD[f.n].toLowerCase()} futures ${f.n - f.k === 1 ? 'crowns' : 'crown'} someone else.` : `About ${100 - n100} in 100 futures crown someone else.`;
 const noun = f ? NOUN[`${f.k}/${f.n}`] ?? pct(cp, 1) : pct(cp, 1);
 const champRow = rt.find((r) => r.code === champ);

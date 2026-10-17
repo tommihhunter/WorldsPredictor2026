@@ -18,8 +18,10 @@ const { r } = Astro.props as { r: Rating };
   .team { align-items: center; justify-content: flex-start; text-align: center; gap: var(--space-sm); padding: var(--space-xl) var(--space-md) var(--space-lg); }
   .team:hover .name { color: var(--gold); }
   .team:active { border-color: var(--gold); }
-  .name { font-size: var(--fs-lg); line-height: var(--lh-tight); text-wrap: balance; transition: color 120ms ease; }
-  .sub { font-size: var(--fs-sm); color: var(--muted); }
+  /* the name always takes a two-line slot (one-line names sit in its middle), so logo, name and league line up across a row */
+  .name { font-size: var(--fs-lg); line-height: var(--lh-tight); text-wrap: balance; transition: color 120ms ease;
+    min-height: calc(2em * 1.1); display: flex; align-items: center; justify-content: center; }
+  .sub { font-size: var(--fs-sm); color: var(--muted); margin-top: auto; }
   @media (max-width: 640px) {
     .team { gap: var(--space-2xs); padding: var(--space-md) var(--space-2xs) var(--space-sm); }
     .team :global(.logo), .team :global(.disc) { --s: 64px !important; }
