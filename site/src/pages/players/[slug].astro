@@ -6,7 +6,7 @@ import Base from '../../layouts/Base.astro';
 import Logo from '../../components/Logo.astro';
 import Icon from '../../components/Icon.astro';
 import ChampIcon from '../../components/ChampIcon.astro';
-import { players, roleRank, ROLE_NAME, ordinal, type PlayerRow } from '../../lib/players';
+import { players, roleRank, ROLE_NAME, ordinal, wikiOf, isoToNz, ageOf, careerOf, honoursOf, type PlayerRow } from '../../lib/players';
 import { teamSlug, type Player } from '../../lib/data';
 import { url } from '../../lib/url';
 
@@ -28,9 +28,22 @@ const splits = [
 const val = (pl: Player, f: string) => (pl as unknown as Record<string, number | null>)[f];
 const champs = (pl: Player) => (pl.champs ?? []).slice(0, 5);
 const maxGames = (pl: Player) => Math.max(1, ...champs(pl).map((c) => c.games ?? 0));
+// wiki profile and career (Liquipedia); every block below hides itself when the wiki has nothing for this player
+const w = wikiOf(p);
+const realName = w ? (w.romanized_name ? `${w.romanized_name}${w.native_name ? ` (${w.native_name})` : ''}` : w.native_name) : '';
+const age = w ? ageOf(w.birth_date) : null;
+const career = w ? careerOf(w) : [];
+const honours = w ? w.achievements.slice(0, 8) : [];
+const awards = w ? honoursOf(w).slice(0, 8) : [];
+const SOCIAL: Record<string, [string, (h: string) => string]> = {
+  twitch: ['Twitch', (h) => `https://twitch.tv/${h}`], twitter: ['X', (h) => `https://x.com/${h}`],
+  instagram: ['Instagram', (h) => `https://instagram.com/${h}`], youtube: ['YouTube', (h) => `https://youtube.com/${h}`],
+};
+const placeTone = (pl: string) => { const n = parseInt(pl, 10); return n === 1 ? 'gold' : n && n <= 4 ? 'fg' : 'muted'; };
+const credit = `Player stats: gol.gg, 2026 season. Player photos: LoL Esports (Riot Games).${w ? ' Profile and career: Liquipedia (CC BY-SA 3.0).' : ''}`;
 ---
 <Base title={p.player} active="players" description={`${p.player}, ${ROLE_NAME[p.role]} for ${p.team} at Worlds 2026: stats, rankings and champion pool.`}
-  footer={{ left: 'Player stats: gol.gg, 2026 season. Player photos: LoL Esports (Riot Games).' }}>
+  footer={{ left: credit }}>
   <a class="back" href={url('players/')}><span aria-hidden="true">←</span> All players</a>
 
   <!-- 1. who -->
@@ -42,6 +55,16 @@ const maxGames = (pl: Player) => Math.max(1, ...champs(pl).map((c) => c.games ??
       <span class="eyebrow role"><Icon name={p.role} size={22} />{ROLE_NAME[p.role]}</span>
       <h1>{p.player}</h1>
       <a class="team" href={url(`teams/${teamSlug(p.code)}/`)}><Logo code={p.code} size={36} /><span><span class="code">{p.team}</span><span class="caption">{p.region}, ranked {ordinal(p.teamRank)} of 19 by the model</span></span></a>
+      {w && (
+        <dl class="bio">
+          {realName && <div><dt>Name</dt><dd>{realName}</dd></div>}
+          {w.birth_date && <div><dt>Born</dt><dd>{isoToNz(w.birth_date)}{age != null && `, age ${age}`}</dd></div>}
+          {w.country && <div><dt>From</dt><dd>{w.country}</dd></div>}
+        </dl>
+      )}
+      {w && Object.keys(w.socials).length > 0 && (
+        <p class="socials">{Object.entries(w.socials).filter(([k]) => SOCIAL[k]).map(([k, h]) => <a href={SOCIAL[k][1](h)} target="_blank" rel="noopener">{SOCIAL[k][0]}</a>)}</p>
+      )}
       <div class="seg" role="radiogroup" aria-label="Split">
         <input type="radio" name="split" id="split-season" value="season" checked />
         <label class="chip" for="split-season">2026 season</label>
@@ -92,6 +115,49 @@ const maxGames = (pl: Player) => Math.max(1, ...champs(pl).map((c) => c.games ??
       </div>
     ))}
   </section>
+
+  <!-- 3b. career (Liquipedia) -->
+  {w && (career.length > 0 || honours.length > 0) && (
+    <section class="section">
+      <div class="section-head"><h2>Career</h2><a class="caption" href={w.url} target="_blank" rel="noopener">Full career on Liquipedia →</a></div>
+      <div class="career">
+        {career.length > 0 && (
+          <div class="panel cbox">
+            <h3 class="ck">Teams</h3>
+            <ol class="tl">
+              {career.map((c, i) => (
+                <li class:list={[{ now: i === 0 && /present/i.test(c.to) }]}>
+                  <span class="tl-dot" aria-hidden="true"></span>
+                  <span class="code">{c.team}</span>
+                  <span class="caption">{isoToNz(c.from)} to {/present/i.test(c.to) ? 'now' : isoToNz(c.to)}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+        {honours.length > 0 && (
+          <div class="panel cbox">
+            <h3 class="ck">Best results</h3>
+            <ol class="hon">
+              {honours.map((h) => (
+                <li>
+                  <span class:list={['place', placeTone(h.place)]}>{h.place}</span>
+                  <span class="ev">{h.tournament}</span>
+                  <span class="caption">{[h.score && h.opponent ? `${h.score.replace(/\s/g, '').replace(':', '-')} v ${h.opponent}` : '', isoToNz(h.date)].filter(Boolean).join(', ')}</span>
+                </li>
+              ))}
+            </ol>
+            {awards.length > 0 && (
+              <>
+                <h3 class="ck aw-k">Awards</h3>
+                <ul class="awards">{awards.map((a) => <li><span class="aw">{a.award}</span><span class="caption">{a.tournament}</span></li>)}</ul>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
+  )}
 
   <!-- 4. who with -->
   {mates.length > 0 && (
@@ -149,6 +215,34 @@ const maxGames = (pl: Player) => Math.max(1, ...champs(pl).map((c) => c.games ??
   .cs dd { margin: 0; font-weight: 600; }
   .pool-n { margin-top: var(--space-xs); }
 
+  /* hero bio and socials */
+  .bio { margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); }
+  .bio dt { font-size: var(--fs-xs); color: var(--muted); }
+  .bio dd { margin: 0; font-weight: 600; }
+  .socials { display: flex; flex-wrap: wrap; gap: var(--space-md); font-size: var(--fs-sm); font-weight: 600; }
+  .socials a { color: var(--gold); }
+  .socials a:hover { color: var(--fg); }
+
+  /* 3b. career: a team timeline beside the best results and awards */
+  .career { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: var(--space-md); align-items: start; }
+  .cbox { display: flex; flex-direction: column; gap: var(--space-xs); }
+  .ck { font-family: var(--font-body); font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.08em; color: var(--muted); }
+  .aw-k { margin-top: var(--space-sm); }
+  .tl { list-style: none; margin: 0; padding: 0 0 0 var(--space-md); border-left: 1px solid var(--line-strong); display: flex; flex-direction: column; gap: var(--space-sm); }
+  .tl li { position: relative; display: flex; flex-direction: column; }
+  .tl-dot { position: absolute; left: calc(var(--space-md) * -1 - 5px); top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--surface); border: 2px solid var(--dim); }
+  .tl li.now .tl-dot { background: var(--gold); border-color: var(--gold); }
+  .tl .code { font-size: var(--fs-lg); line-height: 1.2; }
+  .hon { list-style: none; margin: 0; padding: 0; }
+  .hon li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); grid-template-areas: 'p e' 'p d'; column-gap: var(--space-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+  .place { grid-area: p; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); line-height: 1.2; }
+  .place.muted { color: var(--muted); } .place.fg { color: var(--fg); }
+  .hon .ev { grid-area: e; font-weight: 600; } .hon .caption { grid-area: d; }
+  .awards { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
+  .awards li { display: inline-flex; flex-direction: column; padding: var(--space-2xs) var(--space-sm); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); }
+  .aw { font-weight: 600; font-size: var(--fs-sm); }
+  .awards .caption { font-size: var(--fs-xs); }
+
   /* 4. teammates */
   .mates { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-sm); }
   .mate { padding: 0 0 var(--space-sm); align-items: center; text-align: center; gap: var(--space-3xs); overflow: hidden; }
@@ -170,6 +264,7 @@ const maxGames = (pl: Player) => Math.max(1, ...champs(pl).map((c) => c.games ??
     .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
     .pool { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .mates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .career { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .back { margin-bottom: calc(var(--space-lg) * -1 + var(--space-2xs)); }
