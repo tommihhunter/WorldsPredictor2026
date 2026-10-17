@@ -7,7 +7,7 @@ import Logo from '../components/Logo.astro';
 import SeriesCard from '../components/SeriesCard.astro';
 import { displayName, overview, ratings, results, series } from '../lib/data';
 import { pct } from '../lib/format';
-import { STAGES, setLabel, view } from '../lib/stage';
+import { STAGES, setLabel, startNz, view } from '../lib/stage';
 import type { Series } from '../lib/data';
 
 const st = STAGES[2];
@@ -36,15 +36,22 @@ const path = src.sort((a, b) => (b.p[3] ?? -1) - (a.p[3] ?? -1)).slice(0, 10);
 
 const createdNz = (v.rows[0]?.created_nz ?? 'UNKNOWN').replace(/(\d\d:\d\d):\d\d/, '$1');
 const setName = v.set === 'baseline' ? 'Frozen baseline' : `Latest staged run (${setLabel(v.set)})`;
-const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket is replaced by the real draw after 31/10.'}`;
+const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket fills in after the Swiss stage and the 31/10 draw.'}`;
+// Before the draw no slot has teams: quarterfinals wait for the Swiss stage, later rounds for the round before.
+const FEED: Record<string, [string, string]> = { 'KO-SF1': ['QF1', 'QF2'], 'KO-SF2': ['QF3', 'QF4'], 'KO-F': ['SF1', 'SF2'] };
+const slot = (s: Series) => {
+  const f = FEED[s.id];
+  return { name: s.id.replace(/^KO-/, '').replace(/^F$/, 'Final'), sides: f ? [`Winner ${f[0]}`, `Winner ${f[1]}`] : ['Swiss qualifier', 'Swiss qualifier'],
+    note: f ? `After ${f[0]} and ${f[1]}.` : 'From the Swiss stage and the 31/10 draw.', when: startNz(s).replace(/^(\d\d\/\d\d)\/\d{4}/, '$1') };
+};
 ---
 <Base title="Knockouts" active="knockouts" description="Eight teams, one cup: the knockout bracket and how far each team goes." footer={{ left: footer }}>
   <section class="top">
     <div class="intro">
       <span class="eyebrow">Knockouts, Allen then Brooklyn, {span} NZDT</span>
       <h1>Eight teams, one cup</h1>
-      <p class="lede ph-lede">{real ? '' : 'An assumed draw until 31/10. '}Pick'Ems lock {lock ? `${lock.slice(0, 5)}${lock.slice(10)} NZDT` : 'UNKNOWN'}.</p>
-      <p class="lede dt-lede">Every series Bo5 with Fearless Draft. {real ? 'The bracket below follows the real draw.' : 'The quarterfinal draw on 31/10 is random, so this bracket is an assumed draw: no same-region quarterfinals, favourites spread out.'}</p>
+      <p class="lede ph-lede">{real ? '' : 'Teams set by the Swiss stage and the 31/10 draw. '}Pick'Ems lock {lock ? `${lock.slice(0, 5)}${lock.slice(10)} NZDT` : 'UNKNOWN'}.</p>
+      <p class="lede dt-lede">Every series Bo5 with Fearless Draft. {real ? 'The bracket below follows the real draw.' : 'The eight teams come out of the Swiss stage, and the quarterfinal draw on 31/10 sets who plays whom. Until then the slots are open, and the model gives every team its chances below.'}</p>
     </div>
     <div class="callout">
       <span class="eyebrow">Pick'Ems</span>
@@ -54,7 +61,7 @@ const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket i
   <LiveNow phase="Knockouts" />
 
   <section class="section">
-    <div class="section-head"><h2>{real ? 'Bracket' : 'Assumed bracket'}</h2><span>Percent is the chance the upper team wins the series. Times NZDT.</span></div>
+    <div class="section-head"><h2>Bracket</h2><span>{real ? 'Percent is the chance the upper team wins the series. ' : 'Not decided yet. '}Times NZDT.</span></div>
     {v.stageNote && <p class="caption">{v.stageNote}</p>}
     <div class="scroll" tabindex="0" role="region" aria-label="Bracket, scrolls sideways">
       <div class="bracket">
@@ -62,7 +69,13 @@ const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket i
           <div class="col">
             <span class:list={['colhead', { gold: i === cols.length - 1 }]}>{c.head}{i === cols.length - 1 && finalDay ? <span class="ph">, {finalDay}</span> : ''}</span>
             <div class="stack">
-              {c.items.map((s) => <SeriesCard s={s} large final={i === cols.length - 1} />)}
+              {c.items.map((s) => real ? <SeriesCard s={s} large final={i === cols.length - 1} /> : (
+                <div class:list={['card', 'tbd', { 'is-final': i === cols.length - 1 }]}>
+                  <span class="tbd-meta"><span>{slot(s).name}</span><span>{slot(s).when}</span></span>
+                  {slot(s).sides.map((x) => <span class="tbd-side"><span class="tbdm" aria-hidden="true">?</span>{x}</span>)}
+                  <span class="caption">{slot(s).note}</span>
+                </div>
+              ))}
             </div>
           </div>
         ))}
@@ -133,4 +146,11 @@ const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket i
     .pc { gap: var(--space-2xs); }
     .pc .num { width: 44px; }
   }
+  /* open slot before the draw: no teams, just who it waits for */
+  .tbd { cursor: default; gap: var(--space-xs); }
+  .tbd:hover { background: var(--surface); border-color: transparent; }
+  .tbd.is-final:hover { border-color: var(--gold); }
+  .tbd-meta { display: flex; justify-content: space-between; font-size: var(--fs-sm); color: var(--muted); }
+  .tbd-side { display: flex; align-items: center; gap: var(--space-xs); font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--muted2); }
+  .tbdm { width: 28px; height: 28px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px dashed var(--line-head); color: var(--dim); font-size: var(--fs-sm); flex: none; }
 </style>
