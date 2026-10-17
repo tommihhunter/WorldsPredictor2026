@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""One-off art fetch for the site (run by hand, not by the bot): league logos (lolesports), objective icons
-(CommunityDragon match-history set) and champion splash art (Data Dragon) for every team's most-picked champion
+"""One-off art fetch for the site (run by hand, not by the bot): league logos and player photos (lolesports), objective
+icons (CommunityDragon match-history set) and champion splash art (Data Dragon) for every team's most-picked champion
 and the 12 most contested champions. Files land in dashboard/ (regions/, objectives/, ddragon_cache/) with
 sources and the access date in dashboard/regions/_meta.json; model/export_site_assets.py copies them into the site.
 Rate-limited to 0.4 s between requests. Skips files that already exist."""
@@ -67,6 +67,34 @@ for name in sorted(want):
     if not os.path.exists(out):
         open(out, "wb").write(get(src))
     meta[f"splash/{cid}.jpg"] = {"source": src, "accessed": TODAY}
+
+# 4. player photos: the official lolesports headshot of every starter in data/dash/dossiers.json, matched by name
+#    within the team's lolesports roster. All normalised to one 520x400 transparent canvas, head-and-shoulders centred.
+PLY = os.path.join(DASH, "players"); os.makedirs(PLY, exist_ok=True)
+TEAM_SLUG = {"GEN": "geng", "T1": "t1", "HLE": "hanwha-life-esports", "DK": "dwg-kia", "BLG": "bilibili-gaming", "AL": "anyones-legend",
+             "IG": "invictus-gaming", "TES": "top-esports", "G2": "g2-esports", "KC": "karmine-corp", "MKOI": "mad-lions", "TLAW": "team-liquid",
+             "LYON": "lyon-gaming", "C9": "cloud9", "TSW": "team-secret-whales", "CFO": "ctbc-flying-oyster", "FURIA": "furia", "LOS": "los",
+             "MVK": "saigon-buffalo-esports"}
+teams = {t["slug"]: t for t in json.loads(get("https://esports-api.lolesports.com/persisted/gw/getTeams?hl=en-GB", {"x-api-key": LOLESPORTS_KEY}))["data"]["teams"]}
+alnum = lambda s: "".join(c for c in str(s).lower() if c.isalnum())
+n_players, missing = 0, []
+for d in json.load(open(os.path.join(ROOT, "data", "dash", "dossiers.json"), encoding="utf-8")):
+    roster = {alnum(p["summonerName"]): p for p in teams.get(TEAM_SLUG.get(d["code"], ""), {}).get("players", [])}
+    for pl in d.get("signature") or []:
+        hit = roster.get(alnum(pl["player"]))
+        if not hit or not hit.get("image"):
+            missing.append(f'{d["code"]} {pl["player"]}'); continue
+        slug = alnum(pl["player"]); out = os.path.join(PLY, f"{slug}.webp")
+        src = hit["image"].replace("http://", "https://")
+        if not os.path.exists(out):
+            im = Image.open(io.BytesIO(get(src))).convert("RGBA")
+            im = im.resize((round(im.width * 400 / im.height), 400), Image.LANCZOS)
+            canvas = Image.new("RGBA", (520, 400), (0, 0, 0, 0))
+            canvas.paste(im, ((520 - im.width) // 2, 0), im)
+            canvas.save(out, quality=85, method=6)
+        meta[f"players/{slug}.webp"] = {"source": src, "via": "esports-api.lolesports.com getTeams", "player": pl["player"], "team": d["code"], "accessed": TODAY}
+        n_players += 1
+print("players", n_players, "missing", missing)
 
 json.dump(meta, open(os.path.join(REG, "_meta.json"), "w", encoding="utf-8"), indent=1)
 print(f"regions {len(SLUG)}, objectives 5, splash {len(want)}")

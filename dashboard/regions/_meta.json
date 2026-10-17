@@ -138,5 +138,670 @@
  "splash/XinZhao.jpg": {
   "source": "https://ddragon.leagueoflegends.com/cdn/img/champion/centered/XinZhao_0.jpg",
   "accessed": "17/10/2026"
+ },
+ "players/morgan.webp": {
+  "source": "https://static.lolesports.com/players/1769752562927_morgan.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Morgan",
+  "team": "TLAW",
+  "accessed": "17/10/2026"
+ },
+ "players/josedeodo.webp": {
+  "source": "https://static.lolesports.com/players/1769150518581_AME_LCS26S1_TL_JOSEDEODO.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Josedeodo",
+  "team": "TLAW",
+  "accessed": "17/10/2026"
+ },
+ "players/quid.webp": {
+  "source": "https://static.lolesports.com/players/1769150548420_AME_LCS26S1_TL_QUID.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Quid",
+  "team": "TLAW",
+  "accessed": "17/10/2026"
+ },
+ "players/yeon.webp": {
+  "source": "https://static.lolesports.com/players/1769150607307_AME_LCS26S1_TL_YEON.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Yeon",
+  "team": "TLAW",
+  "accessed": "17/10/2026"
+ },
+ "players/corejj.webp": {
+  "source": "https://static.lolesports.com/players/1769150483053_AME_LCS26S1_TL_COREJJ.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "CoreJJ",
+  "team": "TLAW",
+  "accessed": "17/10/2026"
+ },
+ "players/dhokla.webp": {
+  "source": "https://static.lolesports.com/players/1769150098659_AME_LCS26S1_LYON_DHOKLA.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Dhokla",
+  "team": "LYON",
+  "accessed": "17/10/2026"
+ },
+ "players/inspired.webp": {
+  "source": "https://static.lolesports.com/players/1769150137024_AME_LCS26S1_LYON_INSPIRED.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Inspired",
+  "team": "LYON",
+  "accessed": "17/10/2026"
+ },
+ "players/saint.webp": {
+  "source": "https://static.lolesports.com/players/1769150214608_AME_LCS26S1_LYON_SAINT.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Saint",
+  "team": "LYON",
+  "accessed": "17/10/2026"
+ },
+ "players/berserker.webp": {
+  "source": "https://static.lolesports.com/players/1769752644164_berserker.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Berserker",
+  "team": "LYON",
+  "accessed": "17/10/2026"
+ },
+ "players/isles.webp": {
+  "source": "https://static.lolesports.com/players/1769150180651_AME_LCS26S1_LYON_ISLES.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Isles",
+  "team": "LYON",
+  "accessed": "17/10/2026"
+ },
+ "players/thanatos.webp": {
+  "source": "https://static.lolesports.com/players/1769149468221_AME_LCS26S1_C9_THANATOS.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Thanatos",
+  "team": "C9",
+  "accessed": "17/10/2026"
+ },
+ "players/blaber.webp": {
+  "source": "https://static.lolesports.com/players/1769149391904_AME_LCS26S1_C9_BLABER.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Blaber",
+  "team": "C9",
+  "accessed": "17/10/2026"
+ },
+ "players/loki.webp": {
+  "source": "https://static.lolesports.com/players/1790204959636_loki.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Loki",
+  "team": "C9",
+  "accessed": "17/10/2026"
+ },
+ "players/tactical.webp": {
+  "source": "https://static.lolesports.com/players/1790204905338_tac.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Tactical",
+  "team": "C9",
+  "accessed": "17/10/2026"
+ },
+ "players/vulcan.webp": {
+  "source": "https://static.lolesports.com/players/1769149513772_AME_LCS26S1_C9_VULCAN.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Vulcan",
+  "team": "C9",
+  "accessed": "17/10/2026"
+ },
+ "players/zest.webp": {
+  "source": "https://static.lolesports.com/players/1785139905307_LOS_Zest-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Zest",
+  "team": "LOS",
+  "accessed": "17/10/2026"
+ },
+ "players/curse.webp": {
+  "source": "https://static.lolesports.com/players/1785139911386_LOS_Curse-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Curse",
+  "team": "LOS",
+  "accessed": "17/10/2026"
+ },
+ "players/feisty.webp": {
+  "source": "https://static.lolesports.com/players/1785139916710_LOS_Feisty-5copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Feisty",
+  "team": "LOS",
+  "accessed": "17/10/2026"
+ },
+ "players/duduhh.webp": {
+  "source": "https://static.lolesports.com/players/1785139922550_LOS_Duduhh-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Duduhh",
+  "team": "LOS",
+  "accessed": "17/10/2026"
+ },
+ "players/ackerman.webp": {
+  "source": "https://static.lolesports.com/players/1785139928559_LOS_Ackerman-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Ackerman",
+  "team": "LOS",
+  "accessed": "17/10/2026"
+ },
+ "players/guigo.webp": {
+  "source": "https://static.lolesports.com/players/1785137517154_FUR_Guigo-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Guigo",
+  "team": "FURIA",
+  "accessed": "17/10/2026"
+ },
+ "players/tatu.webp": {
+  "source": "https://static.lolesports.com/players/1785137528696_FUR_Tatu-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Tatu",
+  "team": "FURIA",
+  "accessed": "17/10/2026"
+ },
+ "players/tutsz.webp": {
+  "source": "https://static.lolesports.com/players/1785137538274_FUR_Tutsz-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Tutsz",
+  "team": "FURIA",
+  "accessed": "17/10/2026"
+ },
+ "players/ayu.webp": {
+  "source": "https://static.lolesports.com/players/1785137510622_FUR_Ayu-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Ayu",
+  "team": "FURIA",
+  "accessed": "17/10/2026"
+ },
+ "players/jojo.webp": {
+  "source": "https://static.lolesports.com/players/1785137522978_FUR_Jojo-1copy.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "JoJo",
+  "team": "FURIA",
+  "accessed": "17/10/2026"
+ },
+ "players/kiin.webp": {
+  "source": "https://static.lolesports.com/players/1778842963805_LCK_GEN_Kiin_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Kiin",
+  "team": "GEN",
+  "accessed": "17/10/2026"
+ },
+ "players/canyon.webp": {
+  "source": "https://static.lolesports.com/players/1778842984822_LCK_GEN_Canyon_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Canyon",
+  "team": "GEN",
+  "accessed": "17/10/2026"
+ },
+ "players/chovy.webp": {
+  "source": "https://static.lolesports.com/players/1778842975847_LCK_GEN_Chovy_F.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Chovy",
+  "team": "GEN",
+  "accessed": "17/10/2026"
+ },
+ "players/ruler.webp": {
+  "source": "https://static.lolesports.com/players/1778842957393_LCK_GEN_Ruler_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Ruler",
+  "team": "GEN",
+  "accessed": "17/10/2026"
+ },
+ "players/duro.webp": {
+  "source": "https://static.lolesports.com/players/1778842969792_LCK_GEN_Duro_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Duro",
+  "team": "GEN",
+  "accessed": "17/10/2026"
+ },
+ "players/zeus.webp": {
+  "source": "https://static.lolesports.com/players/1769089435131_LCK_HLE_Zeus_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Zeus",
+  "team": "HLE",
+  "accessed": "17/10/2026"
+ },
+ "players/kanavi.webp": {
+  "source": "https://static.lolesports.com/players/1769089425886_LCK_HLE_Kanavi_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Kanavi",
+  "team": "HLE",
+  "accessed": "17/10/2026"
+ },
+ "players/zeka.webp": {
+  "source": "https://static.lolesports.com/players/1769089430303_LCK_HLE_Zeka_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Zeka",
+  "team": "HLE",
+  "accessed": "17/10/2026"
+ },
+ "players/gumayusi.webp": {
+  "source": "https://static.lolesports.com/players/1769089421483_LCK_HLE_Gumayusi_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Gumayusi",
+  "team": "HLE",
+  "accessed": "17/10/2026"
+ },
+ "players/delight.webp": {
+  "source": "https://static.lolesports.com/players/1769089417110_LCK_HLE_Delight_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Delight",
+  "team": "HLE",
+  "accessed": "17/10/2026"
+ },
+ "players/doran.webp": {
+  "source": "https://static.lolesports.com/players/1769087520664_LCK_T1_Doran_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Doran",
+  "team": "T1",
+  "accessed": "17/10/2026"
+ },
+ "players/oner.webp": {
+  "source": "https://static.lolesports.com/players/1769087509929_LCK_T1_Oner_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Oner",
+  "team": "T1",
+  "accessed": "17/10/2026"
+ },
+ "players/faker.webp": {
+  "source": "https://static.lolesports.com/players/1769087499078_LCK_T1_Faker_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Faker",
+  "team": "T1",
+  "accessed": "17/10/2026"
+ },
+ "players/peyz.webp": {
+  "source": "https://static.lolesports.com/players/1769087491906_LCK_T1_Peyz_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Peyz",
+  "team": "T1",
+  "accessed": "17/10/2026"
+ },
+ "players/keria.webp": {
+  "source": "https://static.lolesports.com/players/1769087515444_LCK_T1_Keria_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Keria",
+  "team": "T1",
+  "accessed": "17/10/2026"
+ },
+ "players/siwoo.webp": {
+  "source": "https://static.lolesports.com/players/1778842731846_LCK_DK_Siwoo_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Siwoo",
+  "team": "DK",
+  "accessed": "17/10/2026"
+ },
+ "players/lucid.webp": {
+  "source": "https://static.lolesports.com/players/1778842716183_LCK_DK_Lucid_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Lucid",
+  "team": "DK",
+  "accessed": "17/10/2026"
+ },
+ "players/showmaker.webp": {
+  "source": "https://static.lolesports.com/players/1778842721951_LCK_DK_Showmaker_F.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "ShowMaker",
+  "team": "DK",
+  "accessed": "17/10/2026"
+ },
+ "players/smash.webp": {
+  "source": "https://static.lolesports.com/players/1778842749985_LCK_DK_Smash_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Smash",
+  "team": "DK",
+  "accessed": "17/10/2026"
+ },
+ "players/career.webp": {
+  "source": "https://static.lolesports.com/players/1778842708132_LCK_DK_Career_F.PNG",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Career",
+  "team": "DK",
+  "accessed": "17/10/2026"
+ },
+ "players/pun.webp": {
+  "source": "https://static.lolesports.com/players/1775221968161_Pun.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Pun",
+  "team": "TSW",
+  "accessed": "17/10/2026"
+ },
+ "players/hizto.webp": {
+  "source": "https://static.lolesports.com/players/1775221973791_Hizto.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Hizto",
+  "team": "TSW",
+  "accessed": "17/10/2026"
+ },
+ "players/dire.webp": {
+  "source": "https://static.lolesports.com/players/1775221979037_Dire.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Dire",
+  "team": "TSW",
+  "accessed": "17/10/2026"
+ },
+ "players/eddie.webp": {
+  "source": "https://static.lolesports.com/players/1775221984176_Eddie.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Eddie",
+  "team": "TSW",
+  "accessed": "17/10/2026"
+ },
+ "players/bie.webp": {
+  "source": "https://static.lolesports.com/players/1775221988811_Bie.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Bie",
+  "team": "TSW",
+  "accessed": "17/10/2026"
+ },
+ "players/rest.webp": {
+  "source": "https://static.lolesports.com/players/1769232185565_Rest.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Rest",
+  "team": "CFO",
+  "accessed": "17/10/2026"
+ },
+ "players/shad0w.webp": {
+  "source": "https://static.lolesports.com/players/1769232218550_Shad0w.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Shad0w",
+  "team": "CFO",
+  "accessed": "17/10/2026"
+ },
+ "players/pout.webp": {
+  "source": "https://static.lolesports.com/players/1785926070523_POUT.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "POUT",
+  "team": "CFO",
+  "accessed": "17/10/2026"
+ },
+ "players/doggo.webp": {
+  "source": "https://static.lolesports.com/players/1769232306480_Doggo.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Doggo",
+  "team": "CFO",
+  "accessed": "17/10/2026"
+ },
+ "players/kino.webp": {
+  "source": "https://static.lolesports.com/players/1785926061333_Kino.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Kino",
+  "team": "CFO",
+  "accessed": "17/10/2026"
+ },
+ "players/kratos.webp": {
+  "source": "https://static.lolesports.com/players/1769231608754_Kratos.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Kratos",
+  "team": "MVK",
+  "accessed": "17/10/2026"
+ },
+ "players/gury.webp": {
+  "source": "https://static.lolesports.com/players/1769231815740_Gury.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Gury",
+  "team": "MVK",
+  "accessed": "17/10/2026"
+ },
+ "players/chika.webp": {
+  "source": "https://static.lolesports.com/players/1775222135365_Chika.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Chika",
+  "team": "MVK",
+  "accessed": "17/10/2026"
+ },
+ "players/harky.webp": {
+  "source": "https://static.lolesports.com/players/1775222116165_Harky.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Harky",
+  "team": "MVK",
+  "accessed": "17/10/2026"
+ },
+ "players/siuloong.webp": {
+  "source": "https://static.lolesports.com/players/1775222126505_SiuLoong.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "SiuLoong",
+  "team": "MVK",
+  "accessed": "17/10/2026"
+ },
+ "players/brokenblade.webp": {
+  "source": "https://static.lolesports.com/players/1768550002850_BrokenBlade-01.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "BrokenBlade",
+  "team": "G2",
+  "accessed": "17/10/2026"
+ },
+ "players/skewmond.webp": {
+  "source": "https://static.lolesports.com/players/1768549980779_Skewmond-01.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "SkewMond",
+  "team": "G2",
+  "accessed": "17/10/2026"
+ },
+ "players/caps.webp": {
+  "source": "https://static.lolesports.com/players/1768549998426_Caps-01.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Caps",
+  "team": "G2",
+  "accessed": "17/10/2026"
+ },
+ "players/hanssama.webp": {
+  "source": "https://static.lolesports.com/players/1768549994123_HansSama-01.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Hans Sama",
+  "team": "G2",
+  "accessed": "17/10/2026"
+ },
+ "players/labrov.webp": {
+  "source": "https://static.lolesports.com/players/1768549989298_Labrov-01.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Labrov",
+  "team": "G2",
+  "accessed": "17/10/2026"
+ },
+ "players/myrwn.webp": {
+  "source": "https://static.lolesports.com/players/1774652336923_myrwn.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Myrwn",
+  "team": "MKOI",
+  "accessed": "17/10/2026"
+ },
+ "players/elyoya.webp": {
+  "source": "https://static.lolesports.com/players/1774651428253_elyoya.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Elyoya",
+  "team": "MKOI",
+  "accessed": "17/10/2026"
+ },
+ "players/jojopyun.webp": {
+  "source": "https://static.lolesports.com/players/1774651666226_jojopyun.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Jojopyun",
+  "team": "MKOI",
+  "accessed": "17/10/2026"
+ },
+ "players/supa.webp": {
+  "source": "https://static.lolesports.com/players/1774652617630_supa.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Supa",
+  "team": "MKOI",
+  "accessed": "17/10/2026"
+ },
+ "players/alvaro.webp": {
+  "source": "https://static.lolesports.com/players/1774651304778_alvaro.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Alvaro",
+  "team": "MKOI",
+  "accessed": "17/10/2026"
+ },
+ "players/canna.webp": {
+  "source": "https://static.lolesports.com/players/1774651372836_canna.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Canna",
+  "team": "KC",
+  "accessed": "17/10/2026"
+ },
+ "players/yike.webp": {
+  "source": "https://static.lolesports.com/players/1768550195190_Yike-01.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Yike",
+  "team": "KC",
+  "accessed": "17/10/2026"
+ },
+ "players/kyeahoo.webp": {
+  "source": "https://static.lolesports.com/players/1774652002153_kyeahoo.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Kyeahoo",
+  "team": "KC",
+  "accessed": "17/10/2026"
+ },
+ "players/caliste.webp": {
+  "source": "https://static.lolesports.com/players/1774651348279_caliste.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Caliste",
+  "team": "KC",
+  "accessed": "17/10/2026"
+ },
+ "players/busio.webp": {
+  "source": "https://static.lolesports.com/players/1774651329556_busio.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Busio",
+  "team": "KC",
+  "accessed": "17/10/2026"
+ },
+ "players/breathe.webp": {
+  "source": "https://static.lolesports.com/players/1775225499864_breathe.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Breathe",
+  "team": "AL",
+  "accessed": "17/10/2026"
+ },
+ "players/tarzan.webp": {
+  "source": "https://static.lolesports.com/players/1768349186102_tarzan.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Tarzan",
+  "team": "AL",
+  "accessed": "17/10/2026"
+ },
+ "players/shanks.webp": {
+  "source": "https://static.lolesports.com/players/1768349057032_shanks.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Shanks",
+  "team": "AL",
+  "accessed": "17/10/2026"
+ },
+ "players/hope.webp": {
+  "source": "https://static.lolesports.com/players/1768348315588_hope.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Hope",
+  "team": "AL",
+  "accessed": "17/10/2026"
+ },
+ "players/kael.webp": {
+  "source": "https://static.lolesports.com/players/1768348497910_kael.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Kael",
+  "team": "AL",
+  "accessed": "17/10/2026"
+ },
+ "players/bin.webp": {
+  "source": "https://static.lolesports.com/players/1768347827679_bin.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Bin",
+  "team": "BLG",
+  "accessed": "17/10/2026"
+ },
+ "players/xun.webp": {
+  "source": "https://static.lolesports.com/players/1768349380095_xun.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Xun",
+  "team": "BLG",
+  "accessed": "17/10/2026"
+ },
+ "players/knight.webp": {
+  "source": "https://static.lolesports.com/players/1768348559860_knight.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Knight",
+  "team": "BLG",
+  "accessed": "17/10/2026"
+ },
+ "players/viper.webp": {
+  "source": "https://static.lolesports.com/players/1768349250531_viper.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Viper",
+  "team": "BLG",
+  "accessed": "17/10/2026"
+ },
+ "players/on.webp": {
+  "source": "https://static.lolesports.com/players/1768348897219_on.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "ON",
+  "team": "BLG",
+  "accessed": "17/10/2026"
+ },
+ "players/369.webp": {
+  "source": "https://static.lolesports.com/players/1768347704727_369.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "369",
+  "team": "TES",
+  "accessed": "17/10/2026"
+ },
+ "players/tian.webp": {
+  "source": "https://static.lolesports.com/players/1775225951328_tian.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Tian",
+  "team": "TES",
+  "accessed": "17/10/2026"
+ },
+ "players/creme.webp": {
+  "source": "https://static.lolesports.com/players/1768347880178_creme.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Creme",
+  "team": "TES",
+  "accessed": "17/10/2026"
+ },
+ "players/jackeylove.webp": {
+  "source": "https://static.lolesports.com/players/1768348354504_jackeylove.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "JackeyLove",
+  "team": "TES",
+  "accessed": "17/10/2026"
+ },
+ "players/zhuo.webp": {
+  "source": "https://static.lolesports.com/players/1768349462733_zhuo.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Zhuo",
+  "team": "TES",
+  "accessed": "17/10/2026"
+ },
+ "players/theshy.webp": {
+  "source": "https://static.lolesports.com/players/1753279025857_image628.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "TheShy",
+  "team": "IG",
+  "accessed": "17/10/2026"
+ },
+ "players/wei.webp": {
+  "source": "https://static.lolesports.com/players/1775225991291_wei.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Wei",
+  "team": "IG",
+  "accessed": "17/10/2026"
+ },
+ "players/rookie.webp": {
+  "source": "https://static.lolesports.com/players/1775225799612_rookie.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Rookie",
+  "team": "IG",
+  "accessed": "17/10/2026"
+ },
+ "players/jiaqi.webp": {
+  "source": "https://static.lolesports.com/players/1775225631369_jiaqi.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "JiaQi",
+  "team": "IG",
+  "accessed": "17/10/2026"
+ },
+ "players/meiko.webp": {
+  "source": "https://static.lolesports.com/players/1775225723214_meiko.png",
+  "via": "esports-api.lolesports.com getTeams",
+  "player": "Meiko",
+  "team": "IG",
+  "accessed": "17/10/2026"
  }
 }

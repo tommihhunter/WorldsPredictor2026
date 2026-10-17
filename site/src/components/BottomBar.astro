@@ -7,7 +7,7 @@ import { icon } from '../lib/icons';
 const { active } = Astro.props as { active: string };
 const pick = (id: string) => NAV.find((n) => n.id === id)!;
 const tabs = ['home', 'play-in', 'swiss', 'teams'].map(pick);
-const more = ['knockouts', 'scorecard', 'meta', 'demacia-cup'].map(pick);
+const more = ['players', 'knockouts', 'scorecard', 'meta', 'demacia-cup'].map(pick);
 const moreOn = more.some((n) => n.id === active);
 ---
 <nav class="bbar" aria-label="Sections">

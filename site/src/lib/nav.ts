@@ -11,6 +11,7 @@ export const NAV: NavItem[] = [
   { id: 'knockouts', label: 'Knockouts', path: 'knockouts/', group: 'event', desc: 'Assumed bracket and how far each team goes' },
   { id: 'demacia-cup', label: 'Demacia Cup', path: 'demacia-cup/', group: 'event', desc: 'The warm-up test' },
   { id: 'teams', label: 'Teams', path: 'teams/', group: 'reference', desc: 'Every team at Worlds and its dossier' },
+  { id: 'players', label: 'Players', path: 'players/', group: 'reference', desc: 'Every starter: stats, rankings and champions' },
   { id: 'scorecard', label: 'Scorecard', path: 'scorecard/', group: 'reference', desc: 'How the predictions are doing' },
   { id: 'meta', label: 'Meta', path: 'meta/', group: 'reference', desc: `Patch ${patch}, champions, Pick'Ems points` },
 ];

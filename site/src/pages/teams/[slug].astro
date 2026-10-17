@@ -13,6 +13,7 @@ import DraftBlock from '../../components/DraftBlock.astro';
 import { codeFromSlug, displayName, dossiers, live, overview, ratings, teamSlug, type Dossier, type Player, type TeamBlock } from '../../lib/data';
 import { nzProse, pct1 as pc } from '../../lib/format';
 import { url } from '../../lib/url';
+import { playerSlug } from '../../lib/players';
 import art from '../../lib/art.json';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -135,7 +136,7 @@ const adjSource = String(r.adj_source || 'UNKNOWN').split(/(https?:\/\/\S+)/).fi
 const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/\d{4})/)?.[1] ?? 'UNKNOWN';
 ---
-<Base title={name} active="teams" description={headline} footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}.` }}>
+<Base title={name} active="teams" description={headline} footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}. Player photos: LoL Esports (Riot Games).` }}>
   <a class="back" href={url('teams/')}><span aria-hidden="true">←</span> All teams</a>
 
   <!-- 1. who they are -->
@@ -254,12 +255,13 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
         {splits.map((s) => (
           <div class="roster" data-split={s.key}>
             {s.players.length ? s.players.map((p) => (
-              <article class="panel player-row">
+              <a class="panel player-row" href={url(`players/${playerSlug(p.player)}/`)}>
+                <span class="pp">{existsSync(resolve(process.cwd(), 'public', 'art', 'players', `${playerSlug(p.player)}.webp`)) && <img src={url(`art/players/${playerSlug(p.player)}.webp`)} alt="" width="260" height="200" loading="lazy" />}</span>
                 <span class="role"><Icon name={p.role} size={26} label={ROLE[String(p.role).toUpperCase()] ?? p.role} /></span>
                 <span class="code pn">{p.player}</span>
                 <dl class="pstats"><div><dt>KDA</dt><dd>{kda(p)}</dd></div><div><dt>Gold at 15</dt><dd>{gd15(p)}</dd></div></dl>
                 <ul class="pchamps">{(p.champs ?? []).slice(0, 3).map((c) => <li><ChampIcon name={c.champ} size={28} /></li>)}</ul>
-              </article>
+              </a>
             )) : <p class="caption">No player data found.</p>}
           </div>
         ))}
@@ -373,7 +375,12 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
 
   /* 5. roster: one card per role */
   .roster { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-sm); }
-  .player-row { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md); }
+  .player-row { display: flex; flex-direction: column; gap: var(--space-xs); padding: 0 var(--space-md) var(--space-md); overflow: hidden; color: inherit; border: 1px solid transparent; transition: border-color 120ms ease, background-color 120ms ease; }
+  .player-row:hover { color: inherit; background: var(--hover); border-color: var(--line-head); }
+  .player-row:hover .pn { color: var(--gold); }
+  /* photo across the top of the card, standing on a soft glow */
+  .pp { margin: 0 calc(var(--space-md) * -1); aspect-ratio: 13 / 10; display: flex; align-items: flex-end; justify-content: center; background: radial-gradient(ellipse at 50% 85%, var(--line-strong), transparent 70%); border-bottom: 1px solid var(--line); }
+  .pp img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
   .pn { font-size: var(--fs-xl); line-height: 1.1; }
   .pstats { margin: 0; display: flex; gap: var(--space-md); }
   .pstats div { display: flex; flex-direction: column; }

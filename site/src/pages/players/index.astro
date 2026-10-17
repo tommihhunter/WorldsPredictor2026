@@ -1,0 +1,61 @@
+---
+// Players: every starter at Worlds 2026 as a photo tile (photo, name, team, role), teammates together in model-rank
+// order. Role chips filter the grid (public/js/players-grid.js, state in location.hash); without JS every tile shows.
+import Base from '../../layouts/Base.astro';
+import Logo from '../../components/Logo.astro';
+import Icon from '../../components/Icon.astro';
+import { players, ROLES, ROLE_NAME } from '../../lib/players';
+import { url } from '../../lib/url';
+
+const all = players();
+const teams = new Set(all.map((p) => p.code)).size;
+---
+<Base title="Players" active="players" description="Every starter at Worlds 2026: photos, roles, stats and champion pools."
+  footer={{ left: 'Player stats: gol.gg, 2026 season. Player photos: LoL Esports (Riot Games).' }}>
+  <section class="intro">
+    <span class="eyebrow">{all.length} players, {teams} teams</span>
+    <h1>The players</h1>
+    <p class="lede">Every starter at Worlds 2026. Pick a player for their numbers and the champions they play.</p>
+  </section>
+
+  <div class="filters" role="group" aria-label="Role" hidden>
+    <button class="chip" type="button" data-role="" aria-pressed="true">All</button>
+    {ROLES.map((r) => <button class="chip" type="button" data-role={r} aria-pressed="false"><Icon name={r} size={18} label={ROLE_NAME[r]} /></button>)}
+  </div>
+
+  <section id="players-grid" class="grid" aria-label="Players">
+    {all.map((p) => (
+      <a class="card pl" href={url(`players/${p.slug}/`)} data-role={p.role} data-team={p.code}>
+        <span class="ph">
+          {p.photo ? <img src={url(`art/players/${p.slug}.webp`)} alt="" width="260" height="200" loading="lazy" /> : <span class="nophoto code">{p.player.slice(0, 2)}</span>}
+        </span>
+        <span class="nm code">{p.player}</span>
+        <span class="meta"><Logo code={p.code} size={20} /><span>{p.code}</span><span class="sep" aria-hidden="true"></span><Icon name={p.role} size={18} label={ROLE_NAME[p.role]} /></span>
+      </a>
+    ))}
+  </section>
+  <script is:inline src={url('js/players-grid.js')} defer></script>
+</Base>
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: calc(var(--space-xl) * -1 + var(--space-md)); }
+  .filters[hidden] { display: none; }
+  .filters .chip { border-color: var(--split-off); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--space-sm); }
+  .pl { padding: 0 0 var(--space-sm); gap: var(--space-2xs); align-items: center; text-align: center; overflow: hidden; }
+  /* the photo sits on a soft radial glow, cut off at the card's top edge */
+  .ph { width: 100%; aspect-ratio: 13 / 10; display: flex; align-items: flex-end; justify-content: center;
+    background: radial-gradient(ellipse at 50% 85%, var(--line-strong), transparent 70%); border-bottom: 1px solid var(--line); }
+  .ph img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+  .nophoto { font-size: var(--fs-3xl); color: var(--dim); align-self: center; }
+  .nm { font-size: var(--fs-lg); line-height: 1.1; margin-top: var(--space-2xs); }
+  .pl:hover .nm { color: var(--gold); }
+  .meta { display: inline-flex; align-items: center; gap: var(--space-2xs); font-size: var(--fs-sm); color: var(--muted); }
+  .sep { width: 1px; height: 14px; background: var(--line-strong); }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs); }
+    .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-top: calc(var(--space-lg) * -1 + var(--space-xs)); }
+    .filters .chip { flex: none; }
+    .nm { font-size: var(--fs-md); }
+    .meta { font-size: var(--fs-xs); }
+  }
+</style>

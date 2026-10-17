@@ -9,6 +9,7 @@ export const ICONS: Record<string, string> = {
   knockouts: wrap('<path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4"/><path d="M17 6h2.5a2.5 2.5 0 0 1-2.5 4"/><path d="M12 13v3"/><path d="M8.5 20h7"/><path d="M10 16h4v4h-4z"/>'),
   'demacia-cup': wrap('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9.5 12l2 2 3.5-4"/>'),
   teams: wrap('<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2a4.5 4.5 0 0 1 5 4.8"/>'),
+  players: wrap('<circle cx="12" cy="8" r="3.6"/><path d="M5 20a7 7 0 0 1 14 0"/>'),
   scorecard: wrap('<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3.5h6v2.5H9z"/><path d="M8.5 12.5l2.2 2.2 4.8-5"/><path d="M8.5 17.5h7"/>'),
   meta: wrap('<path d="M12 3c1 4 3 5.5 6 6.5-3 1-5 2.5-6 6.5-1-4-3-5.5-6-6.5 3-1 5-2.5 6-6.5z"/><path d="M19 15.5c.4 1.4 1.1 2.1 2.5 2.5-1.4.4-2.1 1.1-2.5 2.5-.4-1.4-1.1-2.1-2.5-2.5 1.4-.4 2.1-1.1 2.5-2.5z"/>'),
   more: wrap('<circle cx="6" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="18" cy="12" r="1.6" fill="currentColor" stroke="none"/>'),

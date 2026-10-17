@@ -42,11 +42,11 @@ const own = !!lock && active === lock.stage.toLowerCase();
   .hnav a[aria-current="page"] { background: var(--gold); color: var(--bg); }
   .hlock .short { display: none; }
   /* keep brand, nav and chip on one row: the short chip on a laptop, no chip where even that would wrap */
-  @media (max-width: 1400px) and (min-width: 641px) {
+  @media (max-width: 1500px) and (min-width: 641px) {
     .hlock .full { display: none; }
     .hlock .short { display: inline; }
   }
-  @media (max-width: 1265px) and (min-width: 641px) { .hlock { display: none; } }
+  @media (max-width: 1400px) and (min-width: 641px) { .hlock { display: none; } }
   @media (max-width: 640px) {
     .hdr { border-bottom-color: var(--line-strong); }
     .hdr-in { min-height: 0; padding: var(--space-xs) var(--gutter); flex-wrap: nowrap; gap: var(--space-xs); }

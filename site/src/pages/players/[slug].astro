@@ -1,0 +1,177 @@
+---
+// Player page, in reading order: who (photo, name, role, team), how good (four numbers, each ranked against the other
+// starters in the same role), what they play (champion pool), who with (teammates), then the photo credit.
+// The season / Summer toggle is two radios and CSS (:has), switching every [data-split] block, as on the team page.
+import Base from '../../layouts/Base.astro';
+import Logo from '../../components/Logo.astro';
+import Icon from '../../components/Icon.astro';
+import ChampIcon from '../../components/ChampIcon.astro';
+import { players, roleRank, ROLE_NAME, ordinal, type PlayerRow } from '../../lib/players';
+import { teamSlug, type Player } from '../../lib/data';
+import { url } from '../../lib/url';
+
+export const getStaticPaths = () => players().map((p) => ({ params: { slug: p.slug } }));
+const p = players().find((x) => x.slug === Astro.params.slug)! as PlayerRow;
+const mates = players().filter((x) => x.code === p.code && x.slug !== p.slug);
+const hasSummer = !!p.summer;
+const GD = (v: number) => `${Math.round(v) > 0 ? '+' : ''}${Math.round(v)}`;
+const STATS: { f: 'kda' | 'gd15' | 'kp' | 'games'; label: string; fmt: (v: number) => string; note: string }[] = [
+  { f: 'kda', label: 'KDA', fmt: (v) => v.toFixed(1), note: 'Kills plus assists per death' },
+  { f: 'gd15', label: 'Gold lead at 15', fmt: GD, note: 'Average gold difference with their lane opponent' },
+  { f: 'kp', label: 'Kill participation', fmt: (v) => `${v.toFixed(1)}%`, note: 'Share of team kills they took part in' },
+  { f: 'games', label: 'Games', fmt: (v) => String(v), note: 'Games in the sample' },
+];
+const splits = [
+  { key: 'season' as const, pl: p.season },
+  { key: 'summer' as const, pl: p.summer ?? p.season },
+];
+const val = (pl: Player, f: string) => (pl as unknown as Record<string, number | null>)[f];
+const champs = (pl: Player) => (pl.champs ?? []).slice(0, 5);
+const maxGames = (pl: Player) => Math.max(1, ...champs(pl).map((c) => c.games ?? 0));
+---
+<Base title={p.player} active="players" description={`${p.player}, ${ROLE_NAME[p.role]} for ${p.team} at Worlds 2026: stats, rankings and champion pool.`}
+  footer={{ left: 'Player stats: gol.gg, 2026 season. Player photos: LoL Esports (Riot Games).' }}>
+  <a class="back" href={url('players/')}><span aria-hidden="true">←</span> All players</a>
+
+  <!-- 1. who -->
+  <header class="hero">
+    <span class="ph">
+      {p.photo ? <img src={url(`art/players/${p.slug}.webp`)} alt={p.player} width="520" height="400" /> : <span class="code nophoto">{p.player.slice(0, 2)}</span>}
+    </span>
+    <div class="who">
+      <span class="eyebrow role"><Icon name={p.role} size={22} />{ROLE_NAME[p.role]}</span>
+      <h1>{p.player}</h1>
+      <a class="team" href={url(`teams/${teamSlug(p.code)}/`)}><Logo code={p.code} size={36} /><span><span class="code">{p.team}</span><span class="caption">{p.region}, ranked {ordinal(p.teamRank)} of 19 by the model</span></span></a>
+      <div class="seg" role="radiogroup" aria-label="Split">
+        <input type="radio" name="split" id="split-season" value="season" checked />
+        <label class="chip" for="split-season">2026 season</label>
+        <input type="radio" name="split" id="split-summer" value="summer" disabled={!hasSummer} />
+        <label class="chip" for="split-summer">{hasSummer ? 'Summer split' : 'No Summer data'}</label>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. how good -->
+  {splits.map((s) => (
+    <section class="stats" data-split={s.key} aria-label="Key numbers">
+      {STATS.map((st) => {
+        const v = val(s.pl, st.f);
+        const r = st.f === 'games' ? null : roleRank(p, st.f, s.key);
+        return (
+          <div class="stat">
+            <span class="k">{st.label}</span>
+            <span class="v">{v == null ? 'UNKNOWN' : st.fmt(v)}</span>
+            {r ? <span class:list={['r', r.tone]}>{r.label}</span> : <span class="r muted">{st.note}</span>}
+          </div>
+        );
+      })}
+    </section>
+  ))}
+
+  <!-- 3. what they play -->
+  <section class="section">
+    <div class="section-head"><h2>Champion pool</h2><span>Most-played champions</span></div>
+    {splits.map((s) => (
+      <div data-split={s.key}>
+        {champs(s.pl).length ? (
+          <ol class="pool">
+            {champs(s.pl).map((c) => (
+              <li class="panel">
+                <span class="cn"><ChampIcon name={c.champ} size={44} /></span>
+                <span class="bar alt"><i style={`width:${(((c.games ?? 0) / maxGames(s.pl)) * 100).toFixed(1)}%`}></i></span>
+                <dl class="cs">
+                  <div><dt>Games</dt><dd>{c.games ?? 'UNKNOWN'}</dd></div>
+                  <div><dt>Win rate</dt><dd>{c.wr == null ? 'UNKNOWN' : `${Math.round(c.wr)}%`}</dd></div>
+                  <div><dt>KDA</dt><dd>{c.kda == null ? 'UNKNOWN' : Number(c.kda).toFixed(1)}</dd></div>
+                </dl>
+              </li>
+            ))}
+          </ol>
+        ) : <p class="caption">No champion data found.</p>}
+        <p class="caption pool-n">{s.pl.n_champs != null ? `${s.pl.n_champs} different champions played in ${s.pl.games ?? 'UNKNOWN'} games.` : ''}</p>
+      </div>
+    ))}
+  </section>
+
+  <!-- 4. who with -->
+  {mates.length > 0 && (
+    <section class="section">
+      <div class="section-head"><h2>Teammates</h2><a class="caption" href={url(`teams/${teamSlug(p.code)}/`)}>{p.team} team page →</a></div>
+      <div class="mates">
+        {mates.map((m) => (
+          <a class="card mate" href={url(`players/${m.slug}/`)}>
+            <span class="mph">{m.photo && <img src={url(`art/players/${m.slug}.webp`)} alt="" width="130" height="100" loading="lazy" />}</span>
+            <span class="code">{m.player}</span>
+            <span class="caption"><Icon name={m.role} size={16} label={ROLE_NAME[m.role]} /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+</Base>
+<style>
+  .back { align-self: flex-start; display: inline-flex; gap: var(--space-2xs); font-size: var(--fs-sm); font-weight: 600; color: var(--muted); margin-bottom: calc(var(--space-xl) * -1 + var(--space-sm)); }
+
+  /* 1. hero: the photo stands on the panel's bottom edge, identity beside it */
+  .hero { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); align-items: end; gap: var(--space-xl); padding: var(--space-lg) var(--space-lg) 0; background: radial-gradient(ellipse at 22% 100%, var(--line-strong), var(--surface) 60%); border-radius: var(--radius); box-shadow: var(--inset); overflow: hidden; }
+  .ph { display: flex; align-items: flex-end; justify-content: center; }
+  .ph img { width: 100%; height: auto; display: block; }
+  .nophoto { font-size: var(--fs-hero); color: var(--dim); padding: var(--space-xl); }
+  .who { display: flex; flex-direction: column; gap: var(--space-sm); padding-bottom: var(--space-lg); min-width: 0; }
+  .role { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  .who h1 { font-size: var(--fs-hero); }
+  .team { display: inline-flex; align-items: center; gap: var(--space-xs); align-self: flex-start; }
+  .team > span { display: flex; flex-direction: column; }
+  .team .code { font-size: var(--fs-lg); }
+  .team:hover .code { color: var(--gold); }
+  .seg { display: flex; gap: var(--space-2xs); margin-top: var(--space-2xs); }
+  .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
+  .seg label { cursor: pointer; border-color: var(--split-off); }
+  .seg input:not(:checked):not(:disabled) + label:hover { color: var(--gold); border-color: var(--gold); }
+  .seg input:checked + label { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+  .seg input:disabled + label { cursor: default; opacity: 0.6; }
+  .seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* 2. four numbers, each with its rank in the role */
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-md); }
+  .stat { display: flex; flex-direction: column; gap: var(--space-3xs); padding-top: var(--space-sm); border-top: 1px solid var(--line-strong); }
+  .stat .k { font-size: var(--fs-sm); color: var(--muted); }
+  .stat .v { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-3xl); line-height: 1.05; }
+  .stat .r { font-size: var(--fs-sm); font-weight: 600; }
+  .stat .r.muted { font-weight: 400; }
+
+  /* 3. champion pool: one tile per champion, a bar for how often */
+  .pool { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-sm); }
+  .pool li { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md); }
+  .cn { font-weight: 600; font-size: var(--fs-md); }
+  .cs { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2xs); }
+  .cs dt { font-size: var(--fs-xs); color: var(--muted); }
+  .cs dd { margin: 0; font-weight: 600; }
+  .pool-n { margin-top: var(--space-xs); }
+
+  /* 4. teammates */
+  .mates { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-sm); }
+  .mate { padding: 0 0 var(--space-sm); align-items: center; text-align: center; gap: var(--space-3xs); overflow: hidden; }
+  .mph { width: 100%; aspect-ratio: 13 / 10; display: flex; align-items: flex-end; justify-content: center; background: radial-gradient(ellipse at 50% 85%, var(--line-strong), transparent 70%); border-bottom: 1px solid var(--line); }
+  .mph img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+  .mate .code { font-size: var(--fs-lg); margin-top: var(--space-2xs); }
+  .mate:hover .code { color: var(--gold); }
+
+  :global(main:has(#split-season:checked) [data-split="summer"]),
+  :global(main:has(#split-summer:checked) [data-split="season"]) { display: none !important; }
+
+  @media (max-width: 1100px) {
+    .pool { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 0; padding: var(--space-md) var(--space-sm) 0; }
+    .ph { max-width: 300px; margin: 0 auto; order: 2; }
+    .who { padding-bottom: var(--space-sm); }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
+    .pool { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .back { margin-bottom: calc(var(--space-lg) * -1 + var(--space-2xs)); }
+  }
+</style>

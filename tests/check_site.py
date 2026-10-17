@@ -12,7 +12,7 @@ import functools, http.server, os, re, shutil, sys, tempfile, threading
 from playwright.sync_api import sync_playwright
 
 PAGES = ["", "scorecard/", "meta/", "play-in/", "swiss/", "knockouts/", "demacia-cup/", "teams/", "teams/gen/",
-         "teams/mvk/", "teams/compare/", "teams/compare/gen-vs-hle/"]
+         "teams/mvk/", "teams/compare/", "teams/compare/gen-vs-hle/", "players/", "players/chovy/"]
 WIDTHS = [1280, 768, 390]
 BASE = os.environ.get("W26_BASE", "/poroprophet").strip("/")  # same env as site/astro.config.mjs
 PREFIX = f"/{BASE}" if BASE else ""
