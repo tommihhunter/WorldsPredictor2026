@@ -1,5 +1,6 @@
 ---
 // Play-In hub, per design/lore/Play-In.dc.html. Rows: the latest staged set (falls back to the frozen baseline).
+import LiveNow from '../components/LiveNow.astro';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import SeriesCard from '../components/SeriesCard.astro';
@@ -64,6 +65,7 @@ const footer = `Predicted ${createdNz} (${v.set === 'baseline' ? 'frozen baselin
       {liveStamp && <span class="caption">Live odds after the results so far, {liveStamp}.</span>}
     </div>
   </section>
+  <LiveNow phase="Play-In" />
 
   <div class="pick" data-select>
     <section class="section">

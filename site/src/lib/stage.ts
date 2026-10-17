@@ -84,6 +84,45 @@ export function toUtc(s: Series): string | null {
 }
 export const bySchedule = (a: Series, b: Series) => (toUtc(a) ?? '9').localeCompare(toUtc(b) ?? '9');
 
+/*
+ * Play-In slots the results already settle: winners' match = the round 1 winners, elimination = the round 1 losers,
+ * lower final = the winners'-match loser v the elimination winner, final = the winners'-match winner v the lower-final
+ * winner. When the settled pair differs from the model's assumed pair, the row takes the conditional prediction for
+ * that pair (playin_conditional, made before the event) and drops the write-up, which was written for other teams.
+ */
+const PI_FEED: Record<string, [string, 'w' | 'l', string, 'w' | 'l']> = {
+  'PI-WM': ['PI-R1-A', 'w', 'PI-R1-B', 'w'], 'PI-EM': ['PI-R1-A', 'l', 'PI-R1-B', 'l'],
+  'PI-LF': ['PI-WM', 'l', 'PI-EM', 'w'], 'PI-GF': ['PI-WM', 'w', 'PI-LF', 'w'],
+};
+const pairOf = (a: string, b: string) => [a, b].sort().join('|');
+export function settlePlayIn(rows: Series[]): Series[] {
+  const res = new Map(results().filter((r) => r.phase === 'Play-In' && r.winner && r.id).map((r) => [r.id, r]));
+  const side = (id: string, k: 'w' | 'l') => {
+    const r = res.get(id);
+    if (!r?.winner) return null;
+    return k === 'w' ? r.winner : r.winner === r.team_a ? r.team_b ?? null : r.team_a ?? null;
+  };
+  return rows.map((s) => {
+    const f = PI_FEED[s.id];
+    if (!f) return s;
+    const a = side(f[0], f[1]), b = side(f[2], f[3]);
+    if (!a || !b) return s;
+    const stage = s.stage.replace(/\s*\(predicted pairing\)/i, '');
+    if (pairOf(a, b) === pairOf(s.team_a, s.team_b)) return { ...s, stage, settled: true };
+    const c = series().find((x) => x.set.endsWith('_conditional') && x.phase === 'Play-In' && pairOf(x.team_a, x.team_b) === pairOf(a, b));
+    const blank = { key_matchup: '', draft_angle: '', what_flips: '', form_context: '', note: '', stage, settled: true };
+    if (!c) return { ...s, ...blank, team_a: a, team_b: b, winner: '', loser: '', score: '', p_score: null, p_winner: null, p_series_a: null, tier: '' };
+    // p_score: the chance of the called score, read from the conditional row's exact-score table (team A's view)
+    const key = c.winner === c.team_a ? c.score : c.score.split('-').reverse().join('-');
+    const hit = (c.exact || '').split(/\s+/).map((t) => t.split(':')).find(([k]) => k === key);
+    return {
+      ...s, ...blank, team_a: c.team_a, team_b: c.team_b, winner: c.winner, loser: c.loser, score: c.score,
+      p_score: hit ? parseFloat(hit[1]) / 100 : null, p_winner: c.p_winner, p_series_a: c.p_series_a, p_game_a: c.p_game_a,
+      tier: c.tier, exact: c.exact, pw30: c.pw30, pw31: c.pw31, pw32: c.pw32, p_upset: c.p_upset,
+    };
+  });
+}
+
 export type View = { set: string; rows: Series[]; note: string; stageNote: string; swissSet: string };
 /**
  * The rows one block of a hub shows. set = 'baseline' or the latest staged set; series rows fall back to the
@@ -97,6 +136,7 @@ export function view(st: Stage, which: 'baseline' | 'latest'): View {
   let rows = seriesFor(st.phase, set);
   let stageNote = '';
   if (!rows.length && set !== 'baseline') { rows = seriesFor(st.phase, 'baseline'); stageNote = 'Not re-run yet; showing the frozen baseline.'; }
+  if (st.phase === 'Play-In') rows = settlePlayIn(rows);
   const own = ['swiss', 'knockouts'].includes(set) && swiss().some((x) => x.set === set);
   const swissSet = own ? set : 'baseline';
   if (st.phase === 'Swiss') stageNote = own ? '' : set !== 'baseline' ? 'Not re-run yet (due after the 18/10 US-time draw, before the 24/10 06:00 NZDT lock); showing the frozen baseline.' : 'The round 1 draw is on 18/10 (US time). Until then records are averaged over every legal draw.';

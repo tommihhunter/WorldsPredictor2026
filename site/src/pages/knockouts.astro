@@ -1,5 +1,6 @@
 ---
 // Knockouts hub, per design/lore/Knockouts.dc.html. Rows: the latest staged set (falls back to the frozen baseline).
+import LiveNow from '../components/LiveNow.astro';
 import Icon from '../components/Icon.astro';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
@@ -50,6 +51,7 @@ const footer = `${setName}, predicted ${createdNz}.${real ? '' : ' The bracket i
       <span class="cl-text">{ptsText}. Locks {lockText}{real ? '.' : ', after the draw.'}</span>
     </div>
   </section>
+  <LiveNow phase="Knockouts" />
 
   <section class="section">
     <div class="section-head"><h2>{real ? 'Bracket' : 'Assumed bracket'}</h2><span>Percent is the chance the upper team wins the series. Times NZDT.</span></div>

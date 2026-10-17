@@ -1,4 +1,5 @@
 ---
+import LiveNow from '../components/LiveNow.astro';
 import Base from '../layouts/Base.astro';
 import PickemsPanel from '../components/PickemsPanel.astro';
 import RecordTable from '../components/RecordTable.astro';
@@ -33,6 +34,7 @@ const footLeft = `${staged ? `Staged ${setLabel(v.swissSet)}` : 'Frozen baseline
     <h1>Three wins in, three losses out</h1>
     <p class="lede">{lede}</p>
   </section>
+  <LiveNow phase="Swiss" />
   <PickemsPanel stage="swiss" full />
   <RecordTable rows={rows} records={swissRecords()} caption={caption} />
 </Base>

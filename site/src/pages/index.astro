@@ -1,4 +1,5 @@
 ---
+import LiveNow from '../components/LiveNow.astro';
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import PickemsPanel from '../components/PickemsPanel.astro';
@@ -76,6 +77,7 @@ const sealed = (o.baseline_created ?? '').replace(/(\d{2}:\d{2}):\d{2}/, '$1') |
 const foot = `${stageLine()}. Baseline sealed ${sealed}. Data: gol.gg, lolesports.com, official patch notes. Times in NZDT. Exported ${o.exported_nz ?? 'UNKNOWN'}.`;
 ---
 <Base title="Home" active="home" footer={{ left: foot }}>
+  <LiveNow />
   <header class="hero">
     <span class="eyebrow">The prophecy for Worlds 2026</span>
     <h1 class="orb">The orb favours {champName}</h1>

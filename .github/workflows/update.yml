@@ -2,7 +2,14 @@ name: Update results
 on:
   schedule:
     - cron: "*/30 * * * *"
+  # Also started every 10 minutes by an outside timer (GitHub throttles its own cron to every 2 to 5 hours).
+  # A started run behaves like a scheduled one; force=true republishes even with no new results.
   workflow_dispatch:
+    inputs:
+      force:
+        description: "Republish even with no new results"
+        type: boolean
+        default: false
 permissions:
   contents: write
   pages: write
@@ -49,8 +56,8 @@ jobs:
             # nothing new. The last export stamp (exported_nz) stands in for the last deploy; re-exporting advances it.
             today=$(TZ=Pacific/Auckland date +%d/%m/%Y)
             last=$(python -X utf8 -c "import json; print(next(r['value'] for r in json.load(open('data/dash/overview.json', encoding='utf-8')) if r['key'] == 'exported_nz'))")
-            if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${last#*$today}" = "$last" ]; then
-              echo "publish (dispatch, or last export $last is not today $today)"
+            if [ "${{ inputs.force }}" = "true" ] || [ "${last#*$today}" = "$last" ]; then
+              echo "publish (forced, or last export $last is not today $today)"
               python -X utf8 model/export_dashboard.py
               echo "publish=yes" >> "$GITHUB_OUTPUT"
             else
