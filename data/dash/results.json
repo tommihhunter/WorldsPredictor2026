@@ -82,5 +82,26 @@
 "series_url": "https://gol.gg/game/stats/83623/page-summary/",
 "accessed": "17/10/2026 13:50 NZDT"
 }
+},
+{
+"id": "PI-LF",
+"phase": "Play-In",
+"kind": "series",
+"stage": "Play-In lower final",
+"golgg_stage": "ROUND2",
+"date": "17/10/2026",
+"start_nz": null,
+"team_a": "MVK",
+"team_b": "FURIA",
+"score_a": 3,
+"score_b": 1,
+"winner": "MVK",
+"bo": 5,
+"patch": "16.20",
+"source": {
+"url": "https://gol.gg/tournament/tournament-matchlist/Worlds%202026%20Play-In/",
+"series_url": "https://gol.gg/game/stats/83631/page-summary/",
+"accessed": "18/10/2026 10:50 NZDT"
+}
 }
 ]

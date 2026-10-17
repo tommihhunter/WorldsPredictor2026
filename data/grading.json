@@ -1,16 +1,16 @@
 {
  "baseline": {
-  "graded": 3,
-  "winner_acc": 0.3333333333333333,
+  "graded": 4,
+  "winner_acc": 0.25,
   "exact_acc": 0.0,
-  "brier": 0.32026480333333335,
-  "logloss": 0.8494843065973301,
+  "brier": 0.37364269250000004,
+  "logloss": 0.965002733699466,
   "invalid_post_start": [],
   "calibration": {
    "LEAN": {
-    "n": 2,
-    "hit": 0.5,
-    "stated": 0.673
+    "n": 3,
+    "hit": 0.3333333333333333,
+    "stated": 0.6922
    },
    "COIN FLIP": {
     "n": 1,
@@ -27,6 +27,13 @@
     "surprise": 1.312
    },
    {
+    "id": "PI-LF",
+    "predicted": "FURIA 3-0",
+    "p": 0.7306,
+    "actual": "MVK 3-1",
+    "surprise": 1.312
+   },
+   {
     "id": "PI-EM",
     "predicted": "C9 3-0",
     "p": 0.5283,
@@ -36,17 +43,17 @@
   ]
  },
  "playin": {
-  "graded": 4,
-  "winner_acc": 0.5,
-  "exact_acc": 0.25,
-  "brier": 0.246735325,
-  "logloss": 0.6812080417825789,
+  "graded": 5,
+  "winner_acc": 0.4,
+  "exact_acc": 0.2,
+  "brier": 0.304143532,
+  "logloss": 0.8072780364272377,
   "invalid_post_start": [],
   "calibration": {
    "LEAN": {
-    "n": 2,
-    "hit": 0.5,
-    "stated": 0.673
+    "n": 3,
+    "hit": 0.3333333333333333,
+    "stated": 0.6922
    },
    "LOCK": {
     "n": 1,
@@ -68,6 +75,13 @@
     "surprise": 1.312
    },
    {
+    "id": "PI-LF",
+    "predicted": "FURIA 3-0",
+    "p": 0.7306,
+    "actual": "MVK 3-1",
+    "surprise": 1.312
+   },
+   {
     "id": "PI-EM",
     "predicted": "C9 3-0",
     "p": 0.5283,
@@ -78,8 +92,8 @@
  },
  "pickems_playin": {
   "earned": 10,
-  "possible_so_far": 20,
+  "possible_so_far": 25,
   "stage_max": 35
  },
- "graded_at_nz": "17/10/2026 13:52 NZDT"
+ "graded_at_nz": "18/10/2026 10:52 NZDT"
 }

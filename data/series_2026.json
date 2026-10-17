@@ -15904,6 +15904,22 @@
 "intl": true
 },
 {
+"date": "17/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"stage": "ROUND2",
+"kind": "international",
+"league": "INTL",
+"a": "MVK",
+"b": "FURIA",
+"sa": 3,
+"sb": 1,
+"bo": 5,
+"region_a": "LCP",
+"region_b": "CBLOL",
+"patch": "16.20",
+"intl": true
+},
+{
 "date": "16/10/2026",
 "tournament": "Worlds 2026 Play-In",
 "stage": "ROUND2",
