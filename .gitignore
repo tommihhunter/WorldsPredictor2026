@@ -12,3 +12,4 @@ ops/update-timer/.gh_token
 
 # Liquipedia page cache (model/fetch_wiki.py)
 dashboard/wiki_cache/
+ops/update-timer/.wrangler/
