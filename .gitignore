@@ -6,3 +6,9 @@ site/node_modules/
 site/dist/
 site/.astro/
 site/shots/
+
+# update timer secret (ops/update-timer), never committed
+ops/update-timer/.gh_token
+
+# Liquipedia page cache (model/fetch_wiki.py)
+dashboard/wiki_cache/

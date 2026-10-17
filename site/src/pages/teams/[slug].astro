@@ -69,6 +69,38 @@ const form = String(d?.form ?? '').split('|').map((x) => x.trim()).filter(Boolea
   return { date, vs, score: `${a}-${b}`, win: Number(a) > Number(b) };
 });
 
+// ---- 3b. the 2026 season so far: dossier "domestic" and "international" ("Event: result (detail) | ...")
+type SeasonRow = { event: string; place: string; tone: string; detail: string };
+const seasonRows = (raw: string | null | undefined): SeasonRow[] => String(raw ?? '').split('|').map((x) => x.trim()).filter(Boolean).flatMap((x) => {
+  if (/^none in 2026$/i.test(x)) return [];
+  const c = x.indexOf(':');
+  const event = (c > 0 ? x.slice(0, c) : x).trim();
+  let rest = (c > 0 ? x.slice(c + 1) : '').trim()
+    .replace(/\s*\((gol\.gg|Wikipedia|qualified for EWC)\)/gi, '').replace(/;\s*regular season[^;)]*/gi, '');
+  const m = /^(\d+(?:st|nd|rd|th)(?:[-–]\d+(?:st|nd|rd|th))?)(?:\s+seed)?\b\s*/i.exec(rest);
+  let place = m ? m[1].replace('–', '-') : '';
+  if (m) rest = rest.slice(m[0].length);
+  // no number given: read the placing from the text (a list of series ends with the deciding one)
+  if (!place) {
+    const lastSeries = rest.split(/,\s*(?=[WL] \d)/).at(-1) ?? '';
+    const won = /^W /.test(lastSeries);
+    place = /did not qualify/i.test(rest) ? 'DNQ'
+      : /group stage|eliminated in group/i.test(rest) ? 'Groups'
+      : /\((Grand )?Final\)/.test(lastSeries) ? (won ? '1st' : '2nd')
+      : /\(Semifinal\)/.test(lastSeries) && !won ? '3rd-4th'
+      : /\(Quarterfinal\)/.test(lastSeries) && !won ? '5th-8th'
+      : /lost .*qualifier/i.test(rest) ? 'Qualifier'
+      : /play-in (stage )?exit/i.test(rest) ? 'Play-In'
+      : /pending/i.test(rest) ? 'Live'
+      : '';
+  }
+  const detail = rest.replace(/^\((.*)\)$/, '$1').trim();
+  const n = place ? parseInt(place, 10) : 0;
+  return [{ event, place, tone: n === 1 ? 'gold' : n && n <= 4 ? 'fg' : 'muted', detail }];
+});
+const domestic = seasonRows(d?.domestic);
+const international = seasonRows(d?.international);
+
 // ---- 4. the numbers, ranked against the field for the same split
 const ord = (n: number) => { const s = ['th', 'st', 'nd', 'rd'], v = n % 100; return `${n}${s[(v - 20) % 10] || s[v] || s[0]}`; };
 const blockOf = (x: D, key: string): TeamBlock | null => (key === 'summer' ? (x.team_summer ?? x.team_season) : x.team_season) ?? null;
@@ -217,6 +249,31 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
         </div>
       </section>
 
+      <!-- 3b. the year so far -->
+      {(domestic.length > 0 || international.length > 0) && (
+        <section class="section">
+          <div class="section-head"><h2>Their 2026</h2><span>Results this year</span></div>
+          <div class="season">
+            {[['Domestic', domestic], ['International', international]].map(([k, list]) => (
+              <div class="sea">
+                <h3 class="sea-k">{k as string}</h3>
+                {(list as SeasonRow[]).length ? (
+                  <ol class="sea-list">
+                    {(list as SeasonRow[]).map((r) => (
+                      <li>
+                        <span class:list={['place', r.tone]}>{r.place || 'Result'}</span>
+                        <span class="ev">{r.event}</span>
+                        {r.detail && <span class="caption">{r.detail}</span>}
+                      </li>
+                    ))}
+                  </ol>
+                ) : <p class="caption">No international events in 2026.</p>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <!-- 4. the numbers -->
       <section class="section">
         <div class="section-head">
@@ -352,6 +409,18 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   .wl.loss { background: var(--risk); }
   .fs { font-weight: 600; }
 
+  /* 3b. the year: two lists, placing first */
+  .season { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+  .sea { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg); background: var(--surface); border-radius: var(--radius); box-shadow: var(--inset); }
+  .sea-k { font-family: var(--font-body); font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.08em; color: var(--muted); }
+  .sea-list { list-style: none; margin: 0; padding: 0; }
+  .sea-list li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); grid-template-areas: 'p e' 'p d'; column-gap: var(--space-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--line); }
+  .place { grid-area: p; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); line-height: 1.2; }
+  .place.muted { font-family: var(--font-body); font-weight: 500; font-size: var(--fs-sm); color: var(--muted); padding-top: 3px; }
+  .place.fg { color: var(--fg); }
+  .ev { grid-area: e; font-weight: 600; }
+  .sea-list .caption { grid-area: d; }
+
   /* 4. numbers: four groups, value + rank */
   .section-head .seg { display: flex; gap: var(--space-2xs); }
   .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
@@ -430,7 +499,9 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
     .road .step { grid-area: s; align-self: center; }
     .road .pv { grid-area: v; font-size: var(--fs-xl); }
     .road .bar, .road .caption { grid-area: b; }
-    .groups { grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }
+    .groups, .season { grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }
+    .sea { padding: var(--space-sm); }
+    .sea-list li { grid-template-columns: 5rem minmax(0, 1fr); }
     .report { grid-template-columns: minmax(0, 1fr); }
     .rp { padding: var(--space-sm); }
     .rp + .rp { border-left: 0; border-top: 1px solid var(--line-strong); }
