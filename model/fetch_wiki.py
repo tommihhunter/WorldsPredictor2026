@@ -52,7 +52,7 @@ def table_after(h, heading):
     k = h.find("<table", i); e = h.find("</table>", k)
     if k < 0 or e < 0: return []
     rows = []
-    for tr in re.findall(r'<tr class="table2&#95;&#95;row--body"[^>]*>(.*?)</tr>', h[k:e], re.S):
+    for tr in re.findall(r'<tr class="table2&#95;&#95;row--body[^"]*"[^>]*>(.*?)</tr>', h[k:e], re.S):
         rows.append([text(td) for td in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)])
     return rows
 
@@ -129,9 +129,9 @@ for code, name in players:
 print("players", len(out_players), "missing", missing, flush=True)
 
 # ---- teams
-TEAM_PAGE = {"GEN": "Gen.G Esports", "T1": "T1", "HLE": "Hanwha Life Esports", "DK": "Dplus KIA", "BLG": "Bilibili Gaming", "AL": "Anyone's Legend",
+TEAM_PAGE = {"GEN": "Gen.G Esports", "T1": "T1", "HLE": "Hanwha Life Esports", "DK": "Dplus", "BLG": "Bilibili Gaming", "AL": "Anyone's Legend",
              "IG": "Invictus Gaming", "TES": "Top Esports", "G2": "G2 Esports", "KC": "Karmine Corp", "MKOI": "Movistar KOI", "TLAW": "Team Liquid",
-             "LYON": "LYON", "C9": "Cloud9", "TSW": "Team Secret Whales", "CFO": "CTBC Flying Oyster", "FURIA": "FURIA Esports", "LOS": "LOS", "MVK": "MVK Esports"}
+             "LYON": "LYON", "C9": "Cloud9", "TSW": "Team Whales", "CFO": "CTBC Flying Oyster", "FURIA": "FURIA Esports", "LOS": "LOS", "MVK": "MVK Esports"}
 out_teams = {}
 for code, page in TEAM_PAGE.items():
     h = rendered(page)
@@ -143,7 +143,7 @@ for code, page in TEAM_PAGE.items():
     k = res.find("<table")
     while k >= 0:
         e2 = res.find("</table>", k)
-        for tr in re.findall(r'<tr class="table2&#95;&#95;row--body"[^>]*>(.*?)</tr>', res[k:e2], re.S):
+        for tr in re.findall(r'<tr class="table2&#95;&#95;row--body[^"]*"[^>]*>(.*?)</tr>', res[k:e2], re.S):
             cells = [text(td) for td in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
             if len(cells) >= 4 and re.match(r"\d{4}-\d{2}-\d{2}", cells[0]): rows.append(cells)
         k = res.find("<table", e2)

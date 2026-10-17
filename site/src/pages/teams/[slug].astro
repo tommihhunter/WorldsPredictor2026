@@ -15,7 +15,7 @@ import { nzProse, pct1 as pc } from '../../lib/format';
 import { url } from '../../lib/url';
 import { playerSlug } from '../../lib/players';
 import art from '../../lib/art.json';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 export const getStaticPaths = () => ratings().map((r) => ({ params: { slug: teamSlug(r.code) } }));
@@ -101,6 +101,19 @@ const seasonRows = (raw: string | null | undefined): SeasonRow[] => String(raw ?
 const domestic = seasonRows(d?.domestic);
 const international = seasonRows(d?.international);
 
+// ---- 3c. pedigree (Liquipedia team results, data/dash/wiki_teams.json): Worlds by year and major titles
+type WikiTeam = { url: string; titles: string[]; results: string[][] };
+const wikiTeams: Record<string, WikiTeam> = (() => {
+  const f = resolve(process.env.W26_DASH ?? resolve(process.cwd(), '..', 'data', 'dash'), 'wiki_teams.json');
+  return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : {};
+})();
+const wt = wikiTeams[code];
+// results cells: date, place, tier, (icon), tournament, ...
+const res = (wt?.results ?? []).map((r) => ({ year: r[0].slice(0, 4), date: r[0], place: r[1].replace(/\s*-\s*/, '-'), tier: r[2], tournament: r[4] || r[3] }));
+const worlds = res.filter((r) => /^\d{4} World Championship$/.test(r.tournament)).slice(0, 8);
+const titles = res.filter((r) => r.place === '1st' && r.tier === 'S-Tier');
+const placeTone = (pl: string) => { const n = parseInt(pl, 10); return n === 1 ? 'gold' : n && n <= 4 ? 'fg' : 'muted'; };
+
 // ---- 4. the numbers, ranked against the field for the same split
 const ord = (n: number) => { const s = ['th', 'st', 'nd', 'rd'], v = n % 100; return `${n}${s[(v - 20) % 10] || s[v] || s[0]}`; };
 const blockOf = (x: D, key: string): TeamBlock | null => (key === 'summer' ? (x.team_summer ?? x.team_season) : x.team_season) ?? null;
@@ -168,7 +181,7 @@ const adjSource = String(r.adj_source || 'UNKNOWN').split(/(https?:\/\/\S+)/).fi
 const asOf = overview().ratings_as_of ?? 'UNKNOWN';
 const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/\d{4})/)?.[1] ?? 'UNKNOWN';
 ---
-<Base title={name} active="teams" description={headline} footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}. Player photos: LoL Esports (Riot Games).` }}>
+<Base title={name} active="teams" description={headline} footer={{ left: `Ratings as of ${asOf}. Team stats: gol.gg, accessed ${accessed}. Player photos: LoL Esports (Riot Games). History: Liquipedia (CC BY-SA 3.0).` }}>
   <a class="back" href={url('teams/')}><span aria-hidden="true">←</span> All teams</a>
 
   <!-- 1. who they are -->
@@ -270,6 +283,29 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
                 ) : <p class="caption">No international events in 2026.</p>}
               </div>
             ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 3c. pedigree -->
+      {wt && (worlds.length > 0 || titles.length > 0) && (
+        <section class="section">
+          <div class="section-head"><h2>Pedigree</h2><a class="caption" href={wt.url} target="_blank" rel="noopener">Full history on Liquipedia →</a></div>
+          <div class="pedigree">
+            <div class="panel ped">
+              <h3 class="sea-k">Worlds history</h3>
+              {worlds.length ? (
+                <ol class="wh">
+                  {worlds.map((r) => <li><span class="wy">{r.year}</span><span class:list={['place', placeTone(r.place)]}>{r.place}</span></li>)}
+                </ol>
+              ) : <p class="caption">First Worlds.</p>}
+            </div>
+            <div class="panel ped">
+              <h3 class="sea-k">Trophy cabinet <span class="caption">{titles.length} major {titles.length === 1 ? 'title' : 'titles'}</span></h3>
+              {titles.length ? (
+                <ul class="cab">{titles.slice(0, 12).map((r) => <li><span class:list={['cup', { worlds: /World Championship|Mid-Season/.test(r.tournament) }]} aria-hidden="true">★</span>{r.tournament}</li>)}</ul>
+              ) : <p class="caption">No S-Tier titles yet.</p>}
+            </div>
           </div>
         </section>
       )}
@@ -421,6 +457,18 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   .ev { grid-area: e; font-weight: 600; }
   .sea-list .caption { grid-area: d; }
 
+  /* 3c. pedigree: Worlds placings by year, then the trophy cabinet */
+  .pedigree { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: var(--space-md); align-items: start; }
+  .ped { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .sea-k .caption { margin-left: var(--space-xs); letter-spacing: 0; font-weight: 400; text-transform: none; }
+  .wh { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: var(--space-2xs); }
+  .wh li { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: var(--space-xs) var(--space-2xs); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); }
+  .wy { font-size: var(--fs-xs); color: var(--muted); }
+  .wh .place { font-size: var(--fs-md); text-align: center; }
+  .cab { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs) var(--space-md); }
+  .cab li { display: flex; align-items: baseline; gap: var(--space-2xs); }
+  .cup { color: var(--dim); } .cup.worlds { color: var(--gold); }
+
   /* 4. numbers: four groups, value + rank */
   .section-head .seg { display: flex; gap: var(--space-2xs); }
   .seg input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
@@ -499,7 +547,8 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
     .road .step { grid-area: s; align-self: center; }
     .road .pv { grid-area: v; font-size: var(--fs-xl); }
     .road .bar, .road .caption { grid-area: b; }
-    .groups, .season { grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }
+    .groups, .season, .pedigree { grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }
+    .cab { grid-template-columns: minmax(0, 1fr); }
     .sea { padding: var(--space-sm); }
     .sea-list li { grid-template-columns: 5rem minmax(0, 1fr); }
     .report { grid-template-columns: minmax(0, 1fr); }
