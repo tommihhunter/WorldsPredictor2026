@@ -6,7 +6,7 @@ Turn the draft dashboard into a website a group of friends can open from a link 
 ## Decisions already made (16/10/2026)
 - Audience: friends / small group. No SEO, no explainer section.
 - Approach A: evolve `dashboard/index.html` (plain HTML/CSS/JS, no framework); it stays the single source for the website and the local single-file build.
-- Hosting: GitHub Pages from the repo `tommihhunter/poroprophet`, made public (free Pages, unlimited Action minutes). The visibility change gets its own explicit go when Phase 0 needs it.
+- Hosting: GitHub Pages from the repo `tommihhunter/WorldsPredictor2026`, made public (free Pages, unlimited Action minutes). The visibility change gets its own explicit go when Phase 0 needs it.
 - Automation: a scheduled GitHub Action pulls results, refits the live odds, regrades, commits `data/` files to `main` and publishes. Standing exception: the bot may commit `data/` only. Staged Swiss and knockout runs stay manual.
 
 ## Out of scope
@@ -47,7 +47,7 @@ Look (from `design/`): dark ground #0B0F14, surface #131A22, line #243040, text 
 - Existing `tests/test_v5.py` runs in both workflows.
 
 ## Phases
-- Phase 0 (first): repo public (own go), Pages source set, `build_site.py` with the current look, both workflows, `check_site.py`. Done when the current dashboard is live at https://tommihhunter.github.io/poroprophet/ and a Play-In result appears without anyone touching it.
+- Phase 0 (first): repo public (own go), Pages source set, `build_site.py` with the current look, both workflows, `check_site.py`. Done when the current dashboard is live at https://tommihhunter.github.io/WorldsPredictor2026/ and a Play-In result appears without anyone touching it.
 - Phase 1: restyle to the artboards, new Home page, bottom tab bar on phones, `#team=` links. Done before the Swiss stage starts (24/10/2026 06:00 NZDT).
 
 ## Risks

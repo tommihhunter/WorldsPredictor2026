@@ -21,8 +21,14 @@ def api(params, kind):
     wait = (30 if kind == "parse" else 2) - (time.time() - last[kind])
     if wait > 0: time.sleep(wait)
     req = urllib.request.Request(f"{API}?{urllib.parse.urlencode({**params, 'format': 'json'})}", headers=UA)
-    with urllib.request.urlopen(req, timeout=60) as r:
-        b = r.read(); b = gzip.decompress(b) if r.headers.get("Content-Encoding") == "gzip" else b
+    for attempt in range(4):  # network blips (DNS, resets): wait and retry, then give up loudly
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                b = r.read(); b = gzip.decompress(b) if r.headers.get("Content-Encoding") == "gzip" else b
+            break
+        except OSError as err:
+            if attempt == 3: raise
+            print("retry after", err, flush=True); time.sleep(30 * (attempt + 1))
     last[kind] = time.time()
     return json.loads(b)
 
@@ -81,6 +87,26 @@ for i in range(0, len(names), 50):
         wt = pg["revisions"][0]["slots"]["main"]["*"] if "revisions" in pg else ""
         boxes[asked] = (title, infobox(wt))
 
+# a shared name lands on a disambiguation page: search "<name> <team>" for "<name> (...)" pages with an infobox
+TEAM_NAME = {d["code"]: d["name"] for d in dossiers}
+for code, name in players:
+    if boxes.get(name, (name, None))[1]: continue
+    j = api({"action": "query", "list": "search", "srsearch": f"{name} {TEAM_NAME.get(code, code)}", "srnamespace": 0, "srlimit": 10}, "query")
+    for hit in j["query"]["search"]:
+        t = hit["title"]
+        if not t.lower().startswith(name.lower() + " ("): continue
+        k = api({"action": "query", "prop": "revisions", "rvprop": "content", "rvslots": "main", "titles": t}, "query")
+        pg = next(iter(k["query"]["pages"].values()))
+        box = infobox(pg["revisions"][0]["slots"]["main"]["*"]) if "revisions" in pg else None
+        if not box: continue
+        # accept only if the player's latest team in their history is our team (a shared name can match the wrong player)
+        latest = (history(rendered(t)) or [{}])[-1].get("team", "")
+        a, b = re.sub(r"[^a-z0-9]", "", latest.lower()), re.sub(r"[^a-z0-9]", "", TEAM_NAME.get(code, code).lower())
+        first = re.sub(r"[^a-z0-9]", "", TEAM_NAME.get(code, code).split()[0].lower())
+        if a and (a in b or b in a or first in a or code.lower() in a):
+            boxes[name] = (t, box); print("resolved", name, "->", t, "(latest team", latest + ")", flush=True); break
+        print("rejected", t, "latest team", latest, flush=True)
+
 out_players, missing = {}, []
 for code, name in players:
     title, box = boxes.get(name, (name, None))
@@ -109,11 +135,21 @@ TEAM_PAGE = {"GEN": "Gen.G Esports", "T1": "T1", "HLE": "Hanwha Life Esports", "
 out_teams = {}
 for code, page in TEAM_PAGE.items():
     h = rendered(page)
-    rows = table_after(h, "Achievements")
+    i = h.find('infobox-header-2">Achievements'); e = h.find("infobox-header", i + 50) if i >= 0 else -1
+    titles = re.findall(r'lightmode"><a href="[^"]+" title="([^"]+)"', h[i:e]) if i >= 0 else []
+    res = rendered(f"{page}/Results")
+    # Results table cells: date, place, tier, type, (league icon), tournament, result, prize (columns can vary; keep raw too)
+    rows = []
+    k = res.find("<table")
+    while k >= 0:
+        e2 = res.find("</table>", k)
+        for tr in re.findall(r'<tr class="table2&#95;&#95;row--body"[^>]*>(.*?)</tr>', res[k:e2], re.S):
+            cells = [text(td) for td in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
+            if len(cells) >= 4 and re.match(r"\d{4}-\d{2}-\d{2}", cells[0]): rows.append(cells)
+        k = res.find("<table", e2)
     out_teams[code] = {
         "page": page, "url": f"https://liquipedia.net/leagueoflegends/{urllib.parse.quote(page.replace(' ', '_'))}",
-        "achievements": [{"date": r[0], "place": r[1], "tier": r[2], "cells": r} for r in rows if len(r) >= 4],
-        "accessed": TODAY,
+        "titles": titles, "results": rows, "accessed": TODAY,
     }
     json.dump(out_teams, open(os.path.join(ROOT, "data", "dash", "wiki_teams.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
-print("teams", len(out_teams), "with achievements", sum(1 for t in out_teams.values() if t["achievements"]), flush=True)
+print("teams", len(out_teams), "with results", sum(1 for t in out_teams.values() if t["results"]), flush=True)

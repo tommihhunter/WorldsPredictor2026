@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Headless check of the v2 site: serve site/dist under $W26_BASE (default /poroprophet/), open every page in PAGES at
+Headless check of the v2 site: serve site/dist under $W26_BASE (default /, the custom domain root), open every page in PAGES at
 1280, 768 and 390 px, and fail on page errors, console errors, any 404 response, root-absolute links that skip the
 base path, content wider than the viewport at 768 and 390 px (outside .scroll wrappers), a page without exactly one
 h1, and em or en dashes in page text. Also clicks a Play-In card and opens and closes the phone More sheet.
@@ -14,7 +14,7 @@ from playwright.sync_api import sync_playwright
 PAGES = ["", "scorecard/", "meta/", "play-in/", "swiss/", "knockouts/", "demacia-cup/", "teams/", "teams/gen/",
          "teams/mvk/", "teams/compare/", "teams/compare/gen-vs-hle/", "players/", "players/chovy/"]
 WIDTHS = [1280, 768, 390]
-BASE = os.environ.get("W26_BASE", "/poroprophet").strip("/")  # same env as site/astro.config.mjs
+BASE = os.environ.get("W26_BASE", "/").strip("/")  # same env as site/astro.config.mjs
 PREFIX = f"/{BASE}" if BASE else ""
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
