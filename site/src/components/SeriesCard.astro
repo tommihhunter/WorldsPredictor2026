@@ -10,12 +10,15 @@ import { resultFor, startNz } from '../lib/stage';
 import type { Series } from '../lib/data';
 interface Props { s: Series; detail?: string; selected?: boolean; final?: boolean; round?: string; label?: string; large?: boolean }
 const { s, detail, selected = false, final = false, round, label, large = false } = Astro.props;
-const fav = s.winner || s.team_a;
+// half-settled slot (lib/stage.ts settlePlayIn): team_b is 'TBD', shown as s.tbd ("MVK or FURIA"), known team first
+const tbd = s.team_b === 'TBD';
+const fav = tbd ? s.team_a : s.winner || s.team_a;
+const nm = (c: string) => (c === 'TBD' ? s.tbd ?? 'TBD' : c);
 const dog = fav === s.team_a ? s.team_b : s.team_a;
 const r = resultFor(s);
 const goals = (code: string) => (!r ? null : r.team_a === code ? r.score_a : r.score_b);
 const [gf, gd] = [goals(fav), goals(dog)];
-const pa = s.p_winner == null ? null : Math.round(s.p_winner * 100);
+const pa = tbd ? (s.p_series_a == null ? null : Math.round(s.p_series_a * 100)) : s.p_winner == null ? null : Math.round(s.p_winner * 100);
 const when = startNz(s).match(/^(\d\d\/\d\d)\/\d{4} (\d\d:\d\d)/);
 const time = when ? `${when[1]} ${when[2]}` : 'UNKNOWN';
 // later Play-In rounds: the model's pairing (favourites win earlier rounds) until the bracket settles it
@@ -23,13 +26,13 @@ const assumed = !r && /predicted pairing/i.test(s.stage);
 const hit = !!r && r.winner === fav;
 const hi = r ? Math.max(Number(r.score_a), Number(r.score_b)) : 0;
 const lo = r ? Math.min(Number(r.score_a), Number(r.score_b)) : 0;
-const note = !r
+const note = tbd ? s.tbd_note ?? '' : !r
   ? `Likeliest ${fav} ${s.score || 'UNKNOWN'} (${pct(s.p_score)})`
   : hit ? `Called it. Score call ${s.score} ${`${hi}-${lo}` === s.score ? 'hit' : 'missed'}` : `Missed. ${r.winner} won ${hi}-${lo}`;
-const lead = r ? (r.winner === dog ? 1 : 0) : 0;
+const lead = r ? (r.winner === dog ? 1 : 0) : tbd && (s.p_series_a ?? 1) < 0.5 ? 1 : 0;
 const rows = [
-  { code: fav, right: r ? String(gf ?? 'UNKNOWN') : pct(s.p_winner) },
-  { code: dog, right: r ? String(gd ?? 'UNKNOWN') : s.p_winner == null ? 'UNKNOWN' : pct(1 - s.p_winner) },
+  { code: fav, right: r ? String(gf ?? 'UNKNOWN') : tbd ? pct(s.p_series_a) : pct(s.p_winner) },
+  { code: dog, right: r ? String(gd ?? 'UNKNOWN') : tbd ? (s.p_series_a == null ? 'UNKNOWN' : pct(1 - s.p_series_a)) : s.p_winner == null ? 'UNKNOWN' : pct(1 - s.p_winner) },
 ];
 const Tag = detail ? 'button' : 'div';
 const attrs = detail ? { type: 'button', 'data-show': detail, 'aria-controls': detail, 'aria-pressed': String(selected) } : {};
@@ -38,15 +41,15 @@ const attrs = detail ? { type: 'button', 'data-show': detail, 'aria-controls': d
   {round && (
     <span class="meta ph">
       <span>{label ?? round}, {time}</span>
-      {r ? <span class:list={['tag', hit ? 'teal' : 'risk']}>{hit ? 'Called it' : 'Missed'}</span> : <Tier tier={s.tier} />}
+      {r ? <span class:list={['tag', hit ? 'teal' : 'risk']}>{hit ? 'Called it' : 'Missed'}</span> : !tbd && <Tier tier={s.tier} />}
     </span>
   )}
-  <span class="meta dt"><span>{label ? `${label}, ` : ''}<span class="nw">{time}</span></span><Tier tier={s.tier} /></span>
+  <span class="meta dt"><span>{label ? `${label}, ` : ''}<span class="nw">{time}</span></span>{!tbd && <Tier tier={s.tier} />}</span>
   <span class="teams dt">
     {rows.map((x, i) => (
       <>
-        <Logo code={x.code} size={large ? 32 : 28} />
-        <span class:list={['code', 'name', { lead: i === lead }]}>{x.code}</span>
+        {x.code === 'TBD' ? <span class="tbdm" aria-hidden="true">?</span> : <Logo code={x.code} size={large ? 32 : 28} />}
+        <span class:list={['code', 'name', { lead: i === lead }]}>{nm(x.code)}</span>
         <span class:list={['big', 'val', { lead: i === lead }]}>{x.right}</span>
       </>
     ))}
@@ -59,7 +62,7 @@ const attrs = detail ? { type: 'button', 'data-show': detail, 'aria-controls': d
   <span class="line ph">
     <Logo code={fav} size={24} />
     <span class="code">{fav}</span>
-    <span class="vs">v {dog}</span>
+    <span class="vs">v {nm(dog)}</span>
     <span class="big pv">{r ? `${hi}-${lo}` : pct(s.p_winner)}</span>
   </span>
 </Tag>
@@ -80,6 +83,7 @@ const attrs = detail ? { type: 'button', 'data-show': detail, 'aria-controls': d
   .notes { display: flex; flex-direction: column; gap: var(--space-3xs); text-wrap: balance; }
   .note { font-size: var(--fs-sm); }
   .assumed { font-size: var(--fs-xs); color: var(--muted); }
+  .tbdm { width: 28px; height: 28px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px dashed var(--line-head); color: var(--dim); font-weight: 700; }
   .ph { display: none; }
   .tag { font-size: var(--fs-xs); font-weight: 600; }
   @media (max-width: 640px) {

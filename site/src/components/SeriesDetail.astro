@@ -8,7 +8,9 @@ import { resultFor } from '../lib/stage';
 import type { Series } from '../lib/data';
 interface Props { s: Series; id: string; hidden?: boolean }
 const { s, id, hidden = false } = Astro.props;
-const fav = s.winner || s.team_a;
+const tbd = s.team_b === 'TBD';
+const fav = tbd ? s.team_a : s.winner || s.team_a;
+const nm = (c: string) => (c === 'TBD' ? s.tbd ?? 'TBD' : c);
 const dog = fav === s.team_a ? s.team_b : s.team_a;
 const r = resultFor(s);
 const hi = r ? Math.max(Number(r.score_a), Number(r.score_b)) : 0;
@@ -37,20 +39,21 @@ import Icon from './Icon.astro';
 // a write-up that opens with a lane ("Top lane: ...", "Jungle tempo: ...") gets that lane's icon
 const LANE = /^(Top|Jungle|Mid|Bot|Support)\b[^:]{0,12}:/;
 ---
-<section class="panel sd" id={id} data-detail hidden={hidden} aria-label={`${fav} v ${dog}`}>
+<section class="panel sd" id={id} data-detail hidden={hidden} aria-label={`${fav} v ${nm(dog)}`}>
   <div class="main">
     <div class="title">
       <Logo code={fav} size={44} />
-      <h3>{fav} v {dog}</h3>
-      <Logo code={dog} size={44} />
+      <h3>{fav} v {nm(dog)}</h3>
+      {!tbd && <Logo code={dog} size={44} />}
     </div>
     <div class="chips">
-      <span class="chip lock">{fav} to win {pct(s.p_winner)}</span>
-      <span class="chip outline">Score call {s.score || 'UNKNOWN'} ({pct(s.p_score)})</span>
-      <span class="chip outline">{s.tier || 'UNKNOWN'}</span>
+      <span class="chip lock">{fav} to win {pct(tbd ? s.p_series_a : s.p_winner)}</span>
+      {!tbd && <span class="chip outline">Score call {s.score || 'UNKNOWN'} ({pct(s.p_score)})</span>}
+      {!tbd && <span class="chip outline">{s.tier || 'UNKNOWN'}</span>}
       {r && <span class:list={['chip', 'outline', r.winner === fav ? 'teal' : 'risk']}>Final: {r.winner} {hi}-{lo}</span>}
     </div>
     {caveat && <p class="caption">{caveat}</p>}
+    {tbd && <p class="caption">{s.tbd_note} {fav}'s chance weighs both possible opponents by how likely each is to come through.</p>}
     {notes.length
       ? <dl class="kv">{notes.map(([k, v]) => { const m = LANE.exec(v); return <><dt>{k}</dt><dd>{m ? <><span class="lane"><Icon name={m[1]} size={20} label={m[1]} /></span> {v.slice(m[0].length).trim()}</> : v}</dd></>; })}</dl>
       : <p class="none muted2">The matchup write-up is added once both teams are known.</p>}
@@ -67,8 +70,8 @@ const LANE = /^(Top|Jungle|Mid|Bot|Support)\b[^:]{0,12}:/;
           </div>
         ))}
       </div>
-    ) : <p class="caption">Score chances UNKNOWN.</p>}
-    <span class="caption foot">A {s.score || 'UNKNOWN'} call is the single likeliest score, not a certainty.</span>
+    ) : <p class="caption">{tbd ? 'Score chances come once the opponent is known.' : 'Score chances UNKNOWN.'}</p>}
+    {!tbd && <span class="caption foot">A {s.score || 'UNKNOWN'} call is the single likeliest score, not a certainty.</span>}
   </div>
 </section>
 <style>

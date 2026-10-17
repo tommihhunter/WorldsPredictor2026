@@ -102,24 +102,56 @@ export function settlePlayIn(rows: Series[]): Series[] {
     if (!r?.winner) return null;
     return k === 'w' ? r.winner : r.winner === r.team_a ? r.team_b ?? null : r.team_a ?? null;
   };
+  const cond = (x: string, y: string) => series().find((c) => c.set.endsWith('_conditional') && c.phase === 'Play-In' && pairOf(c.team_a, c.team_b) === pairOf(x, y));
+  /** Chance team t beats u in a Bo5, from the conditional prediction for that pair. */
+  const beats = (t: string, u: string) => { const c = cond(t, u); return c?.p_series_a == null ? null : c.team_a === t ? c.p_series_a : 1 - c.p_series_a; };
+  const done = new Map<string, Series>(); // slots settled so far, in bracket order (a later slot reads its feeder)
+  const writeup = { key_matchup: '', draft_angle: '', what_flips: '', form_context: '', note: '' };
   return rows.map((s) => {
     const f = PI_FEED[s.id];
-    if (!f) return s;
+    if (!f) { done.set(s.id, s); return s; }
     const a = side(f[0], f[1]), b = side(f[2], f[3]);
-    if (!a || !b) return s;
     const stage = s.stage.replace(/\s*\(predicted pairing\)/i, '');
-    if (pairOf(a, b) === pairOf(s.team_a, s.team_b)) return { ...s, stage, settled: true };
-    const c = series().find((x) => x.set.endsWith('_conditional') && x.phase === 'Play-In' && pairOf(x.team_a, x.team_b) === pairOf(a, b));
-    const blank = { key_matchup: '', draft_angle: '', what_flips: '', form_context: '', note: '', stage, settled: true };
-    if (!c) return { ...s, ...blank, team_a: a, team_b: b, winner: '', loser: '', score: '', p_score: null, p_winner: null, p_series_a: null, tier: '' };
-    // p_score: the chance of the called score, read from the conditional row's exact-score table (team A's view)
-    const key = c.winner === c.team_a ? c.score : c.score.split('-').reverse().join('-');
-    const hit = (c.exact || '').split(/\s+/).map((t) => t.split(':')).find(([k]) => k === key);
-    return {
-      ...s, ...blank, team_a: c.team_a, team_b: c.team_b, winner: c.winner, loser: c.loser, score: c.score,
-      p_score: hit ? parseFloat(hit[1]) / 100 : null, p_winner: c.p_winner, p_series_a: c.p_series_a, p_game_a: c.p_game_a,
-      tier: c.tier, exact: c.exact, pw30: c.pw30, pw31: c.pw31, pw32: c.pw32, p_upset: c.p_upset,
-    };
+    let out: Series = s;
+    if (a && b) {
+      if (pairOf(a, b) === pairOf(s.team_a, s.team_b)) out = { ...s, stage, settled: true };
+      else {
+        const c = cond(a, b);
+        const blank = { ...writeup, stage, settled: true };
+        if (!c) out = { ...s, ...blank, team_a: a, team_b: b, winner: '', loser: '', score: '', p_score: null, p_winner: null, p_series_a: null, tier: '' };
+        else {
+          // p_score: the chance of the called score, read from the conditional row's exact-score table (team A's view)
+          const key = c.winner === c.team_a ? c.score : c.score.split('-').reverse().join('-');
+          const hit = (c.exact || '').split(/\s+/).map((t) => t.split(':')).find(([k]) => k === key);
+          out = {
+            ...s, ...blank, team_a: c.team_a, team_b: c.team_b, winner: c.winner, loser: c.loser, score: c.score,
+            p_score: hit ? parseFloat(hit[1]) / 100 : null, p_winner: c.p_winner, p_series_a: c.p_series_a, p_game_a: c.p_game_a,
+            tier: c.tier, exact: c.exact, pw30: c.pw30, pw31: c.pw31, pw32: c.pw32, p_upset: c.p_upset,
+          };
+        }
+      }
+    } else if (a || b) {
+      // half settled: one team is through, the other comes from a feeder whose pair is known but not yet played.
+      // The known team's chance = its chance against each possible opponent, weighted by how likely each one comes through.
+      const known = (a ?? b)!;
+      const feeder = done.get(a ? f[2] : f[0]);
+      const k = a ? f[3] : f[1];
+      if (feeder?.settled && feeder.p_series_a != null && k === 'w') {
+        const pa = feeder.p_series_a;
+        const opts = [{ t: feeder.team_a, p: pa }, { t: feeder.team_b, p: 1 - pa }];
+        const parts = opts.map((o) => ({ ...o, win: beats(known, o.t) }));
+        const pKnown = parts.every((x) => x.win != null) ? parts.reduce((t, x) => t + x.p * (x.win as number), 0) : null;
+        out = {
+          ...s, ...writeup, stage, team_a: known, team_b: 'TBD', tbd: `${feeder.team_a} or ${feeder.team_b}`,
+          tbd_note: `Waits for the ${feeder.stage.replace(/^Play-In /, '').toLowerCase()}, ${feeder.team_a} v ${feeder.team_b}.`,
+          winner: pKnown == null ? '' : pKnown >= 0.5 ? known : 'TBD', loser: '', score: '', p_score: null,
+          p_winner: pKnown == null ? null : Math.max(pKnown, 1 - pKnown), p_series_a: pKnown, tier: '', exact: '',
+          pw30: undefined, pw31: undefined, pw32: undefined,
+        };
+      }
+    }
+    done.set(s.id, out);
+    return out;
   });
 }
 

@@ -25,7 +25,7 @@ const open = STAGES.filter((st) => !phase || st.phase === phase)
   .sort((a, b) => a.at!.localeCompare(b.at!));
 // only rows whose teams are known: Play-In rows settled by results or round 1; knockout ties only from a real
 // knockouts run (the baseline bracket is an assumed draw); never a row marked as an assumed pairing
-const known = open.filter(({ s, st }) => (st.phase !== 'Knockouts' || s.set === 'knockouts') && (s.settled || !/predicted pairing|assumed/i.test(s.stage))).slice(0, 3);
+const known = open.filter(({ s, st }) => (st.phase !== 'Knockouts' || s.set === 'knockouts') && s.team_b !== 'TBD' && (s.settled || !/predicted pairing|assumed/i.test(s.stage))).slice(0, 3);
 const lastRes = results().filter((r) => r.winner && (!phase || r.phase === phase)).at(-1);
 const lastLine = lastRes ? `${lastRes.winner} beat ${lastRes.winner === lastRes.team_a ? lastRes.team_b : lastRes.team_a} ${Math.max(Number(lastRes.score_a), Number(lastRes.score_b))}-${Math.min(Number(lastRes.score_a), Number(lastRes.score_b))}` : '';
 const hub = (st: { id: string }) => url(`${st.id}/`);
