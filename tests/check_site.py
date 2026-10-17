@@ -111,6 +111,15 @@ def check_team_gen(page, tag, problems):
         problems.append(f"{tag}: expected 5 player rows, got {rows}")
 
 
+def check_players_filter(page, tag, problems):
+    """Players grid: the Mid chip leaves only the 19 mids visible."""
+    page.click(".chip[data-role='MID']")
+    roles = page.locator("#players-grid > a:visible").evaluate_all("as => as.map(a => a.dataset.role)")
+    print(f"{tag}: Mid chip shows {len(roles)} tiles, roles {sorted(set(roles))}")
+    if not roles or set(roles) != {"MID"}:
+        problems.append(f"{tag}: Mid chip shows roles {sorted(set(roles))} ({len(roles)} tiles)")
+
+
 def check_compare_pick(page, tag, problems):
     """Compare pickers: T1 then HLE lands on the canonical hle-vs-t1 page."""
     page.select_option("#compare-pick select[name=a]", "T1")
@@ -180,6 +189,8 @@ def main():
                         check_team_gen(page, tag, problems)
                     if pg == "teams/compare/":
                         check_compare_pick(page, tag, problems)
+                    if pg == "players/":
+                        check_players_filter(page, tag, problems)
                     if pg == "play-in/" and w == 1280:
                         check_play_in(page, tag, problems)
                     if pg == "" and w == 390:
