@@ -13,6 +13,18 @@
 },
 {
 "a": "C9",
+"b": "FURIA",
+"date": "16/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"stage": "ROUND1",
+"sa": 1,
+"sb": 3,
+"bo": 5,
+"patch": "16.20",
+"year": 2026
+},
+{
+"a": "C9",
 "b": "KC",
 "date": "15/10/2026",
 "tournament": "Worlds 2026 Play-In",

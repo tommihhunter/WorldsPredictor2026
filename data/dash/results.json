@@ -61,5 +61,26 @@
 "series_url": "https://gol.gg/game/stats/83628/page-summary/",
 "accessed": "17/10/2026 11:58 NZDT"
 }
+},
+{
+"id": "PI-EM",
+"phase": "Play-In",
+"kind": "series",
+"stage": "Play-In elimination match",
+"golgg_stage": "ROUND1",
+"date": "16/10/2026",
+"start_nz": null,
+"team_a": "FURIA",
+"team_b": "C9",
+"score_a": 3,
+"score_b": 1,
+"winner": "FURIA",
+"bo": 5,
+"patch": "16.20",
+"source": {
+"url": "https://gol.gg/tournament/tournament-matchlist/Worlds%202026%20Play-In/",
+"series_url": "https://gol.gg/game/stats/83623/page-summary/",
+"accessed": "17/10/2026 13:50 NZDT"
+}
 }
 ]

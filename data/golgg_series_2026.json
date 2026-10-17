@@ -11928,6 +11928,18 @@
 "kind": "international"
 },
 {
+"team_a": "FURIA",
+"team_b": "Cloud9",
+"score_a": 3,
+"score_b": 1,
+"stage": "ROUND1",
+"patch": "16.20",
+"date": "16/10/2026",
+"tournament": "Worlds 2026 Play-In",
+"league": "INTL",
+"kind": "international"
+},
+{
 "team_a": "Karmine Corp",
 "team_b": "Cloud9",
 "score_a": 3,
