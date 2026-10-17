@@ -173,5 +173,10 @@ const maxGames = (pl: Player) => Math.max(1, ...champs(pl).map((c) => c.games ??
   }
   @media (max-width: 640px) {
     .back { margin-bottom: calc(var(--space-lg) * -1 + var(--space-2xs)); }
+    /* phone: one row per champion, name left, numbers right, bar underneath */
+    .pool { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); }
+    .pool li { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'n s' 'b b'; align-items: center; gap: var(--space-2xs) var(--space-sm); padding: var(--space-sm); }
+    .cn { grid-area: n; } .cs { grid-area: s; grid-template-columns: repeat(3, auto); column-gap: var(--space-md); text-align: right; } .pool .bar { grid-area: b; }
+    .cn :global(img) { width: 32px; height: 32px; }
   }
 </style>
