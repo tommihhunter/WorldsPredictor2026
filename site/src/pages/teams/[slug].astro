@@ -195,24 +195,25 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
       <!-- 3. how they play -->
       <section class="section">
         <div class="section-head"><h2>How they play</h2><span>Scouting report</span></div>
-        <div class="report" id="report">
-          <article class="rcard win"><h3>How they win</h3><p>{clean(d.report?.wins_by)}</p></article>
-          <article class="rcard lose"><h3>How they lose</h3><p>{clean(d.report?.loses_to)}</p></article>
+        <div class="panel report" id="report">
+          <section class="rp"><h3>How they win</h3><p>{clean(d.report?.wins_by)}</p></section>
+          <section class="rp"><h3>How they lose</h3><p>{clean(d.report?.loses_to)}</p></section>
+          {form.length > 0 && (
+            <div class="form">
+              <span class="form-k">Form</span>
+              <ol>
+                {form.map((g) => ('raw' in g ? <li>{g.raw}</li> : (
+                  <li>
+                    <span class:list={['wl', g.win ? 'win' : 'loss']} aria-label={g.win ? 'Win' : 'Loss'}>{g.win ? 'W' : 'L'}</span>
+                    <span class="fs">{g.score}</span>
+                    <Logo code={g.vs} size={22} /><span class="code">{g.vs}</span>
+                    <span class="caption">{g.date}</span>
+                  </li>
+                )))}
+              </ol>
+            </div>
+          )}
         </div>
-        {form.length > 0 && (
-          <div class="form">
-            <span class="caption">Recent form</span>
-            <ul>
-              {form.map((g) => ('raw' in g ? <li class="fx">{g.raw}</li> : (
-                <li class="fx">
-                  <span class:list={['wl', g.win ? 'teal' : 'risk']}>{g.win ? 'W' : 'L'}</span>
-                  <span class="fs">{g.score}</span><span class="muted2">v</span><Logo code={g.vs} size={22} /><span class="code">{g.vs}</span>
-                  <span class="caption">{g.date}</span>
-                </li>
-              )))}
-            </ul>
-          </div>
-        )}
       </section>
 
       <!-- 4. the numbers -->
@@ -333,18 +334,20 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
   .fixtures summary:hover, .fine summary:hover { color: var(--gold); }
   .fixtures[open] summary { margin-bottom: var(--space-sm); }
 
-  /* 3. report: two contrasting cards, then form */
-  .report { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
-  .rcard { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg); background: var(--surface); border-radius: var(--radius); border-top: 3px solid var(--teal); }
-  .rcard.lose { border-top-color: var(--risk); }
-  .rcard h3 { font-size: var(--fs-lg); }
-  .rcard.win h3 { color: var(--teal); }
-  .rcard.lose h3 { color: var(--risk); }
-  .rcard p { font-size: var(--fs-lg); line-height: 1.5; text-wrap: pretty; }
-  .form { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-md); }
-  .form ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-xs); }
-  .fx { display: inline-flex; align-items: center; gap: var(--space-2xs); padding: var(--space-2xs) var(--space-sm); background: var(--surface); border-radius: var(--radius-pill); }
-  .wl { font-family: var(--font-display); font-weight: 700; width: 1.4em; text-align: center; }
+  /* 3. report: one surface, two halves split by a rule, quiet labels over the text; a form guide along the foot */
+  .report { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; }
+  .rp { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-lg); min-width: 0; }
+  .rp + .rp { border-left: 1px solid var(--line-strong); }
+  .rp h3 { font-family: var(--font-body); font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.08em; color: var(--muted); }
+  .rp p { font-size: var(--fs-lg); line-height: 1.5; text-wrap: pretty; }
+  .form { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-lg); padding: var(--space-sm) var(--space-lg); border-top: 1px solid var(--line); }
+  .form-k { font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; }
+  .form ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-xl); }
+  .form li { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+  /* football-style form squares */
+  .wl { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 4px; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-sm); color: var(--bg); }
+  .wl.win { background: var(--teal); }
+  .wl.loss { background: var(--risk); }
   .fs { font-weight: 600; }
 
   /* 4. numbers: four groups, value + rank */
@@ -420,9 +423,13 @@ const accessed = String(d?.players_sample ?? '').match(/accessed (\d{2}\/\d{2}\/
     .road .step { grid-area: s; align-self: center; }
     .road .pv { grid-area: v; font-size: var(--fs-xl); }
     .road .bar, .road .caption { grid-area: b; }
-    .report, .groups { grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }
-    .rcard { padding: var(--space-sm); }
-    .rcard p { font-size: var(--fs-md); }
+    .groups { grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }
+    .report { grid-template-columns: minmax(0, 1fr); }
+    .rp { padding: var(--space-sm); }
+    .rp + .rp { border-left: 0; border-top: 1px solid var(--line-strong); }
+    .rp p { font-size: var(--fs-md); }
+    .form { padding: var(--space-sm); }
+    .form ol { gap: var(--space-xs) var(--space-md); }
     .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .player-row { padding: var(--space-sm); }
     .srcs { columns: 1; }
